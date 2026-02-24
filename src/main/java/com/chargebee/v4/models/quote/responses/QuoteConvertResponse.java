@@ -22,6 +22,7 @@ import com.chargebee.v4.models.subscription.Subscription;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -76,52 +77,52 @@ public final class QuoteConvertResponse extends BaseResponse {
   /** Parse JSON response into QuoteConvertResponse object with HTTP response. */
   public static QuoteConvertResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __quoteJson = JsonUtil.getObject(json, "quote");
-      if (__quoteJson != null) {
-        builder.quote(Quote.fromJson(__quoteJson));
+      JsonObject __quoteObj = JsonUtil.getJsonObject(jsonObj, "quote");
+      if (__quoteObj != null) {
+        builder.quote(Quote.fromJson(__quoteObj));
       }
 
-      String __quotedSubscriptionJson = JsonUtil.getObject(json, "quoted_subscription");
-      if (__quotedSubscriptionJson != null) {
-        builder.quotedSubscription(QuotedSubscription.fromJson(__quotedSubscriptionJson));
+      JsonObject __quotedSubscriptionObj = JsonUtil.getJsonObject(jsonObj, "quoted_subscription");
+      if (__quotedSubscriptionObj != null) {
+        builder.quotedSubscription(QuotedSubscription.fromJson(__quotedSubscriptionObj));
       }
 
-      String __quotedChargeJson = JsonUtil.getObject(json, "quoted_charge");
-      if (__quotedChargeJson != null) {
-        builder.quotedCharge(QuotedCharge.fromJson(__quotedChargeJson));
+      JsonObject __quotedChargeObj = JsonUtil.getJsonObject(jsonObj, "quoted_charge");
+      if (__quotedChargeObj != null) {
+        builder.quotedCharge(QuotedCharge.fromJson(__quotedChargeObj));
       }
 
-      String __quotedRampJson = JsonUtil.getObject(json, "quoted_ramp");
-      if (__quotedRampJson != null) {
-        builder.quotedRamp(QuotedRamp.fromJson(__quotedRampJson));
+      JsonObject __quotedRampObj = JsonUtil.getJsonObject(jsonObj, "quoted_ramp");
+      if (__quotedRampObj != null) {
+        builder.quotedRamp(QuotedRamp.fromJson(__quotedRampObj));
       }
 
-      String __customerJson = JsonUtil.getObject(json, "customer");
-      if (__customerJson != null) {
-        builder.customer(Customer.fromJson(__customerJson));
+      JsonObject __customerObj = JsonUtil.getJsonObject(jsonObj, "customer");
+      if (__customerObj != null) {
+        builder.customer(Customer.fromJson(__customerObj));
       }
 
-      String __subscriptionJson = JsonUtil.getObject(json, "subscription");
-      if (__subscriptionJson != null) {
-        builder.subscription(Subscription.fromJson(__subscriptionJson));
+      JsonObject __subscriptionObj = JsonUtil.getJsonObject(jsonObj, "subscription");
+      if (__subscriptionObj != null) {
+        builder.subscription(Subscription.fromJson(__subscriptionObj));
       }
 
-      String __invoiceJson = JsonUtil.getObject(json, "invoice");
-      if (__invoiceJson != null) {
-        builder.invoice(Invoice.fromJson(__invoiceJson));
+      JsonObject __invoiceObj = JsonUtil.getJsonObject(jsonObj, "invoice");
+      if (__invoiceObj != null) {
+        builder.invoice(Invoice.fromJson(__invoiceObj));
       }
 
-      String __creditNoteJson = JsonUtil.getObject(json, "credit_note");
-      if (__creditNoteJson != null) {
-        builder.creditNote(CreditNote.fromJson(__creditNoteJson));
+      JsonObject __creditNoteObj = JsonUtil.getJsonObject(jsonObj, "credit_note");
+      if (__creditNoteObj != null) {
+        builder.creditNote(CreditNote.fromJson(__creditNoteObj));
       }
 
       builder.unbilledCharges(
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "unbilled_charges")).stream()
-              .map(UnbilledCharge::fromJson)
-              .collect(java.util.stream.Collectors.toList()));
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "unbilled_charges"), UnbilledCharge::fromJson));
 
       builder.httpResponse(httpResponse);
       return builder.build();

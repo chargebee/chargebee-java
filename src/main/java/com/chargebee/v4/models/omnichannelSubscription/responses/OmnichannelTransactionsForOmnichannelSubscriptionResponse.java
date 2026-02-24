@@ -6,6 +6,7 @@ import com.chargebee.v4.models.omnichannelTransaction.OmnichannelTransaction;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.OmnichannelSubscriptionService;
 import com.chargebee.v4.models.omnichannelSubscription.params.OmnichannelTransactionsForOmnichannelSubscriptionParams;
@@ -52,15 +53,15 @@ public final class OmnichannelTransactionsForOmnichannelSubscriptionResponse {
    */
   public static OmnichannelTransactionsForOmnichannelSubscriptionResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(
-                  OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem
-                      ::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem
+                  ::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new OmnichannelTransactionsForOmnichannelSubscriptionResponse(
           list, nextOffset, null, null, null, null);
@@ -81,15 +82,15 @@ public final class OmnichannelTransactionsForOmnichannelSubscriptionResponse {
       String omnichannelSubscriptionId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(
-                  OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem
-                      ::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem
+                  ::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new OmnichannelTransactionsForOmnichannelSubscriptionResponse(
           list, nextOffset, omnichannelSubscriptionId, service, originalParams, httpResponse);
@@ -203,12 +204,18 @@ public final class OmnichannelTransactionsForOmnichannelSubscriptionResponse {
 
     public static OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem
         fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem
+        fromJson(JsonObject jsonObj) {
       OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem item =
           new OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem();
 
-      String __omnichannelTransactionJson = JsonUtil.getObject(json, "omnichannel_transaction");
-      if (__omnichannelTransactionJson != null) {
-        item.omnichannelTransaction = OmnichannelTransaction.fromJson(__omnichannelTransactionJson);
+      JsonObject __omnichannelTransactionObj =
+          JsonUtil.getJsonObject(jsonObj, "omnichannel_transaction");
+      if (__omnichannelTransactionObj != null) {
+        item.omnichannelTransaction = OmnichannelTransaction.fromJson(__omnichannelTransactionObj);
       }
 
       return item;

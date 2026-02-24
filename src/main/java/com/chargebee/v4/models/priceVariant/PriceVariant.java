@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.priceVariant;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -110,36 +111,38 @@ public class PriceVariant {
   }
 
   public static PriceVariant fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static PriceVariant fromJson(JsonObject jsonObj) {
     PriceVariant obj = new PriceVariant();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
-    obj.externalName = JsonUtil.getString(json, "external_name");
+    obj.externalName = JsonUtil.getString(jsonObj, "external_name");
 
-    obj.variantGroup = JsonUtil.getString(json, "variant_group");
+    obj.variantGroup = JsonUtil.getString(jsonObj, "variant_group");
 
-    obj.description = JsonUtil.getString(json, "description");
+    obj.description = JsonUtil.getString(jsonObj, "description");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.archivedAt = JsonUtil.getTimestamp(json, "archived_at");
+    obj.archivedAt = JsonUtil.getTimestamp(jsonObj, "archived_at");
 
-    obj.businessEntityId = JsonUtil.getString(json, "business_entity_id");
+    obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
-    obj.deleted = JsonUtil.getBoolean(json, "deleted");
+    obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
 
     obj.attributes =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "attributes")).stream()
-            .map(Attributes::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "attributes"), Attributes::fromJson);
 
     return obj;
   }
@@ -230,11 +233,15 @@ public class PriceVariant {
     }
 
     public static Attributes fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Attributes fromJson(JsonObject jsonObj) {
       Attributes obj = new Attributes();
 
-      obj.name = JsonUtil.getString(json, "name");
+      obj.name = JsonUtil.getString(jsonObj, "name");
 
-      obj.value = JsonUtil.getString(json, "value");
+      obj.value = JsonUtil.getString(jsonObj, "value");
 
       return obj;
     }

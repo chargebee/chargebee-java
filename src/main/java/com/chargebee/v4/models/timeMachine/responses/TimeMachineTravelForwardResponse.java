@@ -4,6 +4,7 @@ import com.chargebee.v4.models.timeMachine.TimeMachine;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class TimeMachineTravelForwardResponse extends BaseResponse {
   /** Parse JSON response into TimeMachineTravelForwardResponse object with HTTP response. */
   public static TimeMachineTravelForwardResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __timeMachineJson = JsonUtil.getObject(json, "time_machine");
-      if (__timeMachineJson != null) {
-        builder.timeMachine(TimeMachine.fromJson(__timeMachineJson));
+      JsonObject __timeMachineObj = JsonUtil.getJsonObject(jsonObj, "time_machine");
+      if (__timeMachineObj != null) {
+        builder.timeMachine(TimeMachine.fromJson(__timeMachineObj));
       }
 
       builder.httpResponse(httpResponse);

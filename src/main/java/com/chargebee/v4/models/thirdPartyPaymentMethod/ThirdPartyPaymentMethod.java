@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.thirdPartyPaymentMethod;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class ThirdPartyPaymentMethod {
 
@@ -267,15 +268,19 @@ public class ThirdPartyPaymentMethod {
   }
 
   public static ThirdPartyPaymentMethod fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static ThirdPartyPaymentMethod fromJson(JsonObject jsonObj) {
     ThirdPartyPaymentMethod obj = new ThirdPartyPaymentMethod();
 
-    obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+    obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-    obj.gateway = Gateway.fromString(JsonUtil.getString(json, "gateway"));
+    obj.gateway = Gateway.fromString(JsonUtil.getString(jsonObj, "gateway"));
 
-    obj.gatewayAccountId = JsonUtil.getString(json, "gateway_account_id");
+    obj.gatewayAccountId = JsonUtil.getString(jsonObj, "gateway_account_id");
 
-    obj.referenceId = JsonUtil.getString(json, "reference_id");
+    obj.referenceId = JsonUtil.getString(jsonObj, "reference_id");
 
     return obj;
   }

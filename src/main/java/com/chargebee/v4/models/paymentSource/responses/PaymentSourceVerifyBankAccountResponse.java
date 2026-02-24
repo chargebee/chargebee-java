@@ -4,6 +4,7 @@ import com.chargebee.v4.models.paymentSource.PaymentSource;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -28,11 +29,12 @@ public final class PaymentSourceVerifyBankAccountResponse extends BaseResponse {
   public static PaymentSourceVerifyBankAccountResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __paymentSourceJson = JsonUtil.getObject(json, "payment_source");
-      if (__paymentSourceJson != null) {
-        builder.paymentSource(PaymentSource.fromJson(__paymentSourceJson));
+      JsonObject __paymentSourceObj = JsonUtil.getJsonObject(jsonObj, "payment_source");
+      if (__paymentSourceObj != null) {
+        builder.paymentSource(PaymentSource.fromJson(__paymentSourceObj));
       }
 
       builder.httpResponse(httpResponse);

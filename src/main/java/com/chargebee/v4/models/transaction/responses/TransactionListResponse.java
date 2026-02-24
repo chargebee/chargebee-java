@@ -6,6 +6,7 @@ import com.chargebee.v4.models.transaction.Transaction;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.TransactionService;
 import com.chargebee.v4.models.transaction.params.TransactionListParams;
@@ -43,13 +44,12 @@ public final class TransactionListResponse {
    */
   public static TransactionListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<TransactionListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(TransactionListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), TransactionListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new TransactionListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +67,12 @@ public final class TransactionListResponse {
       TransactionListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<TransactionListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(TransactionListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), TransactionListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new TransactionListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -173,11 +172,15 @@ public final class TransactionListResponse {
     }
 
     public static TransactionListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static TransactionListItem fromJson(JsonObject jsonObj) {
       TransactionListItem item = new TransactionListItem();
 
-      String __transactionJson = JsonUtil.getObject(json, "transaction");
-      if (__transactionJson != null) {
-        item.transaction = Transaction.fromJson(__transactionJson);
+      JsonObject __transactionObj = JsonUtil.getJsonObject(jsonObj, "transaction");
+      if (__transactionObj != null) {
+        item.transaction = Transaction.fromJson(__transactionObj);
       }
 
       return item;

@@ -8,6 +8,8 @@
 package com.chargebee.v4.models.webhookEndpoint;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.util.List;
 
 public class WebhookEndpoint {
@@ -120,27 +122,34 @@ public class WebhookEndpoint {
   }
 
   public static WebhookEndpoint fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static WebhookEndpoint fromJson(JsonObject jsonObj) {
     WebhookEndpoint obj = new WebhookEndpoint();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
-    obj.url = JsonUtil.getString(json, "url");
+    obj.url = JsonUtil.getString(jsonObj, "url");
 
-    obj.sendCardResource = JsonUtil.getBoolean(json, "send_card_resource");
+    obj.sendCardResource = JsonUtil.getBoolean(jsonObj, "send_card_resource");
 
-    obj.disabled = JsonUtil.getBoolean(json, "disabled");
+    obj.disabled = JsonUtil.getBoolean(jsonObj, "disabled");
 
-    obj.primaryUrl = JsonUtil.getBoolean(json, "primary_url");
+    obj.primaryUrl = JsonUtil.getBoolean(jsonObj, "primary_url");
 
-    obj.apiVersion = ApiVersion.fromString(JsonUtil.getString(json, "api_version"));
+    obj.apiVersion = ApiVersion.fromString(JsonUtil.getString(jsonObj, "api_version"));
 
     obj.chargebeeResponseSchemaType =
         ChargebeeResponseSchemaType.fromString(
-            JsonUtil.getString(json, "chargebee_response_schema_type"));
+            JsonUtil.getString(jsonObj, "chargebee_response_schema_type"));
 
-    obj.enabledEvents = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "enabled_events"));
+    JsonArray __enabledEventsArr = JsonUtil.getJsonArray(jsonObj, "enabled_events");
+    if (__enabledEventsArr != null) {
+      obj.enabledEvents = JsonUtil.parseArrayOfString(__enabledEventsArr);
+    }
 
     return obj;
   }

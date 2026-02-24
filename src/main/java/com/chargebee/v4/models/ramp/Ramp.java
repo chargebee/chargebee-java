@@ -8,6 +8,8 @@
 package com.chargebee.v4.models.ramp;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -142,66 +144,71 @@ public class Ramp {
   }
 
   public static Ramp fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Ramp fromJson(JsonObject jsonObj) {
     Ramp obj = new Ramp();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.description = JsonUtil.getString(json, "description");
+    obj.description = JsonUtil.getString(jsonObj, "description");
 
-    obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.effectiveFrom = JsonUtil.getTimestamp(json, "effective_from");
+    obj.effectiveFrom = JsonUtil.getTimestamp(jsonObj, "effective_from");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.itemsToRemove = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "items_to_remove"));
-
-    obj.couponsToRemove = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "coupons_to_remove"));
-
-    obj.discountsToRemove =
-        JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "discounts_to_remove"));
-
-    obj.deleted = JsonUtil.getBoolean(json, "deleted");
-
-    obj.itemsToAdd =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "items_to_add")).stream()
-            .map(ItemsToAdd::fromJson)
-            .collect(java.util.stream.Collectors.toList());
-
-    obj.itemsToUpdate =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "items_to_update")).stream()
-            .map(ItemsToUpdate::fromJson)
-            .collect(java.util.stream.Collectors.toList());
-
-    obj.couponsToAdd =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "coupons_to_add")).stream()
-            .map(CouponsToAdd::fromJson)
-            .collect(java.util.stream.Collectors.toList());
-
-    obj.discountsToAdd =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "discounts_to_add")).stream()
-            .map(DiscountsToAdd::fromJson)
-            .collect(java.util.stream.Collectors.toList());
-
-    obj.itemTiers =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "item_tiers")).stream()
-            .map(ItemTiers::fromJson)
-            .collect(java.util.stream.Collectors.toList());
-
-    String __contractTermJson = JsonUtil.getObject(json, "contract_term");
-    if (__contractTermJson != null) {
-      obj.contractTerm = ContractTerm.fromJson(__contractTermJson);
+    JsonArray __itemsToRemoveArr = JsonUtil.getJsonArray(jsonObj, "items_to_remove");
+    if (__itemsToRemoveArr != null) {
+      obj.itemsToRemove = JsonUtil.parseArrayOfString(__itemsToRemoveArr);
     }
 
-    String __statusTransitionReasonJson = JsonUtil.getObject(json, "status_transition_reason");
-    if (__statusTransitionReasonJson != null) {
-      obj.statusTransitionReason = StatusTransitionReason.fromJson(__statusTransitionReasonJson);
+    JsonArray __couponsToRemoveArr = JsonUtil.getJsonArray(jsonObj, "coupons_to_remove");
+    if (__couponsToRemoveArr != null) {
+      obj.couponsToRemove = JsonUtil.parseArrayOfString(__couponsToRemoveArr);
+    }
+
+    JsonArray __discountsToRemoveArr = JsonUtil.getJsonArray(jsonObj, "discounts_to_remove");
+    if (__discountsToRemoveArr != null) {
+      obj.discountsToRemove = JsonUtil.parseArrayOfString(__discountsToRemoveArr);
+    }
+
+    obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
+
+    obj.itemsToAdd =
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "items_to_add"), ItemsToAdd::fromJson);
+
+    obj.itemsToUpdate =
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "items_to_update"), ItemsToUpdate::fromJson);
+
+    obj.couponsToAdd =
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "coupons_to_add"), CouponsToAdd::fromJson);
+
+    obj.discountsToAdd =
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "discounts_to_add"), DiscountsToAdd::fromJson);
+
+    obj.itemTiers =
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "item_tiers"), ItemTiers::fromJson);
+
+    JsonObject __contractTermObj = JsonUtil.getJsonObject(jsonObj, "contract_term");
+    if (__contractTermObj != null) {
+      obj.contractTerm = ContractTerm.fromJson(__contractTermObj);
+    }
+
+    JsonObject __statusTransitionReasonObj =
+        JsonUtil.getJsonObject(jsonObj, "status_transition_reason");
+    if (__statusTransitionReasonObj != null) {
+      obj.statusTransitionReason = StatusTransitionReason.fromJson(__statusTransitionReasonObj);
     }
 
     return obj;
@@ -477,39 +484,44 @@ public class Ramp {
     }
 
     public static ItemsToAdd fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ItemsToAdd fromJson(JsonObject jsonObj) {
       ItemsToAdd obj = new ItemsToAdd();
 
-      obj.itemPriceId = JsonUtil.getString(json, "item_price_id");
+      obj.itemPriceId = JsonUtil.getString(jsonObj, "item_price_id");
 
-      obj.itemType = ItemType.fromString(JsonUtil.getString(json, "item_type"));
+      obj.itemType = ItemType.fromString(JsonUtil.getString(jsonObj, "item_type"));
 
-      obj.quantity = JsonUtil.getInteger(json, "quantity");
+      obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
 
-      obj.quantityInDecimal = JsonUtil.getString(json, "quantity_in_decimal");
+      obj.quantityInDecimal = JsonUtil.getString(jsonObj, "quantity_in_decimal");
 
-      obj.unitPrice = JsonUtil.getLong(json, "unit_price");
+      obj.unitPrice = JsonUtil.getLong(jsonObj, "unit_price");
 
-      obj.unitPriceInDecimal = JsonUtil.getString(json, "unit_price_in_decimal");
+      obj.unitPriceInDecimal = JsonUtil.getString(jsonObj, "unit_price_in_decimal");
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-      obj.amountInDecimal = JsonUtil.getString(json, "amount_in_decimal");
+      obj.amountInDecimal = JsonUtil.getString(jsonObj, "amount_in_decimal");
 
-      obj.freeQuantity = JsonUtil.getInteger(json, "free_quantity");
+      obj.freeQuantity = JsonUtil.getInteger(jsonObj, "free_quantity");
 
-      obj.freeQuantityInDecimal = JsonUtil.getString(json, "free_quantity_in_decimal");
+      obj.freeQuantityInDecimal = JsonUtil.getString(jsonObj, "free_quantity_in_decimal");
 
-      obj.billingCycles = JsonUtil.getInteger(json, "billing_cycles");
+      obj.billingCycles = JsonUtil.getInteger(jsonObj, "billing_cycles");
 
-      obj.servicePeriodDays = JsonUtil.getInteger(json, "service_period_days");
+      obj.servicePeriodDays = JsonUtil.getInteger(jsonObj, "service_period_days");
 
-      obj.meteredQuantity = JsonUtil.getString(json, "metered_quantity");
+      obj.meteredQuantity = JsonUtil.getString(jsonObj, "metered_quantity");
 
-      obj.chargeOnce = JsonUtil.getBoolean(json, "charge_once");
+      obj.chargeOnce = JsonUtil.getBoolean(jsonObj, "charge_once");
 
-      obj.chargeOnOption = ChargeOnOption.fromString(JsonUtil.getString(json, "charge_on_option"));
+      obj.chargeOnOption =
+          ChargeOnOption.fromString(JsonUtil.getString(jsonObj, "charge_on_option"));
 
-      obj.chargeOnEvent = ChargeOnEvent.fromString(JsonUtil.getString(json, "charge_on_event"));
+      obj.chargeOnEvent = ChargeOnEvent.fromString(JsonUtil.getString(jsonObj, "charge_on_event"));
 
       return obj;
     }
@@ -773,39 +785,44 @@ public class Ramp {
     }
 
     public static ItemsToUpdate fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ItemsToUpdate fromJson(JsonObject jsonObj) {
       ItemsToUpdate obj = new ItemsToUpdate();
 
-      obj.itemPriceId = JsonUtil.getString(json, "item_price_id");
+      obj.itemPriceId = JsonUtil.getString(jsonObj, "item_price_id");
 
-      obj.itemType = ItemType.fromString(JsonUtil.getString(json, "item_type"));
+      obj.itemType = ItemType.fromString(JsonUtil.getString(jsonObj, "item_type"));
 
-      obj.quantity = JsonUtil.getInteger(json, "quantity");
+      obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
 
-      obj.quantityInDecimal = JsonUtil.getString(json, "quantity_in_decimal");
+      obj.quantityInDecimal = JsonUtil.getString(jsonObj, "quantity_in_decimal");
 
-      obj.unitPrice = JsonUtil.getLong(json, "unit_price");
+      obj.unitPrice = JsonUtil.getLong(jsonObj, "unit_price");
 
-      obj.unitPriceInDecimal = JsonUtil.getString(json, "unit_price_in_decimal");
+      obj.unitPriceInDecimal = JsonUtil.getString(jsonObj, "unit_price_in_decimal");
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-      obj.amountInDecimal = JsonUtil.getString(json, "amount_in_decimal");
+      obj.amountInDecimal = JsonUtil.getString(jsonObj, "amount_in_decimal");
 
-      obj.freeQuantity = JsonUtil.getInteger(json, "free_quantity");
+      obj.freeQuantity = JsonUtil.getInteger(jsonObj, "free_quantity");
 
-      obj.freeQuantityInDecimal = JsonUtil.getString(json, "free_quantity_in_decimal");
+      obj.freeQuantityInDecimal = JsonUtil.getString(jsonObj, "free_quantity_in_decimal");
 
-      obj.billingCycles = JsonUtil.getInteger(json, "billing_cycles");
+      obj.billingCycles = JsonUtil.getInteger(jsonObj, "billing_cycles");
 
-      obj.servicePeriodDays = JsonUtil.getInteger(json, "service_period_days");
+      obj.servicePeriodDays = JsonUtil.getInteger(jsonObj, "service_period_days");
 
-      obj.meteredQuantity = JsonUtil.getString(json, "metered_quantity");
+      obj.meteredQuantity = JsonUtil.getString(jsonObj, "metered_quantity");
 
-      obj.chargeOnce = JsonUtil.getBoolean(json, "charge_once");
+      obj.chargeOnce = JsonUtil.getBoolean(jsonObj, "charge_once");
 
-      obj.chargeOnOption = ChargeOnOption.fromString(JsonUtil.getString(json, "charge_on_option"));
+      obj.chargeOnOption =
+          ChargeOnOption.fromString(JsonUtil.getString(jsonObj, "charge_on_option"));
 
-      obj.chargeOnEvent = ChargeOnEvent.fromString(JsonUtil.getString(json, "charge_on_event"));
+      obj.chargeOnEvent = ChargeOnEvent.fromString(JsonUtil.getString(jsonObj, "charge_on_event"));
 
       return obj;
     }
@@ -909,11 +926,15 @@ public class Ramp {
     }
 
     public static CouponsToAdd fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CouponsToAdd fromJson(JsonObject jsonObj) {
       CouponsToAdd obj = new CouponsToAdd();
 
-      obj.couponId = JsonUtil.getString(json, "coupon_id");
+      obj.couponId = JsonUtil.getString(jsonObj, "coupon_id");
 
-      obj.applyTill = JsonUtil.getTimestamp(json, "apply_till");
+      obj.applyTill = JsonUtil.getTimestamp(jsonObj, "apply_till");
 
       return obj;
     }
@@ -1122,31 +1143,35 @@ public class Ramp {
     }
 
     public static DiscountsToAdd fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static DiscountsToAdd fromJson(JsonObject jsonObj) {
       DiscountsToAdd obj = new DiscountsToAdd();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.invoiceName = JsonUtil.getString(json, "invoice_name");
+      obj.invoiceName = JsonUtil.getString(jsonObj, "invoice_name");
 
-      obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+      obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-      obj.percentage = JsonUtil.getDouble(json, "percentage");
+      obj.percentage = JsonUtil.getDouble(jsonObj, "percentage");
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-      obj.durationType = DurationType.fromString(JsonUtil.getString(json, "duration_type"));
+      obj.durationType = DurationType.fromString(JsonUtil.getString(jsonObj, "duration_type"));
 
-      obj.period = JsonUtil.getInteger(json, "period");
+      obj.period = JsonUtil.getInteger(jsonObj, "period");
 
-      obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(json, "period_unit"));
+      obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(jsonObj, "period_unit"));
 
-      obj.includedInMrr = JsonUtil.getBoolean(json, "included_in_mrr");
+      obj.includedInMrr = JsonUtil.getBoolean(jsonObj, "included_in_mrr");
 
-      obj.applyOn = ApplyOn.fromString(JsonUtil.getString(json, "apply_on"));
+      obj.applyOn = ApplyOn.fromString(JsonUtil.getString(jsonObj, "apply_on"));
 
-      obj.itemPriceId = JsonUtil.getString(json, "item_price_id");
+      obj.itemPriceId = JsonUtil.getString(jsonObj, "item_price_id");
 
-      obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+      obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
       return obj;
     }
@@ -1304,27 +1329,31 @@ public class Ramp {
     }
 
     public static ItemTiers fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ItemTiers fromJson(JsonObject jsonObj) {
       ItemTiers obj = new ItemTiers();
 
-      obj.itemPriceId = JsonUtil.getString(json, "item_price_id");
+      obj.itemPriceId = JsonUtil.getString(jsonObj, "item_price_id");
 
-      obj.startingUnit = JsonUtil.getInteger(json, "starting_unit");
+      obj.startingUnit = JsonUtil.getInteger(jsonObj, "starting_unit");
 
-      obj.endingUnit = JsonUtil.getInteger(json, "ending_unit");
+      obj.endingUnit = JsonUtil.getInteger(jsonObj, "ending_unit");
 
-      obj.price = JsonUtil.getLong(json, "price");
+      obj.price = JsonUtil.getLong(jsonObj, "price");
 
-      obj.startingUnitInDecimal = JsonUtil.getString(json, "starting_unit_in_decimal");
+      obj.startingUnitInDecimal = JsonUtil.getString(jsonObj, "starting_unit_in_decimal");
 
-      obj.endingUnitInDecimal = JsonUtil.getString(json, "ending_unit_in_decimal");
+      obj.endingUnitInDecimal = JsonUtil.getString(jsonObj, "ending_unit_in_decimal");
 
-      obj.priceInDecimal = JsonUtil.getString(json, "price_in_decimal");
+      obj.priceInDecimal = JsonUtil.getString(jsonObj, "price_in_decimal");
 
-      obj.pricingType = PricingType.fromString(JsonUtil.getString(json, "pricing_type"));
+      obj.pricingType = PricingType.fromString(JsonUtil.getString(jsonObj, "pricing_type"));
 
-      obj.packageSize = JsonUtil.getInteger(json, "package_size");
+      obj.packageSize = JsonUtil.getInteger(jsonObj, "package_size");
 
-      obj.index = JsonUtil.getInteger(json, "index");
+      obj.index = JsonUtil.getInteger(jsonObj, "index");
 
       return obj;
     }
@@ -1441,14 +1470,18 @@ public class Ramp {
     }
 
     public static ContractTerm fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ContractTerm fromJson(JsonObject jsonObj) {
       ContractTerm obj = new ContractTerm();
 
-      obj.cancellationCutoffPeriod = JsonUtil.getInteger(json, "cancellation_cutoff_period");
+      obj.cancellationCutoffPeriod = JsonUtil.getInteger(jsonObj, "cancellation_cutoff_period");
 
-      obj.renewalBillingCycles = JsonUtil.getInteger(json, "renewal_billing_cycles");
+      obj.renewalBillingCycles = JsonUtil.getInteger(jsonObj, "renewal_billing_cycles");
 
       obj.actionAtTermEnd =
-          ActionAtTermEnd.fromString(JsonUtil.getString(json, "action_at_term_end"));
+          ActionAtTermEnd.fromString(JsonUtil.getString(jsonObj, "action_at_term_end"));
 
       return obj;
     }
@@ -1498,11 +1531,15 @@ public class Ramp {
     }
 
     public static StatusTransitionReason fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static StatusTransitionReason fromJson(JsonObject jsonObj) {
       StatusTransitionReason obj = new StatusTransitionReason();
 
-      obj.code = JsonUtil.getString(json, "code");
+      obj.code = JsonUtil.getString(jsonObj, "code");
 
-      obj.message = JsonUtil.getString(json, "message");
+      obj.message = JsonUtil.getString(jsonObj, "message");
 
       return obj;
     }

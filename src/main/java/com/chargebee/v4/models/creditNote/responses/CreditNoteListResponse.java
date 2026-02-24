@@ -6,6 +6,7 @@ import com.chargebee.v4.models.creditNote.CreditNote;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.CreditNoteService;
 import com.chargebee.v4.models.creditNote.params.CreditNoteListParams;
@@ -43,13 +44,12 @@ public final class CreditNoteListResponse {
    */
   public static CreditNoteListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CreditNoteListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CreditNoteListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), CreditNoteListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new CreditNoteListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +67,12 @@ public final class CreditNoteListResponse {
       CreditNoteListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CreditNoteListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CreditNoteListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), CreditNoteListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new CreditNoteListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -173,11 +172,15 @@ public final class CreditNoteListResponse {
     }
 
     public static CreditNoteListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CreditNoteListItem fromJson(JsonObject jsonObj) {
       CreditNoteListItem item = new CreditNoteListItem();
 
-      String __creditNoteJson = JsonUtil.getObject(json, "credit_note");
-      if (__creditNoteJson != null) {
-        item.creditNote = CreditNote.fromJson(__creditNoteJson);
+      JsonObject __creditNoteObj = JsonUtil.getJsonObject(jsonObj, "credit_note");
+      if (__creditNoteObj != null) {
+        item.creditNote = CreditNote.fromJson(__creditNoteObj);
       }
 
       return item;

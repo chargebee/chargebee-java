@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.event;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -668,36 +669,38 @@ public class Event {
   }
 
   public static Event fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Event fromJson(JsonObject jsonObj) {
     Event obj = new Event();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.occurredAt = JsonUtil.getTimestamp(json, "occurred_at");
+    obj.occurredAt = JsonUtil.getTimestamp(jsonObj, "occurred_at");
 
-    obj.source = Source.fromString(JsonUtil.getString(json, "source"));
+    obj.source = Source.fromString(JsonUtil.getString(jsonObj, "source"));
 
-    obj.user = JsonUtil.getString(json, "user");
+    obj.user = JsonUtil.getString(jsonObj, "user");
 
-    obj.webhookStatus = WebhookStatus.fromString(JsonUtil.getString(json, "webhook_status"));
+    obj.webhookStatus = WebhookStatus.fromString(JsonUtil.getString(jsonObj, "webhook_status"));
 
-    obj.webhookFailureReason = JsonUtil.getString(json, "webhook_failure_reason");
+    obj.webhookFailureReason = JsonUtil.getString(jsonObj, "webhook_failure_reason");
 
-    obj.eventType = EventType.fromString(JsonUtil.getString(json, "event_type"));
+    obj.eventType = EventType.fromString(JsonUtil.getString(jsonObj, "event_type"));
 
-    obj.apiVersion = ApiVersion.fromString(JsonUtil.getString(json, "api_version"));
+    obj.apiVersion = ApiVersion.fromString(JsonUtil.getString(jsonObj, "api_version"));
 
-    String __contentJson = JsonUtil.getObject(json, "content");
+    JsonObject __contentObj = JsonUtil.getJsonObject(jsonObj, "content");
     obj.content =
-        __contentJson != null
-            ? JsonUtil.parseJsonObjectToMap(__contentJson)
+        __contentObj != null
+            ? JsonUtil.parseJsonObjectToMap(__contentObj)
             : new java.util.HashMap<>();
 
-    obj.originUser = JsonUtil.getString(json, "origin_user");
+    obj.originUser = JsonUtil.getString(jsonObj, "origin_user");
 
     obj.webhooks =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "webhooks")).stream()
-            .map(Webhooks::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "webhooks"), Webhooks::fromJson);
 
     return obj;
   }
@@ -820,11 +823,15 @@ public class Event {
     }
 
     public static Webhooks fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Webhooks fromJson(JsonObject jsonObj) {
       Webhooks obj = new Webhooks();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.webhookStatus = WebhookStatus.fromString(JsonUtil.getString(json, "webhook_status"));
+      obj.webhookStatus = WebhookStatus.fromString(JsonUtil.getString(jsonObj, "webhook_status"));
 
       return obj;
     }

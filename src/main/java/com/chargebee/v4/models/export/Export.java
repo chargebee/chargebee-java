@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.export;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class Export {
@@ -102,21 +103,25 @@ public class Export {
   }
 
   public static Export fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Export fromJson(JsonObject jsonObj) {
     Export obj = new Export();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.operationType = JsonUtil.getString(json, "operation_type");
+    obj.operationType = JsonUtil.getString(jsonObj, "operation_type");
 
-    obj.mimeType = MimeType.fromString(JsonUtil.getString(json, "mime_type"));
+    obj.mimeType = MimeType.fromString(JsonUtil.getString(jsonObj, "mime_type"));
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    String __downloadJson = JsonUtil.getObject(json, "download");
-    if (__downloadJson != null) {
-      obj.download = Download.fromJson(__downloadJson);
+    JsonObject __downloadObj = JsonUtil.getJsonObject(jsonObj, "download");
+    if (__downloadObj != null) {
+      obj.download = Download.fromJson(__downloadObj);
     }
 
     return obj;
@@ -179,13 +184,17 @@ public class Export {
     }
 
     public static Download fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Download fromJson(JsonObject jsonObj) {
       Download obj = new Download();
 
-      obj.downloadUrl = JsonUtil.getString(json, "download_url");
+      obj.downloadUrl = JsonUtil.getString(jsonObj, "download_url");
 
-      obj.validTill = JsonUtil.getTimestamp(json, "valid_till");
+      obj.validTill = JsonUtil.getTimestamp(jsonObj, "valid_till");
 
-      obj.mimeType = JsonUtil.getString(json, "mime_type");
+      obj.mimeType = JsonUtil.getString(jsonObj, "mime_type");
 
       return obj;
     }

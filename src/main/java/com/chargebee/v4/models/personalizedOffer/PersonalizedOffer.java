@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.personalizedOffer;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.util.List;
 
 public class PersonalizedOffer {
@@ -34,21 +35,22 @@ public class PersonalizedOffer {
   }
 
   public static PersonalizedOffer fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static PersonalizedOffer fromJson(JsonObject jsonObj) {
     PersonalizedOffer obj = new PersonalizedOffer();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.offerId = JsonUtil.getString(json, "offer_id");
+    obj.offerId = JsonUtil.getString(jsonObj, "offer_id");
 
-    String __contentJson = JsonUtil.getObject(json, "content");
-    if (__contentJson != null) {
-      obj.content = Content.fromJson(__contentJson);
+    JsonObject __contentObj = JsonUtil.getJsonObject(jsonObj, "content");
+    if (__contentObj != null) {
+      obj.content = Content.fromJson(__contentObj);
     }
 
-    obj.options =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "options")).stream()
-            .map(Options::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+    obj.options = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "options"), Options::fromJson);
 
     return obj;
   }
@@ -99,11 +101,15 @@ public class PersonalizedOffer {
     }
 
     public static Content fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(JsonObject jsonObj) {
       Content obj = new Content();
 
-      obj.title = JsonUtil.getString(json, "title");
+      obj.title = JsonUtil.getString(jsonObj, "title");
 
-      obj.description = JsonUtil.getString(json, "description");
+      obj.description = JsonUtil.getString(jsonObj, "description");
 
       return obj;
     }
@@ -221,18 +227,23 @@ public class PersonalizedOffer {
     }
 
     public static Options fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Options fromJson(JsonObject jsonObj) {
       Options obj = new Options();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.label = JsonUtil.getString(json, "label");
+      obj.label = JsonUtil.getString(jsonObj, "label");
 
-      obj.processingType = ProcessingType.fromString(JsonUtil.getString(json, "processing_type"));
+      obj.processingType =
+          ProcessingType.fromString(JsonUtil.getString(jsonObj, "processing_type"));
 
       obj.processingLayout =
-          ProcessingLayout.fromString(JsonUtil.getString(json, "processing_layout"));
+          ProcessingLayout.fromString(JsonUtil.getString(jsonObj, "processing_layout"));
 
-      obj.redirectUrl = JsonUtil.getString(json, "redirect_url");
+      obj.redirectUrl = JsonUtil.getString(jsonObj, "redirect_url");
 
       return obj;
     }

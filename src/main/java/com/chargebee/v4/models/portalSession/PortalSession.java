@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.portalSession;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -114,36 +115,39 @@ public class PortalSession {
   }
 
   public static PortalSession fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static PortalSession fromJson(JsonObject jsonObj) {
     PortalSession obj = new PortalSession();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.token = JsonUtil.getString(json, "token");
+    obj.token = JsonUtil.getString(jsonObj, "token");
 
-    obj.accessUrl = JsonUtil.getString(json, "access_url");
+    obj.accessUrl = JsonUtil.getString(jsonObj, "access_url");
 
-    obj.redirectUrl = JsonUtil.getString(json, "redirect_url");
+    obj.redirectUrl = JsonUtil.getString(jsonObj, "redirect_url");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.expiresAt = JsonUtil.getTimestamp(json, "expires_at");
+    obj.expiresAt = JsonUtil.getTimestamp(jsonObj, "expires_at");
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-    obj.loginAt = JsonUtil.getTimestamp(json, "login_at");
+    obj.loginAt = JsonUtil.getTimestamp(jsonObj, "login_at");
 
-    obj.logoutAt = JsonUtil.getTimestamp(json, "logout_at");
+    obj.logoutAt = JsonUtil.getTimestamp(jsonObj, "logout_at");
 
-    obj.loginIpaddress = JsonUtil.getString(json, "login_ipaddress");
+    obj.loginIpaddress = JsonUtil.getString(jsonObj, "login_ipaddress");
 
-    obj.logoutIpaddress = JsonUtil.getString(json, "logout_ipaddress");
+    obj.logoutIpaddress = JsonUtil.getString(jsonObj, "logout_ipaddress");
 
     obj.linkedCustomers =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "linked_customers")).stream()
-            .map(LinkedCustomers::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "linked_customers"), LinkedCustomers::fromJson);
 
     return obj;
   }
@@ -249,17 +253,21 @@ public class PortalSession {
     }
 
     public static LinkedCustomers fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedCustomers fromJson(JsonObject jsonObj) {
       LinkedCustomers obj = new LinkedCustomers();
 
-      obj.customerId = JsonUtil.getString(json, "customer_id");
+      obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-      obj.email = JsonUtil.getString(json, "email");
+      obj.email = JsonUtil.getString(jsonObj, "email");
 
-      obj.hasBillingAddress = JsonUtil.getBoolean(json, "has_billing_address");
+      obj.hasBillingAddress = JsonUtil.getBoolean(jsonObj, "has_billing_address");
 
-      obj.hasPaymentMethod = JsonUtil.getBoolean(json, "has_payment_method");
+      obj.hasPaymentMethod = JsonUtil.getBoolean(jsonObj, "has_payment_method");
 
-      obj.hasActiveSubscription = JsonUtil.getBoolean(json, "has_active_subscription");
+      obj.hasActiveSubscription = JsonUtil.getBoolean(jsonObj, "has_active_subscription");
 
       return obj;
     }

@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.omnichannelOneTimeOrderItem;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class OmnichannelOneTimeOrderItem {
@@ -88,24 +89,28 @@ public class OmnichannelOneTimeOrderItem {
   }
 
   public static OmnichannelOneTimeOrderItem fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static OmnichannelOneTimeOrderItem fromJson(JsonObject jsonObj) {
     OmnichannelOneTimeOrderItem obj = new OmnichannelOneTimeOrderItem();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.itemIdAtSource = JsonUtil.getString(json, "item_id_at_source");
+    obj.itemIdAtSource = JsonUtil.getString(jsonObj, "item_id_at_source");
 
-    obj.itemTypeAtSource = JsonUtil.getString(json, "item_type_at_source");
+    obj.itemTypeAtSource = JsonUtil.getString(jsonObj, "item_type_at_source");
 
-    obj.quantity = JsonUtil.getInteger(json, "quantity");
+    obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
 
-    obj.cancelledAt = JsonUtil.getTimestamp(json, "cancelled_at");
+    obj.cancelledAt = JsonUtil.getTimestamp(jsonObj, "cancelled_at");
 
     obj.cancellationReason =
-        CancellationReason.fromString(JsonUtil.getString(json, "cancellation_reason"));
+        CancellationReason.fromString(JsonUtil.getString(jsonObj, "cancellation_reason"));
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
     return obj;
   }

@@ -4,6 +4,7 @@ import com.chargebee.v4.models.attachedItem.AttachedItem;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class AttachedItemCreateResponse extends BaseResponse {
   /** Parse JSON response into AttachedItemCreateResponse object with HTTP response. */
   public static AttachedItemCreateResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __attachedItemJson = JsonUtil.getObject(json, "attached_item");
-      if (__attachedItemJson != null) {
-        builder.attachedItem(AttachedItem.fromJson(__attachedItemJson));
+      JsonObject __attachedItemObj = JsonUtil.getJsonObject(jsonObj, "attached_item");
+      if (__attachedItemObj != null) {
+        builder.attachedItem(AttachedItem.fromJson(__attachedItemObj));
       }
 
       builder.httpResponse(httpResponse);

@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.addon;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -545,9 +546,12 @@ public class Addon {
   }
 
   public static Addon fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Addon fromJson(JsonObject jsonObj) {
     Addon obj = new Addon();
 
-    // Parse JSON to extract all keys for custom field extraction
     java.util.Set<String> knownFields = new java.util.HashSet<>();
 
     knownFields.add("id");
@@ -638,140 +642,106 @@ public class Addon {
 
     knownFields.add("tax_providers_fields");
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
-    obj.invoiceName = JsonUtil.getString(json, "invoice_name");
+    obj.invoiceName = JsonUtil.getString(jsonObj, "invoice_name");
 
-    obj.description = JsonUtil.getString(json, "description");
+    obj.description = JsonUtil.getString(jsonObj, "description");
 
-    obj.pricingModel = PricingModel.fromString(JsonUtil.getString(json, "pricing_model"));
+    obj.pricingModel = PricingModel.fromString(JsonUtil.getString(jsonObj, "pricing_model"));
 
-    obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+    obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-    obj.chargeType = ChargeType.fromString(JsonUtil.getString(json, "charge_type"));
+    obj.chargeType = ChargeType.fromString(JsonUtil.getString(jsonObj, "charge_type"));
 
-    obj.price = JsonUtil.getLong(json, "price");
+    obj.price = JsonUtil.getLong(jsonObj, "price");
 
-    obj.currencyCode = JsonUtil.getString(json, "currency_code");
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-    obj.period = JsonUtil.getInteger(json, "period");
+    obj.period = JsonUtil.getInteger(jsonObj, "period");
 
-    obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(json, "period_unit"));
+    obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(jsonObj, "period_unit"));
 
-    obj.unit = JsonUtil.getString(json, "unit");
+    obj.unit = JsonUtil.getString(jsonObj, "unit");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.archivedAt = JsonUtil.getTimestamp(json, "archived_at");
+    obj.archivedAt = JsonUtil.getTimestamp(jsonObj, "archived_at");
 
-    obj.enabledInPortal = JsonUtil.getBoolean(json, "enabled_in_portal");
+    obj.enabledInPortal = JsonUtil.getBoolean(jsonObj, "enabled_in_portal");
 
-    obj.taxCode = JsonUtil.getString(json, "tax_code");
+    obj.taxCode = JsonUtil.getString(jsonObj, "tax_code");
 
-    obj.hsnCode = JsonUtil.getString(json, "hsn_code");
+    obj.hsnCode = JsonUtil.getString(jsonObj, "hsn_code");
 
-    obj.taxjarProductCode = JsonUtil.getString(json, "taxjar_product_code");
+    obj.taxjarProductCode = JsonUtil.getString(jsonObj, "taxjar_product_code");
 
-    obj.avalaraSaleType = AvalaraSaleType.fromString(JsonUtil.getString(json, "avalara_sale_type"));
+    obj.avalaraSaleType =
+        AvalaraSaleType.fromString(JsonUtil.getString(jsonObj, "avalara_sale_type"));
 
-    obj.avalaraTransactionType = JsonUtil.getInteger(json, "avalara_transaction_type");
+    obj.avalaraTransactionType = JsonUtil.getInteger(jsonObj, "avalara_transaction_type");
 
-    obj.avalaraServiceType = JsonUtil.getInteger(json, "avalara_service_type");
+    obj.avalaraServiceType = JsonUtil.getInteger(jsonObj, "avalara_service_type");
 
-    obj.sku = JsonUtil.getString(json, "sku");
+    obj.sku = JsonUtil.getString(jsonObj, "sku");
 
-    obj.accountingCode = JsonUtil.getString(json, "accounting_code");
+    obj.accountingCode = JsonUtil.getString(jsonObj, "accounting_code");
 
-    obj.accountingCategory1 = JsonUtil.getString(json, "accounting_category1");
+    obj.accountingCategory1 = JsonUtil.getString(jsonObj, "accounting_category1");
 
-    obj.accountingCategory2 = JsonUtil.getString(json, "accounting_category2");
+    obj.accountingCategory2 = JsonUtil.getString(jsonObj, "accounting_category2");
 
-    obj.accountingCategory3 = JsonUtil.getString(json, "accounting_category3");
+    obj.accountingCategory3 = JsonUtil.getString(jsonObj, "accounting_category3");
 
-    obj.accountingCategory4 = JsonUtil.getString(json, "accounting_category4");
+    obj.accountingCategory4 = JsonUtil.getString(jsonObj, "accounting_category4");
 
-    obj.isShippable = JsonUtil.getBoolean(json, "is_shippable");
+    obj.isShippable = JsonUtil.getBoolean(jsonObj, "is_shippable");
 
-    obj.shippingFrequencyPeriod = JsonUtil.getInteger(json, "shipping_frequency_period");
+    obj.shippingFrequencyPeriod = JsonUtil.getInteger(jsonObj, "shipping_frequency_period");
 
     obj.shippingFrequencyPeriodUnit =
         ShippingFrequencyPeriodUnit.fromString(
-            JsonUtil.getString(json, "shipping_frequency_period_unit"));
+            JsonUtil.getString(jsonObj, "shipping_frequency_period_unit"));
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.priceInDecimal = JsonUtil.getString(json, "price_in_decimal");
+    obj.priceInDecimal = JsonUtil.getString(jsonObj, "price_in_decimal");
 
-    obj.includedInMrr = JsonUtil.getBoolean(json, "included_in_mrr");
+    obj.includedInMrr = JsonUtil.getBoolean(jsonObj, "included_in_mrr");
 
-    obj.channel = Channel.fromString(JsonUtil.getString(json, "channel"));
+    obj.channel = Channel.fromString(JsonUtil.getString(jsonObj, "channel"));
 
-    obj.prorationType = ProrationType.fromString(JsonUtil.getString(json, "proration_type"));
+    obj.prorationType = ProrationType.fromString(JsonUtil.getString(jsonObj, "proration_type"));
 
-    obj.invoiceNotes = JsonUtil.getString(json, "invoice_notes");
+    obj.invoiceNotes = JsonUtil.getString(jsonObj, "invoice_notes");
 
-    obj.taxable = JsonUtil.getBoolean(json, "taxable");
+    obj.taxable = JsonUtil.getBoolean(jsonObj, "taxable");
 
-    obj.taxProfileId = JsonUtil.getString(json, "tax_profile_id");
+    obj.taxProfileId = JsonUtil.getString(jsonObj, "tax_profile_id");
 
-    String __metaDataJson = JsonUtil.getObject(json, "meta_data");
+    JsonObject __metaDataObj = JsonUtil.getJsonObject(jsonObj, "meta_data");
     obj.metaData =
-        __metaDataJson != null
-            ? JsonUtil.parseJsonObjectToMap(__metaDataJson)
+        __metaDataObj != null
+            ? JsonUtil.parseJsonObjectToMap(__metaDataObj)
             : new java.util.HashMap<>();
 
-    obj.showDescriptionInInvoices = JsonUtil.getBoolean(json, "show_description_in_invoices");
+    obj.showDescriptionInInvoices = JsonUtil.getBoolean(jsonObj, "show_description_in_invoices");
 
-    obj.showDescriptionInQuotes = JsonUtil.getBoolean(json, "show_description_in_quotes");
+    obj.showDescriptionInQuotes = JsonUtil.getBoolean(jsonObj, "show_description_in_quotes");
 
-    obj.tiers =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "tiers")).stream()
-            .map(Tiers::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+    obj.tiers = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "tiers"), Tiers::fromJson);
 
     obj.taxProvidersFields =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "tax_providers_fields")).stream()
-            .map(TaxProvidersFields::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "tax_providers_fields"), TaxProvidersFields::fromJson);
 
-    // Extract custom fields (fields starting with cf_)
-    obj.customFields = extractCustomFields(json, knownFields);
+    obj.customFields = JsonUtil.extractCustomFields(jsonObj, knownFields);
 
     return obj;
-  }
-
-  /**
-   * Helper method to extract custom fields from JSON. Custom fields are fields that start with
-   * "cf_" and are not in the known fields set.
-   *
-   * @param json JSON string to parse
-   * @param knownFields set of known field names
-   * @return map of custom fields
-   */
-  private static java.util.Map<String, String> extractCustomFields(
-      String json, java.util.Set<String> knownFields) {
-    java.util.Map<String, String> customFields = new java.util.HashMap<>();
-    try {
-      // Parse the entire JSON as a map
-      java.util.Map<String, Object> allFields = JsonUtil.parseJsonObjectToMap(json);
-      if (allFields != null) {
-        for (java.util.Map.Entry<String, Object> entry : allFields.entrySet()) {
-          String key = entry.getKey();
-          // Include fields that start with "cf_" and are not in knownFields
-          if (key != null && key.startsWith("cf_") && !knownFields.contains(key)) {
-            customFields.put(
-                key, entry.getValue() != null ? String.valueOf(entry.getValue()) : null);
-          }
-        }
-      }
-    } catch (Exception e) {
-      // If parsing fails, return empty map
-    }
-    return customFields;
   }
 
   @Override
@@ -1048,23 +1018,27 @@ public class Addon {
     }
 
     public static Tiers fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Tiers fromJson(JsonObject jsonObj) {
       Tiers obj = new Tiers();
 
-      obj.startingUnit = JsonUtil.getInteger(json, "starting_unit");
+      obj.startingUnit = JsonUtil.getInteger(jsonObj, "starting_unit");
 
-      obj.endingUnit = JsonUtil.getInteger(json, "ending_unit");
+      obj.endingUnit = JsonUtil.getInteger(jsonObj, "ending_unit");
 
-      obj.price = JsonUtil.getLong(json, "price");
+      obj.price = JsonUtil.getLong(jsonObj, "price");
 
-      obj.startingUnitInDecimal = JsonUtil.getString(json, "starting_unit_in_decimal");
+      obj.startingUnitInDecimal = JsonUtil.getString(jsonObj, "starting_unit_in_decimal");
 
-      obj.endingUnitInDecimal = JsonUtil.getString(json, "ending_unit_in_decimal");
+      obj.endingUnitInDecimal = JsonUtil.getString(jsonObj, "ending_unit_in_decimal");
 
-      obj.priceInDecimal = JsonUtil.getString(json, "price_in_decimal");
+      obj.priceInDecimal = JsonUtil.getString(jsonObj, "price_in_decimal");
 
-      obj.pricingType = PricingType.fromString(JsonUtil.getString(json, "pricing_type"));
+      obj.pricingType = PricingType.fromString(JsonUtil.getString(jsonObj, "pricing_type"));
 
-      obj.packageSize = JsonUtil.getInteger(json, "package_size");
+      obj.packageSize = JsonUtil.getInteger(jsonObj, "package_size");
 
       return obj;
     }
@@ -1141,13 +1115,17 @@ public class Addon {
     }
 
     public static TaxProvidersFields fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static TaxProvidersFields fromJson(JsonObject jsonObj) {
       TaxProvidersFields obj = new TaxProvidersFields();
 
-      obj.providerName = JsonUtil.getString(json, "provider_name");
+      obj.providerName = JsonUtil.getString(jsonObj, "provider_name");
 
-      obj.fieldId = JsonUtil.getString(json, "field_id");
+      obj.fieldId = JsonUtil.getString(jsonObj, "field_id");
 
-      obj.fieldValue = JsonUtil.getString(json, "field_value");
+      obj.fieldValue = JsonUtil.getString(jsonObj, "field_value");
 
       return obj;
     }

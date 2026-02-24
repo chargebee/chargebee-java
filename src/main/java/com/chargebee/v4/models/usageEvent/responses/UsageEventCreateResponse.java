@@ -4,6 +4,7 @@ import com.chargebee.v4.models.usageEvent.UsageEvent;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class UsageEventCreateResponse extends BaseResponse {
   /** Parse JSON response into UsageEventCreateResponse object with HTTP response. */
   public static UsageEventCreateResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __usageEventJson = JsonUtil.getObject(json, "usage_event");
-      if (__usageEventJson != null) {
-        builder.usageEvent(UsageEvent.fromJson(__usageEventJson));
+      JsonObject __usageEventObj = JsonUtil.getJsonObject(jsonObj, "usage_event");
+      if (__usageEventObj != null) {
+        builder.usageEvent(UsageEvent.fromJson(__usageEventObj));
       }
 
       builder.httpResponse(httpResponse);

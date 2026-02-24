@@ -2,6 +2,7 @@ package com.chargebee.v4.models.brandConfiguration.responses;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -25,9 +26,10 @@ public final class BrandConfigurationRetrieveResponse extends BaseResponse {
   /** Parse JSON response into BrandConfigurationRetrieveResponse object with HTTP response. */
   public static BrandConfigurationRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      builder.brandConfiguration(JsonUtil.getObject(json, "brand_configuration"));
+      builder.brandConfiguration(JsonUtil.getObject(jsonObj, "brand_configuration"));
 
       builder.httpResponse(httpResponse);
       return builder.build();

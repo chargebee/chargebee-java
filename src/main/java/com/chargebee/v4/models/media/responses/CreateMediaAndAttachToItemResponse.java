@@ -4,6 +4,7 @@ import com.chargebee.v4.models.media.Media;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class CreateMediaAndAttachToItemResponse extends BaseResponse {
   /** Parse JSON response into CreateMediaAndAttachToItemResponse object with HTTP response. */
   public static CreateMediaAndAttachToItemResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __mediaJson = JsonUtil.getObject(json, "media");
-      if (__mediaJson != null) {
-        builder.media(Media.fromJson(__mediaJson));
+      JsonObject __mediaObj = JsonUtil.getJsonObject(jsonObj, "media");
+      if (__mediaObj != null) {
+        builder.media(Media.fromJson(__mediaObj));
       }
 
       builder.httpResponse(httpResponse);

@@ -8,6 +8,7 @@ import com.chargebee.v4.models.personalizedOffer.PersonalizedOffer;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import java.sql.Timestamp;
 
@@ -40,19 +41,19 @@ public final class PersonalizedOffersResponse extends BaseResponse {
   /** Parse JSON response into PersonalizedOffersResponse object with HTTP response. */
   public static PersonalizedOffersResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
       builder.personalizedOffers(
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "personalized_offers")).stream()
-              .map(PersonalizedOffer::fromJson)
-              .collect(java.util.stream.Collectors.toList()));
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "personalized_offers"), PersonalizedOffer::fromJson));
 
-      String __brandJson = JsonUtil.getObject(json, "brand");
-      if (__brandJson != null) {
-        builder.brand(Brand.fromJson(__brandJson));
+      JsonObject __brandObj = JsonUtil.getJsonObject(jsonObj, "brand");
+      if (__brandObj != null) {
+        builder.brand(Brand.fromJson(__brandObj));
       }
 
-      builder.expiresAt(JsonUtil.getTimestamp(json, "expires_at"));
+      builder.expiresAt(JsonUtil.getTimestamp(jsonObj, "expires_at"));
 
       builder.httpResponse(httpResponse);
       return builder.build();

@@ -4,6 +4,7 @@ import com.chargebee.v4.models.transaction.Transaction;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class TransactionReconcileResponse extends BaseResponse {
   /** Parse JSON response into TransactionReconcileResponse object with HTTP response. */
   public static TransactionReconcileResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __transactionJson = JsonUtil.getObject(json, "transaction");
-      if (__transactionJson != null) {
-        builder.transaction(Transaction.fromJson(__transactionJson));
+      JsonObject __transactionObj = JsonUtil.getJsonObject(jsonObj, "transaction");
+      if (__transactionObj != null) {
+        builder.transaction(Transaction.fromJson(__transactionObj));
       }
 
       builder.httpResponse(httpResponse);

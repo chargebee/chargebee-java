@@ -4,6 +4,7 @@ import com.chargebee.v4.models.product.Product;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -26,11 +27,12 @@ public final class ProductDeleteResponse extends BaseResponse {
   /** Parse JSON response into ProductDeleteResponse object with HTTP response. */
   public static ProductDeleteResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __productJson = JsonUtil.getObject(json, "product");
-      if (__productJson != null) {
-        builder.product(Product.fromJson(__productJson));
+      JsonObject __productObj = JsonUtil.getJsonObject(jsonObj, "product");
+      if (__productObj != null) {
+        builder.product(Product.fromJson(__productObj));
       }
 
       builder.httpResponse(httpResponse);

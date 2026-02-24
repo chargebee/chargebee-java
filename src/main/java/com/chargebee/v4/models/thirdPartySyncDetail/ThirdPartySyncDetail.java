@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.thirdPartySyncDetail;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class ThirdPartySyncDetail {
 
@@ -67,18 +68,22 @@ public class ThirdPartySyncDetail {
   }
 
   public static ThirdPartySyncDetail fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static ThirdPartySyncDetail fromJson(JsonObject jsonObj) {
     ThirdPartySyncDetail obj = new ThirdPartySyncDetail();
 
-    obj.integrationName = JsonUtil.getString(json, "integration_name");
+    obj.integrationName = JsonUtil.getString(jsonObj, "integration_name");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    String __contextJson = JsonUtil.getObject(json, "context");
+    JsonObject __contextObj = JsonUtil.getJsonObject(jsonObj, "context");
     obj.context =
-        __contextJson != null
-            ? JsonUtil.parseJsonObjectToMap(__contextJson)
+        __contextObj != null
+            ? JsonUtil.parseJsonObjectToMap(__contextObj)
             : new java.util.HashMap<>();
 
     return obj;

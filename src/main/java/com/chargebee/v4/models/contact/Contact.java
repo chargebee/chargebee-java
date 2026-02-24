@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.contact;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class Contact {
 
@@ -58,25 +59,29 @@ public class Contact {
   }
 
   public static Contact fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Contact fromJson(JsonObject jsonObj) {
     Contact obj = new Contact();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.firstName = JsonUtil.getString(json, "first_name");
+    obj.firstName = JsonUtil.getString(jsonObj, "first_name");
 
-    obj.lastName = JsonUtil.getString(json, "last_name");
+    obj.lastName = JsonUtil.getString(jsonObj, "last_name");
 
-    obj.email = JsonUtil.getString(json, "email");
+    obj.email = JsonUtil.getString(jsonObj, "email");
 
-    obj.phone = JsonUtil.getString(json, "phone");
+    obj.phone = JsonUtil.getString(jsonObj, "phone");
 
-    obj.label = JsonUtil.getString(json, "label");
+    obj.label = JsonUtil.getString(jsonObj, "label");
 
-    obj.enabled = JsonUtil.getBoolean(json, "enabled");
+    obj.enabled = JsonUtil.getBoolean(jsonObj, "enabled");
 
-    obj.sendAccountEmail = JsonUtil.getBoolean(json, "send_account_email");
+    obj.sendAccountEmail = JsonUtil.getBoolean(jsonObj, "send_account_email");
 
-    obj.sendBillingEmail = JsonUtil.getBoolean(json, "send_billing_email");
+    obj.sendBillingEmail = JsonUtil.getBoolean(jsonObj, "send_billing_email");
 
     return obj;
   }

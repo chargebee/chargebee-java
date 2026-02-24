@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.paymentReferenceNumber;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class PaymentReferenceNumber {
 
@@ -67,15 +68,19 @@ public class PaymentReferenceNumber {
   }
 
   public static PaymentReferenceNumber fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static PaymentReferenceNumber fromJson(JsonObject jsonObj) {
     PaymentReferenceNumber obj = new PaymentReferenceNumber();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+    obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-    obj.number = JsonUtil.getString(json, "number");
+    obj.number = JsonUtil.getString(jsonObj, "number");
 
-    obj.invoiceId = JsonUtil.getString(json, "invoice_id");
+    obj.invoiceId = JsonUtil.getString(jsonObj, "invoice_id");
 
     return obj;
   }

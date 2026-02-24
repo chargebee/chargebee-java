@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.subscriptionEntitlementsCreatedDetail;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class SubscriptionEntitlementsCreatedDetail {
 
@@ -23,11 +24,15 @@ public class SubscriptionEntitlementsCreatedDetail {
   }
 
   public static SubscriptionEntitlementsCreatedDetail fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static SubscriptionEntitlementsCreatedDetail fromJson(JsonObject jsonObj) {
     SubscriptionEntitlementsCreatedDetail obj = new SubscriptionEntitlementsCreatedDetail();
 
-    obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.hasNext = JsonUtil.getBoolean(json, "has_next");
+    obj.hasNext = JsonUtil.getBoolean(jsonObj, "has_next");
 
     return obj;
   }

@@ -6,6 +6,7 @@ import com.chargebee.v4.models.order.Order;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.OrderService;
 import com.chargebee.v4.models.order.params.OrdersForInvoiceParams;
@@ -48,13 +49,13 @@ public final class OrdersForInvoiceResponse {
    */
   public static OrdersForInvoiceResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<OrderOrdersForInvoiceItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(OrderOrdersForInvoiceItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), OrderOrdersForInvoiceItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new OrdersForInvoiceResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
@@ -73,13 +74,13 @@ public final class OrdersForInvoiceResponse {
       String invoiceId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<OrderOrdersForInvoiceItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(OrderOrdersForInvoiceItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), OrderOrdersForInvoiceItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new OrdersForInvoiceResponse(
           list, nextOffset, invoiceId, service, originalParams, httpResponse);
@@ -180,11 +181,15 @@ public final class OrdersForInvoiceResponse {
     }
 
     public static OrderOrdersForInvoiceItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static OrderOrdersForInvoiceItem fromJson(JsonObject jsonObj) {
       OrderOrdersForInvoiceItem item = new OrderOrdersForInvoiceItem();
 
-      String __orderJson = JsonUtil.getObject(json, "order");
-      if (__orderJson != null) {
-        item.order = Order.fromJson(__orderJson);
+      JsonObject __orderObj = JsonUtil.getJsonObject(jsonObj, "order");
+      if (__orderObj != null) {
+        item.order = Order.fromJson(__orderObj);
       }
 
       return item;

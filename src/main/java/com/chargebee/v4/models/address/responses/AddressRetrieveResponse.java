@@ -4,6 +4,7 @@ import com.chargebee.v4.models.address.Address;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class AddressRetrieveResponse extends BaseResponse {
   /** Parse JSON response into AddressRetrieveResponse object with HTTP response. */
   public static AddressRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __addressJson = JsonUtil.getObject(json, "address");
-      if (__addressJson != null) {
-        builder.address(Address.fromJson(__addressJson));
+      JsonObject __addressObj = JsonUtil.getJsonObject(jsonObj, "address");
+      if (__addressObj != null) {
+        builder.address(Address.fromJson(__addressObj));
       }
 
       builder.httpResponse(httpResponse);

@@ -4,6 +4,7 @@ import com.chargebee.v4.models.hierarchy.Hierarchy;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import java.util.List;
 
@@ -28,15 +29,11 @@ public final class CustomerHierarchyResponse extends BaseResponse {
   /** Parse JSON response into CustomerHierarchyResponse object with HTTP response. */
   public static CustomerHierarchyResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __hierarchiesJson = JsonUtil.getArray(json, "hierarchies");
-      if (__hierarchiesJson != null) {
-        builder.hierarchies(
-            JsonUtil.parseObjectArray(__hierarchiesJson).stream()
-                .map(Hierarchy::fromJson)
-                .collect(java.util.stream.Collectors.toList()));
-      }
+      builder.hierarchies(
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "hierarchies"), Hierarchy::fromJson));
 
       builder.httpResponse(httpResponse);
       return builder.build();

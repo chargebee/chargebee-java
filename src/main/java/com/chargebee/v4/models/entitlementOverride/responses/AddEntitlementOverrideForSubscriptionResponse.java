@@ -6,6 +6,7 @@ import com.chargebee.v4.models.entitlementOverride.EntitlementOverride;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -33,12 +34,11 @@ public final class AddEntitlementOverrideForSubscriptionResponse extends BaseRes
   public static AddEntitlementOverrideForSubscriptionResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
       builder.list(
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(EntitlementOverride::fromJson)
-              .collect(java.util.stream.Collectors.toList()));
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), EntitlementOverride::fromJson));
 
       builder.httpResponse(httpResponse);
       return builder.build();

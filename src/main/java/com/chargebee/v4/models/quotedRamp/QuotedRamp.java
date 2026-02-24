@@ -8,6 +8,8 @@
 package com.chargebee.v4.models.quotedRamp;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -40,29 +42,27 @@ public class QuotedRamp {
   }
 
   public static QuotedRamp fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static QuotedRamp fromJson(JsonObject jsonObj) {
     QuotedRamp obj = new QuotedRamp();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
     obj.lineItems =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "line_items")).stream()
-            .map(LineItems::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "line_items"), LineItems::fromJson);
 
     obj.discounts =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "discounts")).stream()
-            .map(Discounts::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "discounts"), Discounts::fromJson);
 
     obj.itemTiers =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "item_tiers")).stream()
-            .map(ItemTiers::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "item_tiers"), ItemTiers::fromJson);
 
     obj.couponApplicabilityMappings =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "coupon_applicability_mappings")).stream()
-            .map(CouponApplicabilityMappings::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "coupon_applicability_mappings"),
+            CouponApplicabilityMappings::fromJson);
 
     return obj;
   }
@@ -378,71 +378,76 @@ public class QuotedRamp {
     }
 
     public static LineItems fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LineItems fromJson(JsonObject jsonObj) {
       LineItems obj = new LineItems();
 
-      obj.itemPriceId = JsonUtil.getString(json, "item_price_id");
+      obj.itemPriceId = JsonUtil.getString(jsonObj, "item_price_id");
 
-      obj.itemType = ItemType.fromString(JsonUtil.getString(json, "item_type"));
+      obj.itemType = ItemType.fromString(JsonUtil.getString(jsonObj, "item_type"));
 
-      obj.quantity = JsonUtil.getInteger(json, "quantity");
+      obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
 
-      obj.quantityInDecimal = JsonUtil.getString(json, "quantity_in_decimal");
+      obj.quantityInDecimal = JsonUtil.getString(jsonObj, "quantity_in_decimal");
 
-      obj.meteredQuantity = JsonUtil.getString(json, "metered_quantity");
+      obj.meteredQuantity = JsonUtil.getString(jsonObj, "metered_quantity");
 
-      obj.unitPrice = JsonUtil.getLong(json, "unit_price");
+      obj.unitPrice = JsonUtil.getLong(jsonObj, "unit_price");
 
-      obj.unitPriceInDecimal = JsonUtil.getString(json, "unit_price_in_decimal");
+      obj.unitPriceInDecimal = JsonUtil.getString(jsonObj, "unit_price_in_decimal");
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-      obj.amountInDecimal = JsonUtil.getString(json, "amount_in_decimal");
+      obj.amountInDecimal = JsonUtil.getString(jsonObj, "amount_in_decimal");
 
-      obj.billingPeriod = JsonUtil.getInteger(json, "billing_period");
+      obj.billingPeriod = JsonUtil.getInteger(jsonObj, "billing_period");
 
       obj.billingPeriodUnit =
-          BillingPeriodUnit.fromString(JsonUtil.getString(json, "billing_period_unit"));
+          BillingPeriodUnit.fromString(JsonUtil.getString(jsonObj, "billing_period_unit"));
 
-      obj.freeQuantity = JsonUtil.getInteger(json, "free_quantity");
+      obj.freeQuantity = JsonUtil.getInteger(jsonObj, "free_quantity");
 
-      obj.freeQuantityInDecimal = JsonUtil.getString(json, "free_quantity_in_decimal");
+      obj.freeQuantityInDecimal = JsonUtil.getString(jsonObj, "free_quantity_in_decimal");
 
-      obj.billingCycles = JsonUtil.getInteger(json, "billing_cycles");
+      obj.billingCycles = JsonUtil.getInteger(jsonObj, "billing_cycles");
 
-      obj.servicePeriodDays = JsonUtil.getInteger(json, "service_period_days");
+      obj.servicePeriodDays = JsonUtil.getInteger(jsonObj, "service_period_days");
 
-      obj.chargeOnEvent = ChargeOnEvent.fromString(JsonUtil.getString(json, "charge_on_event"));
+      obj.chargeOnEvent = ChargeOnEvent.fromString(JsonUtil.getString(jsonObj, "charge_on_event"));
 
-      obj.chargeOnce = JsonUtil.getBoolean(json, "charge_once");
+      obj.chargeOnce = JsonUtil.getBoolean(jsonObj, "charge_once");
 
-      obj.chargeOnOption = ChargeOnOption.fromString(JsonUtil.getString(json, "charge_on_option"));
+      obj.chargeOnOption =
+          ChargeOnOption.fromString(JsonUtil.getString(jsonObj, "charge_on_option"));
 
-      obj.startDate = JsonUtil.getTimestamp(json, "start_date");
+      obj.startDate = JsonUtil.getTimestamp(jsonObj, "start_date");
 
-      obj.endDate = JsonUtil.getTimestamp(json, "end_date");
+      obj.endDate = JsonUtil.getTimestamp(jsonObj, "end_date");
 
-      obj.rampTierId = JsonUtil.getString(json, "ramp_tier_id");
+      obj.rampTierId = JsonUtil.getString(jsonObj, "ramp_tier_id");
 
-      obj.discountPerBillingCycle = JsonUtil.getLong(json, "discount_per_billing_cycle");
+      obj.discountPerBillingCycle = JsonUtil.getLong(jsonObj, "discount_per_billing_cycle");
 
       obj.discountPerBillingCycleInDecimal =
-          JsonUtil.getString(json, "discount_per_billing_cycle_in_decimal");
+          JsonUtil.getString(jsonObj, "discount_per_billing_cycle_in_decimal");
 
       obj.itemLevelDiscountPerBillingCycle =
-          JsonUtil.getLong(json, "item_level_discount_per_billing_cycle");
+          JsonUtil.getLong(jsonObj, "item_level_discount_per_billing_cycle");
 
       obj.itemLevelDiscountPerBillingCycleInDecimal =
-          JsonUtil.getString(json, "item_level_discount_per_billing_cycle_in_decimal");
+          JsonUtil.getString(jsonObj, "item_level_discount_per_billing_cycle_in_decimal");
 
-      obj.amountPerBillingCycle = JsonUtil.getLong(json, "amount_per_billing_cycle");
+      obj.amountPerBillingCycle = JsonUtil.getLong(jsonObj, "amount_per_billing_cycle");
 
       obj.amountPerBillingCycleInDecimal =
-          JsonUtil.getString(json, "amount_per_billing_cycle_in_decimal");
+          JsonUtil.getString(jsonObj, "amount_per_billing_cycle_in_decimal");
 
-      obj.netAmountPerBillingCycle = JsonUtil.getLong(json, "net_amount_per_billing_cycle");
+      obj.netAmountPerBillingCycle = JsonUtil.getLong(jsonObj, "net_amount_per_billing_cycle");
 
       obj.netAmountPerBillingCycleInDecimal =
-          JsonUtil.getString(json, "net_amount_per_billing_cycle_in_decimal");
+          JsonUtil.getString(jsonObj, "net_amount_per_billing_cycle_in_decimal");
 
       return obj;
     }
@@ -829,41 +834,45 @@ public class QuotedRamp {
     }
 
     public static Discounts fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Discounts fromJson(JsonObject jsonObj) {
       Discounts obj = new Discounts();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.invoiceName = JsonUtil.getString(json, "invoice_name");
+      obj.invoiceName = JsonUtil.getString(jsonObj, "invoice_name");
 
-      obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+      obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-      obj.percentage = JsonUtil.getDouble(json, "percentage");
+      obj.percentage = JsonUtil.getDouble(jsonObj, "percentage");
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-      obj.durationType = DurationType.fromString(JsonUtil.getString(json, "duration_type"));
+      obj.durationType = DurationType.fromString(JsonUtil.getString(jsonObj, "duration_type"));
 
-      obj.entityType = EntityType.fromString(JsonUtil.getString(json, "entity_type"));
+      obj.entityType = EntityType.fromString(JsonUtil.getString(jsonObj, "entity_type"));
 
-      obj.entityId = JsonUtil.getString(json, "entity_id");
+      obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
 
-      obj.period = JsonUtil.getInteger(json, "period");
+      obj.period = JsonUtil.getInteger(jsonObj, "period");
 
-      obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(json, "period_unit"));
+      obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(jsonObj, "period_unit"));
 
-      obj.includedInMrr = JsonUtil.getBoolean(json, "included_in_mrr");
+      obj.includedInMrr = JsonUtil.getBoolean(jsonObj, "included_in_mrr");
 
-      obj.applyOn = ApplyOn.fromString(JsonUtil.getString(json, "apply_on"));
+      obj.applyOn = ApplyOn.fromString(JsonUtil.getString(jsonObj, "apply_on"));
 
-      obj.itemPriceId = JsonUtil.getString(json, "item_price_id");
+      obj.itemPriceId = JsonUtil.getString(jsonObj, "item_price_id");
 
-      obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+      obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-      obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+      obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-      obj.startDate = JsonUtil.getTimestamp(json, "start_date");
+      obj.startDate = JsonUtil.getTimestamp(jsonObj, "start_date");
 
-      obj.endDate = JsonUtil.getTimestamp(json, "end_date");
+      obj.endDate = JsonUtil.getTimestamp(jsonObj, "end_date");
 
       return obj;
     }
@@ -1041,27 +1050,31 @@ public class QuotedRamp {
     }
 
     public static ItemTiers fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ItemTiers fromJson(JsonObject jsonObj) {
       ItemTiers obj = new ItemTiers();
 
-      obj.itemPriceId = JsonUtil.getString(json, "item_price_id");
+      obj.itemPriceId = JsonUtil.getString(jsonObj, "item_price_id");
 
-      obj.startingUnit = JsonUtil.getInteger(json, "starting_unit");
+      obj.startingUnit = JsonUtil.getInteger(jsonObj, "starting_unit");
 
-      obj.endingUnit = JsonUtil.getInteger(json, "ending_unit");
+      obj.endingUnit = JsonUtil.getInteger(jsonObj, "ending_unit");
 
-      obj.price = JsonUtil.getLong(json, "price");
+      obj.price = JsonUtil.getLong(jsonObj, "price");
 
-      obj.startingUnitInDecimal = JsonUtil.getString(json, "starting_unit_in_decimal");
+      obj.startingUnitInDecimal = JsonUtil.getString(jsonObj, "starting_unit_in_decimal");
 
-      obj.endingUnitInDecimal = JsonUtil.getString(json, "ending_unit_in_decimal");
+      obj.endingUnitInDecimal = JsonUtil.getString(jsonObj, "ending_unit_in_decimal");
 
-      obj.priceInDecimal = JsonUtil.getString(json, "price_in_decimal");
+      obj.priceInDecimal = JsonUtil.getString(jsonObj, "price_in_decimal");
 
-      obj.rampTierId = JsonUtil.getString(json, "ramp_tier_id");
+      obj.rampTierId = JsonUtil.getString(jsonObj, "ramp_tier_id");
 
-      obj.pricingType = PricingType.fromString(JsonUtil.getString(json, "pricing_type"));
+      obj.pricingType = PricingType.fromString(JsonUtil.getString(jsonObj, "pricing_type"));
 
-      obj.packageSize = JsonUtil.getInteger(json, "package_size");
+      obj.packageSize = JsonUtil.getInteger(jsonObj, "package_size");
 
       return obj;
     }
@@ -1141,12 +1154,19 @@ public class QuotedRamp {
     }
 
     public static CouponApplicabilityMappings fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CouponApplicabilityMappings fromJson(JsonObject jsonObj) {
       CouponApplicabilityMappings obj = new CouponApplicabilityMappings();
 
-      obj.couponId = JsonUtil.getString(json, "coupon_id");
+      obj.couponId = JsonUtil.getString(jsonObj, "coupon_id");
 
-      obj.applicableItemPriceIds =
-          JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "applicable_item_price_ids"));
+      JsonArray __applicableItemPriceIdsArr =
+          JsonUtil.getJsonArray(jsonObj, "applicable_item_price_ids");
+      if (__applicableItemPriceIdsArr != null) {
+        obj.applicableItemPriceIds = JsonUtil.parseArrayOfString(__applicableItemPriceIdsArr);
+      }
 
       return obj;
     }

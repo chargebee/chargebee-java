@@ -6,6 +6,7 @@ import com.chargebee.v4.models.variant.Variant;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.VariantService;
 import com.chargebee.v4.models.variant.params.ListProductVariantsParams;
@@ -48,13 +49,13 @@ public final class ListProductVariantsResponse {
    */
   public static ListProductVariantsResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<VariantListProductVariantsItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(VariantListProductVariantsItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), VariantListProductVariantsItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ListProductVariantsResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
@@ -73,13 +74,13 @@ public final class ListProductVariantsResponse {
       String productId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<VariantListProductVariantsItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(VariantListProductVariantsItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), VariantListProductVariantsItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ListProductVariantsResponse(
           list, nextOffset, productId, service, originalParams, httpResponse);
@@ -180,11 +181,15 @@ public final class ListProductVariantsResponse {
     }
 
     public static VariantListProductVariantsItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static VariantListProductVariantsItem fromJson(JsonObject jsonObj) {
       VariantListProductVariantsItem item = new VariantListProductVariantsItem();
 
-      String __variantJson = JsonUtil.getObject(json, "variant");
-      if (__variantJson != null) {
-        item.variant = Variant.fromJson(__variantJson);
+      JsonObject __variantObj = JsonUtil.getJsonObject(jsonObj, "variant");
+      if (__variantObj != null) {
+        item.variant = Variant.fromJson(__variantObj);
       }
 
       return item;

@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.hostedPage;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class HostedPage {
@@ -199,43 +200,47 @@ public class HostedPage {
   }
 
   public static HostedPage fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static HostedPage fromJson(JsonObject jsonObj) {
     HostedPage obj = new HostedPage();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+    obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-    obj.url = JsonUtil.getString(json, "url");
+    obj.url = JsonUtil.getString(jsonObj, "url");
 
-    obj.state = State.fromString(JsonUtil.getString(json, "state"));
+    obj.state = State.fromString(JsonUtil.getString(jsonObj, "state"));
 
-    obj.failureReason = FailureReason.fromString(JsonUtil.getString(json, "failure_reason"));
+    obj.failureReason = FailureReason.fromString(JsonUtil.getString(jsonObj, "failure_reason"));
 
-    obj.passThruContent = JsonUtil.getString(json, "pass_thru_content");
+    obj.passThruContent = JsonUtil.getString(jsonObj, "pass_thru_content");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.expiresAt = JsonUtil.getTimestamp(json, "expires_at");
+    obj.expiresAt = JsonUtil.getTimestamp(jsonObj, "expires_at");
 
-    String __contentJson = JsonUtil.getObject(json, "content");
+    JsonObject __contentObj = JsonUtil.getJsonObject(jsonObj, "content");
     obj.content =
-        __contentJson != null
-            ? JsonUtil.parseJsonObjectToMap(__contentJson)
+        __contentObj != null
+            ? JsonUtil.parseJsonObjectToMap(__contentObj)
             : new java.util.HashMap<>();
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    String __checkoutInfoJson = JsonUtil.getObject(json, "checkout_info");
+    JsonObject __checkoutInfoObj = JsonUtil.getJsonObject(jsonObj, "checkout_info");
     obj.checkoutInfo =
-        __checkoutInfoJson != null
-            ? JsonUtil.parseJsonObjectToMap(__checkoutInfoJson)
+        __checkoutInfoObj != null
+            ? JsonUtil.parseJsonObjectToMap(__checkoutInfoObj)
             : new java.util.HashMap<>();
 
-    obj.businessEntityId = JsonUtil.getString(json, "business_entity_id");
+    obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
-    obj.embed = JsonUtil.getBoolean(json, "embed");
+    obj.embed = JsonUtil.getBoolean(jsonObj, "embed");
 
     return obj;
   }

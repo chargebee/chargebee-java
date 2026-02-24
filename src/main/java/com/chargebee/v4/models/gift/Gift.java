@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.gift;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -104,38 +105,41 @@ public class Gift {
   }
 
   public static Gift fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Gift fromJson(JsonObject jsonObj) {
     Gift obj = new Gift();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.scheduledAt = JsonUtil.getTimestamp(json, "scheduled_at");
+    obj.scheduledAt = JsonUtil.getTimestamp(jsonObj, "scheduled_at");
 
-    obj.autoClaim = JsonUtil.getBoolean(json, "auto_claim");
+    obj.autoClaim = JsonUtil.getBoolean(jsonObj, "auto_claim");
 
-    obj.noExpiry = JsonUtil.getBoolean(json, "no_expiry");
+    obj.noExpiry = JsonUtil.getBoolean(jsonObj, "no_expiry");
 
-    obj.claimExpiryDate = JsonUtil.getTimestamp(json, "claim_expiry_date");
+    obj.claimExpiryDate = JsonUtil.getTimestamp(jsonObj, "claim_expiry_date");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    String __gifterJson = JsonUtil.getObject(json, "gifter");
-    if (__gifterJson != null) {
-      obj.gifter = Gifter.fromJson(__gifterJson);
+    JsonObject __gifterObj = JsonUtil.getJsonObject(jsonObj, "gifter");
+    if (__gifterObj != null) {
+      obj.gifter = Gifter.fromJson(__gifterObj);
     }
 
-    String __giftReceiverJson = JsonUtil.getObject(json, "gift_receiver");
-    if (__giftReceiverJson != null) {
-      obj.giftReceiver = GiftReceiver.fromJson(__giftReceiverJson);
+    JsonObject __giftReceiverObj = JsonUtil.getJsonObject(jsonObj, "gift_receiver");
+    if (__giftReceiverObj != null) {
+      obj.giftReceiver = GiftReceiver.fromJson(__giftReceiverObj);
     }
 
     obj.giftTimelines =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "gift_timelines")).stream()
-            .map(GiftTimelines::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "gift_timelines"), GiftTimelines::fromJson);
 
     return obj;
   }
@@ -228,15 +232,19 @@ public class Gift {
     }
 
     public static Gifter fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Gifter fromJson(JsonObject jsonObj) {
       Gifter obj = new Gifter();
 
-      obj.customerId = JsonUtil.getString(json, "customer_id");
+      obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-      obj.invoiceId = JsonUtil.getString(json, "invoice_id");
+      obj.invoiceId = JsonUtil.getString(jsonObj, "invoice_id");
 
-      obj.signature = JsonUtil.getString(json, "signature");
+      obj.signature = JsonUtil.getString(jsonObj, "signature");
 
-      obj.note = JsonUtil.getString(json, "note");
+      obj.note = JsonUtil.getString(jsonObj, "note");
 
       return obj;
     }
@@ -303,17 +311,21 @@ public class Gift {
     }
 
     public static GiftReceiver fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static GiftReceiver fromJson(JsonObject jsonObj) {
       GiftReceiver obj = new GiftReceiver();
 
-      obj.customerId = JsonUtil.getString(json, "customer_id");
+      obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-      obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+      obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-      obj.firstName = JsonUtil.getString(json, "first_name");
+      obj.firstName = JsonUtil.getString(jsonObj, "first_name");
 
-      obj.lastName = JsonUtil.getString(json, "last_name");
+      obj.lastName = JsonUtil.getString(jsonObj, "last_name");
 
-      obj.email = JsonUtil.getString(json, "email");
+      obj.email = JsonUtil.getString(jsonObj, "email");
 
       return obj;
     }
@@ -402,11 +414,15 @@ public class Gift {
     }
 
     public static GiftTimelines fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static GiftTimelines fromJson(JsonObject jsonObj) {
       GiftTimelines obj = new GiftTimelines();
 
-      obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+      obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-      obj.occurredAt = JsonUtil.getTimestamp(json, "occurred_at");
+      obj.occurredAt = JsonUtil.getTimestamp(jsonObj, "occurred_at");
 
       return obj;
     }

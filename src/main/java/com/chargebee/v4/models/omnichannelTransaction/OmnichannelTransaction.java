@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.omnichannelTransaction;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -103,39 +104,41 @@ public class OmnichannelTransaction {
   }
 
   public static OmnichannelTransaction fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static OmnichannelTransaction fromJson(JsonObject jsonObj) {
     OmnichannelTransaction obj = new OmnichannelTransaction();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.idAtSource = JsonUtil.getString(json, "id_at_source");
+    obj.idAtSource = JsonUtil.getString(jsonObj, "id_at_source");
 
-    obj.appId = JsonUtil.getString(json, "app_id");
+    obj.appId = JsonUtil.getString(jsonObj, "app_id");
 
-    obj.priceCurrency = JsonUtil.getString(json, "price_currency");
+    obj.priceCurrency = JsonUtil.getString(jsonObj, "price_currency");
 
-    obj.priceUnits = JsonUtil.getLong(json, "price_units");
+    obj.priceUnits = JsonUtil.getLong(jsonObj, "price_units");
 
-    obj.priceNanos = JsonUtil.getLong(json, "price_nanos");
+    obj.priceNanos = JsonUtil.getLong(jsonObj, "price_nanos");
 
-    obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+    obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-    obj.transactedAt = JsonUtil.getTimestamp(json, "transacted_at");
+    obj.transactedAt = JsonUtil.getTimestamp(jsonObj, "transacted_at");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
     obj.linkedOmnichannelSubscriptions =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "linked_omnichannel_subscriptions"))
-            .stream()
-            .map(LinkedOmnichannelSubscriptions::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "linked_omnichannel_subscriptions"),
+            LinkedOmnichannelSubscriptions::fromJson);
 
     obj.linkedOmnichannelOneTimeOrders =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "linked_omnichannel_one_time_orders"))
-            .stream()
-            .map(LinkedOmnichannelOneTimeOrders::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "linked_omnichannel_one_time_orders"),
+            LinkedOmnichannelOneTimeOrders::fromJson);
 
     return obj;
   }
@@ -219,9 +222,13 @@ public class OmnichannelTransaction {
     }
 
     public static LinkedOmnichannelSubscriptions fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedOmnichannelSubscriptions fromJson(JsonObject jsonObj) {
       LinkedOmnichannelSubscriptions obj = new LinkedOmnichannelSubscriptions();
 
-      obj.omnichannelSubscriptionId = JsonUtil.getString(json, "omnichannel_subscription_id");
+      obj.omnichannelSubscriptionId = JsonUtil.getString(jsonObj, "omnichannel_subscription_id");
 
       return obj;
     }
@@ -259,9 +266,13 @@ public class OmnichannelTransaction {
     }
 
     public static LinkedOmnichannelOneTimeOrders fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedOmnichannelOneTimeOrders fromJson(JsonObject jsonObj) {
       LinkedOmnichannelOneTimeOrders obj = new LinkedOmnichannelOneTimeOrders();
 
-      obj.omnichannelOneTimeOrderId = JsonUtil.getString(json, "omnichannel_one_time_order_id");
+      obj.omnichannelOneTimeOrderId = JsonUtil.getString(jsonObj, "omnichannel_one_time_order_id");
 
       return obj;
     }

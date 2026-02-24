@@ -1,6 +1,8 @@
 package com.chargebee.v4.models.csvTaxRule.responses;
 
 import com.chargebee.v4.models.BaseResponse;
+import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -21,6 +23,7 @@ public final class CsvTaxRuleCreateResponse extends BaseResponse {
   /** Parse JSON response into CsvTaxRuleCreateResponse object with HTTP response. */
   public static CsvTaxRuleCreateResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
       builder.httpResponse(httpResponse);

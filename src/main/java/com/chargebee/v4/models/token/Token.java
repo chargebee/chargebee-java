@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.token;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class Token {
@@ -366,32 +367,36 @@ public class Token {
   }
 
   public static Token fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Token fromJson(JsonObject jsonObj) {
     Token obj = new Token();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.gateway = Gateway.fromString(JsonUtil.getString(json, "gateway"));
+    obj.gateway = Gateway.fromString(JsonUtil.getString(jsonObj, "gateway"));
 
-    obj.gatewayAccountId = JsonUtil.getString(json, "gateway_account_id");
+    obj.gatewayAccountId = JsonUtil.getString(jsonObj, "gateway_account_id");
 
     obj.paymentMethodType =
-        PaymentMethodType.fromString(JsonUtil.getString(json, "payment_method_type"));
+        PaymentMethodType.fromString(JsonUtil.getString(jsonObj, "payment_method_type"));
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.idAtVault = JsonUtil.getString(json, "id_at_vault");
+    obj.idAtVault = JsonUtil.getString(jsonObj, "id_at_vault");
 
-    obj.vault = Vault.fromString(JsonUtil.getString(json, "vault"));
+    obj.vault = Vault.fromString(JsonUtil.getString(jsonObj, "vault"));
 
-    obj.ipAddress = JsonUtil.getString(json, "ip_address");
+    obj.ipAddress = JsonUtil.getString(jsonObj, "ip_address");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.expiredAt = JsonUtil.getTimestamp(json, "expired_at");
+    obj.expiredAt = JsonUtil.getTimestamp(jsonObj, "expired_at");
 
     return obj;
   }

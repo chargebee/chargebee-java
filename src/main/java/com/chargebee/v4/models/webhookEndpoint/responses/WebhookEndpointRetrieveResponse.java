@@ -4,6 +4,7 @@ import com.chargebee.v4.models.webhookEndpoint.WebhookEndpoint;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class WebhookEndpointRetrieveResponse extends BaseResponse {
   /** Parse JSON response into WebhookEndpointRetrieveResponse object with HTTP response. */
   public static WebhookEndpointRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __webhookEndpointJson = JsonUtil.getObject(json, "webhook_endpoint");
-      if (__webhookEndpointJson != null) {
-        builder.webhookEndpoint(WebhookEndpoint.fromJson(__webhookEndpointJson));
+      JsonObject __webhookEndpointObj = JsonUtil.getJsonObject(jsonObj, "webhook_endpoint");
+      if (__webhookEndpointObj != null) {
+        builder.webhookEndpoint(WebhookEndpoint.fromJson(__webhookEndpointObj));
       }
 
       builder.httpResponse(httpResponse);

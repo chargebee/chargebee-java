@@ -4,6 +4,7 @@ import com.chargebee.v4.models.businessEntityTransfer.BusinessEntityTransfer;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,12 +28,14 @@ public final class BusinessEntityCreateTransfersResponse extends BaseResponse {
   /** Parse JSON response into BusinessEntityCreateTransfersResponse object with HTTP response. */
   public static BusinessEntityCreateTransfersResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __businessEntityTransferJson = JsonUtil.getObject(json, "business_entity_transfer");
-      if (__businessEntityTransferJson != null) {
+      JsonObject __businessEntityTransferObj =
+          JsonUtil.getJsonObject(jsonObj, "business_entity_transfer");
+      if (__businessEntityTransferObj != null) {
         builder.businessEntityTransfer(
-            BusinessEntityTransfer.fromJson(__businessEntityTransferJson));
+            BusinessEntityTransfer.fromJson(__businessEntityTransferObj));
       }
 
       builder.httpResponse(httpResponse);

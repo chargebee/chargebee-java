@@ -6,6 +6,7 @@ import com.chargebee.v4.models.itemEntitlement.ItemEntitlement;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.ItemEntitlementService;
 import com.chargebee.v4.models.itemEntitlement.params.ItemEntitlementsForFeatureParams;
@@ -50,13 +51,14 @@ public final class ItemEntitlementsForFeatureResponse {
    */
   public static ItemEntitlementsForFeatureResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<ItemEntitlementItemEntitlementsForFeatureItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(ItemEntitlementItemEntitlementsForFeatureItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              ItemEntitlementItemEntitlementsForFeatureItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ItemEntitlementsForFeatureResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
@@ -75,13 +77,14 @@ public final class ItemEntitlementsForFeatureResponse {
       String featureId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<ItemEntitlementItemEntitlementsForFeatureItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(ItemEntitlementItemEntitlementsForFeatureItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              ItemEntitlementItemEntitlementsForFeatureItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ItemEntitlementsForFeatureResponse(
           list, nextOffset, featureId, service, originalParams, httpResponse);
@@ -189,12 +192,16 @@ public final class ItemEntitlementsForFeatureResponse {
     }
 
     public static ItemEntitlementItemEntitlementsForFeatureItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ItemEntitlementItemEntitlementsForFeatureItem fromJson(JsonObject jsonObj) {
       ItemEntitlementItemEntitlementsForFeatureItem item =
           new ItemEntitlementItemEntitlementsForFeatureItem();
 
-      String __itemEntitlementJson = JsonUtil.getObject(json, "item_entitlement");
-      if (__itemEntitlementJson != null) {
-        item.itemEntitlement = ItemEntitlement.fromJson(__itemEntitlementJson);
+      JsonObject __itemEntitlementObj = JsonUtil.getJsonObject(jsonObj, "item_entitlement");
+      if (__itemEntitlementObj != null) {
+        item.itemEntitlement = ItemEntitlement.fromJson(__itemEntitlementObj);
       }
 
       return item;

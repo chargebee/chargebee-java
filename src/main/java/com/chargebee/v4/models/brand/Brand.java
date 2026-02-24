@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.brand;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class Brand {
 
@@ -23,11 +24,15 @@ public class Brand {
   }
 
   public static Brand fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Brand fromJson(JsonObject jsonObj) {
     Brand obj = new Brand();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
     return obj;
   }

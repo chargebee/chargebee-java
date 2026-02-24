@@ -4,6 +4,7 @@ import com.chargebee.v4.models.comment.Comment;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class CommentRetrieveResponse extends BaseResponse {
   /** Parse JSON response into CommentRetrieveResponse object with HTTP response. */
   public static CommentRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __commentJson = JsonUtil.getObject(json, "comment");
-      if (__commentJson != null) {
-        builder.comment(Comment.fromJson(__commentJson));
+      JsonObject __commentObj = JsonUtil.getJsonObject(jsonObj, "comment");
+      if (__commentObj != null) {
+        builder.comment(Comment.fromJson(__commentObj));
       }
 
       builder.httpResponse(httpResponse);

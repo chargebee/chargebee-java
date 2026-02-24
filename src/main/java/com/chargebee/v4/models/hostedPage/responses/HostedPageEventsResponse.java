@@ -2,6 +2,7 @@ package com.chargebee.v4.models.hostedPage.responses;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -25,9 +26,10 @@ public final class HostedPageEventsResponse extends BaseResponse {
   /** Parse JSON response into HostedPageEventsResponse object with HTTP response. */
   public static HostedPageEventsResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      builder.success(JsonUtil.getBoolean(json, "success"));
+      builder.success(JsonUtil.getBoolean(jsonObj, "success"));
 
       builder.httpResponse(httpResponse);
       return builder.build();

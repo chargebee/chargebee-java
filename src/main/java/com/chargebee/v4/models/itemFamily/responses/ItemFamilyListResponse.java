@@ -6,6 +6,7 @@ import com.chargebee.v4.models.itemFamily.ItemFamily;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.ItemFamilyService;
 import com.chargebee.v4.models.itemFamily.params.ItemFamilyListParams;
@@ -43,13 +44,12 @@ public final class ItemFamilyListResponse {
    */
   public static ItemFamilyListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<ItemFamilyListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(ItemFamilyListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), ItemFamilyListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ItemFamilyListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +67,12 @@ public final class ItemFamilyListResponse {
       ItemFamilyListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<ItemFamilyListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(ItemFamilyListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), ItemFamilyListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ItemFamilyListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -173,11 +172,15 @@ public final class ItemFamilyListResponse {
     }
 
     public static ItemFamilyListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ItemFamilyListItem fromJson(JsonObject jsonObj) {
       ItemFamilyListItem item = new ItemFamilyListItem();
 
-      String __itemFamilyJson = JsonUtil.getObject(json, "item_family");
-      if (__itemFamilyJson != null) {
-        item.itemFamily = ItemFamily.fromJson(__itemFamilyJson);
+      JsonObject __itemFamilyObj = JsonUtil.getJsonObject(jsonObj, "item_family");
+      if (__itemFamilyObj != null) {
+        item.itemFamily = ItemFamily.fromJson(__itemFamilyObj);
       }
 
       return item;

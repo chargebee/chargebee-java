@@ -2,6 +2,7 @@ package com.chargebee.v4.models.pc2MigrationItemPrice.responses;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -25,9 +26,10 @@ public final class Pc2MigrationItemPriceRetrieveResponse extends BaseResponse {
   /** Parse JSON response into Pc2MigrationItemPriceRetrieveResponse object with HTTP response. */
   public static Pc2MigrationItemPriceRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      builder.pc2MigrationItemPrice(JsonUtil.getObject(json, "pc2_migration_item_price"));
+      builder.pc2MigrationItemPrice(JsonUtil.getObject(jsonObj, "pc2_migration_item_price"));
 
       builder.httpResponse(httpResponse);
       return builder.build();

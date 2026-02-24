@@ -4,6 +4,7 @@ import com.chargebee.v4.models.tpSiteUser.TpSiteUser;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class TpSiteUserPayNowEnableLiveResponse extends BaseResponse {
   /** Parse JSON response into TpSiteUserPayNowEnableLiveResponse object with HTTP response. */
   public static TpSiteUserPayNowEnableLiveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __tpSiteUserJson = JsonUtil.getObject(json, "tp_site_user");
-      if (__tpSiteUserJson != null) {
-        builder.tpSiteUser(TpSiteUser.fromJson(__tpSiteUserJson));
+      JsonObject __tpSiteUserObj = JsonUtil.getJsonObject(jsonObj, "tp_site_user");
+      if (__tpSiteUserObj != null) {
+        builder.tpSiteUser(TpSiteUser.fromJson(__tpSiteUserObj));
       }
 
       builder.httpResponse(httpResponse);

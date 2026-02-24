@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.taxWithheld;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -142,31 +143,35 @@ public class TaxWithheld {
   }
 
   public static TaxWithheld fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static TaxWithheld fromJson(JsonObject jsonObj) {
     TaxWithheld obj = new TaxWithheld();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.user = JsonUtil.getString(json, "user");
+    obj.user = JsonUtil.getString(jsonObj, "user");
 
-    obj.referenceNumber = JsonUtil.getString(json, "reference_number");
+    obj.referenceNumber = JsonUtil.getString(jsonObj, "reference_number");
 
-    obj.description = JsonUtil.getString(json, "description");
+    obj.description = JsonUtil.getString(jsonObj, "description");
 
-    obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+    obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-    obj.paymentMethod = PaymentMethod.fromString(JsonUtil.getString(json, "payment_method"));
+    obj.paymentMethod = PaymentMethod.fromString(JsonUtil.getString(jsonObj, "payment_method"));
 
-    obj.date = JsonUtil.getTimestamp(json, "date");
+    obj.date = JsonUtil.getTimestamp(jsonObj, "date");
 
-    obj.currencyCode = JsonUtil.getString(json, "currency_code");
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-    obj.amount = JsonUtil.getLong(json, "amount");
+    obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.exchangeRate = JsonUtil.getBigDecimal(json, "exchange_rate");
+    obj.exchangeRate = JsonUtil.getBigDecimal(jsonObj, "exchange_rate");
 
     return obj;
   }

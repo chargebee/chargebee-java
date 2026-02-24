@@ -4,6 +4,7 @@ import com.chargebee.v4.models.ramp.Ramp;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /** Immutable response object for RampUpdate operation. Contains the response data from the API. */
@@ -24,11 +25,12 @@ public final class RampUpdateResponse extends BaseResponse {
   /** Parse JSON response into RampUpdateResponse object with HTTP response. */
   public static RampUpdateResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __rampJson = JsonUtil.getObject(json, "ramp");
-      if (__rampJson != null) {
-        builder.ramp(Ramp.fromJson(__rampJson));
+      JsonObject __rampObj = JsonUtil.getJsonObject(jsonObj, "ramp");
+      if (__rampObj != null) {
+        builder.ramp(Ramp.fromJson(__rampObj));
       }
 
       builder.httpResponse(httpResponse);

@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.thirdPartyEntityMapping;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class ThirdPartyEntityMapping {
@@ -259,53 +260,57 @@ public class ThirdPartyEntityMapping {
   }
 
   public static ThirdPartyEntityMapping fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static ThirdPartyEntityMapping fromJson(JsonObject jsonObj) {
     ThirdPartyEntityMapping obj = new ThirdPartyEntityMapping();
 
-    obj.entityType = EntityType.fromString(JsonUtil.getString(json, "entity_type"));
+    obj.entityType = EntityType.fromString(JsonUtil.getString(jsonObj, "entity_type"));
 
-    obj.entityExtId = JsonUtil.getString(json, "entity_ext_id");
+    obj.entityExtId = JsonUtil.getString(jsonObj, "entity_ext_id");
 
-    obj.integrationName = JsonUtil.getString(json, "integration_name");
+    obj.integrationName = JsonUtil.getString(jsonObj, "integration_name");
 
-    obj.thirdPartyEntityId = JsonUtil.getString(json, "third_party_entity_id");
+    obj.thirdPartyEntityId = JsonUtil.getString(jsonObj, "third_party_entity_id");
 
-    obj.lastSyncAt = JsonUtil.getTimestamp(json, "last_sync_at");
+    obj.lastSyncAt = JsonUtil.getTimestamp(jsonObj, "last_sync_at");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
     obj.failedDependentEntityType =
         FailedDependentEntityType.fromString(
-            JsonUtil.getString(json, "failed_dependent_entity_type"));
+            JsonUtil.getString(jsonObj, "failed_dependent_entity_type"));
 
-    obj.errorMessage = JsonUtil.getString(json, "error_message");
+    obj.errorMessage = JsonUtil.getString(jsonObj, "error_message");
 
-    obj.url = JsonUtil.getString(json, "url");
+    obj.url = JsonUtil.getString(jsonObj, "url");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.modifiedAt = JsonUtil.getTimestamp(json, "modified_at");
+    obj.modifiedAt = JsonUtil.getTimestamp(jsonObj, "modified_at");
 
-    obj.entityId = JsonUtil.getString(json, "entity_id");
+    obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
 
-    String __newResourceJson = JsonUtil.getObject(json, "new_resource");
+    JsonObject __newResourceObj = JsonUtil.getJsonObject(jsonObj, "new_resource");
     obj.newResource =
-        __newResourceJson != null
-            ? JsonUtil.parseJsonObjectToMap(__newResourceJson)
+        __newResourceObj != null
+            ? JsonUtil.parseJsonObjectToMap(__newResourceObj)
             : new java.util.HashMap<>();
 
-    String __oldResourceJson = JsonUtil.getObject(json, "old_resource");
+    JsonObject __oldResourceObj = JsonUtil.getJsonObject(jsonObj, "old_resource");
     obj.oldResource =
-        __oldResourceJson != null
-            ? JsonUtil.parseJsonObjectToMap(__oldResourceJson)
+        __oldResourceObj != null
+            ? JsonUtil.parseJsonObjectToMap(__oldResourceObj)
             : new java.util.HashMap<>();
 
-    String __mappingMetaJson = JsonUtil.getObject(json, "mapping_meta");
+    JsonObject __mappingMetaObj = JsonUtil.getJsonObject(jsonObj, "mapping_meta");
     obj.mappingMeta =
-        __mappingMetaJson != null
-            ? JsonUtil.parseJsonObjectToMap(__mappingMetaJson)
+        __mappingMetaObj != null
+            ? JsonUtil.parseJsonObjectToMap(__mappingMetaObj)
             : new java.util.HashMap<>();
 
-    obj.failedDependentEntityId = JsonUtil.getString(json, "failed_dependent_entity_id");
+    obj.failedDependentEntityId = JsonUtil.getString(jsonObj, "failed_dependent_entity_id");
 
     return obj;
   }

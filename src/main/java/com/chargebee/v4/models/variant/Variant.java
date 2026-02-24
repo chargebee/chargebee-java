@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.variant;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -108,40 +109,42 @@ public class Variant {
   }
 
   public static Variant fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Variant fromJson(JsonObject jsonObj) {
     Variant obj = new Variant();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
-    obj.externalName = JsonUtil.getString(json, "external_name");
+    obj.externalName = JsonUtil.getString(jsonObj, "external_name");
 
-    obj.description = JsonUtil.getString(json, "description");
+    obj.description = JsonUtil.getString(jsonObj, "description");
 
-    obj.sku = JsonUtil.getString(json, "sku");
+    obj.sku = JsonUtil.getString(jsonObj, "sku");
 
-    obj.deleted = JsonUtil.getBoolean(json, "deleted");
+    obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
 
-    obj.productId = JsonUtil.getString(json, "product_id");
+    obj.productId = JsonUtil.getString(jsonObj, "product_id");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    String __metadataJson = JsonUtil.getObject(json, "metadata");
+    JsonObject __metadataObj = JsonUtil.getJsonObject(jsonObj, "metadata");
     obj.metadata =
-        __metadataJson != null
-            ? JsonUtil.parseJsonObjectToMap(__metadataJson)
+        __metadataObj != null
+            ? JsonUtil.parseJsonObjectToMap(__metadataObj)
             : new java.util.HashMap<>();
 
     obj.optionValues =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "option_values")).stream()
-            .map(OptionValues::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "option_values"), OptionValues::fromJson);
 
     return obj;
   }
@@ -232,11 +235,15 @@ public class Variant {
     }
 
     public static OptionValues fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static OptionValues fromJson(JsonObject jsonObj) {
       OptionValues obj = new OptionValues();
 
-      obj.name = JsonUtil.getString(json, "name");
+      obj.name = JsonUtil.getString(jsonObj, "name");
 
-      obj.value = JsonUtil.getString(json, "value");
+      obj.value = JsonUtil.getString(jsonObj, "value");
 
       return obj;
     }

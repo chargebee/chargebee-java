@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.customer;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -890,9 +891,12 @@ public class Customer {
   }
 
   public static Customer fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Customer fromJson(JsonObject jsonObj) {
     Customer obj = new Customer();
 
-    // Parse JSON to extract all keys for custom field extraction
     java.util.Set<String> knownFields = new java.util.HashSet<>();
 
     knownFields.add("id");
@@ -1027,249 +1031,178 @@ public class Customer {
 
     knownFields.add("child_account_access");
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.firstName = JsonUtil.getString(json, "first_name");
+    obj.firstName = JsonUtil.getString(jsonObj, "first_name");
 
-    obj.lastName = JsonUtil.getString(json, "last_name");
+    obj.lastName = JsonUtil.getString(jsonObj, "last_name");
 
-    obj.email = JsonUtil.getString(json, "email");
+    obj.email = JsonUtil.getString(jsonObj, "email");
 
-    obj.phone = JsonUtil.getString(json, "phone");
+    obj.phone = JsonUtil.getString(jsonObj, "phone");
 
-    obj.company = JsonUtil.getString(json, "company");
+    obj.company = JsonUtil.getString(jsonObj, "company");
 
-    obj.vatNumber = JsonUtil.getString(json, "vat_number");
+    obj.vatNumber = JsonUtil.getString(jsonObj, "vat_number");
 
-    obj.autoCollection = AutoCollection.fromString(JsonUtil.getString(json, "auto_collection"));
+    obj.autoCollection = AutoCollection.fromString(JsonUtil.getString(jsonObj, "auto_collection"));
 
     obj.offlinePaymentMethod =
-        OfflinePaymentMethod.fromString(JsonUtil.getString(json, "offline_payment_method"));
+        OfflinePaymentMethod.fromString(JsonUtil.getString(jsonObj, "offline_payment_method"));
 
-    obj.netTermDays = JsonUtil.getInteger(json, "net_term_days");
+    obj.netTermDays = JsonUtil.getInteger(jsonObj, "net_term_days");
 
-    obj.vatNumberValidatedTime = JsonUtil.getTimestamp(json, "vat_number_validated_time");
+    obj.vatNumberValidatedTime = JsonUtil.getTimestamp(jsonObj, "vat_number_validated_time");
 
-    obj.vatNumberStatus = VatNumberStatus.fromString(JsonUtil.getString(json, "vat_number_status"));
+    obj.vatNumberStatus =
+        VatNumberStatus.fromString(JsonUtil.getString(jsonObj, "vat_number_status"));
 
-    obj.allowDirectDebit = JsonUtil.getBoolean(json, "allow_direct_debit");
+    obj.allowDirectDebit = JsonUtil.getBoolean(jsonObj, "allow_direct_debit");
 
-    obj.isLocationValid = JsonUtil.getBoolean(json, "is_location_valid");
+    obj.isLocationValid = JsonUtil.getBoolean(jsonObj, "is_location_valid");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.createdFromIp = JsonUtil.getString(json, "created_from_ip");
+    obj.createdFromIp = JsonUtil.getString(jsonObj, "created_from_ip");
 
-    String __exemptionDetailsJson = JsonUtil.getArray(json, "exemption_details");
     obj.exemptionDetails =
-        __exemptionDetailsJson != null
-            ? JsonUtil.parseObjectArray(__exemptionDetailsJson).stream()
-                .map(JsonUtil::parseJsonObjectToMap)
-                .collect(java.util.stream.Collectors.toList())
-            : null;
+        JsonUtil.mapArrayToObjects(JsonUtil.getJsonArray(jsonObj, "exemption_details"));
 
-    obj.taxability = Taxability.fromString(JsonUtil.getString(json, "taxability"));
+    obj.taxability = Taxability.fromString(JsonUtil.getString(jsonObj, "taxability"));
 
-    obj.entityCode = EntityCode.fromString(JsonUtil.getString(json, "entity_code"));
+    obj.entityCode = EntityCode.fromString(JsonUtil.getString(jsonObj, "entity_code"));
 
-    obj.exemptNumber = JsonUtil.getString(json, "exempt_number");
+    obj.exemptNumber = JsonUtil.getString(jsonObj, "exempt_number");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.locale = JsonUtil.getString(json, "locale");
+    obj.locale = JsonUtil.getString(jsonObj, "locale");
 
-    obj.billingDate = JsonUtil.getInteger(json, "billing_date");
+    obj.billingDate = JsonUtil.getInteger(jsonObj, "billing_date");
 
-    obj.billingMonth = JsonUtil.getInteger(json, "billing_month");
+    obj.billingMonth = JsonUtil.getInteger(jsonObj, "billing_month");
 
-    obj.billingDateMode = BillingDateMode.fromString(JsonUtil.getString(json, "billing_date_mode"));
+    obj.billingDateMode =
+        BillingDateMode.fromString(JsonUtil.getString(jsonObj, "billing_date_mode"));
 
     obj.billingDayOfWeek =
-        BillingDayOfWeek.fromString(JsonUtil.getString(json, "billing_day_of_week"));
+        BillingDayOfWeek.fromString(JsonUtil.getString(jsonObj, "billing_day_of_week"));
 
     obj.billingDayOfWeekMode =
-        BillingDayOfWeekMode.fromString(JsonUtil.getString(json, "billing_day_of_week_mode"));
+        BillingDayOfWeekMode.fromString(JsonUtil.getString(jsonObj, "billing_day_of_week_mode"));
 
-    obj.piiCleared = PiiCleared.fromString(JsonUtil.getString(json, "pii_cleared"));
+    obj.piiCleared = PiiCleared.fromString(JsonUtil.getString(jsonObj, "pii_cleared"));
 
-    obj.autoCloseInvoices = JsonUtil.getBoolean(json, "auto_close_invoices");
+    obj.autoCloseInvoices = JsonUtil.getBoolean(jsonObj, "auto_close_invoices");
 
-    obj.channel = Channel.fromString(JsonUtil.getString(json, "channel"));
+    obj.channel = Channel.fromString(JsonUtil.getString(jsonObj, "channel"));
 
-    obj.activeId = JsonUtil.getString(json, "active_id");
+    obj.activeId = JsonUtil.getString(jsonObj, "active_id");
 
-    obj.cardStatus = CardStatus.fromString(JsonUtil.getString(json, "card_status"));
+    obj.cardStatus = CardStatus.fromString(JsonUtil.getString(jsonObj, "card_status"));
 
-    obj.fraudFlag = FraudFlag.fromString(JsonUtil.getString(json, "fraud_flag"));
+    obj.fraudFlag = FraudFlag.fromString(JsonUtil.getString(jsonObj, "fraud_flag"));
 
-    obj.primaryPaymentSourceId = JsonUtil.getString(json, "primary_payment_source_id");
+    obj.primaryPaymentSourceId = JsonUtil.getString(jsonObj, "primary_payment_source_id");
 
-    obj.backupPaymentSourceId = JsonUtil.getString(json, "backup_payment_source_id");
+    obj.backupPaymentSourceId = JsonUtil.getString(jsonObj, "backup_payment_source_id");
 
-    obj.invoiceNotes = JsonUtil.getString(json, "invoice_notes");
+    obj.invoiceNotes = JsonUtil.getString(jsonObj, "invoice_notes");
 
-    obj.businessEntityId = JsonUtil.getString(json, "business_entity_id");
+    obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
-    obj.preferredCurrencyCode = JsonUtil.getString(json, "preferred_currency_code");
+    obj.preferredCurrencyCode = JsonUtil.getString(jsonObj, "preferred_currency_code");
 
-    obj.promotionalCredits = JsonUtil.getLong(json, "promotional_credits");
+    obj.promotionalCredits = JsonUtil.getLong(jsonObj, "promotional_credits");
 
-    obj.unbilledCharges = JsonUtil.getLong(json, "unbilled_charges");
+    obj.unbilledCharges = JsonUtil.getLong(jsonObj, "unbilled_charges");
 
-    obj.refundableCredits = JsonUtil.getLong(json, "refundable_credits");
+    obj.refundableCredits = JsonUtil.getLong(jsonObj, "refundable_credits");
 
-    obj.excessPayments = JsonUtil.getLong(json, "excess_payments");
+    obj.excessPayments = JsonUtil.getLong(jsonObj, "excess_payments");
 
-    obj.isEinvoiceEnabled = JsonUtil.getBoolean(json, "is_einvoice_enabled");
+    obj.isEinvoiceEnabled = JsonUtil.getBoolean(jsonObj, "is_einvoice_enabled");
 
     obj.einvoicingMethod =
-        EinvoicingMethod.fromString(JsonUtil.getString(json, "einvoicing_method"));
+        EinvoicingMethod.fromString(JsonUtil.getString(jsonObj, "einvoicing_method"));
 
-    String __metaDataJson = JsonUtil.getObject(json, "meta_data");
+    JsonObject __metaDataObj = JsonUtil.getJsonObject(jsonObj, "meta_data");
     obj.metaData =
-        __metaDataJson != null
-            ? JsonUtil.parseJsonObjectToMap(__metaDataJson)
+        __metaDataObj != null
+            ? JsonUtil.parseJsonObjectToMap(__metaDataObj)
             : new java.util.HashMap<>();
 
-    obj.deleted = JsonUtil.getBoolean(json, "deleted");
+    obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
 
-    obj.registeredForGst = JsonUtil.getBoolean(json, "registered_for_gst");
+    obj.registeredForGst = JsonUtil.getBoolean(jsonObj, "registered_for_gst");
 
-    obj.consolidatedInvoicing = JsonUtil.getBoolean(json, "consolidated_invoicing");
+    obj.consolidatedInvoicing = JsonUtil.getBoolean(jsonObj, "consolidated_invoicing");
 
-    obj.customerType = CustomerType.fromString(JsonUtil.getString(json, "customer_type"));
+    obj.customerType = CustomerType.fromString(JsonUtil.getString(jsonObj, "customer_type"));
 
     obj.businessCustomerWithoutVatNumber =
-        JsonUtil.getBoolean(json, "business_customer_without_vat_number");
+        JsonUtil.getBoolean(jsonObj, "business_customer_without_vat_number");
 
-    obj.clientProfileId = JsonUtil.getString(json, "client_profile_id");
+    obj.clientProfileId = JsonUtil.getString(jsonObj, "client_profile_id");
 
-    obj.useDefaultHierarchySettings = JsonUtil.getBoolean(json, "use_default_hierarchy_settings");
+    obj.useDefaultHierarchySettings =
+        JsonUtil.getBoolean(jsonObj, "use_default_hierarchy_settings");
 
-    obj.vatNumberPrefix = JsonUtil.getString(json, "vat_number_prefix");
+    obj.vatNumberPrefix = JsonUtil.getString(jsonObj, "vat_number_prefix");
 
-    obj.entityIdentifierScheme = JsonUtil.getString(json, "entity_identifier_scheme");
+    obj.entityIdentifierScheme = JsonUtil.getString(jsonObj, "entity_identifier_scheme");
 
-    obj.entityIdentifierStandard = JsonUtil.getString(json, "entity_identifier_standard");
+    obj.entityIdentifierStandard = JsonUtil.getString(jsonObj, "entity_identifier_standard");
 
-    String __billingAddressJson = JsonUtil.getObject(json, "billing_address");
-    if (__billingAddressJson != null) {
-      obj.billingAddress = BillingAddress.fromJson(__billingAddressJson);
+    JsonObject __billingAddressObj = JsonUtil.getJsonObject(jsonObj, "billing_address");
+    if (__billingAddressObj != null) {
+      obj.billingAddress = BillingAddress.fromJson(__billingAddressObj);
     }
 
     obj.referralUrls =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "referral_urls")).stream()
-            .map(ReferralUrls::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "referral_urls"), ReferralUrls::fromJson);
 
     obj.contacts =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "contacts")).stream()
-            .map(Contacts::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "contacts"), Contacts::fromJson);
 
-    String __paymentMethodJson = JsonUtil.getObject(json, "payment_method");
-    if (__paymentMethodJson != null) {
-      obj.paymentMethod = PaymentMethod.fromJson(__paymentMethodJson);
+    JsonObject __paymentMethodObj = JsonUtil.getJsonObject(jsonObj, "payment_method");
+    if (__paymentMethodObj != null) {
+      obj.paymentMethod = PaymentMethod.fromJson(__paymentMethodObj);
     }
 
     obj.balances =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "balances")).stream()
-            .map(Balances::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "balances"), Balances::fromJson);
 
     obj.entityIdentifiers =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "entity_identifiers")).stream()
-            .map(EntityIdentifiers::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "entity_identifiers"), EntityIdentifiers::fromJson);
 
     obj.taxProvidersFields =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "tax_providers_fields")).stream()
-            .map(TaxProvidersFields::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "tax_providers_fields"), TaxProvidersFields::fromJson);
 
-    String __relationshipJson = JsonUtil.getObject(json, "relationship");
-    if (__relationshipJson != null) {
-      obj.relationship = Relationship.fromJson(__relationshipJson);
+    JsonObject __relationshipObj = JsonUtil.getJsonObject(jsonObj, "relationship");
+    if (__relationshipObj != null) {
+      obj.relationship = Relationship.fromJson(__relationshipObj);
     }
 
-    String __parentAccountAccessJson = JsonUtil.getObject(json, "parent_account_access");
-    if (__parentAccountAccessJson != null) {
-      obj.parentAccountAccess = ParentAccountAccess.fromJson(__parentAccountAccessJson);
+    JsonObject __parentAccountAccessObj = JsonUtil.getJsonObject(jsonObj, "parent_account_access");
+    if (__parentAccountAccessObj != null) {
+      obj.parentAccountAccess = ParentAccountAccess.fromJson(__parentAccountAccessObj);
     }
 
-    String __childAccountAccessJson = JsonUtil.getObject(json, "child_account_access");
-    if (__childAccountAccessJson != null) {
-      obj.childAccountAccess = ChildAccountAccess.fromJson(__childAccountAccessJson);
+    JsonObject __childAccountAccessObj = JsonUtil.getJsonObject(jsonObj, "child_account_access");
+    if (__childAccountAccessObj != null) {
+      obj.childAccountAccess = ChildAccountAccess.fromJson(__childAccountAccessObj);
     }
 
-    // Extract custom fields (fields starting with cf_)
-    obj.customFields = extractCustomFields(json, knownFields);
+    obj.customFields = JsonUtil.extractCustomFields(jsonObj, knownFields);
 
-    // Extract consent fields (fields starting with cs_)
-    obj.consentFields = extractConsentFields(json, knownFields);
+    obj.consentFields = JsonUtil.extractConsentFields(jsonObj, knownFields);
 
     return obj;
-  }
-
-  /**
-   * Helper method to extract custom fields from JSON. Custom fields are fields that start with
-   * "cf_" and are not in the known fields set.
-   *
-   * @param json JSON string to parse
-   * @param knownFields set of known field names
-   * @return map of custom fields
-   */
-  private static java.util.Map<String, String> extractCustomFields(
-      String json, java.util.Set<String> knownFields) {
-    java.util.Map<String, String> customFields = new java.util.HashMap<>();
-    try {
-      // Parse the entire JSON as a map
-      java.util.Map<String, Object> allFields = JsonUtil.parseJsonObjectToMap(json);
-      if (allFields != null) {
-        for (java.util.Map.Entry<String, Object> entry : allFields.entrySet()) {
-          String key = entry.getKey();
-          // Include fields that start with "cf_" and are not in knownFields
-          if (key != null && key.startsWith("cf_") && !knownFields.contains(key)) {
-            customFields.put(
-                key, entry.getValue() != null ? String.valueOf(entry.getValue()) : null);
-          }
-        }
-      }
-    } catch (Exception e) {
-      // If parsing fails, return empty map
-    }
-    return customFields;
-  }
-
-  /**
-   * Helper method to extract consent fields from JSON. Consent fields are fields that start with
-   * "cs_" and are not in the known fields set. They typically contain boolean values or options.
-   *
-   * @param json JSON string to parse
-   * @param knownFields set of known field names
-   * @return map of consent fields
-   */
-  private static java.util.Map<String, Object> extractConsentFields(
-      String json, java.util.Set<String> knownFields) {
-    java.util.Map<String, Object> consentFields = new java.util.HashMap<>();
-    try {
-      // Parse the entire JSON as a map
-      java.util.Map<String, Object> allFields = JsonUtil.parseJsonObjectToMap(json);
-      if (allFields != null) {
-        for (java.util.Map.Entry<String, Object> entry : allFields.entrySet()) {
-          String key = entry.getKey();
-          // Include fields that start with "cs_" and are not in knownFields
-          if (key != null && key.startsWith("cs_") && !knownFields.contains(key)) {
-            consentFields.put(key, entry.getValue());
-          }
-        }
-      }
-    } catch (Exception e) {
-      // If parsing fails, return empty map
-    }
-    return consentFields;
   }
 
   @Override
@@ -1671,36 +1604,40 @@ public class Customer {
     }
 
     public static BillingAddress fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static BillingAddress fromJson(JsonObject jsonObj) {
       BillingAddress obj = new BillingAddress();
 
-      obj.firstName = JsonUtil.getString(json, "first_name");
+      obj.firstName = JsonUtil.getString(jsonObj, "first_name");
 
-      obj.lastName = JsonUtil.getString(json, "last_name");
+      obj.lastName = JsonUtil.getString(jsonObj, "last_name");
 
-      obj.email = JsonUtil.getString(json, "email");
+      obj.email = JsonUtil.getString(jsonObj, "email");
 
-      obj.company = JsonUtil.getString(json, "company");
+      obj.company = JsonUtil.getString(jsonObj, "company");
 
-      obj.phone = JsonUtil.getString(json, "phone");
+      obj.phone = JsonUtil.getString(jsonObj, "phone");
 
-      obj.line1 = JsonUtil.getString(json, "line1");
+      obj.line1 = JsonUtil.getString(jsonObj, "line1");
 
-      obj.line2 = JsonUtil.getString(json, "line2");
+      obj.line2 = JsonUtil.getString(jsonObj, "line2");
 
-      obj.line3 = JsonUtil.getString(json, "line3");
+      obj.line3 = JsonUtil.getString(jsonObj, "line3");
 
-      obj.city = JsonUtil.getString(json, "city");
+      obj.city = JsonUtil.getString(jsonObj, "city");
 
-      obj.stateCode = JsonUtil.getString(json, "state_code");
+      obj.stateCode = JsonUtil.getString(jsonObj, "state_code");
 
-      obj.state = JsonUtil.getString(json, "state");
+      obj.state = JsonUtil.getString(jsonObj, "state");
 
-      obj.country = JsonUtil.getString(json, "country");
+      obj.country = JsonUtil.getString(jsonObj, "country");
 
-      obj.zip = JsonUtil.getString(json, "zip");
+      obj.zip = JsonUtil.getString(jsonObj, "zip");
 
       obj.validationStatus =
-          ValidationStatus.fromString(JsonUtil.getString(json, "validation_status"));
+          ValidationStatus.fromString(JsonUtil.getString(jsonObj, "validation_status"));
 
       return obj;
     }
@@ -1856,23 +1793,28 @@ public class Customer {
     }
 
     public static ReferralUrls fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ReferralUrls fromJson(JsonObject jsonObj) {
       ReferralUrls obj = new ReferralUrls();
 
-      obj.externalCustomerId = JsonUtil.getString(json, "external_customer_id");
+      obj.externalCustomerId = JsonUtil.getString(jsonObj, "external_customer_id");
 
-      obj.referralSharingUrl = JsonUtil.getString(json, "referral_sharing_url");
+      obj.referralSharingUrl = JsonUtil.getString(jsonObj, "referral_sharing_url");
 
-      obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+      obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-      obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+      obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-      obj.referralCampaignId = JsonUtil.getString(json, "referral_campaign_id");
+      obj.referralCampaignId = JsonUtil.getString(jsonObj, "referral_campaign_id");
 
-      obj.referralAccountId = JsonUtil.getString(json, "referral_account_id");
+      obj.referralAccountId = JsonUtil.getString(jsonObj, "referral_account_id");
 
-      obj.referralExternalCampaignId = JsonUtil.getString(json, "referral_external_campaign_id");
+      obj.referralExternalCampaignId = JsonUtil.getString(jsonObj, "referral_external_campaign_id");
 
-      obj.referralSystem = ReferralSystem.fromString(JsonUtil.getString(json, "referral_system"));
+      obj.referralSystem =
+          ReferralSystem.fromString(JsonUtil.getString(jsonObj, "referral_system"));
 
       return obj;
     }
@@ -1979,25 +1921,29 @@ public class Customer {
     }
 
     public static Contacts fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Contacts fromJson(JsonObject jsonObj) {
       Contacts obj = new Contacts();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.firstName = JsonUtil.getString(json, "first_name");
+      obj.firstName = JsonUtil.getString(jsonObj, "first_name");
 
-      obj.lastName = JsonUtil.getString(json, "last_name");
+      obj.lastName = JsonUtil.getString(jsonObj, "last_name");
 
-      obj.email = JsonUtil.getString(json, "email");
+      obj.email = JsonUtil.getString(jsonObj, "email");
 
-      obj.phone = JsonUtil.getString(json, "phone");
+      obj.phone = JsonUtil.getString(jsonObj, "phone");
 
-      obj.label = JsonUtil.getString(json, "label");
+      obj.label = JsonUtil.getString(jsonObj, "label");
 
-      obj.enabled = JsonUtil.getBoolean(json, "enabled");
+      obj.enabled = JsonUtil.getBoolean(jsonObj, "enabled");
 
-      obj.sendAccountEmail = JsonUtil.getBoolean(json, "send_account_email");
+      obj.sendAccountEmail = JsonUtil.getBoolean(jsonObj, "send_account_email");
 
-      obj.sendBillingEmail = JsonUtil.getBoolean(json, "send_billing_email");
+      obj.sendBillingEmail = JsonUtil.getBoolean(jsonObj, "send_billing_email");
 
       return obj;
     }
@@ -2356,17 +2302,21 @@ public class Customer {
     }
 
     public static PaymentMethod fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static PaymentMethod fromJson(JsonObject jsonObj) {
       PaymentMethod obj = new PaymentMethod();
 
-      obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+      obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-      obj.gateway = Gateway.fromString(JsonUtil.getString(json, "gateway"));
+      obj.gateway = Gateway.fromString(JsonUtil.getString(jsonObj, "gateway"));
 
-      obj.gatewayAccountId = JsonUtil.getString(json, "gateway_account_id");
+      obj.gatewayAccountId = JsonUtil.getString(jsonObj, "gateway_account_id");
 
-      obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+      obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-      obj.referenceId = JsonUtil.getString(json, "reference_id");
+      obj.referenceId = JsonUtil.getString(jsonObj, "reference_id");
 
       return obj;
     }
@@ -2447,21 +2397,25 @@ public class Customer {
     }
 
     public static Balances fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Balances fromJson(JsonObject jsonObj) {
       Balances obj = new Balances();
 
-      obj.promotionalCredits = JsonUtil.getLong(json, "promotional_credits");
+      obj.promotionalCredits = JsonUtil.getLong(jsonObj, "promotional_credits");
 
-      obj.excessPayments = JsonUtil.getLong(json, "excess_payments");
+      obj.excessPayments = JsonUtil.getLong(jsonObj, "excess_payments");
 
-      obj.refundableCredits = JsonUtil.getLong(json, "refundable_credits");
+      obj.refundableCredits = JsonUtil.getLong(jsonObj, "refundable_credits");
 
-      obj.unbilledCharges = JsonUtil.getLong(json, "unbilled_charges");
+      obj.unbilledCharges = JsonUtil.getLong(jsonObj, "unbilled_charges");
 
-      obj.currencyCode = JsonUtil.getString(json, "currency_code");
+      obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-      obj.balanceCurrencyCode = JsonUtil.getString(json, "balance_currency_code");
+      obj.balanceCurrencyCode = JsonUtil.getString(jsonObj, "balance_currency_code");
 
-      obj.businessEntityId = JsonUtil.getString(json, "business_entity_id");
+      obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
       return obj;
     }
@@ -2539,15 +2493,19 @@ public class Customer {
     }
 
     public static EntityIdentifiers fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static EntityIdentifiers fromJson(JsonObject jsonObj) {
       EntityIdentifiers obj = new EntityIdentifiers();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.value = JsonUtil.getString(json, "value");
+      obj.value = JsonUtil.getString(jsonObj, "value");
 
-      obj.scheme = JsonUtil.getString(json, "scheme");
+      obj.scheme = JsonUtil.getString(jsonObj, "scheme");
 
-      obj.standard = JsonUtil.getString(json, "standard");
+      obj.standard = JsonUtil.getString(jsonObj, "standard");
 
       return obj;
     }
@@ -2604,13 +2562,17 @@ public class Customer {
     }
 
     public static TaxProvidersFields fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static TaxProvidersFields fromJson(JsonObject jsonObj) {
       TaxProvidersFields obj = new TaxProvidersFields();
 
-      obj.providerName = JsonUtil.getString(json, "provider_name");
+      obj.providerName = JsonUtil.getString(jsonObj, "provider_name");
 
-      obj.fieldId = JsonUtil.getString(json, "field_id");
+      obj.fieldId = JsonUtil.getString(jsonObj, "field_id");
 
-      obj.fieldValue = JsonUtil.getString(json, "field_value");
+      obj.fieldValue = JsonUtil.getString(jsonObj, "field_value");
 
       return obj;
     }
@@ -2664,13 +2626,17 @@ public class Customer {
     }
 
     public static Relationship fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Relationship fromJson(JsonObject jsonObj) {
       Relationship obj = new Relationship();
 
-      obj.parentId = JsonUtil.getString(json, "parent_id");
+      obj.parentId = JsonUtil.getString(jsonObj, "parent_id");
 
-      obj.paymentOwnerId = JsonUtil.getString(json, "payment_owner_id");
+      obj.paymentOwnerId = JsonUtil.getString(jsonObj, "payment_owner_id");
 
-      obj.invoiceOwnerId = JsonUtil.getString(json, "invoice_owner_id");
+      obj.invoiceOwnerId = JsonUtil.getString(jsonObj, "invoice_owner_id");
 
       return obj;
     }
@@ -2800,21 +2766,25 @@ public class Customer {
     }
 
     public static ParentAccountAccess fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ParentAccountAccess fromJson(JsonObject jsonObj) {
       ParentAccountAccess obj = new ParentAccountAccess();
 
       obj.portalEditChildSubscriptions =
           PortalEditChildSubscriptions.fromString(
-              JsonUtil.getString(json, "portal_edit_child_subscriptions"));
+              JsonUtil.getString(jsonObj, "portal_edit_child_subscriptions"));
 
       obj.portalDownloadChildInvoices =
           PortalDownloadChildInvoices.fromString(
-              JsonUtil.getString(json, "portal_download_child_invoices"));
+              JsonUtil.getString(jsonObj, "portal_download_child_invoices"));
 
-      obj.sendSubscriptionEmails = JsonUtil.getBoolean(json, "send_subscription_emails");
+      obj.sendSubscriptionEmails = JsonUtil.getBoolean(jsonObj, "send_subscription_emails");
 
-      obj.sendInvoiceEmails = JsonUtil.getBoolean(json, "send_invoice_emails");
+      obj.sendInvoiceEmails = JsonUtil.getBoolean(jsonObj, "send_invoice_emails");
 
-      obj.sendPaymentEmails = JsonUtil.getBoolean(json, "send_payment_emails");
+      obj.sendPaymentEmails = JsonUtil.getBoolean(jsonObj, "send_payment_emails");
 
       return obj;
     }
@@ -2954,19 +2924,25 @@ public class Customer {
     }
 
     public static ChildAccountAccess fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ChildAccountAccess fromJson(JsonObject jsonObj) {
       ChildAccountAccess obj = new ChildAccountAccess();
 
       obj.portalEditSubscriptions =
-          PortalEditSubscriptions.fromString(JsonUtil.getString(json, "portal_edit_subscriptions"));
+          PortalEditSubscriptions.fromString(
+              JsonUtil.getString(jsonObj, "portal_edit_subscriptions"));
 
       obj.portalDownloadInvoices =
-          PortalDownloadInvoices.fromString(JsonUtil.getString(json, "portal_download_invoices"));
+          PortalDownloadInvoices.fromString(
+              JsonUtil.getString(jsonObj, "portal_download_invoices"));
 
-      obj.sendSubscriptionEmails = JsonUtil.getBoolean(json, "send_subscription_emails");
+      obj.sendSubscriptionEmails = JsonUtil.getBoolean(jsonObj, "send_subscription_emails");
 
-      obj.sendInvoiceEmails = JsonUtil.getBoolean(json, "send_invoice_emails");
+      obj.sendInvoiceEmails = JsonUtil.getBoolean(jsonObj, "send_invoice_emails");
 
-      obj.sendPaymentEmails = JsonUtil.getBoolean(json, "send_payment_emails");
+      obj.sendPaymentEmails = JsonUtil.getBoolean(jsonObj, "send_payment_emails");
 
       return obj;
     }

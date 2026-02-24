@@ -4,6 +4,7 @@ import com.chargebee.v4.models.priceVariant.PriceVariant;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class PriceVariantRetrieveResponse extends BaseResponse {
   /** Parse JSON response into PriceVariantRetrieveResponse object with HTTP response. */
   public static PriceVariantRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __priceVariantJson = JsonUtil.getObject(json, "price_variant");
-      if (__priceVariantJson != null) {
-        builder.priceVariant(PriceVariant.fromJson(__priceVariantJson));
+      JsonObject __priceVariantObj = JsonUtil.getJsonObject(jsonObj, "price_variant");
+      if (__priceVariantObj != null) {
+        builder.priceVariant(PriceVariant.fromJson(__priceVariantObj));
       }
 
       builder.httpResponse(httpResponse);

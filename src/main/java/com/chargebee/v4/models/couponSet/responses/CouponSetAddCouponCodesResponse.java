@@ -4,6 +4,7 @@ import com.chargebee.v4.models.couponSet.CouponSet;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class CouponSetAddCouponCodesResponse extends BaseResponse {
   /** Parse JSON response into CouponSetAddCouponCodesResponse object with HTTP response. */
   public static CouponSetAddCouponCodesResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __couponSetJson = JsonUtil.getObject(json, "coupon_set");
-      if (__couponSetJson != null) {
-        builder.couponSet(CouponSet.fromJson(__couponSetJson));
+      JsonObject __couponSetObj = JsonUtil.getJsonObject(jsonObj, "coupon_set");
+      if (__couponSetObj != null) {
+        builder.couponSet(CouponSet.fromJson(__couponSetObj));
       }
 
       builder.httpResponse(httpResponse);

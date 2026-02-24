@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.siteMigrationDetail;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class SiteMigrationDetail {
@@ -110,19 +111,23 @@ public class SiteMigrationDetail {
   }
 
   public static SiteMigrationDetail fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static SiteMigrationDetail fromJson(JsonObject jsonObj) {
     SiteMigrationDetail obj = new SiteMigrationDetail();
 
-    obj.entityId = JsonUtil.getString(json, "entity_id");
+    obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
 
-    obj.otherSiteName = JsonUtil.getString(json, "other_site_name");
+    obj.otherSiteName = JsonUtil.getString(jsonObj, "other_site_name");
 
-    obj.entityIdAtOtherSite = JsonUtil.getString(json, "entity_id_at_other_site");
+    obj.entityIdAtOtherSite = JsonUtil.getString(jsonObj, "entity_id_at_other_site");
 
-    obj.migratedAt = JsonUtil.getTimestamp(json, "migrated_at");
+    obj.migratedAt = JsonUtil.getTimestamp(jsonObj, "migrated_at");
 
-    obj.entityType = EntityType.fromString(JsonUtil.getString(json, "entity_type"));
+    obj.entityType = EntityType.fromString(JsonUtil.getString(jsonObj, "entity_type"));
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
     return obj;
   }

@@ -4,6 +4,7 @@ import com.chargebee.v4.models.usage.Usage;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /** Immutable response object for UsageDelete operation. Contains the response data from the API. */
@@ -24,11 +25,12 @@ public final class UsageDeleteResponse extends BaseResponse {
   /** Parse JSON response into UsageDeleteResponse object with HTTP response. */
   public static UsageDeleteResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __usageJson = JsonUtil.getObject(json, "usage");
-      if (__usageJson != null) {
-        builder.usage(Usage.fromJson(__usageJson));
+      JsonObject __usageObj = JsonUtil.getJsonObject(jsonObj, "usage");
+      if (__usageObj != null) {
+        builder.usage(Usage.fromJson(__usageObj));
       }
 
       builder.httpResponse(httpResponse);

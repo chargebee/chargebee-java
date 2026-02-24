@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.customerEntitlement;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class CustomerEntitlement {
 
@@ -43,19 +44,23 @@ public class CustomerEntitlement {
   }
 
   public static CustomerEntitlement fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static CustomerEntitlement fromJson(JsonObject jsonObj) {
     CustomerEntitlement obj = new CustomerEntitlement();
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-    obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.featureId = JsonUtil.getString(json, "feature_id");
+    obj.featureId = JsonUtil.getString(jsonObj, "feature_id");
 
-    obj.value = JsonUtil.getString(json, "value");
+    obj.value = JsonUtil.getString(jsonObj, "value");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
-    obj.isEnabled = JsonUtil.getBoolean(json, "is_enabled");
+    obj.isEnabled = JsonUtil.getBoolean(jsonObj, "is_enabled");
 
     return obj;
   }

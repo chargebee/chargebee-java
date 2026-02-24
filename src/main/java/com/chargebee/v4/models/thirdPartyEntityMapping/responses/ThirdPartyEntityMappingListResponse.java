@@ -6,6 +6,7 @@ import com.chargebee.v4.models.thirdPartyEntityMapping.ThirdPartyEntityMapping;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.ThirdPartyEntityMappingService;
 import com.chargebee.v4.models.thirdPartyEntityMapping.params.ThirdPartyEntityMappingListParams;
@@ -46,13 +47,13 @@ public final class ThirdPartyEntityMappingListResponse {
    */
   public static ThirdPartyEntityMappingListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<ThirdPartyEntityMappingListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(ThirdPartyEntityMappingListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), ThirdPartyEntityMappingListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ThirdPartyEntityMappingListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -71,13 +72,13 @@ public final class ThirdPartyEntityMappingListResponse {
       ThirdPartyEntityMappingListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<ThirdPartyEntityMappingListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(ThirdPartyEntityMappingListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), ThirdPartyEntityMappingListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ThirdPartyEntityMappingListResponse(
           list, nextOffset, service, originalParams, httpResponse);
@@ -186,12 +187,17 @@ public final class ThirdPartyEntityMappingListResponse {
     }
 
     public static ThirdPartyEntityMappingListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ThirdPartyEntityMappingListItem fromJson(JsonObject jsonObj) {
       ThirdPartyEntityMappingListItem item = new ThirdPartyEntityMappingListItem();
 
-      String __thirdPartyEntityMappingJson = JsonUtil.getObject(json, "third_party_entity_mapping");
-      if (__thirdPartyEntityMappingJson != null) {
+      JsonObject __thirdPartyEntityMappingObj =
+          JsonUtil.getJsonObject(jsonObj, "third_party_entity_mapping");
+      if (__thirdPartyEntityMappingObj != null) {
         item.thirdPartyEntityMapping =
-            ThirdPartyEntityMapping.fromJson(__thirdPartyEntityMappingJson);
+            ThirdPartyEntityMapping.fromJson(__thirdPartyEntityMappingObj);
       }
 
       return item;

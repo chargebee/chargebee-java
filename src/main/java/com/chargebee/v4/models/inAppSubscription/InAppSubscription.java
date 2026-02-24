@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.inAppSubscription;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class InAppSubscription {
 
@@ -76,19 +77,23 @@ public class InAppSubscription {
   }
 
   public static InAppSubscription fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static InAppSubscription fromJson(JsonObject jsonObj) {
     InAppSubscription obj = new InAppSubscription();
 
-    obj.appId = JsonUtil.getString(json, "app_id");
+    obj.appId = JsonUtil.getString(jsonObj, "app_id");
 
-    obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-    obj.planId = JsonUtil.getString(json, "plan_id");
+    obj.planId = JsonUtil.getString(jsonObj, "plan_id");
 
-    obj.storeStatus = StoreStatus.fromString(JsonUtil.getString(json, "store_status"));
+    obj.storeStatus = StoreStatus.fromString(JsonUtil.getString(jsonObj, "store_status"));
 
-    obj.invoiceId = JsonUtil.getString(json, "invoice_id");
+    obj.invoiceId = JsonUtil.getString(jsonObj, "invoice_id");
 
     return obj;
   }

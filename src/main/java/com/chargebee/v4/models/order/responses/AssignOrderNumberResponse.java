@@ -4,6 +4,7 @@ import com.chargebee.v4.models.order.Order;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class AssignOrderNumberResponse extends BaseResponse {
   /** Parse JSON response into AssignOrderNumberResponse object with HTTP response. */
   public static AssignOrderNumberResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __orderJson = JsonUtil.getObject(json, "order");
-      if (__orderJson != null) {
-        builder.order(Order.fromJson(__orderJson));
+      JsonObject __orderObj = JsonUtil.getJsonObject(jsonObj, "order");
+      if (__orderObj != null) {
+        builder.order(Order.fromJson(__orderObj));
       }
 
       builder.httpResponse(httpResponse);

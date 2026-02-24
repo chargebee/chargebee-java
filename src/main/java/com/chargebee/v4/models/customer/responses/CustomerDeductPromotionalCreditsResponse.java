@@ -4,6 +4,7 @@ import com.chargebee.v4.models.customer.Customer;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -30,11 +31,12 @@ public final class CustomerDeductPromotionalCreditsResponse extends BaseResponse
   public static CustomerDeductPromotionalCreditsResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __customerJson = JsonUtil.getObject(json, "customer");
-      if (__customerJson != null) {
-        builder.customer(Customer.fromJson(__customerJson));
+      JsonObject __customerObj = JsonUtil.getJsonObject(jsonObj, "customer");
+      if (__customerObj != null) {
+        builder.customer(Customer.fromJson(__customerObj));
       }
 
       builder.httpResponse(httpResponse);

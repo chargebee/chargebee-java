@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.omnichannelSubscriptionItemOffer;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class OmnichannelSubscriptionItemOffer {
@@ -179,37 +180,41 @@ public class OmnichannelSubscriptionItemOffer {
   }
 
   public static OmnichannelSubscriptionItemOffer fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static OmnichannelSubscriptionItemOffer fromJson(JsonObject jsonObj) {
     OmnichannelSubscriptionItemOffer obj = new OmnichannelSubscriptionItemOffer();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.offerIdAtSource = JsonUtil.getString(json, "offer_id_at_source");
+    obj.offerIdAtSource = JsonUtil.getString(jsonObj, "offer_id_at_source");
 
-    obj.category = Category.fromString(JsonUtil.getString(json, "category"));
+    obj.category = Category.fromString(JsonUtil.getString(jsonObj, "category"));
 
-    obj.categoryAtSource = JsonUtil.getString(json, "category_at_source");
+    obj.categoryAtSource = JsonUtil.getString(jsonObj, "category_at_source");
 
-    obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+    obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-    obj.typeAtSource = JsonUtil.getString(json, "type_at_source");
+    obj.typeAtSource = JsonUtil.getString(jsonObj, "type_at_source");
 
-    obj.discountType = DiscountType.fromString(JsonUtil.getString(json, "discount_type"));
+    obj.discountType = DiscountType.fromString(JsonUtil.getString(jsonObj, "discount_type"));
 
-    obj.duration = JsonUtil.getString(json, "duration");
+    obj.duration = JsonUtil.getString(jsonObj, "duration");
 
-    obj.percentage = JsonUtil.getDouble(json, "percentage");
+    obj.percentage = JsonUtil.getDouble(jsonObj, "percentage");
 
-    obj.priceCurrency = JsonUtil.getString(json, "price_currency");
+    obj.priceCurrency = JsonUtil.getString(jsonObj, "price_currency");
 
-    obj.priceUnits = JsonUtil.getLong(json, "price_units");
+    obj.priceUnits = JsonUtil.getLong(jsonObj, "price_units");
 
-    obj.priceNanos = JsonUtil.getLong(json, "price_nanos");
+    obj.priceNanos = JsonUtil.getLong(jsonObj, "price_nanos");
 
-    obj.offerTermStart = JsonUtil.getTimestamp(json, "offer_term_start");
+    obj.offerTermStart = JsonUtil.getTimestamp(jsonObj, "offer_term_start");
 
-    obj.offerTermEnd = JsonUtil.getTimestamp(json, "offer_term_end");
+    obj.offerTermEnd = JsonUtil.getTimestamp(jsonObj, "offer_term_end");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
     return obj;
   }

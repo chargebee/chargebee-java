@@ -4,6 +4,7 @@ import com.chargebee.v4.models.resourceMigration.ResourceMigration;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -28,11 +29,12 @@ public final class ResourceMigrationRetrieveLatestResponse extends BaseResponse 
   public static ResourceMigrationRetrieveLatestResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __resourceMigrationJson = JsonUtil.getObject(json, "resource_migration");
-      if (__resourceMigrationJson != null) {
-        builder.resourceMigration(ResourceMigration.fromJson(__resourceMigrationJson));
+      JsonObject __resourceMigrationObj = JsonUtil.getJsonObject(jsonObj, "resource_migration");
+      if (__resourceMigrationObj != null) {
+        builder.resourceMigration(ResourceMigration.fromJson(__resourceMigrationObj));
       }
 
       builder.httpResponse(httpResponse);

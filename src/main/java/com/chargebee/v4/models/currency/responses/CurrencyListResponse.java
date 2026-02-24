@@ -6,6 +6,7 @@ import com.chargebee.v4.models.currency.Currency;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.CurrencyService;
 import com.chargebee.v4.models.currency.params.CurrencyListParams;
@@ -43,13 +44,12 @@ public final class CurrencyListResponse {
    */
   public static CurrencyListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CurrencyListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CurrencyListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), CurrencyListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new CurrencyListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +67,12 @@ public final class CurrencyListResponse {
       CurrencyListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CurrencyListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CurrencyListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), CurrencyListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new CurrencyListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -173,11 +172,15 @@ public final class CurrencyListResponse {
     }
 
     public static CurrencyListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CurrencyListItem fromJson(JsonObject jsonObj) {
       CurrencyListItem item = new CurrencyListItem();
 
-      String __currencyJson = JsonUtil.getObject(json, "currency");
-      if (__currencyJson != null) {
-        item.currency = Currency.fromJson(__currencyJson);
+      JsonObject __currencyObj = JsonUtil.getJsonObject(jsonObj, "currency");
+      if (__currencyObj != null) {
+        item.currency = Currency.fromJson(__currencyObj);
       }
 
       return item;

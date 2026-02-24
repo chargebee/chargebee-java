@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.offerFulfillment;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class OfferFulfillment {
@@ -128,29 +129,33 @@ public class OfferFulfillment {
   }
 
   public static OfferFulfillment fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static OfferFulfillment fromJson(JsonObject jsonObj) {
     OfferFulfillment obj = new OfferFulfillment();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.personalizedOfferId = JsonUtil.getString(json, "personalized_offer_id");
+    obj.personalizedOfferId = JsonUtil.getString(jsonObj, "personalized_offer_id");
 
-    obj.optionId = JsonUtil.getString(json, "option_id");
+    obj.optionId = JsonUtil.getString(jsonObj, "option_id");
 
-    obj.processingType = ProcessingType.fromString(JsonUtil.getString(json, "processing_type"));
+    obj.processingType = ProcessingType.fromString(JsonUtil.getString(jsonObj, "processing_type"));
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.redirectUrl = JsonUtil.getString(json, "redirect_url");
+    obj.redirectUrl = JsonUtil.getString(jsonObj, "redirect_url");
 
-    obj.failedAt = JsonUtil.getTimestamp(json, "failed_at");
+    obj.failedAt = JsonUtil.getTimestamp(jsonObj, "failed_at");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.completedAt = JsonUtil.getTimestamp(json, "completed_at");
+    obj.completedAt = JsonUtil.getTimestamp(jsonObj, "completed_at");
 
-    String __errorJson = JsonUtil.getObject(json, "error");
-    if (__errorJson != null) {
-      obj.error = Error.fromJson(__errorJson);
+    JsonObject __errorObj = JsonUtil.getJsonObject(jsonObj, "error");
+    if (__errorObj != null) {
+      obj.error = Error.fromJson(__errorObj);
     }
 
     return obj;
@@ -264,11 +269,15 @@ public class OfferFulfillment {
     }
 
     public static Error fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Error fromJson(JsonObject jsonObj) {
       Error obj = new Error();
 
-      obj.code = Code.fromString(JsonUtil.getString(json, "code"));
+      obj.code = Code.fromString(JsonUtil.getString(jsonObj, "code"));
 
-      obj.message = JsonUtil.getString(json, "message");
+      obj.message = JsonUtil.getString(jsonObj, "message");
 
       return obj;
     }

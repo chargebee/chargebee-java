@@ -2,6 +2,7 @@ package com.chargebee.v4.models.pc2MigrationItem.responses;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -25,9 +26,10 @@ public final class Pc2MigrationItemDeleteResponse extends BaseResponse {
   /** Parse JSON response into Pc2MigrationItemDeleteResponse object with HTTP response. */
   public static Pc2MigrationItemDeleteResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      builder.isDeleted(JsonUtil.getBoolean(json, "is_deleted"));
+      builder.isDeleted(JsonUtil.getBoolean(jsonObj, "is_deleted"));
 
       builder.httpResponse(httpResponse);
       return builder.build();

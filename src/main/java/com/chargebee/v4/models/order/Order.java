@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.order;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
@@ -508,141 +509,139 @@ public class Order {
   }
 
   public static Order fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Order fromJson(JsonObject jsonObj) {
     Order obj = new Order();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.documentNumber = JsonUtil.getString(json, "document_number");
+    obj.documentNumber = JsonUtil.getString(jsonObj, "document_number");
 
-    obj.invoiceId = JsonUtil.getString(json, "invoice_id");
+    obj.invoiceId = JsonUtil.getString(jsonObj, "invoice_id");
 
-    obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
     obj.cancellationReason =
-        CancellationReason.fromString(JsonUtil.getString(json, "cancellation_reason"));
+        CancellationReason.fromString(JsonUtil.getString(jsonObj, "cancellation_reason"));
 
-    obj.paymentStatus = PaymentStatus.fromString(JsonUtil.getString(json, "payment_status"));
+    obj.paymentStatus = PaymentStatus.fromString(JsonUtil.getString(jsonObj, "payment_status"));
 
-    obj.orderType = OrderType.fromString(JsonUtil.getString(json, "order_type"));
+    obj.orderType = OrderType.fromString(JsonUtil.getString(jsonObj, "order_type"));
 
-    obj.priceType = PriceType.fromString(JsonUtil.getString(json, "price_type"));
+    obj.priceType = PriceType.fromString(JsonUtil.getString(jsonObj, "price_type"));
 
-    obj.referenceId = JsonUtil.getString(json, "reference_id");
+    obj.referenceId = JsonUtil.getString(jsonObj, "reference_id");
 
-    obj.fulfillmentStatus = JsonUtil.getString(json, "fulfillment_status");
+    obj.fulfillmentStatus = JsonUtil.getString(jsonObj, "fulfillment_status");
 
-    obj.orderDate = JsonUtil.getTimestamp(json, "order_date");
+    obj.orderDate = JsonUtil.getTimestamp(jsonObj, "order_date");
 
-    obj.shippingDate = JsonUtil.getTimestamp(json, "shipping_date");
+    obj.shippingDate = JsonUtil.getTimestamp(jsonObj, "shipping_date");
 
-    obj.note = JsonUtil.getString(json, "note");
+    obj.note = JsonUtil.getString(jsonObj, "note");
 
-    obj.trackingId = JsonUtil.getString(json, "tracking_id");
+    obj.trackingId = JsonUtil.getString(jsonObj, "tracking_id");
 
-    obj.trackingUrl = JsonUtil.getString(json, "tracking_url");
+    obj.trackingUrl = JsonUtil.getString(jsonObj, "tracking_url");
 
-    obj.batchId = JsonUtil.getString(json, "batch_id");
+    obj.batchId = JsonUtil.getString(jsonObj, "batch_id");
 
-    obj.createdBy = JsonUtil.getString(json, "created_by");
+    obj.createdBy = JsonUtil.getString(jsonObj, "created_by");
 
-    obj.shipmentCarrier = JsonUtil.getString(json, "shipment_carrier");
+    obj.shipmentCarrier = JsonUtil.getString(jsonObj, "shipment_carrier");
 
-    obj.invoiceRoundOffAmount = JsonUtil.getLong(json, "invoice_round_off_amount");
+    obj.invoiceRoundOffAmount = JsonUtil.getLong(jsonObj, "invoice_round_off_amount");
 
-    obj.tax = JsonUtil.getLong(json, "tax");
+    obj.tax = JsonUtil.getLong(jsonObj, "tax");
 
-    obj.amountPaid = JsonUtil.getLong(json, "amount_paid");
+    obj.amountPaid = JsonUtil.getLong(jsonObj, "amount_paid");
 
-    obj.amountAdjusted = JsonUtil.getLong(json, "amount_adjusted");
+    obj.amountAdjusted = JsonUtil.getLong(jsonObj, "amount_adjusted");
 
-    obj.refundableCreditsIssued = JsonUtil.getLong(json, "refundable_credits_issued");
+    obj.refundableCreditsIssued = JsonUtil.getLong(jsonObj, "refundable_credits_issued");
 
-    obj.refundableCredits = JsonUtil.getLong(json, "refundable_credits");
+    obj.refundableCredits = JsonUtil.getLong(jsonObj, "refundable_credits");
 
-    obj.roundingAdjustement = JsonUtil.getLong(json, "rounding_adjustement");
+    obj.roundingAdjustement = JsonUtil.getLong(jsonObj, "rounding_adjustement");
 
-    obj.paidOn = JsonUtil.getTimestamp(json, "paid_on");
+    obj.paidOn = JsonUtil.getTimestamp(jsonObj, "paid_on");
 
-    obj.shippingCutOffDate = JsonUtil.getTimestamp(json, "shipping_cut_off_date");
+    obj.shippingCutOffDate = JsonUtil.getTimestamp(jsonObj, "shipping_cut_off_date");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.statusUpdateAt = JsonUtil.getTimestamp(json, "status_update_at");
+    obj.statusUpdateAt = JsonUtil.getTimestamp(jsonObj, "status_update_at");
 
-    obj.deliveredAt = JsonUtil.getTimestamp(json, "delivered_at");
+    obj.deliveredAt = JsonUtil.getTimestamp(jsonObj, "delivered_at");
 
-    obj.shippedAt = JsonUtil.getTimestamp(json, "shipped_at");
+    obj.shippedAt = JsonUtil.getTimestamp(jsonObj, "shipped_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.cancelledAt = JsonUtil.getTimestamp(json, "cancelled_at");
+    obj.cancelledAt = JsonUtil.getTimestamp(jsonObj, "cancelled_at");
 
-    obj.resentStatus = ResentStatus.fromString(JsonUtil.getString(json, "resent_status"));
+    obj.resentStatus = ResentStatus.fromString(JsonUtil.getString(jsonObj, "resent_status"));
 
-    obj.isResent = JsonUtil.getBoolean(json, "is_resent");
+    obj.isResent = JsonUtil.getBoolean(jsonObj, "is_resent");
 
-    obj.originalOrderId = JsonUtil.getString(json, "original_order_id");
+    obj.originalOrderId = JsonUtil.getString(jsonObj, "original_order_id");
 
-    obj.discount = JsonUtil.getLong(json, "discount");
+    obj.discount = JsonUtil.getLong(jsonObj, "discount");
 
-    obj.subTotal = JsonUtil.getLong(json, "sub_total");
+    obj.subTotal = JsonUtil.getLong(jsonObj, "sub_total");
 
-    obj.total = JsonUtil.getLong(json, "total");
+    obj.total = JsonUtil.getLong(jsonObj, "total");
 
-    obj.deleted = JsonUtil.getBoolean(json, "deleted");
+    obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
 
-    obj.currencyCode = JsonUtil.getString(json, "currency_code");
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-    obj.isGifted = JsonUtil.getBoolean(json, "is_gifted");
+    obj.isGifted = JsonUtil.getBoolean(jsonObj, "is_gifted");
 
-    obj.giftNote = JsonUtil.getString(json, "gift_note");
+    obj.giftNote = JsonUtil.getString(jsonObj, "gift_note");
 
-    obj.giftId = JsonUtil.getString(json, "gift_id");
+    obj.giftId = JsonUtil.getString(jsonObj, "gift_id");
 
-    obj.resendReason = JsonUtil.getString(json, "resend_reason");
+    obj.resendReason = JsonUtil.getString(jsonObj, "resend_reason");
 
-    obj.businessEntityId = JsonUtil.getString(json, "business_entity_id");
+    obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
     obj.orderLineItems =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "order_line_items")).stream()
-            .map(OrderLineItems::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "order_line_items"), OrderLineItems::fromJson);
 
-    String __shippingAddressJson = JsonUtil.getObject(json, "shipping_address");
-    if (__shippingAddressJson != null) {
-      obj.shippingAddress = ShippingAddress.fromJson(__shippingAddressJson);
+    JsonObject __shippingAddressObj = JsonUtil.getJsonObject(jsonObj, "shipping_address");
+    if (__shippingAddressObj != null) {
+      obj.shippingAddress = ShippingAddress.fromJson(__shippingAddressObj);
     }
 
-    String __billingAddressJson = JsonUtil.getObject(json, "billing_address");
-    if (__billingAddressJson != null) {
-      obj.billingAddress = BillingAddress.fromJson(__billingAddressJson);
+    JsonObject __billingAddressObj = JsonUtil.getJsonObject(jsonObj, "billing_address");
+    if (__billingAddressObj != null) {
+      obj.billingAddress = BillingAddress.fromJson(__billingAddressObj);
     }
 
     obj.lineItemTaxes =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "line_item_taxes")).stream()
-            .map(LineItemTaxes::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "line_item_taxes"), LineItemTaxes::fromJson);
 
     obj.lineItemDiscounts =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "line_item_discounts")).stream()
-            .map(LineItemDiscounts::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "line_item_discounts"), LineItemDiscounts::fromJson);
 
     obj.linkedCreditNotes =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "linked_credit_notes")).stream()
-            .map(LinkedCreditNotes::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "linked_credit_notes"), LinkedCreditNotes::fromJson);
 
     obj.resentOrders =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "resent_orders")).stream()
-            .map(ResentOrders::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "resent_orders"), ResentOrders::fromJson);
 
     return obj;
   }
@@ -1073,47 +1072,51 @@ public class Order {
     }
 
     public static OrderLineItems fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static OrderLineItems fromJson(JsonObject jsonObj) {
       OrderLineItems obj = new OrderLineItems();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.invoiceId = JsonUtil.getString(json, "invoice_id");
+      obj.invoiceId = JsonUtil.getString(jsonObj, "invoice_id");
 
-      obj.invoiceLineItemId = JsonUtil.getString(json, "invoice_line_item_id");
+      obj.invoiceLineItemId = JsonUtil.getString(jsonObj, "invoice_line_item_id");
 
-      obj.unitPrice = JsonUtil.getLong(json, "unit_price");
+      obj.unitPrice = JsonUtil.getLong(jsonObj, "unit_price");
 
-      obj.description = JsonUtil.getString(json, "description");
+      obj.description = JsonUtil.getString(jsonObj, "description");
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-      obj.fulfillmentQuantity = JsonUtil.getInteger(json, "fulfillment_quantity");
+      obj.fulfillmentQuantity = JsonUtil.getInteger(jsonObj, "fulfillment_quantity");
 
-      obj.fulfillmentAmount = JsonUtil.getLong(json, "fulfillment_amount");
+      obj.fulfillmentAmount = JsonUtil.getLong(jsonObj, "fulfillment_amount");
 
-      obj.taxAmount = JsonUtil.getLong(json, "tax_amount");
+      obj.taxAmount = JsonUtil.getLong(jsonObj, "tax_amount");
 
-      obj.amountPaid = JsonUtil.getLong(json, "amount_paid");
+      obj.amountPaid = JsonUtil.getLong(jsonObj, "amount_paid");
 
-      obj.amountAdjusted = JsonUtil.getLong(json, "amount_adjusted");
+      obj.amountAdjusted = JsonUtil.getLong(jsonObj, "amount_adjusted");
 
-      obj.refundableCreditsIssued = JsonUtil.getLong(json, "refundable_credits_issued");
+      obj.refundableCreditsIssued = JsonUtil.getLong(jsonObj, "refundable_credits_issued");
 
-      obj.refundableCredits = JsonUtil.getLong(json, "refundable_credits");
+      obj.refundableCredits = JsonUtil.getLong(jsonObj, "refundable_credits");
 
-      obj.isShippable = JsonUtil.getBoolean(json, "is_shippable");
+      obj.isShippable = JsonUtil.getBoolean(jsonObj, "is_shippable");
 
-      obj.sku = JsonUtil.getString(json, "sku");
+      obj.sku = JsonUtil.getString(jsonObj, "sku");
 
-      obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+      obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-      obj.entityType = EntityType.fromString(JsonUtil.getString(json, "entity_type"));
+      obj.entityType = EntityType.fromString(JsonUtil.getString(jsonObj, "entity_type"));
 
-      obj.itemLevelDiscountAmount = JsonUtil.getLong(json, "item_level_discount_amount");
+      obj.itemLevelDiscountAmount = JsonUtil.getLong(jsonObj, "item_level_discount_amount");
 
-      obj.discountAmount = JsonUtil.getLong(json, "discount_amount");
+      obj.discountAmount = JsonUtil.getLong(jsonObj, "discount_amount");
 
-      obj.entityId = JsonUtil.getString(json, "entity_id");
+      obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
 
       return obj;
     }
@@ -1325,36 +1328,40 @@ public class Order {
     }
 
     public static ShippingAddress fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ShippingAddress fromJson(JsonObject jsonObj) {
       ShippingAddress obj = new ShippingAddress();
 
-      obj.firstName = JsonUtil.getString(json, "first_name");
+      obj.firstName = JsonUtil.getString(jsonObj, "first_name");
 
-      obj.lastName = JsonUtil.getString(json, "last_name");
+      obj.lastName = JsonUtil.getString(jsonObj, "last_name");
 
-      obj.email = JsonUtil.getString(json, "email");
+      obj.email = JsonUtil.getString(jsonObj, "email");
 
-      obj.company = JsonUtil.getString(json, "company");
+      obj.company = JsonUtil.getString(jsonObj, "company");
 
-      obj.phone = JsonUtil.getString(json, "phone");
+      obj.phone = JsonUtil.getString(jsonObj, "phone");
 
-      obj.line1 = JsonUtil.getString(json, "line1");
+      obj.line1 = JsonUtil.getString(jsonObj, "line1");
 
-      obj.line2 = JsonUtil.getString(json, "line2");
+      obj.line2 = JsonUtil.getString(jsonObj, "line2");
 
-      obj.line3 = JsonUtil.getString(json, "line3");
+      obj.line3 = JsonUtil.getString(jsonObj, "line3");
 
-      obj.city = JsonUtil.getString(json, "city");
+      obj.city = JsonUtil.getString(jsonObj, "city");
 
-      obj.stateCode = JsonUtil.getString(json, "state_code");
+      obj.stateCode = JsonUtil.getString(jsonObj, "state_code");
 
-      obj.state = JsonUtil.getString(json, "state");
+      obj.state = JsonUtil.getString(jsonObj, "state");
 
-      obj.country = JsonUtil.getString(json, "country");
+      obj.country = JsonUtil.getString(jsonObj, "country");
 
-      obj.zip = JsonUtil.getString(json, "zip");
+      obj.zip = JsonUtil.getString(jsonObj, "zip");
 
       obj.validationStatus =
-          ValidationStatus.fromString(JsonUtil.getString(json, "validation_status"));
+          ValidationStatus.fromString(JsonUtil.getString(jsonObj, "validation_status"));
 
       return obj;
     }
@@ -1542,36 +1549,40 @@ public class Order {
     }
 
     public static BillingAddress fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static BillingAddress fromJson(JsonObject jsonObj) {
       BillingAddress obj = new BillingAddress();
 
-      obj.firstName = JsonUtil.getString(json, "first_name");
+      obj.firstName = JsonUtil.getString(jsonObj, "first_name");
 
-      obj.lastName = JsonUtil.getString(json, "last_name");
+      obj.lastName = JsonUtil.getString(jsonObj, "last_name");
 
-      obj.email = JsonUtil.getString(json, "email");
+      obj.email = JsonUtil.getString(jsonObj, "email");
 
-      obj.company = JsonUtil.getString(json, "company");
+      obj.company = JsonUtil.getString(jsonObj, "company");
 
-      obj.phone = JsonUtil.getString(json, "phone");
+      obj.phone = JsonUtil.getString(jsonObj, "phone");
 
-      obj.line1 = JsonUtil.getString(json, "line1");
+      obj.line1 = JsonUtil.getString(jsonObj, "line1");
 
-      obj.line2 = JsonUtil.getString(json, "line2");
+      obj.line2 = JsonUtil.getString(jsonObj, "line2");
 
-      obj.line3 = JsonUtil.getString(json, "line3");
+      obj.line3 = JsonUtil.getString(jsonObj, "line3");
 
-      obj.city = JsonUtil.getString(json, "city");
+      obj.city = JsonUtil.getString(jsonObj, "city");
 
-      obj.stateCode = JsonUtil.getString(json, "state_code");
+      obj.stateCode = JsonUtil.getString(jsonObj, "state_code");
 
-      obj.state = JsonUtil.getString(json, "state");
+      obj.state = JsonUtil.getString(jsonObj, "state");
 
-      obj.country = JsonUtil.getString(json, "country");
+      obj.country = JsonUtil.getString(jsonObj, "country");
 
-      obj.zip = JsonUtil.getString(json, "zip");
+      obj.zip = JsonUtil.getString(jsonObj, "zip");
 
       obj.validationStatus =
-          ValidationStatus.fromString(JsonUtil.getString(json, "validation_status"));
+          ValidationStatus.fromString(JsonUtil.getString(jsonObj, "validation_status"));
 
       return obj;
     }
@@ -1772,37 +1783,41 @@ public class Order {
     }
 
     public static LineItemTaxes fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LineItemTaxes fromJson(JsonObject jsonObj) {
       LineItemTaxes obj = new LineItemTaxes();
 
-      obj.lineItemId = JsonUtil.getString(json, "line_item_id");
+      obj.lineItemId = JsonUtil.getString(jsonObj, "line_item_id");
 
-      obj.taxName = JsonUtil.getString(json, "tax_name");
+      obj.taxName = JsonUtil.getString(jsonObj, "tax_name");
 
-      obj.taxRate = JsonUtil.getDouble(json, "tax_rate");
+      obj.taxRate = JsonUtil.getDouble(jsonObj, "tax_rate");
 
-      obj.dateTo = JsonUtil.getTimestamp(json, "date_to");
+      obj.dateTo = JsonUtil.getTimestamp(jsonObj, "date_to");
 
-      obj.dateFrom = JsonUtil.getTimestamp(json, "date_from");
+      obj.dateFrom = JsonUtil.getTimestamp(jsonObj, "date_from");
 
-      obj.proratedTaxableAmount = JsonUtil.getBigDecimal(json, "prorated_taxable_amount");
+      obj.proratedTaxableAmount = JsonUtil.getBigDecimal(jsonObj, "prorated_taxable_amount");
 
-      obj.isPartialTaxApplied = JsonUtil.getBoolean(json, "is_partial_tax_applied");
+      obj.isPartialTaxApplied = JsonUtil.getBoolean(jsonObj, "is_partial_tax_applied");
 
-      obj.isNonComplianceTax = JsonUtil.getBoolean(json, "is_non_compliance_tax");
+      obj.isNonComplianceTax = JsonUtil.getBoolean(jsonObj, "is_non_compliance_tax");
 
-      obj.taxableAmount = JsonUtil.getLong(json, "taxable_amount");
+      obj.taxableAmount = JsonUtil.getLong(jsonObj, "taxable_amount");
 
-      obj.taxAmount = JsonUtil.getLong(json, "tax_amount");
+      obj.taxAmount = JsonUtil.getLong(jsonObj, "tax_amount");
 
-      obj.taxJurisType = TaxJurisType.fromString(JsonUtil.getString(json, "tax_juris_type"));
+      obj.taxJurisType = TaxJurisType.fromString(JsonUtil.getString(jsonObj, "tax_juris_type"));
 
-      obj.taxJurisName = JsonUtil.getString(json, "tax_juris_name");
+      obj.taxJurisName = JsonUtil.getString(jsonObj, "tax_juris_name");
 
-      obj.taxJurisCode = JsonUtil.getString(json, "tax_juris_code");
+      obj.taxJurisCode = JsonUtil.getString(jsonObj, "tax_juris_code");
 
-      obj.taxAmountInLocalCurrency = JsonUtil.getLong(json, "tax_amount_in_local_currency");
+      obj.taxAmountInLocalCurrency = JsonUtil.getLong(jsonObj, "tax_amount_in_local_currency");
 
-      obj.localCurrencyCode = JsonUtil.getString(json, "local_currency_code");
+      obj.localCurrencyCode = JsonUtil.getString(jsonObj, "local_currency_code");
 
       return obj;
     }
@@ -1956,17 +1971,21 @@ public class Order {
     }
 
     public static LineItemDiscounts fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LineItemDiscounts fromJson(JsonObject jsonObj) {
       LineItemDiscounts obj = new LineItemDiscounts();
 
-      obj.lineItemId = JsonUtil.getString(json, "line_item_id");
+      obj.lineItemId = JsonUtil.getString(jsonObj, "line_item_id");
 
-      obj.discountType = DiscountType.fromString(JsonUtil.getString(json, "discount_type"));
+      obj.discountType = DiscountType.fromString(JsonUtil.getString(jsonObj, "discount_type"));
 
-      obj.couponId = JsonUtil.getString(json, "coupon_id");
+      obj.couponId = JsonUtil.getString(jsonObj, "coupon_id");
 
-      obj.entityId = JsonUtil.getString(json, "entity_id");
+      obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
 
-      obj.discountAmount = JsonUtil.getLong(json, "discount_amount");
+      obj.discountAmount = JsonUtil.getLong(jsonObj, "discount_amount");
 
       return obj;
     }
@@ -2103,19 +2122,23 @@ public class Order {
     }
 
     public static LinkedCreditNotes fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedCreditNotes fromJson(JsonObject jsonObj) {
       LinkedCreditNotes obj = new LinkedCreditNotes();
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-      obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+      obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+      obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-      obj.amountAdjusted = JsonUtil.getLong(json, "amount_adjusted");
+      obj.amountAdjusted = JsonUtil.getLong(jsonObj, "amount_adjusted");
 
-      obj.amountRefunded = JsonUtil.getLong(json, "amount_refunded");
+      obj.amountRefunded = JsonUtil.getLong(jsonObj, "amount_refunded");
 
       return obj;
     }
@@ -2178,13 +2201,17 @@ public class Order {
     }
 
     public static ResentOrders fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ResentOrders fromJson(JsonObject jsonObj) {
       ResentOrders obj = new ResentOrders();
 
-      obj.orderId = JsonUtil.getString(json, "order_id");
+      obj.orderId = JsonUtil.getString(jsonObj, "order_id");
 
-      obj.reason = JsonUtil.getString(json, "reason");
+      obj.reason = JsonUtil.getString(jsonObj, "reason");
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
       return obj;
     }

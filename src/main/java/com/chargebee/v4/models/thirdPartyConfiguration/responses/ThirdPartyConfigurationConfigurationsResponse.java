@@ -4,6 +4,7 @@ import com.chargebee.v4.models.thirdPartyConfiguration.ThirdPartyConfiguration;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -31,12 +32,14 @@ public final class ThirdPartyConfigurationConfigurationsResponse extends BaseRes
   public static ThirdPartyConfigurationConfigurationsResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __thirdPartyConfigurationJson = JsonUtil.getObject(json, "third_party_configuration");
-      if (__thirdPartyConfigurationJson != null) {
+      JsonObject __thirdPartyConfigurationObj =
+          JsonUtil.getJsonObject(jsonObj, "third_party_configuration");
+      if (__thirdPartyConfigurationObj != null) {
         builder.thirdPartyConfiguration(
-            ThirdPartyConfiguration.fromJson(__thirdPartyConfigurationJson));
+            ThirdPartyConfiguration.fromJson(__thirdPartyConfigurationObj));
       }
 
       builder.httpResponse(httpResponse);

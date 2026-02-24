@@ -6,6 +6,7 @@ import com.chargebee.v4.models.webhookEndpoint.WebhookEndpoint;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.WebhookEndpointService;
 import com.chargebee.v4.models.webhookEndpoint.params.WebhookEndpointListParams;
@@ -43,13 +44,13 @@ public final class WebhookEndpointListResponse {
    */
   public static WebhookEndpointListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<WebhookEndpointListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(WebhookEndpointListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), WebhookEndpointListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new WebhookEndpointListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +68,13 @@ public final class WebhookEndpointListResponse {
       WebhookEndpointListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<WebhookEndpointListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(WebhookEndpointListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), WebhookEndpointListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new WebhookEndpointListResponse(
           list, nextOffset, service, originalParams, httpResponse);
@@ -174,11 +175,15 @@ public final class WebhookEndpointListResponse {
     }
 
     public static WebhookEndpointListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static WebhookEndpointListItem fromJson(JsonObject jsonObj) {
       WebhookEndpointListItem item = new WebhookEndpointListItem();
 
-      String __webhookEndpointJson = JsonUtil.getObject(json, "webhook_endpoint");
-      if (__webhookEndpointJson != null) {
-        item.webhookEndpoint = WebhookEndpoint.fromJson(__webhookEndpointJson);
+      JsonObject __webhookEndpointObj = JsonUtil.getJsonObject(jsonObj, "webhook_endpoint");
+      if (__webhookEndpointObj != null) {
+        item.webhookEndpoint = WebhookEndpoint.fromJson(__webhookEndpointObj);
       }
 
       return item;

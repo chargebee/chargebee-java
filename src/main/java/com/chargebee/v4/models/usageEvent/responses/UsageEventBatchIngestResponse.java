@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -31,17 +32,13 @@ public final class UsageEventBatchIngestResponse extends BaseResponse {
   /** Parse JSON response into UsageEventBatchIngestResponse object with HTTP response. */
   public static UsageEventBatchIngestResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      builder.batchId(JsonUtil.getString(json, "batch_id"));
+      builder.batchId(JsonUtil.getString(jsonObj, "batch_id"));
 
-      String __failedEventsJson = JsonUtil.getArray(json, "failed_events);");
-      if (__failedEventsJson != null) {
-        builder.failedEvents(
-            JsonUtil.parseObjectArray(__failedEventsJson).stream()
-                .map(JsonUtil::parseJsonObjectToMap)
-                .collect(java.util.stream.Collectors.toList()));
-      }
+      builder.failedEvents(
+          JsonUtil.mapArrayToObjects(JsonUtil.getJsonArray(jsonObj, "failed_events")));
 
       builder.httpResponse(httpResponse);
       return builder.build();

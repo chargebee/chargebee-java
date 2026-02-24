@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.billingConfiguration;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -25,14 +26,16 @@ public class BillingConfiguration {
   }
 
   public static BillingConfiguration fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static BillingConfiguration fromJson(JsonObject jsonObj) {
     BillingConfiguration obj = new BillingConfiguration();
 
-    obj.isCalendarBillingEnabled = JsonUtil.getBoolean(json, "is_calendar_billing_enabled");
+    obj.isCalendarBillingEnabled = JsonUtil.getBoolean(jsonObj, "is_calendar_billing_enabled");
 
     obj.billingDates =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "billing_dates")).stream()
-            .map(BillingDates::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "billing_dates"), BillingDates::fromJson);
 
     return obj;
   }
@@ -77,11 +80,15 @@ public class BillingConfiguration {
     }
 
     public static BillingDates fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static BillingDates fromJson(JsonObject jsonObj) {
       BillingDates obj = new BillingDates();
 
-      obj.startDate = JsonUtil.getTimestamp(json, "start_date");
+      obj.startDate = JsonUtil.getTimestamp(jsonObj, "start_date");
 
-      obj.endDate = JsonUtil.getTimestamp(json, "end_date");
+      obj.endDate = JsonUtil.getTimestamp(jsonObj, "end_date");
 
       return obj;
     }

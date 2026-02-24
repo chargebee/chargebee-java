@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.configuration;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class Configuration {
 
@@ -91,16 +92,20 @@ public class Configuration {
   }
 
   public static Configuration fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Configuration fromJson(JsonObject jsonObj) {
     Configuration obj = new Configuration();
 
-    obj.domain = JsonUtil.getString(json, "domain");
+    obj.domain = JsonUtil.getString(jsonObj, "domain");
 
     obj.productCatalogVersion =
-        ProductCatalogVersion.fromString(JsonUtil.getString(json, "product_catalog_version"));
+        ProductCatalogVersion.fromString(JsonUtil.getString(jsonObj, "product_catalog_version"));
 
     obj.chargebeeResponseSchemaType =
         ChargebeeResponseSchemaType.fromString(
-            JsonUtil.getString(json, "chargebee_response_schema_type"));
+            JsonUtil.getString(jsonObj, "chargebee_response_schema_type"));
 
     return obj;
   }

@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.einvoice;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class Einvoice {
 
@@ -83,15 +84,19 @@ public class Einvoice {
   }
 
   public static Einvoice fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Einvoice fromJson(JsonObject jsonObj) {
     Einvoice obj = new Einvoice();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.referenceNumber = JsonUtil.getString(json, "reference_number");
+    obj.referenceNumber = JsonUtil.getString(jsonObj, "reference_number");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.message = JsonUtil.getString(json, "message");
+    obj.message = JsonUtil.getString(jsonObj, "message");
 
     return obj;
   }

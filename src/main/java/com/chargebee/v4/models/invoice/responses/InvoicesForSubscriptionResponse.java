@@ -6,6 +6,7 @@ import com.chargebee.v4.models.invoice.Invoice;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.InvoiceService;
 import com.chargebee.v4.models.invoice.params.InvoicesForSubscriptionParams;
@@ -50,13 +51,13 @@ public final class InvoicesForSubscriptionResponse {
    */
   public static InvoicesForSubscriptionResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<InvoiceInvoicesForSubscriptionItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(InvoiceInvoicesForSubscriptionItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), InvoiceInvoicesForSubscriptionItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new InvoicesForSubscriptionResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
@@ -75,13 +76,13 @@ public final class InvoicesForSubscriptionResponse {
       String subscriptionId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<InvoiceInvoicesForSubscriptionItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(InvoiceInvoicesForSubscriptionItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), InvoiceInvoicesForSubscriptionItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new InvoicesForSubscriptionResponse(
           list, nextOffset, subscriptionId, service, originalParams, httpResponse);
@@ -184,11 +185,15 @@ public final class InvoicesForSubscriptionResponse {
     }
 
     public static InvoiceInvoicesForSubscriptionItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static InvoiceInvoicesForSubscriptionItem fromJson(JsonObject jsonObj) {
       InvoiceInvoicesForSubscriptionItem item = new InvoiceInvoicesForSubscriptionItem();
 
-      String __invoiceJson = JsonUtil.getObject(json, "invoice");
-      if (__invoiceJson != null) {
-        item.invoice = Invoice.fromJson(__invoiceJson);
+      JsonObject __invoiceObj = JsonUtil.getJsonObject(jsonObj, "invoice");
+      if (__invoiceObj != null) {
+        item.invoice = Invoice.fromJson(__invoiceObj);
       }
 
       return item;

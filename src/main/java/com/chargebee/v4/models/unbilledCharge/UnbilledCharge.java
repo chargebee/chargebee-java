@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.unbilledCharge;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -207,58 +208,59 @@ public class UnbilledCharge {
   }
 
   public static UnbilledCharge fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static UnbilledCharge fromJson(JsonObject jsonObj) {
     UnbilledCharge obj = new UnbilledCharge();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-    obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.dateFrom = JsonUtil.getTimestamp(json, "date_from");
+    obj.dateFrom = JsonUtil.getTimestamp(jsonObj, "date_from");
 
-    obj.dateTo = JsonUtil.getTimestamp(json, "date_to");
+    obj.dateTo = JsonUtil.getTimestamp(jsonObj, "date_to");
 
-    obj.unitAmount = JsonUtil.getLong(json, "unit_amount");
+    obj.unitAmount = JsonUtil.getLong(jsonObj, "unit_amount");
 
-    obj.pricingModel = PricingModel.fromString(JsonUtil.getString(json, "pricing_model"));
+    obj.pricingModel = PricingModel.fromString(JsonUtil.getString(jsonObj, "pricing_model"));
 
-    obj.quantity = JsonUtil.getInteger(json, "quantity");
+    obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
 
-    obj.amount = JsonUtil.getLong(json, "amount");
+    obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-    obj.currencyCode = JsonUtil.getString(json, "currency_code");
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-    obj.discountAmount = JsonUtil.getLong(json, "discount_amount");
+    obj.discountAmount = JsonUtil.getLong(jsonObj, "discount_amount");
 
-    obj.description = JsonUtil.getString(json, "description");
+    obj.description = JsonUtil.getString(jsonObj, "description");
 
-    obj.entityType = EntityType.fromString(JsonUtil.getString(json, "entity_type"));
+    obj.entityType = EntityType.fromString(JsonUtil.getString(jsonObj, "entity_type"));
 
-    obj.entityId = JsonUtil.getString(json, "entity_id");
+    obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
 
-    obj.isVoided = JsonUtil.getBoolean(json, "is_voided");
+    obj.isVoided = JsonUtil.getBoolean(jsonObj, "is_voided");
 
-    obj.voidedAt = JsonUtil.getTimestamp(json, "voided_at");
+    obj.voidedAt = JsonUtil.getTimestamp(jsonObj, "voided_at");
 
-    obj.unitAmountInDecimal = JsonUtil.getString(json, "unit_amount_in_decimal");
+    obj.unitAmountInDecimal = JsonUtil.getString(jsonObj, "unit_amount_in_decimal");
 
-    obj.quantityInDecimal = JsonUtil.getString(json, "quantity_in_decimal");
+    obj.quantityInDecimal = JsonUtil.getString(jsonObj, "quantity_in_decimal");
 
-    obj.amountInDecimal = JsonUtil.getString(json, "amount_in_decimal");
+    obj.amountInDecimal = JsonUtil.getString(jsonObj, "amount_in_decimal");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.isAdvanceCharge = JsonUtil.getBoolean(json, "is_advance_charge");
+    obj.isAdvanceCharge = JsonUtil.getBoolean(jsonObj, "is_advance_charge");
 
-    obj.businessEntityId = JsonUtil.getString(json, "business_entity_id");
+    obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
-    obj.deleted = JsonUtil.getBoolean(json, "deleted");
+    obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
 
-    obj.tiers =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "tiers")).stream()
-            .map(Tiers::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+    obj.tiers = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "tiers"), Tiers::fromJson);
 
     return obj;
   }
@@ -463,27 +465,31 @@ public class UnbilledCharge {
     }
 
     public static Tiers fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Tiers fromJson(JsonObject jsonObj) {
       Tiers obj = new Tiers();
 
-      obj.startingUnit = JsonUtil.getInteger(json, "starting_unit");
+      obj.startingUnit = JsonUtil.getInteger(jsonObj, "starting_unit");
 
-      obj.endingUnit = JsonUtil.getInteger(json, "ending_unit");
+      obj.endingUnit = JsonUtil.getInteger(jsonObj, "ending_unit");
 
-      obj.quantityUsed = JsonUtil.getInteger(json, "quantity_used");
+      obj.quantityUsed = JsonUtil.getInteger(jsonObj, "quantity_used");
 
-      obj.unitAmount = JsonUtil.getLong(json, "unit_amount");
+      obj.unitAmount = JsonUtil.getLong(jsonObj, "unit_amount");
 
-      obj.startingUnitInDecimal = JsonUtil.getString(json, "starting_unit_in_decimal");
+      obj.startingUnitInDecimal = JsonUtil.getString(jsonObj, "starting_unit_in_decimal");
 
-      obj.endingUnitInDecimal = JsonUtil.getString(json, "ending_unit_in_decimal");
+      obj.endingUnitInDecimal = JsonUtil.getString(jsonObj, "ending_unit_in_decimal");
 
-      obj.quantityUsedInDecimal = JsonUtil.getString(json, "quantity_used_in_decimal");
+      obj.quantityUsedInDecimal = JsonUtil.getString(jsonObj, "quantity_used_in_decimal");
 
-      obj.unitAmountInDecimal = JsonUtil.getString(json, "unit_amount_in_decimal");
+      obj.unitAmountInDecimal = JsonUtil.getString(jsonObj, "unit_amount_in_decimal");
 
-      obj.pricingType = PricingType.fromString(JsonUtil.getString(json, "pricing_type"));
+      obj.pricingType = PricingType.fromString(JsonUtil.getString(jsonObj, "pricing_type"));
 
-      obj.packageSize = JsonUtil.getInteger(json, "package_size");
+      obj.packageSize = JsonUtil.getInteger(jsonObj, "package_size");
 
       return obj;
     }

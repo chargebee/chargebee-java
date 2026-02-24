@@ -4,6 +4,7 @@ import com.chargebee.v4.models.export.Export;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /** Immutable response object for ExportItems operation. Contains the response data from the API. */
@@ -24,11 +25,12 @@ public final class ExportItemsResponse extends BaseResponse {
   /** Parse JSON response into ExportItemsResponse object with HTTP response. */
   public static ExportItemsResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __exportJson = JsonUtil.getObject(json, "export");
-      if (__exportJson != null) {
-        builder.export(Export.fromJson(__exportJson));
+      JsonObject __exportObj = JsonUtil.getJsonObject(jsonObj, "export");
+      if (__exportObj != null) {
+        builder.export(Export.fromJson(__exportObj));
       }
 
       builder.httpResponse(httpResponse);

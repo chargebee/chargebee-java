@@ -4,6 +4,7 @@ import com.chargebee.v4.models.differentialPrice.DifferentialPrice;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class DifferentialPriceCreateResponse extends BaseResponse {
   /** Parse JSON response into DifferentialPriceCreateResponse object with HTTP response. */
   public static DifferentialPriceCreateResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __differentialPriceJson = JsonUtil.getObject(json, "differential_price");
-      if (__differentialPriceJson != null) {
-        builder.differentialPrice(DifferentialPrice.fromJson(__differentialPriceJson));
+      JsonObject __differentialPriceObj = JsonUtil.getJsonObject(jsonObj, "differential_price");
+      if (__differentialPriceObj != null) {
+        builder.differentialPrice(DifferentialPrice.fromJson(__differentialPriceObj));
       }
 
       builder.httpResponse(httpResponse);

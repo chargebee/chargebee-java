@@ -4,6 +4,7 @@ import com.chargebee.v4.models.inAppSubscription.InAppSubscription;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -30,11 +31,12 @@ public final class InAppSubscriptionImportSubscriptionResponse extends BaseRespo
   public static InAppSubscriptionImportSubscriptionResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __inAppSubscriptionJson = JsonUtil.getObject(json, "in_app_subscription");
-      if (__inAppSubscriptionJson != null) {
-        builder.inAppSubscription(InAppSubscription.fromJson(__inAppSubscriptionJson));
+      JsonObject __inAppSubscriptionObj = JsonUtil.getJsonObject(jsonObj, "in_app_subscription");
+      if (__inAppSubscriptionObj != null) {
+        builder.inAppSubscription(InAppSubscription.fromJson(__inAppSubscriptionObj));
       }
 
       builder.httpResponse(httpResponse);

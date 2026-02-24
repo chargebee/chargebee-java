@@ -4,6 +4,7 @@ import com.chargebee.v4.models.download.Download;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -26,11 +27,12 @@ public final class CreditNotePdfResponse extends BaseResponse {
   /** Parse JSON response into CreditNotePdfResponse object with HTTP response. */
   public static CreditNotePdfResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __downloadJson = JsonUtil.getObject(json, "download");
-      if (__downloadJson != null) {
-        builder.download(Download.fromJson(__downloadJson));
+      JsonObject __downloadObj = JsonUtil.getJsonObject(jsonObj, "download");
+      if (__downloadObj != null) {
+        builder.download(Download.fromJson(__downloadObj));
       }
 
       builder.httpResponse(httpResponse);

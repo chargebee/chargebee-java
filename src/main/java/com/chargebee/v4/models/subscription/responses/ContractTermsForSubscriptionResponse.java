@@ -6,6 +6,7 @@ import com.chargebee.v4.models.contractTerm.ContractTerm;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.SubscriptionService;
 import com.chargebee.v4.models.subscription.params.ContractTermsForSubscriptionParams;
@@ -51,13 +52,14 @@ public final class ContractTermsForSubscriptionResponse {
    */
   public static ContractTermsForSubscriptionResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<SubscriptionContractTermsForSubscriptionItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(SubscriptionContractTermsForSubscriptionItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              SubscriptionContractTermsForSubscriptionItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ContractTermsForSubscriptionResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
@@ -77,13 +79,14 @@ public final class ContractTermsForSubscriptionResponse {
       String subscriptionId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<SubscriptionContractTermsForSubscriptionItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(SubscriptionContractTermsForSubscriptionItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              SubscriptionContractTermsForSubscriptionItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ContractTermsForSubscriptionResponse(
           list, nextOffset, subscriptionId, service, originalParams, httpResponse);
@@ -192,12 +195,16 @@ public final class ContractTermsForSubscriptionResponse {
     }
 
     public static SubscriptionContractTermsForSubscriptionItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static SubscriptionContractTermsForSubscriptionItem fromJson(JsonObject jsonObj) {
       SubscriptionContractTermsForSubscriptionItem item =
           new SubscriptionContractTermsForSubscriptionItem();
 
-      String __contractTermJson = JsonUtil.getObject(json, "contract_term");
-      if (__contractTermJson != null) {
-        item.contractTerm = ContractTerm.fromJson(__contractTermJson);
+      JsonObject __contractTermObj = JsonUtil.getJsonObject(jsonObj, "contract_term");
+      if (__contractTermObj != null) {
+        item.contractTerm = ContractTerm.fromJson(__contractTermObj);
       }
 
       return item;

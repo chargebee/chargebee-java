@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.recordedPurchase;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -130,39 +131,41 @@ public class RecordedPurchase {
   }
 
   public static RecordedPurchase fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static RecordedPurchase fromJson(JsonObject jsonObj) {
     RecordedPurchase obj = new RecordedPurchase();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-    obj.appId = JsonUtil.getString(json, "app_id");
+    obj.appId = JsonUtil.getString(jsonObj, "app_id");
 
-    obj.source = Source.fromString(JsonUtil.getString(json, "source"));
+    obj.source = Source.fromString(JsonUtil.getString(jsonObj, "source"));
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.omnichannelTransactionId = JsonUtil.getString(json, "omnichannel_transaction_id");
+    obj.omnichannelTransactionId = JsonUtil.getString(jsonObj, "omnichannel_transaction_id");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
     obj.linkedOmnichannelSubscriptions =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "linked_omnichannel_subscriptions"))
-            .stream()
-            .map(LinkedOmnichannelSubscriptions::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "linked_omnichannel_subscriptions"),
+            LinkedOmnichannelSubscriptions::fromJson);
 
     obj.linkedOmnichannelOneTimeOrders =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "linked_omnichannel_one_time_orders"))
-            .stream()
-            .map(LinkedOmnichannelOneTimeOrders::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "linked_omnichannel_one_time_orders"),
+            LinkedOmnichannelOneTimeOrders::fromJson);
 
-    String __errorDetailJson = JsonUtil.getObject(json, "error_detail");
-    if (__errorDetailJson != null) {
-      obj.errorDetail = ErrorDetail.fromJson(__errorDetailJson);
+    JsonObject __errorDetailObj = JsonUtil.getJsonObject(jsonObj, "error_detail");
+    if (__errorDetailObj != null) {
+      obj.errorDetail = ErrorDetail.fromJson(__errorDetailObj);
     }
 
     return obj;
@@ -243,9 +246,13 @@ public class RecordedPurchase {
     }
 
     public static LinkedOmnichannelSubscriptions fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedOmnichannelSubscriptions fromJson(JsonObject jsonObj) {
       LinkedOmnichannelSubscriptions obj = new LinkedOmnichannelSubscriptions();
 
-      obj.omnichannelSubscriptionId = JsonUtil.getString(json, "omnichannel_subscription_id");
+      obj.omnichannelSubscriptionId = JsonUtil.getString(jsonObj, "omnichannel_subscription_id");
 
       return obj;
     }
@@ -283,9 +290,13 @@ public class RecordedPurchase {
     }
 
     public static LinkedOmnichannelOneTimeOrders fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedOmnichannelOneTimeOrders fromJson(JsonObject jsonObj) {
       LinkedOmnichannelOneTimeOrders obj = new LinkedOmnichannelOneTimeOrders();
 
-      obj.omnichannelOneTimeOrderId = JsonUtil.getString(json, "omnichannel_one_time_order_id");
+      obj.omnichannelOneTimeOrderId = JsonUtil.getString(jsonObj, "omnichannel_one_time_order_id");
 
       return obj;
     }
@@ -323,9 +334,13 @@ public class RecordedPurchase {
     }
 
     public static ErrorDetail fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ErrorDetail fromJson(JsonObject jsonObj) {
       ErrorDetail obj = new ErrorDetail();
 
-      obj.errorMessage = JsonUtil.getString(json, "error_message");
+      obj.errorMessage = JsonUtil.getString(jsonObj, "error_message");
 
       return obj;
     }

@@ -6,6 +6,7 @@ import com.chargebee.v4.models.invoice.Invoice;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.InvoiceService;
 import com.chargebee.v4.models.invoice.params.InvoicesForCustomerParams;
@@ -48,13 +49,13 @@ public final class InvoicesForCustomerResponse {
    */
   public static InvoicesForCustomerResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<InvoiceInvoicesForCustomerItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(InvoiceInvoicesForCustomerItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), InvoiceInvoicesForCustomerItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new InvoicesForCustomerResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
@@ -73,13 +74,13 @@ public final class InvoicesForCustomerResponse {
       String customerId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<InvoiceInvoicesForCustomerItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(InvoiceInvoicesForCustomerItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), InvoiceInvoicesForCustomerItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new InvoicesForCustomerResponse(
           list, nextOffset, customerId, service, originalParams, httpResponse);
@@ -180,11 +181,15 @@ public final class InvoicesForCustomerResponse {
     }
 
     public static InvoiceInvoicesForCustomerItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static InvoiceInvoicesForCustomerItem fromJson(JsonObject jsonObj) {
       InvoiceInvoicesForCustomerItem item = new InvoiceInvoicesForCustomerItem();
 
-      String __invoiceJson = JsonUtil.getObject(json, "invoice");
-      if (__invoiceJson != null) {
-        item.invoice = Invoice.fromJson(__invoiceJson);
+      JsonObject __invoiceObj = JsonUtil.getJsonObject(jsonObj, "invoice");
+      if (__invoiceObj != null) {
+        item.invoice = Invoice.fromJson(__invoiceObj);
       }
 
       return item;

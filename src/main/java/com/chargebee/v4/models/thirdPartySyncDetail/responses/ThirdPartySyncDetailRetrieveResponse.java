@@ -4,6 +4,7 @@ import com.chargebee.v4.models.thirdPartySyncDetail.ThirdPartySyncDetail;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,13 @@ public final class ThirdPartySyncDetailRetrieveResponse extends BaseResponse {
   /** Parse JSON response into ThirdPartySyncDetailRetrieveResponse object with HTTP response. */
   public static ThirdPartySyncDetailRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __thirdPartySyncDetailJson = JsonUtil.getObject(json, "third_party_sync_detail");
-      if (__thirdPartySyncDetailJson != null) {
-        builder.thirdPartySyncDetail(ThirdPartySyncDetail.fromJson(__thirdPartySyncDetailJson));
+      JsonObject __thirdPartySyncDetailObj =
+          JsonUtil.getJsonObject(jsonObj, "third_party_sync_detail");
+      if (__thirdPartySyncDetailObj != null) {
+        builder.thirdPartySyncDetail(ThirdPartySyncDetail.fromJson(__thirdPartySyncDetailObj));
       }
 
       builder.httpResponse(httpResponse);

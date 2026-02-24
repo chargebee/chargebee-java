@@ -2,6 +2,7 @@ package com.chargebee.v4.models.additionalBillingLogiq.responses;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -26,9 +27,10 @@ public final class AdditionalBillingLogiqRetrieveResponse extends BaseResponse {
   public static AdditionalBillingLogiqRetrieveResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      builder.additionalBillingLogiq(JsonUtil.getObject(json, "additional_billing_logiq"));
+      builder.additionalBillingLogiq(JsonUtil.getObject(jsonObj, "additional_billing_logiq"));
 
       builder.httpResponse(httpResponse);
       return builder.build();

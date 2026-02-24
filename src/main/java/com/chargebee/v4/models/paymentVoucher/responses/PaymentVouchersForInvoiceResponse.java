@@ -6,6 +6,7 @@ import com.chargebee.v4.models.paymentVoucher.PaymentVoucher;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.PaymentVoucherService;
 import com.chargebee.v4.models.paymentVoucher.params.PaymentVouchersForInvoiceParams;
@@ -50,13 +51,14 @@ public final class PaymentVouchersForInvoiceResponse {
    */
   public static PaymentVouchersForInvoiceResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<PaymentVoucherPaymentVouchersForInvoiceItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(PaymentVoucherPaymentVouchersForInvoiceItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              PaymentVoucherPaymentVouchersForInvoiceItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new PaymentVouchersForInvoiceResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
@@ -75,13 +77,14 @@ public final class PaymentVouchersForInvoiceResponse {
       String invoiceId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<PaymentVoucherPaymentVouchersForInvoiceItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(PaymentVoucherPaymentVouchersForInvoiceItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              PaymentVoucherPaymentVouchersForInvoiceItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new PaymentVouchersForInvoiceResponse(
           list, nextOffset, invoiceId, service, originalParams, httpResponse);
@@ -189,12 +192,16 @@ public final class PaymentVouchersForInvoiceResponse {
     }
 
     public static PaymentVoucherPaymentVouchersForInvoiceItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static PaymentVoucherPaymentVouchersForInvoiceItem fromJson(JsonObject jsonObj) {
       PaymentVoucherPaymentVouchersForInvoiceItem item =
           new PaymentVoucherPaymentVouchersForInvoiceItem();
 
-      String __paymentVoucherJson = JsonUtil.getObject(json, "payment_voucher");
-      if (__paymentVoucherJson != null) {
-        item.paymentVoucher = PaymentVoucher.fromJson(__paymentVoucherJson);
+      JsonObject __paymentVoucherObj = JsonUtil.getJsonObject(jsonObj, "payment_voucher");
+      if (__paymentVoucherObj != null) {
+        item.paymentVoucher = PaymentVoucher.fromJson(__paymentVoucherObj);
       }
 
       return item;

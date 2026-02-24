@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.rule;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class Rule {
@@ -92,27 +93,31 @@ public class Rule {
   }
 
   public static Rule fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Rule fromJson(JsonObject jsonObj) {
     Rule obj = new Rule();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.namespace = JsonUtil.getString(json, "namespace");
+    obj.namespace = JsonUtil.getString(jsonObj, "namespace");
 
-    obj.ruleName = JsonUtil.getString(json, "rule_name");
+    obj.ruleName = JsonUtil.getString(jsonObj, "rule_name");
 
-    obj.ruleOrder = JsonUtil.getInteger(json, "rule_order");
+    obj.ruleOrder = JsonUtil.getInteger(jsonObj, "rule_order");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.conditions = JsonUtil.getString(json, "conditions");
+    obj.conditions = JsonUtil.getString(jsonObj, "conditions");
 
-    obj.outcome = JsonUtil.getString(json, "outcome");
+    obj.outcome = JsonUtil.getString(jsonObj, "outcome");
 
-    obj.deleted = JsonUtil.getBoolean(json, "deleted");
+    obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.modifiedAt = JsonUtil.getTimestamp(json, "modified_at");
+    obj.modifiedAt = JsonUtil.getTimestamp(jsonObj, "modified_at");
 
     return obj;
   }

@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.omnichannelSubscriptionItem;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -233,54 +234,58 @@ public class OmnichannelSubscriptionItem {
   }
 
   public static OmnichannelSubscriptionItem fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static OmnichannelSubscriptionItem fromJson(JsonObject jsonObj) {
     OmnichannelSubscriptionItem obj = new OmnichannelSubscriptionItem();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.itemIdAtSource = JsonUtil.getString(json, "item_id_at_source");
+    obj.itemIdAtSource = JsonUtil.getString(jsonObj, "item_id_at_source");
 
-    obj.itemParentIdAtSource = JsonUtil.getString(json, "item_parent_id_at_source");
+    obj.itemParentIdAtSource = JsonUtil.getString(jsonObj, "item_parent_id_at_source");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.autoRenewStatus = AutoRenewStatus.fromString(JsonUtil.getString(json, "auto_renew_status"));
+    obj.autoRenewStatus =
+        AutoRenewStatus.fromString(JsonUtil.getString(jsonObj, "auto_renew_status"));
 
-    obj.currentTermStart = JsonUtil.getTimestamp(json, "current_term_start");
+    obj.currentTermStart = JsonUtil.getTimestamp(jsonObj, "current_term_start");
 
-    obj.currentTermEnd = JsonUtil.getTimestamp(json, "current_term_end");
+    obj.currentTermEnd = JsonUtil.getTimestamp(jsonObj, "current_term_end");
 
-    obj.expiredAt = JsonUtil.getTimestamp(json, "expired_at");
+    obj.expiredAt = JsonUtil.getTimestamp(jsonObj, "expired_at");
 
     obj.expirationReason =
-        ExpirationReason.fromString(JsonUtil.getString(json, "expiration_reason"));
+        ExpirationReason.fromString(JsonUtil.getString(jsonObj, "expiration_reason"));
 
-    obj.cancelledAt = JsonUtil.getTimestamp(json, "cancelled_at");
+    obj.cancelledAt = JsonUtil.getTimestamp(jsonObj, "cancelled_at");
 
     obj.cancellationReason =
-        CancellationReason.fromString(JsonUtil.getString(json, "cancellation_reason"));
+        CancellationReason.fromString(JsonUtil.getString(jsonObj, "cancellation_reason"));
 
-    obj.gracePeriodExpiresAt = JsonUtil.getTimestamp(json, "grace_period_expires_at");
+    obj.gracePeriodExpiresAt = JsonUtil.getTimestamp(jsonObj, "grace_period_expires_at");
 
-    obj.resumesAt = JsonUtil.getTimestamp(json, "resumes_at");
+    obj.resumesAt = JsonUtil.getTimestamp(jsonObj, "resumes_at");
 
-    obj.hasScheduledChanges = JsonUtil.getBoolean(json, "has_scheduled_changes");
+    obj.hasScheduledChanges = JsonUtil.getBoolean(jsonObj, "has_scheduled_changes");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
     obj.omnichannelSubscriptionItemOffers =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "omnichannel_subscription_item_offers"))
-            .stream()
-            .map(OmnichannelSubscriptionItemOffers::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "omnichannel_subscription_item_offers"),
+            OmnichannelSubscriptionItemOffers::fromJson);
 
-    String __upcomingRenewalJson = JsonUtil.getObject(json, "upcoming_renewal");
-    if (__upcomingRenewalJson != null) {
-      obj.upcomingRenewal = UpcomingRenewal.fromJson(__upcomingRenewalJson);
+    JsonObject __upcomingRenewalObj = JsonUtil.getJsonObject(jsonObj, "upcoming_renewal");
+    if (__upcomingRenewalObj != null) {
+      obj.upcomingRenewal = UpcomingRenewal.fromJson(__upcomingRenewalObj);
     }
 
-    String __linkedItemJson = JsonUtil.getObject(json, "linked_item");
-    if (__linkedItemJson != null) {
-      obj.linkedItem = LinkedItem.fromJson(__linkedItemJson);
+    JsonObject __linkedItemObj = JsonUtil.getJsonObject(jsonObj, "linked_item");
+    if (__linkedItemObj != null) {
+      obj.linkedItem = LinkedItem.fromJson(__linkedItemObj);
     }
 
     return obj;
@@ -548,37 +553,41 @@ public class OmnichannelSubscriptionItem {
     }
 
     public static OmnichannelSubscriptionItemOffers fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static OmnichannelSubscriptionItemOffers fromJson(JsonObject jsonObj) {
       OmnichannelSubscriptionItemOffers obj = new OmnichannelSubscriptionItemOffers();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.offerIdAtSource = JsonUtil.getString(json, "offer_id_at_source");
+      obj.offerIdAtSource = JsonUtil.getString(jsonObj, "offer_id_at_source");
 
-      obj.category = Category.fromString(JsonUtil.getString(json, "category"));
+      obj.category = Category.fromString(JsonUtil.getString(jsonObj, "category"));
 
-      obj.categoryAtSource = JsonUtil.getString(json, "category_at_source");
+      obj.categoryAtSource = JsonUtil.getString(jsonObj, "category_at_source");
 
-      obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+      obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-      obj.typeAtSource = JsonUtil.getString(json, "type_at_source");
+      obj.typeAtSource = JsonUtil.getString(jsonObj, "type_at_source");
 
-      obj.discountType = DiscountType.fromString(JsonUtil.getString(json, "discount_type"));
+      obj.discountType = DiscountType.fromString(JsonUtil.getString(jsonObj, "discount_type"));
 
-      obj.duration = JsonUtil.getString(json, "duration");
+      obj.duration = JsonUtil.getString(jsonObj, "duration");
 
-      obj.percentage = JsonUtil.getDouble(json, "percentage");
+      obj.percentage = JsonUtil.getDouble(jsonObj, "percentage");
 
-      obj.priceCurrency = JsonUtil.getString(json, "price_currency");
+      obj.priceCurrency = JsonUtil.getString(jsonObj, "price_currency");
 
-      obj.priceUnits = JsonUtil.getLong(json, "price_units");
+      obj.priceUnits = JsonUtil.getLong(jsonObj, "price_units");
 
-      obj.priceNanos = JsonUtil.getLong(json, "price_nanos");
+      obj.priceNanos = JsonUtil.getLong(jsonObj, "price_nanos");
 
-      obj.offerTermStart = JsonUtil.getTimestamp(json, "offer_term_start");
+      obj.offerTermStart = JsonUtil.getTimestamp(jsonObj, "offer_term_start");
 
-      obj.offerTermEnd = JsonUtil.getTimestamp(json, "offer_term_end");
+      obj.offerTermEnd = JsonUtil.getTimestamp(jsonObj, "offer_term_end");
 
-      obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+      obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
       return obj;
     }
@@ -683,13 +692,17 @@ public class OmnichannelSubscriptionItem {
     }
 
     public static UpcomingRenewal fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static UpcomingRenewal fromJson(JsonObject jsonObj) {
       UpcomingRenewal obj = new UpcomingRenewal();
 
-      obj.priceCurrency = JsonUtil.getString(json, "price_currency");
+      obj.priceCurrency = JsonUtil.getString(jsonObj, "price_currency");
 
-      obj.priceUnits = JsonUtil.getLong(json, "price_units");
+      obj.priceUnits = JsonUtil.getLong(jsonObj, "price_units");
 
-      obj.priceNanos = JsonUtil.getLong(json, "price_nanos");
+      obj.priceNanos = JsonUtil.getLong(jsonObj, "price_nanos");
 
       return obj;
     }
@@ -738,11 +751,15 @@ public class OmnichannelSubscriptionItem {
     }
 
     public static LinkedItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedItem fromJson(JsonObject jsonObj) {
       LinkedItem obj = new LinkedItem();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.linkedAt = JsonUtil.getTimestamp(json, "linked_at");
+      obj.linkedAt = JsonUtil.getTimestamp(jsonObj, "linked_at");
 
       return obj;
     }

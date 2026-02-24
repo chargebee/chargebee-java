@@ -6,6 +6,7 @@ import com.chargebee.v4.models.entitlement.Entitlement;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -29,12 +30,11 @@ public final class EntitlementCreateResponse extends BaseResponse {
   /** Parse JSON response into EntitlementCreateResponse object with HTTP response. */
   public static EntitlementCreateResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
       builder.list(
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(Entitlement::fromJson)
-              .collect(java.util.stream.Collectors.toList()));
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), Entitlement::fromJson));
 
       builder.httpResponse(httpResponse);
       return builder.build();

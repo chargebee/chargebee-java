@@ -4,6 +4,7 @@ import com.chargebee.v4.models.usageFile.UsageFile;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class UsageFileProcessingStatusResponse extends BaseResponse {
   /** Parse JSON response into UsageFileProcessingStatusResponse object with HTTP response. */
   public static UsageFileProcessingStatusResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __usageFileJson = JsonUtil.getObject(json, "usage_file");
-      if (__usageFileJson != null) {
-        builder.usageFile(UsageFile.fromJson(__usageFileJson));
+      JsonObject __usageFileObj = JsonUtil.getJsonObject(jsonObj, "usage_file");
+      if (__usageFileObj != null) {
+        builder.usageFile(UsageFile.fromJson(__usageFileObj));
       }
 
       builder.httpResponse(httpResponse);

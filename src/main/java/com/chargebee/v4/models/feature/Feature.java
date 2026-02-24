@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.feature;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -149,9 +150,12 @@ public class Feature {
   }
 
   public static Feature fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Feature fromJson(JsonObject jsonObj) {
     Feature obj = new Feature();
 
-    // Parse JSON to extract all keys for custom field extraction
     java.util.Set<String> knownFields = new java.util.HashSet<>();
 
     knownFields.add("id");
@@ -174,63 +178,29 @@ public class Feature {
 
     knownFields.add("levels");
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
-    obj.description = JsonUtil.getString(json, "description");
+    obj.description = JsonUtil.getString(jsonObj, "description");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+    obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-    obj.unit = JsonUtil.getString(json, "unit");
+    obj.unit = JsonUtil.getString(jsonObj, "unit");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.levels =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "levels")).stream()
-            .map(Levels::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+    obj.levels = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "levels"), Levels::fromJson);
 
-    // Extract custom fields (fields starting with cf_)
-    obj.customFields = extractCustomFields(json, knownFields);
+    obj.customFields = JsonUtil.extractCustomFields(jsonObj, knownFields);
 
     return obj;
-  }
-
-  /**
-   * Helper method to extract custom fields from JSON. Custom fields are fields that start with
-   * "cf_" and are not in the known fields set.
-   *
-   * @param json JSON string to parse
-   * @param knownFields set of known field names
-   * @return map of custom fields
-   */
-  private static java.util.Map<String, String> extractCustomFields(
-      String json, java.util.Set<String> knownFields) {
-    java.util.Map<String, String> customFields = new java.util.HashMap<>();
-    try {
-      // Parse the entire JSON as a map
-      java.util.Map<String, Object> allFields = JsonUtil.parseJsonObjectToMap(json);
-      if (allFields != null) {
-        for (java.util.Map.Entry<String, Object> entry : allFields.entrySet()) {
-          String key = entry.getKey();
-          // Include fields that start with "cf_" and are not in knownFields
-          if (key != null && key.startsWith("cf_") && !knownFields.contains(key)) {
-            customFields.put(
-                key, entry.getValue() != null ? String.valueOf(entry.getValue()) : null);
-          }
-        }
-      }
-    } catch (Exception e) {
-      // If parsing fails, return empty map
-    }
-    return customFields;
   }
 
   @Override
@@ -321,15 +291,19 @@ public class Feature {
     }
 
     public static Levels fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Levels fromJson(JsonObject jsonObj) {
       Levels obj = new Levels();
 
-      obj.name = JsonUtil.getString(json, "name");
+      obj.name = JsonUtil.getString(jsonObj, "name");
 
-      obj.value = JsonUtil.getString(json, "value");
+      obj.value = JsonUtil.getString(jsonObj, "value");
 
-      obj.level = JsonUtil.getInteger(json, "level");
+      obj.level = JsonUtil.getInteger(jsonObj, "level");
 
-      obj.isUnlimited = JsonUtil.getBoolean(json, "is_unlimited");
+      obj.isUnlimited = JsonUtil.getBoolean(jsonObj, "is_unlimited");
 
       return obj;
     }

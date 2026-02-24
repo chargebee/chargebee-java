@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.thirdPartyConfiguration;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class ThirdPartyConfiguration {
@@ -34,22 +35,26 @@ public class ThirdPartyConfiguration {
   }
 
   public static ThirdPartyConfiguration fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static ThirdPartyConfiguration fromJson(JsonObject jsonObj) {
     ThirdPartyConfiguration obj = new ThirdPartyConfiguration();
 
-    obj.integrationName = JsonUtil.getString(json, "integration_name");
+    obj.integrationName = JsonUtil.getString(jsonObj, "integration_name");
 
-    obj.lastSyncAt = JsonUtil.getTimestamp(json, "last_sync_at");
+    obj.lastSyncAt = JsonUtil.getTimestamp(jsonObj, "last_sync_at");
 
-    String __configJsonJson = JsonUtil.getObject(json, "config_json");
+    JsonObject __configJsonObj = JsonUtil.getJsonObject(jsonObj, "config_json");
     obj.configJson =
-        __configJsonJson != null
-            ? JsonUtil.parseJsonObjectToMap(__configJsonJson)
+        __configJsonObj != null
+            ? JsonUtil.parseJsonObjectToMap(__configJsonObj)
             : new java.util.HashMap<>();
 
-    String __authJsonJson = JsonUtil.getObject(json, "auth_json");
+    JsonObject __authJsonObj = JsonUtil.getJsonObject(jsonObj, "auth_json");
     obj.authJson =
-        __authJsonJson != null
-            ? JsonUtil.parseJsonObjectToMap(__authJsonJson)
+        __authJsonObj != null
+            ? JsonUtil.parseJsonObjectToMap(__authJsonObj)
             : new java.util.HashMap<>();
 
     return obj;

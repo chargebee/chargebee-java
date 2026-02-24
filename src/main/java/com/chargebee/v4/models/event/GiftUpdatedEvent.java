@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.event;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 import com.chargebee.v4.models.gift.Gift;
 
@@ -55,25 +56,29 @@ public class GiftUpdatedEvent {
   }
 
   public static GiftUpdatedEvent fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static GiftUpdatedEvent fromJson(JsonObject jsonObj) {
     GiftUpdatedEvent obj = new GiftUpdatedEvent();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.occurredAt = JsonUtil.getLong(json, "occurred_at");
+    obj.occurredAt = JsonUtil.getLong(jsonObj, "occurred_at");
 
-    obj.source = JsonUtil.getString(json, "source");
+    obj.source = JsonUtil.getString(jsonObj, "source");
 
-    obj.object = JsonUtil.getString(json, "object");
+    obj.object = JsonUtil.getString(jsonObj, "object");
 
-    obj.apiVersion = JsonUtil.getString(json, "api_version");
+    obj.apiVersion = JsonUtil.getString(jsonObj, "api_version");
 
-    obj.eventType = JsonUtil.getString(json, "event_type");
+    obj.eventType = JsonUtil.getString(jsonObj, "event_type");
 
-    obj.webhookStatus = JsonUtil.getString(json, "webhook_status");
+    obj.webhookStatus = JsonUtil.getString(jsonObj, "webhook_status");
 
-    String __contentJson = JsonUtil.getObject(json, "content");
-    if (__contentJson != null) {
-      obj.content = Content.fromJson(__contentJson);
+    JsonObject __contentObj = JsonUtil.getJsonObject(jsonObj, "content");
+    if (__contentObj != null) {
+      obj.content = Content.fromJson(__contentObj);
     }
 
     return obj;
@@ -133,11 +138,15 @@ public class GiftUpdatedEvent {
     }
 
     public static Content fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(JsonObject jsonObj) {
       Content obj = new Content();
 
-      String __giftJson = JsonUtil.getObject(json, "gift");
-      if (__giftJson != null) {
-        obj.gift = Gift.fromJson(__giftJson);
+      JsonObject __giftObj = JsonUtil.getJsonObject(jsonObj, "gift");
+      if (__giftObj != null) {
+        obj.gift = Gift.fromJson(__giftObj);
       }
 
       return obj;

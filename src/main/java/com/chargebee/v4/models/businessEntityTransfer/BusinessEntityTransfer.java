@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.businessEntityTransfer;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class BusinessEntityTransfer {
@@ -108,23 +109,27 @@ public class BusinessEntityTransfer {
   }
 
   public static BusinessEntityTransfer fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static BusinessEntityTransfer fromJson(JsonObject jsonObj) {
     BusinessEntityTransfer obj = new BusinessEntityTransfer();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.resourceType = ResourceType.fromString(JsonUtil.getString(json, "resource_type"));
+    obj.resourceType = ResourceType.fromString(JsonUtil.getString(jsonObj, "resource_type"));
 
-    obj.resourceId = JsonUtil.getString(json, "resource_id");
+    obj.resourceId = JsonUtil.getString(jsonObj, "resource_id");
 
-    obj.activeResourceId = JsonUtil.getString(json, "active_resource_id");
+    obj.activeResourceId = JsonUtil.getString(jsonObj, "active_resource_id");
 
-    obj.destinationBusinessEntityId = JsonUtil.getString(json, "destination_business_entity_id");
+    obj.destinationBusinessEntityId = JsonUtil.getString(jsonObj, "destination_business_entity_id");
 
-    obj.sourceBusinessEntityId = JsonUtil.getString(json, "source_business_entity_id");
+    obj.sourceBusinessEntityId = JsonUtil.getString(jsonObj, "source_business_entity_id");
 
-    obj.reasonCode = ReasonCode.fromString(JsonUtil.getString(json, "reason_code"));
+    obj.reasonCode = ReasonCode.fromString(JsonUtil.getString(jsonObj, "reason_code"));
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
     return obj;
   }

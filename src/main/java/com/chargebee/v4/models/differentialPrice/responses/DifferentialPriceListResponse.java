@@ -6,6 +6,7 @@ import com.chargebee.v4.models.differentialPrice.DifferentialPrice;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.DifferentialPriceService;
 import com.chargebee.v4.models.differentialPrice.params.DifferentialPriceListParams;
@@ -43,13 +44,13 @@ public final class DifferentialPriceListResponse {
    */
   public static DifferentialPriceListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<DifferentialPriceListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(DifferentialPriceListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), DifferentialPriceListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new DifferentialPriceListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +68,13 @@ public final class DifferentialPriceListResponse {
       DifferentialPriceListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<DifferentialPriceListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(DifferentialPriceListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), DifferentialPriceListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new DifferentialPriceListResponse(
           list, nextOffset, service, originalParams, httpResponse);
@@ -176,11 +177,15 @@ public final class DifferentialPriceListResponse {
     }
 
     public static DifferentialPriceListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static DifferentialPriceListItem fromJson(JsonObject jsonObj) {
       DifferentialPriceListItem item = new DifferentialPriceListItem();
 
-      String __differentialPriceJson = JsonUtil.getObject(json, "differential_price");
-      if (__differentialPriceJson != null) {
-        item.differentialPrice = DifferentialPrice.fromJson(__differentialPriceJson);
+      JsonObject __differentialPriceObj = JsonUtil.getJsonObject(jsonObj, "differential_price");
+      if (__differentialPriceObj != null) {
+        item.differentialPrice = DifferentialPrice.fromJson(__differentialPriceObj);
       }
 
       return item;

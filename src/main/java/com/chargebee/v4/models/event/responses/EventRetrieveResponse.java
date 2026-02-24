@@ -4,6 +4,7 @@ import com.chargebee.v4.models.event.Event;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class EventRetrieveResponse extends BaseResponse {
   /** Parse JSON response into EventRetrieveResponse object with HTTP response. */
   public static EventRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __eventJson = JsonUtil.getObject(json, "event");
-      if (__eventJson != null) {
-        builder.event(Event.fromJson(__eventJson));
+      JsonObject __eventObj = JsonUtil.getJsonObject(jsonObj, "event");
+      if (__eventObj != null) {
+        builder.event(Event.fromJson(__eventObj));
       }
 
       builder.httpResponse(httpResponse);

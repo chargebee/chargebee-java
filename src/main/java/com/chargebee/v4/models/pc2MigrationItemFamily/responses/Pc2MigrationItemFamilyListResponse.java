@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.Pc2MigrationItemFamilyService;
 import com.chargebee.v4.models.pc2MigrationItemFamily.params.Pc2MigrationItemFamilyListParams;
@@ -43,13 +44,12 @@ public final class Pc2MigrationItemFamilyListResponse {
    */
   public static Pc2MigrationItemFamilyListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<java.util.Map<String, Object>> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(JsonUtil::parseJsonObjectToMap)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArrayToMaps(JsonUtil.getJsonArray(jsonObj, "list"));
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new Pc2MigrationItemFamilyListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +67,12 @@ public final class Pc2MigrationItemFamilyListResponse {
       Pc2MigrationItemFamilyListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<java.util.Map<String, Object>> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(JsonUtil::parseJsonObjectToMap)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArrayToMaps(JsonUtil.getJsonArray(jsonObj, "list"));
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new Pc2MigrationItemFamilyListResponse(
           list, nextOffset, service, originalParams, httpResponse);

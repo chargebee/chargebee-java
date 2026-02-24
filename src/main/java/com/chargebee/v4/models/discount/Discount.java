@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.discount;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class Discount {
@@ -224,43 +225,47 @@ public class Discount {
   }
 
   public static Discount fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Discount fromJson(JsonObject jsonObj) {
     Discount obj = new Discount();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.invoiceName = JsonUtil.getString(json, "invoice_name");
+    obj.invoiceName = JsonUtil.getString(jsonObj, "invoice_name");
 
-    obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+    obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-    obj.percentage = JsonUtil.getDouble(json, "percentage");
+    obj.percentage = JsonUtil.getDouble(jsonObj, "percentage");
 
-    obj.amount = JsonUtil.getLong(json, "amount");
+    obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-    obj.quantity = JsonUtil.getInteger(json, "quantity");
+    obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
 
-    obj.currencyCode = JsonUtil.getString(json, "currency_code");
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-    obj.durationType = DurationType.fromString(JsonUtil.getString(json, "duration_type"));
+    obj.durationType = DurationType.fromString(JsonUtil.getString(jsonObj, "duration_type"));
 
-    obj.period = JsonUtil.getInteger(json, "period");
+    obj.period = JsonUtil.getInteger(jsonObj, "period");
 
-    obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(json, "period_unit"));
+    obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(jsonObj, "period_unit"));
 
-    obj.includedInMrr = JsonUtil.getBoolean(json, "included_in_mrr");
+    obj.includedInMrr = JsonUtil.getBoolean(jsonObj, "included_in_mrr");
 
-    obj.applyOn = ApplyOn.fromString(JsonUtil.getString(json, "apply_on"));
+    obj.applyOn = ApplyOn.fromString(JsonUtil.getString(jsonObj, "apply_on"));
 
-    obj.itemPriceId = JsonUtil.getString(json, "item_price_id");
+    obj.itemPriceId = JsonUtil.getString(jsonObj, "item_price_id");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.applyTill = JsonUtil.getTimestamp(json, "apply_till");
+    obj.applyTill = JsonUtil.getTimestamp(jsonObj, "apply_till");
 
-    obj.appliedCount = JsonUtil.getInteger(json, "applied_count");
+    obj.appliedCount = JsonUtil.getInteger(jsonObj, "applied_count");
 
-    obj.couponId = JsonUtil.getString(json, "coupon_id");
+    obj.couponId = JsonUtil.getString(jsonObj, "coupon_id");
 
-    obj.index = JsonUtil.getInteger(json, "index");
+    obj.index = JsonUtil.getInteger(jsonObj, "index");
 
     return obj;
   }

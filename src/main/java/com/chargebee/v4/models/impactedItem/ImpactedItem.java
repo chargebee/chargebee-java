@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.impactedItem;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -30,21 +31,19 @@ public class ImpactedItem {
   }
 
   public static ImpactedItem fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static ImpactedItem fromJson(JsonObject jsonObj) {
     ImpactedItem obj = new ImpactedItem();
 
-    obj.count = JsonUtil.getInteger(json, "count");
+    obj.count = JsonUtil.getInteger(jsonObj, "count");
 
-    String __itemsJson = JsonUtil.getArray(json, "items");
-    obj.items =
-        __itemsJson != null
-            ? JsonUtil.parseObjectArray(__itemsJson).stream()
-                .map(JsonUtil::parseJsonObjectToMap)
-                .collect(java.util.stream.Collectors.toList())
-            : null;
+    obj.items = JsonUtil.mapArrayToObjects(JsonUtil.getJsonArray(jsonObj, "items"));
 
-    String __downloadJson = JsonUtil.getObject(json, "download");
-    if (__downloadJson != null) {
-      obj.download = Download.fromJson(__downloadJson);
+    JsonObject __downloadObj = JsonUtil.getJsonObject(jsonObj, "download");
+    if (__downloadObj != null) {
+      obj.download = Download.fromJson(__downloadObj);
     }
 
     return obj;
@@ -91,13 +90,17 @@ public class ImpactedItem {
     }
 
     public static Download fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Download fromJson(JsonObject jsonObj) {
       Download obj = new Download();
 
-      obj.downloadUrl = JsonUtil.getString(json, "download_url");
+      obj.downloadUrl = JsonUtil.getString(jsonObj, "download_url");
 
-      obj.validTill = JsonUtil.getTimestamp(json, "valid_till");
+      obj.validTill = JsonUtil.getTimestamp(jsonObj, "valid_till");
 
-      obj.mimeType = JsonUtil.getString(json, "mime_type");
+      obj.mimeType = JsonUtil.getString(jsonObj, "mime_type");
 
       return obj;
     }

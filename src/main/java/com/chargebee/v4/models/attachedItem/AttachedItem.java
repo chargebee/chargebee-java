@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.attachedItem;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class AttachedItem {
@@ -220,39 +221,43 @@ public class AttachedItem {
   }
 
   public static AttachedItem fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static AttachedItem fromJson(JsonObject jsonObj) {
     AttachedItem obj = new AttachedItem();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.parentItemId = JsonUtil.getString(json, "parent_item_id");
+    obj.parentItemId = JsonUtil.getString(jsonObj, "parent_item_id");
 
-    obj.itemId = JsonUtil.getString(json, "item_id");
+    obj.itemId = JsonUtil.getString(jsonObj, "item_id");
 
-    obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+    obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.quantity = JsonUtil.getInteger(json, "quantity");
+    obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
 
-    obj.quantityInDecimal = JsonUtil.getString(json, "quantity_in_decimal");
+    obj.quantityInDecimal = JsonUtil.getString(jsonObj, "quantity_in_decimal");
 
-    obj.billingCycles = JsonUtil.getInteger(json, "billing_cycles");
+    obj.billingCycles = JsonUtil.getInteger(jsonObj, "billing_cycles");
 
-    obj.chargeOnEvent = ChargeOnEvent.fromString(JsonUtil.getString(json, "charge_on_event"));
+    obj.chargeOnEvent = ChargeOnEvent.fromString(JsonUtil.getString(jsonObj, "charge_on_event"));
 
-    obj.chargeOnce = JsonUtil.getBoolean(json, "charge_once");
+    obj.chargeOnce = JsonUtil.getBoolean(jsonObj, "charge_once");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.channel = Channel.fromString(JsonUtil.getString(json, "channel"));
+    obj.channel = Channel.fromString(JsonUtil.getString(jsonObj, "channel"));
 
-    obj.businessEntityId = JsonUtil.getString(json, "business_entity_id");
+    obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
-    obj.deleted = JsonUtil.getBoolean(json, "deleted");
+    obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
 
     return obj;
   }

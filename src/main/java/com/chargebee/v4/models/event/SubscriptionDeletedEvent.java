@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.event;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 import com.chargebee.v4.models.customer.Customer;
 
@@ -61,25 +62,29 @@ public class SubscriptionDeletedEvent {
   }
 
   public static SubscriptionDeletedEvent fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static SubscriptionDeletedEvent fromJson(JsonObject jsonObj) {
     SubscriptionDeletedEvent obj = new SubscriptionDeletedEvent();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.occurredAt = JsonUtil.getLong(json, "occurred_at");
+    obj.occurredAt = JsonUtil.getLong(jsonObj, "occurred_at");
 
-    obj.source = JsonUtil.getString(json, "source");
+    obj.source = JsonUtil.getString(jsonObj, "source");
 
-    obj.object = JsonUtil.getString(json, "object");
+    obj.object = JsonUtil.getString(jsonObj, "object");
 
-    obj.apiVersion = JsonUtil.getString(json, "api_version");
+    obj.apiVersion = JsonUtil.getString(jsonObj, "api_version");
 
-    obj.eventType = JsonUtil.getString(json, "event_type");
+    obj.eventType = JsonUtil.getString(jsonObj, "event_type");
 
-    obj.webhookStatus = JsonUtil.getString(json, "webhook_status");
+    obj.webhookStatus = JsonUtil.getString(jsonObj, "webhook_status");
 
-    String __contentJson = JsonUtil.getObject(json, "content");
-    if (__contentJson != null) {
-      obj.content = Content.fromJson(__contentJson);
+    JsonObject __contentObj = JsonUtil.getJsonObject(jsonObj, "content");
+    if (__contentObj != null) {
+      obj.content = Content.fromJson(__contentObj);
     }
 
     return obj;
@@ -154,26 +159,31 @@ public class SubscriptionDeletedEvent {
     }
 
     public static Content fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(JsonObject jsonObj) {
       Content obj = new Content();
 
-      String __subscriptionJson = JsonUtil.getObject(json, "subscription");
-      if (__subscriptionJson != null) {
-        obj.subscription = Subscription.fromJson(__subscriptionJson);
+      JsonObject __subscriptionObj = JsonUtil.getJsonObject(jsonObj, "subscription");
+      if (__subscriptionObj != null) {
+        obj.subscription = Subscription.fromJson(__subscriptionObj);
       }
 
-      String __customerJson = JsonUtil.getObject(json, "customer");
-      if (__customerJson != null) {
-        obj.customer = Customer.fromJson(__customerJson);
+      JsonObject __customerObj = JsonUtil.getJsonObject(jsonObj, "customer");
+      if (__customerObj != null) {
+        obj.customer = Customer.fromJson(__customerObj);
       }
 
-      String __cardJson = JsonUtil.getObject(json, "card");
-      if (__cardJson != null) {
-        obj.card = Card.fromJson(__cardJson);
+      JsonObject __cardObj = JsonUtil.getJsonObject(jsonObj, "card");
+      if (__cardObj != null) {
+        obj.card = Card.fromJson(__cardObj);
       }
 
-      String __advanceInvoiceScheduleJson = JsonUtil.getObject(json, "advance_invoice_schedule");
-      if (__advanceInvoiceScheduleJson != null) {
-        obj.advanceInvoiceSchedule = AdvanceInvoiceSchedule.fromJson(__advanceInvoiceScheduleJson);
+      JsonObject __advanceInvoiceScheduleObj =
+          JsonUtil.getJsonObject(jsonObj, "advance_invoice_schedule");
+      if (__advanceInvoiceScheduleObj != null) {
+        obj.advanceInvoiceSchedule = AdvanceInvoiceSchedule.fromJson(__advanceInvoiceScheduleObj);
       }
 
       return obj;

@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.tpSiteUser;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class TpSiteUser {
 
@@ -28,13 +29,17 @@ public class TpSiteUser {
   }
 
   public static TpSiteUser fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static TpSiteUser fromJson(JsonObject jsonObj) {
     TpSiteUser obj = new TpSiteUser();
 
-    obj.hostedPageToken = JsonUtil.getString(json, "hosted_page_token");
+    obj.hostedPageToken = JsonUtil.getString(jsonObj, "hosted_page_token");
 
-    obj.email = JsonUtil.getString(json, "email");
+    obj.email = JsonUtil.getString(jsonObj, "email");
 
-    obj.domain = JsonUtil.getString(json, "domain");
+    obj.domain = JsonUtil.getString(jsonObj, "domain");
 
     return obj;
   }

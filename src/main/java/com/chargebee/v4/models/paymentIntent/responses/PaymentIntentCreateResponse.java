@@ -4,6 +4,7 @@ import com.chargebee.v4.models.paymentIntent.PaymentIntent;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class PaymentIntentCreateResponse extends BaseResponse {
   /** Parse JSON response into PaymentIntentCreateResponse object with HTTP response. */
   public static PaymentIntentCreateResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __paymentIntentJson = JsonUtil.getObject(json, "payment_intent");
-      if (__paymentIntentJson != null) {
-        builder.paymentIntent(PaymentIntent.fromJson(__paymentIntentJson));
+      JsonObject __paymentIntentObj = JsonUtil.getJsonObject(jsonObj, "payment_intent");
+      if (__paymentIntentObj != null) {
+        builder.paymentIntent(PaymentIntent.fromJson(__paymentIntentObj));
       }
 
       builder.httpResponse(httpResponse);

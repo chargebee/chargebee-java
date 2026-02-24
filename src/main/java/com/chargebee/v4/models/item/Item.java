@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.item;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
@@ -331,9 +332,12 @@ public class Item {
   }
 
   public static Item fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Item fromJson(JsonObject jsonObj) {
     Item obj = new Item();
 
-    // Parse JSON to extract all keys for custom field extraction
     java.util.Set<String> knownFields = new java.util.HashSet<>();
 
     knownFields.add("id");
@@ -394,113 +398,79 @@ public class Item {
 
     knownFields.add("bundle_configuration");
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
-    obj.externalName = JsonUtil.getString(json, "external_name");
+    obj.externalName = JsonUtil.getString(jsonObj, "external_name");
 
-    obj.description = JsonUtil.getString(json, "description");
+    obj.description = JsonUtil.getString(jsonObj, "description");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.itemFamilyId = JsonUtil.getString(json, "item_family_id");
+    obj.itemFamilyId = JsonUtil.getString(jsonObj, "item_family_id");
 
-    obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+    obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-    obj.isShippable = JsonUtil.getBoolean(json, "is_shippable");
+    obj.isShippable = JsonUtil.getBoolean(jsonObj, "is_shippable");
 
-    obj.isGiftable = JsonUtil.getBoolean(json, "is_giftable");
+    obj.isGiftable = JsonUtil.getBoolean(jsonObj, "is_giftable");
 
-    obj.redirectUrl = JsonUtil.getString(json, "redirect_url");
+    obj.redirectUrl = JsonUtil.getString(jsonObj, "redirect_url");
 
-    obj.enabledForCheckout = JsonUtil.getBoolean(json, "enabled_for_checkout");
+    obj.enabledForCheckout = JsonUtil.getBoolean(jsonObj, "enabled_for_checkout");
 
-    obj.enabledInPortal = JsonUtil.getBoolean(json, "enabled_in_portal");
+    obj.enabledInPortal = JsonUtil.getBoolean(jsonObj, "enabled_in_portal");
 
-    obj.includedInMrr = JsonUtil.getBoolean(json, "included_in_mrr");
+    obj.includedInMrr = JsonUtil.getBoolean(jsonObj, "included_in_mrr");
 
     obj.itemApplicability =
-        ItemApplicability.fromString(JsonUtil.getString(json, "item_applicability"));
+        ItemApplicability.fromString(JsonUtil.getString(jsonObj, "item_applicability"));
 
-    obj.giftClaimRedirectUrl = JsonUtil.getString(json, "gift_claim_redirect_url");
+    obj.giftClaimRedirectUrl = JsonUtil.getString(jsonObj, "gift_claim_redirect_url");
 
-    obj.unit = JsonUtil.getString(json, "unit");
+    obj.unit = JsonUtil.getString(jsonObj, "unit");
 
-    obj.metered = JsonUtil.getBoolean(json, "metered");
+    obj.metered = JsonUtil.getBoolean(jsonObj, "metered");
 
     obj.usageCalculation =
-        UsageCalculation.fromString(JsonUtil.getString(json, "usage_calculation"));
+        UsageCalculation.fromString(JsonUtil.getString(jsonObj, "usage_calculation"));
 
-    obj.isPercentagePricing = JsonUtil.getBoolean(json, "is_percentage_pricing");
+    obj.isPercentagePricing = JsonUtil.getBoolean(jsonObj, "is_percentage_pricing");
 
-    obj.archivedAt = JsonUtil.getTimestamp(json, "archived_at");
+    obj.archivedAt = JsonUtil.getTimestamp(jsonObj, "archived_at");
 
-    obj.channel = Channel.fromString(JsonUtil.getString(json, "channel"));
+    obj.channel = Channel.fromString(JsonUtil.getString(jsonObj, "channel"));
 
-    String __metadataJson = JsonUtil.getObject(json, "metadata");
+    JsonObject __metadataObj = JsonUtil.getJsonObject(jsonObj, "metadata");
     obj.metadata =
-        __metadataJson != null
-            ? JsonUtil.parseJsonObjectToMap(__metadataJson)
+        __metadataObj != null
+            ? JsonUtil.parseJsonObjectToMap(__metadataObj)
             : new java.util.HashMap<>();
 
-    obj.deleted = JsonUtil.getBoolean(json, "deleted");
+    obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
 
-    obj.businessEntityId = JsonUtil.getString(json, "business_entity_id");
+    obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
     obj.applicableItems =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "applicable_items")).stream()
-            .map(ApplicableItems::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "applicable_items"), ApplicableItems::fromJson);
 
     obj.bundleItems =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "bundle_items")).stream()
-            .map(BundleItems::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "bundle_items"), BundleItems::fromJson);
 
-    String __bundleConfigurationJson = JsonUtil.getObject(json, "bundle_configuration");
-    if (__bundleConfigurationJson != null) {
-      obj.bundleConfiguration = BundleConfiguration.fromJson(__bundleConfigurationJson);
+    JsonObject __bundleConfigurationObj = JsonUtil.getJsonObject(jsonObj, "bundle_configuration");
+    if (__bundleConfigurationObj != null) {
+      obj.bundleConfiguration = BundleConfiguration.fromJson(__bundleConfigurationObj);
     }
 
-    // Extract custom fields (fields starting with cf_)
-    obj.customFields = extractCustomFields(json, knownFields);
+    obj.customFields = JsonUtil.extractCustomFields(jsonObj, knownFields);
 
     return obj;
-  }
-
-  /**
-   * Helper method to extract custom fields from JSON. Custom fields are fields that start with
-   * "cf_" and are not in the known fields set.
-   *
-   * @param json JSON string to parse
-   * @param knownFields set of known field names
-   * @return map of custom fields
-   */
-  private static java.util.Map<String, String> extractCustomFields(
-      String json, java.util.Set<String> knownFields) {
-    java.util.Map<String, String> customFields = new java.util.HashMap<>();
-    try {
-      // Parse the entire JSON as a map
-      java.util.Map<String, Object> allFields = JsonUtil.parseJsonObjectToMap(json);
-      if (allFields != null) {
-        for (java.util.Map.Entry<String, Object> entry : allFields.entrySet()) {
-          String key = entry.getKey();
-          // Include fields that start with "cf_" and are not in knownFields
-          if (key != null && key.startsWith("cf_") && !knownFields.contains(key)) {
-            customFields.put(
-                key, entry.getValue() != null ? String.valueOf(entry.getValue()) : null);
-          }
-        }
-      }
-    } catch (Exception e) {
-      // If parsing fails, return empty map
-    }
-    return customFields;
   }
 
   @Override
@@ -652,9 +622,13 @@ public class Item {
     }
 
     public static ApplicableItems fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ApplicableItems fromJson(JsonObject jsonObj) {
       ApplicableItems obj = new ApplicableItems();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
       return obj;
     }
@@ -734,15 +708,19 @@ public class Item {
     }
 
     public static BundleItems fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static BundleItems fromJson(JsonObject jsonObj) {
       BundleItems obj = new BundleItems();
 
-      obj.itemId = JsonUtil.getString(json, "item_id");
+      obj.itemId = JsonUtil.getString(jsonObj, "item_id");
 
-      obj.itemType = ItemType.fromString(JsonUtil.getString(json, "item_type"));
+      obj.itemType = ItemType.fromString(JsonUtil.getString(jsonObj, "item_type"));
 
-      obj.quantity = JsonUtil.getInteger(json, "quantity");
+      obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
 
-      obj.priceAllocation = JsonUtil.getBigDecimal(json, "price_allocation");
+      obj.priceAllocation = JsonUtil.getBigDecimal(jsonObj, "price_allocation");
 
       return obj;
     }
@@ -815,9 +793,13 @@ public class Item {
     }
 
     public static BundleConfiguration fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static BundleConfiguration fromJson(JsonObject jsonObj) {
       BundleConfiguration obj = new BundleConfiguration();
 
-      obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+      obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
       return obj;
     }

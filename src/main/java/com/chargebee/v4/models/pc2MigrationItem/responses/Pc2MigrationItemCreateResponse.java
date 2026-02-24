@@ -1,6 +1,8 @@
 package com.chargebee.v4.models.pc2MigrationItem.responses;
 
 import com.chargebee.v4.models.BaseResponse;
+import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -21,6 +23,7 @@ public final class Pc2MigrationItemCreateResponse extends BaseResponse {
   /** Parse JSON response into Pc2MigrationItemCreateResponse object with HTTP response. */
   public static Pc2MigrationItemCreateResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
       builder.httpResponse(httpResponse);

@@ -8,6 +8,7 @@ import com.chargebee.v4.models.quotedSubscription.QuotedSubscription;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -42,21 +43,22 @@ public final class EditUpdateSubscriptionQuoteForItemsResponse extends BaseRespo
   public static EditUpdateSubscriptionQuoteForItemsResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __quoteJson = JsonUtil.getObject(json, "quote");
-      if (__quoteJson != null) {
-        builder.quote(Quote.fromJson(__quoteJson));
+      JsonObject __quoteObj = JsonUtil.getJsonObject(jsonObj, "quote");
+      if (__quoteObj != null) {
+        builder.quote(Quote.fromJson(__quoteObj));
       }
 
-      String __quotedSubscriptionJson = JsonUtil.getObject(json, "quoted_subscription");
-      if (__quotedSubscriptionJson != null) {
-        builder.quotedSubscription(QuotedSubscription.fromJson(__quotedSubscriptionJson));
+      JsonObject __quotedSubscriptionObj = JsonUtil.getJsonObject(jsonObj, "quoted_subscription");
+      if (__quotedSubscriptionObj != null) {
+        builder.quotedSubscription(QuotedSubscription.fromJson(__quotedSubscriptionObj));
       }
 
-      String __quotedRampJson = JsonUtil.getObject(json, "quoted_ramp");
-      if (__quotedRampJson != null) {
-        builder.quotedRamp(QuotedRamp.fromJson(__quotedRampJson));
+      JsonObject __quotedRampObj = JsonUtil.getJsonObject(jsonObj, "quoted_ramp");
+      if (__quotedRampObj != null) {
+        builder.quotedRamp(QuotedRamp.fromJson(__quotedRampObj));
       }
 
       builder.httpResponse(httpResponse);

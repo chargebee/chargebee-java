@@ -4,6 +4,7 @@ import com.chargebee.v4.models.plan.Plan;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class PlanRetrieveResponse extends BaseResponse {
   /** Parse JSON response into PlanRetrieveResponse object with HTTP response. */
   public static PlanRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __planJson = JsonUtil.getObject(json, "plan");
-      if (__planJson != null) {
-        builder.plan(Plan.fromJson(__planJson));
+      JsonObject __planObj = JsonUtil.getJsonObject(jsonObj, "plan");
+      if (__planObj != null) {
+        builder.plan(Plan.fromJson(__planObj));
       }
 
       builder.httpResponse(httpResponse);

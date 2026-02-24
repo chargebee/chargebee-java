@@ -4,6 +4,7 @@ import com.chargebee.v4.models.thirdPartyPaymentMethod.ThirdPartyPaymentMethod;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,12 +28,14 @@ public final class ExportPaymentSourceResponse extends BaseResponse {
   /** Parse JSON response into ExportPaymentSourceResponse object with HTTP response. */
   public static ExportPaymentSourceResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __thirdPartyPaymentMethodJson = JsonUtil.getObject(json, "third_party_payment_method");
-      if (__thirdPartyPaymentMethodJson != null) {
+      JsonObject __thirdPartyPaymentMethodObj =
+          JsonUtil.getJsonObject(jsonObj, "third_party_payment_method");
+      if (__thirdPartyPaymentMethodObj != null) {
         builder.thirdPartyPaymentMethod(
-            ThirdPartyPaymentMethod.fromJson(__thirdPartyPaymentMethodJson));
+            ThirdPartyPaymentMethod.fromJson(__thirdPartyPaymentMethodObj));
       }
 
       builder.httpResponse(httpResponse);

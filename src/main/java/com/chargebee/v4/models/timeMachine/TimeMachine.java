@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.timeMachine;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class TimeMachine {
@@ -81,22 +82,26 @@ public class TimeMachine {
   }
 
   public static TimeMachine fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static TimeMachine fromJson(JsonObject jsonObj) {
     TimeMachine obj = new TimeMachine();
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
     obj.timeTravelStatus =
-        TimeTravelStatus.fromString(JsonUtil.getString(json, "time_travel_status"));
+        TimeTravelStatus.fromString(JsonUtil.getString(jsonObj, "time_travel_status"));
 
-    obj.genesisTime = JsonUtil.getTimestamp(json, "genesis_time");
+    obj.genesisTime = JsonUtil.getTimestamp(jsonObj, "genesis_time");
 
-    obj.destinationTime = JsonUtil.getTimestamp(json, "destination_time");
+    obj.destinationTime = JsonUtil.getTimestamp(jsonObj, "destination_time");
 
-    obj.failureCode = JsonUtil.getString(json, "failure_code");
+    obj.failureCode = JsonUtil.getString(jsonObj, "failure_code");
 
-    obj.failureReason = JsonUtil.getString(json, "failure_reason");
+    obj.failureReason = JsonUtil.getString(jsonObj, "failure_reason");
 
-    obj.errorJson = JsonUtil.getString(json, "error_json");
+    obj.errorJson = JsonUtil.getString(jsonObj, "error_json");
 
     return obj;
   }

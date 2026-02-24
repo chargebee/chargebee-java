@@ -6,6 +6,7 @@ import com.chargebee.v4.models.ramp.Ramp;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.RampService;
 import com.chargebee.v4.models.ramp.params.RampListParams;
@@ -43,13 +44,12 @@ public final class RampListResponse {
    */
   public static RampListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<RampListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(RampListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), RampListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new RampListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -64,13 +64,12 @@ public final class RampListResponse {
   public static RampListResponse fromJson(
       String json, RampService service, RampListParams originalParams, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<RampListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(RampListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), RampListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new RampListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -170,11 +169,15 @@ public final class RampListResponse {
     }
 
     public static RampListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static RampListItem fromJson(JsonObject jsonObj) {
       RampListItem item = new RampListItem();
 
-      String __rampJson = JsonUtil.getObject(json, "ramp");
-      if (__rampJson != null) {
-        item.ramp = Ramp.fromJson(__rampJson);
+      JsonObject __rampObj = JsonUtil.getJsonObject(jsonObj, "ramp");
+      if (__rampObj != null) {
+        item.ramp = Ramp.fromJson(__rampObj);
       }
 
       return item;

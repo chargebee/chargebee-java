@@ -4,6 +4,7 @@ import com.chargebee.v4.models.portalSession.PortalSession;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class PortalSessionCreateResponse extends BaseResponse {
   /** Parse JSON response into PortalSessionCreateResponse object with HTTP response. */
   public static PortalSessionCreateResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __portalSessionJson = JsonUtil.getObject(json, "portal_session");
-      if (__portalSessionJson != null) {
-        builder.portalSession(PortalSession.fromJson(__portalSessionJson));
+      JsonObject __portalSessionObj = JsonUtil.getJsonObject(jsonObj, "portal_session");
+      if (__portalSessionObj != null) {
+        builder.portalSession(PortalSession.fromJson(__portalSessionObj));
       }
 
       builder.httpResponse(httpResponse);

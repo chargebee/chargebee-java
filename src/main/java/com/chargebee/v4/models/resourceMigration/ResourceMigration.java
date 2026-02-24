@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.resourceMigration;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class ResourceMigration {
@@ -105,21 +106,25 @@ public class ResourceMigration {
   }
 
   public static ResourceMigration fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static ResourceMigration fromJson(JsonObject jsonObj) {
     ResourceMigration obj = new ResourceMigration();
 
-    obj.fromSite = JsonUtil.getString(json, "from_site");
+    obj.fromSite = JsonUtil.getString(jsonObj, "from_site");
 
-    obj.entityType = EntityType.fromString(JsonUtil.getString(json, "entity_type"));
+    obj.entityType = EntityType.fromString(JsonUtil.getString(jsonObj, "entity_type"));
 
-    obj.entityId = JsonUtil.getString(json, "entity_id");
+    obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.errors = JsonUtil.getString(json, "errors");
+    obj.errors = JsonUtil.getString(jsonObj, "errors");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
     return obj;
   }

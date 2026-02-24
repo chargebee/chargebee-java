@@ -6,6 +6,7 @@ import com.chargebee.v4.models.omnichannelSubscriptionItemScheduledChange.Omnich
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.OmnichannelSubscriptionItemService;
 import com.chargebee.v4.models.omnichannelSubscriptionItem.params.OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesParams;
@@ -54,13 +55,14 @@ public final class OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleCh
   public static OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse fromJson(
       String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse(
           list, nextOffset, null, null, null, null);
@@ -83,13 +85,14 @@ public final class OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleCh
       String omnichannelSubscriptionItemId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse(
           list, nextOffset, omnichannelSubscriptionItemId, service, originalParams, httpResponse);
@@ -205,15 +208,20 @@ public final class OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleCh
 
     public static OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem fromJson(
         String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem fromJson(
+        JsonObject jsonObj) {
       OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem item =
           new OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem();
 
-      String __omnichannelSubscriptionItemScheduledChangeJson =
-          JsonUtil.getObject(json, "omnichannel_subscription_item_scheduled_change");
-      if (__omnichannelSubscriptionItemScheduledChangeJson != null) {
+      JsonObject __omnichannelSubscriptionItemScheduledChangeObj =
+          JsonUtil.getJsonObject(jsonObj, "omnichannel_subscription_item_scheduled_change");
+      if (__omnichannelSubscriptionItemScheduledChangeObj != null) {
         item.omnichannelSubscriptionItemScheduledChange =
             OmnichannelSubscriptionItemScheduledChange.fromJson(
-                __omnichannelSubscriptionItemScheduledChangeJson);
+                __omnichannelSubscriptionItemScheduledChangeObj);
       }
 
       return item;
