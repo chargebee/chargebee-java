@@ -6,6 +6,7 @@ import com.chargebee.v4.models.event.Event;
 import com.chargebee.v4.models.event.Event.*;
 import com.chargebee.v4.models.invoice.Invoice;
 import com.chargebee.v4.models.subscription.Subscription;
+import com.google.gson.JsonObject;
 import org.junit.jupiter.api.*;
 
 import java.io.IOException;
@@ -28,9 +29,10 @@ class EventParserTest {
             assertNotNull(is, "fixtures/events.json not found on classpath");
             raw = new String(is.readAllBytes(), StandardCharsets.UTF_8);
         }
-        String eventJson = JsonUtil.getObject(raw, "event");
-        assertNotNull(eventJson, "could not extract 'event' wrapper from fixture");
-        event = Event.fromJson(eventJson);
+        JsonObject root = JsonUtil.parse(raw);
+        JsonObject eventObj = JsonUtil.getJsonObject(root, "event");
+        assertNotNull(eventObj, "could not extract 'event' wrapper from fixture");
+        event = Event.fromJson(eventObj);
     }
 
     @Nested

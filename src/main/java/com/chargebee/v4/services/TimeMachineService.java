@@ -289,8 +289,9 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
 
     if (timeMachine.getTimeTravelStatus() == TimeTravelStatus.FAILED) {
       String errorJson = timeMachine.getErrorJson();
-      int httpStatusCode = JsonUtil.getInteger(errorJson, "http_code");
-      String exceptionMessage = JsonUtil.getString(errorJson, "message");
+      com.google.gson.JsonObject errorObj = JsonUtil.parse(errorJson);
+      int httpStatusCode = JsonUtil.getInteger(errorObj, "http_code");
+      String exceptionMessage = JsonUtil.getString(errorObj, "message");
       throw new OperationFailedException(
           httpStatusCode,
           "operation_failed",

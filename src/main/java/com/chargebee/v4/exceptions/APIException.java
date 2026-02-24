@@ -9,6 +9,8 @@ import com.chargebee.v4.exceptions.codes.ApiErrorCode;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Request;
 import com.chargebee.v4.transport.Response;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -229,11 +231,12 @@ public class APIException extends HttpException {
   private List<String> extractParams(String jsonResponse) {
     List<String> paramsList = new ArrayList<>();
     if (jsonResponse != null) {
-      String param = JsonUtil.getString(jsonResponse, "param");
+      JsonObject obj = JsonUtil.parse(jsonResponse);
+      String param = JsonUtil.getString(obj, "param");
       if (param != null) {
         paramsList.add(param);
       } else {
-        String paramArray = JsonUtil.getArray(jsonResponse, "param");
+        JsonArray paramArray = JsonUtil.getJsonArray(obj, "param");
         if (paramArray != null) {
           paramsList.addAll(JsonUtil.parseArrayOfString(paramArray));
         }
@@ -245,7 +248,7 @@ public class APIException extends HttpException {
   /** Extract error_cause_id from error response. */
   private String extractErrorCauseId(String jsonResponse) {
     if (jsonResponse != null) {
-      return JsonUtil.getString(jsonResponse, "error_cause_id");
+      return JsonUtil.getString(JsonUtil.parse(jsonResponse), "error_cause_id");
     }
     return null;
   }

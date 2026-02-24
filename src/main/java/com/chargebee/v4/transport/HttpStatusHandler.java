@@ -8,6 +8,7 @@ package com.chargebee.v4.transport;
 import com.chargebee.v4.exceptions.*;
 import com.chargebee.v4.exceptions.codes.*;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 /**
  * Utility class for handling HTTP status codes and creating appropriate exceptions. This handler
@@ -36,12 +37,13 @@ public final class HttpStatusHandler {
 
     String body = response.getBodyAsString();
     if (body != null && !body.trim().isEmpty() && body.trim().startsWith("{")) {
-      boolean hasType = JsonUtil.hasValue(body, "type");
-      boolean hasMessage = JsonUtil.hasValue(body, "message");
-      boolean hasApiErrorCode = JsonUtil.hasValue(body, "api_error_code");
+      JsonObject errorObj = JsonUtil.parse(body);
+      boolean hasType = JsonUtil.hasValue(errorObj, "type");
+      boolean hasMessage = JsonUtil.hasValue(errorObj, "message");
+      boolean hasApiErrorCode = JsonUtil.hasValue(errorObj, "api_error_code");
 
       if (hasType || (hasMessage && hasApiErrorCode)) {
-        throwAPIException(statusCode, body, request, response);
+        throwAPIException(statusCode, errorObj, body, request, response);
         return;
       }
     }
@@ -57,10 +59,11 @@ public final class HttpStatusHandler {
 
   /** Throw appropriate API exception based on error type in JSON response. */
   private static void throwAPIException(
-      int statusCode, String jsonResponse, Request request, Response response) throws APIException {
-    String type = JsonUtil.getString(jsonResponse, "type");
-    String apiErrorCodeStr = JsonUtil.getString(jsonResponse, "api_error_code");
-    String message = JsonUtil.getString(jsonResponse, "message");
+      int statusCode, JsonObject errorObj, String jsonResponse, Request request, Response response)
+      throws APIException {
+    String type = JsonUtil.getString(errorObj, "type");
+    String apiErrorCodeStr = JsonUtil.getString(errorObj, "api_error_code");
+    String message = JsonUtil.getString(errorObj, "message");
     if (message == null) {
       message = "API Error";
     }
@@ -179,15 +182,13 @@ public final class HttpStatusHandler {
       return null;
     }
 
+    JsonObject errorObj = JsonUtil.parse(body);
     String[] possibleFields = {"message", "error", "error_description", "detail"};
 
     for (String field : possibleFields) {
-      String pattern = "\"" + field + "\"\\s*:\\s*\"([^\"]+)\"";
-      java.util.regex.Pattern regex =
-          java.util.regex.Pattern.compile(pattern, java.util.regex.Pattern.CASE_INSENSITIVE);
-      java.util.regex.Matcher matcher = regex.matcher(body);
-      if (matcher.find()) {
-        return matcher.group(1);
+      String value = JsonUtil.getString(errorObj, field);
+      if (value != null && !value.isEmpty()) {
+        return value;
       }
     }
 

@@ -1,779 +1,376 @@
 package com.chargebee.v4.internal;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
+
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
 
-/**
- * Simple JSON parsing utility for basic response parsing.
- * Avoids heavy dependencies while providing essential JSON functionality.
- */
+/** Gson-backed JSON parsing utility. */
 public class JsonUtil {
-            
-    /**
-     * Extract string value from JSON for a given key.
-     */
-    public static String getString(String json, String key) {
-        if (json == null || key == null) {
-            return null;
+
+    private JsonUtil() {}
+
+    // --- Parse entry points ---
+
+    /** Parses a JSON string into a JsonObject; returns empty JsonObject on failure. */
+    public static JsonObject parse(String json) {
+        if (json == null || json.trim().isEmpty()) {
+            return new JsonObject();
         }
-        Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*\"([^\"\\\\]*(\\\\.[^\"\\\\]*)*)\"");
-        Matcher matcher = pattern.matcher(json);
-        if (matcher.find()) {
-            return unescapeJsonString(matcher.group(1));
+        try {
+            return JsonParser.parseString(json).getAsJsonObject();
+        } catch (Exception e) {
+            return new JsonObject();
         }
-        return null;
-    }
-    
-    /**
-     * Extract long value from JSON for a given key.
-     */
-    public static Long getLong(String json, String key) {
-        if (json == null || key == null) {
-            return null;
-        }
-        Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(-?\\d+)");
-        Matcher matcher = pattern.matcher(json);
-        if (matcher.find()) {
-            return Long.parseLong(matcher.group(1));
-        }
-        return null;
-    }
-    
-    /**
-     * Extract integer value from JSON for a given key.
-     */
-    public static Integer getInteger(String json, String key) {
-        if (json == null || key == null) {
-            return null;
-        }
-        Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(-?\\d+)");
-        Matcher matcher = pattern.matcher(json);
-        if (matcher.find()) {
-            return Integer.parseInt(matcher.group(1));
-        }
-        return null;
-    }
-    
-    /**
-     * Extract boolean value from JSON for a given key.
-     */
-    public static Boolean getBoolean(String json, String key) {
-        if (json == null || key == null) {
-            return null;
-        }
-        Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(true|false)");
-        Matcher matcher = pattern.matcher(json);
-        if (matcher.find()) {
-            return Boolean.parseBoolean(matcher.group(1));
-        }
-        return null;
-    }
-    
-    /**
-     * Extract double value from JSON for a given key.
-     */
-    public static Double getDouble(String json, String key) {   
-        if (json == null || key == null) {
-            return null;
-        }
-        Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(-?\\d+(?:\\.\\d+)?)");
-        Matcher matcher = pattern.matcher(json);
-        if (matcher.find()) {
-            return Double.parseDouble(matcher.group(1));
-        }
-        return null;
-    }
-    
-    /**
-     * Extract number value from JSON for a given key.
-     * Returns Double for numeric values.
-     */
-    public static Number getNumber(String json, String key) {
-        if (json == null || key == null) {
-            return null;
-        }
-        return getDouble(json, key);
-    }
-    
-    /**
-     * Extract BigDecimal value from JSON for a given key.
-     */
-    public static java.math.BigDecimal getBigDecimal(String json, String key) {
-        if (json == null || key == null) {
-            return null;
-        }
-        Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(-?\\d+(?:\\.\\d+)?)");
-        Matcher matcher = pattern.matcher(json);
-        if (matcher.find()) {
-            return new java.math.BigDecimal(matcher.group(1));
-        }
-        return null;
     }
 
-    /**
-     * Extract nested object as JSON string for a given key.
-     */
-    public static String getObject(String json, String key) {   
-        if (json == null || key == null) {
-            return null;
+    /** Parses a JSON string into a JsonArray; returns empty JsonArray on failure. */
+    public static JsonArray parseToArray(String arrayJson) {
+        if (arrayJson == null || arrayJson.trim().isEmpty()) {
+            return new JsonArray();
         }
-        // Find the key position
-        String keyPattern = "\"" + Pattern.quote(key) + "\"\\s*:";
-        Pattern pattern = Pattern.compile(keyPattern);
-        Matcher matcher = pattern.matcher(json);
-        if (!matcher.find()) {
-            return null;
+        try {
+            return JsonParser.parseString(arrayJson).getAsJsonArray();
+        } catch (Exception e) {
+            return new JsonArray();
         }
-        
-        // Find the start of the object value (skip whitespace after colon)
-        int start = matcher.end();
-        while (start < json.length() && Character.isWhitespace(json.charAt(start))) {
-            start++;
-        }
-        
-        if (start >= json.length() || json.charAt(start) != '{') {
-            return null;
-        }
-        
-        // Extract the object by tracking brace depth
-        int depth = 0;
-        boolean inString = false;
-        boolean escaped = false;
-        int objectStart = start;
-        
-        for (int i = start; i < json.length(); i++) {
-            char c = json.charAt(i);
-            
-            if (escaped) {
-                escaped = false;
-                continue;
-            }
-            
-            if (c == '\\' && inString) {
-                escaped = true;
-                continue;
-            }
-            
-            if (c == '"' && !escaped) {
-                inString = !inString;
-                continue;
-            }
-            
-            if (!inString) {
-                if (c == '{') {
-                    depth++;
-                } else if (c == '}') {
-                    depth--;
-                    if (depth == 0) {
-                        return json.substring(objectStart, i + 1);
-                    }
-                }
-            }
-        }
-        
-        return null;
-    }
-    
-    /**
-     * Extract array as JSON string for a given key.
-     * Handles nested arrays and objects by tracking bracket depth.
-     */
-    public static String getArray(String json, String key) {
-        if (json == null || key == null) {
-            return null;
-        }
-        
-        // Find the key position
-        String keyPattern = "\"" + Pattern.quote(key) + "\"\\s*:\\s*\\[";
-        Pattern p = Pattern.compile(keyPattern);
-        Matcher matcher = p.matcher(json);
-        if (!matcher.find()) {
-            return null;
-        }
-        
-        // Start from the opening bracket
-        int start = matcher.end() - 1; // Position of '['
-        int depth = 0;
-        boolean inString = false;
-        boolean escaped = false;
-        
-        for (int i = start; i < json.length(); i++) {
-            char c = json.charAt(i);
-            
-            if (escaped) {
-                escaped = false;
-                continue;
-            }
-            
-            if (c == '\\' && inString) {
-                escaped = true;
-                continue;
-            }
-            
-            if (c == '"' && !escaped) {
-                inString = !inString;
-                continue;
-            }
-            
-            if (!inString) {
-                if (c == '[') {
-                    depth++;
-                } else if (c == ']') {
-                    depth--;
-                    if (depth == 0) {
-                        return json.substring(start, i + 1);
-                    }
-                }
-            }
-        }
-        return null;
-    }
-    
-    /**
-     * Parse array of objects and extract each object as JSON string.
-     */
-    public static List<String> parseObjectArray(String arrayJson) {
-        List<String> objects = new ArrayList<>();
-        if (arrayJson == null || !arrayJson.trim().startsWith("[")) {
-            return objects;
-        }
-        
-        // Simple object extraction from array
-        int depth = 0;
-        int start = -1;
-        boolean inString = false;
-        boolean escaped = false;
-        
-        for (int i = 0; i < arrayJson.length(); i++) {
-            char c = arrayJson.charAt(i);
-            
-            if (escaped) {
-                escaped = false;
-                continue;
-            }
-            
-            if (c == '\\' && inString) {
-                escaped = true;
-                continue;
-            }
-            
-            if (c == '"' && !escaped) {
-                inString = !inString;
-                continue;
-            }
-            
-            if (!inString) {
-                if (c == '{') {
-                    if (depth == 0) {
-                        start = i;
-                    }
-                    depth++;
-                } else if (c == '}') {
-                    depth--;
-                    if (depth == 0 && start != -1) {
-                        objects.add(arrayJson.substring(start, i + 1));
-                        start = -1;
-                    }
-                }
-            }
-        }
-        
-        return objects;
-    }
-    
-    /**
-     * Check if a key exists and has non-null value.
-     */
-    public static boolean hasValue(String json, String key) {
-        if (json == null || key == null) {
-            return false;
-        }
-        // First check if the key exists with null value
-        Pattern nullPattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*null\\b");
-        if (nullPattern.matcher(json).find()) {
-            return false;
-        }
-        // Then check if the key exists at all
-        Pattern keyPattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:");
-        return keyPattern.matcher(json).find();
-    }
-    
-    /**
-     * Parse array of strings from JSON array string.
-     */
-    public static List<String> parseArrayOfString(String arrayJson) {
-        List<String> result = new ArrayList<>();
-        if (arrayJson == null || arrayJson.trim().equals("[]")) {
-            return result;
-        }
-        
-        // Extract string values from array
-        Pattern pattern = Pattern.compile("\"([^\"\\\\]*(\\\\.[^\"\\\\]*)*)\"");
-        Matcher matcher = pattern.matcher(arrayJson);
-        while (matcher.find()) {
-            result.add(unescapeJsonString(matcher.group(1)));
-        }
-        return result;
     }
 
-    /**
-     * Parse array of integers from JSON array string.
-     */
-    public static List<Integer> parseArrayOfInteger(String arrayJson) {
-        List<Integer> result = new ArrayList<>();
-        if (arrayJson == null || arrayJson.trim().equals("[]")) {
-            return result;
-        }
-        
-        // Extract integer values from array
-        Pattern pattern = Pattern.compile("(-?\\d+)(?![.\\d])");
-        Matcher matcher = pattern.matcher(arrayJson);
-        while (matcher.find()) {
-            try {
-                result.add(Integer.parseInt(matcher.group(1)));
-            } catch (NumberFormatException e) {
-                // Skip invalid numbers
-            }
-        }
-        return result;
+    // --- JsonObject-based extraction ---
+
+    /** Returns the String value for the given key, or null. */
+    public static String getString(JsonObject obj, String key) {
+        if (obj == null || key == null) return null;
+        JsonElement elem = obj.get(key);
+        if (elem == null || elem.isJsonNull()) return null;
+        try { return elem.getAsString(); } catch (Exception e) { return null; }
     }
 
-    /**
-     * Parse array of longs from JSON array string.
-     */
-    public static List<Long> parseArrayOfLong(String arrayJson) {
-        List<Long> result = new ArrayList<>();
-        if (arrayJson == null || arrayJson.trim().equals("[]")) {
-            return result;
-        }
-        
-        // Extract long values from array
-        Pattern pattern = Pattern.compile("(-?\\d+)(?![.\\d])");
-        Matcher matcher = pattern.matcher(arrayJson);
-        while (matcher.find()) {
-            try {
-                result.add(Long.parseLong(matcher.group(1)));
-            } catch (NumberFormatException e) {
-                // Skip invalid numbers
-            }
-        }
-        return result;
+    /** Returns the Long value for the given key, or null. */
+    public static Long getLong(JsonObject obj, String key) {
+        if (obj == null || key == null) return null;
+        JsonElement elem = obj.get(key);
+        if (elem == null || elem.isJsonNull()) return null;
+        try { return elem.getAsLong(); } catch (Exception e) { return null; }
     }
 
-    /**
-     * Parse array of booleans from JSON array string.
-     */
-    public static List<Boolean> parseArrayOfBoolean(String arrayJson) {
-        List<Boolean> result = new ArrayList<>();
-        if (arrayJson == null || arrayJson.trim().equals("[]")) {
-            return result;
-        }
-        
-        // Extract boolean values from array
-        Pattern pattern = Pattern.compile("\\b(true|false)\\b");
-        Matcher matcher = pattern.matcher(arrayJson);
-        while (matcher.find()) {
-            result.add(Boolean.parseBoolean(matcher.group(1)));
-        }
-        return result;
+    /** Returns the Integer value for the given key, or null. */
+    public static Integer getInteger(JsonObject obj, String key) {
+        if (obj == null || key == null) return null;
+        JsonElement elem = obj.get(key);
+        if (elem == null || elem.isJsonNull()) return null;
+        try { return elem.getAsInt(); } catch (Exception e) { return null; }
     }
 
-    /**
-     * Parse array of doubles from JSON array string.
-     */
-    public static List<Double> parseArrayOfDouble(String arrayJson) {
-        List<Double> result = new ArrayList<>();
-        if (arrayJson == null || arrayJson.trim().equals("[]")) {
-            return result;
-        }
-        
-        // Extract double values from array
-        Pattern pattern = Pattern.compile("(-?\\d+(?:\\.\\d+)?)");
-        Matcher matcher = pattern.matcher(arrayJson);
-        while (matcher.find()) {
-            try {
-                result.add(Double.parseDouble(matcher.group(1)));
-            } catch (NumberFormatException e) {
-                // Skip invalid numbers
-            }
-        }
-        return result;
+    /** Returns the Boolean value for the given key, or null. */
+    public static Boolean getBoolean(JsonObject obj, String key) {
+        if (obj == null || key == null) return null;
+        JsonElement elem = obj.get(key);
+        if (elem == null || elem.isJsonNull()) return null;
+        try { return elem.getAsBoolean(); } catch (Exception e) { return null; }
     }
 
-    /**
-     * Parse array of BigDecimal from JSON array string.
-     */
-    public static List<java.math.BigDecimal> parseArrayOfBigDecimal(String arrayJson) {
-        List<java.math.BigDecimal> result = new ArrayList<>();
-        if (arrayJson == null || arrayJson.trim().equals("[]")) {
-            return result;
-        }
-
-        // Extract BigDecimal values from array
-        Pattern pattern = Pattern.compile("(-?\\d+(?:\\.\\d+)?)");
-        Matcher matcher = pattern.matcher(arrayJson);
-        while (matcher.find()) {
-            try {
-                result.add(new java.math.BigDecimal(matcher.group(1)));
-            } catch (NumberFormatException e) {
-                // Skip invalid numbers
-            }
-        }
-        return result;
+    /** Returns the Double value for the given key, or null. */
+    public static Double getDouble(JsonObject obj, String key) {
+        if (obj == null || key == null) return null;
+        JsonElement elem = obj.get(key);
+        if (elem == null || elem.isJsonNull()) return null;
+        try { return elem.getAsDouble(); } catch (Exception e) { return null; }
     }
 
-    /** 
-     * Parse timestamp from JSON (Unix epoch seconds).
-     */
-    public static Timestamp getTimestamp(String json, String key) {
-        Long epochSeconds = getLong(json, key);
+    /** Returns the Number value for the given key, or null. */
+    public static Number getNumber(JsonObject obj, String key) {
+        return getDouble(obj, key);
+    }
+
+    /** Returns the BigDecimal value for the given key, or null. */
+    public static BigDecimal getBigDecimal(JsonObject obj, String key) {
+        if (obj == null || key == null) return null;
+        JsonElement elem = obj.get(key);
+        if (elem == null || elem.isJsonNull()) return null;
+        try { return elem.getAsBigDecimal(); } catch (Exception e) { return null; }
+    }
+
+    /** Converts an epoch-seconds Long to a Timestamp, or null. */
+    public static Timestamp getTimestamp(JsonObject obj, String key) {
+        Long epochSeconds = getLong(obj, key);
         return epochSeconds != null ? new Timestamp(epochSeconds * 1000) : null;
     }
 
-    /**
-     * Parse a JSON object into a Map&lt;String, Object&gt;.
-     * Values are kept as their raw types (String, Long, Double, Boolean, or nested JSON strings).
-     */
-    public static java.util.Map<String, Object> parseJsonObjectToMap(String json) {
-        java.util.Map<String, Object> map = new java.util.HashMap<>();
-        if (json == null || json.trim().isEmpty() || json.trim().equals("{}")) {
-            return map;
+    /** Returns a nested JsonObject for the given key, or null. */
+    public static JsonObject getJsonObject(JsonObject obj, String key) {
+        if (obj == null || key == null) return null;
+        JsonElement elem = obj.get(key);
+        if (elem == null || elem.isJsonNull() || !elem.isJsonObject()) return null;
+        return elem.getAsJsonObject();
+    }
+
+    /** Returns a nested JsonArray for the given key, or null. */
+    public static JsonArray getJsonArray(JsonObject obj, String key) {
+        if (obj == null || key == null) return null;
+        JsonElement elem = obj.get(key);
+        if (elem == null || elem.isJsonNull() || !elem.isJsonArray()) return null;
+        return elem.getAsJsonArray();
+    }
+
+    /** Returns a nested object as a JSON string for the given key, or null. */
+    public static String getObject(JsonObject obj, String key) {
+        if (obj == null || key == null) return null;
+        JsonElement elem = obj.get(key);
+        if (elem == null || elem.isJsonNull() || !elem.isJsonObject()) return null;
+        return elem.toString();
+    }
+
+    /** Returns a nested array as a JSON string for the given key, or null. */
+    public static String getArray(JsonObject obj, String key) {
+        if (obj == null || key == null) return null;
+        JsonElement elem = obj.get(key);
+        if (elem == null || elem.isJsonNull() || !elem.isJsonArray()) return null;
+        return elem.toString();
+    }
+
+    /** Returns true if the key exists and is not null. */
+    public static boolean hasValue(JsonObject obj, String key) {
+        if (obj == null || key == null) return false;
+        JsonElement elem = obj.get(key);
+        return elem != null && !elem.isJsonNull();
+    }
+
+    // --- JsonObject to Map conversion ---
+
+    /** Converts a JsonObject to a Map; primitives become Java types, nested structures become JSON strings. */
+    public static Map<String, Object> parseJsonObjectToMap(JsonObject obj) {
+        Map<String, Object> map = new HashMap<>();
+        if (obj == null) return map;
+        for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
+            map.put(entry.getKey(), toJavaValue(entry.getValue()));
         }
-        
-        // Remove outer braces and trim
-        String content = json.trim();
-        if (content.startsWith("{")) {
-            content = content.substring(1);
-        }
-        if (content.endsWith("}")) {
-            content = content.substring(0, content.length() - 1);
-        }
-        content = content.trim();
-        
-        if (content.isEmpty()) {
-            return map;
-        }
-        
-        // Parse key-value pairs
-        int i = 0;
-        while (i < content.length()) {
-            // Skip whitespace
-            while (i < content.length() && Character.isWhitespace(content.charAt(i))) {
-                i++;
-            }
-            if (i >= content.length()) break;
-            
-            // Parse key (must be quoted)
-            if (content.charAt(i) != '"') {
-                break; // Invalid JSON
-            }
-            i++; // Skip opening quote
-            
-            StringBuilder keyBuilder = new StringBuilder();
-            boolean escaped = false;
-            while (i < content.length()) {
-                char c = content.charAt(i);
-                if (escaped) {
-                    keyBuilder.append(c);
-                    escaped = false;
-                } else if (c == '\\') {
-                    escaped = true;
-                } else if (c == '"') {
-                    i++; // Skip closing quote
-                    break;
-                } else {
-                    keyBuilder.append(c);
-                }
-                i++;
-            }
-            String key = keyBuilder.toString();
-            
-            // Skip whitespace and colon
-            while (i < content.length() && (Character.isWhitespace(content.charAt(i)) || content.charAt(i) == ':')) {
-                i++;
-            }
-            
-            // Parse value
-            Object value = null;
-            if (i < content.length()) {
-                char c = content.charAt(i);
-                
-                if (c == '"') {
-                    // String value
-                    i++; // Skip opening quote
-                    StringBuilder valueBuilder = new StringBuilder();
-                    escaped = false;
-                    while (i < content.length()) {
-                        c = content.charAt(i);
-                        if (escaped) {
-                            valueBuilder.append(c);
-                            escaped = false;
-                        } else if (c == '\\') {
-                            escaped = true;
-                        } else if (c == '"') {
-                            i++; // Skip closing quote
-                            break;
-                        } else {
-                            valueBuilder.append(c);
-                        }
-                        i++;
-                    }
-                    value = unescapeJsonString(valueBuilder.toString());
-                    
-                } else if (c == '{') {
-                    // Nested object - extract as JSON string
-                    int depth = 0;
-                    int start = i;
-                    boolean inString = false;
-                    escaped = false;
-                    while (i < content.length()) {
-                        c = content.charAt(i);
-                        if (escaped) {
-                            escaped = false;
-                        } else if (c == '\\' && inString) {
-                            escaped = true;
-                        } else if (c == '"') {
-                            inString = !inString;
-                        } else if (!inString) {
-                            if (c == '{') depth++;
-                            else if (c == '}') {
-                                depth--;
-                                if (depth == 0) {
-                                    i++;
-                                    break;
-                                }
-                            }
-                        }
-                        i++;
-                    }
-                    value = content.substring(start, i);
-                    
-                } else if (c == '[') {
-                    // Array - extract as JSON string
-                    int depth = 0;
-                    int start = i;
-                    boolean inString = false;
-                    escaped = false;
-                    while (i < content.length()) {
-                        c = content.charAt(i);
-                        if (escaped) {
-                            escaped = false;
-                        } else if (c == '\\' && inString) {
-                            escaped = true;
-                        } else if (c == '"') {
-                            inString = !inString;
-                        } else if (!inString) {
-                            if (c == '[') depth++;
-                            else if (c == ']') {
-                                depth--;
-                                if (depth == 0) {
-                                    i++;
-                                    break;
-                                }
-                            }
-                        }
-                        i++;
-                    }
-                    value = content.substring(start, i);
-                    
-                } else if (c == 't' && content.substring(i).startsWith("true")) {
-                    // Boolean true
-                    value = Boolean.TRUE;
-                    i += 4;
-                    
-                } else if (c == 'f' && content.substring(i).startsWith("false")) {
-                    // Boolean false
-                    value = Boolean.FALSE;
-                    i += 5;
-                    
-                } else if (c == 'n' && content.substring(i).startsWith("null")) {
-                    // null
-                    value = null;
-                    i += 4;
-                    
-                } else if (c == '-' || Character.isDigit(c)) {
-                    // Number
-                    StringBuilder numBuilder = new StringBuilder();
-                    while (i < content.length()) {
-                        c = content.charAt(i);
-                        if (c == '-' || c == '+' || c == '.' || c == 'e' || c == 'E' || Character.isDigit(c)) {
-                            numBuilder.append(c);
-                            i++;
-                        } else {
-                            break;
-                        }
-                    }
-                    String numStr = numBuilder.toString();
-                    try {
-                        if (numStr.contains(".") || numStr.contains("e") || numStr.contains("E")) {
-                            value = Double.parseDouble(numStr);
-                        } else {
-                            value = Long.parseLong(numStr);
-                        }
-                    } catch (NumberFormatException e) {
-                        value = numStr; // Fallback to string
-                    }
-                }
-            }
-            
-            map.put(key, value);
-            
-            // Skip comma and whitespace
-            while (i < content.length() && (Character.isWhitespace(content.charAt(i)) || content.charAt(i) == ',')) {
-                i++;
-            }
-        }
-        
         return map;
     }
 
-    /**
-     * Unescape JSON string.
-     * Processes escape sequences correctly by handling \\\\ last to avoid
-     * incorrectly interpreting sequences like \\t as tab.
-     */
-    private static String unescapeJsonString(String escaped) {
-        if (escaped == null) return null;
-        
-        // Use a placeholder for \\ to avoid interference with other escapes
-        // e.g., \\t should become \t (backslash + t), not a tab character
-        String placeholder = "\u0000BACKSLASH\u0000";
-        
-        return escaped
-            .replace("\\\\", placeholder)  // Temporarily replace \\ with placeholder
-            .replace("\\\"", "\"")
-            .replace("\\/", "/")
-            .replace("\\b", "\b")
-            .replace("\\f", "\f")
-            .replace("\\n", "\n")
-            .replace("\\r", "\r")
-            .replace("\\t", "\t")
-            .replace(placeholder, "\\");   // Replace placeholder with actual backslash
-    }
+    // --- JsonArray-based extraction ---
 
-    /**
-     * Serialize a Map to a JSON string.
-     */
-    public static String toJson(java.util.Map<String, Object> map) {
-        if (map == null || map.isEmpty()) {
-            return "{}";
-        }
-        
-        StringBuilder sb = new StringBuilder();
-        sb.append('{');
-        
-        boolean first = true;
-        for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-            if (!first) {
-                sb.append(',');
+    /** Maps each JsonObject element through the given function; e.g. {@code mapArray(arr, Model::fromJson)}. */
+    public static <T> List<T> mapArray(JsonArray array, Function<JsonObject, T> mapper) {
+        if (array == null) return new ArrayList<>();
+        List<T> result = new ArrayList<>(array.size());
+        for (JsonElement elem : array) {
+            if (elem != null && elem.isJsonObject()) {
+                result.add(mapper.apply(elem.getAsJsonObject()));
             }
-            first = false;
-            
-            sb.append('"').append(escapeJsonString(entry.getKey())).append('"');
-            sb.append(':');
-            appendJsonValue(sb, entry.getValue());
         }
-        
-        sb.append('}');
-        return sb.toString();
+        return result;
     }
 
-    /**
-     * Serialize a List to a JSON string.
-     */
-    public static String toJson(java.util.List<?> list) {
-        if (list == null || list.isEmpty()) {
-            return "[]";
+    /** Converts each JsonArray element to its Java value, returning {@code List<Object>}. */
+    public static List<Object> mapArrayToObjects(JsonArray array) {
+        if (array == null) return new ArrayList<>();
+        List<Object> result = new ArrayList<>(array.size());
+        for (JsonElement elem : array) {
+            if (elem != null && elem.isJsonObject()) {
+                result.add(parseJsonObjectToMap(elem.getAsJsonObject()));
+            } else {
+                result.add(toJavaValue(elem));
+            }
         }
-        StringBuilder sb = new StringBuilder();
-        appendJsonList(sb, list);
-        return sb.toString();
+        return result;
     }
-    
-    /**
-     * Append a JSON value (handles different types).
-     */
+
+    /** Converts each JsonObject element to a {@code Map<String, Object>}; skips non-object elements. */
+    public static List<Map<String, Object>> mapArrayToMaps(JsonArray array) {
+        if (array == null) return new ArrayList<>();
+        List<Map<String, Object>> result = new ArrayList<>(array.size());
+        for (JsonElement elem : array) {
+            if (elem != null && elem.isJsonObject()) {
+                result.add(parseJsonObjectToMap(elem.getAsJsonObject()));
+            }
+        }
+        return result;
+    }
+
+    /** Parses a JsonArray of strings into a List. */
+    public static List<String> parseArrayOfString(JsonArray array) {
+        List<String> result = new ArrayList<>();
+        if (array == null) return result;
+        for (JsonElement elem : array) {
+            if (elem != null && !elem.isJsonNull()) {
+                result.add(elem.getAsString());
+            }
+        }
+        return result;
+    }
+
+    /** Parses a JsonArray of integers into a List. */
+    public static List<Integer> parseArrayOfInteger(JsonArray array) {
+        List<Integer> result = new ArrayList<>();
+        if (array == null) return result;
+        for (JsonElement elem : array) {
+            if (elem != null && !elem.isJsonNull()) {
+                try { result.add(elem.getAsInt()); } catch (Exception e) { /* skip */ }
+            }
+        }
+        return result;
+    }
+
+    /** Parses a JsonArray of longs into a List. */
+    public static List<Long> parseArrayOfLong(JsonArray array) {
+        List<Long> result = new ArrayList<>();
+        if (array == null) return result;
+        for (JsonElement elem : array) {
+            if (elem != null && !elem.isJsonNull()) {
+                try { result.add(elem.getAsLong()); } catch (Exception e) { /* skip */ }
+            }
+        }
+        return result;
+    }
+
+    /** Parses a JsonArray of booleans into a List. */
+    public static List<Boolean> parseArrayOfBoolean(JsonArray array) {
+        List<Boolean> result = new ArrayList<>();
+        if (array == null) return result;
+        for (JsonElement elem : array) {
+            if (elem != null && !elem.isJsonNull()) {
+                try { result.add(elem.getAsBoolean()); } catch (Exception e) { /* skip */ }
+            }
+        }
+        return result;
+    }
+
+    /** Parses a JsonArray of doubles into a List. */
+    public static List<Double> parseArrayOfDouble(JsonArray array) {
+        List<Double> result = new ArrayList<>();
+        if (array == null) return result;
+        for (JsonElement elem : array) {
+            if (elem != null && !elem.isJsonNull()) {
+                try { result.add(elem.getAsDouble()); } catch (Exception e) { /* skip */ }
+            }
+        }
+        return result;
+    }
+
+    /** Parses a JsonArray of BigDecimals into a List. */
+    public static List<BigDecimal> parseArrayOfBigDecimal(JsonArray array) {
+        List<BigDecimal> result = new ArrayList<>();
+        if (array == null) return result;
+        for (JsonElement elem : array) {
+            if (elem != null && !elem.isJsonNull()) {
+                try { result.add(elem.getAsBigDecimal()); } catch (Exception e) { /* skip */ }
+            }
+        }
+        return result;
+    }
+
+    // --- Custom / consent field extraction ---
+
+    /** Extracts keys starting with "cf_" that are not in the known fields set. */
+    public static Map<String, String> extractCustomFields(JsonObject obj, Set<String> knownFields) {
+        Map<String, String> customFields = new HashMap<>();
+        if (obj == null) return customFields;
+        for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
+            String key = entry.getKey();
+            if (key != null && key.startsWith("cf_") && !knownFields.contains(key)) {
+                JsonElement value = entry.getValue();
+                if (value == null || value.isJsonNull()) {
+                    customFields.put(key, null);
+                } else if (value.isJsonPrimitive()) {
+                    customFields.put(key, value.getAsString());
+                } else {
+                    customFields.put(key, value.toString());
+                }
+            }
+        }
+        return customFields;
+    }
+
+    /** Extracts keys starting with "cs_" that are not in the known fields set. */
+    public static Map<String, Object> extractConsentFields(JsonObject obj, Set<String> knownFields) {
+        Map<String, Object> consentFields = new HashMap<>();
+        if (obj == null) return consentFields;
+        for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
+            String key = entry.getKey();
+            if (key != null && key.startsWith("cs_") && !knownFields.contains(key)) {
+                consentFields.put(key, toJavaValue(entry.getValue()));
+            }
+        }
+        return consentFields;
+    }
+
+    // --- Serialization ---
+
+    /** Serializes a Map to a JSON string. */
     @SuppressWarnings("unchecked")
-    private static void appendJsonValue(StringBuilder sb, Object value) {
-        if (value == null) {
-            sb.append("null");
-        } else if (value instanceof String) {
-            sb.append('"').append(escapeJsonString((String) value)).append('"');
-        } else if (value instanceof Number) {
-            sb.append(value.toString());
-        } else if (value instanceof Boolean) {
-            sb.append(value.toString());
-        } else if (value instanceof java.util.Map) {
-            sb.append(toJson((java.util.Map<String, Object>) value));
-        } else if (value instanceof java.util.List) {
-            appendJsonList(sb, (java.util.List<?>) value);
-        } else {
-            // Fallback: convert to string
-            sb.append('"').append(escapeJsonString(value.toString())).append('"');
+    public static String toJson(Map<String, Object> map) {
+        if (map == null || map.isEmpty()) return "{}";
+        JsonObject obj = new JsonObject();
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            obj.add(entry.getKey(), toJsonElement(entry.getValue()));
         }
+        return obj.toString();
     }
-    
-    /**
-     * Append a JSON array.
-     */
-    private static void appendJsonList(StringBuilder sb, java.util.List<?> list) {
-        sb.append('[');
-        boolean first = true;
+
+    /** Serializes a List to a JSON string. */
+    public static String toJson(List<?> list) {
+        if (list == null || list.isEmpty()) return "[]";
+        JsonArray array = new JsonArray();
         for (Object item : list) {
-            if (!first) {
-                sb.append(',');
-            }
-            first = false;
-            appendJsonValue(sb, item);
+            array.add(toJsonElement(item));
         }
-        sb.append(']');
+        return array.toString();
     }
-    
-    /**
-     * Escape special characters in JSON strings.
-     */
-    private static String escapeJsonString(String str) {
-        if (str == null) {
-            return "";
-        }
-        
-        StringBuilder escaped = new StringBuilder();
-        for (int i = 0; i < str.length(); i++) {
-            char ch = str.charAt(i);
-            switch (ch) {
-                case '"':
-                    escaped.append("\\\"");
-                    break;
-                case '\\':
-                    escaped.append("\\\\");
-                    break;
-                case '\b':
-                    escaped.append("\\b");
-                    break;
-                case '\f':
-                    escaped.append("\\f");
-                    break;
-                case '\n':
-                    escaped.append("\\n");
-                    break;
-                case '\r':
-                    escaped.append("\\r");
-                    break;
-                case '\t':
-                    escaped.append("\\t");
-                    break;
-                default:
-                    // Control characters
-                    if (ch < ' ') {
-                        escaped.append(String.format("\\u%04x", (int) ch));
-                    } else {
-                        escaped.append(ch);
-                    }
+
+    // --- Internal helpers ---
+
+    private static Object toJavaValue(JsonElement value) {
+        if (value == null || value.isJsonNull()) return null;
+        if (value.isJsonPrimitive()) {
+            JsonPrimitive prim = value.getAsJsonPrimitive();
+            if (prim.isString()) return prim.getAsString();
+            if (prim.isBoolean()) return prim.getAsBoolean();
+            if (prim.isNumber()) {
+                String numStr = prim.getAsString();
+                if (numStr.contains(".") || numStr.contains("e") || numStr.contains("E")) {
+                    return prim.getAsDouble();
+                }
+                return prim.getAsLong();
             }
         }
-        return escaped.toString();
+        if (value.isJsonObject() || value.isJsonArray()) {
+            return value.toString();
+        }
+        return null;
+    }
+
+    @SuppressWarnings("unchecked")
+    private static JsonElement toJsonElement(Object value) {
+        if (value == null) return JsonNull.INSTANCE;
+        if (value instanceof String) return new JsonPrimitive((String) value);
+        if (value instanceof Number) return new JsonPrimitive((Number) value);
+        if (value instanceof Boolean) return new JsonPrimitive((Boolean) value);
+        if (value instanceof Map) {
+            JsonObject obj = new JsonObject();
+            for (Map.Entry<String, Object> entry : ((Map<String, Object>) value).entrySet()) {
+                obj.add(entry.getKey(), toJsonElement(entry.getValue()));
+            }
+            return obj;
+        }
+        if (value instanceof List) {
+            JsonArray array = new JsonArray();
+            for (Object item : (List<?>) value) {
+                array.add(toJsonElement(item));
+            }
+            return array;
+        }
+        return new JsonPrimitive(value.toString());
     }
 }
