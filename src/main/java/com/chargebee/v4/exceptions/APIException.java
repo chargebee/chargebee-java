@@ -248,7 +248,8 @@ public class APIException extends HttpException {
   /** Extract error_cause_id from error response. */
   private String extractErrorCauseId(String jsonResponse) {
     if (jsonResponse != null) {
-      return JsonUtil.getString(JsonUtil.parse(jsonResponse), "error_cause_id");
+      JsonObject obj = JsonUtil.parse(jsonResponse);
+      return JsonUtil.getString(obj, "error_cause_id");
     }
     return null;
   }

@@ -199,6 +199,18 @@ public class JsonUtil {
         return result;
     }
 
+    /** Serializes each JsonObject element to its JSON string representation. */
+    public static List<String> parseObjectArray(JsonArray array) {
+        List<String> result = new ArrayList<>();
+        if (array == null) return result;
+        for (JsonElement elem : array) {
+            if (elem != null && elem.isJsonObject()) {
+                result.add(elem.toString());
+            }
+        }
+        return result;
+    }
+
     /** Parses a JsonArray of strings into a List. */
     public static List<String> parseArrayOfString(JsonArray array) {
         List<String> result = new ArrayList<>();
