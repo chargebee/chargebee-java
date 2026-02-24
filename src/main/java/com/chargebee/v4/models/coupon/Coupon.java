@@ -884,8 +884,10 @@ public class Coupon {
 
       obj.constraint = Constraint.fromString(JsonUtil.getString(jsonObj, "constraint"));
 
-      obj.itemPriceIds =
-          JsonUtil.mapArrayToObjects(JsonUtil.getJsonArray(jsonObj, "item_price_ids"));
+      JsonArray __itemPriceIdsArr = JsonUtil.getJsonArray(jsonObj, "item_price_ids");
+      if (__itemPriceIdsArr != null) {
+        obj.itemPriceIds = JsonUtil.mapArrayToObjects(__itemPriceIdsArr);
+      }
 
       return obj;
     }
@@ -982,13 +984,20 @@ public class Coupon {
 
       obj.itemType = ItemType.fromString(JsonUtil.getString(jsonObj, "item_type"));
 
-      obj.currencies = JsonUtil.mapArrayToObjects(JsonUtil.getJsonArray(jsonObj, "currencies"));
+      JsonArray __currenciesArr = JsonUtil.getJsonArray(jsonObj, "currencies");
+      if (__currenciesArr != null) {
+        obj.currencies = JsonUtil.mapArrayToObjects(__currenciesArr);
+      }
 
-      obj.itemFamilyIds =
-          JsonUtil.mapArrayToObjects(JsonUtil.getJsonArray(jsonObj, "item_family_ids"));
+      JsonArray __itemFamilyIdsArr = JsonUtil.getJsonArray(jsonObj, "item_family_ids");
+      if (__itemFamilyIdsArr != null) {
+        obj.itemFamilyIds = JsonUtil.mapArrayToObjects(__itemFamilyIdsArr);
+      }
 
-      obj.itemPricePeriods =
-          JsonUtil.mapArrayToObjects(JsonUtil.getJsonArray(jsonObj, "item_price_periods"));
+      JsonArray __itemPricePeriodsArr = JsonUtil.getJsonArray(jsonObj, "item_price_periods");
+      if (__itemPricePeriodsArr != null) {
+        obj.itemPricePeriods = JsonUtil.mapArrayToObjects(__itemPricePeriodsArr);
+      }
 
       return obj;
     }

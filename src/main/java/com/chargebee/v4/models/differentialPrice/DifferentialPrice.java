@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.differentialPrice;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
@@ -446,7 +447,10 @@ public class DifferentialPrice {
 
       obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(jsonObj, "period_unit"));
 
-      obj.period = JsonUtil.mapArrayToObjects(JsonUtil.getJsonArray(jsonObj, "period"));
+      JsonArray __periodArr = JsonUtil.getJsonArray(jsonObj, "period");
+      if (__periodArr != null) {
+        obj.period = JsonUtil.mapArrayToObjects(__periodArr);
+      }
 
       return obj;
     }

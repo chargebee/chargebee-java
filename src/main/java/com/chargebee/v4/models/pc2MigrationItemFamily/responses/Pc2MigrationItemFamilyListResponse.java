@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.Pc2MigrationItemFamilyService;
@@ -46,8 +47,9 @@ public final class Pc2MigrationItemFamilyListResponse {
     try {
       JsonObject jsonObj = JsonUtil.parse(json);
 
+      JsonArray __listArr = JsonUtil.getJsonArray(jsonObj, "list");
       List<java.util.Map<String, Object>> list =
-          JsonUtil.mapArrayToMaps(JsonUtil.getJsonArray(jsonObj, "list"));
+          __listArr != null ? JsonUtil.mapArrayToMaps(__listArr) : null;
 
       String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
@@ -69,8 +71,9 @@ public final class Pc2MigrationItemFamilyListResponse {
     try {
       JsonObject jsonObj = JsonUtil.parse(json);
 
+      JsonArray __listArr = JsonUtil.getJsonArray(jsonObj, "list");
       List<java.util.Map<String, Object>> list =
-          JsonUtil.mapArrayToMaps(JsonUtil.getJsonArray(jsonObj, "list"));
+          __listArr != null ? JsonUtil.mapArrayToMaps(__listArr) : null;
 
       String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 

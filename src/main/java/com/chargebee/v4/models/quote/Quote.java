@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.quote;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -488,7 +489,10 @@ public class Quote {
 
     obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-    obj.notes = JsonUtil.mapArrayToObjects(JsonUtil.getJsonArray(jsonObj, "notes"));
+    JsonArray __notesArr = JsonUtil.getJsonArray(jsonObj, "notes");
+    if (__notesArr != null) {
+      obj.notes = JsonUtil.mapArrayToObjects(__notesArr);
+    }
 
     obj.contractTermStart = JsonUtil.getTimestamp(jsonObj, "contract_term_start");
 

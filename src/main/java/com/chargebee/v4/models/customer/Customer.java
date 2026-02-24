@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.customer;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
@@ -1065,8 +1066,10 @@ public class Customer {
 
     obj.createdFromIp = JsonUtil.getString(jsonObj, "created_from_ip");
 
-    obj.exemptionDetails =
-        JsonUtil.mapArrayToObjects(JsonUtil.getJsonArray(jsonObj, "exemption_details"));
+    JsonArray __exemptionDetailsArr = JsonUtil.getJsonArray(jsonObj, "exemption_details");
+    if (__exemptionDetailsArr != null) {
+      obj.exemptionDetails = JsonUtil.mapArrayToObjects(__exemptionDetailsArr);
+    }
 
     obj.taxability = Taxability.fromString(JsonUtil.getString(jsonObj, "taxability"));
 

@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.impactedItem;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
@@ -39,7 +40,10 @@ public class ImpactedItem {
 
     obj.count = JsonUtil.getInteger(jsonObj, "count");
 
-    obj.items = JsonUtil.mapArrayToObjects(JsonUtil.getJsonArray(jsonObj, "items"));
+    JsonArray __itemsArr = JsonUtil.getJsonArray(jsonObj, "items");
+    if (__itemsArr != null) {
+      obj.items = JsonUtil.mapArrayToObjects(__itemsArr);
+    }
 
     JsonObject __downloadObj = JsonUtil.getJsonObject(jsonObj, "download");
     if (__downloadObj != null) {

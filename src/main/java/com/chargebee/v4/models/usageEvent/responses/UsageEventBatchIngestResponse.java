@@ -37,8 +37,10 @@ public final class UsageEventBatchIngestResponse extends BaseResponse {
 
       builder.batchId(JsonUtil.getString(jsonObj, "batch_id"));
 
-      builder.failedEvents(
-          JsonUtil.mapArrayToObjects(JsonUtil.getJsonArray(jsonObj, "failed_events")));
+      com.google.gson.JsonArray __failedEventsArr = JsonUtil.getJsonArray(jsonObj, "failed_events");
+      if (__failedEventsArr != null) {
+        builder.failedEvents(JsonUtil.mapArrayToObjects(__failedEventsArr));
+      }
 
       builder.httpResponse(httpResponse);
       return builder.build();

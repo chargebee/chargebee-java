@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.product;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
@@ -296,7 +297,10 @@ public class Product {
 
       obj.name = JsonUtil.getString(jsonObj, "name");
 
-      obj.values = JsonUtil.mapArrayToObjects(JsonUtil.getJsonArray(jsonObj, "values"));
+      JsonArray __valuesArr = JsonUtil.getJsonArray(jsonObj, "values");
+      if (__valuesArr != null) {
+        obj.values = JsonUtil.mapArrayToObjects(__valuesArr);
+      }
 
       obj.defaultValue = JsonUtil.getString(jsonObj, "default_value");
 

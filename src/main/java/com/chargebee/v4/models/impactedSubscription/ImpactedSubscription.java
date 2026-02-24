@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.impactedSubscription;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
@@ -39,8 +40,10 @@ public class ImpactedSubscription {
 
     obj.count = JsonUtil.getInteger(jsonObj, "count");
 
-    obj.subscriptionIds =
-        JsonUtil.mapArrayToObjects(JsonUtil.getJsonArray(jsonObj, "subscription_ids"));
+    JsonArray __subscriptionIdsArr = JsonUtil.getJsonArray(jsonObj, "subscription_ids");
+    if (__subscriptionIdsArr != null) {
+      obj.subscriptionIds = JsonUtil.mapArrayToObjects(__subscriptionIdsArr);
+    }
 
     JsonObject __downloadObj = JsonUtil.getJsonObject(jsonObj, "download");
     if (__downloadObj != null) {
