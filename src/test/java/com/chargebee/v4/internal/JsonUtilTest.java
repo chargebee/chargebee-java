@@ -1,11 +1,15 @@
 package com.chargebee.v4.internal;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -66,7 +70,7 @@ class JsonUtilTest {
         @Test
         @DisplayName("should return null for null json")
         void shouldReturnNullForNullJson() {
-            assertNull(JsonUtil.getString(null, "key"));
+            assertNull(JsonUtil.getString((String) null, "key"));
         }
 
         @Test
@@ -133,7 +137,7 @@ class JsonUtilTest {
         @Test
         @DisplayName("should return null for null json")
         void shouldReturnNullForNullJson() {
-            assertNull(JsonUtil.getLong(null, "key"));
+            assertNull(JsonUtil.getLong((String) null, "key"));
         }
 
         @Test
@@ -207,7 +211,7 @@ class JsonUtilTest {
         @Test
         @DisplayName("should return null for null json")
         void shouldReturnNullForNullJson() {
-            assertNull(JsonUtil.getBoolean(null, "key"));
+            assertNull(JsonUtil.getBoolean((String) null, "key"));
         }
     }
 
@@ -276,8 +280,8 @@ class JsonUtilTest {
             String json = "{\"customer\": {\"id\": \"cust_123\", \"name\": \"John\"}}";
             String result = JsonUtil.getObject(json, "customer");
             assertNotNull(result);
-            assertTrue(result.contains("\"id\": \"cust_123\""));
-            assertTrue(result.contains("\"name\": \"John\""));
+            assertEquals("cust_123", JsonUtil.getString(result, "id"));
+            assertEquals("John", JsonUtil.getString(result, "name"));
         }
 
         @Test
@@ -345,7 +349,11 @@ class JsonUtilTest {
             String json = "{\"tags\": [\"a\", \"b\", \"c\"]}";
             String result = JsonUtil.getArray(json, "tags");
             assertNotNull(result);
-            assertEquals("[\"a\", \"b\", \"c\"]", result);
+            List<String> parsed = JsonUtil.parseArrayOfString(result);
+            assertEquals(3, parsed.size());
+            assertEquals("a", parsed.get(0));
+            assertEquals("b", parsed.get(1));
+            assertEquals("c", parsed.get(2));
         }
 
         @Test
@@ -363,8 +371,10 @@ class JsonUtilTest {
             assertNotNull(result);
             assertTrue(result.startsWith("["));
             assertTrue(result.endsWith("]"));
-            assertTrue(result.contains("{\"id\": 1}"));
-            assertTrue(result.contains("{\"id\": 2}"));
+            List<String> objects = JsonUtil.parseObjectArray(result);
+            assertEquals(2, objects.size());
+            assertEquals(1, JsonUtil.getInteger(objects.get(0), "id"));
+            assertEquals(2, JsonUtil.getInteger(objects.get(1), "id"));
         }
 
         @Test
@@ -461,9 +471,18 @@ class JsonUtilTest {
         @DisplayName("should handle multiple arrays in same object")
         void shouldHandleMultipleArrays() {
             String json = "{\"first\": [1, 2], \"second\": [3, 4], \"third\": [5, 6]}";
-            assertEquals("[1, 2]", JsonUtil.getArray(json, "first"));
-            assertEquals("[3, 4]", JsonUtil.getArray(json, "second"));
-            assertEquals("[5, 6]", JsonUtil.getArray(json, "third"));
+            List<Integer> first = JsonUtil.parseArrayOfInteger(JsonUtil.getArray(json, "first"));
+            assertEquals(2, first.size());
+            assertEquals(1, first.get(0));
+            assertEquals(2, first.get(1));
+
+            List<Integer> second = JsonUtil.parseArrayOfInteger(JsonUtil.getArray(json, "second"));
+            assertEquals(2, second.size());
+            assertEquals(3, second.get(0));
+
+            List<Integer> third = JsonUtil.parseArrayOfInteger(JsonUtil.getArray(json, "third"));
+            assertEquals(2, third.size());
+            assertEquals(5, third.get(0));
         }
 
         @Test
@@ -487,9 +506,9 @@ class JsonUtilTest {
             String arrayJson = "[{\"id\": 1}, {\"id\": 2}, {\"id\": 3}]";
             List<String> objects = JsonUtil.parseObjectArray(arrayJson);
             assertEquals(3, objects.size());
-            assertTrue(objects.get(0).contains("\"id\": 1"));
-            assertTrue(objects.get(1).contains("\"id\": 2"));
-            assertTrue(objects.get(2).contains("\"id\": 3"));
+            assertEquals(1, JsonUtil.getInteger(objects.get(0), "id"));
+            assertEquals(2, JsonUtil.getInteger(objects.get(1), "id"));
+            assertEquals(3, JsonUtil.getInteger(objects.get(2), "id"));
         }
 
         @Test
@@ -610,8 +629,8 @@ class JsonUtilTest {
         @Test
         @DisplayName("should return empty list for null input")
         void shouldReturnEmptyListForNull() {
-            assertTrue(JsonUtil.parseArrayOfString(null).isEmpty());
-            assertTrue(JsonUtil.parseArrayOfInteger(null).isEmpty());
+            assertTrue(JsonUtil.parseArrayOfString((String) null).isEmpty());
+            assertTrue(JsonUtil.parseArrayOfInteger((String) null).isEmpty());
         }
     }
 
@@ -708,7 +727,7 @@ class JsonUtilTest {
         @Test
         @DisplayName("should return empty map for null")
         void shouldReturnEmptyMapForNull() {
-            Map<String, Object> map = JsonUtil.parseJsonObjectToMap(null);
+            Map<String, Object> map = JsonUtil.parseJsonObjectToMap((String) null);
             assertTrue(map.isEmpty());
         }
 
@@ -1031,6 +1050,323 @@ class JsonUtilTest {
             String result = JsonUtil.getString(json, "key");
             // Should return one of the values (typically first)
             assertNotNull(result);
+        }
+    }
+
+    // ========== Parse-Once (JsonObject-based) Tests ==========
+    @Nested
+    @DisplayName("Parse-Once JsonObject API Tests")
+    class ParseOnceTests {
+
+        @Test
+        @DisplayName("parse should return JsonObject for valid JSON")
+        void parseShouldReturnJsonObject() {
+            JsonObject obj = JsonUtil.parse("{\"id\": \"sub_123\", \"amount\": 1000}");
+            assertNotNull(obj);
+            assertEquals("sub_123", JsonUtil.getString(obj, "id"));
+            assertEquals(1000L, JsonUtil.getLong(obj, "amount"));
+        }
+
+        @Test
+        @DisplayName("parse should return empty JsonObject for null/empty input")
+        void parseShouldHandleNullAndEmpty() {
+            assertNotNull(JsonUtil.parse(null));
+            assertTrue(JsonUtil.parse(null).entrySet().isEmpty());
+            assertNotNull(JsonUtil.parse(""));
+            assertNotNull(JsonUtil.parse("  "));
+        }
+
+        @Test
+        @DisplayName("all primitive extractors should work on JsonObject")
+        void allPrimitiveExtractorsOnJsonObject() {
+            String json = "{\"s\": \"hello\", \"i\": 42, \"l\": 9876543210, \"b\": true, \"d\": 3.14, \"bd\": 123.456, \"ts\": 1605530769}";
+            JsonObject obj = JsonUtil.parse(json);
+
+            assertEquals("hello", JsonUtil.getString(obj, "s"));
+            assertEquals(42, JsonUtil.getInteger(obj, "i"));
+            assertEquals(9876543210L, JsonUtil.getLong(obj, "l"));
+            assertTrue(JsonUtil.getBoolean(obj, "b"));
+            assertEquals(3.14, JsonUtil.getDouble(obj, "d"), 0.001);
+            assertEquals(new BigDecimal("123.456"), JsonUtil.getBigDecimal(obj, "bd"));
+            Timestamp ts = JsonUtil.getTimestamp(obj, "ts");
+            assertNotNull(ts);
+            assertEquals(1605530769000L, ts.getTime());
+        }
+
+        @Test
+        @DisplayName("null and missing keys should return null on JsonObject")
+        void nullAndMissingKeysOnJsonObject() {
+            JsonObject obj = JsonUtil.parse("{\"name\": \"test\"}");
+            assertNull(JsonUtil.getString(obj, "missing"));
+            assertNull(JsonUtil.getLong(obj, "missing"));
+            assertNull(JsonUtil.getInteger(obj, "missing"));
+            assertNull(JsonUtil.getBoolean(obj, "missing"));
+            assertNull(JsonUtil.getDouble(obj, "missing"));
+            assertNull(JsonUtil.getBigDecimal(obj, "missing"));
+            assertNull(JsonUtil.getTimestamp(obj, "missing"));
+            assertNull(JsonUtil.getJsonObject(obj, "missing"));
+            assertNull(JsonUtil.getJsonArray(obj, "missing"));
+        }
+
+        @Test
+        @DisplayName("getJsonObject should extract nested objects without re-parsing")
+        void getJsonObjectShouldExtractNested() {
+            String json = "{\"customer\": {\"id\": \"cust_1\", \"email\": \"a@b.com\"}, \"amount\": 500}";
+            JsonObject root = JsonUtil.parse(json);
+
+            JsonObject customer = JsonUtil.getJsonObject(root, "customer");
+            assertNotNull(customer);
+            assertEquals("cust_1", JsonUtil.getString(customer, "id"));
+            assertEquals("a@b.com", JsonUtil.getString(customer, "email"));
+        }
+
+        @Test
+        @DisplayName("getJsonArray should extract arrays without re-parsing")
+        void getJsonArrayShouldExtractArrays() {
+            String json = "{\"items\": [{\"id\": \"item_1\"}, {\"id\": \"item_2\"}]}";
+            JsonObject root = JsonUtil.parse(json);
+
+            JsonArray items = JsonUtil.getJsonArray(root, "items");
+            assertNotNull(items);
+            assertEquals(2, items.size());
+            assertEquals("item_1", items.get(0).getAsJsonObject().get("id").getAsString());
+        }
+
+        @Test
+        @DisplayName("hasValue should work on JsonObject")
+        void hasValueOnJsonObject() {
+            JsonObject obj = JsonUtil.parse("{\"name\": \"test\", \"empty\": null}");
+            assertTrue(JsonUtil.hasValue(obj, "name"));
+            assertFalse(JsonUtil.hasValue(obj, "empty"));
+            assertFalse(JsonUtil.hasValue(obj, "missing"));
+        }
+
+        @Test
+        @DisplayName("mapArray should map JsonArray elements through fromJson-like function")
+        void mapArrayShouldWork() {
+            String json = "[{\"id\": \"a\"}, {\"id\": \"b\"}, {\"id\": \"c\"}]";
+            JsonArray array = JsonUtil.parseToArray(json);
+            List<String> ids = JsonUtil.mapArray(array, obj -> JsonUtil.getString(obj, "id"));
+            assertEquals(3, ids.size());
+            assertEquals("a", ids.get(0));
+            assertEquals("b", ids.get(1));
+            assertEquals("c", ids.get(2));
+        }
+
+        @Test
+        @DisplayName("mapArray should return empty list for null array")
+        void mapArrayNullShouldReturnEmpty() {
+            List<String> result = JsonUtil.mapArray(null, obj -> "x");
+            assertNotNull(result);
+            assertTrue(result.isEmpty());
+        }
+
+        @Test
+        @DisplayName("mapArrayToMaps should convert array of objects to list of maps")
+        void mapArrayToMapsShouldWork() {
+            String json = "[{\"k1\": \"v1\"}, {\"k2\": 42}]";
+            JsonArray array = JsonUtil.parseToArray(json);
+            List<Map<String, Object>> maps = JsonUtil.mapArrayToMaps(array);
+            assertEquals(2, maps.size());
+            assertEquals("v1", maps.get(0).get("k1"));
+            assertEquals(42L, maps.get(1).get("k2"));
+        }
+
+        @Test
+        @DisplayName("parseArrayOfString with JsonArray should work")
+        void parseArrayOfStringWithJsonArray() {
+            JsonArray array = JsonUtil.parseToArray("[\"x\", \"y\", \"z\"]");
+            List<String> result = JsonUtil.parseArrayOfString(array);
+            assertEquals(3, result.size());
+            assertEquals("x", result.get(0));
+        }
+
+        @Test
+        @DisplayName("parseArrayOfInteger with JsonArray should work")
+        void parseArrayOfIntegerWithJsonArray() {
+            JsonArray array = JsonUtil.parseToArray("[1, 2, 3]");
+            List<Integer> result = JsonUtil.parseArrayOfInteger(array);
+            assertEquals(3, result.size());
+            assertEquals(1, result.get(0));
+        }
+
+        @Test
+        @DisplayName("parseArrayOfLong with JsonArray should work")
+        void parseArrayOfLongWithJsonArray() {
+            JsonArray array = JsonUtil.parseToArray("[1605530769000, 1605530770000]");
+            List<Long> result = JsonUtil.parseArrayOfLong(array);
+            assertEquals(2, result.size());
+            assertEquals(1605530769000L, result.get(0));
+        }
+
+        @Test
+        @DisplayName("parseArrayOfBoolean with JsonArray should work")
+        void parseArrayOfBooleanWithJsonArray() {
+            JsonArray array = JsonUtil.parseToArray("[true, false, true]");
+            List<Boolean> result = JsonUtil.parseArrayOfBoolean(array);
+            assertEquals(3, result.size());
+            assertTrue(result.get(0));
+            assertFalse(result.get(1));
+        }
+
+        @Test
+        @DisplayName("parseArrayOfDouble with JsonArray should work")
+        void parseArrayOfDoubleWithJsonArray() {
+            JsonArray array = JsonUtil.parseToArray("[1.5, 2.7]");
+            List<Double> result = JsonUtil.parseArrayOfDouble(array);
+            assertEquals(2, result.size());
+            assertEquals(1.5, result.get(0), 0.001);
+        }
+
+        @Test
+        @DisplayName("parseArrayOfBigDecimal with JsonArray should work")
+        void parseArrayOfBigDecimalWithJsonArray() {
+            JsonArray array = JsonUtil.parseToArray("[123.45, 678.90]");
+            List<BigDecimal> result = JsonUtil.parseArrayOfBigDecimal(array);
+            assertEquals(2, result.size());
+        }
+
+        @Test
+        @DisplayName("parseJsonObjectToMap with JsonObject should work")
+        void parseJsonObjectToMapWithJsonObject() {
+            JsonObject obj = JsonUtil.parse("{\"name\": \"John\", \"age\": 30, \"active\": true}");
+            Map<String, Object> map = JsonUtil.parseJsonObjectToMap(obj);
+            assertEquals("John", map.get("name"));
+            assertEquals(30L, map.get("age"));
+            assertEquals(true, map.get("active"));
+        }
+
+        @Test
+        @DisplayName("getObject(JsonObject, key) should return JSON string")
+        void getObjectOnJsonObjectShouldReturnString() {
+            JsonObject obj = JsonUtil.parse("{\"meta\": {\"key\": \"val\"}}");
+            String meta = JsonUtil.getObject(obj, "meta");
+            assertNotNull(meta);
+            assertTrue(meta.contains("key"));
+            assertTrue(meta.contains("val"));
+        }
+
+        @Test
+        @DisplayName("getArray(JsonObject, key) should return JSON string")
+        void getArrayOnJsonObjectShouldReturnString() {
+            JsonObject obj = JsonUtil.parse("{\"tags\": [\"a\", \"b\"]}");
+            String tags = JsonUtil.getArray(obj, "tags");
+            assertNotNull(tags);
+            assertTrue(tags.startsWith("["));
+            assertTrue(tags.endsWith("]"));
+        }
+    }
+
+    // ========== extractCustomFields / extractConsentFields Tests ==========
+    @Nested
+    @DisplayName("extractCustomFields / extractConsentFields Tests")
+    class ExtractFieldsTests {
+
+        @Test
+        @DisplayName("extractCustomFields should extract cf_ prefixed fields")
+        void extractCustomFieldsShouldWork() {
+            JsonObject obj = JsonUtil.parse("{\"id\": \"sub_1\", \"cf_color\": \"blue\", \"cf_size\": \"large\", \"name\": \"test\"}");
+            Set<String> known = new HashSet<>();
+            known.add("id");
+            known.add("name");
+
+            Map<String, String> cf = JsonUtil.extractCustomFields(obj, known);
+            assertEquals(2, cf.size());
+            assertEquals("blue", cf.get("cf_color"));
+            assertEquals("large", cf.get("cf_size"));
+        }
+
+        @Test
+        @DisplayName("extractCustomFields should handle null values")
+        void extractCustomFieldsNullValues() {
+            JsonObject obj = JsonUtil.parse("{\"cf_nullable\": null}");
+            Map<String, String> cf = JsonUtil.extractCustomFields(obj, new HashSet<>());
+            assertEquals(1, cf.size());
+            assertNull(cf.get("cf_nullable"));
+        }
+
+        @Test
+        @DisplayName("extractCustomFields should exclude known fields even with cf_ prefix")
+        void extractCustomFieldsExcludesKnown() {
+            JsonObject obj = JsonUtil.parse("{\"cf_known\": \"val\"}");
+            Set<String> known = new HashSet<>();
+            known.add("cf_known");
+            Map<String, String> cf = JsonUtil.extractCustomFields(obj, known);
+            assertTrue(cf.isEmpty());
+        }
+
+        @Test
+        @DisplayName("extractConsentFields should extract cs_ prefixed fields")
+        void extractConsentFieldsShouldWork() {
+            JsonObject obj = JsonUtil.parse("{\"id\": \"cust_1\", \"cs_marketing\": true, \"cs_analytics\": false}");
+            Set<String> known = new HashSet<>();
+            known.add("id");
+
+            Map<String, Object> cs = JsonUtil.extractConsentFields(obj, known);
+            assertEquals(2, cs.size());
+            assertEquals(true, cs.get("cs_marketing"));
+            assertEquals(false, cs.get("cs_analytics"));
+        }
+    }
+
+    // ========== Parse-Once Real-World Scenario ==========
+    @Nested
+    @DisplayName("Parse-Once Real-World Scenario")
+    class ParseOnceRealWorld {
+
+        @Test
+        @DisplayName("should parse complex response with single parse call")
+        void shouldParseComplexResponseWithSingleParse() {
+            String json = "{" +
+                "\"subscription\": {" +
+                    "\"id\": \"sub_123\"," +
+                    "\"status\": \"active\"," +
+                    "\"customer_id\": \"cust_456\"," +
+                    "\"mrr\": 5000," +
+                    "\"created_at\": 1605530769," +
+                    "\"deleted\": false," +
+                    "\"exchange_rate\": 1.25," +
+                    "\"subscription_items\": [" +
+                        "{\"item_price_id\": \"price_1\", \"quantity\": 1}," +
+                        "{\"item_price_id\": \"price_2\", \"quantity\": 2}" +
+                    "]," +
+                    "\"shipping_address\": {\"city\": \"NYC\", \"zip\": \"10001\"}," +
+                    "\"coupons\": []," +
+                    "\"meta_data\": {\"source\": \"api\"}" +
+                "}" +
+            "}";
+
+            JsonObject root = JsonUtil.parse(json);
+            JsonObject sub = JsonUtil.getJsonObject(root, "subscription");
+            assertNotNull(sub);
+
+            assertEquals("sub_123", JsonUtil.getString(sub, "id"));
+            assertEquals("active", JsonUtil.getString(sub, "status"));
+            assertEquals("cust_456", JsonUtil.getString(sub, "customer_id"));
+            assertEquals(5000L, JsonUtil.getLong(sub, "mrr"));
+            assertEquals(1605530769000L, JsonUtil.getTimestamp(sub, "created_at").getTime());
+            assertFalse(JsonUtil.getBoolean(sub, "deleted"));
+            assertEquals(1.25, JsonUtil.getDouble(sub, "exchange_rate"), 0.001);
+
+            JsonArray items = JsonUtil.getJsonArray(sub, "subscription_items");
+            assertNotNull(items);
+            assertEquals(2, items.size());
+            List<String> itemIds = JsonUtil.mapArray(items, obj -> JsonUtil.getString(obj, "item_price_id"));
+            assertEquals("price_1", itemIds.get(0));
+            assertEquals("price_2", itemIds.get(1));
+
+            JsonObject shipping = JsonUtil.getJsonObject(sub, "shipping_address");
+            assertNotNull(shipping);
+            assertEquals("NYC", JsonUtil.getString(shipping, "city"));
+
+            JsonArray coupons = JsonUtil.getJsonArray(sub, "coupons");
+            assertNotNull(coupons);
+            assertEquals(0, coupons.size());
+
+            JsonObject metaObj = JsonUtil.getJsonObject(sub, "meta_data");
+            assertNotNull(metaObj);
+            Map<String, Object> meta = JsonUtil.parseJsonObjectToMap(metaObj);
+            assertEquals("api", meta.get("source"));
         }
     }
 }
