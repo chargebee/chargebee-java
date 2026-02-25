@@ -100,6 +100,8 @@ configurations.all {
 
 **Recommended**: Gson `2.10.1` or later is recommended for best compatibility. Projects unable to upgrade should verify that the resolved Gson version is at least `2.8.6`.
 
+**About parsing helper overloads**: Some SDK model/helper APIs provide overloads that accept Gson types (for example, `fromJson(JsonObject)`) in addition to `fromJson(String)`. If a consumer compiles against Gson-typed overloads, Gson must be present on the compile classpath.
+
 ### Install JAR files
 ***
 
