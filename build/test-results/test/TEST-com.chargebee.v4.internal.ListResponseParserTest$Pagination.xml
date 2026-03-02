@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.chargebee.v4.internal.ListResponseParserTest$Pagination" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:05" hostname="CB-IT-01-1979" time="0.0">
-  <properties/>
-  <testcase name="nextPageWithoutServiceThrows()" classname="com.chargebee.v4.internal.ListResponseParserTest$Pagination" time="0.0"/>
-  <testcase name="hasNextPageTrue()" classname="com.chargebee.v4.internal.ListResponseParserTest$Pagination" time="0.0"/>
-  <testcase name="nextOffsetParsed()" classname="com.chargebee.v4.internal.ListResponseParserTest$Pagination" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

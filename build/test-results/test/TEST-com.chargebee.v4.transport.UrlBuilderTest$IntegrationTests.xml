@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Integration Tests" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:13" hostname="CB-IT-01-1979" time="0.001">
-  <properties/>
-  <testcase name="should handle URL with encoded characters in path and params" classname="com.chargebee.v4.transport.UrlBuilderTest$IntegrationTests" time="0.0"/>
-  <testcase name="should build complex URL with all components" classname="com.chargebee.v4.transport.UrlBuilderTest$IntegrationTests" time="0.001"/>
-  <testcase name="should validate and build URL" classname="com.chargebee.v4.transport.UrlBuilderTest$IntegrationTests" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

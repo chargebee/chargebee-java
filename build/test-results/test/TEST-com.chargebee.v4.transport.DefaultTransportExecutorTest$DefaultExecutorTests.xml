@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Default Executor Tests" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:05" hostname="CB-IT-01-1979" time="0.002">
-  <properties/>
-  <testcase name="should use daemon threads in default executor" classname="com.chargebee.v4.transport.DefaultTransportExecutorTest$DefaultExecutorTests" time="0.0"/>
-  <testcase name="should create a dedicated executor by default instead of ForkJoinPool.commonPool" classname="com.chargebee.v4.transport.DefaultTransportExecutorTest$DefaultExecutorTests" time="0.001"/>
-  <testcase name="should execute async requests on dedicated thread pool, not common pool" classname="com.chargebee.v4.transport.DefaultTransportExecutorTest$DefaultExecutorTests" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

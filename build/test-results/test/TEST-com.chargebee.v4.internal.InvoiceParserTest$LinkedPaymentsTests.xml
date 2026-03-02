@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Linked payments array" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:05" hostname="CB-IT-01-1979" time="0.001">
-  <properties/>
-  <testcase name="secondLinkedPaymentHasZeroAppliedAmount()" classname="com.chargebee.v4.internal.InvoiceParserTest$LinkedPaymentsTests" time="0.0"/>
-  <testcase name="parsesTwoLinkedPayments()" classname="com.chargebee.v4.internal.InvoiceParserTest$LinkedPaymentsTests" time="0.0"/>
-  <testcase name="firstLinkedPaymentFields()" classname="com.chargebee.v4.internal.InvoiceParserTest$LinkedPaymentsTests" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

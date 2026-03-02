@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="List structure" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:05" hostname="CB-IT-01-1979" time="0.0">
-  <properties/>
-  <testcase name="listNotNull()" classname="com.chargebee.v4.internal.ListResponseParserTest$ListStructure" time="0.0"/>
-  <testcase name="eachItemHasCustomer()" classname="com.chargebee.v4.internal.ListResponseParserTest$ListStructure" time="0.0"/>
-  <testcase name="listSize()" classname="com.chargebee.v4.internal.ListResponseParserTest$ListStructure" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
