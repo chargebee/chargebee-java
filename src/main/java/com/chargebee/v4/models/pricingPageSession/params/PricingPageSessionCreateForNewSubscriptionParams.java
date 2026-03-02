@@ -34,6 +34,8 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
 
   private final ShippingAddressParams shippingAddress;
 
+  private final ContractTermParams contractTerm;
+
   private final List<DiscountsParams> discounts;
 
   private PricingPageSessionCreateForNewSubscriptionParams(
@@ -56,6 +58,8 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
     this.billingAddress = builder.billingAddress;
 
     this.shippingAddress = builder.shippingAddress;
+
+    this.contractTerm = builder.contractTerm;
 
     this.discounts = builder.discounts;
   }
@@ -94,6 +98,10 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
 
   public ShippingAddressParams getShippingAddress() {
     return shippingAddress;
+  }
+
+  public ContractTermParams getContractTerm() {
+    return contractTerm;
   }
 
   public List<DiscountsParams> getDiscounts() {
@@ -174,6 +182,16 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       }
     }
 
+    if (this.contractTerm != null) {
+
+      // Single object
+      Map<String, Object> nestedData = this.contractTerm.toFormData();
+      for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+        String nestedKey = "contract_term[" + entry.getKey() + "]";
+        formData.put(nestedKey, entry.getValue());
+      }
+    }
+
     if (this.discounts != null) {
 
       // List of objects
@@ -217,6 +235,8 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
     private BillingAddressParams billingAddress;
 
     private ShippingAddressParams shippingAddress;
+
+    private ContractTermParams contractTerm;
 
     private List<DiscountsParams> discounts;
 
@@ -269,6 +289,12 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
     public PricingPageSessionCreateForNewSubscriptionBuilder shippingAddress(
         ShippingAddressParams value) {
       this.shippingAddress = value;
+      return this;
+    }
+
+    public PricingPageSessionCreateForNewSubscriptionBuilder contractTerm(
+        ContractTermParams value) {
+      this.contractTerm = value;
       return this;
     }
 
@@ -1320,6 +1346,106 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       public static ValidationStatus fromString(String value) {
         if (value == null) return _UNKNOWN;
         for (ValidationStatus enumValue : ValidationStatus.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+  }
+
+  public static final class ContractTermParams {
+
+    private final ActionAtTermEnd actionAtTermEnd;
+
+    private final Integer cancellationCutoffPeriod;
+
+    private ContractTermParams(ContractTermBuilder builder) {
+
+      this.actionAtTermEnd = builder.actionAtTermEnd;
+
+      this.cancellationCutoffPeriod = builder.cancellationCutoffPeriod;
+    }
+
+    public ActionAtTermEnd getActionAtTermEnd() {
+      return actionAtTermEnd;
+    }
+
+    public Integer getCancellationCutoffPeriod() {
+      return cancellationCutoffPeriod;
+    }
+
+    /** Get the form data for this request. */
+    public Map<String, Object> toFormData() {
+      Map<String, Object> formData = new LinkedHashMap<>();
+
+      if (this.actionAtTermEnd != null) {
+
+        formData.put("action_at_term_end", this.actionAtTermEnd);
+      }
+
+      if (this.cancellationCutoffPeriod != null) {
+
+        formData.put("cancellation_cutoff_period", this.cancellationCutoffPeriod);
+      }
+
+      return formData;
+    }
+
+    /** Create a new builder for ContractTermParams. */
+    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
+    public static ContractTermBuilder builder() {
+      return new ContractTermBuilder();
+    }
+
+    public static final class ContractTermBuilder {
+
+      private ActionAtTermEnd actionAtTermEnd;
+
+      private Integer cancellationCutoffPeriod;
+
+      private ContractTermBuilder() {}
+
+      public ContractTermBuilder actionAtTermEnd(ActionAtTermEnd value) {
+        this.actionAtTermEnd = value;
+        return this;
+      }
+
+      public ContractTermBuilder cancellationCutoffPeriod(Integer value) {
+        this.cancellationCutoffPeriod = value;
+        return this;
+      }
+
+      public ContractTermParams build() {
+        return new ContractTermParams(this);
+      }
+    }
+
+    public enum ActionAtTermEnd {
+      RENEW("renew"),
+
+      EVERGREEN("evergreen"),
+
+      CANCEL("cancel"),
+
+      RENEW_ONCE("renew_once"),
+
+      /** An enum member indicating that ActionAtTermEnd was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      ActionAtTermEnd(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static ActionAtTermEnd fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ActionAtTermEnd enumValue : ActionAtTermEnd.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }

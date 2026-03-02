@@ -17,6 +17,8 @@ public class Subscription {
 
   private String id;
   private String currencyCode;
+  private Integer billingPeriod;
+  private BillingPeriodUnit billingPeriodUnit;
   private Timestamp startDate;
   private Timestamp trialEnd;
   private Integer remainingBillingCycles;
@@ -80,20 +82,18 @@ public class Subscription {
   private BillingOverride billingOverride;
   private ContractTerm contractTerm;
   private List<Discounts> discounts;
-  private Integer billingPeriod;
   private Long setupFee;
   private Integer planFreeQuantity;
+  private List<ChargedEventBasedAddons> chargedEventBasedAddons;
+  private AutoCollection autoCollection;
+  private List<EventBasedAddons> eventBasedAddons;
   private List<Addons> addons;
-  private BillingPeriodUnit billingPeriodUnit;
   private String giftId;
   private Integer planQuantity;
   private String affiliateToken;
   private Long planAmount;
-  private Long planUnitPrice;
-  private List<ChargedEventBasedAddons> chargedEventBasedAddons;
-  private AutoCollection autoCollection;
-  private List<EventBasedAddons> eventBasedAddons;
   private String planId;
+  private Long planUnitPrice;
 
   private java.util.Map<String, String> customFields = new java.util.HashMap<>();
 
@@ -103,6 +103,14 @@ public class Subscription {
 
   public String getCurrencyCode() {
     return currencyCode;
+  }
+
+  public Integer getBillingPeriod() {
+    return billingPeriod;
+  }
+
+  public BillingPeriodUnit getBillingPeriodUnit() {
+    return billingPeriodUnit;
   }
 
   public Timestamp getStartDate() {
@@ -359,10 +367,6 @@ public class Subscription {
     return discounts;
   }
 
-  public Integer getBillingPeriod() {
-    return billingPeriod;
-  }
-
   public Long getSetupFee() {
     return setupFee;
   }
@@ -371,12 +375,20 @@ public class Subscription {
     return planFreeQuantity;
   }
 
-  public List<Addons> getAddons() {
-    return addons;
+  public List<ChargedEventBasedAddons> getChargedEventBasedAddons() {
+    return chargedEventBasedAddons;
   }
 
-  public BillingPeriodUnit getBillingPeriodUnit() {
-    return billingPeriodUnit;
+  public AutoCollection getAutoCollection() {
+    return autoCollection;
+  }
+
+  public List<EventBasedAddons> getEventBasedAddons() {
+    return eventBasedAddons;
+  }
+
+  public List<Addons> getAddons() {
+    return addons;
   }
 
   public String getGiftId() {
@@ -395,24 +407,12 @@ public class Subscription {
     return planAmount;
   }
 
-  public Long getPlanUnitPrice() {
-    return planUnitPrice;
-  }
-
-  public List<ChargedEventBasedAddons> getChargedEventBasedAddons() {
-    return chargedEventBasedAddons;
-  }
-
-  public AutoCollection getAutoCollection() {
-    return autoCollection;
-  }
-
-  public List<EventBasedAddons> getEventBasedAddons() {
-    return eventBasedAddons;
-  }
-
   public String getPlanId() {
     return planId;
+  }
+
+  public Long getPlanUnitPrice() {
+    return planUnitPrice;
   }
 
   /**
@@ -433,6 +433,38 @@ public class Subscription {
    */
   public String getCustomField(String fieldName) {
     return customFields.get(fieldName);
+  }
+
+  public enum BillingPeriodUnit {
+    DAY("day"),
+
+    WEEK("week"),
+
+    MONTH("month"),
+
+    YEAR("year"),
+
+    /** An enum member indicating that BillingPeriodUnit was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    BillingPeriodUnit(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static BillingPeriodUnit fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (BillingPeriodUnit enumValue : BillingPeriodUnit.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
   }
 
   public enum Status {
@@ -657,38 +689,6 @@ public class Subscription {
     }
   }
 
-  public enum BillingPeriodUnit {
-    DAY("day"),
-
-    WEEK("week"),
-
-    MONTH("month"),
-
-    YEAR("year"),
-
-    /** An enum member indicating that BillingPeriodUnit was instantiated with an unknown value. */
-    _UNKNOWN(null);
-    private final String value;
-
-    BillingPeriodUnit(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    public static BillingPeriodUnit fromString(String value) {
-      if (value == null) return _UNKNOWN;
-      for (BillingPeriodUnit enumValue : BillingPeriodUnit.values()) {
-        if (enumValue.value != null && enumValue.value.equals(value)) {
-          return enumValue;
-        }
-      }
-      return _UNKNOWN;
-    }
-  }
-
   public enum AutoCollection {
     ON("on"),
 
@@ -729,6 +729,10 @@ public class Subscription {
     knownFields.add("id");
 
     knownFields.add("currency_code");
+
+    knownFields.add("billing_period");
+
+    knownFields.add("billing_period_unit");
 
     knownFields.add("start_date");
 
@@ -856,15 +860,17 @@ public class Subscription {
 
     knownFields.add("discounts");
 
-    knownFields.add("billing_period");
-
     knownFields.add("setup_fee");
 
     knownFields.add("plan_free_quantity");
 
-    knownFields.add("addons");
+    knownFields.add("charged_event_based_addons");
 
-    knownFields.add("billing_period_unit");
+    knownFields.add("auto_collection");
+
+    knownFields.add("event_based_addons");
+
+    knownFields.add("addons");
 
     knownFields.add("gift_id");
 
@@ -874,19 +880,18 @@ public class Subscription {
 
     knownFields.add("plan_amount");
 
-    knownFields.add("plan_unit_price");
-
-    knownFields.add("charged_event_based_addons");
-
-    knownFields.add("auto_collection");
-
-    knownFields.add("event_based_addons");
-
     knownFields.add("plan_id");
+
+    knownFields.add("plan_unit_price");
 
     obj.id = JsonUtil.getString(jsonObj, "id");
 
     obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
+
+    obj.billingPeriod = JsonUtil.getInteger(jsonObj, "billing_period");
+
+    obj.billingPeriodUnit =
+        BillingPeriodUnit.fromString(JsonUtil.getString(jsonObj, "billing_period_unit"));
 
     obj.startDate = JsonUtil.getTimestamp(jsonObj, "start_date");
 
@@ -1038,26 +1043,9 @@ public class Subscription {
     obj.discounts =
         JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "discounts"), Discounts::fromJson);
 
-    obj.billingPeriod = JsonUtil.getInteger(jsonObj, "billing_period");
-
     obj.setupFee = JsonUtil.getLong(jsonObj, "setup_fee");
 
     obj.planFreeQuantity = JsonUtil.getInteger(jsonObj, "plan_free_quantity");
-
-    obj.addons = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "addons"), Addons::fromJson);
-
-    obj.billingPeriodUnit =
-        BillingPeriodUnit.fromString(JsonUtil.getString(jsonObj, "billing_period_unit"));
-
-    obj.giftId = JsonUtil.getString(jsonObj, "gift_id");
-
-    obj.planQuantity = JsonUtil.getInteger(jsonObj, "plan_quantity");
-
-    obj.affiliateToken = JsonUtil.getString(jsonObj, "affiliate_token");
-
-    obj.planAmount = JsonUtil.getLong(jsonObj, "plan_amount");
-
-    obj.planUnitPrice = JsonUtil.getLong(jsonObj, "plan_unit_price");
 
     obj.chargedEventBasedAddons =
         JsonUtil.mapArray(
@@ -1070,7 +1058,19 @@ public class Subscription {
         JsonUtil.mapArray(
             JsonUtil.getJsonArray(jsonObj, "event_based_addons"), EventBasedAddons::fromJson);
 
+    obj.addons = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "addons"), Addons::fromJson);
+
+    obj.giftId = JsonUtil.getString(jsonObj, "gift_id");
+
+    obj.planQuantity = JsonUtil.getInteger(jsonObj, "plan_quantity");
+
+    obj.affiliateToken = JsonUtil.getString(jsonObj, "affiliate_token");
+
+    obj.planAmount = JsonUtil.getLong(jsonObj, "plan_amount");
+
     obj.planId = JsonUtil.getString(jsonObj, "plan_id");
+
+    obj.planUnitPrice = JsonUtil.getLong(jsonObj, "plan_unit_price");
 
     obj.customFields = JsonUtil.extractCustomFields(jsonObj, knownFields);
 
@@ -1084,6 +1084,10 @@ public class Subscription {
         + id
         + ", currencyCode="
         + currencyCode
+        + ", billingPeriod="
+        + billingPeriod
+        + ", billingPeriodUnit="
+        + billingPeriodUnit
         + ", startDate="
         + startDate
         + ", trialEnd="
@@ -1210,16 +1214,18 @@ public class Subscription {
         + contractTerm
         + ", discounts="
         + discounts
-        + ", billingPeriod="
-        + billingPeriod
         + ", setupFee="
         + setupFee
         + ", planFreeQuantity="
         + planFreeQuantity
+        + ", chargedEventBasedAddons="
+        + chargedEventBasedAddons
+        + ", autoCollection="
+        + autoCollection
+        + ", eventBasedAddons="
+        + eventBasedAddons
         + ", addons="
         + addons
-        + ", billingPeriodUnit="
-        + billingPeriodUnit
         + ", giftId="
         + giftId
         + ", planQuantity="
@@ -1228,16 +1234,10 @@ public class Subscription {
         + affiliateToken
         + ", planAmount="
         + planAmount
-        + ", planUnitPrice="
-        + planUnitPrice
-        + ", chargedEventBasedAddons="
-        + chargedEventBasedAddons
-        + ", autoCollection="
-        + autoCollection
-        + ", eventBasedAddons="
-        + eventBasedAddons
         + ", planId="
         + planId
+        + ", planUnitPrice="
+        + planUnitPrice
         + ", customFields="
         + customFields
         + "}";
@@ -1251,6 +1251,8 @@ public class Subscription {
     Subscription that = (Subscription) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(currencyCode, that.currencyCode)
+        && java.util.Objects.equals(billingPeriod, that.billingPeriod)
+        && java.util.Objects.equals(billingPeriodUnit, that.billingPeriodUnit)
         && java.util.Objects.equals(startDate, that.startDate)
         && java.util.Objects.equals(trialEnd, that.trialEnd)
         && java.util.Objects.equals(remainingBillingCycles, that.remainingBillingCycles)
@@ -1315,20 +1317,18 @@ public class Subscription {
         && java.util.Objects.equals(billingOverride, that.billingOverride)
         && java.util.Objects.equals(contractTerm, that.contractTerm)
         && java.util.Objects.equals(discounts, that.discounts)
-        && java.util.Objects.equals(billingPeriod, that.billingPeriod)
         && java.util.Objects.equals(setupFee, that.setupFee)
         && java.util.Objects.equals(planFreeQuantity, that.planFreeQuantity)
+        && java.util.Objects.equals(chargedEventBasedAddons, that.chargedEventBasedAddons)
+        && java.util.Objects.equals(autoCollection, that.autoCollection)
+        && java.util.Objects.equals(eventBasedAddons, that.eventBasedAddons)
         && java.util.Objects.equals(addons, that.addons)
-        && java.util.Objects.equals(billingPeriodUnit, that.billingPeriodUnit)
         && java.util.Objects.equals(giftId, that.giftId)
         && java.util.Objects.equals(planQuantity, that.planQuantity)
         && java.util.Objects.equals(affiliateToken, that.affiliateToken)
         && java.util.Objects.equals(planAmount, that.planAmount)
-        && java.util.Objects.equals(planUnitPrice, that.planUnitPrice)
-        && java.util.Objects.equals(chargedEventBasedAddons, that.chargedEventBasedAddons)
-        && java.util.Objects.equals(autoCollection, that.autoCollection)
-        && java.util.Objects.equals(eventBasedAddons, that.eventBasedAddons)
         && java.util.Objects.equals(planId, that.planId)
+        && java.util.Objects.equals(planUnitPrice, that.planUnitPrice)
         && java.util.Objects.equals(customFields, that.customFields);
   }
 
@@ -1338,6 +1338,8 @@ public class Subscription {
     return java.util.Objects.hash(
         id,
         currencyCode,
+        billingPeriod,
+        billingPeriodUnit,
         startDate,
         trialEnd,
         remainingBillingCycles,
@@ -1401,20 +1403,18 @@ public class Subscription {
         billingOverride,
         contractTerm,
         discounts,
-        billingPeriod,
         setupFee,
         planFreeQuantity,
+        chargedEventBasedAddons,
+        autoCollection,
+        eventBasedAddons,
         addons,
-        billingPeriodUnit,
         giftId,
         planQuantity,
         affiliateToken,
         planAmount,
-        planUnitPrice,
-        chargedEventBasedAddons,
-        autoCollection,
-        eventBasedAddons,
         planId,
+        planUnitPrice,
         customFields);
   }
 
@@ -3430,180 +3430,6 @@ public class Subscription {
     }
   }
 
-  public static class Addons {
-
-    private String id;
-    private Integer quantity;
-    private Long unitPrice;
-    private Long amount;
-    private Timestamp trialEnd;
-    private Integer remainingBillingCycles;
-    private String quantityInDecimal;
-    private String unitPriceInDecimal;
-    private String amountInDecimal;
-    private ProrationType prorationType;
-
-    public String getId() {
-      return id;
-    }
-
-    public Integer getQuantity() {
-      return quantity;
-    }
-
-    public Long getUnitPrice() {
-      return unitPrice;
-    }
-
-    public Long getAmount() {
-      return amount;
-    }
-
-    public Timestamp getTrialEnd() {
-      return trialEnd;
-    }
-
-    public Integer getRemainingBillingCycles() {
-      return remainingBillingCycles;
-    }
-
-    public String getQuantityInDecimal() {
-      return quantityInDecimal;
-    }
-
-    public String getUnitPriceInDecimal() {
-      return unitPriceInDecimal;
-    }
-
-    public String getAmountInDecimal() {
-      return amountInDecimal;
-    }
-
-    public ProrationType getProrationType() {
-      return prorationType;
-    }
-
-    public enum ProrationType {
-      FULL_TERM("full_term"),
-
-      PARTIAL_TERM("partial_term"),
-
-      NONE("none"),
-
-      /** An enum member indicating that ProrationType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ProrationType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ProrationType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ProrationType enumValue : ProrationType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public static Addons fromJson(String json) {
-      return fromJson(JsonUtil.parse(json));
-    }
-
-    public static Addons fromJson(JsonObject jsonObj) {
-      Addons obj = new Addons();
-
-      obj.id = JsonUtil.getString(jsonObj, "id");
-
-      obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
-
-      obj.unitPrice = JsonUtil.getLong(jsonObj, "unit_price");
-
-      obj.amount = JsonUtil.getLong(jsonObj, "amount");
-
-      obj.trialEnd = JsonUtil.getTimestamp(jsonObj, "trial_end");
-
-      obj.remainingBillingCycles = JsonUtil.getInteger(jsonObj, "remaining_billing_cycles");
-
-      obj.quantityInDecimal = JsonUtil.getString(jsonObj, "quantity_in_decimal");
-
-      obj.unitPriceInDecimal = JsonUtil.getString(jsonObj, "unit_price_in_decimal");
-
-      obj.amountInDecimal = JsonUtil.getString(jsonObj, "amount_in_decimal");
-
-      obj.prorationType = ProrationType.fromString(JsonUtil.getString(jsonObj, "proration_type"));
-
-      return obj;
-    }
-
-    @Override
-    public String toString() {
-      return "Addons{"
-          + "id="
-          + id
-          + ", quantity="
-          + quantity
-          + ", unitPrice="
-          + unitPrice
-          + ", amount="
-          + amount
-          + ", trialEnd="
-          + trialEnd
-          + ", remainingBillingCycles="
-          + remainingBillingCycles
-          + ", quantityInDecimal="
-          + quantityInDecimal
-          + ", unitPriceInDecimal="
-          + unitPriceInDecimal
-          + ", amountInDecimal="
-          + amountInDecimal
-          + ", prorationType="
-          + prorationType
-          + "}";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
-
-      Addons that = (Addons) o;
-      return java.util.Objects.equals(id, that.id)
-          && java.util.Objects.equals(quantity, that.quantity)
-          && java.util.Objects.equals(unitPrice, that.unitPrice)
-          && java.util.Objects.equals(amount, that.amount)
-          && java.util.Objects.equals(trialEnd, that.trialEnd)
-          && java.util.Objects.equals(remainingBillingCycles, that.remainingBillingCycles)
-          && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
-          && java.util.Objects.equals(unitPriceInDecimal, that.unitPriceInDecimal)
-          && java.util.Objects.equals(amountInDecimal, that.amountInDecimal)
-          && java.util.Objects.equals(prorationType, that.prorationType);
-    }
-
-    @Override
-    public int hashCode() {
-
-      return java.util.Objects.hash(
-          id,
-          quantity,
-          unitPrice,
-          amount,
-          trialEnd,
-          remainingBillingCycles,
-          quantityInDecimal,
-          unitPriceInDecimal,
-          amountInDecimal,
-          prorationType);
-    }
-  }
-
   public static class ChargedEventBasedAddons {
 
     private String id;
@@ -3807,6 +3633,180 @@ public class Subscription {
           chargeOnce,
           quantityInDecimal,
           unitPriceInDecimal);
+    }
+  }
+
+  public static class Addons {
+
+    private String id;
+    private Integer quantity;
+    private Long unitPrice;
+    private Long amount;
+    private Timestamp trialEnd;
+    private Integer remainingBillingCycles;
+    private String quantityInDecimal;
+    private String unitPriceInDecimal;
+    private String amountInDecimal;
+    private ProrationType prorationType;
+
+    public String getId() {
+      return id;
+    }
+
+    public Integer getQuantity() {
+      return quantity;
+    }
+
+    public Long getUnitPrice() {
+      return unitPrice;
+    }
+
+    public Long getAmount() {
+      return amount;
+    }
+
+    public Timestamp getTrialEnd() {
+      return trialEnd;
+    }
+
+    public Integer getRemainingBillingCycles() {
+      return remainingBillingCycles;
+    }
+
+    public String getQuantityInDecimal() {
+      return quantityInDecimal;
+    }
+
+    public String getUnitPriceInDecimal() {
+      return unitPriceInDecimal;
+    }
+
+    public String getAmountInDecimal() {
+      return amountInDecimal;
+    }
+
+    public ProrationType getProrationType() {
+      return prorationType;
+    }
+
+    public enum ProrationType {
+      FULL_TERM("full_term"),
+
+      PARTIAL_TERM("partial_term"),
+
+      NONE("none"),
+
+      /** An enum member indicating that ProrationType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      ProrationType(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static ProrationType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ProrationType enumValue : ProrationType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public static Addons fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Addons fromJson(JsonObject jsonObj) {
+      Addons obj = new Addons();
+
+      obj.id = JsonUtil.getString(jsonObj, "id");
+
+      obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
+
+      obj.unitPrice = JsonUtil.getLong(jsonObj, "unit_price");
+
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
+
+      obj.trialEnd = JsonUtil.getTimestamp(jsonObj, "trial_end");
+
+      obj.remainingBillingCycles = JsonUtil.getInteger(jsonObj, "remaining_billing_cycles");
+
+      obj.quantityInDecimal = JsonUtil.getString(jsonObj, "quantity_in_decimal");
+
+      obj.unitPriceInDecimal = JsonUtil.getString(jsonObj, "unit_price_in_decimal");
+
+      obj.amountInDecimal = JsonUtil.getString(jsonObj, "amount_in_decimal");
+
+      obj.prorationType = ProrationType.fromString(JsonUtil.getString(jsonObj, "proration_type"));
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Addons{"
+          + "id="
+          + id
+          + ", quantity="
+          + quantity
+          + ", unitPrice="
+          + unitPrice
+          + ", amount="
+          + amount
+          + ", trialEnd="
+          + trialEnd
+          + ", remainingBillingCycles="
+          + remainingBillingCycles
+          + ", quantityInDecimal="
+          + quantityInDecimal
+          + ", unitPriceInDecimal="
+          + unitPriceInDecimal
+          + ", amountInDecimal="
+          + amountInDecimal
+          + ", prorationType="
+          + prorationType
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      Addons that = (Addons) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(quantity, that.quantity)
+          && java.util.Objects.equals(unitPrice, that.unitPrice)
+          && java.util.Objects.equals(amount, that.amount)
+          && java.util.Objects.equals(trialEnd, that.trialEnd)
+          && java.util.Objects.equals(remainingBillingCycles, that.remainingBillingCycles)
+          && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
+          && java.util.Objects.equals(unitPriceInDecimal, that.unitPriceInDecimal)
+          && java.util.Objects.equals(amountInDecimal, that.amountInDecimal)
+          && java.util.Objects.equals(prorationType, that.prorationType);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(
+          id,
+          quantity,
+          unitPrice,
+          amount,
+          trialEnd,
+          remainingBillingCycles,
+          quantityInDecimal,
+          unitPriceInDecimal,
+          amountInDecimal,
+          prorationType);
     }
   }
 }

@@ -60,6 +60,8 @@ import com.chargebee.v4.services.EntitlementService;
 
 import com.chargebee.v4.services.AdditionalBillingLogiqService;
 
+import com.chargebee.v4.services.UsageSummaryService;
+
 import com.chargebee.v4.services.SubscriptionSettingService;
 
 import com.chargebee.v4.services.SiteMigrationDetailService;
@@ -143,6 +145,8 @@ import com.chargebee.v4.services.ItemFamilyService;
 import com.chargebee.v4.services.SubscriptionEntitlementService;
 
 import com.chargebee.v4.services.ThirdPartyEntityMappingService;
+
+import com.chargebee.v4.services.UsageChargeService;
 
 import com.chargebee.v4.services.EntitlementOverrideService;
 
@@ -229,6 +233,8 @@ final class ServiceRegistry {
 
   private volatile AdditionalBillingLogiqService additionalBillingLogiqService;
 
+  private volatile UsageSummaryService usageSummaryService;
+
   private volatile SubscriptionSettingService subscriptionSettingService;
 
   private volatile SiteMigrationDetailService siteMigrationDetailService;
@@ -312,6 +318,8 @@ final class ServiceRegistry {
   private volatile SubscriptionEntitlementService subscriptionEntitlementService;
 
   private volatile ThirdPartyEntityMappingService thirdPartyEntityMappingService;
+
+  private volatile UsageChargeService usageChargeService;
 
   private volatile EntitlementOverrideService entitlementOverrideService;
 
@@ -783,6 +791,21 @@ final class ServiceRegistry {
       }
     }
     return additionalBillingLogiqService;
+  }
+
+  /**
+   * Get or create the UsageSummaryService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  UsageSummaryService usageSummaries() {
+    if (usageSummaryService == null) {
+      synchronized (this) {
+        if (usageSummaryService == null) {
+          usageSummaryService = new UsageSummaryService(client);
+        }
+      }
+    }
+    return usageSummaryService;
   }
 
   /**
@@ -1413,6 +1436,21 @@ final class ServiceRegistry {
       }
     }
     return thirdPartyEntityMappingService;
+  }
+
+  /**
+   * Get or create the UsageChargeService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  UsageChargeService usageCharges() {
+    if (usageChargeService == null) {
+      synchronized (this) {
+        if (usageChargeService == null) {
+          usageChargeService = new UsageChargeService(client);
+        }
+      }
+    }
+    return usageChargeService;
   }
 
   /**

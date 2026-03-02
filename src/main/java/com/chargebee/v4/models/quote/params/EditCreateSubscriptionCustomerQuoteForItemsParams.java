@@ -579,6 +579,10 @@ public final class EditCreateSubscriptionCustomerQuoteForItemsParams {
 
     private final Integer contractTermBillingCycleOnRenewal;
 
+    private final Integer freePeriod;
+
+    private final FreePeriodUnit freePeriodUnit;
+
     private final Map<String, String> customFields;
 
     private SubscriptionParams(SubscriptionBuilder builder) {
@@ -596,6 +600,10 @@ public final class EditCreateSubscriptionCustomerQuoteForItemsParams {
       this.offlinePaymentMethod = builder.offlinePaymentMethod;
 
       this.contractTermBillingCycleOnRenewal = builder.contractTermBillingCycleOnRenewal;
+
+      this.freePeriod = builder.freePeriod;
+
+      this.freePeriodUnit = builder.freePeriodUnit;
 
       this.customFields =
           builder.customFields.isEmpty()
@@ -629,6 +637,14 @@ public final class EditCreateSubscriptionCustomerQuoteForItemsParams {
 
     public Integer getContractTermBillingCycleOnRenewal() {
       return contractTermBillingCycleOnRenewal;
+    }
+
+    public Integer getFreePeriod() {
+      return freePeriod;
+    }
+
+    public FreePeriodUnit getFreePeriodUnit() {
+      return freePeriodUnit;
     }
 
     public Map<String, String> customFields() {
@@ -675,6 +691,16 @@ public final class EditCreateSubscriptionCustomerQuoteForItemsParams {
             "contract_term_billing_cycle_on_renewal", this.contractTermBillingCycleOnRenewal);
       }
 
+      if (this.freePeriod != null) {
+
+        formData.put("free_period", this.freePeriod);
+      }
+
+      if (this.freePeriodUnit != null) {
+
+        formData.put("free_period_unit", this.freePeriodUnit);
+      }
+
       formData.putAll(customFields);
 
       return formData;
@@ -701,6 +727,10 @@ public final class EditCreateSubscriptionCustomerQuoteForItemsParams {
       private OfflinePaymentMethod offlinePaymentMethod;
 
       private Integer contractTermBillingCycleOnRenewal;
+
+      private Integer freePeriod;
+
+      private FreePeriodUnit freePeriodUnit;
 
       private Map<String, String> customFields = new LinkedHashMap<>();
 
@@ -739,6 +769,16 @@ public final class EditCreateSubscriptionCustomerQuoteForItemsParams {
 
       public SubscriptionBuilder contractTermBillingCycleOnRenewal(Integer value) {
         this.contractTermBillingCycleOnRenewal = value;
+        return this;
+      }
+
+      public SubscriptionBuilder freePeriod(Integer value) {
+        this.freePeriod = value;
+        return this;
+      }
+
+      public SubscriptionBuilder freePeriodUnit(FreePeriodUnit value) {
+        this.freePeriodUnit = value;
         return this;
       }
 
@@ -827,6 +867,38 @@ public final class EditCreateSubscriptionCustomerQuoteForItemsParams {
       public static OfflinePaymentMethod fromString(String value) {
         if (value == null) return _UNKNOWN;
         for (OfflinePaymentMethod enumValue : OfflinePaymentMethod.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum FreePeriodUnit {
+      DAY("day"),
+
+      WEEK("week"),
+
+      MONTH("month"),
+
+      YEAR("year"),
+
+      /** An enum member indicating that FreePeriodUnit was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      FreePeriodUnit(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static FreePeriodUnit fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (FreePeriodUnit enumValue : FreePeriodUnit.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }

@@ -60,6 +60,8 @@ import com.chargebee.v4.services.EntitlementService;
 
 import com.chargebee.v4.services.AdditionalBillingLogiqService;
 
+import com.chargebee.v4.services.UsageSummaryService;
+
 import com.chargebee.v4.services.SubscriptionSettingService;
 
 import com.chargebee.v4.services.SiteMigrationDetailService;
@@ -143,6 +145,8 @@ import com.chargebee.v4.services.ItemFamilyService;
 import com.chargebee.v4.services.SubscriptionEntitlementService;
 
 import com.chargebee.v4.services.ThirdPartyEntityMappingService;
+
+import com.chargebee.v4.services.UsageChargeService;
 
 import com.chargebee.v4.services.EntitlementOverrideService;
 
@@ -318,6 +322,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public AdditionalBillingLogiqService additionalBillingLogiqs() {
     return getServiceRegistry().additionalBillingLogiqs();
+  }
+
+  @Override
+  public UsageSummaryService usageSummaries() {
+    return getServiceRegistry().usageSummaries();
   }
 
   @Override
@@ -528,6 +537,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public ThirdPartyEntityMappingService thirdPartyEntityMappings() {
     return getServiceRegistry().thirdPartyEntityMappings();
+  }
+
+  @Override
+  public UsageChargeService usageCharges() {
+    return getServiceRegistry().usageCharges();
   }
 
   @Override
