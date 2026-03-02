@@ -275,6 +275,16 @@ public class PricingPageSession extends Resource<PricingPageSession> {
             return this;
         }
         
+        public CreateForNewSubscriptionRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+        
+        public CreateForNewSubscriptionRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+            return this;
+        }
+        
         public CreateForNewSubscriptionRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
             params.addOpt("discounts[apply_on][" + index + "]", discountApplyOn);
             return this;
@@ -346,6 +356,16 @@ public class PricingPageSession extends Resource<PricingPageSession> {
         
         public CreateForExistingSubscriptionRequest subscriptionId(String subscriptionId) {
             params.add("subscription[id]", subscriptionId);
+            return this;
+        }
+        
+        public CreateForExistingSubscriptionRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+        
+        public CreateForExistingSubscriptionRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
             return this;
         }
         

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Edge Cases" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:05" hostname="CB-IT-01-1979" time="0.002">
+  <properties/>
+  <testcase name="whitespaceVariations()" classname="com.chargebee.v4.internal.JsonUtilTest$EdgeCases" time="0.0"/>
+  <testcase name="nullAndMissingKeysReturnNull()" classname="com.chargebee.v4.internal.JsonUtilTest$EdgeCases" time="0.0"/>
+  <testcase name="veryLongStrings()" classname="com.chargebee.v4.internal.JsonUtilTest$EdgeCases" time="0.002"/>
+  <testcase name="mixedTypesInArray()" classname="com.chargebee.v4.internal.JsonUtilTest$EdgeCases" time="0.0"/>
+  <testcase name="deeplyNestedStructures()" classname="com.chargebee.v4.internal.JsonUtilTest$EdgeCases" time="0.0"/>
+  <testcase name="keysWithSpecialCharacters()" classname="com.chargebee.v4.internal.JsonUtilTest$EdgeCases" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

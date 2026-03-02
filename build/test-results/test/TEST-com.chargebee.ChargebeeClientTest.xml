@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.chargebee.ChargebeeClientTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:02" hostname="CB-IT-01-1979" time="0.022">
+  <properties/>
+  <testcase name="Builder should handle null optional values" classname="com.chargebee.ChargebeeClientTest" time="0.012"/>
+  <testcase name="Builder should fail when both required fields are missing" classname="com.chargebee.ChargebeeClientTest" time="0.002"/>
+  <testcase name="Builder should fail when apiKey is missing" classname="com.chargebee.ChargebeeClientTest" time="0.0"/>
+  <testcase name="Client should not equal null or different class" classname="com.chargebee.ChargebeeClientTest" time="0.001"/>
+  <testcase name="Builder should support transport configuration" classname="com.chargebee.ChargebeeClientTest" time="0.0"/>
+  <testcase name="Two clients with same config should be equal" classname="com.chargebee.ChargebeeClientTest" time="0.0"/>
+  <testcase name="Client should be immutable" classname="com.chargebee.ChargebeeClientTest" time="0.0"/>
+  <testcase name="Two clients with different config should not be equal" classname="com.chargebee.ChargebeeClientTest" time="0.0"/>
+  <testcase name="Builder should support fluent API" classname="com.chargebee.ChargebeeClientTest" time="0.004"/>
+  <testcase name="Builder should use default values" classname="com.chargebee.ChargebeeClientTest" time="0.0"/>
+  <testcase name="Builder should fail when siteName is missing" classname="com.chargebee.ChargebeeClientTest" time="0.001"/>
+  <testcase name="Builder should create client with required fields" classname="com.chargebee.ChargebeeClientTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

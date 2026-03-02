@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Subdomain URL construction via BaseService" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:05" hostname="CB-IT-01-1979" time="0.001">
+  <properties/>
+  <testcase name="should construct URL with subdomain" classname="com.chargebee.v4.client.SubDomainSupportTest$SubDomainUrlConstruction" time="0.0"/>
+  <testcase name="should respect custom domain suffix" classname="com.chargebee.v4.client.SubDomainSupportTest$SubDomainUrlConstruction" time="0.001"/>
+  <testcase name="should return configured endpoint when endpoint is set" classname="com.chargebee.v4.client.SubDomainSupportTest$SubDomainUrlConstruction" time="0.0"/>
+  <testcase name="should respect custom protocol" classname="com.chargebee.v4.client.SubDomainSupportTest$SubDomainUrlConstruction" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

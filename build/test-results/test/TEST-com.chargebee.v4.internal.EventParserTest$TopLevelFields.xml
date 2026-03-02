@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Top-level scalar fields" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:05" hostname="CB-IT-01-1979" time="0.0">
+  <properties/>
+  <testcase name="parsesStringFields()" classname="com.chargebee.v4.internal.EventParserTest$TopLevelFields" time="0.0"/>
+  <testcase name="parsesTimestampFields()" classname="com.chargebee.v4.internal.EventParserTest$TopLevelFields" time="0.0"/>
+  <testcase name="absentFieldsAreNull()" classname="com.chargebee.v4.internal.EventParserTest$TopLevelFields" time="0.0"/>
+  <testcase name="parsesEnumFields()" classname="com.chargebee.v4.internal.EventParserTest$TopLevelFields" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

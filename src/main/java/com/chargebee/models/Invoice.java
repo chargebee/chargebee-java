@@ -2072,6 +2072,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public CreateForChargeItemsAndChargesRequest netTermDays(Integer netTermDays) {
+            params.addOpt("net_term_days", netTermDays);
+            return this;
+        }
+
+
         public CreateForChargeItemsAndChargesRequest invoiceDate(Timestamp invoiceDate) {
             params.addOpt("invoice_date", invoiceDate);
             return this;

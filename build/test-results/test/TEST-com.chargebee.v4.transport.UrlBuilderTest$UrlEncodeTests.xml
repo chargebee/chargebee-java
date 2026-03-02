@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="urlEncode Tests" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:13" hostname="CB-IT-01-1979" time="0.001">
+  <properties/>
+  <testcase name="should encode slash" classname="com.chargebee.v4.transport.UrlBuilderTest$UrlEncodeTests" time="0.0"/>
+  <testcase name="should encode plus sign" classname="com.chargebee.v4.transport.UrlBuilderTest$UrlEncodeTests" time="0.0"/>
+  <testcase name="should encode question mark" classname="com.chargebee.v4.transport.UrlBuilderTest$UrlEncodeTests" time="0.0"/>
+  <testcase name="should encode percent sign" classname="com.chargebee.v4.transport.UrlBuilderTest$UrlEncodeTests" time="0.0"/>
+  <testcase name="should encode unicode characters" classname="com.chargebee.v4.transport.UrlBuilderTest$UrlEncodeTests" time="0.0"/>
+  <testcase name="should return empty string for null" classname="com.chargebee.v4.transport.UrlBuilderTest$UrlEncodeTests" time="0.001"/>
+  <testcase name="should encode ampersand" classname="com.chargebee.v4.transport.UrlBuilderTest$UrlEncodeTests" time="0.0"/>
+  <testcase name="should encode equals sign" classname="com.chargebee.v4.transport.UrlBuilderTest$UrlEncodeTests" time="0.0"/>
+  <testcase name="should return empty string for empty string" classname="com.chargebee.v4.transport.UrlBuilderTest$UrlEncodeTests" time="0.0"/>
+  <testcase name="should encode special characters" classname="com.chargebee.v4.transport.UrlBuilderTest$UrlEncodeTests" time="0.0"/>
+  <testcase name="should encode simple string" classname="com.chargebee.v4.transport.UrlBuilderTest$UrlEncodeTests" time="0.0"/>
+  <testcase name="should encode string with spaces" classname="com.chargebee.v4.transport.UrlBuilderTest$UrlEncodeTests" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="delayAndRetry - ScheduledExecutorService Tests" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:02" hostname="CB-IT-01-1979" time="0.784">
+  <properties/>
+  <testcase name="should not block ForkJoinPool.commonPool threads during retry delay" classname="com.chargebee.v4.client.ChargebeeClientAsyncExecutorTest$DelayAndRetryTests" time="0.296"/>
+  <testcase name="should handle multiple concurrent async retries without exhausting threads" classname="com.chargebee.v4.client.ChargebeeClientAsyncExecutorTest$DelayAndRetryTests" time="0.062"/>
+  <testcase name="should apply correct backoff delay in async retries" classname="com.chargebee.v4.client.ChargebeeClientAsyncExecutorTest$DelayAndRetryTests" time="0.35"/>
+  <testcase name="should use ScheduledExecutorService for retry delays instead of Thread.sleep" classname="com.chargebee.v4.client.ChargebeeClientAsyncExecutorTest$DelayAndRetryTests" time="0.075"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

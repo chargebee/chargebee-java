@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Constructor Tests" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:05" hostname="CB-IT-01-1979" time="0.001">
+  <properties/>
+  <testcase name="should create exception with message, cause, and request" classname="com.chargebee.v4.exceptions.TransportExceptionTest$ConstructorTests" time="0.0"/>
+  <testcase name="should create exception with message only" classname="com.chargebee.v4.exceptions.TransportExceptionTest$ConstructorTests" time="0.0"/>
+  <testcase name="should create exception with message and cause" classname="com.chargebee.v4.exceptions.TransportExceptionTest$ConstructorTests" time="0.0"/>
+  <testcase name="should create exception with message and request only" classname="com.chargebee.v4.exceptions.TransportExceptionTest$ConstructorTests" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

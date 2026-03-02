@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.chargebee.v4.RequestParamsTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:02" hostname="CB-IT-01-1979" time="0.005">
+  <properties/>
+  <testcase name="Enum values should work correctly" classname="com.chargebee.v4.RequestParamsTest" time="0.001"/>
+  <testcase name="CreateSubscriptionItemEstimateParams should serialize to Map for HTTP transport" classname="com.chargebee.v4.RequestParamsTest" time="0.0"/>
+  <testcase name="List of SubscriptionItemsParams should work correctly" classname="com.chargebee.v4.RequestParamsTest" time="0.0"/>
+  <testcase name="MapStruct compatibility - getters follow Java Bean convention" classname="com.chargebee.v4.RequestParamsTest" time="0.001"/>
+  <testcase name="CreateSubscriptionItemEstimateParams should build with strongly-typed fields" classname="com.chargebee.v4.RequestParamsTest" time="0.0"/>
+  <testcase name="Null values should be handled correctly" classname="com.chargebee.v4.RequestParamsTest" time="0.001"/>
+  <testcase name="BillingAddressParams should work as nested object" classname="com.chargebee.v4.RequestParamsTest" time="0.0"/>
+  <testcase name="Nested SubscriptionParams should work correctly" classname="com.chargebee.v4.RequestParamsTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

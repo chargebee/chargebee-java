@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Exception Hierarchy Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:05" hostname="CB-IT-01-1979" time="0.0">
+  <properties/>
+  <testcase name="should be instance of TransportException" classname="com.chargebee.v4.exceptions.HttpExceptionTest$ExceptionHierarchyTests" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -2766,6 +2766,16 @@ public class Quote extends Resource<Quote> {
             return this;
         }
         
+        public CreateSubItemsForCustomerQuoteRequest subscriptionFreePeriod(Integer subscriptionFreePeriod) {
+            params.addOpt("subscription[free_period]", subscriptionFreePeriod);
+            return this;
+        }
+        
+        public CreateSubItemsForCustomerQuoteRequest subscriptionFreePeriodUnit(com.chargebee.models.enums.FreePeriodUnit subscriptionFreePeriodUnit) {
+            params.addOpt("subscription[free_period_unit]", subscriptionFreePeriodUnit);
+            return this;
+        }
+        
         public CreateSubItemsForCustomerQuoteRequest subscriptionItemItemPriceId(int index, String subscriptionItemItemPriceId) {
             params.add("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
             return this;
@@ -3180,6 +3190,16 @@ public class Quote extends Resource<Quote> {
         
         public EditCreateSubCustomerQuoteForItemsRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
             params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
+            return this;
+        }
+        
+        public EditCreateSubCustomerQuoteForItemsRequest subscriptionFreePeriod(Integer subscriptionFreePeriod) {
+            params.addOpt("subscription[free_period]", subscriptionFreePeriod);
+            return this;
+        }
+        
+        public EditCreateSubCustomerQuoteForItemsRequest subscriptionFreePeriodUnit(com.chargebee.models.enums.FreePeriodUnit subscriptionFreePeriodUnit) {
+            params.addOpt("subscription[free_period_unit]", subscriptionFreePeriodUnit);
             return this;
         }
         

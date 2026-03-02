@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Asynchronous Send Tests" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:11" hostname="CB-IT-01-1979" time="0.033">
+  <properties/>
+  <testcase name="should send async request successfully" classname="com.chargebee.v4.transport.DefaultTransportTest$AsynchronousSendTests" time="0.001"/>
+  <testcase name="should handle async network error" classname="com.chargebee.v4.transport.DefaultTransportTest$AsynchronousSendTests" time="0.031"/>
+  <testcase name="should handle async request error" classname="com.chargebee.v4.transport.DefaultTransportTest$AsynchronousSendTests" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

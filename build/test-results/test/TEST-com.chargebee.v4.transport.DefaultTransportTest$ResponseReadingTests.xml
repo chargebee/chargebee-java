@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Response Reading Tests" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:05" hostname="CB-IT-01-1979" time="0.005">
+  <properties/>
+  <testcase name="should handle error stream for 4xx and 5xx" classname="com.chargebee.v4.transport.DefaultTransportTest$ResponseReadingTests" time="0.002"/>
+  <testcase name="should read response with empty body" classname="com.chargebee.v4.transport.DefaultTransportTest$ResponseReadingTests" time="0.002"/>
+  <testcase name="should read response headers" classname="com.chargebee.v4.transport.DefaultTransportTest$ResponseReadingTests" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

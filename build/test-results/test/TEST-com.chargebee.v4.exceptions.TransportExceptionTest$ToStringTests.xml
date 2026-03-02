@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="toString Tests" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:05" hostname="CB-IT-01-1979" time="0.0">
+  <properties/>
+  <testcase name="should include cause details in toString when available" classname="com.chargebee.v4.exceptions.TransportExceptionTest$ToStringTests" time="0.0"/>
+  <testcase name="should include message in toString" classname="com.chargebee.v4.exceptions.TransportExceptionTest$ToStringTests" time="0.0"/>
+  <testcase name="should include request details in toString when available" classname="com.chargebee.v4.exceptions.TransportExceptionTest$ToStringTests" time="0.0"/>
+  <testcase name="should handle cause with null message" classname="com.chargebee.v4.exceptions.TransportExceptionTest$ToStringTests" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

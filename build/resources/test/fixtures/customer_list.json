@@ -1,0 +1,103 @@
+{
+  "list": [
+    {
+      "customer": {
+        "id": "cust_AzZhUGSP1",
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "john@example.com",
+        "auto_collection": "on",
+        "net_term_days": 0,
+        "allow_direct_debit": false,
+        "created_at": 1605530769,
+        "updated_at": 1605530800,
+        "resource_version": 1605530800000,
+        "deleted": false,
+        "pii_cleared": "active",
+        "taxability": "taxable",
+        "preferred_currency_code": "USD",
+        "promotional_credits": 0,
+        "refundable_credits": 0,
+        "unbilled_charges": 0,
+        "excess_payments": 0,
+        "object": "customer",
+        "billing_address": {
+          "first_name": "John",
+          "last_name": "Doe",
+          "line1": "123 Main St",
+          "city": "San Francisco",
+          "state_code": "CA",
+          "state": "California",
+          "country": "US",
+          "zip": "94105",
+          "validation_status": "not_validated",
+          "object": "billing_address"
+        }
+      }
+    },
+    {
+      "customer": {
+        "id": "cust_AzZhUGSP2",
+        "first_name": "Jane",
+        "last_name": "Smith",
+        "email": "jane@example.com",
+        "auto_collection": "off",
+        "net_term_days": 30,
+        "allow_direct_debit": true,
+        "created_at": 1605530900,
+        "updated_at": 1605530950,
+        "resource_version": 1605530950000,
+        "deleted": false,
+        "pii_cleared": "active",
+        "taxability": "taxable",
+        "preferred_currency_code": "EUR",
+        "promotional_credits": 500,
+        "refundable_credits": 100,
+        "unbilled_charges": 200,
+        "excess_payments": 0,
+        "object": "customer"
+      }
+    },
+    {
+      "customer": {
+        "id": "cust_AzZhUGSP3",
+        "first_name": "Bob",
+        "last_name": "Wilson",
+        "email": "bob@example.com",
+        "auto_collection": "on",
+        "net_term_days": 0,
+        "allow_direct_debit": false,
+        "created_at": 1605531000,
+        "updated_at": 1605531050,
+        "resource_version": 1605531050000,
+        "deleted": false,
+        "pii_cleared": "active",
+        "taxability": "exempt",
+        "preferred_currency_code": "USD",
+        "promotional_credits": 0,
+        "refundable_credits": 0,
+        "unbilled_charges": 0,
+        "excess_payments": 0,
+        "object": "customer"
+      },
+      "card": {
+        "status": "valid",
+        "gateway": "stripe",
+        "gateway_account_id": "gw_123",
+        "first_name": "Bob",
+        "last_name": "Wilson",
+        "iin": "411111",
+        "last4": "1111",
+        "card_type": "visa",
+        "funding_type": "credit",
+        "expiry_month": 12,
+        "expiry_year": 2028,
+        "masked_number": "************1111",
+        "object": "card",
+        "customer_id": "cust_AzZhUGSP3",
+        "payment_source_id": "pm_AzZhUGSP3"
+      }
+    }
+  ],
+  "next_offset": "[\"1605531050000\",\"3\"]"
+}

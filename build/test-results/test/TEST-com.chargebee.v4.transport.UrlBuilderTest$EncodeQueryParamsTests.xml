@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="encodeQueryParams Tests" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:13" hostname="CB-IT-01-1979" time="0.004">
+  <properties/>
+  <testcase name="should handle lists with all null values" classname="com.chargebee.v4.transport.UrlBuilderTest$EncodeQueryParamsTests" time="0.001"/>
+  <testcase name="should skip null keys" classname="com.chargebee.v4.transport.UrlBuilderTest$EncodeQueryParamsTests" time="0.0"/>
+  <testcase name="should return empty string for null parameters" classname="com.chargebee.v4.transport.UrlBuilderTest$EncodeQueryParamsTests" time="0.0"/>
+  <testcase name="should encode numeric values as strings" classname="com.chargebee.v4.transport.UrlBuilderTest$EncodeQueryParamsTests" time="0.0"/>
+  <testcase name="should encode list value parameters" classname="com.chargebee.v4.transport.UrlBuilderTest$EncodeQueryParamsTests" time="0.001"/>
+  <testcase name="should encode mixed single and list parameters" classname="com.chargebee.v4.transport.UrlBuilderTest$EncodeQueryParamsTests" time="0.0"/>
+  <testcase name="should skip null values" classname="com.chargebee.v4.transport.UrlBuilderTest$EncodeQueryParamsTests" time="0.0"/>
+  <testcase name="should encode single value parameters" classname="com.chargebee.v4.transport.UrlBuilderTest$EncodeQueryParamsTests" time="0.0"/>
+  <testcase name="should return empty string for empty parameters" classname="com.chargebee.v4.transport.UrlBuilderTest$EncodeQueryParamsTests" time="0.0"/>
+  <testcase name="should handle special characters in parameters" classname="com.chargebee.v4.transport.UrlBuilderTest$EncodeQueryParamsTests" time="0.0"/>
+  <testcase name="should handle empty lists" classname="com.chargebee.v4.transport.UrlBuilderTest$EncodeQueryParamsTests" time="0.0"/>
+  <testcase name="should skip null values in lists" classname="com.chargebee.v4.transport.UrlBuilderTest$EncodeQueryParamsTests" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

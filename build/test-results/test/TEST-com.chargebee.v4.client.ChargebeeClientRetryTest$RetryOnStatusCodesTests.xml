@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="sendWithRetry - Retry on Status Codes" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:05" hostname="CB-IT-01-1979" time="0.097">
+  <properties/>
+  <testcase name="should return retryable status code after max retries" classname="com.chargebee.v4.client.ChargebeeClientRetryTest$RetryOnStatusCodesTests" time="0.037"/>
+  <testcase name="should not retry on 400 Bad Request" classname="com.chargebee.v4.client.ChargebeeClientRetryTest$RetryOnStatusCodesTests" time="0.001"/>
+  <testcase name="should retry on 429 Too Many Requests" classname="com.chargebee.v4.client.ChargebeeClientRetryTest$RetryOnStatusCodesTests" time="0.013"/>
+  <testcase name="should retry on 502 Bad Gateway" classname="com.chargebee.v4.client.ChargebeeClientRetryTest$RetryOnStatusCodesTests" time="0.016"/>
+  <testcase name="should retry on 503 Service Unavailable" classname="com.chargebee.v4.client.ChargebeeClientRetryTest$RetryOnStatusCodesTests" time="0.012"/>
+  <testcase name="should retry on 504 Gateway Timeout" classname="com.chargebee.v4.client.ChargebeeClientRetryTest$RetryOnStatusCodesTests" time="0.017"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

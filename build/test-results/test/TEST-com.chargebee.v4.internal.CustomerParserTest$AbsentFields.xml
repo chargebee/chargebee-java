@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Absent fields parse as null" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:05" hostname="CB-IT-01-1979" time="0.002">
+  <properties/>
+  <testcase name="relationship()" classname="com.chargebee.v4.internal.CustomerParserTest$AbsentFields" time="0.001"/>
+  <testcase name="billingDate()" classname="com.chargebee.v4.internal.CustomerParserTest$AbsentFields" time="0.0"/>
+  <testcase name="phone()" classname="com.chargebee.v4.internal.CustomerParserTest$AbsentFields" time="0.0"/>
+  <testcase name="channel()" classname="com.chargebee.v4.internal.CustomerParserTest$AbsentFields" time="0.0"/>
+  <testcase name="fraudFlag()" classname="com.chargebee.v4.internal.CustomerParserTest$AbsentFields" time="0.0"/>
+  <testcase name="vatNumber()" classname="com.chargebee.v4.internal.CustomerParserTest$AbsentFields" time="0.0"/>
+  <testcase name="company()" classname="com.chargebee.v4.internal.CustomerParserTest$AbsentFields" time="0.0"/>
+  <testcase name="paymentMethod()" classname="com.chargebee.v4.internal.CustomerParserTest$AbsentFields" time="0.0"/>
+  <testcase name="createdFromIp()" classname="com.chargebee.v4.internal.CustomerParserTest$AbsentFields" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

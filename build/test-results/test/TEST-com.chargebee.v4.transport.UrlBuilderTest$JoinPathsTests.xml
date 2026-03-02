@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="joinPaths Tests" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:13" hostname="CB-IT-01-1979" time="0.003">
+  <properties/>
+  <testcase name="should preserve trailing slash on last segment" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.0"/>
+  <testcase name="should skip empty segments" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.0"/>
+  <testcase name="should handle single segment with trailing slash" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.0"/>
+  <testcase name="should handle segments with leading slashes" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.0"/>
+  <testcase name="should return empty string for empty array" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.0"/>
+  <testcase name="should join two path segments" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.0"/>
+  <testcase name="should handle segments with multiple slashes" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.0"/>
+  <testcase name="should preserve leading slash on first segment" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.0"/>
+  <testcase name="should join multiple path segments" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.0"/>
+  <testcase name="should handle all null segments" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.0"/>
+  <testcase name="should handle segments with trailing slashes" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.001"/>
+  <testcase name="should handle single segment with leading slash" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.0"/>
+  <testcase name="should skip null segments" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.0"/>
+  <testcase name="should handle all empty segments" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.0"/>
+  <testcase name="should handle single segment" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.0"/>
+  <testcase name="should return empty string for null array" classname="com.chargebee.v4.transport.UrlBuilderTest$JoinPathsTests" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

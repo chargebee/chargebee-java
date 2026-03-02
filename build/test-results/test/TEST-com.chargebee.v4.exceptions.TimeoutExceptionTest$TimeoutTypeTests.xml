@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Timeout Type Tests" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:05" hostname="CB-IT-01-1979" time="0.001">
+  <properties/>
+  <testcase name="should handle custom timeout type" classname="com.chargebee.v4.exceptions.TimeoutExceptionTest$TimeoutTypeTests" time="0.0"/>
+  <testcase name="READ constant should be 'read'" classname="com.chargebee.v4.exceptions.TimeoutExceptionTest$TimeoutTypeTests" time="0.0"/>
+  <testcase name="CONNECT constant should be 'connect'" classname="com.chargebee.v4.exceptions.TimeoutExceptionTest$TimeoutTypeTests" time="0.0"/>
+  <testcase name="should identify connect timeout" classname="com.chargebee.v4.exceptions.TimeoutExceptionTest$TimeoutTypeTests" time="0.0"/>
+  <testcase name="should identify read timeout" classname="com.chargebee.v4.exceptions.TimeoutExceptionTest$TimeoutTypeTests" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

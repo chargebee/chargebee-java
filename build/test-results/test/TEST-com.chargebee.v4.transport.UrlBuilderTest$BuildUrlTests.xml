@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="buildUrl Tests" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:13" hostname="CB-IT-01-1979" time="0.001">
+  <properties/>
+  <testcase name="should build URL with base URL (with trailing slash) and path (with leading slash)" classname="com.chargebee.v4.transport.UrlBuilderTest$BuildUrlTests" time="0.0"/>
+  <testcase name="should build URL with base URL and path" classname="com.chargebee.v4.transport.UrlBuilderTest$BuildUrlTests" time="0.0"/>
+  <testcase name="should build URL with base URL only" classname="com.chargebee.v4.transport.UrlBuilderTest$BuildUrlTests" time="0.0"/>
+  <testcase name="should build URL with path and query parameters" classname="com.chargebee.v4.transport.UrlBuilderTest$BuildUrlTests" time="0.0"/>
+  <testcase name="should build URL with query parameters" classname="com.chargebee.v4.transport.UrlBuilderTest$BuildUrlTests" time="0.0"/>
+  <testcase name="should build URL with empty path" classname="com.chargebee.v4.transport.UrlBuilderTest$BuildUrlTests" time="0.0"/>
+  <testcase name="should build URL with base URL (with trailing slash) and path (no leading slash)" classname="com.chargebee.v4.transport.UrlBuilderTest$BuildUrlTests" time="0.001"/>
+  <testcase name="should build URL with base URL (no trailing slash) and path (no leading slash)" classname="com.chargebee.v4.transport.UrlBuilderTest$BuildUrlTests" time="0.0"/>
+  <testcase name="should build URL with empty query parameters map" classname="com.chargebee.v4.transport.UrlBuilderTest$BuildUrlTests" time="0.0"/>
+  <testcase name="should throw exception when base URL is null" classname="com.chargebee.v4.transport.UrlBuilderTest$BuildUrlTests" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

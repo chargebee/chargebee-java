@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="getJsonObject / getObject Tests" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:05" hostname="CB-IT-01-1979" time="0.001">
+  <properties/>
+  <testcase name="getJsonObjectNested()" classname="com.chargebee.v4.internal.JsonUtilTest$GetObjectTests" time="0.0"/>
+  <testcase name="getObjectNonObjectReturnsNull()" classname="com.chargebee.v4.internal.JsonUtilTest$GetObjectTests" time="0.0"/>
+  <testcase name="getJsonObjectNonObjectReturnsNull()" classname="com.chargebee.v4.internal.JsonUtilTest$GetObjectTests" time="0.0"/>
+  <testcase name="getObjectDeeplyNested()" classname="com.chargebee.v4.internal.JsonUtilTest$GetObjectTests" time="0.0"/>
+  <testcase name="getJsonObjectMissingReturnsNull()" classname="com.chargebee.v4.internal.JsonUtilTest$GetObjectTests" time="0.0"/>
+  <testcase name="getObjectEmptyObject()" classname="com.chargebee.v4.internal.JsonUtilTest$GetObjectTests" time="0.0"/>
+  <testcase name="getObjectReturnsJsonString()" classname="com.chargebee.v4.internal.JsonUtilTest$GetObjectTests" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

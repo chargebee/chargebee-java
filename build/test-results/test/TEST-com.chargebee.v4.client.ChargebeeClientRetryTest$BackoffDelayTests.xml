@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Backoff Delay Calculation Tests" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:03" hostname="CB-IT-01-1979" time="0.709">
+  <properties/>
+  <testcase name="should calculate exponential backoff with increasing delays" classname="com.chargebee.v4.client.ChargebeeClientRetryTest$BackoffDelayTests" time="0.36"/>
+  <testcase name="should apply backoff delays between retries" classname="com.chargebee.v4.client.ChargebeeClientRetryTest$BackoffDelayTests" time="0.348"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

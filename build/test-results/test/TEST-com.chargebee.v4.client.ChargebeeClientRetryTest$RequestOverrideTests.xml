@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="sendWithRetry - Request Override Tests" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:04" hostname="CB-IT-01-1979" time="0.69">
+  <properties/>
+  <testcase name="should disable retry when override is 0" classname="com.chargebee.v4.client.ChargebeeClientRetryTest$RequestOverrideTests" time="0.002"/>
+  <testcase name="should use request override for max retries" classname="com.chargebee.v4.client.ChargebeeClientRetryTest$RequestOverrideTests" time="0.078"/>
+  <testcase name="should enable retry when override is set even if config disabled" classname="com.chargebee.v4.client.ChargebeeClientRetryTest$RequestOverrideTests" time="0.609"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

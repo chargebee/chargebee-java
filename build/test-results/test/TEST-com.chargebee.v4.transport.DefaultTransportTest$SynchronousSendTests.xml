@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Synchronous Send Tests" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-02-24T10:32:11" hostname="CB-IT-01-1979" time="1.305">
+  <properties/>
+  <testcase name="should respect follow redirects setting" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="0.001"/>
+  <testcase name="should handle connection timeout" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="1.002"/>
+  <testcase name="should send POST request with JSON body" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="0.003"/>
+  <testcase name="should send request with custom headers" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="0.003"/>
+  <testcase name="should send Content-Type from body" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="0.003"/>
+  <testcase name="should handle 503 service unavailable error" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="0.004"/>
+  <testcase name="should handle 401 unauthorized error" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="0.003"/>
+  <testcase name="should send GET request successfully using real HTTP" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="0.001"/>
+  <testcase name="should handle invalid URL" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="0.0"/>
+  <testcase name="should handle 500 server error" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="0.002"/>
+  <testcase name="should handle 404 not found error" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="0.001"/>
+  <testcase name="should handle unknown host" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="0.255"/>
+  <testcase name="should handle GZIP compressed response" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="0.01"/>
+  <testcase name="should handle 400 client error" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="0.005"/>
+  <testcase name="should send request with query parameters" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="0.002"/>
+  <testcase name="should send custom Content-Type header" classname="com.chargebee.v4.transport.DefaultTransportTest$SynchronousSendTests" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
