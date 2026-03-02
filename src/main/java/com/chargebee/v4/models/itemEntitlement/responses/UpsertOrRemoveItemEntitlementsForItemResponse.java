@@ -1,5 +1,7 @@
 package com.chargebee.v4.models.itemEntitlement.responses;
 
+import java.util.List;
+
 import com.chargebee.v4.models.itemEntitlement.ItemEntitlement;
 
 import com.chargebee.v4.models.BaseResponse;
@@ -12,12 +14,12 @@ import com.chargebee.v4.transport.Response;
  * response data from the API.
  */
 public final class UpsertOrRemoveItemEntitlementsForItemResponse extends BaseResponse {
-  private final ItemEntitlement itemEntitlement;
+  private final List<ItemEntitlement> list;
 
   private UpsertOrRemoveItemEntitlementsForItemResponse(Builder builder) {
     super(builder.httpResponse);
 
-    this.itemEntitlement = builder.itemEntitlement;
+    this.list = builder.list;
   }
 
   /** Parse JSON response into UpsertOrRemoveItemEntitlementsForItemResponse object. */
@@ -35,10 +37,8 @@ public final class UpsertOrRemoveItemEntitlementsForItemResponse extends BaseRes
       JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      JsonObject __itemEntitlementObj = JsonUtil.getJsonObject(jsonObj, "item_entitlement");
-      if (__itemEntitlementObj != null) {
-        builder.itemEntitlement(ItemEntitlement.fromJson(__itemEntitlementObj));
-      }
+      builder.list(
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), ItemEntitlement::fromJson));
 
       builder.httpResponse(httpResponse);
       return builder.build();
@@ -56,14 +56,14 @@ public final class UpsertOrRemoveItemEntitlementsForItemResponse extends BaseRes
   /** Builder for UpsertOrRemoveItemEntitlementsForItemResponse. */
   public static class Builder {
 
-    private ItemEntitlement itemEntitlement;
+    private List<ItemEntitlement> list;
 
     private Response httpResponse;
 
     private Builder() {}
 
-    public Builder itemEntitlement(ItemEntitlement itemEntitlement) {
-      this.itemEntitlement = itemEntitlement;
+    public Builder list(List<ItemEntitlement> list) {
+      this.list = list;
       return this;
     }
 
@@ -77,17 +77,14 @@ public final class UpsertOrRemoveItemEntitlementsForItemResponse extends BaseRes
     }
   }
 
-  /** Get the itemEntitlement from the response. */
-  public ItemEntitlement getItemEntitlement() {
-    return itemEntitlement;
+  /** Get the list from the response. */
+  public List<ItemEntitlement> getList() {
+    return list;
   }
 
   @Override
   public String toString() {
-    return "UpsertOrRemoveItemEntitlementsForItemResponse{"
-        + "itemEntitlement="
-        + itemEntitlement
-        + "}";
+    return "UpsertOrRemoveItemEntitlementsForItemResponse{" + "list=" + list + "}";
   }
 
   @Override
@@ -97,12 +94,12 @@ public final class UpsertOrRemoveItemEntitlementsForItemResponse extends BaseRes
 
     UpsertOrRemoveItemEntitlementsForItemResponse that =
         (UpsertOrRemoveItemEntitlementsForItemResponse) o;
-    return java.util.Objects.equals(itemEntitlement, that.itemEntitlement);
+    return java.util.Objects.equals(list, that.list);
   }
 
   @Override
   public int hashCode() {
 
-    return java.util.Objects.hash(itemEntitlement);
+    return java.util.Objects.hash(list);
   }
 }

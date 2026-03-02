@@ -60,6 +60,8 @@ import com.chargebee.v4.services.EntitlementService;
 
 import com.chargebee.v4.services.AdditionalBillingLogiqService;
 
+import com.chargebee.v4.services.UsageSummaryService;
+
 import com.chargebee.v4.services.SubscriptionSettingService;
 
 import com.chargebee.v4.services.SiteMigrationDetailService;
@@ -143,6 +145,8 @@ import com.chargebee.v4.services.ItemFamilyService;
 import com.chargebee.v4.services.SubscriptionEntitlementService;
 
 import com.chargebee.v4.services.ThirdPartyEntityMappingService;
+
+import com.chargebee.v4.services.UsageChargeService;
 
 import com.chargebee.v4.services.EntitlementOverrideService;
 
@@ -377,6 +381,13 @@ public interface ClientMethods {
    * @return AdditionalBillingLogiqService instance for fluent API access
    */
   AdditionalBillingLogiqService additionalBillingLogiqs();
+
+  /**
+   * Access usage_summary-related operations.
+   *
+   * @return UsageSummaryService instance for fluent API access
+   */
+  UsageSummaryService usageSummaries();
 
   /**
    * Access subscription_setting-related operations.
@@ -671,6 +682,13 @@ public interface ClientMethods {
    * @return ThirdPartyEntityMappingService instance for fluent API access
    */
   ThirdPartyEntityMappingService thirdPartyEntityMappings();
+
+  /**
+   * Access usage_charge-related operations.
+   *
+   * @return UsageChargeService instance for fluent API access
+   */
+  UsageChargeService usageCharges();
 
   /**
    * Access entitlement_override-related operations.

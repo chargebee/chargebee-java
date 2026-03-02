@@ -15,6 +15,8 @@ import java.util.List;
 public class QuotedSubscription {
 
   private String id;
+  private Integer billingPeriod;
+  private BillingPeriodUnit billingPeriodUnit;
   private Timestamp startDate;
   private Timestamp trialEnd;
   private Integer remainingBillingCycles;
@@ -23,23 +25,31 @@ public class QuotedSubscription {
   private String planUnitPriceInDecimal;
   private Timestamp changesScheduledAt;
   private ChangeOption changeOption;
+  private Integer freePeriod;
+  private FreePeriodUnit freePeriodUnit;
   private Integer contractTermBillingCycleOnRenewal;
   private List<Coupons> coupons;
   private List<SubscriptionItems> subscriptionItems;
   private List<ItemTiers> itemTiers;
   private QuotedContractTerm quotedContractTerm;
-  private Integer billingPeriod;
   private Long setupFee;
   private AutoCollection autoCollection;
   private List<EventBasedAddons> eventBasedAddons;
   private List<Addons> addons;
-  private BillingPeriodUnit billingPeriodUnit;
   private Integer planQuantity;
   private String planId;
   private Long planUnitPrice;
 
   public String getId() {
     return id;
+  }
+
+  public Integer getBillingPeriod() {
+    return billingPeriod;
+  }
+
+  public BillingPeriodUnit getBillingPeriodUnit() {
+    return billingPeriodUnit;
   }
 
   public Timestamp getStartDate() {
@@ -74,6 +84,14 @@ public class QuotedSubscription {
     return changeOption;
   }
 
+  public Integer getFreePeriod() {
+    return freePeriod;
+  }
+
+  public FreePeriodUnit getFreePeriodUnit() {
+    return freePeriodUnit;
+  }
+
   public Integer getContractTermBillingCycleOnRenewal() {
     return contractTermBillingCycleOnRenewal;
   }
@@ -94,10 +112,6 @@ public class QuotedSubscription {
     return quotedContractTerm;
   }
 
-  public Integer getBillingPeriod() {
-    return billingPeriod;
-  }
-
   public Long getSetupFee() {
     return setupFee;
   }
@@ -114,10 +128,6 @@ public class QuotedSubscription {
     return addons;
   }
 
-  public BillingPeriodUnit getBillingPeriodUnit() {
-    return billingPeriodUnit;
-  }
-
   public Integer getPlanQuantity() {
     return planQuantity;
   }
@@ -128,6 +138,38 @@ public class QuotedSubscription {
 
   public Long getPlanUnitPrice() {
     return planUnitPrice;
+  }
+
+  public enum BillingPeriodUnit {
+    DAY("day"),
+
+    WEEK("week"),
+
+    MONTH("month"),
+
+    YEAR("year"),
+
+    /** An enum member indicating that BillingPeriodUnit was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    BillingPeriodUnit(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static BillingPeriodUnit fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (BillingPeriodUnit enumValue : BillingPeriodUnit.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
   }
 
   public enum ChangeOption {
@@ -152,6 +194,38 @@ public class QuotedSubscription {
     public static ChangeOption fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (ChangeOption enumValue : ChangeOption.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum FreePeriodUnit {
+    DAY("day"),
+
+    WEEK("week"),
+
+    MONTH("month"),
+
+    YEAR("year"),
+
+    /** An enum member indicating that FreePeriodUnit was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    FreePeriodUnit(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static FreePeriodUnit fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (FreePeriodUnit enumValue : FreePeriodUnit.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
@@ -188,38 +262,6 @@ public class QuotedSubscription {
     }
   }
 
-  public enum BillingPeriodUnit {
-    DAY("day"),
-
-    WEEK("week"),
-
-    MONTH("month"),
-
-    YEAR("year"),
-
-    /** An enum member indicating that BillingPeriodUnit was instantiated with an unknown value. */
-    _UNKNOWN(null);
-    private final String value;
-
-    BillingPeriodUnit(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    public static BillingPeriodUnit fromString(String value) {
-      if (value == null) return _UNKNOWN;
-      for (BillingPeriodUnit enumValue : BillingPeriodUnit.values()) {
-        if (enumValue.value != null && enumValue.value.equals(value)) {
-          return enumValue;
-        }
-      }
-      return _UNKNOWN;
-    }
-  }
-
   public static QuotedSubscription fromJson(String json) {
     return fromJson(JsonUtil.parse(json));
   }
@@ -228,6 +270,11 @@ public class QuotedSubscription {
     QuotedSubscription obj = new QuotedSubscription();
 
     obj.id = JsonUtil.getString(jsonObj, "id");
+
+    obj.billingPeriod = JsonUtil.getInteger(jsonObj, "billing_period");
+
+    obj.billingPeriodUnit =
+        BillingPeriodUnit.fromString(JsonUtil.getString(jsonObj, "billing_period_unit"));
 
     obj.startDate = JsonUtil.getTimestamp(jsonObj, "start_date");
 
@@ -244,6 +291,10 @@ public class QuotedSubscription {
     obj.changesScheduledAt = JsonUtil.getTimestamp(jsonObj, "changes_scheduled_at");
 
     obj.changeOption = ChangeOption.fromString(JsonUtil.getString(jsonObj, "change_option"));
+
+    obj.freePeriod = JsonUtil.getInteger(jsonObj, "free_period");
+
+    obj.freePeriodUnit = FreePeriodUnit.fromString(JsonUtil.getString(jsonObj, "free_period_unit"));
 
     obj.contractTermBillingCycleOnRenewal =
         JsonUtil.getInteger(jsonObj, "contract_term_billing_cycle_on_renewal");
@@ -262,8 +313,6 @@ public class QuotedSubscription {
       obj.quotedContractTerm = QuotedContractTerm.fromJson(__quotedContractTermObj);
     }
 
-    obj.billingPeriod = JsonUtil.getInteger(jsonObj, "billing_period");
-
     obj.setupFee = JsonUtil.getLong(jsonObj, "setup_fee");
 
     obj.autoCollection = AutoCollection.fromString(JsonUtil.getString(jsonObj, "auto_collection"));
@@ -273,9 +322,6 @@ public class QuotedSubscription {
             JsonUtil.getJsonArray(jsonObj, "event_based_addons"), EventBasedAddons::fromJson);
 
     obj.addons = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "addons"), Addons::fromJson);
-
-    obj.billingPeriodUnit =
-        BillingPeriodUnit.fromString(JsonUtil.getString(jsonObj, "billing_period_unit"));
 
     obj.planQuantity = JsonUtil.getInteger(jsonObj, "plan_quantity");
 
@@ -291,6 +337,10 @@ public class QuotedSubscription {
     return "QuotedSubscription{"
         + "id="
         + id
+        + ", billingPeriod="
+        + billingPeriod
+        + ", billingPeriodUnit="
+        + billingPeriodUnit
         + ", startDate="
         + startDate
         + ", trialEnd="
@@ -307,6 +357,10 @@ public class QuotedSubscription {
         + changesScheduledAt
         + ", changeOption="
         + changeOption
+        + ", freePeriod="
+        + freePeriod
+        + ", freePeriodUnit="
+        + freePeriodUnit
         + ", contractTermBillingCycleOnRenewal="
         + contractTermBillingCycleOnRenewal
         + ", coupons="
@@ -317,8 +371,6 @@ public class QuotedSubscription {
         + itemTiers
         + ", quotedContractTerm="
         + quotedContractTerm
-        + ", billingPeriod="
-        + billingPeriod
         + ", setupFee="
         + setupFee
         + ", autoCollection="
@@ -327,8 +379,6 @@ public class QuotedSubscription {
         + eventBasedAddons
         + ", addons="
         + addons
-        + ", billingPeriodUnit="
-        + billingPeriodUnit
         + ", planQuantity="
         + planQuantity
         + ", planId="
@@ -345,6 +395,8 @@ public class QuotedSubscription {
 
     QuotedSubscription that = (QuotedSubscription) o;
     return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(billingPeriod, that.billingPeriod)
+        && java.util.Objects.equals(billingPeriodUnit, that.billingPeriodUnit)
         && java.util.Objects.equals(startDate, that.startDate)
         && java.util.Objects.equals(trialEnd, that.trialEnd)
         && java.util.Objects.equals(remainingBillingCycles, that.remainingBillingCycles)
@@ -353,18 +405,18 @@ public class QuotedSubscription {
         && java.util.Objects.equals(planUnitPriceInDecimal, that.planUnitPriceInDecimal)
         && java.util.Objects.equals(changesScheduledAt, that.changesScheduledAt)
         && java.util.Objects.equals(changeOption, that.changeOption)
+        && java.util.Objects.equals(freePeriod, that.freePeriod)
+        && java.util.Objects.equals(freePeriodUnit, that.freePeriodUnit)
         && java.util.Objects.equals(
             contractTermBillingCycleOnRenewal, that.contractTermBillingCycleOnRenewal)
         && java.util.Objects.equals(coupons, that.coupons)
         && java.util.Objects.equals(subscriptionItems, that.subscriptionItems)
         && java.util.Objects.equals(itemTiers, that.itemTiers)
         && java.util.Objects.equals(quotedContractTerm, that.quotedContractTerm)
-        && java.util.Objects.equals(billingPeriod, that.billingPeriod)
         && java.util.Objects.equals(setupFee, that.setupFee)
         && java.util.Objects.equals(autoCollection, that.autoCollection)
         && java.util.Objects.equals(eventBasedAddons, that.eventBasedAddons)
         && java.util.Objects.equals(addons, that.addons)
-        && java.util.Objects.equals(billingPeriodUnit, that.billingPeriodUnit)
         && java.util.Objects.equals(planQuantity, that.planQuantity)
         && java.util.Objects.equals(planId, that.planId)
         && java.util.Objects.equals(planUnitPrice, that.planUnitPrice);
@@ -375,6 +427,8 @@ public class QuotedSubscription {
 
     return java.util.Objects.hash(
         id,
+        billingPeriod,
+        billingPeriodUnit,
         startDate,
         trialEnd,
         remainingBillingCycles,
@@ -383,17 +437,17 @@ public class QuotedSubscription {
         planUnitPriceInDecimal,
         changesScheduledAt,
         changeOption,
+        freePeriod,
+        freePeriodUnit,
         contractTermBillingCycleOnRenewal,
         coupons,
         subscriptionItems,
         itemTiers,
         quotedContractTerm,
-        billingPeriod,
         setupFee,
         autoCollection,
         eventBasedAddons,
         addons,
-        billingPeriodUnit,
         planQuantity,
         planId,
         planUnitPrice);

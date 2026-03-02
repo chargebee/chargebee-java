@@ -39,6 +39,8 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
   private final AutoCollection autoCollection;
 
+  private final Integer netTermDays;
+
   private final Timestamp invoiceDate;
 
   private final String tokenId;
@@ -99,6 +101,8 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
     this.paymentSourceId = builder.paymentSourceId;
 
     this.autoCollection = builder.autoCollection;
+
+    this.netTermDays = builder.netTermDays;
 
     this.invoiceDate = builder.invoiceDate;
 
@@ -182,6 +186,10 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
   public AutoCollection getAutoCollection() {
     return autoCollection;
+  }
+
+  public Integer getNetTermDays() {
+    return netTermDays;
   }
 
   public Timestamp getInvoiceDate() {
@@ -313,6 +321,11 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
     if (this.autoCollection != null) {
 
       formData.put("auto_collection", this.autoCollection);
+    }
+
+    if (this.netTermDays != null) {
+
+      formData.put("net_term_days", this.netTermDays);
     }
 
     if (this.invoiceDate != null) {
@@ -525,6 +538,8 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
     private AutoCollection autoCollection;
 
+    private Integer netTermDays;
+
     private Timestamp invoiceDate;
 
     private String tokenId;
@@ -616,6 +631,11 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
     public InvoiceCreateForChargeItemsAndChargesBuilder autoCollection(AutoCollection value) {
       this.autoCollection = value;
+      return this;
+    }
+
+    public InvoiceCreateForChargeItemsAndChargesBuilder netTermDays(Integer value) {
+      this.netTermDays = value;
       return this;
     }
 
