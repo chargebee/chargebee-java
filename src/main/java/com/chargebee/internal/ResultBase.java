@@ -380,6 +380,14 @@ public class ResultBase {
         return (WebhookEndpoint)get("webhook_endpoint");
     }
 
+    public UsageSummary usageSummary() {
+        return (UsageSummary)get("usage_summary");
+    }
+
+    public UsageCharge usageCharge() {
+        return (UsageCharge)get("usage_charge");
+    }
+
     public ImpactedCustomer impactedCustomer() {
         return (ImpactedCustomer)get("impacted_customer");
     }

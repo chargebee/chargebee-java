@@ -14,6 +14,15 @@ import java.util.*;
 
 public class Subscription extends Resource<Subscription> {
 
+    public enum BillingPeriodUnit {
+        DAY,
+        WEEK,
+        MONTH,
+        YEAR,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public enum Status {
         FUTURE,
         IN_TRIAL,
@@ -34,15 +43,6 @@ public class Subscription extends Resource<Subscription> {
         TAX_CALCULATION_FAILED,
         CURRENCY_INCOMPATIBLE_WITH_GATEWAY,
         NON_COMPLIANT_CUSTOMER,
-        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-        java-client version incompatibility. We suggest you to upgrade to the latest version */
-    }
-
-    public enum BillingPeriodUnit {
-        DAY,
-        WEEK,
-        MONTH,
-        YEAR,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }

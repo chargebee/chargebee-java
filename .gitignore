@@ -10,3 +10,6 @@ target
 # Ignore Intellij IDE specific files
 .idea/
 *.iml
+
+.gradle/
+.build/
