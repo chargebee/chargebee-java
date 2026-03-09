@@ -79,7 +79,7 @@ public class Request<U extends Request> extends RequestBase<U>{
                     return HttpUtil.post(url, ((BatchRequest<?>) req).buildRequest(), req.headers, env, req.isIdempotent);
                 } else if(req.isJsonRequest){
                     req.headers.put(HttpUtil.CONTENT_TYPE_HEADER_NAME, "application/json;charset=" + Environment.CHARSET);
-                    return HttpUtil.post(url, req.params.toString(), req.headers, env, req.isIdempotent);
+                    return HttpUtil.post(url, req.params.toJson(), req.headers, env, req.isIdempotent);
                 }else {
                     return HttpUtil.post(url, req.params(), req.headers, env, req.isIdempotent);
                 }
