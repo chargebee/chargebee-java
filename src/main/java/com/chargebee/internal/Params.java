@@ -11,15 +11,18 @@ import java.math.BigDecimal;
 public class Params {
 
     private Map<String, Object> m = new HashMap<String, Object>();
+    private Map<String, Object> rawMap = new HashMap<String, Object>();
 
     public void add(String paramName, Object value) {
         if(value == null) {
             throw new RuntimeException("The param {" + paramName + "} cannot be null");
         }
+        rawMap.put(paramName, value);
         m.put(paramName, toValStr(value));
     }
 
     public void addOpt(String paramName, Object value) {
+        rawMap.put(paramName, value);
         m.put(paramName, value != null ? toValStr(value) : "");
     }
 
@@ -45,7 +48,7 @@ public class Params {
             return value.toString();
         } else if (c == Date.class) {
             return new SimpleDateFormat("yyyy-MM-dd").format((Date)value);
-        } 
+        }
         else if(c.isEnum()) {
             return value.toString().toLowerCase();
         } else if(c == Timestamp.class) {
@@ -54,16 +57,16 @@ public class Params {
             List origList = ((List)value);
             List<String> l = new ArrayList(origList.size());
             for (Object item : origList) {
-                l.add((String)toValStr(item));                
+                l.add((String)toValStr(item));
             }
             return l;
         } else if(value instanceof Object[]){
             Object[] origList = ((Object[])value);
             List<String> l = new ArrayList(origList.length);
             for (Object item : origList) {
-                l.add((String)toValStr(item));                
+                l.add((String)toValStr(item));
             }
-            return l;            
+            return l;
         } else if(value instanceof JSONObject) {
             return value.toString();
         } else if(value instanceof JSONArray) {
@@ -74,7 +77,12 @@ public class Params {
             throw new RuntimeException("Type [" + c.getName() + "] not handled");
         }
     }
-    
+
+    public String toJson() {
+        JSONObject jsonObject = new JSONObject(rawMap);
+        return jsonObject.toString();
+    }
+
     public static Long asUnixTimestamp(Timestamp ts) {
         return ts.getTime() / 1000;
     }

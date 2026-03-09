@@ -1,3 +1,8 @@
+### v3.45.0 (2026-03-09)
+* * *
+### Bug Fixes:
+- Fixed JSON request body serialization to send valid JSON payload for API requests.
+
 ### v3.44.0 (2026-03-02)
 * * *
 ### New Resources:
