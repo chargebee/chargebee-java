@@ -2822,6 +2822,12 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public ManagePaymentSourcesRequest businessEntityId(String businessEntityId) {
+            params.addOpt("business_entity_id", businessEntityId);
+            return this;
+        }
+
+
         public ManagePaymentSourcesRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
             return this;

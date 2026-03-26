@@ -168,6 +168,10 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         return optString("amount_in_decimal");
     }
 
+    public Timestamp createdAt() {
+        return optTimestamp("created_at");
+    }
+
     public Timestamp updatedAt() {
         return reqTimestamp("updated_at");
     }

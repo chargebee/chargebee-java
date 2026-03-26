@@ -70,7 +70,6 @@ public class UsageCharge extends Resource<UsageCharge> {
     // Operations
     //===========
 
-    @Deprecated
     public static UsageChargeRetrieveUsageChargesForSubscriptionRequest retrieveUsageChargesForSubscription(String id) {
         String uri = uri("subscriptions", nullCheck(id), "usage_charges");
         return new UsageChargeRetrieveUsageChargesForSubscriptionRequest(uri);

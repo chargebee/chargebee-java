@@ -781,6 +781,42 @@ public class Quote extends Resource<Quote> {
         return new PdfRequest(Method.POST, uri);
     }
 
+    @Deprecated
+    public static Request retrieveSignature(String id) {
+        String uri = uri("quotes", nullCheck(id), "retrieve_signature");
+        return new Request(Method.GET, uri);
+    }
+
+    @Deprecated
+    public static Request retrieveSignedPdf(String id) {
+        String uri = uri("quotes", nullCheck(id), "retrieve_signed_pdf");
+        return new Request(Method.POST, uri);
+    }
+
+    @Deprecated
+    public static Request createSignature(String id) {
+        String uri = uri("quotes", nullCheck(id), "create_signature");
+        return new Request(Method.POST, uri);
+    }
+
+    @Deprecated
+    public static Request updateSignature(String id) {
+        String uri = uri("quotes", nullCheck(id), "update_signature");
+        return new Request(Method.POST, uri);
+    }
+
+    @Deprecated
+    public static UpdateSignatureStatusRequest updateSignatureStatus(String id) {
+        String uri = uri("quotes", nullCheck(id), "update_signature_status");
+        return new UpdateSignatureStatusRequest(Method.POST, uri);
+    }
+
+    @Deprecated
+    public static Request refreshSignatureLink(String id) {
+        String uri = uri("quotes", nullCheck(id), "refresh_signature_link");
+        return new Request(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -5155,6 +5191,23 @@ public class Quote extends Resource<Quote> {
         }
 
 
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdateSignatureStatusRequest extends Request<UpdateSignatureStatusRequest> {
+
+        private UpdateSignatureStatusRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdateSignatureStatusRequest cpqQuoteSignatureStatus(CpqQuoteSignature.Status cpqQuoteSignatureStatus) {
+            params.addOpt("cpq_quote_signature[status]", cpqQuoteSignatureStatus);
+            return this;
+        }
+        
         @Override
         public Params params() {
             return params;

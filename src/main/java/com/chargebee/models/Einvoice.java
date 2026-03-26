@@ -49,6 +49,10 @@ public class Einvoice extends Resource<Einvoice> {
         return reqString("id");
     }
 
+    public String referenceId() {
+        return optString("reference_id");
+    }
+
     public String referenceNumber() {
         return optString("reference_number");
     }
@@ -59,6 +63,10 @@ public class Einvoice extends Resource<Einvoice> {
 
     public String message() {
         return optString("message");
+    }
+
+    public JSONArray providerReferences() {
+        return optJSONArray("provider_references");
     }
 
     // Operations
