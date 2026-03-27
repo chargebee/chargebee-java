@@ -111,9 +111,9 @@ public class Estimate extends Resource<Estimate> {
         return new RegenerateInvoiceEstimateRequest(Method.POST, uri).setIdempotency(false);
     }
 
-    public static Request upcomingInvoicesEstimate(String id) {
+    public static UpcomingInvoicesEstimateRequest upcomingInvoicesEstimate(String id) {
         String uri = uri("customers", nullCheck(id), "upcoming_invoices_estimate");
-        return new Request(Method.GET, uri);
+        return new UpcomingInvoicesEstimateRequest(Method.GET, uri);
     }
 
     public static ChangeTermEndRequest changeTermEnd(String id) {
@@ -2431,6 +2431,24 @@ public class Estimate extends Resource<Estimate> {
 
         public RegenerateInvoiceEstimateRequest invoiceImmediately(Boolean invoiceImmediately) {
             params.addOpt("invoice_immediately", invoiceImmediately);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpcomingInvoicesEstimateRequest extends Request<UpcomingInvoicesEstimateRequest> {
+
+        private UpcomingInvoicesEstimateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpcomingInvoicesEstimateRequest includeUsageCharges(Boolean includeUsageCharges) {
+            params.addOpt("include_usage_charges", includeUsageCharges);
             return this;
         }
 

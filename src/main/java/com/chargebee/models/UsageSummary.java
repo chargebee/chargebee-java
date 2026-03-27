@@ -50,7 +50,6 @@ public class UsageSummary extends Resource<UsageSummary> {
     // Operations
     //===========
 
-    @Deprecated
     public static UsageSummaryRetrieveUsageSummaryForSubscriptionRequest retrieveUsageSummaryForSubscription(String id) {
         String uri = uri("subscriptions", nullCheck(id), "usage_summary");
         return new UsageSummaryRetrieveUsageSummaryForSubscriptionRequest(uri);

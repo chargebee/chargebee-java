@@ -148,6 +148,10 @@ public class ResultBase {
         return (QuoteLineGroup)get("quote_line_group");
     }
 
+    public CpqQuoteSignature cpqQuoteSignature() {
+        return (CpqQuoteSignature)get("cpq_quote_signature");
+    }
+
     public Plan plan() {
         return (Plan)get("plan");
     }
@@ -386,6 +390,14 @@ public class ResultBase {
 
     public UsageCharge usageCharge() {
         return (UsageCharge)get("usage_charge");
+    }
+
+    public Alert alert() {
+        return (Alert)get("alert");
+    }
+
+    public AlertStatus alertStatus() {
+        return (AlertStatus)get("alert_status");
     }
 
     public ImpactedCustomer impactedCustomer() {
