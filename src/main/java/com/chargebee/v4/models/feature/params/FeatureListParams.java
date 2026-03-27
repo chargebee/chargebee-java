@@ -279,6 +279,66 @@ public final class FeatureListParams {
     }
   }
 
+  public enum StatusIn {
+    ACTIVE("active"),
+
+    ARCHIVED("archived"),
+
+    DRAFT("draft"),
+
+    /** An enum member indicating that StatusIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIn enumValue : StatusIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusNotIn {
+    ACTIVE("active"),
+
+    ARCHIVED("archived"),
+
+    DRAFT("draft"),
+
+    /** An enum member indicating that StatusNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusNotIn enumValue : StatusNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum TypeIs {
     SWITCH("switch"),
 
@@ -335,6 +395,70 @@ public final class FeatureListParams {
     public static TypeIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (TypeIsNot enumValue : TypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeIn {
+    SWITCH("switch"),
+
+    CUSTOM("custom"),
+
+    QUANTITY("quantity"),
+
+    RANGE("range"),
+
+    /** An enum member indicating that TypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIn enumValue : TypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeNotIn {
+    SWITCH("switch"),
+
+    CUSTOM("custom"),
+
+    QUANTITY("quantity"),
+
+    RANGE("range"),
+
+    /** An enum member indicating that TypeNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeNotIn enumValue : TypeNotIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

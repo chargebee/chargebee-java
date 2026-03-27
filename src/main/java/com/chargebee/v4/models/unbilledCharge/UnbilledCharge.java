@@ -33,6 +33,7 @@ public class UnbilledCharge {
   private String unitAmountInDecimal;
   private String quantityInDecimal;
   private String amountInDecimal;
+  private Timestamp createdAt;
   private Timestamp updatedAt;
   private Boolean isAdvanceCharge;
   private String businessEntityId;
@@ -113,6 +114,10 @@ public class UnbilledCharge {
 
   public String getAmountInDecimal() {
     return amountInDecimal;
+  }
+
+  public Timestamp getCreatedAt() {
+    return createdAt;
   }
 
   public Timestamp getUpdatedAt() {
@@ -252,6 +257,8 @@ public class UnbilledCharge {
 
     obj.amountInDecimal = JsonUtil.getString(jsonObj, "amount_in_decimal");
 
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
+
     obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
     obj.isAdvanceCharge = JsonUtil.getBoolean(jsonObj, "is_advance_charge");
@@ -306,6 +313,8 @@ public class UnbilledCharge {
         + quantityInDecimal
         + ", amountInDecimal="
         + amountInDecimal
+        + ", createdAt="
+        + createdAt
         + ", updatedAt="
         + updatedAt
         + ", isAdvanceCharge="
@@ -344,6 +353,7 @@ public class UnbilledCharge {
         && java.util.Objects.equals(unitAmountInDecimal, that.unitAmountInDecimal)
         && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
         && java.util.Objects.equals(amountInDecimal, that.amountInDecimal)
+        && java.util.Objects.equals(createdAt, that.createdAt)
         && java.util.Objects.equals(updatedAt, that.updatedAt)
         && java.util.Objects.equals(isAdvanceCharge, that.isAdvanceCharge)
         && java.util.Objects.equals(businessEntityId, that.businessEntityId)
@@ -374,6 +384,7 @@ public class UnbilledCharge {
         unitAmountInDecimal,
         quantityInDecimal,
         amountInDecimal,
+        createdAt,
         updatedAt,
         isAdvanceCharge,
         businessEntityId,

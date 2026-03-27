@@ -191,6 +191,40 @@ public final class EntitlementListParams {
     }
   }
 
+  public enum EntityTypeIn {
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    CHARGE("charge"),
+
+    PLAN_PRICE("plan_price"),
+
+    ADDON_PRICE("addon_price"),
+
+    /** An enum member indicating that EntityTypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    EntityTypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static EntityTypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityTypeIn enumValue : EntityTypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum EntityType {
     PLAN("plan"),
 

@@ -605,6 +605,8 @@ public class Event {
 
     OMNICHANNEL_TRANSACTION_CREATED("omnichannel_transaction_created"),
 
+    ALERT_STATUS_CHANGED("alert_status_changed"),
+
     PLAN_CREATED("plan_created"),
 
     PLAN_UPDATED("plan_updated"),

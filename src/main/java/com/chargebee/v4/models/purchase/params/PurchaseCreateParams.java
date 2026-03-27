@@ -797,6 +797,8 @@ public final class PurchaseCreateParams {
 
       ALIPAY("alipay"),
 
+      PIX("pix"),
+
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
        */

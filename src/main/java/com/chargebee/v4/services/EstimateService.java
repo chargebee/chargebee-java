@@ -29,6 +29,8 @@ import com.chargebee.v4.models.estimate.params.EstimateGiftSubscriptionForItemsP
 
 import com.chargebee.v4.models.estimate.params.EstimateUpdateSubscriptionForItemsParams;
 
+import com.chargebee.v4.models.estimate.params.UpcomingInvoicesEstimateParams;
+
 import com.chargebee.v4.models.estimate.params.RegenerateInvoiceEstimateParams;
 
 import com.chargebee.v4.models.estimate.params.CreateSubscriptionItemForCustomerEstimateParams;
@@ -544,6 +546,36 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/customers/{customer-id}/upcoming_invoices_estimate", "customer-id", customerId);
 
     return get(path, null);
+  }
+
+  /**
+   * upcomingInvoicesEstimate a estimate using immutable params (executes immediately) - returns raw
+   * Response.
+   */
+  Response upcomingInvoicesEstimateRaw(String customerId, UpcomingInvoicesEstimateParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/upcoming_invoices_estimate", "customer-id", customerId);
+    return get(path, params != null ? params.toQueryParams() : null);
+  }
+
+  public UpcomingInvoicesEstimateResponse upcomingInvoicesEstimate(
+      String customerId, UpcomingInvoicesEstimateParams params) throws ChargebeeException {
+    Response response = upcomingInvoicesEstimateRaw(customerId, params);
+    return UpcomingInvoicesEstimateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of upcomingInvoicesEstimate for estimate with params. */
+  public CompletableFuture<UpcomingInvoicesEstimateResponse> upcomingInvoicesEstimateAsync(
+      String customerId, UpcomingInvoicesEstimateParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/upcoming_invoices_estimate", "customer-id", customerId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                UpcomingInvoicesEstimateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   public UpcomingInvoicesEstimateResponse upcomingInvoicesEstimate(String customerId)

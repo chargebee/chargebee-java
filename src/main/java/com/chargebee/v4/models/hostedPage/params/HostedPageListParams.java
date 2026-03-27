@@ -297,6 +297,98 @@ public final class HostedPageListParams {
     }
   }
 
+  public enum TypeIn {
+    CHECKOUT_NEW("checkout_new"),
+
+    CHECKOUT_EXISTING("checkout_existing"),
+
+    UPDATE_CARD("update_card"),
+
+    UPDATE_PAYMENT_METHOD("update_payment_method"),
+
+    MANAGE_PAYMENT_SOURCES("manage_payment_sources"),
+
+    COLLECT_NOW("collect_now"),
+
+    EXTEND_SUBSCRIPTION("extend_subscription"),
+
+    CHECKOUT_ONE_TIME("checkout_one_time"),
+
+    PRE_CANCEL("pre_cancel"),
+
+    VIEW_VOUCHER("view_voucher"),
+
+    ACCEPT_QUOTE("accept_quote"),
+
+    /** An enum member indicating that TypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIn enumValue : TypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeNotIn {
+    CHECKOUT_NEW("checkout_new"),
+
+    CHECKOUT_EXISTING("checkout_existing"),
+
+    UPDATE_CARD("update_card"),
+
+    UPDATE_PAYMENT_METHOD("update_payment_method"),
+
+    MANAGE_PAYMENT_SOURCES("manage_payment_sources"),
+
+    COLLECT_NOW("collect_now"),
+
+    EXTEND_SUBSCRIPTION("extend_subscription"),
+
+    CHECKOUT_ONE_TIME("checkout_one_time"),
+
+    PRE_CANCEL("pre_cancel"),
+
+    VIEW_VOUCHER("view_voucher"),
+
+    ACCEPT_QUOTE("accept_quote"),
+
+    /** An enum member indicating that TypeNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeNotIn enumValue : TypeNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum StateIs {
     CREATED("created"),
 
@@ -361,6 +453,78 @@ public final class HostedPageListParams {
     public static StateIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (StateIsNot enumValue : StateIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StateIn {
+    CREATED("created"),
+
+    REQUESTED("requested"),
+
+    SUCCEEDED("succeeded"),
+
+    CANCELLED("cancelled"),
+
+    FAILED("failed"),
+
+    ACKNOWLEDGED("acknowledged"),
+
+    /** An enum member indicating that StateIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StateIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StateIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StateIn enumValue : StateIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StateNotIn {
+    CREATED("created"),
+
+    REQUESTED("requested"),
+
+    SUCCEEDED("succeeded"),
+
+    CANCELLED("cancelled"),
+
+    FAILED("failed"),
+
+    ACKNOWLEDGED("acknowledged"),
+
+    /** An enum member indicating that StateNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StateNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StateNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StateNotIn enumValue : StateNotIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

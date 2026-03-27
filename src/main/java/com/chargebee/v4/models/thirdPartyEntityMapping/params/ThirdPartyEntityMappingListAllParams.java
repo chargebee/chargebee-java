@@ -366,6 +366,118 @@ public final class ThirdPartyEntityMappingListAllParams {
     }
   }
 
+  public enum EntityTypeIn {
+    CUSTOMER("customer"),
+
+    INVOICE("invoice"),
+
+    CREDIT_NOTE("credit_note"),
+
+    TRANSACTION("transaction"),
+
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    COUPON("coupon"),
+
+    SUBSCRIPTION("subscription"),
+
+    ORDER("order"),
+
+    QUOTE("quote"),
+
+    ITEM_FAMILY("item_family"),
+
+    ITEM("item"),
+
+    ITEM_PRICE("item_price"),
+
+    TAX_RATE("tax_rate"),
+
+    TAX_GROUP("tax_group"),
+
+    SALES_ORDER("sales_order"),
+
+    /** An enum member indicating that EntityTypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    EntityTypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static EntityTypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityTypeIn enumValue : EntityTypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum EntityTypeNotIn {
+    CUSTOMER("customer"),
+
+    INVOICE("invoice"),
+
+    CREDIT_NOTE("credit_note"),
+
+    TRANSACTION("transaction"),
+
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    COUPON("coupon"),
+
+    SUBSCRIPTION("subscription"),
+
+    ORDER("order"),
+
+    QUOTE("quote"),
+
+    ITEM_FAMILY("item_family"),
+
+    ITEM("item"),
+
+    ITEM_PRICE("item_price"),
+
+    TAX_RATE("tax_rate"),
+
+    TAX_GROUP("tax_group"),
+
+    SALES_ORDER("sales_order"),
+
+    /** An enum member indicating that EntityTypeNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    EntityTypeNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static EntityTypeNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityTypeNotIn enumValue : EntityTypeNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum StatusIs {
     SYNCED("synced"),
 
@@ -458,6 +570,106 @@ public final class ThirdPartyEntityMappingListAllParams {
     public static StatusIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (StatusIsNot enumValue : StatusIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusIn {
+    SYNCED("synced"),
+
+    PARTIALLY_SYNCED("partially_synced"),
+
+    CREATE_FAILED("create_failed"),
+
+    UPDATE_FAILED("update_failed"),
+
+    STOPPED("stopped"),
+
+    IGNORED("ignored"),
+
+    TO_BE_PICKED("to_be_picked"),
+
+    FORCE_SYNC("force_sync"),
+
+    MISMATCH("mismatch"),
+
+    DELETED("deleted"),
+
+    QUEUED("queued"),
+
+    DELETE_FAILED("delete_failed"),
+
+    DELETE_SUCCESS("delete_success"),
+
+    /** An enum member indicating that StatusIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIn enumValue : StatusIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusNotIn {
+    SYNCED("synced"),
+
+    PARTIALLY_SYNCED("partially_synced"),
+
+    CREATE_FAILED("create_failed"),
+
+    UPDATE_FAILED("update_failed"),
+
+    STOPPED("stopped"),
+
+    IGNORED("ignored"),
+
+    TO_BE_PICKED("to_be_picked"),
+
+    FORCE_SYNC("force_sync"),
+
+    MISMATCH("mismatch"),
+
+    DELETED("deleted"),
+
+    QUEUED("queued"),
+
+    DELETE_FAILED("delete_failed"),
+
+    DELETE_SUCCESS("delete_success"),
+
+    /** An enum member indicating that StatusNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusNotIn enumValue : StatusNotIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

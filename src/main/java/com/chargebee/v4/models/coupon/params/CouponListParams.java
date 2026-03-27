@@ -487,6 +487,66 @@ public final class CouponListParams {
     }
   }
 
+  public enum DiscountTypeIn {
+    FIXED_AMOUNT("fixed_amount"),
+
+    PERCENTAGE("percentage"),
+
+    OFFER_QUANTITY("offer_quantity"),
+
+    /** An enum member indicating that DiscountTypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    DiscountTypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static DiscountTypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (DiscountTypeIn enumValue : DiscountTypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum DiscountTypeNotIn {
+    FIXED_AMOUNT("fixed_amount"),
+
+    PERCENTAGE("percentage"),
+
+    OFFER_QUANTITY("offer_quantity"),
+
+    /** An enum member indicating that DiscountTypeNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    DiscountTypeNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static DiscountTypeNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (DiscountTypeNotIn enumValue : DiscountTypeNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum DurationTypeIs {
     ONE_TIME("one_time"),
 
@@ -539,6 +599,66 @@ public final class CouponListParams {
     public static DurationTypeIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (DurationTypeIsNot enumValue : DurationTypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum DurationTypeIn {
+    ONE_TIME("one_time"),
+
+    FOREVER("forever"),
+
+    LIMITED_PERIOD("limited_period"),
+
+    /** An enum member indicating that DurationTypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    DurationTypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static DurationTypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (DurationTypeIn enumValue : DurationTypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum DurationTypeNotIn {
+    ONE_TIME("one_time"),
+
+    FOREVER("forever"),
+
+    LIMITED_PERIOD("limited_period"),
+
+    /** An enum member indicating that DurationTypeNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    DurationTypeNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static DurationTypeNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (DurationTypeNotIn enumValue : DurationTypeNotIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
@@ -615,6 +735,74 @@ public final class CouponListParams {
     }
   }
 
+  public enum StatusIn {
+    ACTIVE("active"),
+
+    EXPIRED("expired"),
+
+    ARCHIVED("archived"),
+
+    DELETED("deleted"),
+
+    FUTURE("future"),
+
+    /** An enum member indicating that StatusIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIn enumValue : StatusIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusNotIn {
+    ACTIVE("active"),
+
+    EXPIRED("expired"),
+
+    ARCHIVED("archived"),
+
+    DELETED("deleted"),
+
+    FUTURE("future"),
+
+    /** An enum member indicating that StatusNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusNotIn enumValue : StatusNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum ApplyOnIs {
     INVOICE_AMOUNT("invoice_amount"),
 
@@ -671,6 +859,70 @@ public final class CouponListParams {
     public static ApplyOnIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (ApplyOnIsNot enumValue : ApplyOnIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ApplyOnIn {
+    INVOICE_AMOUNT("invoice_amount"),
+
+    SPECIFIED_ITEMS_TOTAL("specified_items_total"),
+
+    EACH_SPECIFIED_ITEM("each_specified_item"),
+
+    EACH_UNIT_OF_SPECIFIED_ITEMS("each_unit_of_specified_items"),
+
+    /** An enum member indicating that ApplyOnIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ApplyOnIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ApplyOnIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ApplyOnIn enumValue : ApplyOnIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ApplyOnNotIn {
+    INVOICE_AMOUNT("invoice_amount"),
+
+    SPECIFIED_ITEMS_TOTAL("specified_items_total"),
+
+    EACH_SPECIFIED_ITEM("each_specified_item"),
+
+    EACH_UNIT_OF_SPECIFIED_ITEMS("each_unit_of_specified_items"),
+
+    /** An enum member indicating that ApplyOnNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ApplyOnNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ApplyOnNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ApplyOnNotIn enumValue : ApplyOnNotIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

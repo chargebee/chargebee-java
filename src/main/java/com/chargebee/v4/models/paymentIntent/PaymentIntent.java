@@ -209,6 +209,8 @@ public class PaymentIntent {
 
     ALIPAY("alipay"),
 
+    PIX("pix"),
+
     /** An enum member indicating that PaymentMethodType was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -538,6 +540,8 @@ public class PaymentIntent {
       WECHAT_PAY("wechat_pay"),
 
       ALIPAY("alipay"),
+
+      PIX("pix"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
@@ -1013,6 +1017,8 @@ public class PaymentIntent {
       WECHAT_PAY("wechat_pay"),
 
       ALIPAY("alipay"),
+
+      PIX("pix"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.

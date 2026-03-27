@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.creditNote;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -3134,12 +3135,18 @@ public class CreditNote {
   public static class Einvoice {
 
     private String id;
+    private String referenceId;
     private String referenceNumber;
     private Status status;
     private String message;
+    private List<Object> providerReferences;
 
     public String getId() {
       return id;
+    }
+
+    public String getReferenceId() {
+      return referenceId;
     }
 
     public String getReferenceNumber() {
@@ -3152,6 +3159,10 @@ public class CreditNote {
 
     public String getMessage() {
       return message;
+    }
+
+    public List<Object> getProviderReferences() {
+      return providerReferences;
     }
 
     public enum Status {
@@ -3213,11 +3224,18 @@ public class CreditNote {
 
       obj.id = JsonUtil.getString(jsonObj, "id");
 
+      obj.referenceId = JsonUtil.getString(jsonObj, "reference_id");
+
       obj.referenceNumber = JsonUtil.getString(jsonObj, "reference_number");
 
       obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
       obj.message = JsonUtil.getString(jsonObj, "message");
+
+      JsonArray __providerReferencesArr = JsonUtil.getJsonArray(jsonObj, "provider_references");
+      if (__providerReferencesArr != null) {
+        obj.providerReferences = JsonUtil.mapArrayToObjects(__providerReferencesArr);
+      }
 
       return obj;
     }
@@ -3227,12 +3245,16 @@ public class CreditNote {
       return "Einvoice{"
           + "id="
           + id
+          + ", referenceId="
+          + referenceId
           + ", referenceNumber="
           + referenceNumber
           + ", status="
           + status
           + ", message="
           + message
+          + ", providerReferences="
+          + providerReferences
           + "}";
     }
 
@@ -3243,15 +3265,18 @@ public class CreditNote {
 
       Einvoice that = (Einvoice) o;
       return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(referenceId, that.referenceId)
           && java.util.Objects.equals(referenceNumber, that.referenceNumber)
           && java.util.Objects.equals(status, that.status)
-          && java.util.Objects.equals(message, that.message);
+          && java.util.Objects.equals(message, that.message)
+          && java.util.Objects.equals(providerReferences, that.providerReferences);
     }
 
     @Override
     public int hashCode() {
 
-      return java.util.Objects.hash(id, referenceNumber, status, message);
+      return java.util.Objects.hash(
+          id, referenceId, referenceNumber, status, message, providerReferences);
     }
   }
 

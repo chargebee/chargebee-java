@@ -341,6 +341,8 @@ public final class PaymentSourceListParams {
 
     CASH_APP_PAY("cash_app_pay"),
 
+    PIX("pix"),
+
     /** An enum member indicating that TypeIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -433,6 +435,8 @@ public final class PaymentSourceListParams {
 
     CASH_APP_PAY("cash_app_pay"),
 
+    PIX("pix"),
+
     /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -448,6 +452,194 @@ public final class PaymentSourceListParams {
     public static TypeIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (TypeIsNot enumValue : TypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeIn {
+    CARD("card"),
+
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
+
+    AMAZON_PAYMENTS("amazon_payments"),
+
+    DIRECT_DEBIT("direct_debit"),
+
+    GENERIC("generic"),
+
+    ALIPAY("alipay"),
+
+    UNIONPAY("unionpay"),
+
+    APPLE_PAY("apple_pay"),
+
+    WECHAT_PAY("wechat_pay"),
+
+    IDEAL("ideal"),
+
+    GOOGLE_PAY("google_pay"),
+
+    SOFORT("sofort"),
+
+    BANCONTACT("bancontact"),
+
+    GIROPAY("giropay"),
+
+    DOTPAY("dotpay"),
+
+    UPI("upi"),
+
+    NETBANKING_EMANDATES("netbanking_emandates"),
+
+    VENMO("venmo"),
+
+    PAY_TO("pay_to"),
+
+    FASTER_PAYMENTS("faster_payments"),
+
+    SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
+
+    AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
+
+    KLARNA_PAY_NOW("klarna_pay_now"),
+
+    ONLINE_BANKING_POLAND("online_banking_poland"),
+
+    PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
+
+    ELECTRONIC_PAYMENT_STANDARD("electronic_payment_standard"),
+
+    KBC_PAYMENT_BUTTON("kbc_payment_button"),
+
+    PAY_BY_BANK("pay_by_bank"),
+
+    TRUSTLY("trustly"),
+
+    STABLECOIN("stablecoin"),
+
+    KAKAO_PAY("kakao_pay"),
+
+    NAVER_PAY("naver_pay"),
+
+    REVOLUT_PAY("revolut_pay"),
+
+    CASH_APP_PAY("cash_app_pay"),
+
+    PIX("pix"),
+
+    /** An enum member indicating that TypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIn enumValue : TypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeNotIn {
+    CARD("card"),
+
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
+
+    AMAZON_PAYMENTS("amazon_payments"),
+
+    DIRECT_DEBIT("direct_debit"),
+
+    GENERIC("generic"),
+
+    ALIPAY("alipay"),
+
+    UNIONPAY("unionpay"),
+
+    APPLE_PAY("apple_pay"),
+
+    WECHAT_PAY("wechat_pay"),
+
+    IDEAL("ideal"),
+
+    GOOGLE_PAY("google_pay"),
+
+    SOFORT("sofort"),
+
+    BANCONTACT("bancontact"),
+
+    GIROPAY("giropay"),
+
+    DOTPAY("dotpay"),
+
+    UPI("upi"),
+
+    NETBANKING_EMANDATES("netbanking_emandates"),
+
+    VENMO("venmo"),
+
+    PAY_TO("pay_to"),
+
+    FASTER_PAYMENTS("faster_payments"),
+
+    SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
+
+    AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
+
+    KLARNA_PAY_NOW("klarna_pay_now"),
+
+    ONLINE_BANKING_POLAND("online_banking_poland"),
+
+    PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
+
+    ELECTRONIC_PAYMENT_STANDARD("electronic_payment_standard"),
+
+    KBC_PAYMENT_BUTTON("kbc_payment_button"),
+
+    PAY_BY_BANK("pay_by_bank"),
+
+    TRUSTLY("trustly"),
+
+    STABLECOIN("stablecoin"),
+
+    KAKAO_PAY("kakao_pay"),
+
+    NAVER_PAY("naver_pay"),
+
+    REVOLUT_PAY("revolut_pay"),
+
+    CASH_APP_PAY("cash_app_pay"),
+
+    PIX("pix"),
+
+    /** An enum member indicating that TypeNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeNotIn enumValue : TypeNotIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
@@ -516,6 +708,74 @@ public final class PaymentSourceListParams {
     public static StatusIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (StatusIsNot enumValue : StatusIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusIn {
+    VALID("valid"),
+
+    EXPIRING("expiring"),
+
+    EXPIRED("expired"),
+
+    INVALID("invalid"),
+
+    PENDING_VERIFICATION("pending_verification"),
+
+    /** An enum member indicating that StatusIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIn enumValue : StatusIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusNotIn {
+    VALID("valid"),
+
+    EXPIRING("expiring"),
+
+    EXPIRED("expired"),
+
+    INVALID("invalid"),
+
+    PENDING_VERIFICATION("pending_verification"),
+
+    /** An enum member indicating that StatusNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusNotIn enumValue : StatusNotIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
@@ -648,6 +908,8 @@ public final class PaymentSourceListParams {
     REVOLUT_PAY("revolut_pay"),
 
     CASH_APP_PAY("cash_app_pay"),
+
+    PIX("pix"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);

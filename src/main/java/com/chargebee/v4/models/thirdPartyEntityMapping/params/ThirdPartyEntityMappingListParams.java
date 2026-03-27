@@ -271,6 +271,118 @@ public final class ThirdPartyEntityMappingListParams {
     }
   }
 
+  public enum EntityTypeIn {
+    CUSTOMER("customer"),
+
+    INVOICE("invoice"),
+
+    CREDIT_NOTE("credit_note"),
+
+    TRANSACTION("transaction"),
+
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    COUPON("coupon"),
+
+    SUBSCRIPTION("subscription"),
+
+    ORDER("order"),
+
+    QUOTE("quote"),
+
+    ITEM_FAMILY("item_family"),
+
+    ITEM("item"),
+
+    ITEM_PRICE("item_price"),
+
+    TAX_RATE("tax_rate"),
+
+    TAX_GROUP("tax_group"),
+
+    SALES_ORDER("sales_order"),
+
+    /** An enum member indicating that EntityTypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    EntityTypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static EntityTypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityTypeIn enumValue : EntityTypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum EntityTypeNotIn {
+    CUSTOMER("customer"),
+
+    INVOICE("invoice"),
+
+    CREDIT_NOTE("credit_note"),
+
+    TRANSACTION("transaction"),
+
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    COUPON("coupon"),
+
+    SUBSCRIPTION("subscription"),
+
+    ORDER("order"),
+
+    QUOTE("quote"),
+
+    ITEM_FAMILY("item_family"),
+
+    ITEM("item"),
+
+    ITEM_PRICE("item_price"),
+
+    TAX_RATE("tax_rate"),
+
+    TAX_GROUP("tax_group"),
+
+    SALES_ORDER("sales_order"),
+
+    /** An enum member indicating that EntityTypeNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    EntityTypeNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static EntityTypeNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityTypeNotIn enumValue : EntityTypeNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum EntityType {
     CUSTOMER("customer"),
 

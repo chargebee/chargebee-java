@@ -13,6 +13,8 @@ import java.util.Map;
 
 public final class HostedPageManagePaymentSourcesParams {
 
+  private final String businessEntityId;
+
   private final String redirectUrl;
 
   private final CustomerParams customer;
@@ -21,11 +23,17 @@ public final class HostedPageManagePaymentSourcesParams {
 
   private HostedPageManagePaymentSourcesParams(HostedPageManagePaymentSourcesBuilder builder) {
 
+    this.businessEntityId = builder.businessEntityId;
+
     this.redirectUrl = builder.redirectUrl;
 
     this.customer = builder.customer;
 
     this.card = builder.card;
+  }
+
+  public String getBusinessEntityId() {
+    return businessEntityId;
   }
 
   public String getRedirectUrl() {
@@ -43,6 +51,11 @@ public final class HostedPageManagePaymentSourcesParams {
   /** Get the form data for this request. */
   public Map<String, Object> toFormData() {
     Map<String, Object> formData = new LinkedHashMap<>();
+
+    if (this.businessEntityId != null) {
+
+      formData.put("business_entity_id", this.businessEntityId);
+    }
 
     if (this.redirectUrl != null) {
 
@@ -80,6 +93,8 @@ public final class HostedPageManagePaymentSourcesParams {
 
   public static final class HostedPageManagePaymentSourcesBuilder {
 
+    private String businessEntityId;
+
     private String redirectUrl;
 
     private CustomerParams customer;
@@ -87,6 +102,11 @@ public final class HostedPageManagePaymentSourcesParams {
     private CardParams card;
 
     private HostedPageManagePaymentSourcesBuilder() {}
+
+    public HostedPageManagePaymentSourcesBuilder businessEntityId(String value) {
+      this.businessEntityId = value;
+      return this;
+    }
 
     public HostedPageManagePaymentSourcesBuilder redirectUrl(String value) {
       this.redirectUrl = value;
