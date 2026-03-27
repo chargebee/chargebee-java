@@ -43,6 +43,11 @@ public final class UpcomingInvoicesEstimateParams {
 
     private UpcomingInvoicesEstimateBuilder() {}
 
+    public UpcomingInvoicesEstimateBuilder includeUsageCharges(Boolean value) {
+      queryParams.put("include_usage_charges", value);
+      return this;
+    }
+
     public UpcomingInvoicesEstimateParams build() {
       return new UpcomingInvoicesEstimateParams(this);
     }

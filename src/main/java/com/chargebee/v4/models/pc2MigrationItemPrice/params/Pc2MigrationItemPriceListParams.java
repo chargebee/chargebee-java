@@ -283,6 +283,62 @@ public final class Pc2MigrationItemPriceListParams {
     }
   }
 
+  public enum Pc1ItemTypeIn {
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    /** An enum member indicating that Pc1ItemTypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Pc1ItemTypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Pc1ItemTypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Pc1ItemTypeIn enumValue : Pc1ItemTypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Pc1ItemTypeNotIn {
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    /** An enum member indicating that Pc1ItemTypeNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Pc1ItemTypeNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Pc1ItemTypeNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Pc1ItemTypeNotIn enumValue : Pc1ItemTypeNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum IsRecurringIs {
     TRUE("true"),
 

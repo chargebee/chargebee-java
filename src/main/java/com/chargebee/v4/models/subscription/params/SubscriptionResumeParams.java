@@ -512,6 +512,8 @@ public final class SubscriptionResumeParams {
 
       ALIPAY("alipay"),
 
+      PIX("pix"),
+
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
        */

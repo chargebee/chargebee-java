@@ -315,6 +315,66 @@ public final class UsageListParams {
     }
   }
 
+  public enum SourceIn {
+    ADMIN_CONSOLE("admin_console"),
+
+    API("api"),
+
+    BULK_OPERATION("bulk_operation"),
+
+    /** An enum member indicating that SourceIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SourceIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SourceIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SourceIn enumValue : SourceIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SourceNotIn {
+    ADMIN_CONSOLE("admin_console"),
+
+    API("api"),
+
+    BULK_OPERATION("bulk_operation"),
+
+    /** An enum member indicating that SourceNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SourceNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SourceNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SourceNotIn enumValue : SourceNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum SortByAsc {
     USAGE_DATE("usage_date"),
 

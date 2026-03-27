@@ -21,6 +21,7 @@ public class QuotedSubscription {
   private Timestamp trialEnd;
   private Integer remainingBillingCycles;
   private String poNumber;
+  private AutoCollection autoCollection;
   private String planQuantityInDecimal;
   private String planUnitPriceInDecimal;
   private Timestamp changesScheduledAt;
@@ -33,7 +34,6 @@ public class QuotedSubscription {
   private List<ItemTiers> itemTiers;
   private QuotedContractTerm quotedContractTerm;
   private Long setupFee;
-  private AutoCollection autoCollection;
   private List<EventBasedAddons> eventBasedAddons;
   private List<Addons> addons;
   private Integer planQuantity;
@@ -66,6 +66,10 @@ public class QuotedSubscription {
 
   public String getPoNumber() {
     return poNumber;
+  }
+
+  public AutoCollection getAutoCollection() {
+    return autoCollection;
   }
 
   public String getPlanQuantityInDecimal() {
@@ -116,10 +120,6 @@ public class QuotedSubscription {
     return setupFee;
   }
 
-  public AutoCollection getAutoCollection() {
-    return autoCollection;
-  }
-
   public List<EventBasedAddons> getEventBasedAddons() {
     return eventBasedAddons;
   }
@@ -164,6 +164,34 @@ public class QuotedSubscription {
     public static BillingPeriodUnit fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (BillingPeriodUnit enumValue : BillingPeriodUnit.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum AutoCollection {
+    ON("on"),
+
+    OFF("off"),
+
+    /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    AutoCollection(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static AutoCollection fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (AutoCollection enumValue : AutoCollection.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
@@ -234,34 +262,6 @@ public class QuotedSubscription {
     }
   }
 
-  public enum AutoCollection {
-    ON("on"),
-
-    OFF("off"),
-
-    /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
-    _UNKNOWN(null);
-    private final String value;
-
-    AutoCollection(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    public static AutoCollection fromString(String value) {
-      if (value == null) return _UNKNOWN;
-      for (AutoCollection enumValue : AutoCollection.values()) {
-        if (enumValue.value != null && enumValue.value.equals(value)) {
-          return enumValue;
-        }
-      }
-      return _UNKNOWN;
-    }
-  }
-
   public static QuotedSubscription fromJson(String json) {
     return fromJson(JsonUtil.parse(json));
   }
@@ -283,6 +283,8 @@ public class QuotedSubscription {
     obj.remainingBillingCycles = JsonUtil.getInteger(jsonObj, "remaining_billing_cycles");
 
     obj.poNumber = JsonUtil.getString(jsonObj, "po_number");
+
+    obj.autoCollection = AutoCollection.fromString(JsonUtil.getString(jsonObj, "auto_collection"));
 
     obj.planQuantityInDecimal = JsonUtil.getString(jsonObj, "plan_quantity_in_decimal");
 
@@ -314,8 +316,6 @@ public class QuotedSubscription {
     }
 
     obj.setupFee = JsonUtil.getLong(jsonObj, "setup_fee");
-
-    obj.autoCollection = AutoCollection.fromString(JsonUtil.getString(jsonObj, "auto_collection"));
 
     obj.eventBasedAddons =
         JsonUtil.mapArray(
@@ -349,6 +349,8 @@ public class QuotedSubscription {
         + remainingBillingCycles
         + ", poNumber="
         + poNumber
+        + ", autoCollection="
+        + autoCollection
         + ", planQuantityInDecimal="
         + planQuantityInDecimal
         + ", planUnitPriceInDecimal="
@@ -373,8 +375,6 @@ public class QuotedSubscription {
         + quotedContractTerm
         + ", setupFee="
         + setupFee
-        + ", autoCollection="
-        + autoCollection
         + ", eventBasedAddons="
         + eventBasedAddons
         + ", addons="
@@ -401,6 +401,7 @@ public class QuotedSubscription {
         && java.util.Objects.equals(trialEnd, that.trialEnd)
         && java.util.Objects.equals(remainingBillingCycles, that.remainingBillingCycles)
         && java.util.Objects.equals(poNumber, that.poNumber)
+        && java.util.Objects.equals(autoCollection, that.autoCollection)
         && java.util.Objects.equals(planQuantityInDecimal, that.planQuantityInDecimal)
         && java.util.Objects.equals(planUnitPriceInDecimal, that.planUnitPriceInDecimal)
         && java.util.Objects.equals(changesScheduledAt, that.changesScheduledAt)
@@ -414,7 +415,6 @@ public class QuotedSubscription {
         && java.util.Objects.equals(itemTiers, that.itemTiers)
         && java.util.Objects.equals(quotedContractTerm, that.quotedContractTerm)
         && java.util.Objects.equals(setupFee, that.setupFee)
-        && java.util.Objects.equals(autoCollection, that.autoCollection)
         && java.util.Objects.equals(eventBasedAddons, that.eventBasedAddons)
         && java.util.Objects.equals(addons, that.addons)
         && java.util.Objects.equals(planQuantity, that.planQuantity)
@@ -433,6 +433,7 @@ public class QuotedSubscription {
         trialEnd,
         remainingBillingCycles,
         poNumber,
+        autoCollection,
         planQuantityInDecimal,
         planUnitPriceInDecimal,
         changesScheduledAt,
@@ -445,7 +446,6 @@ public class QuotedSubscription {
         itemTiers,
         quotedContractTerm,
         setupFee,
-        autoCollection,
         eventBasedAddons,
         addons,
         planQuantity,

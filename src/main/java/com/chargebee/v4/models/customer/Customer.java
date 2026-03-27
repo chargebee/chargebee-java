@@ -2105,6 +2105,8 @@ public class Customer {
 
       CASH_APP_PAY("cash_app_pay"),
 
+      PIX("pix"),
+
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;

@@ -584,6 +584,74 @@ public final class AddonListParams {
     }
   }
 
+  public enum PricingModelIn {
+    FLAT_FEE("flat_fee"),
+
+    PER_UNIT("per_unit"),
+
+    TIERED("tiered"),
+
+    VOLUME("volume"),
+
+    STAIRSTEP("stairstep"),
+
+    /** An enum member indicating that PricingModelIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PricingModelIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PricingModelIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PricingModelIn enumValue : PricingModelIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PricingModelNotIn {
+    FLAT_FEE("flat_fee"),
+
+    PER_UNIT("per_unit"),
+
+    TIERED("tiered"),
+
+    VOLUME("volume"),
+
+    STAIRSTEP("stairstep"),
+
+    /** An enum member indicating that PricingModelNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PricingModelNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PricingModelNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PricingModelNotIn enumValue : PricingModelNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum TypeIs {
     ON_OFF("on_off"),
 
@@ -652,6 +720,74 @@ public final class AddonListParams {
     }
   }
 
+  public enum TypeIn {
+    ON_OFF("on_off"),
+
+    QUANTITY("quantity"),
+
+    TIERED("tiered"),
+
+    VOLUME("volume"),
+
+    STAIRSTEP("stairstep"),
+
+    /** An enum member indicating that TypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIn enumValue : TypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeNotIn {
+    ON_OFF("on_off"),
+
+    QUANTITY("quantity"),
+
+    TIERED("tiered"),
+
+    VOLUME("volume"),
+
+    STAIRSTEP("stairstep"),
+
+    /** An enum member indicating that TypeNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeNotIn enumValue : TypeNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum ChargeTypeIs {
     RECURRING("recurring"),
 
@@ -700,6 +836,62 @@ public final class AddonListParams {
     public static ChargeTypeIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (ChargeTypeIsNot enumValue : ChargeTypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChargeTypeIn {
+    RECURRING("recurring"),
+
+    NON_RECURRING("non_recurring"),
+
+    /** An enum member indicating that ChargeTypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChargeTypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChargeTypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChargeTypeIn enumValue : ChargeTypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChargeTypeNotIn {
+    RECURRING("recurring"),
+
+    NON_RECURRING("non_recurring"),
+
+    /** An enum member indicating that ChargeTypeNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChargeTypeNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChargeTypeNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChargeTypeNotIn enumValue : ChargeTypeNotIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
@@ -776,6 +968,74 @@ public final class AddonListParams {
     }
   }
 
+  public enum PeriodUnitIn {
+    DAY("day"),
+
+    WEEK("week"),
+
+    MONTH("month"),
+
+    YEAR("year"),
+
+    NOT_APPLICABLE("not_applicable"),
+
+    /** An enum member indicating that PeriodUnitIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PeriodUnitIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PeriodUnitIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PeriodUnitIn enumValue : PeriodUnitIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PeriodUnitNotIn {
+    DAY("day"),
+
+    WEEK("week"),
+
+    MONTH("month"),
+
+    YEAR("year"),
+
+    NOT_APPLICABLE("not_applicable"),
+
+    /** An enum member indicating that PeriodUnitNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PeriodUnitNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PeriodUnitNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PeriodUnitNotIn enumValue : PeriodUnitNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum StatusIs {
     ACTIVE("active"),
 
@@ -836,6 +1096,66 @@ public final class AddonListParams {
     }
   }
 
+  public enum StatusIn {
+    ACTIVE("active"),
+
+    ARCHIVED("archived"),
+
+    DELETED("deleted"),
+
+    /** An enum member indicating that StatusIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIn enumValue : StatusIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusNotIn {
+    ACTIVE("active"),
+
+    ARCHIVED("archived"),
+
+    DELETED("deleted"),
+
+    /** An enum member indicating that StatusNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusNotIn enumValue : StatusNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum ChannelIs {
     WEB("web"),
 
@@ -888,6 +1208,66 @@ public final class AddonListParams {
     public static ChannelIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (ChannelIsNot enumValue : ChannelIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChannelIn {
+    WEB("web"),
+
+    APP_STORE("app_store"),
+
+    PLAY_STORE("play_store"),
+
+    /** An enum member indicating that ChannelIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChannelIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChannelIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChannelIn enumValue : ChannelIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChannelNotIn {
+    WEB("web"),
+
+    APP_STORE("app_store"),
+
+    PLAY_STORE("play_store"),
+
+    /** An enum member indicating that ChannelNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChannelNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChannelNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChannelNotIn enumValue : ChannelNotIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

@@ -200,6 +200,74 @@ public final class GiftListParams {
     }
   }
 
+  public enum StatusIn {
+    SCHEDULED("scheduled"),
+
+    UNCLAIMED("unclaimed"),
+
+    CLAIMED("claimed"),
+
+    CANCELLED("cancelled"),
+
+    EXPIRED("expired"),
+
+    /** An enum member indicating that StatusIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIn enumValue : StatusIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusNotIn {
+    SCHEDULED("scheduled"),
+
+    UNCLAIMED("unclaimed"),
+
+    CLAIMED("claimed"),
+
+    CANCELLED("cancelled"),
+
+    EXPIRED("expired"),
+
+    /** An enum member indicating that StatusNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusNotIn enumValue : StatusNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum Status {
     SCHEDULED("scheduled"),
 

@@ -213,6 +213,62 @@ public final class PromotionalCreditListParams {
     }
   }
 
+  public enum TypeIn {
+    INCREMENT("increment"),
+
+    DECREMENT("decrement"),
+
+    /** An enum member indicating that TypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIn enumValue : TypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeNotIn {
+    INCREMENT("increment"),
+
+    DECREMENT("decrement"),
+
+    /** An enum member indicating that TypeNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeNotIn enumValue : TypeNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum Type {
     INCREMENT("increment"),
 

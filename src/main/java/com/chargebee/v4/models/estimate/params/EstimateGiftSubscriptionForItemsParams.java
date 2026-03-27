@@ -804,6 +804,8 @@ public final class EstimateGiftSubscriptionForItemsParams {
 
       ALIPAY("alipay"),
 
+      PIX("pix"),
+
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
        */

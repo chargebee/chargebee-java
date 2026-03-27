@@ -672,6 +672,78 @@ public final class InvoiceListParams {
     }
   }
 
+  public enum StatusIn {
+    PAID("paid"),
+
+    POSTED("posted"),
+
+    PAYMENT_DUE("payment_due"),
+
+    NOT_PAID("not_paid"),
+
+    VOIDED("voided"),
+
+    PENDING("pending"),
+
+    /** An enum member indicating that StatusIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIn enumValue : StatusIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusNotIn {
+    PAID("paid"),
+
+    POSTED("posted"),
+
+    PAYMENT_DUE("payment_due"),
+
+    NOT_PAID("not_paid"),
+
+    VOIDED("voided"),
+
+    PENDING("pending"),
+
+    /** An enum member indicating that StatusNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusNotIn enumValue : StatusNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum PriceTypeIs {
     TAX_EXCLUSIVE("tax_exclusive"),
 
@@ -720,6 +792,62 @@ public final class InvoiceListParams {
     public static PriceTypeIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (PriceTypeIsNot enumValue : PriceTypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PriceTypeIn {
+    TAX_EXCLUSIVE("tax_exclusive"),
+
+    TAX_INCLUSIVE("tax_inclusive"),
+
+    /** An enum member indicating that PriceTypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PriceTypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PriceTypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PriceTypeIn enumValue : PriceTypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PriceTypeNotIn {
+    TAX_EXCLUSIVE("tax_exclusive"),
+
+    TAX_INCLUSIVE("tax_inclusive"),
+
+    /** An enum member indicating that PriceTypeNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PriceTypeNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PriceTypeNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PriceTypeNotIn enumValue : PriceTypeNotIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
@@ -784,6 +912,70 @@ public final class InvoiceListParams {
     public static DunningStatusIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (DunningStatusIsNot enumValue : DunningStatusIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum DunningStatusIn {
+    IN_PROGRESS("in_progress"),
+
+    EXHAUSTED("exhausted"),
+
+    STOPPED("stopped"),
+
+    SUCCESS("success"),
+
+    /** An enum member indicating that DunningStatusIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    DunningStatusIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static DunningStatusIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (DunningStatusIn enumValue : DunningStatusIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum DunningStatusNotIn {
+    IN_PROGRESS("in_progress"),
+
+    EXHAUSTED("exhausted"),
+
+    STOPPED("stopped"),
+
+    SUCCESS("success"),
+
+    /** An enum member indicating that DunningStatusNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    DunningStatusNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static DunningStatusNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (DunningStatusNotIn enumValue : DunningStatusNotIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
@@ -874,6 +1066,66 @@ public final class InvoiceListParams {
     public static ChannelIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (ChannelIsNot enumValue : ChannelIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChannelIn {
+    WEB("web"),
+
+    APP_STORE("app_store"),
+
+    PLAY_STORE("play_store"),
+
+    /** An enum member indicating that ChannelIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChannelIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChannelIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChannelIn enumValue : ChannelIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChannelNotIn {
+    WEB("web"),
+
+    APP_STORE("app_store"),
+
+    PLAY_STORE("play_store"),
+
+    /** An enum member indicating that ChannelNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChannelNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChannelNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChannelNotIn enumValue : ChannelNotIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

@@ -523,6 +523,102 @@ public final class OrderListParams {
     }
   }
 
+  public enum StatusIn {
+    NEW("new"),
+
+    PROCESSING("processing"),
+
+    COMPLETE("complete"),
+
+    CANCELLED("cancelled"),
+
+    VOIDED("voided"),
+
+    QUEUED("queued"),
+
+    AWAITING_SHIPMENT("awaiting_shipment"),
+
+    ON_HOLD("on_hold"),
+
+    DELIVERED("delivered"),
+
+    SHIPPED("shipped"),
+
+    PARTIALLY_DELIVERED("partially_delivered"),
+
+    RETURNED("returned"),
+
+    /** An enum member indicating that StatusIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIn enumValue : StatusIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusNotIn {
+    NEW("new"),
+
+    PROCESSING("processing"),
+
+    COMPLETE("complete"),
+
+    CANCELLED("cancelled"),
+
+    VOIDED("voided"),
+
+    QUEUED("queued"),
+
+    AWAITING_SHIPMENT("awaiting_shipment"),
+
+    ON_HOLD("on_hold"),
+
+    DELIVERED("delivered"),
+
+    SHIPPED("shipped"),
+
+    PARTIALLY_DELIVERED("partially_delivered"),
+
+    RETURNED("returned"),
+
+    /** An enum member indicating that StatusNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusNotIn enumValue : StatusNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum OrderTypeIs {
     MANUAL("manual"),
 
@@ -579,6 +675,62 @@ public final class OrderListParams {
     }
   }
 
+  public enum OrderTypeIn {
+    MANUAL("manual"),
+
+    SYSTEM_GENERATED("system_generated"),
+
+    /** An enum member indicating that OrderTypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    OrderTypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static OrderTypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (OrderTypeIn enumValue : OrderTypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum OrderTypeNotIn {
+    MANUAL("manual"),
+
+    SYSTEM_GENERATED("system_generated"),
+
+    /** An enum member indicating that OrderTypeNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    OrderTypeNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static OrderTypeNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (OrderTypeNotIn enumValue : OrderTypeNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum ResentStatusIs {
     FULLY_RESENT("fully_resent"),
 
@@ -627,6 +779,62 @@ public final class OrderListParams {
     public static ResentStatusIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (ResentStatusIsNot enumValue : ResentStatusIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ResentStatusIn {
+    FULLY_RESENT("fully_resent"),
+
+    PARTIALLY_RESENT("partially_resent"),
+
+    /** An enum member indicating that ResentStatusIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ResentStatusIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ResentStatusIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ResentStatusIn enumValue : ResentStatusIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ResentStatusNotIn {
+    FULLY_RESENT("fully_resent"),
+
+    PARTIALLY_RESENT("partially_resent"),
+
+    /** An enum member indicating that ResentStatusNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ResentStatusNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ResentStatusNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ResentStatusNotIn enumValue : ResentStatusNotIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

@@ -341,6 +341,66 @@ public final class AttachedItemListParams {
     }
   }
 
+  public enum TypeIn {
+    RECOMMENDED("recommended"),
+
+    MANDATORY("mandatory"),
+
+    OPTIONAL("optional"),
+
+    /** An enum member indicating that TypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIn enumValue : TypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeNotIn {
+    RECOMMENDED("recommended"),
+
+    MANDATORY("mandatory"),
+
+    OPTIONAL("optional"),
+
+    /** An enum member indicating that TypeNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeNotIn enumValue : TypeNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum ItemTypeIs {
     PLAN("plan"),
 
@@ -393,6 +453,66 @@ public final class AttachedItemListParams {
     public static ItemTypeIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (ItemTypeIsNot enumValue : ItemTypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ItemTypeIn {
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    CHARGE("charge"),
+
+    /** An enum member indicating that ItemTypeIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ItemTypeIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ItemTypeIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ItemTypeIn enumValue : ItemTypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ItemTypeNotIn {
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    CHARGE("charge"),
+
+    /** An enum member indicating that ItemTypeNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ItemTypeNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ItemTypeNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ItemTypeNotIn enumValue : ItemTypeNotIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
@@ -465,6 +585,78 @@ public final class AttachedItemListParams {
     public static ChargeOnEventIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (ChargeOnEventIsNot enumValue : ChargeOnEventIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChargeOnEventIn {
+    SUBSCRIPTION_CREATION("subscription_creation"),
+
+    SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
+
+    PLAN_ACTIVATION("plan_activation"),
+
+    SUBSCRIPTION_ACTIVATION("subscription_activation"),
+
+    CONTRACT_TERMINATION("contract_termination"),
+
+    ON_DEMAND("on_demand"),
+
+    /** An enum member indicating that ChargeOnEventIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChargeOnEventIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChargeOnEventIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChargeOnEventIn enumValue : ChargeOnEventIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChargeOnEventNotIn {
+    SUBSCRIPTION_CREATION("subscription_creation"),
+
+    SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
+
+    PLAN_ACTIVATION("plan_activation"),
+
+    SUBSCRIPTION_ACTIVATION("subscription_activation"),
+
+    CONTRACT_TERMINATION("contract_termination"),
+
+    ON_DEMAND("on_demand"),
+
+    /** An enum member indicating that ChargeOnEventNotIn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChargeOnEventNotIn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChargeOnEventNotIn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChargeOnEventNotIn enumValue : ChargeOnEventNotIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
