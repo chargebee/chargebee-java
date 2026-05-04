@@ -4425,6 +4425,12 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
+        public CreateForChargeItemsAndChargesRequest netTermDays(Integer netTermDays) {
+            params.addOpt("net_term_days", netTermDays);
+            return this;
+        }
+
+
         public CreateForChargeItemsAndChargesRequest billingAddressFirstName(String billingAddressFirstName) {
             params.addOpt("billing_address[first_name]", billingAddressFirstName);
             return this;
@@ -4736,6 +4742,12 @@ public class Quote extends Resource<Quote> {
             params.addOpt("coupon_ids", couponIds);
             return this;
         }
+
+        public EditForChargeItemsAndChargesRequest netTermDays(Integer netTermDays) {
+            params.addOpt("net_term_days", netTermDays);
+            return this;
+        }
+
 
         public EditForChargeItemsAndChargesRequest billingAddressFirstName(String billingAddressFirstName) {
             params.addOpt("billing_address[first_name]", billingAddressFirstName);
