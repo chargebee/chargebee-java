@@ -360,6 +360,20 @@ public final class ExportTransactionsParams {
 
       PIX("pix"),
 
+      TWINT("twint"),
+
+      GO_PAY("go_pay"),
+
+      GRAB_PAY("grab_pay"),
+
+      PAY_CO("pay_co"),
+
+      AFTER_PAY("after_pay"),
+
+      SWISH("swish"),
+
+      PAYME("payme"),
+
       /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -499,6 +513,10 @@ public final class ExportTransactionsParams {
       TWIKEY("twikey"),
 
       TEMPUS("tempus"),
+
+      MOYASAR("moyasar"),
+
+      PAYWAY("payway"),
 
       NOT_APPLICABLE("not_applicable"),
 

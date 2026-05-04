@@ -44,6 +44,7 @@ public class SalesOrder {
   private BillingConfiguration billingConfiguration;
   private RenewalTerm renewalTerm;
   private List<CreditLines> creditLines;
+  private List<EntitlementOverrides> entitlementOverrides;
 
   public String getId() {
     return id;
@@ -162,6 +163,10 @@ public class SalesOrder {
 
   public List<CreditLines> getCreditLines() {
     return creditLines;
+  }
+
+  public List<EntitlementOverrides> getEntitlementOverrides() {
+    return entitlementOverrides;
   }
 
   public enum Status {
@@ -287,6 +292,11 @@ public class SalesOrder {
     obj.creditLines =
         JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "credit_lines"), CreditLines::fromJson);
 
+    obj.entitlementOverrides =
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "entitlement_overrides"),
+            EntitlementOverrides::fromJson);
+
     return obj;
   }
 
@@ -351,6 +361,8 @@ public class SalesOrder {
         + renewalTerm
         + ", creditLines="
         + creditLines
+        + ", entitlementOverrides="
+        + entitlementOverrides
         + "}";
   }
 
@@ -388,7 +400,8 @@ public class SalesOrder {
         && java.util.Objects.equals(paymentConfiguration, that.paymentConfiguration)
         && java.util.Objects.equals(billingConfiguration, that.billingConfiguration)
         && java.util.Objects.equals(renewalTerm, that.renewalTerm)
-        && java.util.Objects.equals(creditLines, that.creditLines);
+        && java.util.Objects.equals(creditLines, that.creditLines)
+        && java.util.Objects.equals(entitlementOverrides, that.entitlementOverrides);
   }
 
   @Override
@@ -423,7 +436,8 @@ public class SalesOrder {
         paymentConfiguration,
         billingConfiguration,
         renewalTerm,
-        creditLines);
+        creditLines,
+        entitlementOverrides);
   }
 
   public static class LineItems {
@@ -2175,6 +2189,149 @@ public class SalesOrder {
     public int hashCode() {
 
       return java.util.Objects.hash(amount, unitPrice, quantity, lineItemAssociationId);
+    }
+  }
+
+  public static class EntitlementOverrides {
+
+    private String id;
+    private String featureId;
+    private String entityId;
+    private EntityType entityType;
+    private String value;
+    private Boolean isEnabled;
+    private Timestamp startDate;
+    private Timestamp endDate;
+
+    public String getId() {
+      return id;
+    }
+
+    public String getFeatureId() {
+      return featureId;
+    }
+
+    public String getEntityId() {
+      return entityId;
+    }
+
+    public EntityType getEntityType() {
+      return entityType;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public Boolean getIsEnabled() {
+      return isEnabled;
+    }
+
+    public Timestamp getStartDate() {
+      return startDate;
+    }
+
+    public Timestamp getEndDate() {
+      return endDate;
+    }
+
+    public enum EntityType {
+      ITEM_PRICE("item_price"),
+
+      SUBSCRIPTION("subscription"),
+
+      /** An enum member indicating that EntityType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      EntityType(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static EntityType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public static EntitlementOverrides fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static EntitlementOverrides fromJson(JsonObject jsonObj) {
+      EntitlementOverrides obj = new EntitlementOverrides();
+
+      obj.id = JsonUtil.getString(jsonObj, "id");
+
+      obj.featureId = JsonUtil.getString(jsonObj, "feature_id");
+
+      obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
+
+      obj.entityType = EntityType.fromString(JsonUtil.getString(jsonObj, "entity_type"));
+
+      obj.value = JsonUtil.getString(jsonObj, "value");
+
+      obj.isEnabled = JsonUtil.getBoolean(jsonObj, "is_enabled");
+
+      obj.startDate = JsonUtil.getTimestamp(jsonObj, "start_date");
+
+      obj.endDate = JsonUtil.getTimestamp(jsonObj, "end_date");
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "EntitlementOverrides{"
+          + "id="
+          + id
+          + ", featureId="
+          + featureId
+          + ", entityId="
+          + entityId
+          + ", entityType="
+          + entityType
+          + ", value="
+          + value
+          + ", isEnabled="
+          + isEnabled
+          + ", startDate="
+          + startDate
+          + ", endDate="
+          + endDate
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      EntitlementOverrides that = (EntitlementOverrides) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(featureId, that.featureId)
+          && java.util.Objects.equals(entityId, that.entityId)
+          && java.util.Objects.equals(entityType, that.entityType)
+          && java.util.Objects.equals(value, that.value)
+          && java.util.Objects.equals(isEnabled, that.isEnabled)
+          && java.util.Objects.equals(startDate, that.startDate)
+          && java.util.Objects.equals(endDate, that.endDate);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(
+          id, featureId, entityId, entityType, value, isEnabled, startDate, endDate);
     }
   }
 }

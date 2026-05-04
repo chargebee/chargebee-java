@@ -62,6 +62,8 @@ import com.chargebee.v4.services.AdditionalBillingLogiqService;
 
 import com.chargebee.v4.services.UsageSummaryService;
 
+import com.chargebee.v4.services.AlertStatusService;
+
 import com.chargebee.v4.services.SubscriptionSettingService;
 
 import com.chargebee.v4.services.SiteMigrationDetailService;
@@ -109,6 +111,8 @@ import com.chargebee.v4.services.WebhookEndpointService;
 import com.chargebee.v4.services.FeatureService;
 
 import com.chargebee.v4.services.UnbilledChargesSettingService;
+
+import com.chargebee.v4.services.AlertService;
 
 import com.chargebee.v4.services.CurrencyService;
 
@@ -235,6 +239,8 @@ final class ServiceRegistry {
 
   private volatile UsageSummaryService usageSummaryService;
 
+  private volatile AlertStatusService alertStatusService;
+
   private volatile SubscriptionSettingService subscriptionSettingService;
 
   private volatile SiteMigrationDetailService siteMigrationDetailService;
@@ -282,6 +288,8 @@ final class ServiceRegistry {
   private volatile FeatureService featureService;
 
   private volatile UnbilledChargesSettingService unbilledChargesSettingService;
+
+  private volatile AlertService alertService;
 
   private volatile CurrencyService currencyService;
 
@@ -809,6 +817,21 @@ final class ServiceRegistry {
   }
 
   /**
+   * Get or create the AlertStatusService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  AlertStatusService alertStatuses() {
+    if (alertStatusService == null) {
+      synchronized (this) {
+        if (alertStatusService == null) {
+          alertStatusService = new AlertStatusService(client);
+        }
+      }
+    }
+    return alertStatusService;
+  }
+
+  /**
    * Get or create the SubscriptionSettingService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
@@ -1166,6 +1189,21 @@ final class ServiceRegistry {
       }
     }
     return unbilledChargesSettingService;
+  }
+
+  /**
+   * Get or create the AlertService instance. Thread-safe lazy initialization using double-checked
+   * locking.
+   */
+  AlertService alerts() {
+    if (alertService == null) {
+      synchronized (this) {
+        if (alertService == null) {
+          alertService = new AlertService(client);
+        }
+      }
+    }
+    return alertService;
   }
 
   /**

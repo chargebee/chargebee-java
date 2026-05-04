@@ -135,6 +135,8 @@ public class Event {
 
     DISABLED("disabled"),
 
+    RATE_LIMITED("rate_limited"),
+
     /** An enum member indicating that WebhookStatus was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -800,6 +802,8 @@ public class Event {
       NOT_APPLICABLE("not_applicable"),
 
       DISABLED("disabled"),
+
+      RATE_LIMITED("rate_limited"),
 
       /** An enum member indicating that WebhookStatus was instantiated with an unknown value. */
       _UNKNOWN(null);

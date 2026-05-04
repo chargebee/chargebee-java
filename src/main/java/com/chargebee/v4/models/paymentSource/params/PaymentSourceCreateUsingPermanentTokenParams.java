@@ -404,6 +404,20 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
 
     PIX("pix"),
 
+    TWINT("twint"),
+
+    GO_PAY("go_pay"),
+
+    GRAB_PAY("grab_pay"),
+
+    PAY_CO("pay_co"),
+
+    AFTER_PAY("after_pay"),
+
+    SWISH("swish"),
+
+    PAYME("payme"),
+
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -616,6 +630,8 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
       DANKORT("dankort"),
 
       CARTES_BANCAIRES("cartes_bancaires"),
+
+      MADA("mada"),
 
       /** An enum member indicating that Brand was instantiated with an unknown value. */
       _UNKNOWN(null);

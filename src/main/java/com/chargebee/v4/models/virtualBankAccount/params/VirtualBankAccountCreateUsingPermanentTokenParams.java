@@ -17,6 +17,8 @@ public final class VirtualBankAccountCreateUsingPermanentTokenParams {
 
   private final String referenceId;
 
+  private final String gatewayAccountId;
+
   private final Scheme scheme;
 
   private VirtualBankAccountCreateUsingPermanentTokenParams(
@@ -25,6 +27,8 @@ public final class VirtualBankAccountCreateUsingPermanentTokenParams {
     this.customerId = builder.customerId;
 
     this.referenceId = builder.referenceId;
+
+    this.gatewayAccountId = builder.gatewayAccountId;
 
     this.scheme = builder.scheme;
   }
@@ -35,6 +39,10 @@ public final class VirtualBankAccountCreateUsingPermanentTokenParams {
 
   public String getReferenceId() {
     return referenceId;
+  }
+
+  public String getGatewayAccountId() {
+    return gatewayAccountId;
   }
 
   public Scheme getScheme() {
@@ -53,6 +61,11 @@ public final class VirtualBankAccountCreateUsingPermanentTokenParams {
     if (this.referenceId != null) {
 
       formData.put("reference_id", this.referenceId);
+    }
+
+    if (this.gatewayAccountId != null) {
+
+      formData.put("gateway_account_id", this.gatewayAccountId);
     }
 
     if (this.scheme != null) {
@@ -75,6 +88,8 @@ public final class VirtualBankAccountCreateUsingPermanentTokenParams {
 
     private String referenceId;
 
+    private String gatewayAccountId;
+
     private Scheme scheme;
 
     private VirtualBankAccountCreateUsingPermanentTokenBuilder() {}
@@ -86,6 +101,11 @@ public final class VirtualBankAccountCreateUsingPermanentTokenParams {
 
     public VirtualBankAccountCreateUsingPermanentTokenBuilder referenceId(String value) {
       this.referenceId = value;
+      return this;
+    }
+
+    public VirtualBankAccountCreateUsingPermanentTokenBuilder gatewayAccountId(String value) {
+      this.gatewayAccountId = value;
       return this;
     }
 
