@@ -154,6 +154,12 @@ public class VirtualBankAccount extends Resource<VirtualBankAccount> {
         }
 
 
+        public CreateUsingPermanentTokenRequest gatewayAccountId(String gatewayAccountId) {
+            params.addOpt("gateway_account_id", gatewayAccountId);
+            return this;
+        }
+
+
         public CreateUsingPermanentTokenRequest scheme(VirtualBankAccount.Scheme scheme) {
             params.addOpt("scheme", scheme);
             return this;
@@ -180,6 +186,12 @@ public class VirtualBankAccount extends Resource<VirtualBankAccount> {
 
         public CreateRequest email(String email) {
             params.addOpt("email", email);
+            return this;
+        }
+
+
+        public CreateRequest gatewayAccountId(String gatewayAccountId) {
+            params.addOpt("gateway_account_id", gatewayAccountId);
             return this;
         }
 

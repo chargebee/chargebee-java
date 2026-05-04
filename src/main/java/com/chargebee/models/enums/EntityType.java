@@ -7,6 +7,10 @@ public enum EntityType {
     PLAN_ITEM_PRICE,
     ADDON_ITEM_PRICE,
     CHARGE_ITEM_PRICE,
+    PLAN_PRICE,
+    ADDON_PRICE,
+    CHARGE_PRICE,
+    CHARGE,
     INVOICE,
     QUOTE,
     CREDIT_NOTE,
@@ -20,9 +24,6 @@ public enum EntityType {
     PLAN_ITEM,
     ADDON_ITEM,
     CHARGE_ITEM,
-    PLAN_PRICE,
-    ADDON_PRICE,
-    CHARGE_PRICE,
     DIFFERENTIAL_PRICE,
     ATTACHED_ITEM,
     FEATURE,
@@ -42,7 +43,6 @@ public enum EntityType {
     BUSINESS_RULE,
     RULESET,
     ALERT_STATUS,
-    CHARGE,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

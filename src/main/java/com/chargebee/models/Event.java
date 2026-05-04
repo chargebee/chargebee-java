@@ -23,13 +23,14 @@ public class Event extends Resource<Event> {
         SKIPPED,
         NOT_APPLICABLE,
         DISABLED,
+        RATE_LIMITED,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
     public static class Webhook extends Resource<Webhook> {
         public enum WebhookStatus {
-             NOT_CONFIGURED,SCHEDULED,SUCCEEDED,RE_SCHEDULED,FAILED,SKIPPED,NOT_APPLICABLE,DISABLED,
+             NOT_CONFIGURED,SCHEDULED,SUCCEEDED,RE_SCHEDULED,FAILED,SKIPPED,NOT_APPLICABLE,DISABLED,RATE_LIMITED,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }

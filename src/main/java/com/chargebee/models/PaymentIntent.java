@@ -57,6 +57,13 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         WECHAT_PAY,
         ALIPAY,
         PIX,
+        TWINT,
+        GO_PAY,
+        GRAB_PAY,
+        PAY_CO,
+        AFTER_PAY,
+        SWISH,
+        PAYME,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -145,7 +152,7 @@ public class PaymentIntent extends Resource<PaymentIntent> {
     }
 
     public String gatewayAccountId() {
-        return reqString("gateway_account_id");
+        return optString("gateway_account_id");
     }
 
     public Timestamp expiresAt() {
@@ -264,6 +271,12 @@ public class PaymentIntent extends Resource<PaymentIntent> {
 
         public CreateRequest referenceId(String referenceId) {
             params.addOpt("reference_id", referenceId);
+            return this;
+        }
+
+
+        public CreateRequest deferPaymentMethodType(Boolean deferPaymentMethodType) {
+            params.addOpt("defer_payment_method_type", deferPaymentMethodType);
             return this;
         }
 

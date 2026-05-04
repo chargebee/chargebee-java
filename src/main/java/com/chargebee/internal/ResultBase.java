@@ -148,6 +148,10 @@ public class ResultBase {
         return (QuoteLineGroup)get("quote_line_group");
     }
 
+    public QuoteEntitlement quoteEntitlement() {
+        return (QuoteEntitlement)get("quote_entitlement");
+    }
+
     public CpqQuoteSignature cpqQuoteSignature() {
         return (CpqQuoteSignature)get("cpq_quote_signature");
     }
@@ -394,6 +398,10 @@ public class ResultBase {
 
     public Alert alert() {
         return (Alert)get("alert");
+    }
+
+    public FilterCondition filterCondition() {
+        return (FilterCondition)get("filter_condition");
     }
 
     public AlertStatus alertStatus() {

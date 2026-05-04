@@ -35,8 +35,8 @@ public class AlertStatus extends Resource<AlertStatus> {
         return reqString("subscription_id");
     }
 
-    public com.chargebee.models.enums.AlertStatus alertStatus() {
-        return reqEnum("alert_status", com.chargebee.models.enums.AlertStatus.class);
+    public AlarmStatus alarmStatus() {
+        return reqEnum("alarm_status", AlarmStatus.class);
     }
 
     public Timestamp alarmTriggeredAt() {
@@ -46,5 +46,57 @@ public class AlertStatus extends Resource<AlertStatus> {
     // Operations
     //===========
 
+    public static AlertStatusAlertStatusesForSubscriptionRequest alertStatusesForSubscription(String id) {
+        String uri = uri("subscriptions", nullCheck(id), "alert_statuses");
+        return new AlertStatusAlertStatusesForSubscriptionRequest(uri);
+    }
+
+    public static AlertStatusAlertStatusesForAlertRequest alertStatusesForAlert(String id) {
+        String uri = uri("alerts", nullCheck(id), "alert_statuses");
+        return new AlertStatusAlertStatusesForAlertRequest(uri);
+    }
+
+
+    // Operation Request Classes
+    //==========================
+
+    public static class AlertStatusAlertStatusesForSubscriptionRequest extends ListRequest<AlertStatusAlertStatusesForSubscriptionRequest> {
+
+        private AlertStatusAlertStatusesForSubscriptionRequest(String uri) {
+            super(uri);
+        }
+    
+        public EnumFilter<com.chargebee.models.enums.AlarmStatus, AlertStatusAlertStatusesForSubscriptionRequest> alarmStatus() {
+            return new EnumFilter<com.chargebee.models.enums.AlarmStatus, AlertStatusAlertStatusesForSubscriptionRequest>("alarm_status",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<AlertStatusAlertStatusesForSubscriptionRequest> alertId() {
+            return new StringFilter<AlertStatusAlertStatusesForSubscriptionRequest>("alert_id",this).supportsMultiOperators(true);        
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AlertStatusAlertStatusesForAlertRequest extends ListRequest<AlertStatusAlertStatusesForAlertRequest> {
+
+        private AlertStatusAlertStatusesForAlertRequest(String uri) {
+            super(uri);
+        }
+    
+        public EnumFilter<com.chargebee.models.enums.AlarmStatus, AlertStatusAlertStatusesForAlertRequest> alarmStatus() {
+            return new EnumFilter<com.chargebee.models.enums.AlarmStatus, AlertStatusAlertStatusesForAlertRequest>("alarm_status",this).supportsMultiOperators(true);        
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
 }
