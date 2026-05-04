@@ -27,6 +27,8 @@ public final class QuoteEditForChargeItemsAndChargesParams {
 
   private final List<String> couponIds;
 
+  private final Integer netTermDays;
+
   private final BillingAddressParams billingAddress;
 
   private final ShippingAddressParams shippingAddress;
@@ -55,6 +57,8 @@ public final class QuoteEditForChargeItemsAndChargesParams {
     this.coupon = builder.coupon;
 
     this.couponIds = builder.couponIds;
+
+    this.netTermDays = builder.netTermDays;
 
     this.billingAddress = builder.billingAddress;
 
@@ -93,6 +97,10 @@ public final class QuoteEditForChargeItemsAndChargesParams {
 
   public List<String> getCouponIds() {
     return couponIds;
+  }
+
+  public Integer getNetTermDays() {
+    return netTermDays;
   }
 
   public BillingAddressParams getBillingAddress() {
@@ -155,6 +163,11 @@ public final class QuoteEditForChargeItemsAndChargesParams {
     if (this.couponIds != null) {
 
       formData.put("coupon_ids", this.couponIds);
+    }
+
+    if (this.netTermDays != null) {
+
+      formData.put("net_term_days", this.netTermDays);
     }
 
     if (this.billingAddress != null) {
@@ -275,6 +288,8 @@ public final class QuoteEditForChargeItemsAndChargesParams {
 
     private List<String> couponIds;
 
+    private Integer netTermDays;
+
     private BillingAddressParams billingAddress;
 
     private ShippingAddressParams shippingAddress;
@@ -318,6 +333,11 @@ public final class QuoteEditForChargeItemsAndChargesParams {
 
     public QuoteEditForChargeItemsAndChargesBuilder couponIds(List<String> value) {
       this.couponIds = value;
+      return this;
+    }
+
+    public QuoteEditForChargeItemsAndChargesBuilder netTermDays(Integer value) {
+      this.netTermDays = value;
       return this;
     }
 

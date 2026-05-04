@@ -62,6 +62,8 @@ import com.chargebee.v4.services.AdditionalBillingLogiqService;
 
 import com.chargebee.v4.services.UsageSummaryService;
 
+import com.chargebee.v4.services.AlertStatusService;
+
 import com.chargebee.v4.services.SubscriptionSettingService;
 
 import com.chargebee.v4.services.SiteMigrationDetailService;
@@ -109,6 +111,8 @@ import com.chargebee.v4.services.WebhookEndpointService;
 import com.chargebee.v4.services.FeatureService;
 
 import com.chargebee.v4.services.UnbilledChargesSettingService;
+
+import com.chargebee.v4.services.AlertService;
 
 import com.chargebee.v4.services.CurrencyService;
 
@@ -390,6 +394,13 @@ public interface ClientMethods {
   UsageSummaryService usageSummaries();
 
   /**
+   * Access alert_status-related operations.
+   *
+   * @return AlertStatusService instance for fluent API access
+   */
+  AlertStatusService alertStatuses();
+
+  /**
    * Access subscription_setting-related operations.
    *
    * @return SubscriptionSettingService instance for fluent API access
@@ -556,6 +567,13 @@ public interface ClientMethods {
    * @return UnbilledChargesSettingService instance for fluent API access
    */
   UnbilledChargesSettingService unbilledChargesSettings();
+
+  /**
+   * Access alert-related operations.
+   *
+   * @return AlertService instance for fluent API access
+   */
+  AlertService alerts();
 
   /**
    * Access currency-related operations.

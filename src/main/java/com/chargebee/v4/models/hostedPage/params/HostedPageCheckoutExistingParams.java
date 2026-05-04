@@ -1314,6 +1314,10 @@ public final class HostedPageCheckoutExistingParams {
 
       TEMPUS("tempus"),
 
+      MOYASAR("moyasar"),
+
+      PAYWAY("payway"),
+
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;

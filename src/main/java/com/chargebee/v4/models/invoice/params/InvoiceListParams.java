@@ -150,6 +150,10 @@ public final class InvoiceListParams {
       return new SortBySortBuilder("sort_by", this);
     }
 
+    public ExcludeFilter exclude() {
+      return new ExcludeFilter("exclude", this, queryParams);
+    }
+
     public InvoiceListBuilder einvoice(EinvoiceParams value) {
       queryParams.put("einvoice", value);
       return this;
@@ -496,6 +500,12 @@ public final class InvoiceListParams {
     public static final class VoidReasonCodeFilter extends StringFilter<InvoiceListBuilder> {
       VoidReasonCodeFilter(
           String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
+      }
+    }
+
+    public static final class ExcludeFilter extends StringFilter<InvoiceListBuilder> {
+      ExcludeFilter(String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
         super(fieldName, builder, params);
       }
     }

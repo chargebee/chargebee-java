@@ -206,6 +206,20 @@ public class PaymentSource {
 
     PIX("pix"),
 
+    TWINT("twint"),
+
+    GO_PAY("go_pay"),
+
+    GRAB_PAY("grab_pay"),
+
+    PAY_CO("pay_co"),
+
+    AFTER_PAY("after_pay"),
+
+    SWISH("swish"),
+
+    PAYME("payme"),
+
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -379,6 +393,10 @@ public class PaymentSource {
     TWIKEY("twikey"),
 
     TEMPUS("tempus"),
+
+    MOYASAR("moyasar"),
+
+    PAYWAY("payway"),
 
     NOT_APPLICABLE("not_applicable"),
 
@@ -732,6 +750,8 @@ public class PaymentSource {
       DANKORT("dankort"),
 
       CARTES_BANCAIRES("cartes_bancaires"),
+
+      MADA("mada"),
 
       NOT_APPLICABLE("not_applicable"),
 

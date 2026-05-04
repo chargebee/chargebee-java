@@ -17,6 +17,8 @@ public final class VirtualBankAccountCreateParams {
 
   private final String email;
 
+  private final String gatewayAccountId;
+
   private final Scheme scheme;
 
   private VirtualBankAccountCreateParams(VirtualBankAccountCreateBuilder builder) {
@@ -24,6 +26,8 @@ public final class VirtualBankAccountCreateParams {
     this.customerId = builder.customerId;
 
     this.email = builder.email;
+
+    this.gatewayAccountId = builder.gatewayAccountId;
 
     this.scheme = builder.scheme;
   }
@@ -34,6 +38,10 @@ public final class VirtualBankAccountCreateParams {
 
   public String getEmail() {
     return email;
+  }
+
+  public String getGatewayAccountId() {
+    return gatewayAccountId;
   }
 
   public Scheme getScheme() {
@@ -52,6 +60,11 @@ public final class VirtualBankAccountCreateParams {
     if (this.email != null) {
 
       formData.put("email", this.email);
+    }
+
+    if (this.gatewayAccountId != null) {
+
+      formData.put("gateway_account_id", this.gatewayAccountId);
     }
 
     if (this.scheme != null) {
@@ -74,6 +87,8 @@ public final class VirtualBankAccountCreateParams {
 
     private String email;
 
+    private String gatewayAccountId;
+
     private Scheme scheme;
 
     private VirtualBankAccountCreateBuilder() {}
@@ -85,6 +100,11 @@ public final class VirtualBankAccountCreateParams {
 
     public VirtualBankAccountCreateBuilder email(String value) {
       this.email = value;
+      return this;
+    }
+
+    public VirtualBankAccountCreateBuilder gatewayAccountId(String value) {
+      this.gatewayAccountId = value;
       return this;
     }
 

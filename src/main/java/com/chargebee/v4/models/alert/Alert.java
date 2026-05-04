@@ -20,8 +20,6 @@ public class Alert {
   private String meteredFeatureId;
   private String subscriptionId;
   private Status status;
-  private Timestamp alarmTriggeredAt;
-  private Scope scope;
   private String meta;
   private Timestamp createdAt;
   private Timestamp updatedAt;
@@ -52,14 +50,6 @@ public class Alert {
 
   public Status getStatus() {
     return status;
-  }
-
-  public Timestamp getAlarmTriggeredAt() {
-    return alarmTriggeredAt;
-  }
-
-  public Scope getScope() {
-    return scope;
   }
 
   public String getMeta() {
@@ -128,34 +118,6 @@ public class Alert {
     }
   }
 
-  public enum Scope {
-    GLOBAL("global"),
-
-    SUBSCRIPTION("subscription"),
-
-    /** An enum member indicating that Scope was instantiated with an unknown value. */
-    _UNKNOWN(null);
-    private final String value;
-
-    Scope(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    public static Scope fromString(String value) {
-      if (value == null) return _UNKNOWN;
-      for (Scope enumValue : Scope.values()) {
-        if (enumValue.value != null && enumValue.value.equals(value)) {
-          return enumValue;
-        }
-      }
-      return _UNKNOWN;
-    }
-  }
-
   public static Alert fromJson(String json) {
     return fromJson(JsonUtil.parse(json));
   }
@@ -176,10 +138,6 @@ public class Alert {
     obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
     obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
-
-    obj.alarmTriggeredAt = JsonUtil.getTimestamp(jsonObj, "alarm_triggered_at");
-
-    obj.scope = Scope.fromString(JsonUtil.getString(jsonObj, "scope"));
 
     obj.meta = JsonUtil.getString(jsonObj, "meta");
 
@@ -207,10 +165,6 @@ public class Alert {
         + subscriptionId
         + ", status="
         + status
-        + ", alarmTriggeredAt="
-        + alarmTriggeredAt
-        + ", scope="
-        + scope
         + ", meta="
         + meta
         + ", createdAt="
@@ -233,8 +187,6 @@ public class Alert {
         && java.util.Objects.equals(meteredFeatureId, that.meteredFeatureId)
         && java.util.Objects.equals(subscriptionId, that.subscriptionId)
         && java.util.Objects.equals(status, that.status)
-        && java.util.Objects.equals(alarmTriggeredAt, that.alarmTriggeredAt)
-        && java.util.Objects.equals(scope, that.scope)
         && java.util.Objects.equals(meta, that.meta)
         && java.util.Objects.equals(createdAt, that.createdAt)
         && java.util.Objects.equals(updatedAt, that.updatedAt);
@@ -251,8 +203,6 @@ public class Alert {
         meteredFeatureId,
         subscriptionId,
         status,
-        alarmTriggeredAt,
-        scope,
         meta,
         createdAt,
         updatedAt);

@@ -62,6 +62,8 @@ import com.chargebee.v4.services.AdditionalBillingLogiqService;
 
 import com.chargebee.v4.services.UsageSummaryService;
 
+import com.chargebee.v4.services.AlertStatusService;
+
 import com.chargebee.v4.services.SubscriptionSettingService;
 
 import com.chargebee.v4.services.SiteMigrationDetailService;
@@ -109,6 +111,8 @@ import com.chargebee.v4.services.WebhookEndpointService;
 import com.chargebee.v4.services.FeatureService;
 
 import com.chargebee.v4.services.UnbilledChargesSettingService;
+
+import com.chargebee.v4.services.AlertService;
 
 import com.chargebee.v4.services.CurrencyService;
 
@@ -330,6 +334,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   }
 
   @Override
+  public AlertStatusService alertStatuses() {
+    return getServiceRegistry().alertStatuses();
+  }
+
+  @Override
   public SubscriptionSettingService subscriptionSettings() {
     return getServiceRegistry().subscriptionSettings();
   }
@@ -447,6 +456,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public UnbilledChargesSettingService unbilledChargesSettings() {
     return getServiceRegistry().unbilledChargesSettings();
+  }
+
+  @Override
+  public AlertService alerts() {
+    return getServiceRegistry().alerts();
   }
 
   @Override

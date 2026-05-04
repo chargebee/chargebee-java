@@ -343,6 +343,20 @@ public final class PaymentSourceListParams {
 
     PIX("pix"),
 
+    TWINT("twint"),
+
+    GO_PAY("go_pay"),
+
+    GRAB_PAY("grab_pay"),
+
+    PAY_CO("pay_co"),
+
+    AFTER_PAY("after_pay"),
+
+    SWISH("swish"),
+
+    PAYME("payme"),
+
     /** An enum member indicating that TypeIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -436,6 +450,20 @@ public final class PaymentSourceListParams {
     CASH_APP_PAY("cash_app_pay"),
 
     PIX("pix"),
+
+    TWINT("twint"),
+
+    GO_PAY("go_pay"),
+
+    GRAB_PAY("grab_pay"),
+
+    PAY_CO("pay_co"),
+
+    AFTER_PAY("after_pay"),
+
+    SWISH("swish"),
+
+    PAYME("payme"),
 
     /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -531,6 +559,20 @@ public final class PaymentSourceListParams {
 
     PIX("pix"),
 
+    TWINT("twint"),
+
+    GO_PAY("go_pay"),
+
+    GRAB_PAY("grab_pay"),
+
+    PAY_CO("pay_co"),
+
+    AFTER_PAY("after_pay"),
+
+    SWISH("swish"),
+
+    PAYME("payme"),
+
     /** An enum member indicating that TypeIn was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -624,6 +666,20 @@ public final class PaymentSourceListParams {
     CASH_APP_PAY("cash_app_pay"),
 
     PIX("pix"),
+
+    TWINT("twint"),
+
+    GO_PAY("go_pay"),
+
+    GRAB_PAY("grab_pay"),
+
+    PAY_CO("pay_co"),
+
+    AFTER_PAY("after_pay"),
+
+    SWISH("swish"),
+
+    PAYME("payme"),
 
     /** An enum member indicating that TypeNotIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -910,6 +966,20 @@ public final class PaymentSourceListParams {
     CASH_APP_PAY("cash_app_pay"),
 
     PIX("pix"),
+
+    TWINT("twint"),
+
+    GO_PAY("go_pay"),
+
+    GRAB_PAY("grab_pay"),
+
+    PAY_CO("pay_co"),
+
+    AFTER_PAY("after_pay"),
+
+    SWISH("swish"),
+
+    PAYME("payme"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);

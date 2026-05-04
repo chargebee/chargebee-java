@@ -662,6 +662,20 @@ public final class TransactionListParams {
 
     PIX("pix"),
 
+    TWINT("twint"),
+
+    GO_PAY("go_pay"),
+
+    GRAB_PAY("grab_pay"),
+
+    PAY_CO("pay_co"),
+
+    AFTER_PAY("after_pay"),
+
+    SWISH("swish"),
+
+    PAYME("payme"),
+
     /** An enum member indicating that PaymentMethodIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -775,6 +789,20 @@ public final class TransactionListParams {
     CASH_APP_PAY("cash_app_pay"),
 
     PIX("pix"),
+
+    TWINT("twint"),
+
+    GO_PAY("go_pay"),
+
+    GRAB_PAY("grab_pay"),
+
+    PAY_CO("pay_co"),
+
+    AFTER_PAY("after_pay"),
+
+    SWISH("swish"),
+
+    PAYME("payme"),
 
     /** An enum member indicating that PaymentMethodIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -890,6 +918,20 @@ public final class TransactionListParams {
 
     PIX("pix"),
 
+    TWINT("twint"),
+
+    GO_PAY("go_pay"),
+
+    GRAB_PAY("grab_pay"),
+
+    PAY_CO("pay_co"),
+
+    AFTER_PAY("after_pay"),
+
+    SWISH("swish"),
+
+    PAYME("payme"),
+
     /** An enum member indicating that PaymentMethodIn was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -1003,6 +1045,20 @@ public final class TransactionListParams {
     CASH_APP_PAY("cash_app_pay"),
 
     PIX("pix"),
+
+    TWINT("twint"),
+
+    GO_PAY("go_pay"),
+
+    GRAB_PAY("grab_pay"),
+
+    PAY_CO("pay_co"),
+
+    AFTER_PAY("after_pay"),
+
+    SWISH("swish"),
+
+    PAYME("payme"),
 
     /** An enum member indicating that PaymentMethodNotIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1143,6 +1199,10 @@ public final class TransactionListParams {
     TWIKEY("twikey"),
 
     TEMPUS("tempus"),
+
+    MOYASAR("moyasar"),
+
+    PAYWAY("payway"),
 
     NOT_APPLICABLE("not_applicable"),
 
@@ -1286,6 +1346,10 @@ public final class TransactionListParams {
 
     TEMPUS("tempus"),
 
+    MOYASAR("moyasar"),
+
+    PAYWAY("payway"),
+
     NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that GatewayIsNot was instantiated with an unknown value. */
@@ -1428,6 +1492,10 @@ public final class TransactionListParams {
 
     TEMPUS("tempus"),
 
+    MOYASAR("moyasar"),
+
+    PAYWAY("payway"),
+
     NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that GatewayIn was instantiated with an unknown value. */
@@ -1569,6 +1637,10 @@ public final class TransactionListParams {
     TWIKEY("twikey"),
 
     TEMPUS("tempus"),
+
+    MOYASAR("moyasar"),
+
+    PAYWAY("payway"),
 
     NOT_APPLICABLE("not_applicable"),
 
@@ -2053,6 +2125,20 @@ public final class TransactionListParams {
 
     PIX("pix"),
 
+    TWINT("twint"),
+
+    GO_PAY("go_pay"),
+
+    GRAB_PAY("grab_pay"),
+
+    PAY_CO("pay_co"),
+
+    AFTER_PAY("after_pay"),
+
+    SWISH("swish"),
+
+    PAYME("payme"),
+
     /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -2192,6 +2278,10 @@ public final class TransactionListParams {
     TWIKEY("twikey"),
 
     TEMPUS("tempus"),
+
+    MOYASAR("moyasar"),
+
+    PAYWAY("payway"),
 
     NOT_APPLICABLE("not_applicable"),
 

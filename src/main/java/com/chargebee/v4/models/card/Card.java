@@ -301,6 +301,10 @@ public class Card {
 
     TEMPUS("tempus"),
 
+    MOYASAR("moyasar"),
+
+    PAYWAY("payway"),
+
     NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that Gateway was instantiated with an unknown value. */
@@ -366,6 +370,8 @@ public class Card {
     DANKORT("dankort"),
 
     CARTES_BANCAIRES("cartes_bancaires"),
+
+    MADA("mada"),
 
     OTHER("other"),
 

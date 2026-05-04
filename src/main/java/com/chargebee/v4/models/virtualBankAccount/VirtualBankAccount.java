@@ -244,6 +244,10 @@ public class VirtualBankAccount {
 
     TEMPUS("tempus"),
 
+    MOYASAR("moyasar"),
+
+    PAYWAY("payway"),
+
     NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that Gateway was instantiated with an unknown value. */

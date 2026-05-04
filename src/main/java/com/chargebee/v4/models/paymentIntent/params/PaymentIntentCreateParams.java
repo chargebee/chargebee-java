@@ -25,6 +25,8 @@ public final class PaymentIntentCreateParams {
 
   private final String referenceId;
 
+  private final Boolean deferPaymentMethodType;
+
   private final PaymentMethodType paymentMethodType;
 
   private final String successUrl;
@@ -44,6 +46,8 @@ public final class PaymentIntentCreateParams {
     this.gatewayAccountId = builder.gatewayAccountId;
 
     this.referenceId = builder.referenceId;
+
+    this.deferPaymentMethodType = builder.deferPaymentMethodType;
 
     this.paymentMethodType = builder.paymentMethodType;
 
@@ -74,6 +78,10 @@ public final class PaymentIntentCreateParams {
 
   public String getReferenceId() {
     return referenceId;
+  }
+
+  public Boolean getDeferPaymentMethodType() {
+    return deferPaymentMethodType;
   }
 
   public PaymentMethodType getPaymentMethodType() {
@@ -122,6 +130,11 @@ public final class PaymentIntentCreateParams {
       formData.put("reference_id", this.referenceId);
     }
 
+    if (this.deferPaymentMethodType != null) {
+
+      formData.put("defer_payment_method_type", this.deferPaymentMethodType);
+    }
+
     if (this.paymentMethodType != null) {
 
       formData.put("payment_method_type", this.paymentMethodType);
@@ -160,6 +173,8 @@ public final class PaymentIntentCreateParams {
 
     private String referenceId;
 
+    private Boolean deferPaymentMethodType;
+
     private PaymentMethodType paymentMethodType;
 
     private String successUrl;
@@ -195,6 +210,11 @@ public final class PaymentIntentCreateParams {
 
     public PaymentIntentCreateBuilder referenceId(String value) {
       this.referenceId = value;
+      return this;
+    }
+
+    public PaymentIntentCreateBuilder deferPaymentMethodType(Boolean value) {
+      this.deferPaymentMethodType = value;
       return this;
     }
 
@@ -284,6 +304,20 @@ public final class PaymentIntentCreateParams {
     ALIPAY("alipay"),
 
     PIX("pix"),
+
+    TWINT("twint"),
+
+    GO_PAY("go_pay"),
+
+    GRAB_PAY("grab_pay"),
+
+    PAY_CO("pay_co"),
+
+    AFTER_PAY("after_pay"),
+
+    SWISH("swish"),
+
+    PAYME("payme"),
 
     /** An enum member indicating that PaymentMethodType was instantiated with an unknown value. */
     _UNKNOWN(null);

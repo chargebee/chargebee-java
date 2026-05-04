@@ -338,6 +338,8 @@ public final class EventListParams {
 
     DISABLED("disabled"),
 
+    RATE_LIMITED("rate_limited"),
+
     /** An enum member indicating that WebhookStatusIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -377,6 +379,8 @@ public final class EventListParams {
     NOT_APPLICABLE("not_applicable"),
 
     DISABLED("disabled"),
+
+    RATE_LIMITED("rate_limited"),
 
     /** An enum member indicating that WebhookStatusIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -418,6 +422,8 @@ public final class EventListParams {
 
     DISABLED("disabled"),
 
+    RATE_LIMITED("rate_limited"),
+
     /** An enum member indicating that WebhookStatusIn was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -457,6 +463,8 @@ public final class EventListParams {
     NOT_APPLICABLE("not_applicable"),
 
     DISABLED("disabled"),
+
+    RATE_LIMITED("rate_limited"),
 
     /** An enum member indicating that WebhookStatusNotIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -2621,6 +2629,8 @@ public final class EventListParams {
     NOT_APPLICABLE("not_applicable"),
 
     DISABLED("disabled"),
+
+    RATE_LIMITED("rate_limited"),
 
     /** An enum member indicating that WebhookStatus was instantiated with an unknown value. */
     _UNKNOWN(null);

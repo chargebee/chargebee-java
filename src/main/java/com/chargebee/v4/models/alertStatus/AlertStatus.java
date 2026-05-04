@@ -15,7 +15,7 @@ public class AlertStatus {
 
   private String alertId;
   private String subscriptionId;
-  private AlertStatusAlertStatus alertStatus;
+  private AlarmStatus alarmStatus;
   private Timestamp alarmTriggeredAt;
 
   public String getAlertId() {
@@ -26,26 +26,24 @@ public class AlertStatus {
     return subscriptionId;
   }
 
-  public AlertStatusAlertStatus getAlertStatus() {
-    return alertStatus;
+  public AlarmStatus getAlarmStatus() {
+    return alarmStatus;
   }
 
   public Timestamp getAlarmTriggeredAt() {
     return alarmTriggeredAt;
   }
 
-  public enum AlertStatusAlertStatus {
+  public enum AlarmStatus {
     WITHIN_LIMIT("within_limit"),
 
     IN_ALARM("in_alarm"),
 
-    /**
-     * An enum member indicating that AlertStatusAlertStatus was instantiated with an unknown value.
-     */
+    /** An enum member indicating that AlarmStatus was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
 
-    AlertStatusAlertStatus(String value) {
+    AlarmStatus(String value) {
       this.value = value;
     }
 
@@ -53,9 +51,9 @@ public class AlertStatus {
       return value;
     }
 
-    public static AlertStatusAlertStatus fromString(String value) {
+    public static AlarmStatus fromString(String value) {
       if (value == null) return _UNKNOWN;
-      for (AlertStatusAlertStatus enumValue : AlertStatusAlertStatus.values()) {
+      for (AlarmStatus enumValue : AlarmStatus.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
@@ -75,8 +73,7 @@ public class AlertStatus {
 
     obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.alertStatus =
-        AlertStatusAlertStatus.fromString(JsonUtil.getString(jsonObj, "alert_status"));
+    obj.alarmStatus = AlarmStatus.fromString(JsonUtil.getString(jsonObj, "alarm_status"));
 
     obj.alarmTriggeredAt = JsonUtil.getTimestamp(jsonObj, "alarm_triggered_at");
 
@@ -90,8 +87,8 @@ public class AlertStatus {
         + alertId
         + ", subscriptionId="
         + subscriptionId
-        + ", alertStatus="
-        + alertStatus
+        + ", alarmStatus="
+        + alarmStatus
         + ", alarmTriggeredAt="
         + alarmTriggeredAt
         + "}";
@@ -105,13 +102,13 @@ public class AlertStatus {
     AlertStatus that = (AlertStatus) o;
     return java.util.Objects.equals(alertId, that.alertId)
         && java.util.Objects.equals(subscriptionId, that.subscriptionId)
-        && java.util.Objects.equals(alertStatus, that.alertStatus)
+        && java.util.Objects.equals(alarmStatus, that.alarmStatus)
         && java.util.Objects.equals(alarmTriggeredAt, that.alarmTriggeredAt);
   }
 
   @Override
   public int hashCode() {
 
-    return java.util.Objects.hash(alertId, subscriptionId, alertStatus, alarmTriggeredAt);
+    return java.util.Objects.hash(alertId, subscriptionId, alarmStatus, alarmTriggeredAt);
   }
 }

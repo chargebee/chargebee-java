@@ -370,6 +370,20 @@ public final class CustomerUpdatePaymentMethodParams {
 
       PIX("pix"),
 
+      TWINT("twint"),
+
+      GO_PAY("go_pay"),
+
+      GRAB_PAY("grab_pay"),
+
+      PAY_CO("pay_co"),
+
+      AFTER_PAY("after_pay"),
+
+      SWISH("swish"),
+
+      PAYME("payme"),
+
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -507,6 +521,10 @@ public final class CustomerUpdatePaymentMethodParams {
       TWIKEY("twikey"),
 
       TEMPUS("tempus"),
+
+      MOYASAR("moyasar"),
+
+      PAYWAY("payway"),
 
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);
