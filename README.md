@@ -221,6 +221,32 @@ future.thenAccept(resp -> {
 });
 ```
 
+### Dynamic map fields (`Map<String, Object>`)
+
+Some response attributes are exposed as `Map<String, Object>` for flexible or schema-less JSON (for example [`HostedPage.getContent()`](https://apidocs.chargebee.com/docs/api/hosted_pages/hosted-page-object#content), [`HostedPage.getCheckoutInfo()`](https://apidocs.chargebee.com/docs/api/hosted_pages/hosted-page-object#checkout_info), [`Event.getContent()`](https://apidocs.chargebee.com/docs/api/events/event-object#content), `meta_data`, and `consent_fields`).
+
+When the API returns nested JSON objects or arrays inside these maps, the SDK deserializes them as nested `Map` and `List` values:
+
+- Primitives (`String`, `Long`, `Boolean`, etc.) remain Java primitives/boxed types.
+- Nested JSON objects become `Map<String, Object>`.
+- Nested JSON arrays become `List<Object>` (object elements are maps; primitive elements keep their Java types).
+
+#### Example: Hosted Page `content`
+
+```java
+import com.chargebee.v4.models.hostedPage.responses.HostedPageRetrieveResponse;
+import java.util.Map;
+
+HostedPageRetrieveResponse response = client.hostedPages().retrieve(hostedPageId);
+Map<String, Object> content = response.getHostedPage().getContent();
+
+@SuppressWarnings("unchecked")
+Map<String, Object> subscription = (Map<String, Object>) content.get("subscription");
+String subscriptionId = (String) subscription.get("id");
+```
+
+> **Note:** Typed webhook/event models (for example `SubscriptionCreatedEvent`) use dedicated `Content` types with strongly-typed getters. The behavior above applies to dynamic `Map<String, Object>` fields on resource models.
+
 ### Custom Field Filtering
 
 Filter list operations by custom fields using type-safe filters (`stringFilter()`, `numberFilter()`, `timestampFilter()`, `booleanFilter()`):
@@ -679,6 +705,7 @@ public class Sample {
 - Immutable `ChargebeeClient` with fluent builder
 - Direct property naming (e.g., `.apiKey()`, `.siteName()`)
 - Type-safe request models and responses
+- Dynamic `Map<String, Object>` fields deserialize nested JSON as maps and lists (see [Dynamic map fields](#dynamic-map-fields-mapstring-object))
 - Sync and async APIs with retry/backoff
 - Per-request options and headers
 - Enhanced error handling and debugging
