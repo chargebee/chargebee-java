@@ -37,6 +37,10 @@ public class Media {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Media fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Media fromJson(JsonObject jsonObj) {
     Media obj = new Media();
 

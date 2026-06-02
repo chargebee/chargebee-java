@@ -96,6 +96,10 @@ public class Rule {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Rule fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Rule fromJson(JsonObject jsonObj) {
     Rule obj = new Rule();
 

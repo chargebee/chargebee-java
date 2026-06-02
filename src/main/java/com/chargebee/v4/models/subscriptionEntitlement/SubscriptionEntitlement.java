@@ -115,6 +115,10 @@ public class SubscriptionEntitlement {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static SubscriptionEntitlement fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static SubscriptionEntitlement fromJson(JsonObject jsonObj) {
     SubscriptionEntitlement obj = new SubscriptionEntitlement();
 
@@ -234,6 +238,10 @@ public class SubscriptionEntitlement {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static Components fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static Components fromJson(JsonObject jsonObj) {
       Components obj = new Components();
 
@@ -281,6 +289,10 @@ public class SubscriptionEntitlement {
 
       public static EntitlementOverrides fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static EntitlementOverrides fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static EntitlementOverrides fromJson(JsonObject jsonObj) {

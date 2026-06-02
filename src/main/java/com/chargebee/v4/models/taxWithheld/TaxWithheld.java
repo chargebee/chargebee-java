@@ -146,6 +146,10 @@ public class TaxWithheld {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static TaxWithheld fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static TaxWithheld fromJson(JsonObject jsonObj) {
     TaxWithheld obj = new TaxWithheld();
 

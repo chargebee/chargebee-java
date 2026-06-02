@@ -126,6 +126,10 @@ public class QuoteLineGroup {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static QuoteLineGroup fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static QuoteLineGroup fromJson(JsonObject jsonObj) {
     QuoteLineGroup obj = new QuoteLineGroup();
 
@@ -490,6 +494,10 @@ public class QuoteLineGroup {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static LineItems fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static LineItems fromJson(JsonObject jsonObj) {
       LineItems obj = new LineItems();
 
@@ -736,6 +744,10 @@ public class QuoteLineGroup {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static LineItemDiscounts fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static LineItemDiscounts fromJson(JsonObject jsonObj) {
       LineItemDiscounts obj = new LineItemDiscounts();
 
@@ -908,6 +920,10 @@ public class QuoteLineGroup {
 
     public static LineItemTaxes fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LineItemTaxes fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static LineItemTaxes fromJson(JsonObject jsonObj) {
@@ -1133,6 +1149,10 @@ public class QuoteLineGroup {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static Discounts fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static Discounts fromJson(JsonObject jsonObj) {
       Discounts obj = new Discounts();
 
@@ -1216,6 +1236,10 @@ public class QuoteLineGroup {
 
     public static Taxes fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Taxes fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Taxes fromJson(JsonObject jsonObj) {

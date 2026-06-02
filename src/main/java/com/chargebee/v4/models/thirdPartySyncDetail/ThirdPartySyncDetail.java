@@ -71,6 +71,10 @@ public class ThirdPartySyncDetail {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static ThirdPartySyncDetail fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static ThirdPartySyncDetail fromJson(JsonObject jsonObj) {
     ThirdPartySyncDetail obj = new ThirdPartySyncDetail();
 

@@ -106,6 +106,10 @@ public class Export {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Export fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Export fromJson(JsonObject jsonObj) {
     Export obj = new Export();
 
@@ -185,6 +189,10 @@ public class Export {
 
     public static Download fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Download fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Download fromJson(JsonObject jsonObj) {

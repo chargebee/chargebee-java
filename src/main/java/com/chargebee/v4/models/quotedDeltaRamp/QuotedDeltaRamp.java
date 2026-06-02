@@ -23,6 +23,10 @@ public class QuotedDeltaRamp {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static QuotedDeltaRamp fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static QuotedDeltaRamp fromJson(JsonObject jsonObj) {
     QuotedDeltaRamp obj = new QuotedDeltaRamp();
 
@@ -62,6 +66,10 @@ public class QuotedDeltaRamp {
 
     public static LineItems fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LineItems fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static LineItems fromJson(JsonObject jsonObj) {

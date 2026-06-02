@@ -61,6 +61,10 @@ public class PriceVariantCreatedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PriceVariantCreatedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PriceVariantCreatedEvent fromJson(JsonObject jsonObj) {
     PriceVariantCreatedEvent obj = new PriceVariantCreatedEvent();
 
@@ -146,6 +150,10 @@ public class PriceVariantCreatedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

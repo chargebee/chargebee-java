@@ -61,6 +61,10 @@ public class VirtualBankAccountDeletedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static VirtualBankAccountDeletedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static VirtualBankAccountDeletedEvent fromJson(JsonObject jsonObj) {
     VirtualBankAccountDeletedEvent obj = new VirtualBankAccountDeletedEvent();
 
@@ -146,6 +150,10 @@ public class VirtualBankAccountDeletedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

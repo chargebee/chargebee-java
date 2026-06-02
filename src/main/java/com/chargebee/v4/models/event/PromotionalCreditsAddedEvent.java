@@ -61,6 +61,10 @@ public class PromotionalCreditsAddedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PromotionalCreditsAddedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PromotionalCreditsAddedEvent fromJson(JsonObject jsonObj) {
     PromotionalCreditsAddedEvent obj = new PromotionalCreditsAddedEvent();
 
@@ -146,6 +150,10 @@ public class PromotionalCreditsAddedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

@@ -27,6 +27,10 @@ public class Attribute {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Attribute fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Attribute fromJson(JsonObject jsonObj) {
     Attribute obj = new Attribute();
 

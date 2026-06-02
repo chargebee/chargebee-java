@@ -65,6 +65,10 @@ public class Estimate {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Estimate fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Estimate fromJson(JsonObject jsonObj) {
     Estimate obj = new Estimate();
 
@@ -289,6 +293,10 @@ public class Estimate {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static SubscriptionEstimate fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static SubscriptionEstimate fromJson(JsonObject jsonObj) {
       SubscriptionEstimate obj = new SubscriptionEstimate();
 
@@ -485,6 +493,10 @@ public class Estimate {
 
       public static ShippingAddress fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static ShippingAddress fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static ShippingAddress fromJson(JsonObject jsonObj) {
@@ -730,6 +742,10 @@ public class Estimate {
 
       public static ContractTerm fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static ContractTerm fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static ContractTerm fromJson(JsonObject jsonObj) {
@@ -957,6 +973,10 @@ public class Estimate {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static SubscriptionEstimates fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static SubscriptionEstimates fromJson(JsonObject jsonObj) {
       SubscriptionEstimates obj = new SubscriptionEstimates();
 
@@ -1153,6 +1173,10 @@ public class Estimate {
 
       public static ShippingAddress fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static ShippingAddress fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static ShippingAddress fromJson(JsonObject jsonObj) {
@@ -1398,6 +1422,10 @@ public class Estimate {
 
       public static ContractTerm fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static ContractTerm fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static ContractTerm fromJson(JsonObject jsonObj) {
@@ -1626,6 +1654,10 @@ public class Estimate {
 
     public static InvoiceEstimate fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static InvoiceEstimate fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static InvoiceEstimate fromJson(JsonObject jsonObj) {
@@ -2024,6 +2056,10 @@ public class Estimate {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static LineItems fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static LineItems fromJson(JsonObject jsonObj) {
         LineItems obj = new LineItems();
 
@@ -2294,6 +2330,10 @@ public class Estimate {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static LineItemTiers fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static LineItemTiers fromJson(JsonObject jsonObj) {
         LineItemTiers obj = new LineItemTiers();
 
@@ -2453,6 +2493,10 @@ public class Estimate {
 
       public static LineItemDiscounts fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static LineItemDiscounts fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static LineItemDiscounts fromJson(JsonObject jsonObj) {
@@ -2629,6 +2673,10 @@ public class Estimate {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static LineItemTaxes fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static LineItemTaxes fromJson(JsonObject jsonObj) {
         LineItemTaxes obj = new LineItemTaxes();
 
@@ -2766,6 +2814,10 @@ public class Estimate {
 
       public static LineItemCredits fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static LineItemCredits fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static LineItemCredits fromJson(JsonObject jsonObj) {
@@ -2924,6 +2976,10 @@ public class Estimate {
 
       public static LineItemAddresses fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static LineItemAddresses fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static LineItemAddresses fromJson(JsonObject jsonObj) {
@@ -3150,6 +3206,10 @@ public class Estimate {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static Discounts fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static Discounts fromJson(JsonObject jsonObj) {
         Discounts obj = new Discounts();
 
@@ -3233,6 +3293,10 @@ public class Estimate {
 
       public static Taxes fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static Taxes fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static Taxes fromJson(JsonObject jsonObj) {
@@ -3401,6 +3465,10 @@ public class Estimate {
 
     public static InvoiceEstimates fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static InvoiceEstimates fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static InvoiceEstimates fromJson(JsonObject jsonObj) {
@@ -3799,6 +3867,10 @@ public class Estimate {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static LineItems fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static LineItems fromJson(JsonObject jsonObj) {
         LineItems obj = new LineItems();
 
@@ -4069,6 +4141,10 @@ public class Estimate {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static LineItemTiers fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static LineItemTiers fromJson(JsonObject jsonObj) {
         LineItemTiers obj = new LineItemTiers();
 
@@ -4228,6 +4304,10 @@ public class Estimate {
 
       public static LineItemDiscounts fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static LineItemDiscounts fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static LineItemDiscounts fromJson(JsonObject jsonObj) {
@@ -4404,6 +4484,10 @@ public class Estimate {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static LineItemTaxes fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static LineItemTaxes fromJson(JsonObject jsonObj) {
         LineItemTaxes obj = new LineItemTaxes();
 
@@ -4541,6 +4625,10 @@ public class Estimate {
 
       public static LineItemCredits fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static LineItemCredits fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static LineItemCredits fromJson(JsonObject jsonObj) {
@@ -4699,6 +4787,10 @@ public class Estimate {
 
       public static LineItemAddresses fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static LineItemAddresses fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static LineItemAddresses fromJson(JsonObject jsonObj) {
@@ -4925,6 +5017,10 @@ public class Estimate {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static Discounts fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static Discounts fromJson(JsonObject jsonObj) {
         Discounts obj = new Discounts();
 
@@ -5008,6 +5104,10 @@ public class Estimate {
 
       public static Taxes fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static Taxes fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static Taxes fromJson(JsonObject jsonObj) {
@@ -5119,6 +5219,10 @@ public class Estimate {
 
     public static PaymentScheduleEstimates fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static PaymentScheduleEstimates fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static PaymentScheduleEstimates fromJson(JsonObject jsonObj) {
@@ -5240,6 +5344,10 @@ public class Estimate {
 
       public static ScheduleEntries fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static ScheduleEntries fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static ScheduleEntries fromJson(JsonObject jsonObj) {
@@ -5413,6 +5521,10 @@ public class Estimate {
 
     public static NextInvoiceEstimate fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static NextInvoiceEstimate fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static NextInvoiceEstimate fromJson(JsonObject jsonObj) {
@@ -5811,6 +5923,10 @@ public class Estimate {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static LineItems fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static LineItems fromJson(JsonObject jsonObj) {
         LineItems obj = new LineItems();
 
@@ -6081,6 +6197,10 @@ public class Estimate {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static LineItemTiers fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static LineItemTiers fromJson(JsonObject jsonObj) {
         LineItemTiers obj = new LineItemTiers();
 
@@ -6240,6 +6360,10 @@ public class Estimate {
 
       public static LineItemDiscounts fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static LineItemDiscounts fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static LineItemDiscounts fromJson(JsonObject jsonObj) {
@@ -6416,6 +6540,10 @@ public class Estimate {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static LineItemTaxes fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static LineItemTaxes fromJson(JsonObject jsonObj) {
         LineItemTaxes obj = new LineItemTaxes();
 
@@ -6553,6 +6681,10 @@ public class Estimate {
 
       public static LineItemCredits fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static LineItemCredits fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static LineItemCredits fromJson(JsonObject jsonObj) {
@@ -6711,6 +6843,10 @@ public class Estimate {
 
       public static LineItemAddresses fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static LineItemAddresses fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static LineItemAddresses fromJson(JsonObject jsonObj) {
@@ -6937,6 +7073,10 @@ public class Estimate {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static Discounts fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static Discounts fromJson(JsonObject jsonObj) {
         Discounts obj = new Discounts();
 
@@ -7020,6 +7160,10 @@ public class Estimate {
 
       public static Taxes fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static Taxes fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static Taxes fromJson(JsonObject jsonObj) {
@@ -7208,6 +7352,10 @@ public class Estimate {
 
     public static CreditNoteEstimates fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CreditNoteEstimates fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static CreditNoteEstimates fromJson(JsonObject jsonObj) {
@@ -7590,6 +7738,10 @@ public class Estimate {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static LineItems fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static LineItems fromJson(JsonObject jsonObj) {
         LineItems obj = new LineItems();
 
@@ -7860,6 +8012,10 @@ public class Estimate {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static LineItemTiers fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static LineItemTiers fromJson(JsonObject jsonObj) {
         LineItemTiers obj = new LineItemTiers();
 
@@ -8019,6 +8175,10 @@ public class Estimate {
 
       public static LineItemDiscounts fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static LineItemDiscounts fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static LineItemDiscounts fromJson(JsonObject jsonObj) {
@@ -8193,6 +8353,10 @@ public class Estimate {
 
       public static LineItemTaxes fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static LineItemTaxes fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static LineItemTaxes fromJson(JsonObject jsonObj) {
@@ -8418,6 +8582,10 @@ public class Estimate {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static Discounts fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static Discounts fromJson(JsonObject jsonObj) {
         Discounts obj = new Discounts();
 
@@ -8501,6 +8669,10 @@ public class Estimate {
 
       public static Taxes fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static Taxes fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static Taxes fromJson(JsonObject jsonObj) {
@@ -8748,6 +8920,10 @@ public class Estimate {
 
     public static UnbilledChargeEstimates fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static UnbilledChargeEstimates fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static UnbilledChargeEstimates fromJson(JsonObject jsonObj) {
@@ -9016,6 +9192,10 @@ public class Estimate {
 
       public static Tiers fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static Tiers fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static Tiers fromJson(JsonObject jsonObj) {

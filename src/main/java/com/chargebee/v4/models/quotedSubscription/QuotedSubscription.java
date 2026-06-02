@@ -266,6 +266,10 @@ public class QuotedSubscription {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static QuotedSubscription fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static QuotedSubscription fromJson(JsonObject jsonObj) {
     QuotedSubscription obj = new QuotedSubscription();
 
@@ -463,6 +467,10 @@ public class QuotedSubscription {
 
     public static Coupons fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Coupons fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Coupons fromJson(JsonObject jsonObj) {
@@ -815,6 +823,10 @@ public class QuotedSubscription {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static SubscriptionItems fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static SubscriptionItems fromJson(JsonObject jsonObj) {
       SubscriptionItems obj = new SubscriptionItems();
 
@@ -1084,6 +1096,10 @@ public class QuotedSubscription {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ItemTiers fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ItemTiers fromJson(JsonObject jsonObj) {
       ItemTiers obj = new ItemTiers();
 
@@ -1240,6 +1256,10 @@ public class QuotedSubscription {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static QuotedContractTerm fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static QuotedContractTerm fromJson(JsonObject jsonObj) {
       QuotedContractTerm obj = new QuotedContractTerm();
 
@@ -1384,6 +1404,10 @@ public class QuotedSubscription {
 
     public static EventBasedAddons fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static EventBasedAddons fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static EventBasedAddons fromJson(JsonObject jsonObj) {
@@ -1546,6 +1570,10 @@ public class QuotedSubscription {
 
     public static Addons fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Addons fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Addons fromJson(JsonObject jsonObj) {

@@ -59,6 +59,10 @@ public class HierarchyCreatedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static HierarchyCreatedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static HierarchyCreatedEvent fromJson(JsonObject jsonObj) {
     HierarchyCreatedEvent obj = new HierarchyCreatedEvent();
 
@@ -139,6 +143,10 @@ public class HierarchyCreatedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

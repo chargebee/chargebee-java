@@ -109,6 +109,10 @@ public class ResourceMigration {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static ResourceMigration fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static ResourceMigration fromJson(JsonObject jsonObj) {
     ResourceMigration obj = new ResourceMigration();
 

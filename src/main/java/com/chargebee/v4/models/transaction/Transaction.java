@@ -684,6 +684,10 @@ public class Transaction {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Transaction fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Transaction fromJson(JsonObject jsonObj) {
     Transaction obj = new Transaction();
 
@@ -1071,6 +1075,10 @@ public class Transaction {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static LinkedInvoices fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static LinkedInvoices fromJson(JsonObject jsonObj) {
       LinkedInvoices obj = new LinkedInvoices();
 
@@ -1261,6 +1269,10 @@ public class Transaction {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static LinkedCreditNotes fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static LinkedCreditNotes fromJson(JsonObject jsonObj) {
       LinkedCreditNotes obj = new LinkedCreditNotes();
 
@@ -1407,6 +1419,10 @@ public class Transaction {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static LinkedRefunds fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static LinkedRefunds fromJson(JsonObject jsonObj) {
       LinkedRefunds obj = new LinkedRefunds();
 
@@ -1517,6 +1533,10 @@ public class Transaction {
 
     public static LinkedPayments fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedPayments fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static LinkedPayments fromJson(JsonObject jsonObj) {
@@ -1646,6 +1666,10 @@ public class Transaction {
 
     public static ErrorDetail fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ErrorDetail fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static ErrorDetail fromJson(JsonObject jsonObj) {

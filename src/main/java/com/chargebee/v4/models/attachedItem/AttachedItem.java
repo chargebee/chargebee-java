@@ -224,6 +224,10 @@ public class AttachedItem {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static AttachedItem fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static AttachedItem fromJson(JsonObject jsonObj) {
     AttachedItem obj = new AttachedItem();
 

@@ -1,5 +1,9 @@
 ### v4.8.0 (2026-06-02)
 * * *
+### Enhancements:
+* Added a `fromJson(Map<String, Object>)` overload to all models, so nested map entities can be converted to a typed model directly (e.g. `Subscription.fromJson(subscription)`).
+
+
 ### Bug Fixes:
 * Fixed deserialization of nested JSON in dynamic `Map<String, Object>` fields (for example [`HostedPage.getContent()`](https://apidocs.chargebee.com/docs/api/hosted_pages/hosted-page-object#content) and [`HostedPage.getCheckoutInfo()`](https://apidocs.chargebee.com/docs/api/hosted_pages/hosted-page-object#checkout_info)). Nested objects and arrays are now returned as `Map` and `List` instead of JSON strings, which resolves `ClassCastException` when casting nested entities such as `customer`, `subscription`, and `invoice` to `Map<String, Object>`. The same parsing behavior applies to other map attributes including [`Event.getContent()`](https://apidocs.chargebee.com/docs/api/events/event-object#content), `meta_data`, and `consent_fields`. If your integration previously parsed nested map values as JSON strings, use the returned `Map`/`List` directly or branch on `instanceof` during upgrade.
 

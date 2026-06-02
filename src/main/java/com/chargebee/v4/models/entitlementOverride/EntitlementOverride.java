@@ -109,6 +109,10 @@ public class EntitlementOverride {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static EntitlementOverride fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static EntitlementOverride fromJson(JsonObject jsonObj) {
     EntitlementOverride obj = new EntitlementOverride();
 

@@ -38,6 +38,10 @@ public class NonSubscription {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static NonSubscription fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static NonSubscription fromJson(JsonObject jsonObj) {
     NonSubscription obj = new NonSubscription();
 

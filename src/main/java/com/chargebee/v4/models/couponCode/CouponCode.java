@@ -72,6 +72,10 @@ public class CouponCode {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static CouponCode fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static CouponCode fromJson(JsonObject jsonObj) {
     CouponCode obj = new CouponCode();
 

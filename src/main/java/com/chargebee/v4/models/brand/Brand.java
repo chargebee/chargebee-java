@@ -27,6 +27,10 @@ public class Brand {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Brand fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Brand fromJson(JsonObject jsonObj) {
     Brand obj = new Brand();
 

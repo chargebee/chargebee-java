@@ -636,6 +636,10 @@ public class Plan {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Plan fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Plan fromJson(JsonObject jsonObj) {
     Plan obj = new Plan();
 
@@ -1212,6 +1216,10 @@ public class Plan {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static Tiers fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static Tiers fromJson(JsonObject jsonObj) {
       Tiers obj = new Tiers();
 
@@ -1309,6 +1317,10 @@ public class Plan {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static TaxProvidersFields fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static TaxProvidersFields fromJson(JsonObject jsonObj) {
       TaxProvidersFields obj = new TaxProvidersFields();
 
@@ -1361,6 +1373,10 @@ public class Plan {
 
     public static ApplicableAddons fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ApplicableAddons fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static ApplicableAddons fromJson(JsonObject jsonObj) {
@@ -1450,6 +1466,10 @@ public class Plan {
 
     public static AttachedAddons fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static AttachedAddons fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static AttachedAddons fromJson(JsonObject jsonObj) {
@@ -1568,6 +1588,10 @@ public class Plan {
 
     public static EventBasedAddons fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static EventBasedAddons fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static EventBasedAddons fromJson(JsonObject jsonObj) {

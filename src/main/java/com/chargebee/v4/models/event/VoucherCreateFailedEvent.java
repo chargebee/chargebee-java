@@ -59,6 +59,10 @@ public class VoucherCreateFailedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static VoucherCreateFailedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static VoucherCreateFailedEvent fromJson(JsonObject jsonObj) {
     VoucherCreateFailedEvent obj = new VoucherCreateFailedEvent();
 
@@ -139,6 +143,10 @@ public class VoucherCreateFailedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

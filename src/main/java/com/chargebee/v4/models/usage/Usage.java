@@ -108,6 +108,10 @@ public class Usage {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Usage fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Usage fromJson(JsonObject jsonObj) {
     Usage obj = new Usage();
 

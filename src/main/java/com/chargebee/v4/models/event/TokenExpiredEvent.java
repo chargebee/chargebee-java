@@ -59,6 +59,10 @@ public class TokenExpiredEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static TokenExpiredEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static TokenExpiredEvent fromJson(JsonObject jsonObj) {
     TokenExpiredEvent obj = new TokenExpiredEvent();
 
@@ -139,6 +143,10 @@ public class TokenExpiredEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

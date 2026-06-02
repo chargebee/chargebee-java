@@ -60,6 +60,10 @@ public class UnbilledChargesDeletedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static UnbilledChargesDeletedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static UnbilledChargesDeletedEvent fromJson(JsonObject jsonObj) {
     UnbilledChargesDeletedEvent obj = new UnbilledChargesDeletedEvent();
 
@@ -140,6 +144,10 @@ public class UnbilledChargesDeletedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

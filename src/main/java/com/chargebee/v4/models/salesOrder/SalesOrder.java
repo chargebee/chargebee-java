@@ -201,6 +201,10 @@ public class SalesOrder {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static SalesOrder fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static SalesOrder fromJson(JsonObject jsonObj) {
     SalesOrder obj = new SalesOrder();
 
@@ -682,6 +686,10 @@ public class SalesOrder {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static LineItems fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static LineItems fromJson(JsonObject jsonObj) {
       LineItems obj = new LineItems();
 
@@ -944,6 +952,10 @@ public class SalesOrder {
 
     public static BillingAddresses fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static BillingAddresses fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static BillingAddresses fromJson(JsonObject jsonObj) {
@@ -1250,6 +1262,10 @@ public class SalesOrder {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static Discounts fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static Discounts fromJson(JsonObject jsonObj) {
       Discounts obj = new Discounts();
 
@@ -1464,6 +1480,10 @@ public class SalesOrder {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ShippingAddresses fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ShippingAddresses fromJson(JsonObject jsonObj) {
       ShippingAddresses obj = new ShippingAddresses();
 
@@ -1643,6 +1663,10 @@ public class SalesOrder {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static LineItemTiers fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static LineItemTiers fromJson(JsonObject jsonObj) {
       LineItemTiers obj = new LineItemTiers();
 
@@ -1808,6 +1832,10 @@ public class SalesOrder {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static PaymentConfiguration fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static PaymentConfiguration fromJson(JsonObject jsonObj) {
       PaymentConfiguration obj = new PaymentConfiguration();
 
@@ -1938,6 +1966,10 @@ public class SalesOrder {
 
     public static BillingConfiguration fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static BillingConfiguration fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static BillingConfiguration fromJson(JsonObject jsonObj) {
@@ -2074,6 +2106,10 @@ public class SalesOrder {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static RenewalTerm fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static RenewalTerm fromJson(JsonObject jsonObj) {
       RenewalTerm obj = new RenewalTerm();
 
@@ -2143,6 +2179,10 @@ public class SalesOrder {
 
     public static CreditLines fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CreditLines fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static CreditLines fromJson(JsonObject jsonObj) {
@@ -2265,6 +2305,10 @@ public class SalesOrder {
 
     public static EntitlementOverrides fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static EntitlementOverrides fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static EntitlementOverrides fromJson(JsonObject jsonObj) {

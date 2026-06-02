@@ -66,6 +66,10 @@ public class AlertStatus {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static AlertStatus fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static AlertStatus fromJson(JsonObject jsonObj) {
     AlertStatus obj = new AlertStatus();
 

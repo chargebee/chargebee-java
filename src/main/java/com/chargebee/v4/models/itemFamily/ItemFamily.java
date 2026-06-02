@@ -143,6 +143,10 @@ public class ItemFamily {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static ItemFamily fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static ItemFamily fromJson(JsonObject jsonObj) {
     ItemFamily obj = new ItemFamily();
 

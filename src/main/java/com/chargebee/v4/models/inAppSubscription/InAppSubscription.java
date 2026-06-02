@@ -80,6 +80,10 @@ public class InAppSubscription {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static InAppSubscription fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static InAppSubscription fromJson(JsonObject jsonObj) {
     InAppSubscription obj = new InAppSubscription();
 

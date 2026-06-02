@@ -92,6 +92,10 @@ public class GatewayErrorDetail {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static GatewayErrorDetail fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static GatewayErrorDetail fromJson(JsonObject jsonObj) {
     GatewayErrorDetail obj = new GatewayErrorDetail();
 

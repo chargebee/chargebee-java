@@ -59,6 +59,10 @@ public class CustomerEntitlementsUpdatedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static CustomerEntitlementsUpdatedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static CustomerEntitlementsUpdatedEvent fromJson(JsonObject jsonObj) {
     CustomerEntitlementsUpdatedEvent obj = new CustomerEntitlementsUpdatedEvent();
 
@@ -139,6 +143,10 @@ public class CustomerEntitlementsUpdatedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

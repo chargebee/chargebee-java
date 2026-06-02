@@ -175,6 +175,10 @@ public class CpqQuoteSignature {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static CpqQuoteSignature fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static CpqQuoteSignature fromJson(JsonObject jsonObj) {
     CpqQuoteSignature obj = new CpqQuoteSignature();
 

@@ -49,6 +49,10 @@ public class QuotedCharge {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static QuotedCharge fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static QuotedCharge fromJson(JsonObject jsonObj) {
     QuotedCharge obj = new QuotedCharge();
 
@@ -185,6 +189,10 @@ public class QuotedCharge {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static Charges fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static Charges fromJson(JsonObject jsonObj) {
       Charges obj = new Charges();
 
@@ -290,6 +298,10 @@ public class QuotedCharge {
 
     public static InvoiceItems fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static InvoiceItems fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static InvoiceItems fromJson(JsonObject jsonObj) {
@@ -442,6 +454,10 @@ public class QuotedCharge {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ItemTiers fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ItemTiers fromJson(JsonObject jsonObj) {
       ItemTiers obj = new ItemTiers();
 
@@ -541,6 +557,10 @@ public class QuotedCharge {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static Coupons fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static Coupons fromJson(JsonObject jsonObj) {
       Coupons obj = new Coupons();
 
@@ -585,6 +605,10 @@ public class QuotedCharge {
 
     public static CouponApplicabilityMappings fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CouponApplicabilityMappings fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static CouponApplicabilityMappings fromJson(JsonObject jsonObj) {
@@ -698,6 +722,10 @@ public class QuotedCharge {
 
     public static Addons fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Addons fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Addons fromJson(JsonObject jsonObj) {

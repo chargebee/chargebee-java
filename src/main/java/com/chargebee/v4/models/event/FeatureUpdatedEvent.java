@@ -61,6 +61,10 @@ public class FeatureUpdatedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static FeatureUpdatedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static FeatureUpdatedEvent fromJson(JsonObject jsonObj) {
     FeatureUpdatedEvent obj = new FeatureUpdatedEvent();
 
@@ -146,6 +150,10 @@ public class FeatureUpdatedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

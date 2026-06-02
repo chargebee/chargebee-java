@@ -59,6 +59,10 @@ public class UsageFileIngestedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static UsageFileIngestedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static UsageFileIngestedEvent fromJson(JsonObject jsonObj) {
     UsageFileIngestedEvent obj = new UsageFileIngestedEvent();
 
@@ -139,6 +143,10 @@ public class UsageFileIngestedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

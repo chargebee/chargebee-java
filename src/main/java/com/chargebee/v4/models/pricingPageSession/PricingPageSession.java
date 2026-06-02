@@ -38,6 +38,10 @@ public class PricingPageSession {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PricingPageSession fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PricingPageSession fromJson(JsonObject jsonObj) {
     PricingPageSession obj = new PricingPageSession();
 

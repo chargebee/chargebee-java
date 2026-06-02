@@ -549,6 +549,10 @@ public class Addon {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Addon fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Addon fromJson(JsonObject jsonObj) {
     Addon obj = new Addon();
 
@@ -1021,6 +1025,10 @@ public class Addon {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static Tiers fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static Tiers fromJson(JsonObject jsonObj) {
       Tiers obj = new Tiers();
 
@@ -1116,6 +1124,10 @@ public class Addon {
 
     public static TaxProvidersFields fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static TaxProvidersFields fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static TaxProvidersFields fromJson(JsonObject jsonObj) {

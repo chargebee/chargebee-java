@@ -81,6 +81,10 @@ public class BusinessEntity {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static BusinessEntity fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static BusinessEntity fromJson(JsonObject jsonObj) {
     BusinessEntity obj = new BusinessEntity();
 

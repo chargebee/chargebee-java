@@ -61,6 +61,10 @@ public class RecordPurchaseFailedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static RecordPurchaseFailedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static RecordPurchaseFailedEvent fromJson(JsonObject jsonObj) {
     RecordPurchaseFailedEvent obj = new RecordPurchaseFailedEvent();
 
@@ -146,6 +150,10 @@ public class RecordPurchaseFailedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

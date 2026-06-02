@@ -61,6 +61,10 @@ public class PaymentSourceDeletedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PaymentSourceDeletedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PaymentSourceDeletedEvent fromJson(JsonObject jsonObj) {
     PaymentSourceDeletedEvent obj = new PaymentSourceDeletedEvent();
 
@@ -146,6 +150,10 @@ public class PaymentSourceDeletedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

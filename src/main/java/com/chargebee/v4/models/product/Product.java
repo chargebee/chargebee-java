@@ -118,6 +118,10 @@ public class Product {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Product fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Product fromJson(JsonObject jsonObj) {
     Product obj = new Product();
 
@@ -288,6 +292,10 @@ public class Product {
 
     public static Options fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Options fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Options fromJson(JsonObject jsonObj) {

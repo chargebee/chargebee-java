@@ -63,6 +63,10 @@ public class TaxWithheldRecordedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static TaxWithheldRecordedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static TaxWithheldRecordedEvent fromJson(JsonObject jsonObj) {
     TaxWithheldRecordedEvent obj = new TaxWithheldRecordedEvent();
 
@@ -153,6 +157,10 @@ public class TaxWithheldRecordedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

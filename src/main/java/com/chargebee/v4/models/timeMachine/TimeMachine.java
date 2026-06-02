@@ -85,6 +85,10 @@ public class TimeMachine {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static TimeMachine fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static TimeMachine fromJson(JsonObject jsonObj) {
     TimeMachine obj = new TimeMachine();
 

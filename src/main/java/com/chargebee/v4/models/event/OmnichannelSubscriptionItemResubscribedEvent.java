@@ -67,6 +67,11 @@ public class OmnichannelSubscriptionItemResubscribedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static OmnichannelSubscriptionItemResubscribedEvent fromJson(
+      java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static OmnichannelSubscriptionItemResubscribedEvent fromJson(JsonObject jsonObj) {
     OmnichannelSubscriptionItemResubscribedEvent obj =
         new OmnichannelSubscriptionItemResubscribedEvent();
@@ -170,6 +175,10 @@ public class OmnichannelSubscriptionItemResubscribedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

@@ -59,6 +59,10 @@ public class PaymentIntentCreatedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PaymentIntentCreatedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PaymentIntentCreatedEvent fromJson(JsonObject jsonObj) {
     PaymentIntentCreatedEvent obj = new PaymentIntentCreatedEvent();
 
@@ -139,6 +143,10 @@ public class PaymentIntentCreatedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

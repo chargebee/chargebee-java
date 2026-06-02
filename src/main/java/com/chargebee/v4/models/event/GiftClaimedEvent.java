@@ -59,6 +59,10 @@ public class GiftClaimedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static GiftClaimedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static GiftClaimedEvent fromJson(JsonObject jsonObj) {
     GiftClaimedEvent obj = new GiftClaimedEvent();
 
@@ -139,6 +143,10 @@ public class GiftClaimedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

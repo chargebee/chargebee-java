@@ -137,6 +137,10 @@ public class UsageFile {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static UsageFile fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static UsageFile fromJson(JsonObject jsonObj) {
     UsageFile obj = new UsageFile();
 
@@ -283,6 +287,10 @@ public class UsageFile {
 
     public static UploadDetails fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static UploadDetails fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static UploadDetails fromJson(JsonObject jsonObj) {

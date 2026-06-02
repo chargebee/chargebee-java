@@ -22,6 +22,10 @@ public class Metadata {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Metadata fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Metadata fromJson(JsonObject jsonObj) {
     Metadata obj = new Metadata();
 

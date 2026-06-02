@@ -112,6 +112,10 @@ public class BusinessEntityTransfer {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static BusinessEntityTransfer fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static BusinessEntityTransfer fromJson(JsonObject jsonObj) {
     BusinessEntityTransfer obj = new BusinessEntityTransfer();
 

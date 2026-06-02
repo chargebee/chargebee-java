@@ -35,6 +35,10 @@ public class ImpactedItem {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static ImpactedItem fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static ImpactedItem fromJson(JsonObject jsonObj) {
     ImpactedItem obj = new ImpactedItem();
 
@@ -95,6 +99,10 @@ public class ImpactedItem {
 
     public static Download fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Download fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Download fromJson(JsonObject jsonObj) {

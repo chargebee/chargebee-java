@@ -134,6 +134,10 @@ public class RecordedPurchase {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static RecordedPurchase fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static RecordedPurchase fromJson(JsonObject jsonObj) {
     RecordedPurchase obj = new RecordedPurchase();
 
@@ -249,6 +253,10 @@ public class RecordedPurchase {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static LinkedOmnichannelSubscriptions fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static LinkedOmnichannelSubscriptions fromJson(JsonObject jsonObj) {
       LinkedOmnichannelSubscriptions obj = new LinkedOmnichannelSubscriptions();
 
@@ -293,6 +301,10 @@ public class RecordedPurchase {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static LinkedOmnichannelOneTimeOrders fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static LinkedOmnichannelOneTimeOrders fromJson(JsonObject jsonObj) {
       LinkedOmnichannelOneTimeOrders obj = new LinkedOmnichannelOneTimeOrders();
 
@@ -335,6 +347,10 @@ public class RecordedPurchase {
 
     public static ErrorDetail fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ErrorDetail fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static ErrorDetail fromJson(JsonObject jsonObj) {

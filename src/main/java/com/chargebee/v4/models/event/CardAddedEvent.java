@@ -61,6 +61,10 @@ public class CardAddedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static CardAddedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static CardAddedEvent fromJson(JsonObject jsonObj) {
     CardAddedEvent obj = new CardAddedEvent();
 
@@ -146,6 +150,10 @@ public class CardAddedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

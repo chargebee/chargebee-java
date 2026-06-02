@@ -86,6 +86,10 @@ public class FilterCondition {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static FilterCondition fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static FilterCondition fromJson(JsonObject jsonObj) {
     FilterCondition obj = new FilterCondition();
 

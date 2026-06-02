@@ -277,6 +277,10 @@ public class VirtualBankAccount {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static VirtualBankAccount fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static VirtualBankAccount fromJson(JsonObject jsonObj) {
     VirtualBankAccount obj = new VirtualBankAccount();
 

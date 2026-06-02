@@ -118,6 +118,10 @@ public class PortalSession {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PortalSession fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PortalSession fromJson(JsonObject jsonObj) {
     PortalSession obj = new PortalSession();
 
@@ -254,6 +258,10 @@ public class PortalSession {
 
     public static LinkedCustomers fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedCustomers fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static LinkedCustomers fromJson(JsonObject jsonObj) {

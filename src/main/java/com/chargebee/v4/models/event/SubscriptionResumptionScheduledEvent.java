@@ -65,6 +65,10 @@ public class SubscriptionResumptionScheduledEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static SubscriptionResumptionScheduledEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static SubscriptionResumptionScheduledEvent fromJson(JsonObject jsonObj) {
     SubscriptionResumptionScheduledEvent obj = new SubscriptionResumptionScheduledEvent();
 
@@ -160,6 +164,10 @@ public class SubscriptionResumptionScheduledEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

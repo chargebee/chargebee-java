@@ -70,6 +70,11 @@ public class SubscriptionCanceledWithBackdatingEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static SubscriptionCanceledWithBackdatingEvent fromJson(
+      java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static SubscriptionCanceledWithBackdatingEvent fromJson(JsonObject jsonObj) {
     SubscriptionCanceledWithBackdatingEvent obj = new SubscriptionCanceledWithBackdatingEvent();
 
@@ -175,6 +180,10 @@ public class SubscriptionCanceledWithBackdatingEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

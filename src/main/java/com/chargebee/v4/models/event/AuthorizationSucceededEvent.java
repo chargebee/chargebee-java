@@ -59,6 +59,10 @@ public class AuthorizationSucceededEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static AuthorizationSucceededEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static AuthorizationSucceededEvent fromJson(JsonObject jsonObj) {
     AuthorizationSucceededEvent obj = new AuthorizationSucceededEvent();
 
@@ -139,6 +143,10 @@ public class AuthorizationSucceededEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

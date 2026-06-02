@@ -28,6 +28,10 @@ public class ImpactedCustomer {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static ImpactedCustomer fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static ImpactedCustomer fromJson(JsonObject jsonObj) {
     ImpactedCustomer obj = new ImpactedCustomer();
 
@@ -82,6 +86,10 @@ public class ImpactedCustomer {
 
     public static Download fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Download fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Download fromJson(JsonObject jsonObj) {

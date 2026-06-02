@@ -59,6 +59,10 @@ public class RuleUpdatedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static RuleUpdatedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static RuleUpdatedEvent fromJson(JsonObject jsonObj) {
     RuleUpdatedEvent obj = new RuleUpdatedEvent();
 
@@ -139,6 +143,10 @@ public class RuleUpdatedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

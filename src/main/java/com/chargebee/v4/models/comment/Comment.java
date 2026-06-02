@@ -140,6 +140,10 @@ public class Comment {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Comment fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Comment fromJson(JsonObject jsonObj) {
     Comment obj = new Comment();
 

@@ -92,6 +92,10 @@ public class OmnichannelSubscription {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static OmnichannelSubscription fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static OmnichannelSubscription fromJson(JsonObject jsonObj) {
     OmnichannelSubscription obj = new OmnichannelSubscription();
 
@@ -405,6 +409,10 @@ public class OmnichannelSubscription {
 
     public static OmnichannelSubscriptionItems fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static OmnichannelSubscriptionItems fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static OmnichannelSubscriptionItems fromJson(JsonObject jsonObj) {
@@ -726,6 +734,10 @@ public class OmnichannelSubscription {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static OmnichannelSubscriptionItemOffers fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static OmnichannelSubscriptionItemOffers fromJson(JsonObject jsonObj) {
         OmnichannelSubscriptionItemOffers obj = new OmnichannelSubscriptionItemOffers();
 
@@ -865,6 +877,10 @@ public class OmnichannelSubscription {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static UpcomingRenewal fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static UpcomingRenewal fromJson(JsonObject jsonObj) {
         UpcomingRenewal obj = new UpcomingRenewal();
 
@@ -922,6 +938,10 @@ public class OmnichannelSubscription {
 
       public static LinkedItem fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static LinkedItem fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static LinkedItem fromJson(JsonObject jsonObj) {
@@ -1052,6 +1072,10 @@ public class OmnichannelSubscription {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static InitialPurchaseTransaction fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static InitialPurchaseTransaction fromJson(JsonObject jsonObj) {
       InitialPurchaseTransaction obj = new InitialPurchaseTransaction();
 
@@ -1170,6 +1194,10 @@ public class OmnichannelSubscription {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static LinkedOmnichannelSubscriptions fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static LinkedOmnichannelSubscriptions fromJson(JsonObject jsonObj) {
         LinkedOmnichannelSubscriptions obj = new LinkedOmnichannelSubscriptions();
 
@@ -1212,6 +1240,10 @@ public class OmnichannelSubscription {
 
       public static LinkedOmnichannelOneTimeOrders fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static LinkedOmnichannelOneTimeOrders fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static LinkedOmnichannelOneTimeOrders fromJson(JsonObject jsonObj) {

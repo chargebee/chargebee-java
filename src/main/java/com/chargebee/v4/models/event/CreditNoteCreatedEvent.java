@@ -59,6 +59,10 @@ public class CreditNoteCreatedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static CreditNoteCreatedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static CreditNoteCreatedEvent fromJson(JsonObject jsonObj) {
     CreditNoteCreatedEvent obj = new CreditNoteCreatedEvent();
 
@@ -139,6 +143,10 @@ public class CreditNoteCreatedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

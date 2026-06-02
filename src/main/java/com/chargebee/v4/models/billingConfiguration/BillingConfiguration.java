@@ -29,6 +29,10 @@ public class BillingConfiguration {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static BillingConfiguration fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static BillingConfiguration fromJson(JsonObject jsonObj) {
     BillingConfiguration obj = new BillingConfiguration();
 
@@ -81,6 +85,10 @@ public class BillingConfiguration {
 
     public static BillingDates fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static BillingDates fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static BillingDates fromJson(JsonObject jsonObj) {

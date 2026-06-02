@@ -64,6 +64,11 @@ public class SubscriptionAdvanceInvoiceScheduleRemovedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static SubscriptionAdvanceInvoiceScheduleRemovedEvent fromJson(
+      java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static SubscriptionAdvanceInvoiceScheduleRemovedEvent fromJson(JsonObject jsonObj) {
     SubscriptionAdvanceInvoiceScheduleRemovedEvent obj =
         new SubscriptionAdvanceInvoiceScheduleRemovedEvent();
@@ -156,6 +161,10 @@ public class SubscriptionAdvanceInvoiceScheduleRemovedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

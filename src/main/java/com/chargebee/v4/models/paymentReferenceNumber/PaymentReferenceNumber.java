@@ -71,6 +71,10 @@ public class PaymentReferenceNumber {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PaymentReferenceNumber fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PaymentReferenceNumber fromJson(JsonObject jsonObj) {
     PaymentReferenceNumber obj = new PaymentReferenceNumber();
 

@@ -125,6 +125,10 @@ public class WebhookEndpoint {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static WebhookEndpoint fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static WebhookEndpoint fromJson(JsonObject jsonObj) {
     WebhookEndpoint obj = new WebhookEndpoint();
 

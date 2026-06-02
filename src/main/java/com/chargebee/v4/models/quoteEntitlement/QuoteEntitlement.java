@@ -95,6 +95,10 @@ public class QuoteEntitlement {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static QuoteEntitlement fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static QuoteEntitlement fromJson(JsonObject jsonObj) {
     QuoteEntitlement obj = new QuoteEntitlement();
 

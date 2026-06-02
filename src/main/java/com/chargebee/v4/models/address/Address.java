@@ -129,6 +129,10 @@ public class Address {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Address fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Address fromJson(JsonObject jsonObj) {
     Address obj = new Address();
 

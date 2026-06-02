@@ -28,6 +28,10 @@ public class UsageReminderInfo {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static UsageReminderInfo fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static UsageReminderInfo fromJson(JsonObject jsonObj) {
     UsageReminderInfo obj = new UsageReminderInfo();
 

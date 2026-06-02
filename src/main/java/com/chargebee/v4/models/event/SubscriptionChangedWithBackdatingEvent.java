@@ -70,6 +70,10 @@ public class SubscriptionChangedWithBackdatingEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static SubscriptionChangedWithBackdatingEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static SubscriptionChangedWithBackdatingEvent fromJson(JsonObject jsonObj) {
     SubscriptionChangedWithBackdatingEvent obj = new SubscriptionChangedWithBackdatingEvent();
 
@@ -175,6 +179,10 @@ public class SubscriptionChangedWithBackdatingEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {
