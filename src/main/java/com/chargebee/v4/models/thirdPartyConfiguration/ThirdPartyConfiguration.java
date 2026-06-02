@@ -38,6 +38,10 @@ public class ThirdPartyConfiguration {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static ThirdPartyConfiguration fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static ThirdPartyConfiguration fromJson(JsonObject jsonObj) {
     ThirdPartyConfiguration obj = new ThirdPartyConfiguration();
 

@@ -86,6 +86,10 @@ public class Entitlement {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Entitlement fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Entitlement fromJson(JsonObject jsonObj) {
     Entitlement obj = new Entitlement();
 

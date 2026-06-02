@@ -141,6 +141,10 @@ public class PromotionalCredit {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PromotionalCredit fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PromotionalCredit fromJson(JsonObject jsonObj) {
     PromotionalCredit obj = new PromotionalCredit();
 

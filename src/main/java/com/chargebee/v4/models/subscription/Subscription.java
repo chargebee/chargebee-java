@@ -721,6 +721,10 @@ public class Subscription {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Subscription fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Subscription fromJson(JsonObject jsonObj) {
     Subscription obj = new Subscription();
 
@@ -1739,6 +1743,10 @@ public class Subscription {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static SubscriptionItems fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static SubscriptionItems fromJson(JsonObject jsonObj) {
       SubscriptionItems obj = new SubscriptionItems();
 
@@ -2008,6 +2016,10 @@ public class Subscription {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ItemTiers fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ItemTiers fromJson(JsonObject jsonObj) {
       ItemTiers obj = new ItemTiers();
 
@@ -2112,6 +2124,10 @@ public class Subscription {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ChargedItems fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ChargedItems fromJson(JsonObject jsonObj) {
       ChargedItems obj = new ChargedItems();
 
@@ -2174,6 +2190,10 @@ public class Subscription {
 
     public static Coupons fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Coupons fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Coupons fromJson(JsonObject jsonObj) {
@@ -2330,6 +2350,10 @@ public class Subscription {
 
     public static ShippingAddress fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ShippingAddress fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static ShippingAddress fromJson(JsonObject jsonObj) {
@@ -2677,6 +2701,10 @@ public class Subscription {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ReferralInfo fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ReferralInfo fromJson(JsonObject jsonObj) {
       ReferralInfo obj = new ReferralInfo();
 
@@ -2807,6 +2835,10 @@ public class Subscription {
 
     public static BillingOverride fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static BillingOverride fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static BillingOverride fromJson(JsonObject jsonObj) {
@@ -2975,6 +3007,10 @@ public class Subscription {
 
     public static ContractTerm fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ContractTerm fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static ContractTerm fromJson(JsonObject jsonObj) {
@@ -3295,6 +3331,10 @@ public class Subscription {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static Discounts fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static Discounts fromJson(JsonObject jsonObj) {
       Discounts obj = new Discounts();
 
@@ -3447,6 +3487,10 @@ public class Subscription {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ChargedEventBasedAddons fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ChargedEventBasedAddons fromJson(JsonObject jsonObj) {
       ChargedEventBasedAddons obj = new ChargedEventBasedAddons();
 
@@ -3559,6 +3603,10 @@ public class Subscription {
 
     public static EventBasedAddons fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static EventBasedAddons fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static EventBasedAddons fromJson(JsonObject jsonObj) {
@@ -3721,6 +3769,10 @@ public class Subscription {
 
     public static Addons fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Addons fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Addons fromJson(JsonObject jsonObj) {

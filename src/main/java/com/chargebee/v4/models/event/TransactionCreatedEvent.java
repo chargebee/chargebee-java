@@ -59,6 +59,10 @@ public class TransactionCreatedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static TransactionCreatedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static TransactionCreatedEvent fromJson(JsonObject jsonObj) {
     TransactionCreatedEvent obj = new TransactionCreatedEvent();
 
@@ -139,6 +143,10 @@ public class TransactionCreatedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

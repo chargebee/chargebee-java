@@ -153,6 +153,10 @@ public class Feature {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Feature fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Feature fromJson(JsonObject jsonObj) {
     Feature obj = new Feature();
 
@@ -292,6 +296,10 @@ public class Feature {
 
     public static Levels fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Levels fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Levels fromJson(JsonObject jsonObj) {

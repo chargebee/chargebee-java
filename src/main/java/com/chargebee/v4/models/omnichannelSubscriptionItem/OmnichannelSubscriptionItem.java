@@ -237,6 +237,10 @@ public class OmnichannelSubscriptionItem {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static OmnichannelSubscriptionItem fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static OmnichannelSubscriptionItem fromJson(JsonObject jsonObj) {
     OmnichannelSubscriptionItem obj = new OmnichannelSubscriptionItem();
 
@@ -556,6 +560,10 @@ public class OmnichannelSubscriptionItem {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static OmnichannelSubscriptionItemOffers fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static OmnichannelSubscriptionItemOffers fromJson(JsonObject jsonObj) {
       OmnichannelSubscriptionItemOffers obj = new OmnichannelSubscriptionItemOffers();
 
@@ -695,6 +703,10 @@ public class OmnichannelSubscriptionItem {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static UpcomingRenewal fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static UpcomingRenewal fromJson(JsonObject jsonObj) {
       UpcomingRenewal obj = new UpcomingRenewal();
 
@@ -752,6 +764,10 @@ public class OmnichannelSubscriptionItem {
 
     public static LinkedItem fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedItem fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static LinkedItem fromJson(JsonObject jsonObj) {

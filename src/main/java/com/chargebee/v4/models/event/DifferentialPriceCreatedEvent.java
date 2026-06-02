@@ -59,6 +59,10 @@ public class DifferentialPriceCreatedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static DifferentialPriceCreatedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static DifferentialPriceCreatedEvent fromJson(JsonObject jsonObj) {
     DifferentialPriceCreatedEvent obj = new DifferentialPriceCreatedEvent();
 
@@ -139,6 +143,10 @@ public class DifferentialPriceCreatedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

@@ -61,6 +61,10 @@ public class VirtualBankAccountAddedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static VirtualBankAccountAddedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static VirtualBankAccountAddedEvent fromJson(JsonObject jsonObj) {
     VirtualBankAccountAddedEvent obj = new VirtualBankAccountAddedEvent();
 
@@ -146,6 +150,10 @@ public class VirtualBankAccountAddedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

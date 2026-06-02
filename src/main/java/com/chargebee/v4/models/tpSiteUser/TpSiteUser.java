@@ -32,6 +32,10 @@ public class TpSiteUser {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static TpSiteUser fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static TpSiteUser fromJson(JsonObject jsonObj) {
     TpSiteUser obj = new TpSiteUser();
 

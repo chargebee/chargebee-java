@@ -62,6 +62,10 @@ public class Contact {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Contact fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Contact fromJson(JsonObject jsonObj) {
     Contact obj = new Contact();
 

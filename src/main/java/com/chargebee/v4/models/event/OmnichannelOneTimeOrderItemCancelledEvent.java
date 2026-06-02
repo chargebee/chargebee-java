@@ -65,6 +65,11 @@ public class OmnichannelOneTimeOrderItemCancelledEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static OmnichannelOneTimeOrderItemCancelledEvent fromJson(
+      java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static OmnichannelOneTimeOrderItemCancelledEvent fromJson(JsonObject jsonObj) {
     OmnichannelOneTimeOrderItemCancelledEvent obj = new OmnichannelOneTimeOrderItemCancelledEvent();
 
@@ -160,6 +165,10 @@ public class OmnichannelOneTimeOrderItemCancelledEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

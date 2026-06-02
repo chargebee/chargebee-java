@@ -59,6 +59,10 @@ public class InvoiceDeletedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static InvoiceDeletedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static InvoiceDeletedEvent fromJson(JsonObject jsonObj) {
     InvoiceDeletedEvent obj = new InvoiceDeletedEvent();
 
@@ -139,6 +143,10 @@ public class InvoiceDeletedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

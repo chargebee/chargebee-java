@@ -114,6 +114,10 @@ public class PriceVariant {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PriceVariant fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PriceVariant fromJson(JsonObject jsonObj) {
     PriceVariant obj = new PriceVariant();
 
@@ -234,6 +238,10 @@ public class PriceVariant {
 
     public static Attributes fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Attributes fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Attributes fromJson(JsonObject jsonObj) {

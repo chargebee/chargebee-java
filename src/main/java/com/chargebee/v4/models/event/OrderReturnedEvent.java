@@ -59,6 +59,10 @@ public class OrderReturnedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static OrderReturnedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static OrderReturnedEvent fromJson(JsonObject jsonObj) {
     OrderReturnedEvent obj = new OrderReturnedEvent();
 
@@ -139,6 +143,10 @@ public class OrderReturnedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

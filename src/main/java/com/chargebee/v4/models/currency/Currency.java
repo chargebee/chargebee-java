@@ -75,6 +75,10 @@ public class Currency {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Currency fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Currency fromJson(JsonObject jsonObj) {
     Currency obj = new Currency();
 

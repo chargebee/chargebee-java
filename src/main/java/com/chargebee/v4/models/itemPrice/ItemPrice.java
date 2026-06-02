@@ -565,6 +565,10 @@ public class ItemPrice {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static ItemPrice fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static ItemPrice fromJson(JsonObject jsonObj) {
     ItemPrice obj = new ItemPrice();
 
@@ -1037,6 +1041,10 @@ public class ItemPrice {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static Tiers fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static Tiers fromJson(JsonObject jsonObj) {
       Tiers obj = new Tiers();
 
@@ -1186,6 +1194,10 @@ public class ItemPrice {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static TaxDetail fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static TaxDetail fromJson(JsonObject jsonObj) {
       TaxDetail obj = new TaxDetail();
 
@@ -1278,6 +1290,10 @@ public class ItemPrice {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static TaxProvidersFields fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static TaxProvidersFields fromJson(JsonObject jsonObj) {
       TaxProvidersFields obj = new TaxProvidersFields();
 
@@ -1355,6 +1371,10 @@ public class ItemPrice {
 
     public static AccountingDetail fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static AccountingDetail fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static AccountingDetail fromJson(JsonObject jsonObj) {

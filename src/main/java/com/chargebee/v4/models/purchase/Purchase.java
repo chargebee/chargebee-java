@@ -50,6 +50,10 @@ public class Purchase {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Purchase fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Purchase fromJson(JsonObject jsonObj) {
     Purchase obj = new Purchase();
 

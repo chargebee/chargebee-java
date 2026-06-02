@@ -49,6 +49,10 @@ public class Hierarchy {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Hierarchy fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Hierarchy fromJson(JsonObject jsonObj) {
     Hierarchy obj = new Hierarchy();
 

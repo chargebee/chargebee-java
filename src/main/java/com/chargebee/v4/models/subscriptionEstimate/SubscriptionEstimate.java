@@ -133,6 +133,10 @@ public class SubscriptionEstimate {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static SubscriptionEstimate fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static SubscriptionEstimate fromJson(JsonObject jsonObj) {
     SubscriptionEstimate obj = new SubscriptionEstimate();
 
@@ -326,6 +330,10 @@ public class SubscriptionEstimate {
 
     public static ShippingAddress fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ShippingAddress fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static ShippingAddress fromJson(JsonObject jsonObj) {
@@ -569,6 +577,10 @@ public class SubscriptionEstimate {
 
     public static ContractTerm fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ContractTerm fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static ContractTerm fromJson(JsonObject jsonObj) {

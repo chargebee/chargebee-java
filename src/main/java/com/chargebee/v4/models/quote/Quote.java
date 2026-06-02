@@ -352,6 +352,10 @@ public class Quote {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Quote fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Quote fromJson(JsonObject jsonObj) {
     Quote obj = new Quote();
 
@@ -979,6 +983,10 @@ public class Quote {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static LineItems fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static LineItems fromJson(JsonObject jsonObj) {
       LineItems obj = new LineItems();
 
@@ -1249,6 +1257,10 @@ public class Quote {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static LineItemTiers fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static LineItemTiers fromJson(JsonObject jsonObj) {
       LineItemTiers obj = new LineItemTiers();
 
@@ -1408,6 +1420,10 @@ public class Quote {
 
     public static LineItemDiscounts fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LineItemDiscounts fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static LineItemDiscounts fromJson(JsonObject jsonObj) {
@@ -1582,6 +1598,10 @@ public class Quote {
 
     public static LineItemTaxes fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LineItemTaxes fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static LineItemTaxes fromJson(JsonObject jsonObj) {
@@ -1807,6 +1827,10 @@ public class Quote {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static Discounts fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static Discounts fromJson(JsonObject jsonObj) {
       Discounts obj = new Discounts();
 
@@ -1890,6 +1914,10 @@ public class Quote {
 
     public static Taxes fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Taxes fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Taxes fromJson(JsonObject jsonObj) {
@@ -2041,6 +2069,10 @@ public class Quote {
 
     public static ShippingAddress fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ShippingAddress fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static ShippingAddress fromJson(JsonObject jsonObj) {
@@ -2262,6 +2294,10 @@ public class Quote {
 
     public static BillingAddress fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static BillingAddress fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static BillingAddress fromJson(JsonObject jsonObj) {

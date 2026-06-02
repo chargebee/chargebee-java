@@ -38,6 +38,10 @@ public class PersonalizedOffer {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PersonalizedOffer fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PersonalizedOffer fromJson(JsonObject jsonObj) {
     PersonalizedOffer obj = new PersonalizedOffer();
 
@@ -102,6 +106,10 @@ public class PersonalizedOffer {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {
@@ -228,6 +236,10 @@ public class PersonalizedOffer {
 
     public static Options fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Options fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Options fromJson(JsonObject jsonObj) {

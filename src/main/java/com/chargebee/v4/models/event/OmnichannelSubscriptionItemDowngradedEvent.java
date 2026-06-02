@@ -65,6 +65,11 @@ public class OmnichannelSubscriptionItemDowngradedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static OmnichannelSubscriptionItemDowngradedEvent fromJson(
+      java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static OmnichannelSubscriptionItemDowngradedEvent fromJson(JsonObject jsonObj) {
     OmnichannelSubscriptionItemDowngradedEvent obj =
         new OmnichannelSubscriptionItemDowngradedEvent();
@@ -162,6 +167,10 @@ public class OmnichannelSubscriptionItemDowngradedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

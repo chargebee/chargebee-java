@@ -107,6 +107,10 @@ public class OmnichannelTransaction {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static OmnichannelTransaction fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static OmnichannelTransaction fromJson(JsonObject jsonObj) {
     OmnichannelTransaction obj = new OmnichannelTransaction();
 
@@ -225,6 +229,10 @@ public class OmnichannelTransaction {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static LinkedOmnichannelSubscriptions fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static LinkedOmnichannelSubscriptions fromJson(JsonObject jsonObj) {
       LinkedOmnichannelSubscriptions obj = new LinkedOmnichannelSubscriptions();
 
@@ -267,6 +275,10 @@ public class OmnichannelTransaction {
 
     public static LinkedOmnichannelOneTimeOrders fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedOmnichannelOneTimeOrders fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static LinkedOmnichannelOneTimeOrders fromJson(JsonObject jsonObj) {

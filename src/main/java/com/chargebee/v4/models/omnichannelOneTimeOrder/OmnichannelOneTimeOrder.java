@@ -97,6 +97,10 @@ public class OmnichannelOneTimeOrder {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static OmnichannelOneTimeOrder fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static OmnichannelOneTimeOrder fromJson(JsonObject jsonObj) {
     OmnichannelOneTimeOrder obj = new OmnichannelOneTimeOrder();
 
@@ -272,6 +276,10 @@ public class OmnichannelOneTimeOrder {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static OmnichannelOneTimeOrderItems fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static OmnichannelOneTimeOrderItems fromJson(JsonObject jsonObj) {
       OmnichannelOneTimeOrderItems obj = new OmnichannelOneTimeOrderItems();
 
@@ -443,6 +451,10 @@ public class OmnichannelOneTimeOrder {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static PurchaseTransaction fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static PurchaseTransaction fromJson(JsonObject jsonObj) {
       PurchaseTransaction obj = new PurchaseTransaction();
 
@@ -561,6 +573,10 @@ public class OmnichannelOneTimeOrder {
         return fromJson(JsonUtil.parse(json));
       }
 
+      public static LinkedOmnichannelSubscriptions fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
       public static LinkedOmnichannelSubscriptions fromJson(JsonObject jsonObj) {
         LinkedOmnichannelSubscriptions obj = new LinkedOmnichannelSubscriptions();
 
@@ -603,6 +619,10 @@ public class OmnichannelOneTimeOrder {
 
       public static LinkedOmnichannelOneTimeOrders fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static LinkedOmnichannelOneTimeOrders fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static LinkedOmnichannelOneTimeOrders fromJson(JsonObject jsonObj) {

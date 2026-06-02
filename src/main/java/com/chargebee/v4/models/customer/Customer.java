@@ -895,6 +895,10 @@ public class Customer {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Customer fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Customer fromJson(JsonObject jsonObj) {
     Customer obj = new Customer();
 
@@ -1610,6 +1614,10 @@ public class Customer {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static BillingAddress fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static BillingAddress fromJson(JsonObject jsonObj) {
       BillingAddress obj = new BillingAddress();
 
@@ -1799,6 +1807,10 @@ public class Customer {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ReferralUrls fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ReferralUrls fromJson(JsonObject jsonObj) {
       ReferralUrls obj = new ReferralUrls();
 
@@ -1925,6 +1937,10 @@ public class Customer {
 
     public static Contacts fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Contacts fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Contacts fromJson(JsonObject jsonObj) {
@@ -2328,6 +2344,10 @@ public class Customer {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static PaymentMethod fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static PaymentMethod fromJson(JsonObject jsonObj) {
       PaymentMethod obj = new PaymentMethod();
 
@@ -2421,6 +2441,10 @@ public class Customer {
 
     public static Balances fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Balances fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Balances fromJson(JsonObject jsonObj) {
@@ -2519,6 +2543,10 @@ public class Customer {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static EntityIdentifiers fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static EntityIdentifiers fromJson(JsonObject jsonObj) {
       EntityIdentifiers obj = new EntityIdentifiers();
 
@@ -2588,6 +2616,10 @@ public class Customer {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static TaxProvidersFields fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static TaxProvidersFields fromJson(JsonObject jsonObj) {
       TaxProvidersFields obj = new TaxProvidersFields();
 
@@ -2650,6 +2682,10 @@ public class Customer {
 
     public static Relationship fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Relationship fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Relationship fromJson(JsonObject jsonObj) {
@@ -2790,6 +2826,10 @@ public class Customer {
 
     public static ParentAccountAccess fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ParentAccountAccess fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static ParentAccountAccess fromJson(JsonObject jsonObj) {
@@ -2948,6 +2988,10 @@ public class Customer {
 
     public static ChildAccountAccess fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ChildAccountAccess fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static ChildAccountAccess fromJson(JsonObject jsonObj) {

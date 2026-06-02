@@ -65,6 +65,10 @@ public class ItemEntitlementsRemovedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static ItemEntitlementsRemovedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static ItemEntitlementsRemovedEvent fromJson(JsonObject jsonObj) {
     ItemEntitlementsRemovedEvent obj = new ItemEntitlementsRemovedEvent();
 
@@ -160,6 +164,10 @@ public class ItemEntitlementsRemovedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

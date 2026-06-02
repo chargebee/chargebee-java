@@ -59,6 +59,10 @@ public class ContractTermCreatedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static ContractTermCreatedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static ContractTermCreatedEvent fromJson(JsonObject jsonObj) {
     ContractTermCreatedEvent obj = new ContractTermCreatedEvent();
 
@@ -139,6 +143,10 @@ public class ContractTermCreatedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

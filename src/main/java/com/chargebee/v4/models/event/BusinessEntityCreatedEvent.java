@@ -59,6 +59,10 @@ public class BusinessEntityCreatedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static BusinessEntityCreatedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static BusinessEntityCreatedEvent fromJson(JsonObject jsonObj) {
     BusinessEntityCreatedEvent obj = new BusinessEntityCreatedEvent();
 
@@ -139,6 +143,10 @@ public class BusinessEntityCreatedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

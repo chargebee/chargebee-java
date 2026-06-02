@@ -216,6 +216,10 @@ public class UnbilledCharge {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static UnbilledCharge fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static UnbilledCharge fromJson(JsonObject jsonObj) {
     UnbilledCharge obj = new UnbilledCharge();
 
@@ -477,6 +481,10 @@ public class UnbilledCharge {
 
     public static Tiers fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Tiers fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Tiers fromJson(JsonObject jsonObj) {

@@ -37,6 +37,10 @@ public class UsageEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static UsageEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static UsageEvent fromJson(JsonObject jsonObj) {
     UsageEvent obj = new UsageEvent();
 

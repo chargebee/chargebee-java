@@ -101,6 +101,10 @@ public class PaymentScheduleScheme {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PaymentScheduleScheme fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PaymentScheduleScheme fromJson(JsonObject jsonObj) {
     PaymentScheduleScheme obj = new PaymentScheduleScheme();
 
@@ -204,6 +208,10 @@ public class PaymentScheduleScheme {
 
     public static PreferredSchedules fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static PreferredSchedules fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static PreferredSchedules fromJson(JsonObject jsonObj) {

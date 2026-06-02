@@ -142,6 +142,10 @@ public class ContractTerm {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static ContractTerm fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static ContractTerm fromJson(JsonObject jsonObj) {
     ContractTerm obj = new ContractTerm();
 

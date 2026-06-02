@@ -291,6 +291,10 @@ public class ThirdPartyPaymentMethod {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static ThirdPartyPaymentMethod fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static ThirdPartyPaymentMethod fromJson(JsonObject jsonObj) {
     ThirdPartyPaymentMethod obj = new ThirdPartyPaymentMethod();
 

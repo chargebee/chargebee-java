@@ -66,6 +66,10 @@ public class AdvanceInvoiceSchedule {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static AdvanceInvoiceSchedule fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static AdvanceInvoiceSchedule fromJson(JsonObject jsonObj) {
     AdvanceInvoiceSchedule obj = new AdvanceInvoiceSchedule();
 
@@ -187,6 +191,10 @@ public class AdvanceInvoiceSchedule {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static FixedIntervalSchedule fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static FixedIntervalSchedule fromJson(JsonObject jsonObj) {
       FixedIntervalSchedule obj = new FixedIntervalSchedule();
 
@@ -265,6 +273,10 @@ public class AdvanceInvoiceSchedule {
 
     public static SpecificDatesSchedule fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static SpecificDatesSchedule fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static SpecificDatesSchedule fromJson(JsonObject jsonObj) {

@@ -335,6 +335,10 @@ public class Item {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Item fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Item fromJson(JsonObject jsonObj) {
     Item obj = new Item();
 
@@ -625,6 +629,10 @@ public class Item {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ApplicableItems fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ApplicableItems fromJson(JsonObject jsonObj) {
       ApplicableItems obj = new ApplicableItems();
 
@@ -711,6 +719,10 @@ public class Item {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static BundleItems fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static BundleItems fromJson(JsonObject jsonObj) {
       BundleItems obj = new BundleItems();
 
@@ -794,6 +806,10 @@ public class Item {
 
     public static BundleConfiguration fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static BundleConfiguration fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static BundleConfiguration fromJson(JsonObject jsonObj) {

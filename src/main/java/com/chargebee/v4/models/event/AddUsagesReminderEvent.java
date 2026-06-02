@@ -63,6 +63,10 @@ public class AddUsagesReminderEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static AddUsagesReminderEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static AddUsagesReminderEvent fromJson(JsonObject jsonObj) {
     AddUsagesReminderEvent obj = new AddUsagesReminderEvent();
 
@@ -153,6 +157,10 @@ public class AddUsagesReminderEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

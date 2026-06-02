@@ -59,6 +59,10 @@ public class DifferentialPriceDeletedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static DifferentialPriceDeletedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static DifferentialPriceDeletedEvent fromJson(JsonObject jsonObj) {
     DifferentialPriceDeletedEvent obj = new DifferentialPriceDeletedEvent();
 
@@ -139,6 +143,10 @@ public class DifferentialPriceDeletedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

@@ -52,6 +52,10 @@ public class CouponSet {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static CouponSet fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static CouponSet fromJson(JsonObject jsonObj) {
     CouponSet obj = new CouponSet();
 

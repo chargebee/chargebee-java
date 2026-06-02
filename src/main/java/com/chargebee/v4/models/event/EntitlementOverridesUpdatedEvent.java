@@ -61,6 +61,10 @@ public class EntitlementOverridesUpdatedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static EntitlementOverridesUpdatedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static EntitlementOverridesUpdatedEvent fromJson(JsonObject jsonObj) {
     EntitlementOverridesUpdatedEvent obj = new EntitlementOverridesUpdatedEvent();
 
@@ -146,6 +150,10 @@ public class EntitlementOverridesUpdatedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

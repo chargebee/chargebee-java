@@ -478,6 +478,10 @@ public class Card {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Card fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Card fromJson(JsonObject jsonObj) {
     Card obj = new Card();
 

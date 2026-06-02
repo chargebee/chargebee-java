@@ -676,6 +676,10 @@ public class Event {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Event fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Event fromJson(JsonObject jsonObj) {
     Event obj = new Event();
 
@@ -830,6 +834,10 @@ public class Event {
 
     public static Webhooks fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Webhooks fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Webhooks fromJson(JsonObject jsonObj) {

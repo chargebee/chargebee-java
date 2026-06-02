@@ -65,6 +65,10 @@ public class OmnichannelOneTimeOrderCreatedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static OmnichannelOneTimeOrderCreatedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static OmnichannelOneTimeOrderCreatedEvent fromJson(JsonObject jsonObj) {
     OmnichannelOneTimeOrderCreatedEvent obj = new OmnichannelOneTimeOrderCreatedEvent();
 
@@ -160,6 +164,10 @@ public class OmnichannelOneTimeOrderCreatedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

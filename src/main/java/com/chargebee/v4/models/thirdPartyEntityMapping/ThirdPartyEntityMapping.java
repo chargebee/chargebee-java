@@ -263,6 +263,10 @@ public class ThirdPartyEntityMapping {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static ThirdPartyEntityMapping fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static ThirdPartyEntityMapping fromJson(JsonObject jsonObj) {
     ThirdPartyEntityMapping obj = new ThirdPartyEntityMapping();
 

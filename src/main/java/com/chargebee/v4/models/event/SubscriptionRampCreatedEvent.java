@@ -59,6 +59,10 @@ public class SubscriptionRampCreatedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static SubscriptionRampCreatedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static SubscriptionRampCreatedEvent fromJson(JsonObject jsonObj) {
     SubscriptionRampCreatedEvent obj = new SubscriptionRampCreatedEvent();
 
@@ -139,6 +143,10 @@ public class SubscriptionRampCreatedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

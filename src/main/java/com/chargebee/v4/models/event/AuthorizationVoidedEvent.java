@@ -59,6 +59,10 @@ public class AuthorizationVoidedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static AuthorizationVoidedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static AuthorizationVoidedEvent fromJson(JsonObject jsonObj) {
     AuthorizationVoidedEvent obj = new AuthorizationVoidedEvent();
 
@@ -139,6 +143,10 @@ public class AuthorizationVoidedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

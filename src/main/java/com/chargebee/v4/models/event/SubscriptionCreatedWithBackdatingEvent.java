@@ -68,6 +68,10 @@ public class SubscriptionCreatedWithBackdatingEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static SubscriptionCreatedWithBackdatingEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static SubscriptionCreatedWithBackdatingEvent fromJson(JsonObject jsonObj) {
     SubscriptionCreatedWithBackdatingEvent obj = new SubscriptionCreatedWithBackdatingEvent();
 
@@ -168,6 +172,10 @@ public class SubscriptionCreatedWithBackdatingEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

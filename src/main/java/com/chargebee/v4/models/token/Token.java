@@ -390,6 +390,10 @@ public class Token {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Token fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Token fromJson(JsonObject jsonObj) {
     Token obj = new Token();
 

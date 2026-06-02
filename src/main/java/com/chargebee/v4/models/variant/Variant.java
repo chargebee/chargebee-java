@@ -112,6 +112,10 @@ public class Variant {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Variant fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Variant fromJson(JsonObject jsonObj) {
     Variant obj = new Variant();
 
@@ -236,6 +240,10 @@ public class Variant {
 
     public static OptionValues fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static OptionValues fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static OptionValues fromJson(JsonObject jsonObj) {

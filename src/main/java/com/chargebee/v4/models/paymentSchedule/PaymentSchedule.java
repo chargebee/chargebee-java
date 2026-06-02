@@ -95,6 +95,10 @@ public class PaymentSchedule {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PaymentSchedule fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PaymentSchedule fromJson(JsonObject jsonObj) {
     PaymentSchedule obj = new PaymentSchedule();
 
@@ -238,6 +242,10 @@ public class PaymentSchedule {
 
     public static ScheduleEntries fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ScheduleEntries fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static ScheduleEntries fromJson(JsonObject jsonObj) {

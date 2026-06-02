@@ -95,6 +95,10 @@ public class Configuration {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Configuration fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Configuration fromJson(JsonObject jsonObj) {
     Configuration obj = new Configuration();
 

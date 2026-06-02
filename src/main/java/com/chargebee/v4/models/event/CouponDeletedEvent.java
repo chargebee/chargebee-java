@@ -59,6 +59,10 @@ public class CouponDeletedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static CouponDeletedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static CouponDeletedEvent fromJson(JsonObject jsonObj) {
     CouponDeletedEvent obj = new CouponDeletedEvent();
 
@@ -139,6 +143,10 @@ public class CouponDeletedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

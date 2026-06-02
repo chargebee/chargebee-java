@@ -61,6 +61,10 @@ public class PaymentSourceExpiringEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PaymentSourceExpiringEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PaymentSourceExpiringEvent fromJson(JsonObject jsonObj) {
     PaymentSourceExpiringEvent obj = new PaymentSourceExpiringEvent();
 
@@ -146,6 +150,10 @@ public class PaymentSourceExpiringEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

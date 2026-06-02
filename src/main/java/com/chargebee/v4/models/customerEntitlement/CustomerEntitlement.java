@@ -47,6 +47,10 @@ public class CustomerEntitlement {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static CustomerEntitlement fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static CustomerEntitlement fromJson(JsonObject jsonObj) {
     CustomerEntitlement obj = new CustomerEntitlement();
 

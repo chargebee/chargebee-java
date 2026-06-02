@@ -59,6 +59,10 @@ public class QuoteDeletedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static QuoteDeletedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static QuoteDeletedEvent fromJson(JsonObject jsonObj) {
     QuoteDeletedEvent obj = new QuoteDeletedEvent();
 
@@ -139,6 +143,10 @@ public class QuoteDeletedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

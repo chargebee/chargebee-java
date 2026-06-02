@@ -99,6 +99,10 @@ public class Einvoice {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Einvoice fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Einvoice fromJson(JsonObject jsonObj) {
     Einvoice obj = new Einvoice();
 

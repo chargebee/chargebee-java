@@ -252,6 +252,10 @@ public class PaymentIntent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PaymentIntent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PaymentIntent fromJson(JsonObject jsonObj) {
     PaymentIntent obj = new PaymentIntent();
 
@@ -600,6 +604,10 @@ public class PaymentIntent {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ActivePaymentAttempt fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ActivePaymentAttempt fromJson(JsonObject jsonObj) {
       ActivePaymentAttempt obj = new ActivePaymentAttempt();
 
@@ -770,6 +778,10 @@ public class PaymentIntent {
 
       public static ErrorDetail fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static ErrorDetail fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static ErrorDetail fromJson(JsonObject jsonObj) {
@@ -1091,6 +1103,10 @@ public class PaymentIntent {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static PaymentAttempts fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static PaymentAttempts fromJson(JsonObject jsonObj) {
       PaymentAttempts obj = new PaymentAttempts();
 
@@ -1261,6 +1277,10 @@ public class PaymentIntent {
 
       public static ErrorDetail fromJson(String json) {
         return fromJson(JsonUtil.parse(json));
+      }
+
+      public static ErrorDetail fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
       }
 
       public static ErrorDetail fromJson(JsonObject jsonObj) {

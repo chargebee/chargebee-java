@@ -1,3 +1,13 @@
+### v4.8.0 (2026-06-02)
+* * *
+### Enhancements:
+* Added a `fromJson(Map<String, Object>)` overload to all models, so nested map entities can be converted to a typed model directly (e.g. `Subscription.fromJson(subscription)`).
+
+
+### Bug Fixes:
+* Fixed deserialization of nested JSON in dynamic `Map<String, Object>` fields (for example [`HostedPage.getContent()`](https://apidocs.chargebee.com/docs/api/hosted_pages/hosted-page-object#content) and [`HostedPage.getCheckoutInfo()`](https://apidocs.chargebee.com/docs/api/hosted_pages/hosted-page-object#checkout_info)). Nested objects and arrays are now returned as `Map` and `List` instead of JSON strings, which resolves `ClassCastException` when casting nested entities such as `customer`, `subscription`, and `invoice` to `Map<String, Object>`. The same parsing behavior applies to other map attributes including [`Event.getContent()`](https://apidocs.chargebee.com/docs/api/events/event-object#content), `meta_data`, and `consent_fields`. If your integration previously parsed nested map values as JSON strings, use the returned `Map`/`List` directly or branch on `instanceof` during upgrade.
+
+
 ### v4.7.0 (2026-05-04)
 * * *
 ### New Resources:
@@ -84,7 +94,6 @@
 - `twint`, `go_pay`, `grab_pay`, `pay_co`, `after_pay`, `swish`, and `payme` have been added as new values to enum request body parameter `payment_method_type` in [`update_a_payment_intent`](https://apidocs.chargebee.com/docs/api/payment_intents/update-a-payment-intent) of [`PaymentIntent`](https://apidocs.chargebee.com/docs/api/payment_intents).
 - `twint`, `go_pay`, `grab_pay`, `pay_co`, `after_pay`, `swish`, and `payme` have been added as new values to enum request body parameter `payment_method_type` in [`create_a_payment_intent`](https://apidocs.chargebee.com/docs/api/payment_intents/create-a-payment-intent) of [`PaymentIntent`](https://apidocs.chargebee.com/docs/api/payment_intents).
 - `mada` has been added as a new value to enum request body parameter `card.brand` in [`create_using_permanent_token`](https://apidocs.chargebee.com/docs/api/payment_sources/create-using-permanent-token) of [`PaymentSource`](https://apidocs.chargebee.com/docs/api/payment_sources).
-
 
 
 ### v4.6.0 (2026-03-27)

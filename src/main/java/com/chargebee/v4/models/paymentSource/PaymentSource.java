@@ -427,6 +427,10 @@ public class PaymentSource {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PaymentSource fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PaymentSource fromJson(JsonObject jsonObj) {
     PaymentSource obj = new PaymentSource();
 
@@ -816,6 +820,10 @@ public class PaymentSource {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static Card fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static Card fromJson(JsonObject jsonObj) {
       Card obj = new Card();
 
@@ -1135,6 +1143,10 @@ public class PaymentSource {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static BankAccount fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static BankAccount fromJson(JsonObject jsonObj) {
       BankAccount obj = new BankAccount();
 
@@ -1255,6 +1267,10 @@ public class PaymentSource {
 
     public static Boleto fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Boleto fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Boleto fromJson(JsonObject jsonObj) {
@@ -1413,6 +1429,10 @@ public class PaymentSource {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static BillingAddress fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static BillingAddress fromJson(JsonObject jsonObj) {
       BillingAddress obj = new BillingAddress();
 
@@ -1542,6 +1562,10 @@ public class PaymentSource {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static AmazonPayment fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static AmazonPayment fromJson(JsonObject jsonObj) {
       AmazonPayment obj = new AmazonPayment();
 
@@ -1584,6 +1608,10 @@ public class PaymentSource {
 
     public static Upi fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Upi fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Upi fromJson(JsonObject jsonObj) {
@@ -1632,6 +1660,10 @@ public class PaymentSource {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static Paypal fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static Paypal fromJson(JsonObject jsonObj) {
       Paypal obj = new Paypal();
 
@@ -1676,6 +1708,10 @@ public class PaymentSource {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static Venmo fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static Venmo fromJson(JsonObject jsonObj) {
       Venmo obj = new Venmo();
 
@@ -1715,6 +1751,10 @@ public class PaymentSource {
 
     public static KlarnaPayNow fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static KlarnaPayNow fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static KlarnaPayNow fromJson(JsonObject jsonObj) {
@@ -1766,6 +1806,10 @@ public class PaymentSource {
 
     public static Mandates fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Mandates fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Mandates fromJson(JsonObject jsonObj) {

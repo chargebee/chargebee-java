@@ -63,6 +63,11 @@ public class OmnichannelSubscriptionItemGracePeriodExpiredEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static OmnichannelSubscriptionItemGracePeriodExpiredEvent fromJson(
+      java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static OmnichannelSubscriptionItemGracePeriodExpiredEvent fromJson(JsonObject jsonObj) {
     OmnichannelSubscriptionItemGracePeriodExpiredEvent obj =
         new OmnichannelSubscriptionItemGracePeriodExpiredEvent();
@@ -155,6 +160,10 @@ public class OmnichannelSubscriptionItemGracePeriodExpiredEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

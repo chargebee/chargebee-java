@@ -468,6 +468,10 @@ public class Coupon {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Coupon fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Coupon fromJson(JsonObject jsonObj) {
     Coupon obj = new Coupon();
 
@@ -877,6 +881,10 @@ public class Coupon {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ItemConstraints fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ItemConstraints fromJson(JsonObject jsonObj) {
       ItemConstraints obj = new ItemConstraints();
 
@@ -977,6 +985,10 @@ public class Coupon {
 
     public static ItemConstraintCriteria fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ItemConstraintCriteria fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static ItemConstraintCriteria fromJson(JsonObject jsonObj) {
@@ -1113,6 +1125,10 @@ public class Coupon {
 
     public static CouponConstraints fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CouponConstraints fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static CouponConstraints fromJson(JsonObject jsonObj) {

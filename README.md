@@ -221,6 +221,24 @@ future.thenAccept(resp -> {
 });
 ```
 
+### Dynamic map fields (`Map<String, Object>`)
+
+Some attributes are returned as `Map<String, Object>` for schema-less JSON (for example `HostedPage.getContent()`, `HostedPage.getCheckoutInfo()`, `Event.getContent()`, `meta_data`). Nested JSON objects become `Map`, and nested JSON arrays become `List`:
+
+```java
+Map<String, Object> content = client.hostedPages().retrieve(hostedPageId).getHostedPage().getContent();
+
+@SuppressWarnings("unchecked")
+Map<String, Object> subscription = (Map<String, Object>) content.get("subscription");
+String subscriptionId = (String) subscription.get("id");
+```
+
+Every model exposes a `fromJson(Map<String, Object>)` overload, so a nested entity can be converted into a typed model by passing the map directly—no JSON string round-trip needed:
+
+```java
+Subscription typedSubscription = Subscription.fromJson(subscription);
+```
+
 ### Custom Field Filtering
 
 Filter list operations by custom fields using type-safe filters (`stringFilter()`, `numberFilter()`, `timestampFilter()`, `booleanFilter()`):
@@ -679,6 +697,7 @@ public class Sample {
 - Immutable `ChargebeeClient` with fluent builder
 - Direct property naming (e.g., `.apiKey()`, `.siteName()`)
 - Type-safe request models and responses
+- Dynamic `Map<String, Object>` fields deserialize nested JSON as maps and lists (see [Dynamic map fields](#dynamic-map-fields-mapstring-object))
 - Sync and async APIs with retry/backoff
 - Per-request options and headers
 - Enhanced error handling and debugging

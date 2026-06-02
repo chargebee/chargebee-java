@@ -59,6 +59,10 @@ public class VoucherExpiredEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static VoucherExpiredEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static VoucherExpiredEvent fromJson(JsonObject jsonObj) {
     VoucherExpiredEvent obj = new VoucherExpiredEvent();
 
@@ -139,6 +143,10 @@ public class VoucherExpiredEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

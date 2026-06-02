@@ -132,6 +132,10 @@ public class OfferFulfillment {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static OfferFulfillment fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static OfferFulfillment fromJson(JsonObject jsonObj) {
     OfferFulfillment obj = new OfferFulfillment();
 
@@ -270,6 +274,10 @@ public class OfferFulfillment {
 
     public static Error fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Error fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Error fromJson(JsonObject jsonObj) {

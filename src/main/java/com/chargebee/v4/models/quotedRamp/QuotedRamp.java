@@ -45,6 +45,10 @@ public class QuotedRamp {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static QuotedRamp fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static QuotedRamp fromJson(JsonObject jsonObj) {
     QuotedRamp obj = new QuotedRamp();
 
@@ -379,6 +383,10 @@ public class QuotedRamp {
 
     public static LineItems fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LineItems fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static LineItems fromJson(JsonObject jsonObj) {
@@ -837,6 +845,10 @@ public class QuotedRamp {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static Discounts fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static Discounts fromJson(JsonObject jsonObj) {
       Discounts obj = new Discounts();
 
@@ -1053,6 +1065,10 @@ public class QuotedRamp {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ItemTiers fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ItemTiers fromJson(JsonObject jsonObj) {
       ItemTiers obj = new ItemTiers();
 
@@ -1155,6 +1171,10 @@ public class QuotedRamp {
 
     public static CouponApplicabilityMappings fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CouponApplicabilityMappings fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static CouponApplicabilityMappings fromJson(JsonObject jsonObj) {

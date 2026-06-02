@@ -203,6 +203,10 @@ public class HostedPage {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static HostedPage fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static HostedPage fromJson(JsonObject jsonObj) {
     HostedPage obj = new HostedPage();
 

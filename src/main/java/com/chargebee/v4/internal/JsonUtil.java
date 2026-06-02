@@ -149,7 +149,7 @@ public class JsonUtil {
 
     // --- JsonObject to Map conversion ---
 
-    /** Converts a JsonObject to a Map; primitives become Java types, nested structures become JSON strings. */
+    /** Converts a JsonObject to a Map; primitives become Java types, nested objects become nested maps, arrays become lists. */
     public static Map<String, Object> parseJsonObjectToMap(JsonObject obj) {
         Map<String, Object> map = new HashMap<>();
         if (obj == null) return map;
@@ -357,8 +357,11 @@ public class JsonUtil {
                 return prim.getAsLong();
             }
         }
-        if (value.isJsonObject() || value.isJsonArray()) {
-            return value.toString();
+        if (value.isJsonObject()) {
+            return parseJsonObjectToMap(value.getAsJsonObject());
+        }
+        if (value.isJsonArray()) {
+            return mapArrayToObjects(value.getAsJsonArray());
         }
         return null;
     }

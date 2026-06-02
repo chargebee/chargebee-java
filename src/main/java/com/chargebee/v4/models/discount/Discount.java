@@ -228,6 +228,10 @@ public class Discount {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Discount fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Discount fromJson(JsonObject jsonObj) {
     Discount obj = new Discount();
 

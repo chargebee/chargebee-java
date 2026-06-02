@@ -68,6 +68,10 @@ public class UsageCharge {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static UsageCharge fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static UsageCharge fromJson(JsonObject jsonObj) {
     UsageCharge obj = new UsageCharge();
 

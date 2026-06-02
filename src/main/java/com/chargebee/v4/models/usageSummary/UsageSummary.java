@@ -43,6 +43,10 @@ public class UsageSummary {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static UsageSummary fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static UsageSummary fromJson(JsonObject jsonObj) {
     UsageSummary obj = new UsageSummary();
 

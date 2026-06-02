@@ -61,6 +61,10 @@ public class OmnichannelSubscriptionMovedInEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static OmnichannelSubscriptionMovedInEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static OmnichannelSubscriptionMovedInEvent fromJson(JsonObject jsonObj) {
     OmnichannelSubscriptionMovedInEvent obj = new OmnichannelSubscriptionMovedInEvent();
 
@@ -146,6 +150,10 @@ public class OmnichannelSubscriptionMovedInEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

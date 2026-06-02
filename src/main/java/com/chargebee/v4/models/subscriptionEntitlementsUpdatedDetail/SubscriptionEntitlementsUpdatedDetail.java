@@ -27,6 +27,10 @@ public class SubscriptionEntitlementsUpdatedDetail {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static SubscriptionEntitlementsUpdatedDetail fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static SubscriptionEntitlementsUpdatedDetail fromJson(JsonObject jsonObj) {
     SubscriptionEntitlementsUpdatedDetail obj = new SubscriptionEntitlementsUpdatedDetail();
 

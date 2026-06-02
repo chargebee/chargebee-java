@@ -114,6 +114,10 @@ public class SiteMigrationDetail {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static SiteMigrationDetail fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static SiteMigrationDetail fromJson(JsonObject jsonObj) {
     SiteMigrationDetail obj = new SiteMigrationDetail();
 

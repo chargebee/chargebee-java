@@ -33,6 +33,10 @@ public class Download {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Download fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Download fromJson(JsonObject jsonObj) {
     Download obj = new Download();
 

@@ -392,18 +392,38 @@ class JsonUtilTest {
             assertEquals(true, map.get("active"));
         }
 
-        @Test void nestedObjectsAsStrings() {
+        @Test void nestedObjectsAsMaps() {
             JsonObject obj = JsonUtil.parse("{\"user\": {\"name\": \"John\"}}");
             Map<String, Object> map = JsonUtil.parseJsonObjectToMap(obj);
-            assertTrue(map.get("user") instanceof String);
-            assertTrue(((String) map.get("user")).contains("name"));
+            assertTrue(map.get("user") instanceof Map);
+            @SuppressWarnings("unchecked")
+            Map<String, Object> user = (Map<String, Object>) map.get("user");
+            assertEquals("John", user.get("name"));
         }
 
-        @Test void arraysAsStrings() {
+        @Test void arraysAsLists() {
             JsonObject obj = JsonUtil.parse("{\"tags\": [\"a\", \"b\"]}");
             Map<String, Object> map = JsonUtil.parseJsonObjectToMap(obj);
-            assertTrue(map.get("tags") instanceof String);
-            assertTrue(((String) map.get("tags")).contains("\"a\""));
+            assertTrue(map.get("tags") instanceof List);
+            @SuppressWarnings("unchecked")
+            List<Object> tags = (List<Object>) map.get("tags");
+            assertEquals("a", tags.get(0));
+            assertEquals("b", tags.get(1));
+        }
+
+        @Test void deeplyNestedStructures() {
+            JsonObject obj =
+                JsonUtil.parse(
+                    "{\"subscription\": {\"id\": \"sub_1\", \"items\": [{\"id\": \"item_1\"}]}}");
+            Map<String, Object> map = JsonUtil.parseJsonObjectToMap(obj);
+            @SuppressWarnings("unchecked")
+            Map<String, Object> subscription = (Map<String, Object>) map.get("subscription");
+            assertEquals("sub_1", subscription.get("id"));
+            @SuppressWarnings("unchecked")
+            List<Object> items = (List<Object>) subscription.get("items");
+            @SuppressWarnings("unchecked")
+            Map<String, Object> item = (Map<String, Object>) items.get(0);
+            assertEquals("item_1", item.get("id"));
         }
 
         @Test void nullReturnsEmptyMap() {

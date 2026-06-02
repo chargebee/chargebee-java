@@ -63,6 +63,11 @@ public class OmnichannelSubscriptionItemPauseScheduledEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static OmnichannelSubscriptionItemPauseScheduledEvent fromJson(
+      java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static OmnichannelSubscriptionItemPauseScheduledEvent fromJson(JsonObject jsonObj) {
     OmnichannelSubscriptionItemPauseScheduledEvent obj =
         new OmnichannelSubscriptionItemPauseScheduledEvent();
@@ -156,6 +161,10 @@ public class OmnichannelSubscriptionItemPauseScheduledEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

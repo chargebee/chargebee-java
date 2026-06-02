@@ -65,6 +65,10 @@ public class SubscriptionCancellationReminderEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static SubscriptionCancellationReminderEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static SubscriptionCancellationReminderEvent fromJson(JsonObject jsonObj) {
     SubscriptionCancellationReminderEvent obj = new SubscriptionCancellationReminderEvent();
 
@@ -160,6 +164,10 @@ public class SubscriptionCancellationReminderEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

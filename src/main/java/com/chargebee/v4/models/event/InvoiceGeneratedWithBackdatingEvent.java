@@ -59,6 +59,10 @@ public class InvoiceGeneratedWithBackdatingEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static InvoiceGeneratedWithBackdatingEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static InvoiceGeneratedWithBackdatingEvent fromJson(JsonObject jsonObj) {
     InvoiceGeneratedWithBackdatingEvent obj = new InvoiceGeneratedWithBackdatingEvent();
 
@@ -139,6 +143,10 @@ public class InvoiceGeneratedWithBackdatingEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

@@ -108,6 +108,10 @@ public class Gift {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Gift fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Gift fromJson(JsonObject jsonObj) {
     Gift obj = new Gift();
 
@@ -235,6 +239,10 @@ public class Gift {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static Gifter fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static Gifter fromJson(JsonObject jsonObj) {
       Gifter obj = new Gifter();
 
@@ -312,6 +320,10 @@ public class Gift {
 
     public static GiftReceiver fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static GiftReceiver fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static GiftReceiver fromJson(JsonObject jsonObj) {
@@ -415,6 +427,10 @@ public class Gift {
 
     public static GiftTimelines fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static GiftTimelines fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static GiftTimelines fromJson(JsonObject jsonObj) {

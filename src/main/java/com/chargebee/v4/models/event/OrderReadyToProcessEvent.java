@@ -59,6 +59,10 @@ public class OrderReadyToProcessEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static OrderReadyToProcessEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static OrderReadyToProcessEvent fromJson(JsonObject jsonObj) {
     OrderReadyToProcessEvent obj = new OrderReadyToProcessEvent();
 
@@ -139,6 +143,10 @@ public class OrderReadyToProcessEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

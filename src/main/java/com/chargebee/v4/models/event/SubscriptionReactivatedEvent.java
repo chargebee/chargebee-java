@@ -68,6 +68,10 @@ public class SubscriptionReactivatedEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static SubscriptionReactivatedEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static SubscriptionReactivatedEvent fromJson(JsonObject jsonObj) {
     SubscriptionReactivatedEvent obj = new SubscriptionReactivatedEvent();
 
@@ -168,6 +172,10 @@ public class SubscriptionReactivatedEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {

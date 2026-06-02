@@ -91,6 +91,11 @@ public class OmnichannelSubscriptionItemScheduledChange {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static OmnichannelSubscriptionItemScheduledChange fromJson(
+      java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static OmnichannelSubscriptionItemScheduledChange fromJson(JsonObject jsonObj) {
     OmnichannelSubscriptionItemScheduledChange obj =
         new OmnichannelSubscriptionItemScheduledChange();
@@ -193,6 +198,10 @@ public class OmnichannelSubscriptionItemScheduledChange {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static CurrentState fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static CurrentState fromJson(JsonObject jsonObj) {
       CurrentState obj = new CurrentState();
 
@@ -232,6 +241,10 @@ public class OmnichannelSubscriptionItemScheduledChange {
 
     public static ScheduledState fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ScheduledState fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static ScheduledState fromJson(JsonObject jsonObj) {

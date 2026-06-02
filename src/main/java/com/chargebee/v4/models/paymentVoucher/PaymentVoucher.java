@@ -323,6 +323,10 @@ public class PaymentVoucher {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static PaymentVoucher fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static PaymentVoucher fromJson(JsonObject jsonObj) {
     PaymentVoucher obj = new PaymentVoucher();
 
@@ -492,6 +496,10 @@ public class PaymentVoucher {
 
     public static LinkedInvoices fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedInvoices fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static LinkedInvoices fromJson(JsonObject jsonObj) {

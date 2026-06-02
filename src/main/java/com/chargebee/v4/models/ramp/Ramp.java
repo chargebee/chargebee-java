@@ -147,6 +147,10 @@ public class Ramp {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static Ramp fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static Ramp fromJson(JsonObject jsonObj) {
     Ramp obj = new Ramp();
 
@@ -487,6 +491,10 @@ public class Ramp {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ItemsToAdd fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ItemsToAdd fromJson(JsonObject jsonObj) {
       ItemsToAdd obj = new ItemsToAdd();
 
@@ -788,6 +796,10 @@ public class Ramp {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ItemsToUpdate fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ItemsToUpdate fromJson(JsonObject jsonObj) {
       ItemsToUpdate obj = new ItemsToUpdate();
 
@@ -927,6 +939,10 @@ public class Ramp {
 
     public static CouponsToAdd fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CouponsToAdd fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static CouponsToAdd fromJson(JsonObject jsonObj) {
@@ -1146,6 +1162,10 @@ public class Ramp {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static DiscountsToAdd fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static DiscountsToAdd fromJson(JsonObject jsonObj) {
       DiscountsToAdd obj = new DiscountsToAdd();
 
@@ -1332,6 +1352,10 @@ public class Ramp {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ItemTiers fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ItemTiers fromJson(JsonObject jsonObj) {
       ItemTiers obj = new ItemTiers();
 
@@ -1473,6 +1497,10 @@ public class Ramp {
       return fromJson(JsonUtil.parse(json));
     }
 
+    public static ContractTerm fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
     public static ContractTerm fromJson(JsonObject jsonObj) {
       ContractTerm obj = new ContractTerm();
 
@@ -1532,6 +1560,10 @@ public class Ramp {
 
     public static StatusTransitionReason fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static StatusTransitionReason fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static StatusTransitionReason fromJson(JsonObject jsonObj) {

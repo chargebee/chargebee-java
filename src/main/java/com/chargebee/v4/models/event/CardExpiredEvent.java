@@ -61,6 +61,10 @@ public class CardExpiredEvent {
     return fromJson(JsonUtil.parse(json));
   }
 
+  public static CardExpiredEvent fromJson(java.util.Map<String, Object> map) {
+    return fromJson(JsonUtil.toJson(map));
+  }
+
   public static CardExpiredEvent fromJson(JsonObject jsonObj) {
     CardExpiredEvent obj = new CardExpiredEvent();
 
@@ -146,6 +150,10 @@ public class CardExpiredEvent {
 
     public static Content fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
     }
 
     public static Content fromJson(JsonObject jsonObj) {
