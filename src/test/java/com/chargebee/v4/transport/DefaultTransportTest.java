@@ -1453,7 +1453,10 @@ class DefaultTransportTest {
                     lastRequestUrl = exchange.getRequestURI().toString();
                     lastRequestHeaders.clear();
                     for (Map.Entry<String, List<String>> header : exchange.getRequestHeaders().entrySet()) {
-                        lastRequestHeaders.put(header.getKey(), header.getValue().get(0));
+                        List<String> values = header.getValue();
+                        if (values != null && !values.isEmpty()) {
+                            lastRequestHeaders.put(header.getKey(), values.get(0));
+                        }
                     }
                     
                     // Read request body
@@ -1485,6 +1488,20 @@ class DefaultTransportTest {
                     }
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
+                } catch (Exception e) {
+                    // Avoid dropping the socket on handler errors; return a valid HTTP response
+                    // so transport tests fail deterministically with HTTP status assertions.
+                    try {
+                        byte[] errorBytes = "Internal Test Server Error".getBytes(StandardCharsets.UTF_8);
+                        exchange.sendResponseHeaders(500, errorBytes.length);
+                        try (OutputStream os = exchange.getResponseBody()) {
+                            os.write(errorBytes);
+                        }
+                    } catch (IOException ignored) {
+                        // Ignore secondary failures while attempting to surface a response.
+                    }
+                } finally {
+                    exchange.close();
                 }
             });
             

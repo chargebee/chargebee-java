@@ -67,8 +67,10 @@ class EventParserTest {
 
         @Test void parsesSubscription() {
             Map<String, Object> content = event.getContent();
-            String subJson = (String) content.get("subscription");
-            assertNotNull(subJson);
+            assertInstanceOf(Map.class, content.get("subscription"));
+            @SuppressWarnings("unchecked")
+            Map<String, Object> subscriptionMap = (Map<String, Object>) content.get("subscription");
+            String subJson = JsonUtil.toJson(subscriptionMap);
             Subscription sub = Subscription.fromJson(subJson);
 
             assertEquals("16BPgETyVrQVHGh1", sub.getId());
@@ -104,8 +106,10 @@ class EventParserTest {
 
         @Test void parsesCustomer() {
             Map<String, Object> content = event.getContent();
-            String custJson = (String) content.get("customer");
-            assertNotNull(custJson);
+            assertInstanceOf(Map.class, content.get("customer"));
+            @SuppressWarnings("unchecked")
+            Map<String, Object> customerMap = (Map<String, Object>) content.get("customer");
+            String custJson = JsonUtil.toJson(customerMap);
             Customer cust = Customer.fromJson(custJson);
 
             assertEquals("sarah", cust.getId());
@@ -140,8 +144,10 @@ class EventParserTest {
 
         @Test void parsesCard() {
             Map<String, Object> content = event.getContent();
-            String cardJson = (String) content.get("card");
-            assertNotNull(cardJson);
+            assertInstanceOf(Map.class, content.get("card"));
+            @SuppressWarnings("unchecked")
+            Map<String, Object> cardMap = (Map<String, Object>) content.get("card");
+            String cardJson = JsonUtil.toJson(cardMap);
             Card card = Card.fromJson(cardJson);
 
             assertEquals("pm_169vujTyVrL5fFDl", card.getPaymentSourceId());
@@ -169,8 +175,10 @@ class EventParserTest {
 
         @Test void parsesInvoice() {
             Map<String, Object> content = event.getContent();
-            String invJson = (String) content.get("invoice");
-            assertNotNull(invJson);
+            assertInstanceOf(Map.class, content.get("invoice"));
+            @SuppressWarnings("unchecked")
+            Map<String, Object> invoiceMap = (Map<String, Object>) content.get("invoice");
+            String invJson = JsonUtil.toJson(invoiceMap);
             Invoice inv = Invoice.fromJson(invJson);
 
             assertEquals("203", inv.getId());
