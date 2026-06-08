@@ -14,6 +14,8 @@ import java.util.List;
 
 public final class HostedPageCheckoutGiftForItemsParams {
 
+  private final Layout layout;
+
   private final String businessEntityId;
 
   private final String redirectUrl;
@@ -28,6 +30,8 @@ public final class HostedPageCheckoutGiftForItemsParams {
 
   private HostedPageCheckoutGiftForItemsParams(HostedPageCheckoutGiftForItemsBuilder builder) {
 
+    this.layout = builder.layout;
+
     this.businessEntityId = builder.businessEntityId;
 
     this.redirectUrl = builder.redirectUrl;
@@ -39,6 +43,10 @@ public final class HostedPageCheckoutGiftForItemsParams {
     this.subscriptionItems = builder.subscriptionItems;
 
     this.itemTiers = builder.itemTiers;
+  }
+
+  public Layout getLayout() {
+    return layout;
   }
 
   public String getBusinessEntityId() {
@@ -68,6 +76,11 @@ public final class HostedPageCheckoutGiftForItemsParams {
   /** Get the form data for this request. */
   public Map<String, Object> toFormData() {
     Map<String, Object> formData = new LinkedHashMap<>();
+
+    if (this.layout != null) {
+
+      formData.put("layout", this.layout);
+    }
 
     if (this.businessEntityId != null) {
 
@@ -135,6 +148,8 @@ public final class HostedPageCheckoutGiftForItemsParams {
 
   public static final class HostedPageCheckoutGiftForItemsBuilder {
 
+    private Layout layout;
+
     private String businessEntityId;
 
     private String redirectUrl;
@@ -148,6 +163,11 @@ public final class HostedPageCheckoutGiftForItemsParams {
     private List<ItemTiersParams> itemTiers;
 
     private HostedPageCheckoutGiftForItemsBuilder() {}
+
+    public HostedPageCheckoutGiftForItemsBuilder layout(Layout value) {
+      this.layout = value;
+      return this;
+    }
 
     public HostedPageCheckoutGiftForItemsBuilder businessEntityId(String value) {
       this.businessEntityId = value;
@@ -182,6 +202,34 @@ public final class HostedPageCheckoutGiftForItemsParams {
 
     public HostedPageCheckoutGiftForItemsParams build() {
       return new HostedPageCheckoutGiftForItemsParams(this);
+    }
+  }
+
+  public enum Layout {
+    IN_APP("in_app"),
+
+    FULL_PAGE("full_page"),
+
+    /** An enum member indicating that Layout was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Layout(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Layout fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Layout enumValue : Layout.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 

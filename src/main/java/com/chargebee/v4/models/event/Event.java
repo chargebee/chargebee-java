@@ -609,6 +609,10 @@ public class Event {
 
     ALERT_STATUS_CHANGED("alert_status_changed"),
 
+    OMNICHANNEL_SUBSCRIPTION_ITEM_UPDATED("omnichannel_subscription_item_updated"),
+
+    OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
+
     PLAN_CREATED("plan_created"),
 
     PLAN_UPDATED("plan_updated"),

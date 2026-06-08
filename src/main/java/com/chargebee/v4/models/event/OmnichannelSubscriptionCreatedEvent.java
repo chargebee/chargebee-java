@@ -18,8 +18,6 @@ import com.chargebee.v4.models.omnichannelSubscriptionItem.OmnichannelSubscripti
 
 import com.chargebee.v4.models.omnichannelTransaction.OmnichannelTransaction;
 
-import com.chargebee.v4.models.omnichannelSubscriptionItemScheduledChange.OmnichannelSubscriptionItemScheduledChange;
-
 public class OmnichannelSubscriptionCreatedEvent {
 
   private String id;
@@ -146,7 +144,6 @@ public class OmnichannelSubscriptionCreatedEvent {
     private OmnichannelSubscriptionItem omnichannelSubscriptionItem;
     private OmnichannelSubscription omnichannelSubscription;
     private OmnichannelTransaction omnichannelTransaction;
-    private OmnichannelSubscriptionItemScheduledChange omnichannelSubscriptionItemScheduledChange;
     private Customer customer;
 
     public OmnichannelSubscriptionItem getOmnichannelSubscriptionItem() {
@@ -159,11 +156,6 @@ public class OmnichannelSubscriptionCreatedEvent {
 
     public OmnichannelTransaction getOmnichannelTransaction() {
       return omnichannelTransaction;
-    }
-
-    public OmnichannelSubscriptionItemScheduledChange
-        getOmnichannelSubscriptionItemScheduledChange() {
-      return omnichannelSubscriptionItemScheduledChange;
     }
 
     public Customer getCustomer() {
@@ -201,14 +193,6 @@ public class OmnichannelSubscriptionCreatedEvent {
         obj.omnichannelTransaction = OmnichannelTransaction.fromJson(__omnichannelTransactionObj);
       }
 
-      JsonObject __omnichannelSubscriptionItemScheduledChangeObj =
-          JsonUtil.getJsonObject(jsonObj, "omnichannel_subscription_item_scheduled_change");
-      if (__omnichannelSubscriptionItemScheduledChangeObj != null) {
-        obj.omnichannelSubscriptionItemScheduledChange =
-            OmnichannelSubscriptionItemScheduledChange.fromJson(
-                __omnichannelSubscriptionItemScheduledChangeObj);
-      }
-
       JsonObject __customerObj = JsonUtil.getJsonObject(jsonObj, "customer");
       if (__customerObj != null) {
         obj.customer = Customer.fromJson(__customerObj);
@@ -226,8 +210,6 @@ public class OmnichannelSubscriptionCreatedEvent {
           + omnichannelSubscription
           + ", omnichannelTransaction="
           + omnichannelTransaction
-          + ", omnichannelSubscriptionItemScheduledChange="
-          + omnichannelSubscriptionItemScheduledChange
           + ", customer="
           + customer
           + "}";
@@ -242,9 +224,6 @@ public class OmnichannelSubscriptionCreatedEvent {
       return java.util.Objects.equals(omnichannelSubscriptionItem, that.omnichannelSubscriptionItem)
           && java.util.Objects.equals(omnichannelSubscription, that.omnichannelSubscription)
           && java.util.Objects.equals(omnichannelTransaction, that.omnichannelTransaction)
-          && java.util.Objects.equals(
-              omnichannelSubscriptionItemScheduledChange,
-              that.omnichannelSubscriptionItemScheduledChange)
           && java.util.Objects.equals(customer, that.customer);
     }
 
@@ -252,11 +231,7 @@ public class OmnichannelSubscriptionCreatedEvent {
     public int hashCode() {
 
       return java.util.Objects.hash(
-          omnichannelSubscriptionItem,
-          omnichannelSubscription,
-          omnichannelTransaction,
-          omnichannelSubscriptionItemScheduledChange,
-          customer);
+          omnichannelSubscriptionItem, omnichannelSubscription, omnichannelTransaction, customer);
     }
   }
 }

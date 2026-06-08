@@ -2356,8 +2356,6 @@ public final class InvoiceCreateParams {
 
       CASH_APP_PAY("cash_app_pay"),
 
-      PIX("pix"),
-
       TWINT("twint"),
 
       GO_PAY("go_pay"),
@@ -2371,6 +2369,18 @@ public final class InvoiceCreateParams {
       SWISH("swish"),
 
       PAYME("payme"),
+
+      PIX("pix"),
+
+      KLARNA("klarna"),
+
+      ALIPAY_HK("alipay_hk"),
+
+      PAYPAY("paypay"),
+
+      GCASH("gcash"),
+
+      SOUTH_KOREAN_CARDS("south_korean_cards"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2771,8 +2781,6 @@ public final class InvoiceCreateParams {
 
       ALIPAY("alipay"),
 
-      PIX("pix"),
-
       TWINT("twint"),
 
       GO_PAY("go_pay"),
@@ -2786,6 +2794,18 @@ public final class InvoiceCreateParams {
       SWISH("swish"),
 
       PAYME("payme"),
+
+      PIX("pix"),
+
+      KLARNA("klarna"),
+
+      ALIPAY_HK("alipay_hk"),
+
+      PAYPAY("paypay"),
+
+      GCASH("gcash"),
+
+      SOUTH_KOREAN_CARDS("south_korean_cards"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.

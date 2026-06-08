@@ -351,6 +351,16 @@ public class Transaction {
 
     PAYME("payme"),
 
+    KLARNA("klarna"),
+
+    ALIPAY_HK("alipay_hk"),
+
+    PAYPAY("paypay"),
+
+    GCASH("gcash"),
+
+    SOUTH_KOREAN_CARDS("south_korean_cards"),
+
     /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
