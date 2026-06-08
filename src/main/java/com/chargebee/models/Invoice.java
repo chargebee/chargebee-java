@@ -3849,11 +3849,6 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        public StringFilter<InvoiceListRequest> exclude() {
-            return new StringFilter<InvoiceListRequest>("exclude",this).supportsMultiOperators(true);        
-        }
-
-
         @Override
         public Params params() {
             return params;

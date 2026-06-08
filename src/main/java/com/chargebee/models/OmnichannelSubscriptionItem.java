@@ -153,6 +153,10 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
         return reqBoolean("has_scheduled_changes");
     }
 
+    public Timestamp updatedAt() {
+        return reqTimestamp("updated_at");
+    }
+
     public Long resourceVersion() {
         return optLong("resource_version");
     }

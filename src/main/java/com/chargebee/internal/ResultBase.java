@@ -148,10 +148,6 @@ public class ResultBase {
         return (QuoteLineGroup)get("quote_line_group");
     }
 
-    public QuoteEntitlement quoteEntitlement() {
-        return (QuoteEntitlement)get("quote_entitlement");
-    }
-
     public CpqQuoteSignature cpqQuoteSignature() {
         return (CpqQuoteSignature)get("cpq_quote_signature");
     }
@@ -328,6 +324,10 @@ public class ResultBase {
         return (PricingPageSession)get("pricing_page_session");
     }
 
+    public OmnichannelSubscriptionItemScheduledChange omnichannelSubscriptionItemScheduledChange() {
+        return (OmnichannelSubscriptionItemScheduledChange)get("omnichannel_subscription_item_scheduled_change");
+    }
+
     public OmnichannelSubscription omnichannelSubscription() {
         return (OmnichannelSubscription)get("omnichannel_subscription");
     }
@@ -358,10 +358,6 @@ public class ResultBase {
 
     public UsageEvent usageEvent() {
         return (UsageEvent)get("usage_event");
-    }
-
-    public OmnichannelSubscriptionItemScheduledChange omnichannelSubscriptionItemScheduledChange() {
-        return (OmnichannelSubscriptionItemScheduledChange)get("omnichannel_subscription_item_scheduled_change");
     }
 
     public UsageFile usageFile() {
