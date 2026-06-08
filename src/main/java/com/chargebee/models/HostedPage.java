@@ -3032,6 +3032,12 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public CheckoutGiftForItemsRequest layout(com.chargebee.models.enums.Layout layout) {
+            params.addOpt("layout", layout);
+            return this;
+        }
+
+
         public CheckoutGiftForItemsRequest businessEntityId(String businessEntityId) {
             params.addOpt("business_entity_id", businessEntityId);
             return this;

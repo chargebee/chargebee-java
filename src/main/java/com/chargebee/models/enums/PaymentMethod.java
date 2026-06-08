@@ -51,6 +51,11 @@ public enum PaymentMethod {
     AFTER_PAY,
     SWISH,
     PAYME,
+    KLARNA,
+    ALIPAY_HK,
+    PAYPAY,
+    GCASH,
+    SOUTH_KOREAN_CARDS,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

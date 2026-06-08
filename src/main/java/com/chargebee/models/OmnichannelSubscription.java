@@ -58,6 +58,14 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
         return reqTimestamp("created_at");
     }
 
+    public Timestamp purchasedAt() {
+        return optTimestamp("purchased_at");
+    }
+
+    public Timestamp updatedAt() {
+        return reqTimestamp("updated_at");
+    }
+
     public Long resourceVersion() {
         return optLong("resource_version");
     }
@@ -119,7 +127,27 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
 
 
         public StringFilter<OmnichannelSubscriptionListRequest> customerId() {
-            return new StringFilter<OmnichannelSubscriptionListRequest>("customer_id",this);        
+            return new StringFilter<OmnichannelSubscriptionListRequest>("customer_id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<OmnichannelSubscriptionListRequest> id() {
+            return new StringFilter<OmnichannelSubscriptionListRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<OmnichannelSubscriptionListRequest> idAtSource() {
+            return new StringFilter<OmnichannelSubscriptionListRequest>("id_at_source",this).supportsMultiOperators(true);        
+        }
+
+
+        public TimestampFilter<OmnichannelSubscriptionListRequest> updatedAt() {
+            return new TimestampFilter<OmnichannelSubscriptionListRequest>("updated_at",this);        
+        }
+
+
+        public TimestampFilter<OmnichannelSubscriptionListRequest> purchasedAt() {
+            return new TimestampFilter<OmnichannelSubscriptionListRequest>("purchased_at",this);        
         }
 
 

@@ -692,7 +692,7 @@ public class Gift extends Resource<Gift> {
         }
     
         public UpdateGiftRequest scheduledAt(Timestamp scheduledAt) {
-            params.add("scheduled_at", scheduledAt);
+            params.addOpt("scheduled_at", scheduledAt);
             return this;
         }
 
@@ -703,6 +703,21 @@ public class Gift extends Resource<Gift> {
         }
 
 
+        public UpdateGiftRequest giftReceiverEmail(String giftReceiverEmail) {
+            params.addOpt("gift_receiver[email]", giftReceiverEmail);
+            return this;
+        }
+        
+        public UpdateGiftRequest giftReceiverFirstName(String giftReceiverFirstName) {
+            params.addOpt("gift_receiver[first_name]", giftReceiverFirstName);
+            return this;
+        }
+        
+        public UpdateGiftRequest giftReceiverLastName(String giftReceiverLastName) {
+            params.addOpt("gift_receiver[last_name]", giftReceiverLastName);
+            return this;
+        }
+        
         @Override
         public Params params() {
             return params;

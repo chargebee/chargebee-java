@@ -35,7 +35,6 @@ public enum PaymentMethodType {
     NAVER_PAY,
     REVOLUT_PAY,
     CASH_APP_PAY,
-    PIX,
     TWINT,
     GO_PAY,
     GRAB_PAY,
@@ -43,6 +42,12 @@ public enum PaymentMethodType {
     AFTER_PAY,
     SWISH,
     PAYME,
+    PIX,
+    KLARNA,
+    ALIPAY_HK,
+    PAYPAY,
+    GCASH,
+    SOUTH_KOREAN_CARDS,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }
