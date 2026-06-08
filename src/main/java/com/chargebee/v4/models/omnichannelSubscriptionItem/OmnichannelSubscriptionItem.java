@@ -28,6 +28,7 @@ public class OmnichannelSubscriptionItem {
   private Timestamp gracePeriodExpiresAt;
   private Timestamp resumesAt;
   private Boolean hasScheduledChanges;
+  private Timestamp updatedAt;
   private Long resourceVersion;
   private List<OmnichannelSubscriptionItemOffers> omnichannelSubscriptionItemOffers;
   private UpcomingRenewal upcomingRenewal;
@@ -87,6 +88,10 @@ public class OmnichannelSubscriptionItem {
 
   public Boolean getHasScheduledChanges() {
     return hasScheduledChanges;
+  }
+
+  public Timestamp getUpdatedAt() {
+    return updatedAt;
   }
 
   public Long getResourceVersion() {
@@ -275,6 +280,8 @@ public class OmnichannelSubscriptionItem {
 
     obj.hasScheduledChanges = JsonUtil.getBoolean(jsonObj, "has_scheduled_changes");
 
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
+
     obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
     obj.omnichannelSubscriptionItemOffers =
@@ -326,6 +333,8 @@ public class OmnichannelSubscriptionItem {
         + resumesAt
         + ", hasScheduledChanges="
         + hasScheduledChanges
+        + ", updatedAt="
+        + updatedAt
         + ", resourceVersion="
         + resourceVersion
         + ", omnichannelSubscriptionItemOffers="
@@ -357,6 +366,7 @@ public class OmnichannelSubscriptionItem {
         && java.util.Objects.equals(gracePeriodExpiresAt, that.gracePeriodExpiresAt)
         && java.util.Objects.equals(resumesAt, that.resumesAt)
         && java.util.Objects.equals(hasScheduledChanges, that.hasScheduledChanges)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
         && java.util.Objects.equals(resourceVersion, that.resourceVersion)
         && java.util.Objects.equals(
             omnichannelSubscriptionItemOffers, that.omnichannelSubscriptionItemOffers)
@@ -382,6 +392,7 @@ public class OmnichannelSubscriptionItem {
         gracePeriodExpiresAt,
         resumesAt,
         hasScheduledChanges,
+        updatedAt,
         resourceVersion,
         omnichannelSubscriptionItemOffers,
         upcomingRenewal,

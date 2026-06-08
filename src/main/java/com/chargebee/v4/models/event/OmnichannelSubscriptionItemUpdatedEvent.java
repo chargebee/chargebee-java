@@ -18,7 +18,7 @@ import com.chargebee.v4.models.omnichannelSubscriptionItem.OmnichannelSubscripti
 
 import com.chargebee.v4.models.omnichannelTransaction.OmnichannelTransaction;
 
-public class OmnichannelSubscriptionItemRenewedEvent {
+public class OmnichannelSubscriptionItemUpdatedEvent {
 
   private String id;
   private Long occurredAt;
@@ -61,17 +61,17 @@ public class OmnichannelSubscriptionItemRenewedEvent {
     return content;
   }
 
-  public static OmnichannelSubscriptionItemRenewedEvent fromJson(String json) {
+  public static OmnichannelSubscriptionItemUpdatedEvent fromJson(String json) {
     return fromJson(JsonUtil.parse(json));
   }
 
-  public static OmnichannelSubscriptionItemRenewedEvent fromJson(
+  public static OmnichannelSubscriptionItemUpdatedEvent fromJson(
       java.util.Map<String, Object> map) {
     return fromJson(JsonUtil.toJson(map));
   }
 
-  public static OmnichannelSubscriptionItemRenewedEvent fromJson(JsonObject jsonObj) {
-    OmnichannelSubscriptionItemRenewedEvent obj = new OmnichannelSubscriptionItemRenewedEvent();
+  public static OmnichannelSubscriptionItemUpdatedEvent fromJson(JsonObject jsonObj) {
+    OmnichannelSubscriptionItemUpdatedEvent obj = new OmnichannelSubscriptionItemUpdatedEvent();
 
     obj.id = JsonUtil.getString(jsonObj, "id");
 
@@ -97,7 +97,7 @@ public class OmnichannelSubscriptionItemRenewedEvent {
 
   @Override
   public String toString() {
-    return "OmnichannelSubscriptionItemRenewedEvent{"
+    return "OmnichannelSubscriptionItemUpdatedEvent{"
         + "id="
         + id
         + ", occurredAt="
@@ -122,7 +122,7 @@ public class OmnichannelSubscriptionItemRenewedEvent {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
-    OmnichannelSubscriptionItemRenewedEvent that = (OmnichannelSubscriptionItemRenewedEvent) o;
+    OmnichannelSubscriptionItemUpdatedEvent that = (OmnichannelSubscriptionItemUpdatedEvent) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(occurredAt, that.occurredAt)
         && java.util.Objects.equals(source, that.source)

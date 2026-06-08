@@ -938,6 +938,10 @@ public final class EventListParams {
 
     ALERT_STATUS_CHANGED("alert_status_changed"),
 
+    OMNICHANNEL_SUBSCRIPTION_ITEM_UPDATED("omnichannel_subscription_item_updated"),
+
+    OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
+
     /** An enum member indicating that EventTypeIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -1409,6 +1413,10 @@ public final class EventListParams {
     OMNICHANNEL_TRANSACTION_CREATED("omnichannel_transaction_created"),
 
     ALERT_STATUS_CHANGED("alert_status_changed"),
+
+    OMNICHANNEL_SUBSCRIPTION_ITEM_UPDATED("omnichannel_subscription_item_updated"),
+
+    OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
     /** An enum member indicating that EventTypeIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1882,6 +1890,10 @@ public final class EventListParams {
 
     ALERT_STATUS_CHANGED("alert_status_changed"),
 
+    OMNICHANNEL_SUBSCRIPTION_ITEM_UPDATED("omnichannel_subscription_item_updated"),
+
+    OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
+
     /** An enum member indicating that EventTypeIn was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -2353,6 +2365,10 @@ public final class EventListParams {
     OMNICHANNEL_TRANSACTION_CREATED("omnichannel_transaction_created"),
 
     ALERT_STATUS_CHANGED("alert_status_changed"),
+
+    OMNICHANNEL_SUBSCRIPTION_ITEM_UPDATED("omnichannel_subscription_item_updated"),
+
+    OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
     /** An enum member indicating that EventTypeNotIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -3103,6 +3119,10 @@ public final class EventListParams {
     OMNICHANNEL_TRANSACTION_CREATED("omnichannel_transaction_created"),
 
     ALERT_STATUS_CHANGED("alert_status_changed"),
+
+    OMNICHANNEL_SUBSCRIPTION_ITEM_UPDATED("omnichannel_subscription_item_updated"),
+
+    OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
     /** An enum member indicating that EventType was instantiated with an unknown value. */
     _UNKNOWN(null);

@@ -9,6 +9,7 @@ package com.chargebee.v4.models.omnichannelSubscription.params;
 
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 import com.chargebee.v4.filters.EnumFilter;
 
 import java.util.Collections;
@@ -61,6 +62,22 @@ public final class OmnichannelSubscriptionListParams {
 
     public CustomerIdFilter customerId() {
       return new CustomerIdFilter("customer_id", this, queryParams);
+    }
+
+    public IdFilter id() {
+      return new IdFilter("id", this, queryParams);
+    }
+
+    public IdAtSourceFilter idAtSource() {
+      return new IdAtSourceFilter("id_at_source", this, queryParams);
+    }
+
+    public UpdatedAtFilter updatedAt() {
+      return new UpdatedAtFilter("updated_at", this, queryParams);
+    }
+
+    public PurchasedAtFilter purchasedAt() {
+      return new PurchasedAtFilter("purchased_at", this, queryParams);
     }
 
     public OmnichannelSubscriptionListBuilder omnichannelSubscriptionItem(
@@ -138,6 +155,45 @@ public final class OmnichannelSubscriptionListParams {
     public static final class CustomerIdFilter
         extends StringFilter<OmnichannelSubscriptionListBuilder> {
       CustomerIdFilter(
+          String fieldName,
+          OmnichannelSubscriptionListBuilder builder,
+          Map<String, Object> params) {
+        super(fieldName, builder, params);
+      }
+    }
+
+    public static final class IdFilter extends StringFilter<OmnichannelSubscriptionListBuilder> {
+      IdFilter(
+          String fieldName,
+          OmnichannelSubscriptionListBuilder builder,
+          Map<String, Object> params) {
+        super(fieldName, builder, params);
+      }
+    }
+
+    public static final class IdAtSourceFilter
+        extends StringFilter<OmnichannelSubscriptionListBuilder> {
+      IdAtSourceFilter(
+          String fieldName,
+          OmnichannelSubscriptionListBuilder builder,
+          Map<String, Object> params) {
+        super(fieldName, builder, params);
+      }
+    }
+
+    public static final class UpdatedAtFilter
+        extends TimestampFilter<OmnichannelSubscriptionListBuilder> {
+      UpdatedAtFilter(
+          String fieldName,
+          OmnichannelSubscriptionListBuilder builder,
+          Map<String, Object> params) {
+        super(fieldName, builder, params);
+      }
+    }
+
+    public static final class PurchasedAtFilter
+        extends TimestampFilter<OmnichannelSubscriptionListBuilder> {
+      PurchasedAtFilter(
           String fieldName,
           OmnichannelSubscriptionListBuilder builder,
           Map<String, Object> params) {

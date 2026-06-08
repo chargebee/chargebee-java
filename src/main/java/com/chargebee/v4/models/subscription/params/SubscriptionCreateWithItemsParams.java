@@ -1766,8 +1766,6 @@ public final class SubscriptionCreateWithItemsParams {
 
       ALIPAY("alipay"),
 
-      PIX("pix"),
-
       TWINT("twint"),
 
       GO_PAY("go_pay"),
@@ -1781,6 +1779,18 @@ public final class SubscriptionCreateWithItemsParams {
       SWISH("swish"),
 
       PAYME("payme"),
+
+      PIX("pix"),
+
+      KLARNA("klarna"),
+
+      ALIPAY_HK("alipay_hk"),
+
+      PAYPAY("paypay"),
+
+      GCASH("gcash"),
+
+      SOUTH_KOREAN_CARDS("south_korean_cards"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.

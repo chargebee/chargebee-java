@@ -294,6 +294,8 @@ public final class AddEntitlementOverrideForSubscriptionParams {
 
       CHARGE("charge"),
 
+      CHARGE_PRICE("charge_price"),
+
       /** An enum member indicating that EntityType was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;

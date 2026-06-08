@@ -18,11 +18,15 @@ public final class UpdateGiftParams {
 
   private final String comment;
 
+  private final GiftReceiverParams giftReceiver;
+
   private UpdateGiftParams(UpdateGiftBuilder builder) {
 
     this.scheduledAt = builder.scheduledAt;
 
     this.comment = builder.comment;
+
+    this.giftReceiver = builder.giftReceiver;
   }
 
   public Timestamp getScheduledAt() {
@@ -31,6 +35,10 @@ public final class UpdateGiftParams {
 
   public String getComment() {
     return comment;
+  }
+
+  public GiftReceiverParams getGiftReceiver() {
+    return giftReceiver;
   }
 
   /** Get the form data for this request. */
@@ -45,6 +53,16 @@ public final class UpdateGiftParams {
     if (this.comment != null) {
 
       formData.put("comment", this.comment);
+    }
+
+    if (this.giftReceiver != null) {
+
+      // Single object
+      Map<String, Object> nestedData = this.giftReceiver.toFormData();
+      for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+        String nestedKey = "gift_receiver[" + entry.getKey() + "]";
+        formData.put(nestedKey, entry.getValue());
+      }
     }
 
     return formData;
@@ -62,6 +80,8 @@ public final class UpdateGiftParams {
 
     private String comment;
 
+    private GiftReceiverParams giftReceiver;
+
     private UpdateGiftBuilder() {}
 
     public UpdateGiftBuilder scheduledAt(Timestamp value) {
@@ -74,8 +94,101 @@ public final class UpdateGiftParams {
       return this;
     }
 
+    public UpdateGiftBuilder giftReceiver(GiftReceiverParams value) {
+      this.giftReceiver = value;
+      return this;
+    }
+
     public UpdateGiftParams build() {
       return new UpdateGiftParams(this);
+    }
+  }
+
+  public static final class GiftReceiverParams {
+
+    private final String email;
+
+    private final String firstName;
+
+    private final String lastName;
+
+    private GiftReceiverParams(GiftReceiverBuilder builder) {
+
+      this.email = builder.email;
+
+      this.firstName = builder.firstName;
+
+      this.lastName = builder.lastName;
+    }
+
+    public String getEmail() {
+      return email;
+    }
+
+    public String getFirstName() {
+      return firstName;
+    }
+
+    public String getLastName() {
+      return lastName;
+    }
+
+    /** Get the form data for this request. */
+    public Map<String, Object> toFormData() {
+      Map<String, Object> formData = new LinkedHashMap<>();
+
+      if (this.email != null) {
+
+        formData.put("email", this.email);
+      }
+
+      if (this.firstName != null) {
+
+        formData.put("first_name", this.firstName);
+      }
+
+      if (this.lastName != null) {
+
+        formData.put("last_name", this.lastName);
+      }
+
+      return formData;
+    }
+
+    /** Create a new builder for GiftReceiverParams. */
+    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
+    public static GiftReceiverBuilder builder() {
+      return new GiftReceiverBuilder();
+    }
+
+    public static final class GiftReceiverBuilder {
+
+      private String email;
+
+      private String firstName;
+
+      private String lastName;
+
+      private GiftReceiverBuilder() {}
+
+      public GiftReceiverBuilder email(String value) {
+        this.email = value;
+        return this;
+      }
+
+      public GiftReceiverBuilder firstName(String value) {
+        this.firstName = value;
+        return this;
+      }
+
+      public GiftReceiverBuilder lastName(String value) {
+        this.lastName = value;
+        return this;
+      }
+
+      public GiftReceiverParams build() {
+        return new GiftReceiverParams(this);
+      }
     }
   }
 }

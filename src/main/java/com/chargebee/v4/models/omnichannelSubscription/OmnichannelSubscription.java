@@ -20,6 +20,8 @@ public class OmnichannelSubscription {
   private Source source;
   private String customerId;
   private Timestamp createdAt;
+  private Timestamp purchasedAt;
+  private Timestamp updatedAt;
   private Long resourceVersion;
   private List<OmnichannelSubscriptionItems> omnichannelSubscriptionItems;
   private InitialPurchaseTransaction initialPurchaseTransaction;
@@ -46,6 +48,14 @@ public class OmnichannelSubscription {
 
   public Timestamp getCreatedAt() {
     return createdAt;
+  }
+
+  public Timestamp getPurchasedAt() {
+    return purchasedAt;
+  }
+
+  public Timestamp getUpdatedAt() {
+    return updatedAt;
   }
 
   public Long getResourceVersion() {
@@ -111,6 +121,10 @@ public class OmnichannelSubscription {
 
     obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
+    obj.purchasedAt = JsonUtil.getTimestamp(jsonObj, "purchased_at");
+
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
+
     obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
     obj.omnichannelSubscriptionItems =
@@ -143,6 +157,10 @@ public class OmnichannelSubscription {
         + customerId
         + ", createdAt="
         + createdAt
+        + ", purchasedAt="
+        + purchasedAt
+        + ", updatedAt="
+        + updatedAt
         + ", resourceVersion="
         + resourceVersion
         + ", omnichannelSubscriptionItems="
@@ -164,6 +182,8 @@ public class OmnichannelSubscription {
         && java.util.Objects.equals(source, that.source)
         && java.util.Objects.equals(customerId, that.customerId)
         && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(purchasedAt, that.purchasedAt)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
         && java.util.Objects.equals(resourceVersion, that.resourceVersion)
         && java.util.Objects.equals(omnichannelSubscriptionItems, that.omnichannelSubscriptionItems)
         && java.util.Objects.equals(initialPurchaseTransaction, that.initialPurchaseTransaction);
@@ -179,6 +199,8 @@ public class OmnichannelSubscription {
         source,
         customerId,
         createdAt,
+        purchasedAt,
+        updatedAt,
         resourceVersion,
         omnichannelSubscriptionItems,
         initialPurchaseTransaction);
@@ -200,6 +222,7 @@ public class OmnichannelSubscription {
     private Timestamp gracePeriodExpiresAt;
     private Timestamp resumesAt;
     private Boolean hasScheduledChanges;
+    private Timestamp updatedAt;
     private Long resourceVersion;
     private List<OmnichannelSubscriptionItemOffers> omnichannelSubscriptionItemOffers;
     private UpcomingRenewal upcomingRenewal;
@@ -259,6 +282,10 @@ public class OmnichannelSubscription {
 
     public Boolean getHasScheduledChanges() {
       return hasScheduledChanges;
+    }
+
+    public Timestamp getUpdatedAt() {
+      return updatedAt;
     }
 
     public Long getResourceVersion() {
@@ -449,6 +476,8 @@ public class OmnichannelSubscription {
 
       obj.hasScheduledChanges = JsonUtil.getBoolean(jsonObj, "has_scheduled_changes");
 
+      obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
+
       obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
       obj.omnichannelSubscriptionItemOffers =
@@ -500,6 +529,8 @@ public class OmnichannelSubscription {
           + resumesAt
           + ", hasScheduledChanges="
           + hasScheduledChanges
+          + ", updatedAt="
+          + updatedAt
           + ", resourceVersion="
           + resourceVersion
           + ", omnichannelSubscriptionItemOffers="
@@ -531,6 +562,7 @@ public class OmnichannelSubscription {
           && java.util.Objects.equals(gracePeriodExpiresAt, that.gracePeriodExpiresAt)
           && java.util.Objects.equals(resumesAt, that.resumesAt)
           && java.util.Objects.equals(hasScheduledChanges, that.hasScheduledChanges)
+          && java.util.Objects.equals(updatedAt, that.updatedAt)
           && java.util.Objects.equals(resourceVersion, that.resourceVersion)
           && java.util.Objects.equals(
               omnichannelSubscriptionItemOffers, that.omnichannelSubscriptionItemOffers)
@@ -556,6 +588,7 @@ public class OmnichannelSubscription {
           gracePeriodExpiresAt,
           resumesAt,
           hasScheduledChanges,
+          updatedAt,
           resourceVersion,
           omnichannelSubscriptionItemOffers,
           upcomingRenewal,
