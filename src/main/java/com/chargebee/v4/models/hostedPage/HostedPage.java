@@ -21,6 +21,7 @@ public class HostedPage {
   private String passThruContent;
   private Timestamp createdAt;
   private Timestamp expiresAt;
+  private Layout layout;
   private java.util.Map<String, Object> content;
   private Timestamp updatedAt;
   private Long resourceVersion;
@@ -59,6 +60,10 @@ public class HostedPage {
 
   public Timestamp getExpiresAt() {
     return expiresAt;
+  }
+
+  public Layout getLayout() {
+    return layout;
   }
 
   public java.util.Map<String, Object> getContent() {
@@ -199,6 +204,34 @@ public class HostedPage {
     }
   }
 
+  public enum Layout {
+    IN_APP("in_app"),
+
+    FULL_PAGE("full_page"),
+
+    /** An enum member indicating that Layout was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Layout(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Layout fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Layout enumValue : Layout.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public static HostedPage fromJson(String json) {
     return fromJson(JsonUtil.parse(json));
   }
@@ -225,6 +258,8 @@ public class HostedPage {
     obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
     obj.expiresAt = JsonUtil.getTimestamp(jsonObj, "expires_at");
+
+    obj.layout = Layout.fromString(JsonUtil.getString(jsonObj, "layout"));
 
     JsonObject __contentObj = JsonUtil.getJsonObject(jsonObj, "content");
     obj.content =
@@ -268,6 +303,8 @@ public class HostedPage {
         + createdAt
         + ", expiresAt="
         + expiresAt
+        + ", layout="
+        + layout
         + ", content="
         + content
         + ", updatedAt="
@@ -297,6 +334,7 @@ public class HostedPage {
         && java.util.Objects.equals(passThruContent, that.passThruContent)
         && java.util.Objects.equals(createdAt, that.createdAt)
         && java.util.Objects.equals(expiresAt, that.expiresAt)
+        && java.util.Objects.equals(layout, that.layout)
         && java.util.Objects.equals(content, that.content)
         && java.util.Objects.equals(updatedAt, that.updatedAt)
         && java.util.Objects.equals(resourceVersion, that.resourceVersion)
@@ -317,6 +355,7 @@ public class HostedPage {
         passThruContent,
         createdAt,
         expiresAt,
+        layout,
         content,
         updatedAt,
         resourceVersion,

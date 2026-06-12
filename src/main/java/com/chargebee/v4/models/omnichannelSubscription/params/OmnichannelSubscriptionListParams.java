@@ -80,6 +80,10 @@ public final class OmnichannelSubscriptionListParams {
       return new PurchasedAtFilter("purchased_at", this, queryParams);
     }
 
+    public SortBySortBuilder sortBy() {
+      return new SortBySortBuilder("sort_by", this);
+    }
+
     public OmnichannelSubscriptionListBuilder omnichannelSubscriptionItem(
         OmnichannelSubscriptionItemParams value) {
       queryParams.put("omnichannel_subscription_item", value);
@@ -200,6 +204,47 @@ public final class OmnichannelSubscriptionListParams {
         super(fieldName, builder, params);
       }
     }
+
+    public static final class SortBySortBuilder {
+      private final String fieldName;
+      private final OmnichannelSubscriptionListBuilder builder;
+
+      SortBySortBuilder(String fieldName, OmnichannelSubscriptionListBuilder builder) {
+        this.fieldName = fieldName;
+        this.builder = builder;
+      }
+
+      public SortDirection created_at() {
+        return new SortDirection(fieldName, "created_at", builder);
+      }
+
+      public SortDirection updated_at() {
+        return new SortDirection(fieldName, "updated_at", builder);
+      }
+    }
+
+    public static final class SortDirection {
+      private final String fieldName;
+      private final String selectedField;
+      private final OmnichannelSubscriptionListBuilder builder;
+
+      SortDirection(
+          String fieldName, String selectedField, OmnichannelSubscriptionListBuilder builder) {
+        this.fieldName = fieldName;
+        this.selectedField = selectedField;
+        this.builder = builder;
+      }
+
+      public OmnichannelSubscriptionListBuilder asc() {
+        builder.queryParams.put(fieldName + "[asc]", selectedField);
+        return builder;
+      }
+
+      public OmnichannelSubscriptionListBuilder desc() {
+        builder.queryParams.put(fieldName + "[desc]", selectedField);
+        return builder;
+      }
+    }
   }
 
   public enum SourceIs {
@@ -306,6 +351,62 @@ public final class OmnichannelSubscriptionListParams {
     public static SourceNotIn fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (SourceNotIn enumValue : SourceNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByAsc {
+    CREATED_AT("created_at"),
+
+    UPDATED_AT("updated_at"),
+
+    /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByAsc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByAsc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByAsc enumValue : SortByAsc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByDesc {
+    CREATED_AT("created_at"),
+
+    UPDATED_AT("updated_at"),
+
+    /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByDesc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByDesc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByDesc enumValue : SortByDesc.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
