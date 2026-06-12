@@ -151,6 +151,16 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
         }
 
 
+        public OmnichannelSubscriptionListRequest sortByCreatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
+            return this;
+        }
+        public OmnichannelSubscriptionListRequest sortByUpdatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","updated_at");
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;

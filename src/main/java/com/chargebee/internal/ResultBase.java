@@ -404,6 +404,22 @@ public class ResultBase {
         return (AlertStatus)get("alert_status");
     }
 
+    public LedgerAccountBalance ledgerAccountBalance() {
+        return (LedgerAccountBalance)get("ledger_account_balance");
+    }
+
+    public LedgerOperation ledgerOperation() {
+        return (LedgerOperation)get("ledger_operation");
+    }
+
+    public GrantBlock grantBlock() {
+        return (GrantBlock)get("grant_block");
+    }
+
+    public PromotionalGrant promotionalGrant() {
+        return (PromotionalGrant)get("promotional_grant");
+    }
+
     public ImpactedCustomer impactedCustomer() {
         return (ImpactedCustomer)get("impacted_customer");
     }
@@ -454,6 +470,14 @@ public class ResultBase {
 
     public List<PersonalizedOffer> personalizedOffers() {
         return (List<PersonalizedOffer>) getList("personalized_offers", "personalized_offer");
+    }
+
+    public List<LedgerOperation> ledgerOperations() {
+        return (List<LedgerOperation>) getList("ledger_operations", "ledger_operation");
+    }
+
+    public List<GrantBlock> grantBlocks() {
+        return (List<GrantBlock>) getList("grant_blocks", "grant_block");
     }
 
 

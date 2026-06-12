@@ -842,6 +842,10 @@ public class CreditNote extends Resource<CreditNote> {
         return optLong("fractional_correction");
     }
 
+    public List<String> notes() {
+        return optList("notes", String.class);
+    }
+
     public List<CreditNote.LineItem> lineItems() {
         return optList("line_items", CreditNote.LineItem.class);
     }
