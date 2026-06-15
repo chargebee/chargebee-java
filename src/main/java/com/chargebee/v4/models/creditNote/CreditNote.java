@@ -44,6 +44,7 @@ public class CreditNote {
   private String localCurrencyCode;
   private Long roundOffAmount;
   private Long fractionalCorrection;
+  private List<String> notes;
   private Boolean deleted;
   private String taxCategory;
   private BigDecimal localCurrencyExchangeRate;
@@ -177,6 +178,10 @@ public class CreditNote {
 
   public Long getFractionalCorrection() {
     return fractionalCorrection;
+  }
+
+  public List<String> getNotes() {
+    return notes;
   }
 
   public Boolean getDeleted() {
@@ -516,6 +521,8 @@ public class CreditNote {
 
     knownFields.add("fractional_correction");
 
+    knownFields.add("notes");
+
     knownFields.add("deleted");
 
     knownFields.add("tax_category");
@@ -611,6 +618,11 @@ public class CreditNote {
     obj.roundOffAmount = JsonUtil.getLong(jsonObj, "round_off_amount");
 
     obj.fractionalCorrection = JsonUtil.getLong(jsonObj, "fractional_correction");
+
+    JsonArray __notesArr = JsonUtil.getJsonArray(jsonObj, "notes");
+    if (__notesArr != null) {
+      obj.notes = JsonUtil.parseArrayOfString(__notesArr);
+    }
 
     obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
 
@@ -745,6 +757,8 @@ public class CreditNote {
         + roundOffAmount
         + ", fractionalCorrection="
         + fractionalCorrection
+        + ", notes="
+        + notes
         + ", deleted="
         + deleted
         + ", taxCategory="
@@ -824,6 +838,7 @@ public class CreditNote {
         && java.util.Objects.equals(localCurrencyCode, that.localCurrencyCode)
         && java.util.Objects.equals(roundOffAmount, that.roundOffAmount)
         && java.util.Objects.equals(fractionalCorrection, that.fractionalCorrection)
+        && java.util.Objects.equals(notes, that.notes)
         && java.util.Objects.equals(deleted, that.deleted)
         && java.util.Objects.equals(taxCategory, that.taxCategory)
         && java.util.Objects.equals(localCurrencyExchangeRate, that.localCurrencyExchangeRate)
@@ -879,6 +894,7 @@ public class CreditNote {
         localCurrencyCode,
         roundOffAmount,
         fractionalCorrection,
+        notes,
         deleted,
         taxCategory,
         localCurrencyExchangeRate,

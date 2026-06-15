@@ -12,6 +12,8 @@ import com.chargebee.v4.services.BusinessEntityService;
 
 import com.chargebee.v4.services.OfferEventService;
 
+import com.chargebee.v4.services.PromotionalGrantService;
+
 import com.chargebee.v4.services.InAppSubscriptionService;
 
 import com.chargebee.v4.services.Pc2MigrationService;
@@ -19,6 +21,8 @@ import com.chargebee.v4.services.Pc2MigrationService;
 import com.chargebee.v4.services.CreditNoteService;
 
 import com.chargebee.v4.services.CouponSetService;
+
+import com.chargebee.v4.services.LedgerAccountBalanceService;
 
 import com.chargebee.v4.services.QuoteService;
 
@@ -60,6 +64,8 @@ import com.chargebee.v4.services.EntitlementService;
 
 import com.chargebee.v4.services.AdditionalBillingLogiqService;
 
+import com.chargebee.v4.services.LedgerOperationService;
+
 import com.chargebee.v4.services.UsageSummaryService;
 
 import com.chargebee.v4.services.AlertStatusService;
@@ -83,6 +89,8 @@ import com.chargebee.v4.services.PriceVariantService;
 import com.chargebee.v4.services.FullExportService;
 
 import com.chargebee.v4.services.VirtualBankAccountService;
+
+import com.chargebee.v4.services.GrantBlockService;
 
 import com.chargebee.v4.services.AddonService;
 
@@ -189,6 +197,8 @@ final class ServiceRegistry {
 
   private volatile OfferEventService offerEventService;
 
+  private volatile PromotionalGrantService promotionalGrantService;
+
   private volatile InAppSubscriptionService inAppSubscriptionService;
 
   private volatile Pc2MigrationService pc2MigrationService;
@@ -196,6 +206,8 @@ final class ServiceRegistry {
   private volatile CreditNoteService creditNoteService;
 
   private volatile CouponSetService couponSetService;
+
+  private volatile LedgerAccountBalanceService ledgerAccountBalanceService;
 
   private volatile QuoteService quoteService;
 
@@ -237,6 +249,8 @@ final class ServiceRegistry {
 
   private volatile AdditionalBillingLogiqService additionalBillingLogiqService;
 
+  private volatile LedgerOperationService ledgerOperationService;
+
   private volatile UsageSummaryService usageSummaryService;
 
   private volatile AlertStatusService alertStatusService;
@@ -260,6 +274,8 @@ final class ServiceRegistry {
   private volatile FullExportService fullExportService;
 
   private volatile VirtualBankAccountService virtualBankAccountService;
+
+  private volatile GrantBlockService grantBlockService;
 
   private volatile AddonService addonService;
 
@@ -442,6 +458,21 @@ final class ServiceRegistry {
   }
 
   /**
+   * Get or create the PromotionalGrantService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  PromotionalGrantService promotionalGrants() {
+    if (promotionalGrantService == null) {
+      synchronized (this) {
+        if (promotionalGrantService == null) {
+          promotionalGrantService = new PromotionalGrantService(client);
+        }
+      }
+    }
+    return promotionalGrantService;
+  }
+
+  /**
    * Get or create the InAppSubscriptionService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
@@ -499,6 +530,21 @@ final class ServiceRegistry {
       }
     }
     return couponSetService;
+  }
+
+  /**
+   * Get or create the LedgerAccountBalanceService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  LedgerAccountBalanceService ledgerAccountBalances() {
+    if (ledgerAccountBalanceService == null) {
+      synchronized (this) {
+        if (ledgerAccountBalanceService == null) {
+          ledgerAccountBalanceService = new LedgerAccountBalanceService(client);
+        }
+      }
+    }
+    return ledgerAccountBalanceService;
   }
 
   /**
@@ -802,6 +848,21 @@ final class ServiceRegistry {
   }
 
   /**
+   * Get or create the LedgerOperationService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  LedgerOperationService ledgerOperations() {
+    if (ledgerOperationService == null) {
+      synchronized (this) {
+        if (ledgerOperationService == null) {
+          ledgerOperationService = new LedgerOperationService(client);
+        }
+      }
+    }
+    return ledgerOperationService;
+  }
+
+  /**
    * Get or create the UsageSummaryService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
@@ -979,6 +1040,21 @@ final class ServiceRegistry {
       }
     }
     return virtualBankAccountService;
+  }
+
+  /**
+   * Get or create the GrantBlockService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  GrantBlockService grantBlocks() {
+    if (grantBlockService == null) {
+      synchronized (this) {
+        if (grantBlockService == null) {
+          grantBlockService = new GrantBlockService(client);
+        }
+      }
+    }
+    return grantBlockService;
   }
 
   /**

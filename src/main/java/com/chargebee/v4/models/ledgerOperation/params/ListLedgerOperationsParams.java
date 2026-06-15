@@ -5,7 +5,7 @@
  * Copyright 2025 Chargebee Inc.
  */
 
-package com.chargebee.v4.models.ramp.params;
+package com.chargebee.v4.models.ledgerOperation.params;
 
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
@@ -16,11 +16,11 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public final class RampListParams {
+public final class ListLedgerOperationsParams {
 
   private final Map<String, Object> queryParams;
 
-  private RampListParams(RampListBuilder builder) {
+  private ListLedgerOperationsParams(ListLedgerOperationsBuilder builder) {
     this.queryParams = Collections.unmodifiableMap(new LinkedHashMap<>(builder.queryParams));
   }
 
@@ -29,76 +29,94 @@ public final class RampListParams {
     return queryParams;
   }
 
-  public RampListBuilder toBuilder() {
-    RampListBuilder builder = new RampListBuilder();
+  public ListLedgerOperationsBuilder toBuilder() {
+    ListLedgerOperationsBuilder builder = new ListLedgerOperationsBuilder();
     builder.queryParams.putAll(queryParams);
     return builder;
   }
 
-  /** Create a new builder for RampListParams. */
+  /** Create a new builder for ListLedgerOperationsParams. */
   @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-  public static RampListBuilder builder() {
-    return new RampListBuilder();
+  public static ListLedgerOperationsBuilder builder() {
+    return new ListLedgerOperationsBuilder();
   }
 
-  public static final class RampListBuilder {
+  public static final class ListLedgerOperationsBuilder {
     private final Map<String, Object> queryParams = new LinkedHashMap<>();
 
-    private RampListBuilder() {}
+    private ListLedgerOperationsBuilder() {}
 
-    public RampListBuilder limit(Integer value) {
+    public ListLedgerOperationsBuilder limit(Integer value) {
       queryParams.put("limit", value);
       return this;
     }
 
-    public RampListBuilder offset(String value) {
+    public ListLedgerOperationsBuilder offset(String value) {
       queryParams.put("offset", value);
       return this;
-    }
-
-    public RampListBuilder includeDeleted(Boolean value) {
-      queryParams.put("include_deleted", value);
-      return this;
-    }
-
-    public StatusFilter status() {
-      return new StatusFilter("status", this, queryParams);
     }
 
     public SubscriptionIdFilter subscriptionId() {
       return new SubscriptionIdFilter("subscription_id", this, queryParams);
     }
 
-    public EffectiveFromFilter effectiveFrom() {
-      return new EffectiveFromFilter("effective_from", this, queryParams);
+    public UnitIdFilter unitId() {
+      return new UnitIdFilter("unit_id", this, queryParams);
     }
 
-    public UpdatedAtFilter updatedAt() {
-      return new UpdatedAtFilter("updated_at", this, queryParams);
+    public CreatedAtFilter createdAt() {
+      return new CreatedAtFilter("created_at", this, queryParams);
+    }
+
+    public TypeFilter type() {
+      return new TypeFilter("type", this, queryParams);
     }
 
     public SortBySortBuilder sortBy() {
       return new SortBySortBuilder("sort_by", this);
     }
 
-    public RampListParams build() {
-      return new RampListParams(this);
+    public ListLedgerOperationsParams build() {
+      return new ListLedgerOperationsParams(this);
     }
 
-    public static final class StatusFilter extends EnumFilter<Status, RampListBuilder> {
-      StatusFilter(String fieldName, RampListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params, Status::getValue);
+    public static final class SubscriptionIdFilter
+        extends StringFilter<ListLedgerOperationsBuilder> {
+      SubscriptionIdFilter(
+          String fieldName, ListLedgerOperationsBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
+      }
+    }
+
+    public static final class UnitIdFilter extends StringFilter<ListLedgerOperationsBuilder> {
+      UnitIdFilter(
+          String fieldName, ListLedgerOperationsBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
+      }
+    }
+
+    public static final class CreatedAtFilter extends TimestampFilter<ListLedgerOperationsBuilder> {
+      CreatedAtFilter(
+          String fieldName, ListLedgerOperationsBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
+      }
+    }
+
+    public static final class TypeFilter extends EnumFilter<Type, ListLedgerOperationsBuilder> {
+      TypeFilter(
+          String fieldName, ListLedgerOperationsBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params, Type::getValue);
       }
 
       /**
        * @deprecated This method accepting raw String will be removed in a future version. Use the
        *     type-safe enum overload instead:
-       *     <pre>{@code .status().is(Status.YOUR_VALUE)}</pre>
+       *     <pre>{@code .type().is(Type.YOUR_VALUE)}</pre>
        *
-       * @see #is(Status)
+       * @see #is(Type)
        */
       @Deprecated
-      public RampListBuilder is(String value) {
+      public ListLedgerOperationsBuilder is(String value) {
         params.put(fieldName + "[is]", value);
         return builder;
       }
@@ -106,12 +124,12 @@ public final class RampListParams {
       /**
        * @deprecated This method accepting raw String will be removed in a future version. Use the
        *     type-safe enum overload instead:
-       *     <pre>{@code .status().isNot(Status.YOUR_VALUE)}</pre>
+       *     <pre>{@code .type().isNot(Type.YOUR_VALUE)}</pre>
        *
-       * @see #isNot(Status)
+       * @see #isNot(Type)
        */
       @Deprecated
-      public RampListBuilder isNot(String value) {
+      public ListLedgerOperationsBuilder isNot(String value) {
         params.put(fieldName + "[is_not]", value);
         return builder;
       }
@@ -119,12 +137,12 @@ public final class RampListParams {
       /**
        * @deprecated This method accepting raw String will be removed in a future version. Use the
        *     type-safe enum overload instead:
-       *     <pre>{@code .status().in(Status.VALUE1, Status.VALUE2)}</pre>
+       *     <pre>{@code .type().in(Type.VALUE1, Type.VALUE2)}</pre>
        *
-       * @see #in(Status[])
+       * @see #in(Type[])
        */
       @Deprecated
-      public RampListBuilder in(String... values) {
+      public ListLedgerOperationsBuilder in(String... values) {
         params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
         return builder;
       }
@@ -132,90 +150,78 @@ public final class RampListParams {
       /**
        * @deprecated This method accepting raw String will be removed in a future version. Use the
        *     type-safe enum overload instead:
-       *     <pre>{@code .status().notIn(Status.VALUE1, Status.VALUE2)}</pre>
+       *     <pre>{@code .type().notIn(Type.VALUE1, Type.VALUE2)}</pre>
        *
-       * @see #notIn(Status[])
+       * @see #notIn(Type[])
        */
       @Deprecated
-      public RampListBuilder notIn(String... values) {
+      public ListLedgerOperationsBuilder notIn(String... values) {
         params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
         return builder;
       }
     }
 
-    public static final class SubscriptionIdFilter extends StringFilter<RampListBuilder> {
-      SubscriptionIdFilter(String fieldName, RampListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
-      }
-    }
-
-    public static final class EffectiveFromFilter extends TimestampFilter<RampListBuilder> {
-      EffectiveFromFilter(String fieldName, RampListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
-      }
-    }
-
-    public static final class UpdatedAtFilter extends TimestampFilter<RampListBuilder> {
-      UpdatedAtFilter(String fieldName, RampListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
-      }
-    }
-
     public static final class SortBySortBuilder {
       private final String fieldName;
-      private final RampListBuilder builder;
+      private final ListLedgerOperationsBuilder builder;
 
-      SortBySortBuilder(String fieldName, RampListBuilder builder) {
+      SortBySortBuilder(String fieldName, ListLedgerOperationsBuilder builder) {
         this.fieldName = fieldName;
         this.builder = builder;
       }
 
-      public SortDirection effective_from() {
-        return new SortDirection(fieldName, "effective_from", builder);
-      }
-
-      public SortDirection updated_at() {
-        return new SortDirection(fieldName, "updated_at", builder);
+      public SortDirection created_at() {
+        return new SortDirection(fieldName, "created_at", builder);
       }
     }
 
     public static final class SortDirection {
       private final String fieldName;
       private final String selectedField;
-      private final RampListBuilder builder;
+      private final ListLedgerOperationsBuilder builder;
 
-      SortDirection(String fieldName, String selectedField, RampListBuilder builder) {
+      SortDirection(String fieldName, String selectedField, ListLedgerOperationsBuilder builder) {
         this.fieldName = fieldName;
         this.selectedField = selectedField;
         this.builder = builder;
       }
 
-      public RampListBuilder asc() {
+      public ListLedgerOperationsBuilder asc() {
         builder.queryParams.put(fieldName + "[asc]", selectedField);
         return builder;
       }
 
-      public RampListBuilder desc() {
+      public ListLedgerOperationsBuilder desc() {
         builder.queryParams.put(fieldName + "[desc]", selectedField);
         return builder;
       }
     }
   }
 
-  public enum StatusIs {
-    SCHEDULED("scheduled"),
+  public enum TypeIs {
+    ALLOCATION("allocation"),
 
-    SUCCEEDED("succeeded"),
+    CAPTURE("capture"),
 
-    FAILED("failed"),
+    AUTHORIZE("authorize"),
 
-    DRAFT("draft"),
+    RELEASE_AUTHORIZATION("release_authorization"),
 
-    /** An enum member indicating that StatusIs was instantiated with an unknown value. */
+    CAPTURE_AUTHORIZATION("capture_authorization"),
+
+    EXPIRY("expiry"),
+
+    VOID("void"),
+
+    ROLLOVER("rollover"),
+
+    ADJUSTMENT("adjustment"),
+
+    /** An enum member indicating that TypeIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
 
-    StatusIs(String value) {
+    TypeIs(String value) {
       this.value = value;
     }
 
@@ -223,9 +229,9 @@ public final class RampListParams {
       return value;
     }
 
-    public static StatusIs fromString(String value) {
+    public static TypeIs fromString(String value) {
       if (value == null) return _UNKNOWN;
-      for (StatusIs enumValue : StatusIs.values()) {
+      for (TypeIs enumValue : TypeIs.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
@@ -234,20 +240,30 @@ public final class RampListParams {
     }
   }
 
-  public enum StatusIn {
-    SCHEDULED("scheduled"),
+  public enum TypeIn {
+    ALLOCATION("allocation"),
 
-    SUCCEEDED("succeeded"),
+    CAPTURE("capture"),
 
-    FAILED("failed"),
+    AUTHORIZE("authorize"),
 
-    DRAFT("draft"),
+    RELEASE_AUTHORIZATION("release_authorization"),
 
-    /** An enum member indicating that StatusIn was instantiated with an unknown value. */
+    CAPTURE_AUTHORIZATION("capture_authorization"),
+
+    EXPIRY("expiry"),
+
+    VOID("void"),
+
+    ROLLOVER("rollover"),
+
+    ADJUSTMENT("adjustment"),
+
+    /** An enum member indicating that TypeIn was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
 
-    StatusIn(String value) {
+    TypeIn(String value) {
       this.value = value;
     }
 
@@ -255,9 +271,9 @@ public final class RampListParams {
       return value;
     }
 
-    public static StatusIn fromString(String value) {
+    public static TypeIn fromString(String value) {
       if (value == null) return _UNKNOWN;
-      for (StatusIn enumValue : StatusIn.values()) {
+      for (TypeIn enumValue : TypeIn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
@@ -267,9 +283,7 @@ public final class RampListParams {
   }
 
   public enum SortByAsc {
-    EFFECTIVE_FROM("effective_from"),
-
-    UPDATED_AT("updated_at"),
+    CREATED_AT("created_at"),
 
     /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -295,9 +309,7 @@ public final class RampListParams {
   }
 
   public enum SortByDesc {
-    EFFECTIVE_FROM("effective_from"),
-
-    UPDATED_AT("updated_at"),
+    CREATED_AT("created_at"),
 
     /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -322,20 +334,30 @@ public final class RampListParams {
     }
   }
 
-  public enum Status {
-    SCHEDULED("scheduled"),
+  public enum Type {
+    ALLOCATION("allocation"),
 
-    SUCCEEDED("succeeded"),
+    CAPTURE("capture"),
 
-    FAILED("failed"),
+    AUTHORIZE("authorize"),
 
-    DRAFT("draft"),
+    RELEASE_AUTHORIZATION("release_authorization"),
 
-    /** An enum member indicating that Status was instantiated with an unknown value. */
+    CAPTURE_AUTHORIZATION("capture_authorization"),
+
+    EXPIRY("expiry"),
+
+    VOID("void"),
+
+    ROLLOVER("rollover"),
+
+    ADJUSTMENT("adjustment"),
+
+    /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
 
-    Status(String value) {
+    Type(String value) {
       this.value = value;
     }
 
@@ -343,9 +365,9 @@ public final class RampListParams {
       return value;
     }
 
-    public static Status fromString(String value) {
+    public static Type fromString(String value) {
       if (value == null) return _UNKNOWN;
-      for (Status enumValue : Status.values()) {
+      for (Type enumValue : Type.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

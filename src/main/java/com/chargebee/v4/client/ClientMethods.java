@@ -12,6 +12,8 @@ import com.chargebee.v4.services.BusinessEntityService;
 
 import com.chargebee.v4.services.OfferEventService;
 
+import com.chargebee.v4.services.PromotionalGrantService;
+
 import com.chargebee.v4.services.InAppSubscriptionService;
 
 import com.chargebee.v4.services.Pc2MigrationService;
@@ -19,6 +21,8 @@ import com.chargebee.v4.services.Pc2MigrationService;
 import com.chargebee.v4.services.CreditNoteService;
 
 import com.chargebee.v4.services.CouponSetService;
+
+import com.chargebee.v4.services.LedgerAccountBalanceService;
 
 import com.chargebee.v4.services.QuoteService;
 
@@ -60,6 +64,8 @@ import com.chargebee.v4.services.EntitlementService;
 
 import com.chargebee.v4.services.AdditionalBillingLogiqService;
 
+import com.chargebee.v4.services.LedgerOperationService;
+
 import com.chargebee.v4.services.UsageSummaryService;
 
 import com.chargebee.v4.services.AlertStatusService;
@@ -83,6 +89,8 @@ import com.chargebee.v4.services.PriceVariantService;
 import com.chargebee.v4.services.FullExportService;
 
 import com.chargebee.v4.services.VirtualBankAccountService;
+
+import com.chargebee.v4.services.GrantBlockService;
 
 import com.chargebee.v4.services.AddonService;
 
@@ -219,6 +227,13 @@ public interface ClientMethods {
   OfferEventService offerEvents();
 
   /**
+   * Access promotional_grant-related operations.
+   *
+   * @return PromotionalGrantService instance for fluent API access
+   */
+  PromotionalGrantService promotionalGrants();
+
+  /**
    * Access in_app_subscription-related operations.
    *
    * @return InAppSubscriptionService instance for fluent API access
@@ -245,6 +260,13 @@ public interface ClientMethods {
    * @return CouponSetService instance for fluent API access
    */
   CouponSetService couponSets();
+
+  /**
+   * Access ledger_account_balance-related operations.
+   *
+   * @return LedgerAccountBalanceService instance for fluent API access
+   */
+  LedgerAccountBalanceService ledgerAccountBalances();
 
   /**
    * Access quote-related operations.
@@ -387,6 +409,13 @@ public interface ClientMethods {
   AdditionalBillingLogiqService additionalBillingLogiqs();
 
   /**
+   * Access ledger_operation-related operations.
+   *
+   * @return LedgerOperationService instance for fluent API access
+   */
+  LedgerOperationService ledgerOperations();
+
+  /**
    * Access usage_summary-related operations.
    *
    * @return UsageSummaryService instance for fluent API access
@@ -469,6 +498,13 @@ public interface ClientMethods {
    * @return VirtualBankAccountService instance for fluent API access
    */
   VirtualBankAccountService virtualBankAccounts();
+
+  /**
+   * Access grant_block-related operations.
+   *
+   * @return GrantBlockService instance for fluent API access
+   */
+  GrantBlockService grantBlocks();
 
   /**
    * Access addon-related operations.

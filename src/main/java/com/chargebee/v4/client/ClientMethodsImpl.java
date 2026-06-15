@@ -12,6 +12,8 @@ import com.chargebee.v4.services.BusinessEntityService;
 
 import com.chargebee.v4.services.OfferEventService;
 
+import com.chargebee.v4.services.PromotionalGrantService;
+
 import com.chargebee.v4.services.InAppSubscriptionService;
 
 import com.chargebee.v4.services.Pc2MigrationService;
@@ -19,6 +21,8 @@ import com.chargebee.v4.services.Pc2MigrationService;
 import com.chargebee.v4.services.CreditNoteService;
 
 import com.chargebee.v4.services.CouponSetService;
+
+import com.chargebee.v4.services.LedgerAccountBalanceService;
 
 import com.chargebee.v4.services.QuoteService;
 
@@ -60,6 +64,8 @@ import com.chargebee.v4.services.EntitlementService;
 
 import com.chargebee.v4.services.AdditionalBillingLogiqService;
 
+import com.chargebee.v4.services.LedgerOperationService;
+
 import com.chargebee.v4.services.UsageSummaryService;
 
 import com.chargebee.v4.services.AlertStatusService;
@@ -83,6 +89,8 @@ import com.chargebee.v4.services.PriceVariantService;
 import com.chargebee.v4.services.FullExportService;
 
 import com.chargebee.v4.services.VirtualBankAccountService;
+
+import com.chargebee.v4.services.GrantBlockService;
 
 import com.chargebee.v4.services.AddonService;
 
@@ -209,6 +217,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   }
 
   @Override
+  public PromotionalGrantService promotionalGrants() {
+    return getServiceRegistry().promotionalGrants();
+  }
+
+  @Override
   public InAppSubscriptionService inAppSubscriptions() {
     return getServiceRegistry().inAppSubscriptions();
   }
@@ -226,6 +239,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public CouponSetService couponSets() {
     return getServiceRegistry().couponSets();
+  }
+
+  @Override
+  public LedgerAccountBalanceService ledgerAccountBalances() {
+    return getServiceRegistry().ledgerAccountBalances();
   }
 
   @Override
@@ -329,6 +347,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   }
 
   @Override
+  public LedgerOperationService ledgerOperations() {
+    return getServiceRegistry().ledgerOperations();
+  }
+
+  @Override
   public UsageSummaryService usageSummaries() {
     return getServiceRegistry().usageSummaries();
   }
@@ -386,6 +409,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public VirtualBankAccountService virtualBankAccounts() {
     return getServiceRegistry().virtualBankAccounts();
+  }
+
+  @Override
+  public GrantBlockService grantBlocks() {
+    return getServiceRegistry().grantBlocks();
   }
 
   @Override
