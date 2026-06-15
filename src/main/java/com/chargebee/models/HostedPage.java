@@ -18,6 +18,7 @@ public class HostedPage extends Resource<HostedPage> {
         CHECKOUT_EXISTING,
         @Deprecated
         UPDATE_CARD,
+        @Deprecated
         UPDATE_PAYMENT_METHOD,
         MANAGE_PAYMENT_SOURCES,
         COLLECT_NOW,
@@ -103,6 +104,10 @@ public class HostedPage extends Resource<HostedPage> {
         return optTimestamp("expires_at");
     }
 
+    public Layout layout() {
+        return optEnum("layout", Layout.class);
+    }
+
     public Timestamp updatedAt() {
         return optTimestamp("updated_at");
     }
@@ -158,6 +163,7 @@ public class HostedPage extends Resource<HostedPage> {
         return new UpdateCardRequest(Method.POST, uri);
     }
 
+    @Deprecated
     public static UpdatePaymentMethodRequest updatePaymentMethod() {
         String uri = uri("hosted_pages", "update_payment_method");
         return new UpdatePaymentMethodRequest(Method.POST, uri);
