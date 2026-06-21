@@ -68,7 +68,8 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
     String path =
         buildPathWithParams(
             "/tp_site_users/{tp-site-user-domain}/users", "tp-site-user-domain", tpSiteUserDomain);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "tpSiteUser", "usersForTpSiteUser", path, params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -78,7 +79,7 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
     String path =
         buildPathWithParams(
             "/tp_site_users/{tp-site-user-domain}/users", "tp-site-user-domain", tpSiteUserDomain);
-    return get(path, null);
+    return get("tpSiteUser", "usersForTpSiteUser", path, null);
   }
 
   /**
@@ -113,7 +114,11 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
     String path =
         buildPathWithParams(
             "/tp_site_users/{tp-site-user-domain}/users", "tp-site-user-domain", tpSiteUserDomain);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "tpSiteUser",
+            "usersForTpSiteUser",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 UsersForTpSiteUserResponse.fromJson(
@@ -126,7 +131,7 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
     String path =
         buildPathWithParams(
             "/tp_site_users/{tp-site-user-domain}/users", "tp-site-user-domain", tpSiteUserDomain);
-    return getAsync(path, null)
+    return getAsync("tpSiteUser", "usersForTpSiteUser", path, null)
         .thenApply(
             response ->
                 UsersForTpSiteUserResponse.fromJson(
@@ -139,7 +144,11 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
    */
   Response payNowEnableLiveRaw(TpSiteUserPayNowEnableLiveParams params) throws ChargebeeException {
 
-    return post("/tp_site_users/pay_now_enable_live", params != null ? params.toFormData() : null);
+    return post(
+        "tpSiteUser",
+        "payNowEnableLive",
+        "/tp_site_users/pay_now_enable_live",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -148,7 +157,8 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
    */
   Response payNowEnableLiveRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/tp_site_users/pay_now_enable_live", jsonPayload);
+    return postJson(
+        "tpSiteUser", "payNowEnableLive", "/tp_site_users/pay_now_enable_live", jsonPayload);
   }
 
   public TpSiteUserPayNowEnableLiveResponse payNowEnableLive(
@@ -163,7 +173,10 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
       TpSiteUserPayNowEnableLiveParams params) {
 
     return postAsync(
-            "/tp_site_users/pay_now_enable_live", params != null ? params.toFormData() : null)
+            "tpSiteUser",
+            "payNowEnableLive",
+            "/tp_site_users/pay_now_enable_live",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 TpSiteUserPayNowEnableLiveResponse.fromJson(response.getBodyAsString(), response));
@@ -178,7 +191,8 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
     String path =
         buildPathWithParams(
             "/tp_site_users/{tp-site-user-domain}/guests", "tp-site-user-domain", tpSiteUserDomain);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "tpSiteUser", "guestsForTpSiteUser", path, params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -188,7 +202,7 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
     String path =
         buildPathWithParams(
             "/tp_site_users/{tp-site-user-domain}/guests", "tp-site-user-domain", tpSiteUserDomain);
-    return get(path, null);
+    return get("tpSiteUser", "guestsForTpSiteUser", path, null);
   }
 
   /**
@@ -223,7 +237,11 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
     String path =
         buildPathWithParams(
             "/tp_site_users/{tp-site-user-domain}/guests", "tp-site-user-domain", tpSiteUserDomain);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "tpSiteUser",
+            "guestsForTpSiteUser",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 GuestsForTpSiteUserResponse.fromJson(
@@ -236,7 +254,7 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
     String path =
         buildPathWithParams(
             "/tp_site_users/{tp-site-user-domain}/guests", "tp-site-user-domain", tpSiteUserDomain);
-    return getAsync(path, null)
+    return getAsync("tpSiteUser", "guestsForTpSiteUser", path, null)
         .thenApply(
             response ->
                 GuestsForTpSiteUserResponse.fromJson(

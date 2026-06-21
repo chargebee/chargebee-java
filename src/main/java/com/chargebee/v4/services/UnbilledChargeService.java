@@ -78,7 +78,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
             "unbilled-charge-id",
             unbilledChargeId);
 
-    return post(path, null);
+    return post("unbilledCharge", "delete", path, null);
   }
 
   public UnbilledChargeDeleteResponse delete(String unbilledChargeId) throws ChargebeeException {
@@ -94,7 +94,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
             "unbilled-charge-id",
             unbilledChargeId);
 
-    return postAsync(path, null)
+    return postAsync("unbilledCharge", "delete", path, null)
         .thenApply(
             response ->
                 UnbilledChargeDeleteResponse.fromJson(response.getBodyAsString(), response));
@@ -108,7 +108,10 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
       throws ChargebeeException {
 
     return post(
-        "/unbilled_charges/invoice_now_estimate", params != null ? params.toFormData() : null);
+        "unbilledCharge",
+        "invoiceNowEstimate",
+        "/unbilled_charges/invoice_now_estimate",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -117,7 +120,11 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
    */
   Response invoiceNowEstimateRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/unbilled_charges/invoice_now_estimate", jsonPayload);
+    return postJson(
+        "unbilledCharge",
+        "invoiceNowEstimate",
+        "/unbilled_charges/invoice_now_estimate",
+        jsonPayload);
   }
 
   public UnbilledChargeInvoiceNowEstimateResponse invoiceNowEstimate(
@@ -132,7 +139,10 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
       UnbilledChargeInvoiceNowEstimateParams params) {
 
     return postAsync(
-            "/unbilled_charges/invoice_now_estimate", params != null ? params.toFormData() : null)
+            "unbilledCharge",
+            "invoiceNowEstimate",
+            "/unbilled_charges/invoice_now_estimate",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 UnbilledChargeInvoiceNowEstimateResponse.fromJson(
@@ -147,7 +157,10 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
       throws ChargebeeException {
 
     return post(
-        "/unbilled_charges/invoice_unbilled_charges", params != null ? params.toFormData() : null);
+        "unbilledCharge",
+        "invoiceUnbilledCharges",
+        "/unbilled_charges/invoice_unbilled_charges",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -156,7 +169,11 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
    */
   Response invoiceUnbilledChargesRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/unbilled_charges/invoice_unbilled_charges", jsonPayload);
+    return postJson(
+        "unbilledCharge",
+        "invoiceUnbilledCharges",
+        "/unbilled_charges/invoice_unbilled_charges",
+        jsonPayload);
   }
 
   public InvoiceUnbilledChargesResponse invoiceUnbilledCharges(InvoiceUnbilledChargesParams params)
@@ -171,6 +188,8 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
       InvoiceUnbilledChargesParams params) {
 
     return postAsync(
+            "unbilledCharge",
+            "invoiceUnbilledCharges",
             "/unbilled_charges/invoice_unbilled_charges",
             params != null ? params.toFormData() : null)
         .thenApply(
@@ -181,13 +200,17 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
   /** list a unbilledCharge using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(UnbilledChargeListParams params) throws ChargebeeException {
 
-    return get("/unbilled_charges", params != null ? params.toQueryParams() : null);
+    return get(
+        "unbilledCharge",
+        "list",
+        "/unbilled_charges",
+        params != null ? params.toQueryParams() : null);
   }
 
   /** list a unbilledCharge without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/unbilled_charges", null);
+    return get("unbilledCharge", "list", "/unbilled_charges", null);
   }
 
   /** list a unbilledCharge using raw JSON payload (executes immediately) - returns raw Response. */
@@ -206,7 +229,11 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
   /** Async variant of list for unbilledCharge with params. */
   public CompletableFuture<UnbilledChargeListResponse> listAsync(UnbilledChargeListParams params) {
 
-    return getAsync("/unbilled_charges", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "unbilledCharge",
+            "list",
+            "/unbilled_charges",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 UnbilledChargeListResponse.fromJson(
@@ -222,7 +249,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
   /** Async variant of list for unbilledCharge without params. */
   public CompletableFuture<UnbilledChargeListResponse> listAsync() {
 
-    return getAsync("/unbilled_charges", null)
+    return getAsync("unbilledCharge", "list", "/unbilled_charges", null)
         .thenApply(
             response ->
                 UnbilledChargeListResponse.fromJson(
@@ -234,7 +261,11 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
    */
   Response createRaw(UnbilledChargeCreateParams params) throws ChargebeeException {
 
-    return post("/unbilled_charges", params != null ? params.toFormData() : null);
+    return post(
+        "unbilledCharge",
+        "create",
+        "/unbilled_charges",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -242,7 +273,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
    */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/unbilled_charges", jsonPayload);
+    return postJson("unbilledCharge", "create", "/unbilled_charges", jsonPayload);
   }
 
   public UnbilledChargeCreateResponse create(UnbilledChargeCreateParams params)
@@ -256,7 +287,11 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
   public CompletableFuture<UnbilledChargeCreateResponse> createAsync(
       UnbilledChargeCreateParams params) {
 
-    return postAsync("/unbilled_charges", params != null ? params.toFormData() : null)
+    return postAsync(
+            "unbilledCharge",
+            "create",
+            "/unbilled_charges",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 UnbilledChargeCreateResponse.fromJson(response.getBodyAsString(), response));
@@ -268,7 +303,11 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
    */
   Response createUnbilledChargeRaw(CreateUnbilledChargeParams params) throws ChargebeeException {
 
-    return post("/unbilled_charges/create", params != null ? params.toFormData() : null);
+    return post(
+        "unbilledCharge",
+        "createUnbilledCharge",
+        "/unbilled_charges/create",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -277,7 +316,8 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
    */
   Response createUnbilledChargeRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/unbilled_charges/create", jsonPayload);
+    return postJson(
+        "unbilledCharge", "createUnbilledCharge", "/unbilled_charges/create", jsonPayload);
   }
 
   public CreateUnbilledChargeResponse createUnbilledCharge(CreateUnbilledChargeParams params)
@@ -291,7 +331,11 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
   public CompletableFuture<CreateUnbilledChargeResponse> createUnbilledChargeAsync(
       CreateUnbilledChargeParams params) {
 
-    return postAsync("/unbilled_charges/create", params != null ? params.toFormData() : null)
+    return postAsync(
+            "unbilledCharge",
+            "createUnbilledCharge",
+            "/unbilled_charges/create",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 CreateUnbilledChargeResponse.fromJson(response.getBodyAsString(), response));

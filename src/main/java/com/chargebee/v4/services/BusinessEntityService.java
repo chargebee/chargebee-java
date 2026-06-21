@@ -62,13 +62,17 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
    */
   Response getTransfersRaw(BusinessEntityGetTransfersParams params) throws ChargebeeException {
 
-    return get("/business_entities/transfers", params != null ? params.toQueryParams() : null);
+    return get(
+        "businessEntity",
+        "getTransfers",
+        "/business_entities/transfers",
+        params != null ? params.toQueryParams() : null);
   }
 
   /** getTransfers a businessEntity without params (executes immediately) - returns raw Response. */
   Response getTransfersRaw() throws ChargebeeException {
 
-    return get("/business_entities/transfers", null);
+    return get("businessEntity", "getTransfers", "/business_entities/transfers", null);
   }
 
   /**
@@ -92,7 +96,11 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
   public CompletableFuture<BusinessEntityGetTransfersResponse> getTransfersAsync(
       BusinessEntityGetTransfersParams params) {
 
-    return getAsync("/business_entities/transfers", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "businessEntity",
+            "getTransfers",
+            "/business_entities/transfers",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 BusinessEntityGetTransfersResponse.fromJson(
@@ -109,7 +117,7 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
   /** Async variant of getTransfers for businessEntity without params. */
   public CompletableFuture<BusinessEntityGetTransfersResponse> getTransfersAsync() {
 
-    return getAsync("/business_entities/transfers", null)
+    return getAsync("businessEntity", "getTransfers", "/business_entities/transfers", null)
         .thenApply(
             response ->
                 BusinessEntityGetTransfersResponse.fromJson(
@@ -123,7 +131,11 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
   Response createTransfersRaw(BusinessEntityCreateTransfersParams params)
       throws ChargebeeException {
 
-    return post("/business_entities/transfers", params != null ? params.toFormData() : null);
+    return post(
+        "businessEntity",
+        "createTransfers",
+        "/business_entities/transfers",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -132,7 +144,8 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
    */
   Response createTransfersRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/business_entities/transfers", jsonPayload);
+    return postJson(
+        "businessEntity", "createTransfers", "/business_entities/transfers", jsonPayload);
   }
 
   public BusinessEntityCreateTransfersResponse createTransfers(
@@ -146,7 +159,11 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
   public CompletableFuture<BusinessEntityCreateTransfersResponse> createTransfersAsync(
       BusinessEntityCreateTransfersParams params) {
 
-    return postAsync("/business_entities/transfers", params != null ? params.toFormData() : null)
+    return postAsync(
+            "businessEntity",
+            "createTransfers",
+            "/business_entities/transfers",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 BusinessEntityCreateTransfersResponse.fromJson(

@@ -73,7 +73,7 @@ public final class Pc2MigrationItemFamilyService
             "pc2-migration-item-family-id",
             pc2MigrationItemFamilyId);
 
-    return post(path, null);
+    return post("pc2MigrationItemFamily", "delete", path, null);
   }
 
   public Pc2MigrationItemFamilyDeleteResponse delete(String pc2MigrationItemFamilyId)
@@ -91,7 +91,7 @@ public final class Pc2MigrationItemFamilyService
             "pc2-migration-item-family-id",
             pc2MigrationItemFamilyId);
 
-    return postAsync(path, null)
+    return postAsync("pc2MigrationItemFamily", "delete", path, null)
         .thenApply(
             response ->
                 Pc2MigrationItemFamilyDeleteResponse.fromJson(
@@ -106,7 +106,7 @@ public final class Pc2MigrationItemFamilyService
             "pc2-migration-item-family-id",
             pc2MigrationItemFamilyId);
 
-    return get(path, null);
+    return get("pc2MigrationItemFamily", "retrieve", path, null);
   }
 
   public Pc2MigrationItemFamilyRetrieveResponse retrieve(String pc2MigrationItemFamilyId)
@@ -124,7 +124,7 @@ public final class Pc2MigrationItemFamilyService
             "pc2-migration-item-family-id",
             pc2MigrationItemFamilyId);
 
-    return getAsync(path, null)
+    return getAsync("pc2MigrationItemFamily", "retrieve", path, null)
         .thenApply(
             response ->
                 Pc2MigrationItemFamilyRetrieveResponse.fromJson(
@@ -139,7 +139,7 @@ public final class Pc2MigrationItemFamilyService
             "pc2-migration-item-family-id",
             pc2MigrationItemFamilyId);
 
-    return post(path, null);
+    return post("pc2MigrationItemFamily", "update", path, null);
   }
 
   /**
@@ -153,7 +153,7 @@ public final class Pc2MigrationItemFamilyService
             "/pc2_migration_item_families/{pc2-migration-item-family-id}",
             "pc2-migration-item-family-id",
             pc2MigrationItemFamilyId);
-    return post(path, params.toFormData());
+    return post("pc2MigrationItemFamily", "update", path, params.toFormData());
   }
 
   /**
@@ -167,7 +167,7 @@ public final class Pc2MigrationItemFamilyService
             "/pc2_migration_item_families/{pc2-migration-item-family-id}",
             "pc2-migration-item-family-id",
             pc2MigrationItemFamilyId);
-    return postJson(path, jsonPayload);
+    return postJson("pc2MigrationItemFamily", "update", path, jsonPayload);
   }
 
   public Pc2MigrationItemFamilyUpdateResponse update(
@@ -185,7 +185,7 @@ public final class Pc2MigrationItemFamilyService
             "/pc2_migration_item_families/{pc2-migration-item-family-id}",
             "pc2-migration-item-family-id",
             pc2MigrationItemFamilyId);
-    return postAsync(path, params.toFormData())
+    return postAsync("pc2MigrationItemFamily", "update", path, params.toFormData())
         .thenApply(
             response ->
                 Pc2MigrationItemFamilyUpdateResponse.fromJson(
@@ -207,7 +207,7 @@ public final class Pc2MigrationItemFamilyService
             "pc2-migration-item-family-id",
             pc2MigrationItemFamilyId);
 
-    return postAsync(path, null)
+    return postAsync("pc2MigrationItemFamily", "update", path, null)
         .thenApply(
             response ->
                 Pc2MigrationItemFamilyUpdateResponse.fromJson(
@@ -220,13 +220,17 @@ public final class Pc2MigrationItemFamilyService
    */
   Response listRaw(Pc2MigrationItemFamilyListParams params) throws ChargebeeException {
 
-    return get("/pc2_migration_item_families", params != null ? params.toQueryParams() : null);
+    return get(
+        "pc2MigrationItemFamily",
+        "list",
+        "/pc2_migration_item_families",
+        params != null ? params.toQueryParams() : null);
   }
 
   /** list a pc2MigrationItemFamily without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/pc2_migration_item_families", null);
+    return get("pc2MigrationItemFamily", "list", "/pc2_migration_item_families", null);
   }
 
   /**
@@ -250,7 +254,11 @@ public final class Pc2MigrationItemFamilyService
   public CompletableFuture<Pc2MigrationItemFamilyListResponse> listAsync(
       Pc2MigrationItemFamilyListParams params) {
 
-    return getAsync("/pc2_migration_item_families", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "pc2MigrationItemFamily",
+            "list",
+            "/pc2_migration_item_families",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 Pc2MigrationItemFamilyListResponse.fromJson(
@@ -267,7 +275,7 @@ public final class Pc2MigrationItemFamilyService
   /** Async variant of list for pc2MigrationItemFamily without params. */
   public CompletableFuture<Pc2MigrationItemFamilyListResponse> listAsync() {
 
-    return getAsync("/pc2_migration_item_families", null)
+    return getAsync("pc2MigrationItemFamily", "list", "/pc2_migration_item_families", null)
         .thenApply(
             response ->
                 Pc2MigrationItemFamilyListResponse.fromJson(
@@ -280,7 +288,11 @@ public final class Pc2MigrationItemFamilyService
    */
   Response createRaw(Pc2MigrationItemFamilyCreateParams params) throws ChargebeeException {
 
-    return post("/pc2_migration_item_families", params != null ? params.toFormData() : null);
+    return post(
+        "pc2MigrationItemFamily",
+        "create",
+        "/pc2_migration_item_families",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -289,7 +301,8 @@ public final class Pc2MigrationItemFamilyService
    */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/pc2_migration_item_families", jsonPayload);
+    return postJson(
+        "pc2MigrationItemFamily", "create", "/pc2_migration_item_families", jsonPayload);
   }
 
   public Pc2MigrationItemFamilyCreateResponse create(Pc2MigrationItemFamilyCreateParams params)
@@ -303,7 +316,11 @@ public final class Pc2MigrationItemFamilyService
   public CompletableFuture<Pc2MigrationItemFamilyCreateResponse> createAsync(
       Pc2MigrationItemFamilyCreateParams params) {
 
-    return postAsync("/pc2_migration_item_families", params != null ? params.toFormData() : null)
+    return postAsync(
+            "pc2MigrationItemFamily",
+            "create",
+            "/pc2_migration_item_families",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 Pc2MigrationItemFamilyCreateResponse.fromJson(

@@ -58,7 +58,7 @@ public final class AddressService extends BaseService<AddressService> {
   /** retrieve a address using immutable params (executes immediately) - returns raw Response. */
   Response retrieveRaw(AddressRetrieveParams params) throws ChargebeeException {
 
-    return get("/addresses", params != null ? params.toQueryParams() : null);
+    return get("address", "retrieve", "/addresses", params != null ? params.toQueryParams() : null);
   }
 
   /** retrieve a address using raw JSON payload (executes immediately) - returns raw Response. */
@@ -76,7 +76,8 @@ public final class AddressService extends BaseService<AddressService> {
   /** Async variant of retrieve for address with params. */
   public CompletableFuture<AddressRetrieveResponse> retrieveAsync(AddressRetrieveParams params) {
 
-    return getAsync("/addresses", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "address", "retrieve", "/addresses", params != null ? params.toQueryParams() : null)
         .thenApply(
             response -> AddressRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -84,13 +85,13 @@ public final class AddressService extends BaseService<AddressService> {
   /** update a address using immutable params (executes immediately) - returns raw Response. */
   Response updateRaw(AddressUpdateParams params) throws ChargebeeException {
 
-    return post("/addresses", params != null ? params.toFormData() : null);
+    return post("address", "update", "/addresses", params != null ? params.toFormData() : null);
   }
 
   /** update a address using raw JSON payload (executes immediately) - returns raw Response. */
   Response updateRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/addresses", jsonPayload);
+    return postJson("address", "update", "/addresses", jsonPayload);
   }
 
   public AddressUpdateResponse update(AddressUpdateParams params) throws ChargebeeException {
@@ -102,7 +103,7 @@ public final class AddressService extends BaseService<AddressService> {
   /** Async variant of update for address with params. */
   public CompletableFuture<AddressUpdateResponse> updateAsync(AddressUpdateParams params) {
 
-    return postAsync("/addresses", params != null ? params.toFormData() : null)
+    return postAsync("address", "update", "/addresses", params != null ? params.toFormData() : null)
         .thenApply(
             response -> AddressUpdateResponse.fromJson(response.getBodyAsString(), response));
   }

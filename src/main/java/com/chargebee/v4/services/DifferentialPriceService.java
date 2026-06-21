@@ -76,7 +76,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
             "differential-price-id",
             differentialPriceId);
 
-    return post(path, null);
+    return post("differentialPrice", "delete", path, null);
   }
 
   /**
@@ -90,7 +90,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
             "/differential_prices/{differential-price-id}/delete",
             "differential-price-id",
             differentialPriceId);
-    return post(path, params.toFormData());
+    return post("differentialPrice", "delete", path, params.toFormData());
   }
 
   /**
@@ -103,7 +103,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
             "/differential_prices/{differential-price-id}/delete",
             "differential-price-id",
             differentialPriceId);
-    return postJson(path, jsonPayload);
+    return postJson("differentialPrice", "delete", path, jsonPayload);
   }
 
   public DifferentialPriceDeleteResponse delete(
@@ -120,7 +120,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
             "/differential_prices/{differential-price-id}/delete",
             "differential-price-id",
             differentialPriceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("differentialPrice", "delete", path, params.toFormData())
         .thenApply(
             response ->
                 DifferentialPriceDeleteResponse.fromJson(response.getBodyAsString(), response));
@@ -132,7 +132,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
         buildPathWithParams(
             "/item_prices/{item-price-id}/differential_prices", "item-price-id", itemPriceId);
 
-    return post(path, null);
+    return post("differentialPrice", "create", path, null);
   }
 
   /**
@@ -144,7 +144,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
     String path =
         buildPathWithParams(
             "/item_prices/{item-price-id}/differential_prices", "item-price-id", itemPriceId);
-    return post(path, params.toFormData());
+    return post("differentialPrice", "create", path, params.toFormData());
   }
 
   /**
@@ -155,7 +155,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
     String path =
         buildPathWithParams(
             "/item_prices/{item-price-id}/differential_prices", "item-price-id", itemPriceId);
-    return postJson(path, jsonPayload);
+    return postJson("differentialPrice", "create", path, jsonPayload);
   }
 
   public DifferentialPriceCreateResponse create(
@@ -170,7 +170,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
     String path =
         buildPathWithParams(
             "/item_prices/{item-price-id}/differential_prices", "item-price-id", itemPriceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("differentialPrice", "create", path, params.toFormData())
         .thenApply(
             response ->
                 DifferentialPriceCreateResponse.fromJson(response.getBodyAsString(), response));
@@ -181,13 +181,17 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
    */
   Response listRaw(DifferentialPriceListParams params) throws ChargebeeException {
 
-    return get("/differential_prices", params != null ? params.toQueryParams() : null);
+    return get(
+        "differentialPrice",
+        "list",
+        "/differential_prices",
+        params != null ? params.toQueryParams() : null);
   }
 
   /** list a differentialPrice without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/differential_prices", null);
+    return get("differentialPrice", "list", "/differential_prices", null);
   }
 
   /**
@@ -210,7 +214,11 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
   public CompletableFuture<DifferentialPriceListResponse> listAsync(
       DifferentialPriceListParams params) {
 
-    return getAsync("/differential_prices", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "differentialPrice",
+            "list",
+            "/differential_prices",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 DifferentialPriceListResponse.fromJson(
@@ -226,7 +234,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
   /** Async variant of list for differentialPrice without params. */
   public CompletableFuture<DifferentialPriceListResponse> listAsync() {
 
-    return getAsync("/differential_prices", null)
+    return getAsync("differentialPrice", "list", "/differential_prices", null)
         .thenApply(
             response ->
                 DifferentialPriceListResponse.fromJson(
@@ -241,7 +249,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
             "differential-price-id",
             differentialPriceId);
 
-    return get(path, null);
+    return get("differentialPrice", "retrieve", path, null);
   }
 
   /**
@@ -255,7 +263,8 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
             "/differential_prices/{differential-price-id}",
             "differential-price-id",
             differentialPriceId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "differentialPrice", "retrieve", path, params != null ? params.toQueryParams() : null);
   }
 
   public DifferentialPriceRetrieveResponse retrieve(
@@ -273,7 +282,8 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
             "/differential_prices/{differential-price-id}",
             "differential-price-id",
             differentialPriceId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "differentialPrice", "retrieve", path, params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 DifferentialPriceRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -294,7 +304,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
             "differential-price-id",
             differentialPriceId);
 
-    return getAsync(path, null)
+    return getAsync("differentialPrice", "retrieve", path, null)
         .thenApply(
             response ->
                 DifferentialPriceRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -308,7 +318,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
             "differential-price-id",
             differentialPriceId);
 
-    return post(path, null);
+    return post("differentialPrice", "update", path, null);
   }
 
   /**
@@ -322,7 +332,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
             "/differential_prices/{differential-price-id}",
             "differential-price-id",
             differentialPriceId);
-    return post(path, params.toFormData());
+    return post("differentialPrice", "update", path, params.toFormData());
   }
 
   /**
@@ -335,7 +345,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
             "/differential_prices/{differential-price-id}",
             "differential-price-id",
             differentialPriceId);
-    return postJson(path, jsonPayload);
+    return postJson("differentialPrice", "update", path, jsonPayload);
   }
 
   public DifferentialPriceUpdateResponse update(
@@ -352,7 +362,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
             "/differential_prices/{differential-price-id}",
             "differential-price-id",
             differentialPriceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("differentialPrice", "update", path, params.toFormData())
         .thenApply(
             response ->
                 DifferentialPriceUpdateResponse.fromJson(response.getBodyAsString(), response));

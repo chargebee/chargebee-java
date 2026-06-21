@@ -139,7 +139,10 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       throws ChargebeeException {
 
     return post(
-        "/hosted_pages/checkout_one_time_for_items", params != null ? params.toFormData() : null);
+        "hostedPage",
+        "checkoutOneTimeForItems",
+        "/hosted_pages/checkout_one_time_for_items",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -148,7 +151,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response checkoutOneTimeForItemsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/checkout_one_time_for_items", jsonPayload);
+    return postJson(
+        "hostedPage",
+        "checkoutOneTimeForItems",
+        "/hosted_pages/checkout_one_time_for_items",
+        jsonPayload);
   }
 
   public HostedPageCheckoutOneTimeForItemsResponse checkoutOneTimeForItems(
@@ -163,6 +170,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageCheckoutOneTimeForItemsParams params) {
 
     return postAsync(
+            "hostedPage",
+            "checkoutOneTimeForItems",
             "/hosted_pages/checkout_one_time_for_items",
             params != null ? params.toFormData() : null)
         .thenApply(
@@ -178,7 +187,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   Response updatePaymentMethodRaw(HostedPageUpdatePaymentMethodParams params)
       throws ChargebeeException {
 
-    return post("/hosted_pages/update_payment_method", params != null ? params.toFormData() : null);
+    return post(
+        "hostedPage",
+        "updatePaymentMethod",
+        "/hosted_pages/update_payment_method",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -187,7 +200,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response updatePaymentMethodRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/update_payment_method", jsonPayload);
+    return postJson(
+        "hostedPage", "updatePaymentMethod", "/hosted_pages/update_payment_method", jsonPayload);
   }
 
   public HostedPageUpdatePaymentMethodResponse updatePaymentMethod(
@@ -202,7 +216,10 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageUpdatePaymentMethodParams params) {
 
     return postAsync(
-            "/hosted_pages/update_payment_method", params != null ? params.toFormData() : null)
+            "hostedPage",
+            "updatePaymentMethod",
+            "/hosted_pages/update_payment_method",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 HostedPageUpdatePaymentMethodResponse.fromJson(
@@ -214,7 +231,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response updateCardRaw(HostedPageUpdateCardParams params) throws ChargebeeException {
 
-    return post("/hosted_pages/update_card", params != null ? params.toFormData() : null);
+    return post(
+        "hostedPage",
+        "updateCard",
+        "/hosted_pages/update_card",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -222,7 +243,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response updateCardRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/update_card", jsonPayload);
+    return postJson("hostedPage", "updateCard", "/hosted_pages/update_card", jsonPayload);
   }
 
   public HostedPageUpdateCardResponse updateCard(HostedPageUpdateCardParams params)
@@ -236,7 +257,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public CompletableFuture<HostedPageUpdateCardResponse> updateCardAsync(
       HostedPageUpdateCardParams params) {
 
-    return postAsync("/hosted_pages/update_card", params != null ? params.toFormData() : null)
+    return postAsync(
+            "hostedPage",
+            "updateCard",
+            "/hosted_pages/update_card",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 HostedPageUpdateCardResponse.fromJson(response.getBodyAsString(), response));
@@ -249,7 +274,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   Response extendSubscriptionRaw(HostedPageExtendSubscriptionParams params)
       throws ChargebeeException {
 
-    return post("/hosted_pages/extend_subscription", params != null ? params.toFormData() : null);
+    return post(
+        "hostedPage",
+        "extendSubscription",
+        "/hosted_pages/extend_subscription",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -258,7 +287,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response extendSubscriptionRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/extend_subscription", jsonPayload);
+    return postJson(
+        "hostedPage", "extendSubscription", "/hosted_pages/extend_subscription", jsonPayload);
   }
 
   public HostedPageExtendSubscriptionResponse extendSubscription(
@@ -273,7 +303,10 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageExtendSubscriptionParams params) {
 
     return postAsync(
-            "/hosted_pages/extend_subscription", params != null ? params.toFormData() : null)
+            "hostedPage",
+            "extendSubscription",
+            "/hosted_pages/extend_subscription",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 HostedPageExtendSubscriptionResponse.fromJson(
@@ -283,13 +316,17 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /** events a hostedPage using immutable params (executes immediately) - returns raw Response. */
   Response eventsRaw(HostedPageEventsParams params) throws ChargebeeException {
 
-    return post("/hosted_pages/events", params != null ? params.toFormData() : null);
+    return post(
+        "hostedPage",
+        "events",
+        "/hosted_pages/events",
+        params != null ? params.toFormData() : null);
   }
 
   /** events a hostedPage using raw JSON payload (executes immediately) - returns raw Response. */
   Response eventsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/events", jsonPayload);
+    return postJson("hostedPage", "events", "/hosted_pages/events", jsonPayload);
   }
 
   public HostedPageEventsResponse events(HostedPageEventsParams params) throws ChargebeeException {
@@ -301,7 +338,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /** Async variant of events for hostedPage with params. */
   public CompletableFuture<HostedPageEventsResponse> eventsAsync(HostedPageEventsParams params) {
 
-    return postAsync("/hosted_pages/events", params != null ? params.toFormData() : null)
+    return postAsync(
+            "hostedPage",
+            "events",
+            "/hosted_pages/events",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> HostedPageEventsResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -314,7 +355,10 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       throws ChargebeeException {
 
     return post(
-        "/hosted_pages/checkout_gift_for_items", params != null ? params.toFormData() : null);
+        "hostedPage",
+        "checkoutGiftForItems",
+        "/hosted_pages/checkout_gift_for_items",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -323,7 +367,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response checkoutGiftForItemsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/checkout_gift_for_items", jsonPayload);
+    return postJson(
+        "hostedPage", "checkoutGiftForItems", "/hosted_pages/checkout_gift_for_items", jsonPayload);
   }
 
   public HostedPageCheckoutGiftForItemsResponse checkoutGiftForItems(
@@ -338,7 +383,10 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageCheckoutGiftForItemsParams params) {
 
     return postAsync(
-            "/hosted_pages/checkout_gift_for_items", params != null ? params.toFormData() : null)
+            "hostedPage",
+            "checkoutGiftForItems",
+            "/hosted_pages/checkout_gift_for_items",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 HostedPageCheckoutGiftForItemsResponse.fromJson(
@@ -348,13 +396,14 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /** list a hostedPage using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(HostedPageListParams params) throws ChargebeeException {
 
-    return get("/hosted_pages", params != null ? params.toQueryParams() : null);
+    return get(
+        "hostedPage", "list", "/hosted_pages", params != null ? params.toQueryParams() : null);
   }
 
   /** list a hostedPage without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/hosted_pages", null);
+    return get("hostedPage", "list", "/hosted_pages", null);
   }
 
   /** list a hostedPage using raw JSON payload (executes immediately) - returns raw Response. */
@@ -372,7 +421,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /** Async variant of list for hostedPage with params. */
   public CompletableFuture<HostedPageListResponse> listAsync(HostedPageListParams params) {
 
-    return getAsync("/hosted_pages", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "hostedPage", "list", "/hosted_pages", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 HostedPageListResponse.fromJson(
@@ -388,7 +438,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /** Async variant of list for hostedPage without params. */
   public CompletableFuture<HostedPageListResponse> listAsync() {
 
-    return getAsync("/hosted_pages", null)
+    return getAsync("hostedPage", "list", "/hosted_pages", null)
         .thenApply(
             response ->
                 HostedPageListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -399,7 +449,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response viewVoucherRaw(HostedPageViewVoucherParams params) throws ChargebeeException {
 
-    return post("/hosted_pages/view_voucher", params != null ? params.toFormData() : null);
+    return post(
+        "hostedPage",
+        "viewVoucher",
+        "/hosted_pages/view_voucher",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -407,7 +461,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response viewVoucherRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/view_voucher", jsonPayload);
+    return postJson("hostedPage", "viewVoucher", "/hosted_pages/view_voucher", jsonPayload);
   }
 
   public HostedPageViewVoucherResponse viewVoucher(HostedPageViewVoucherParams params)
@@ -421,7 +475,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public CompletableFuture<HostedPageViewVoucherResponse> viewVoucherAsync(
       HostedPageViewVoucherParams params) {
 
-    return postAsync("/hosted_pages/view_voucher", params != null ? params.toFormData() : null)
+    return postAsync(
+            "hostedPage",
+            "viewVoucher",
+            "/hosted_pages/view_voucher",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 HostedPageViewVoucherResponse.fromJson(response.getBodyAsString(), response));
@@ -432,7 +490,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response collectNowRaw(HostedPageCollectNowParams params) throws ChargebeeException {
 
-    return post("/hosted_pages/collect_now", params != null ? params.toFormData() : null);
+    return post(
+        "hostedPage",
+        "collectNow",
+        "/hosted_pages/collect_now",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -440,7 +502,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response collectNowRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/collect_now", jsonPayload);
+    return postJson("hostedPage", "collectNow", "/hosted_pages/collect_now", jsonPayload);
   }
 
   public HostedPageCollectNowResponse collectNow(HostedPageCollectNowParams params)
@@ -454,7 +516,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public CompletableFuture<HostedPageCollectNowResponse> collectNowAsync(
       HostedPageCollectNowParams params) {
 
-    return postAsync("/hosted_pages/collect_now", params != null ? params.toFormData() : null)
+    return postAsync(
+            "hostedPage",
+            "collectNow",
+            "/hosted_pages/collect_now",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 HostedPageCollectNowResponse.fromJson(response.getBodyAsString(), response));
@@ -465,7 +531,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response acceptQuoteRaw(HostedPageAcceptQuoteParams params) throws ChargebeeException {
 
-    return post("/hosted_pages/accept_quote", params != null ? params.toFormData() : null);
+    return post(
+        "hostedPage",
+        "acceptQuote",
+        "/hosted_pages/accept_quote",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -473,7 +543,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response acceptQuoteRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/accept_quote", jsonPayload);
+    return postJson("hostedPage", "acceptQuote", "/hosted_pages/accept_quote", jsonPayload);
   }
 
   public HostedPageAcceptQuoteResponse acceptQuote(HostedPageAcceptQuoteParams params)
@@ -487,7 +557,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public CompletableFuture<HostedPageAcceptQuoteResponse> acceptQuoteAsync(
       HostedPageAcceptQuoteParams params) {
 
-    return postAsync("/hosted_pages/accept_quote", params != null ? params.toFormData() : null)
+    return postAsync(
+            "hostedPage",
+            "acceptQuote",
+            "/hosted_pages/accept_quote",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 HostedPageAcceptQuoteResponse.fromJson(response.getBodyAsString(), response));
@@ -501,7 +575,10 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       throws ChargebeeException {
 
     return post(
-        "/hosted_pages/checkout_new_for_items", params != null ? params.toFormData() : null);
+        "hostedPage",
+        "checkoutNewForItems",
+        "/hosted_pages/checkout_new_for_items",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -510,7 +587,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response checkoutNewForItemsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/checkout_new_for_items", jsonPayload);
+    return postJson(
+        "hostedPage", "checkoutNewForItems", "/hosted_pages/checkout_new_for_items", jsonPayload);
   }
 
   public HostedPageCheckoutNewForItemsResponse checkoutNewForItems(
@@ -525,7 +603,10 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageCheckoutNewForItemsParams params) {
 
     return postAsync(
-            "/hosted_pages/checkout_new_for_items", params != null ? params.toFormData() : null)
+            "hostedPage",
+            "checkoutNewForItems",
+            "/hosted_pages/checkout_new_for_items",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 HostedPageCheckoutNewForItemsResponse.fromJson(
@@ -537,7 +618,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response claimGiftRaw(HostedPageClaimGiftParams params) throws ChargebeeException {
 
-    return post("/hosted_pages/claim_gift", params != null ? params.toFormData() : null);
+    return post(
+        "hostedPage",
+        "claimGift",
+        "/hosted_pages/claim_gift",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -545,7 +630,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response claimGiftRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/claim_gift", jsonPayload);
+    return postJson("hostedPage", "claimGift", "/hosted_pages/claim_gift", jsonPayload);
   }
 
   public HostedPageClaimGiftResponse claimGift(HostedPageClaimGiftParams params)
@@ -559,7 +644,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public CompletableFuture<HostedPageClaimGiftResponse> claimGiftAsync(
       HostedPageClaimGiftParams params) {
 
-    return postAsync("/hosted_pages/claim_gift", params != null ? params.toFormData() : null)
+    return postAsync(
+            "hostedPage",
+            "claimGift",
+            "/hosted_pages/claim_gift",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> HostedPageClaimGiftResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -572,7 +661,10 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       throws ChargebeeException {
 
     return post(
-        "/hosted_pages/checkout_existing_for_items", params != null ? params.toFormData() : null);
+        "hostedPage",
+        "checkoutExistingForItems",
+        "/hosted_pages/checkout_existing_for_items",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -581,7 +673,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response checkoutExistingForItemsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/checkout_existing_for_items", jsonPayload);
+    return postJson(
+        "hostedPage",
+        "checkoutExistingForItems",
+        "/hosted_pages/checkout_existing_for_items",
+        jsonPayload);
   }
 
   public HostedPageCheckoutExistingForItemsResponse checkoutExistingForItems(
@@ -597,6 +693,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       checkoutExistingForItemsAsync(HostedPageCheckoutExistingForItemsParams params) {
 
     return postAsync(
+            "hostedPage",
+            "checkoutExistingForItems",
             "/hosted_pages/checkout_existing_for_items",
             params != null ? params.toFormData() : null)
         .thenApply(
@@ -610,7 +708,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response preCancelRaw(HostedPagePreCancelParams params) throws ChargebeeException {
 
-    return post("/hosted_pages/pre_cancel", params != null ? params.toFormData() : null);
+    return post(
+        "hostedPage",
+        "preCancel",
+        "/hosted_pages/pre_cancel",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -618,7 +720,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response preCancelRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/pre_cancel", jsonPayload);
+    return postJson("hostedPage", "preCancel", "/hosted_pages/pre_cancel", jsonPayload);
   }
 
   public HostedPagePreCancelResponse preCancel(HostedPagePreCancelParams params)
@@ -632,7 +734,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public CompletableFuture<HostedPagePreCancelResponse> preCancelAsync(
       HostedPagePreCancelParams params) {
 
-    return postAsync("/hosted_pages/pre_cancel", params != null ? params.toFormData() : null)
+    return postAsync(
+            "hostedPage",
+            "preCancel",
+            "/hosted_pages/pre_cancel",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> HostedPagePreCancelResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -643,7 +749,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
         buildPathWithParams(
             "/hosted_pages/{hosted-page-id}/acknowledge", "hosted-page-id", hostedPageId);
 
-    return post(path, null);
+    return post("hostedPage", "acknowledge", path, null);
   }
 
   public HostedPageAcknowledgeResponse acknowledge(String hostedPageId) throws ChargebeeException {
@@ -657,7 +763,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
         buildPathWithParams(
             "/hosted_pages/{hosted-page-id}/acknowledge", "hosted-page-id", hostedPageId);
 
-    return postAsync(path, null)
+    return postAsync("hostedPage", "acknowledge", path, null)
         .thenApply(
             response ->
                 HostedPageAcknowledgeResponse.fromJson(response.getBodyAsString(), response));
@@ -671,7 +777,10 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       throws ChargebeeException {
 
     return post(
-        "/hosted_pages/retrieve_agreement_pdf", params != null ? params.toFormData() : null);
+        "hostedPage",
+        "retrieveAgreementPdf",
+        "/hosted_pages/retrieve_agreement_pdf",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -680,7 +789,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response retrieveAgreementPdfRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/retrieve_agreement_pdf", jsonPayload);
+    return postJson(
+        "hostedPage", "retrieveAgreementPdf", "/hosted_pages/retrieve_agreement_pdf", jsonPayload);
   }
 
   public HostedPageRetrieveAgreementPdfResponse retrieveAgreementPdf(
@@ -695,7 +805,10 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageRetrieveAgreementPdfParams params) {
 
     return postAsync(
-            "/hosted_pages/retrieve_agreement_pdf", params != null ? params.toFormData() : null)
+            "hostedPage",
+            "retrieveAgreementPdf",
+            "/hosted_pages/retrieve_agreement_pdf",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 HostedPageRetrieveAgreementPdfResponse.fromJson(
@@ -707,7 +820,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     String path =
         buildPathWithParams("/hosted_pages/{hosted-page-id}", "hosted-page-id", hostedPageId);
 
-    return get(path, null);
+    return get("hostedPage", "retrieve", path, null);
   }
 
   public HostedPageRetrieveResponse retrieve(String hostedPageId) throws ChargebeeException {
@@ -720,7 +833,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     String path =
         buildPathWithParams("/hosted_pages/{hosted-page-id}", "hosted-page-id", hostedPageId);
 
-    return getAsync(path, null)
+    return getAsync("hostedPage", "retrieve", path, null)
         .thenApply(
             response -> HostedPageRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -733,7 +846,10 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       throws ChargebeeException {
 
     return post(
-        "/hosted_pages/manage_payment_sources", params != null ? params.toFormData() : null);
+        "hostedPage",
+        "managePaymentSources",
+        "/hosted_pages/manage_payment_sources",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -742,7 +858,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response managePaymentSourcesRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/manage_payment_sources", jsonPayload);
+    return postJson(
+        "hostedPage", "managePaymentSources", "/hosted_pages/manage_payment_sources", jsonPayload);
   }
 
   public HostedPageManagePaymentSourcesResponse managePaymentSources(
@@ -757,7 +874,10 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageManagePaymentSourcesParams params) {
 
     return postAsync(
-            "/hosted_pages/manage_payment_sources", params != null ? params.toFormData() : null)
+            "hostedPage",
+            "managePaymentSources",
+            "/hosted_pages/manage_payment_sources",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 HostedPageManagePaymentSourcesResponse.fromJson(
@@ -770,7 +890,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response checkoutOneTimeRaw(HostedPageCheckoutOneTimeParams params) throws ChargebeeException {
 
-    return post("/hosted_pages/checkout_one_time", params != null ? params.toFormData() : null);
+    return post(
+        "hostedPage",
+        "checkoutOneTime",
+        "/hosted_pages/checkout_one_time",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -779,7 +903,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response checkoutOneTimeRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/checkout_one_time", jsonPayload);
+    return postJson(
+        "hostedPage", "checkoutOneTime", "/hosted_pages/checkout_one_time", jsonPayload);
   }
 
   public HostedPageCheckoutOneTimeResponse checkoutOneTime(HostedPageCheckoutOneTimeParams params)
@@ -793,7 +918,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public CompletableFuture<HostedPageCheckoutOneTimeResponse> checkoutOneTimeAsync(
       HostedPageCheckoutOneTimeParams params) {
 
-    return postAsync("/hosted_pages/checkout_one_time", params != null ? params.toFormData() : null)
+    return postAsync(
+            "hostedPage",
+            "checkoutOneTime",
+            "/hosted_pages/checkout_one_time",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 HostedPageCheckoutOneTimeResponse.fromJson(response.getBodyAsString(), response));
@@ -804,7 +933,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response checkoutNewRaw(HostedPageCheckoutNewParams params) throws ChargebeeException {
 
-    return post("/hosted_pages/checkout_new", params != null ? params.toFormData() : null);
+    return post(
+        "hostedPage",
+        "checkoutNew",
+        "/hosted_pages/checkout_new",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -812,7 +945,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response checkoutNewRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/checkout_new", jsonPayload);
+    return postJson("hostedPage", "checkoutNew", "/hosted_pages/checkout_new", jsonPayload);
   }
 
   public HostedPageCheckoutNewResponse checkoutNew(HostedPageCheckoutNewParams params)
@@ -826,7 +959,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public CompletableFuture<HostedPageCheckoutNewResponse> checkoutNewAsync(
       HostedPageCheckoutNewParams params) {
 
-    return postAsync("/hosted_pages/checkout_new", params != null ? params.toFormData() : null)
+    return postAsync(
+            "hostedPage",
+            "checkoutNew",
+            "/hosted_pages/checkout_new",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 HostedPageCheckoutNewResponse.fromJson(response.getBodyAsString(), response));
@@ -837,7 +974,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response checkoutGiftRaw(HostedPageCheckoutGiftParams params) throws ChargebeeException {
 
-    return post("/hosted_pages/checkout_gift", params != null ? params.toFormData() : null);
+    return post(
+        "hostedPage",
+        "checkoutGift",
+        "/hosted_pages/checkout_gift",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -845,7 +986,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response checkoutGiftRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/checkout_gift", jsonPayload);
+    return postJson("hostedPage", "checkoutGift", "/hosted_pages/checkout_gift", jsonPayload);
   }
 
   public HostedPageCheckoutGiftResponse checkoutGift(HostedPageCheckoutGiftParams params)
@@ -859,7 +1000,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public CompletableFuture<HostedPageCheckoutGiftResponse> checkoutGiftAsync(
       HostedPageCheckoutGiftParams params) {
 
-    return postAsync("/hosted_pages/checkout_gift", params != null ? params.toFormData() : null)
+    return postAsync(
+            "hostedPage",
+            "checkoutGift",
+            "/hosted_pages/checkout_gift",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 HostedPageCheckoutGiftResponse.fromJson(response.getBodyAsString(), response));
@@ -871,7 +1016,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response checkoutExistingRaw(HostedPageCheckoutExistingParams params) throws ChargebeeException {
 
-    return post("/hosted_pages/checkout_existing", params != null ? params.toFormData() : null);
+    return post(
+        "hostedPage",
+        "checkoutExisting",
+        "/hosted_pages/checkout_existing",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -880,7 +1029,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    */
   Response checkoutExistingRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/hosted_pages/checkout_existing", jsonPayload);
+    return postJson(
+        "hostedPage", "checkoutExisting", "/hosted_pages/checkout_existing", jsonPayload);
   }
 
   public HostedPageCheckoutExistingResponse checkoutExisting(
@@ -894,7 +1044,11 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public CompletableFuture<HostedPageCheckoutExistingResponse> checkoutExistingAsync(
       HostedPageCheckoutExistingParams params) {
 
-    return postAsync("/hosted_pages/checkout_existing", params != null ? params.toFormData() : null)
+    return postAsync(
+            "hostedPage",
+            "checkoutExisting",
+            "/hosted_pages/checkout_existing",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 HostedPageCheckoutExistingResponse.fromJson(response.getBodyAsString(), response));

@@ -63,7 +63,7 @@ public final class CommentService extends BaseService<CommentService> {
   Response deleteRaw(String commentId) throws ChargebeeException {
     String path = buildPathWithParams("/comments/{comment-id}/delete", "comment-id", commentId);
 
-    return post(path, null);
+    return post("comment", "delete", path, null);
   }
 
   public CommentDeleteResponse delete(String commentId) throws ChargebeeException {
@@ -75,7 +75,7 @@ public final class CommentService extends BaseService<CommentService> {
   public CompletableFuture<CommentDeleteResponse> deleteAsync(String commentId) {
     String path = buildPathWithParams("/comments/{comment-id}/delete", "comment-id", commentId);
 
-    return postAsync(path, null)
+    return postAsync("comment", "delete", path, null)
         .thenApply(
             response -> CommentDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -84,7 +84,7 @@ public final class CommentService extends BaseService<CommentService> {
   Response retrieveRaw(String commentId) throws ChargebeeException {
     String path = buildPathWithParams("/comments/{comment-id}", "comment-id", commentId);
 
-    return get(path, null);
+    return get("comment", "retrieve", path, null);
   }
 
   public CommentRetrieveResponse retrieve(String commentId) throws ChargebeeException {
@@ -96,7 +96,7 @@ public final class CommentService extends BaseService<CommentService> {
   public CompletableFuture<CommentRetrieveResponse> retrieveAsync(String commentId) {
     String path = buildPathWithParams("/comments/{comment-id}", "comment-id", commentId);
 
-    return getAsync(path, null)
+    return getAsync("comment", "retrieve", path, null)
         .thenApply(
             response -> CommentRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -104,13 +104,13 @@ public final class CommentService extends BaseService<CommentService> {
   /** list a comment using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(CommentListParams params) throws ChargebeeException {
 
-    return get("/comments", params != null ? params.toQueryParams() : null);
+    return get("comment", "list", "/comments", params != null ? params.toQueryParams() : null);
   }
 
   /** list a comment without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/comments", null);
+    return get("comment", "list", "/comments", null);
   }
 
   /** list a comment using raw JSON payload (executes immediately) - returns raw Response. */
@@ -128,7 +128,7 @@ public final class CommentService extends BaseService<CommentService> {
   /** Async variant of list for comment with params. */
   public CompletableFuture<CommentListResponse> listAsync(CommentListParams params) {
 
-    return getAsync("/comments", params != null ? params.toQueryParams() : null)
+    return getAsync("comment", "list", "/comments", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 CommentListResponse.fromJson(response.getBodyAsString(), this, params, response));
@@ -143,7 +143,7 @@ public final class CommentService extends BaseService<CommentService> {
   /** Async variant of list for comment without params. */
   public CompletableFuture<CommentListResponse> listAsync() {
 
-    return getAsync("/comments", null)
+    return getAsync("comment", "list", "/comments", null)
         .thenApply(
             response ->
                 CommentListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -152,13 +152,13 @@ public final class CommentService extends BaseService<CommentService> {
   /** create a comment using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(CommentCreateParams params) throws ChargebeeException {
 
-    return post("/comments", params != null ? params.toFormData() : null);
+    return post("comment", "create", "/comments", params != null ? params.toFormData() : null);
   }
 
   /** create a comment using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/comments", jsonPayload);
+    return postJson("comment", "create", "/comments", jsonPayload);
   }
 
   public CommentCreateResponse create(CommentCreateParams params) throws ChargebeeException {
@@ -170,7 +170,7 @@ public final class CommentService extends BaseService<CommentService> {
   /** Async variant of create for comment with params. */
   public CompletableFuture<CommentCreateResponse> createAsync(CommentCreateParams params) {
 
-    return postAsync("/comments", params != null ? params.toFormData() : null)
+    return postAsync("comment", "create", "/comments", params != null ? params.toFormData() : null)
         .thenApply(
             response -> CommentCreateResponse.fromJson(response.getBodyAsString(), response));
   }

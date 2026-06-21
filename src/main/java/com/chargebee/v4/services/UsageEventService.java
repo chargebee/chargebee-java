@@ -61,6 +61,8 @@ public final class UsageEventService extends BaseService<UsageEventService> {
   Response createRaw(UsageEventCreateParams params) throws ChargebeeException {
 
     return postJsonWithSubDomain(
+        "usageEvent",
+        "create",
         "/usage_events",
         SubDomain.INGEST.getValue(),
         params != null ? params.toJsonString() : null);
@@ -69,7 +71,8 @@ public final class UsageEventService extends BaseService<UsageEventService> {
   /** create a usageEvent using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJsonWithSubDomain("/usage_events", SubDomain.INGEST.getValue(), jsonPayload);
+    return postJsonWithSubDomain(
+        "usageEvent", "create", "/usage_events", SubDomain.INGEST.getValue(), jsonPayload);
   }
 
   public UsageEventCreateResponse create(UsageEventCreateParams params) throws ChargebeeException {
@@ -82,6 +85,8 @@ public final class UsageEventService extends BaseService<UsageEventService> {
   public CompletableFuture<UsageEventCreateResponse> createAsync(UsageEventCreateParams params) {
 
     return postJsonWithSubDomainAsync(
+            "usageEvent",
+            "create",
             "/usage_events",
             SubDomain.INGEST.getValue(),
             params != null ? params.toJsonString() : null)
@@ -95,6 +100,8 @@ public final class UsageEventService extends BaseService<UsageEventService> {
   Response batchIngestRaw(UsageEventBatchIngestParams params) throws ChargebeeException {
 
     return postJsonWithSubDomain(
+        "usageEvent",
+        "batchIngest",
         "/batch/usage_events",
         SubDomain.INGEST.getValue(),
         params != null ? params.toJsonString() : null);
@@ -105,7 +112,12 @@ public final class UsageEventService extends BaseService<UsageEventService> {
    */
   Response batchIngestRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJsonWithSubDomain("/batch/usage_events", SubDomain.INGEST.getValue(), jsonPayload);
+    return postJsonWithSubDomain(
+        "usageEvent",
+        "batchIngest",
+        "/batch/usage_events",
+        SubDomain.INGEST.getValue(),
+        jsonPayload);
   }
 
   public UsageEventBatchIngestResponse batchIngest(UsageEventBatchIngestParams params)
@@ -120,6 +132,8 @@ public final class UsageEventService extends BaseService<UsageEventService> {
       UsageEventBatchIngestParams params) {
 
     return postJsonWithSubDomainAsync(
+            "usageEvent",
+            "batchIngest",
             "/batch/usage_events",
             SubDomain.INGEST.getValue(),
             params != null ? params.toJsonString() : null)

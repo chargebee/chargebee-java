@@ -72,7 +72,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
         buildPathWithParams(
             "/promotional_credits/{account-credit-id}", "account-credit-id", accountCreditId);
 
-    return get(path, null);
+    return get("promotionalCredit", "retrieve", path, null);
   }
 
   public PromotionalCreditRetrieveResponse retrieve(String accountCreditId)
@@ -88,7 +88,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
         buildPathWithParams(
             "/promotional_credits/{account-credit-id}", "account-credit-id", accountCreditId);
 
-    return getAsync(path, null)
+    return getAsync("promotionalCredit", "retrieve", path, null)
         .thenApply(
             response ->
                 PromotionalCreditRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -99,13 +99,17 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
    */
   Response listRaw(PromotionalCreditListParams params) throws ChargebeeException {
 
-    return get("/promotional_credits", params != null ? params.toQueryParams() : null);
+    return get(
+        "promotionalCredit",
+        "list",
+        "/promotional_credits",
+        params != null ? params.toQueryParams() : null);
   }
 
   /** list a promotionalCredit without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/promotional_credits", null);
+    return get("promotionalCredit", "list", "/promotional_credits", null);
   }
 
   /**
@@ -128,7 +132,11 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
   public CompletableFuture<PromotionalCreditListResponse> listAsync(
       PromotionalCreditListParams params) {
 
-    return getAsync("/promotional_credits", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "promotionalCredit",
+            "list",
+            "/promotional_credits",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 PromotionalCreditListResponse.fromJson(
@@ -144,7 +152,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
   /** Async variant of list for promotionalCredit without params. */
   public CompletableFuture<PromotionalCreditListResponse> listAsync() {
 
-    return getAsync("/promotional_credits", null)
+    return getAsync("promotionalCredit", "list", "/promotional_credits", null)
         .thenApply(
             response ->
                 PromotionalCreditListResponse.fromJson(
@@ -157,7 +165,11 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
    */
   Response deductRaw(PromotionalCreditDeductParams params) throws ChargebeeException {
 
-    return post("/promotional_credits/deduct", params != null ? params.toFormData() : null);
+    return post(
+        "promotionalCredit",
+        "deduct",
+        "/promotional_credits/deduct",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -166,7 +178,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
    */
   Response deductRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/promotional_credits/deduct", jsonPayload);
+    return postJson("promotionalCredit", "deduct", "/promotional_credits/deduct", jsonPayload);
   }
 
   public PromotionalCreditDeductResponse deduct(PromotionalCreditDeductParams params)
@@ -180,7 +192,11 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
   public CompletableFuture<PromotionalCreditDeductResponse> deductAsync(
       PromotionalCreditDeductParams params) {
 
-    return postAsync("/promotional_credits/deduct", params != null ? params.toFormData() : null)
+    return postAsync(
+            "promotionalCredit",
+            "deduct",
+            "/promotional_credits/deduct",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 PromotionalCreditDeductResponse.fromJson(response.getBodyAsString(), response));
@@ -191,7 +207,11 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
    */
   Response setRaw(PromotionalCreditSetParams params) throws ChargebeeException {
 
-    return post("/promotional_credits/set", params != null ? params.toFormData() : null);
+    return post(
+        "promotionalCredit",
+        "set",
+        "/promotional_credits/set",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -199,7 +219,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
    */
   Response setRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/promotional_credits/set", jsonPayload);
+    return postJson("promotionalCredit", "set", "/promotional_credits/set", jsonPayload);
   }
 
   public PromotionalCreditSetResponse set(PromotionalCreditSetParams params)
@@ -213,7 +233,11 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
   public CompletableFuture<PromotionalCreditSetResponse> setAsync(
       PromotionalCreditSetParams params) {
 
-    return postAsync("/promotional_credits/set", params != null ? params.toFormData() : null)
+    return postAsync(
+            "promotionalCredit",
+            "set",
+            "/promotional_credits/set",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 PromotionalCreditSetResponse.fromJson(response.getBodyAsString(), response));
@@ -224,7 +248,11 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
    */
   Response addRaw(PromotionalCreditAddParams params) throws ChargebeeException {
 
-    return post("/promotional_credits/add", params != null ? params.toFormData() : null);
+    return post(
+        "promotionalCredit",
+        "add",
+        "/promotional_credits/add",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -232,7 +260,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
    */
   Response addRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/promotional_credits/add", jsonPayload);
+    return postJson("promotionalCredit", "add", "/promotional_credits/add", jsonPayload);
   }
 
   public PromotionalCreditAddResponse add(PromotionalCreditAddParams params)
@@ -246,7 +274,11 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
   public CompletableFuture<PromotionalCreditAddResponse> addAsync(
       PromotionalCreditAddParams params) {
 
-    return postAsync("/promotional_credits/add", params != null ? params.toFormData() : null)
+    return postAsync(
+            "promotionalCredit",
+            "add",
+            "/promotional_credits/add",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 PromotionalCreditAddResponse.fromJson(response.getBodyAsString(), response));

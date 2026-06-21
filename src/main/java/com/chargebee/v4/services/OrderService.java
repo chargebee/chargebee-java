@@ -92,13 +92,13 @@ public final class OrderService extends BaseService<OrderService> {
   /** list a order using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(OrderListParams params) throws ChargebeeException {
 
-    return get("/orders", params != null ? params.toQueryParams() : null);
+    return get("order", "list", "/orders", params != null ? params.toQueryParams() : null);
   }
 
   /** list a order without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/orders", null);
+    return get("order", "list", "/orders", null);
   }
 
   /** list a order using raw JSON payload (executes immediately) - returns raw Response. */
@@ -116,7 +116,7 @@ public final class OrderService extends BaseService<OrderService> {
   /** Async variant of list for order with params. */
   public CompletableFuture<OrderListResponse> listAsync(OrderListParams params) {
 
-    return getAsync("/orders", params != null ? params.toQueryParams() : null)
+    return getAsync("order", "list", "/orders", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 OrderListResponse.fromJson(response.getBodyAsString(), this, params, response));
@@ -131,7 +131,7 @@ public final class OrderService extends BaseService<OrderService> {
   /** Async variant of list for order without params. */
   public CompletableFuture<OrderListResponse> listAsync() {
 
-    return getAsync("/orders", null)
+    return getAsync("order", "list", "/orders", null)
         .thenApply(
             response ->
                 OrderListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -140,13 +140,13 @@ public final class OrderService extends BaseService<OrderService> {
   /** create a order using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(OrderCreateParams params) throws ChargebeeException {
 
-    return post("/orders", params != null ? params.toFormData() : null);
+    return post("order", "create", "/orders", params != null ? params.toFormData() : null);
   }
 
   /** create a order using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/orders", jsonPayload);
+    return postJson("order", "create", "/orders", jsonPayload);
   }
 
   public OrderCreateResponse create(OrderCreateParams params) throws ChargebeeException {
@@ -158,20 +158,24 @@ public final class OrderService extends BaseService<OrderService> {
   /** Async variant of create for order with params. */
   public CompletableFuture<OrderCreateResponse> createAsync(OrderCreateParams params) {
 
-    return postAsync("/orders", params != null ? params.toFormData() : null)
+    return postAsync("order", "create", "/orders", params != null ? params.toFormData() : null)
         .thenApply(response -> OrderCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** importOrder a order using immutable params (executes immediately) - returns raw Response. */
   Response importOrderRaw(ImportOrderParams params) throws ChargebeeException {
 
-    return post("/orders/import_order", params != null ? params.toFormData() : null);
+    return post(
+        "order",
+        "importOrder",
+        "/orders/import_order",
+        params != null ? params.toFormData() : null);
   }
 
   /** importOrder a order using raw JSON payload (executes immediately) - returns raw Response. */
   Response importOrderRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/orders/import_order", jsonPayload);
+    return postJson("order", "importOrder", "/orders/import_order", jsonPayload);
   }
 
   public ImportOrderResponse importOrder(ImportOrderParams params) throws ChargebeeException {
@@ -183,7 +187,11 @@ public final class OrderService extends BaseService<OrderService> {
   /** Async variant of importOrder for order with params. */
   public CompletableFuture<ImportOrderResponse> importOrderAsync(ImportOrderParams params) {
 
-    return postAsync("/orders/import_order", params != null ? params.toFormData() : null)
+    return postAsync(
+            "order",
+            "importOrder",
+            "/orders/import_order",
+            params != null ? params.toFormData() : null)
         .thenApply(response -> ImportOrderResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -192,7 +200,7 @@ public final class OrderService extends BaseService<OrderService> {
     String path =
         buildPathWithParams("/orders/{order-id}/assign_order_number", "order-id", orderId);
 
-    return post(path, null);
+    return post("order", "assignOrderNumber", path, null);
   }
 
   public AssignOrderNumberResponse assignOrderNumber(String orderId) throws ChargebeeException {
@@ -205,7 +213,7 @@ public final class OrderService extends BaseService<OrderService> {
     String path =
         buildPathWithParams("/orders/{order-id}/assign_order_number", "order-id", orderId);
 
-    return postAsync(path, null)
+    return postAsync("order", "assignOrderNumber", path, null)
         .thenApply(
             response -> AssignOrderNumberResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -214,19 +222,19 @@ public final class OrderService extends BaseService<OrderService> {
   Response resendRaw(String orderId) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/resend", "order-id", orderId);
 
-    return post(path, null);
+    return post("order", "resend", path, null);
   }
 
   /** resend a order using immutable params (executes immediately) - returns raw Response. */
   Response resendRaw(String orderId, OrderResendParams params) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/resend", "order-id", orderId);
-    return post(path, params.toFormData());
+    return post("order", "resend", path, params.toFormData());
   }
 
   /** resend a order using raw JSON payload (executes immediately) - returns raw Response. */
   Response resendRaw(String orderId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/resend", "order-id", orderId);
-    return postJson(path, jsonPayload);
+    return postJson("order", "resend", path, jsonPayload);
   }
 
   public OrderResendResponse resend(String orderId, OrderResendParams params)
@@ -239,7 +247,7 @@ public final class OrderService extends BaseService<OrderService> {
   public CompletableFuture<OrderResendResponse> resendAsync(
       String orderId, OrderResendParams params) {
     String path = buildPathWithParams("/orders/{order-id}/resend", "order-id", orderId);
-    return postAsync(path, params.toFormData())
+    return postAsync("order", "resend", path, params.toFormData())
         .thenApply(response -> OrderResendResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -252,7 +260,7 @@ public final class OrderService extends BaseService<OrderService> {
   public CompletableFuture<OrderResendResponse> resendAsync(String orderId) {
     String path = buildPathWithParams("/orders/{order-id}/resend", "order-id", orderId);
 
-    return postAsync(path, null)
+    return postAsync("order", "resend", path, null)
         .thenApply(response -> OrderResendResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -260,19 +268,19 @@ public final class OrderService extends BaseService<OrderService> {
   Response reopenRaw(String orderId) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/reopen", "order-id", orderId);
 
-    return post(path, null);
+    return post("order", "reopen", path, null);
   }
 
   /** reopen a order using immutable params (executes immediately) - returns raw Response. */
   Response reopenRaw(String orderId, OrderReopenParams params) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/reopen", "order-id", orderId);
-    return post(path, params.toFormData());
+    return post("order", "reopen", path, params.toFormData());
   }
 
   /** reopen a order using raw JSON payload (executes immediately) - returns raw Response. */
   Response reopenRaw(String orderId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/reopen", "order-id", orderId);
-    return postJson(path, jsonPayload);
+    return postJson("order", "reopen", path, jsonPayload);
   }
 
   public OrderReopenResponse reopen(String orderId, OrderReopenParams params)
@@ -285,7 +293,7 @@ public final class OrderService extends BaseService<OrderService> {
   public CompletableFuture<OrderReopenResponse> reopenAsync(
       String orderId, OrderReopenParams params) {
     String path = buildPathWithParams("/orders/{order-id}/reopen", "order-id", orderId);
-    return postAsync(path, params.toFormData())
+    return postAsync("order", "reopen", path, params.toFormData())
         .thenApply(response -> OrderReopenResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -298,7 +306,7 @@ public final class OrderService extends BaseService<OrderService> {
   public CompletableFuture<OrderReopenResponse> reopenAsync(String orderId) {
     String path = buildPathWithParams("/orders/{order-id}/reopen", "order-id", orderId);
 
-    return postAsync(path, null)
+    return postAsync("order", "reopen", path, null)
         .thenApply(response -> OrderReopenResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -308,13 +316,13 @@ public final class OrderService extends BaseService<OrderService> {
   Response ordersForInvoiceRaw(String invoiceId, OrdersForInvoiceParams params)
       throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/orders", "invoice-id", invoiceId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get("order", "ordersForInvoice", path, params != null ? params.toQueryParams() : null);
   }
 
   /** ordersForInvoice a order without params (executes immediately) - returns raw Response. */
   Response ordersForInvoiceRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/orders", "invoice-id", invoiceId);
-    return get(path, null);
+    return get("order", "ordersForInvoice", path, null);
   }
 
   /**
@@ -342,7 +350,8 @@ public final class OrderService extends BaseService<OrderService> {
   public CompletableFuture<OrdersForInvoiceResponse> ordersForInvoiceAsync(
       String invoiceId, OrdersForInvoiceParams params) {
     String path = buildPathWithParams("/invoices/{invoice-id}/orders", "invoice-id", invoiceId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "order", "ordersForInvoice", path, params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 OrdersForInvoiceResponse.fromJson(
@@ -352,7 +361,7 @@ public final class OrderService extends BaseService<OrderService> {
   /** Async variant of ordersForInvoice for order without params. */
   public CompletableFuture<OrdersForInvoiceResponse> ordersForInvoiceAsync(String invoiceId) {
     String path = buildPathWithParams("/invoices/{invoice-id}/orders", "invoice-id", invoiceId);
-    return getAsync(path, null)
+    return getAsync("order", "ordersForInvoice", path, null)
         .thenApply(
             response ->
                 OrdersForInvoiceResponse.fromJson(
@@ -363,19 +372,19 @@ public final class OrderService extends BaseService<OrderService> {
   Response cancelRaw(String orderId) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/cancel", "order-id", orderId);
 
-    return post(path, null);
+    return post("order", "cancel", path, null);
   }
 
   /** cancel a order using immutable params (executes immediately) - returns raw Response. */
   Response cancelRaw(String orderId, OrderCancelParams params) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/cancel", "order-id", orderId);
-    return post(path, params.toFormData());
+    return post("order", "cancel", path, params.toFormData());
   }
 
   /** cancel a order using raw JSON payload (executes immediately) - returns raw Response. */
   Response cancelRaw(String orderId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/cancel", "order-id", orderId);
-    return postJson(path, jsonPayload);
+    return postJson("order", "cancel", path, jsonPayload);
   }
 
   public OrderCancelResponse cancel(String orderId, OrderCancelParams params)
@@ -388,7 +397,7 @@ public final class OrderService extends BaseService<OrderService> {
   public CompletableFuture<OrderCancelResponse> cancelAsync(
       String orderId, OrderCancelParams params) {
     String path = buildPathWithParams("/orders/{order-id}/cancel", "order-id", orderId);
-    return postAsync(path, params.toFormData())
+    return postAsync("order", "cancel", path, params.toFormData())
         .thenApply(response -> OrderCancelResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -396,7 +405,7 @@ public final class OrderService extends BaseService<OrderService> {
   Response retrieveRaw(String orderId) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}", "order-id", orderId);
 
-    return get(path, null);
+    return get("order", "retrieve", path, null);
   }
 
   public OrderRetrieveResponse retrieve(String orderId) throws ChargebeeException {
@@ -408,7 +417,7 @@ public final class OrderService extends BaseService<OrderService> {
   public CompletableFuture<OrderRetrieveResponse> retrieveAsync(String orderId) {
     String path = buildPathWithParams("/orders/{order-id}", "order-id", orderId);
 
-    return getAsync(path, null)
+    return getAsync("order", "retrieve", path, null)
         .thenApply(
             response -> OrderRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -417,19 +426,19 @@ public final class OrderService extends BaseService<OrderService> {
   Response updateRaw(String orderId) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}", "order-id", orderId);
 
-    return post(path, null);
+    return post("order", "update", path, null);
   }
 
   /** update a order using immutable params (executes immediately) - returns raw Response. */
   Response updateRaw(String orderId, OrderUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}", "order-id", orderId);
-    return post(path, params.toFormData());
+    return post("order", "update", path, params.toFormData());
   }
 
   /** update a order using raw JSON payload (executes immediately) - returns raw Response. */
   Response updateRaw(String orderId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}", "order-id", orderId);
-    return postJson(path, jsonPayload);
+    return postJson("order", "update", path, jsonPayload);
   }
 
   public OrderUpdateResponse update(String orderId, OrderUpdateParams params)
@@ -442,7 +451,7 @@ public final class OrderService extends BaseService<OrderService> {
   public CompletableFuture<OrderUpdateResponse> updateAsync(
       String orderId, OrderUpdateParams params) {
     String path = buildPathWithParams("/orders/{order-id}", "order-id", orderId);
-    return postAsync(path, params.toFormData())
+    return postAsync("order", "update", path, params.toFormData())
         .thenApply(response -> OrderUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -455,7 +464,7 @@ public final class OrderService extends BaseService<OrderService> {
   public CompletableFuture<OrderUpdateResponse> updateAsync(String orderId) {
     String path = buildPathWithParams("/orders/{order-id}", "order-id", orderId);
 
-    return postAsync(path, null)
+    return postAsync("order", "update", path, null)
         .thenApply(response -> OrderUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -463,7 +472,7 @@ public final class OrderService extends BaseService<OrderService> {
   Response deleteRaw(String orderId) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/delete", "order-id", orderId);
 
-    return post(path, null);
+    return post("order", "delete", path, null);
   }
 
   public OrderDeleteResponse delete(String orderId) throws ChargebeeException {
@@ -475,7 +484,7 @@ public final class OrderService extends BaseService<OrderService> {
   public CompletableFuture<OrderDeleteResponse> deleteAsync(String orderId) {
     String path = buildPathWithParams("/orders/{order-id}/delete", "order-id", orderId);
 
-    return postAsync(path, null)
+    return postAsync("order", "delete", path, null)
         .thenApply(response -> OrderDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -485,7 +494,7 @@ public final class OrderService extends BaseService<OrderService> {
         buildPathWithParams(
             "/orders/{order-id}/create_refundable_credit_note", "order-id", orderId);
 
-    return post(path, null);
+    return post("order", "createRefundableCreditNote", path, null);
   }
 
   /**
@@ -497,7 +506,7 @@ public final class OrderService extends BaseService<OrderService> {
     String path =
         buildPathWithParams(
             "/orders/{order-id}/create_refundable_credit_note", "order-id", orderId);
-    return post(path, params.toFormData());
+    return post("order", "createRefundableCreditNote", path, params.toFormData());
   }
 
   /**
@@ -509,7 +518,7 @@ public final class OrderService extends BaseService<OrderService> {
     String path =
         buildPathWithParams(
             "/orders/{order-id}/create_refundable_credit_note", "order-id", orderId);
-    return postJson(path, jsonPayload);
+    return postJson("order", "createRefundableCreditNote", path, jsonPayload);
   }
 
   public OrderCreateRefundableCreditNoteResponse createRefundableCreditNote(
@@ -524,7 +533,7 @@ public final class OrderService extends BaseService<OrderService> {
     String path =
         buildPathWithParams(
             "/orders/{order-id}/create_refundable_credit_note", "order-id", orderId);
-    return postAsync(path, params.toFormData())
+    return postAsync("order", "createRefundableCreditNote", path, params.toFormData())
         .thenApply(
             response ->
                 OrderCreateRefundableCreditNoteResponse.fromJson(
@@ -544,7 +553,7 @@ public final class OrderService extends BaseService<OrderService> {
         buildPathWithParams(
             "/orders/{order-id}/create_refundable_credit_note", "order-id", orderId);
 
-    return postAsync(path, null)
+    return postAsync("order", "createRefundableCreditNote", path, null)
         .thenApply(
             response ->
                 OrderCreateRefundableCreditNoteResponse.fromJson(

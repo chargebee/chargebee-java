@@ -62,7 +62,11 @@ public final class UsageSummaryService extends BaseService<UsageSummaryService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usage_summary", "subscription-id", subscriptionId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "usageSummary",
+        "retrieveUsageSummaryForSubscription",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -73,7 +77,7 @@ public final class UsageSummaryService extends BaseService<UsageSummaryService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usage_summary", "subscription-id", subscriptionId);
-    return get(path, null);
+    return get("usageSummary", "retrieveUsageSummaryForSubscription", path, null);
   }
 
   /**
@@ -110,7 +114,11 @@ public final class UsageSummaryService extends BaseService<UsageSummaryService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usage_summary", "subscription-id", subscriptionId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "usageSummary",
+            "retrieveUsageSummaryForSubscription",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 RetrieveUsageSummaryForSubscriptionResponse.fromJson(
@@ -123,7 +131,7 @@ public final class UsageSummaryService extends BaseService<UsageSummaryService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usage_summary", "subscription-id", subscriptionId);
-    return getAsync(path, null)
+    return getAsync("usageSummary", "retrieveUsageSummaryForSubscription", path, null)
         .thenApply(
             response ->
                 RetrieveUsageSummaryForSubscriptionResponse.fromJson(

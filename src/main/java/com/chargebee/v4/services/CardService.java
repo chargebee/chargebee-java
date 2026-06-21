@@ -68,7 +68,7 @@ public final class CardService extends BaseService<CardService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/copy_card", "customer-id", customerId);
 
-    return post(path, null);
+    return post("card", "copyCardForCustomer", path, null);
   }
 
   /**
@@ -79,7 +79,7 @@ public final class CardService extends BaseService<CardService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/copy_card", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("card", "copyCardForCustomer", path, params.toFormData());
   }
 
   /**
@@ -89,7 +89,7 @@ public final class CardService extends BaseService<CardService> {
   Response copyCardForCustomerRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/copy_card", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("card", "copyCardForCustomer", path, jsonPayload);
   }
 
   public CopyCardForCustomerResponse copyCardForCustomer(
@@ -103,7 +103,7 @@ public final class CardService extends BaseService<CardService> {
       String customerId, CopyCardForCustomerParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/copy_card", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("card", "copyCardForCustomer", path, params.toFormData())
         .thenApply(
             response -> CopyCardForCustomerResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -112,7 +112,7 @@ public final class CardService extends BaseService<CardService> {
   Response retrieveRaw(String customerId) throws ChargebeeException {
     String path = buildPathWithParams("/cards/{customer-id}", "customer-id", customerId);
 
-    return get(path, null);
+    return get("card", "retrieve", path, null);
   }
 
   public CardRetrieveResponse retrieve(String customerId) throws ChargebeeException {
@@ -124,7 +124,7 @@ public final class CardService extends BaseService<CardService> {
   public CompletableFuture<CardRetrieveResponse> retrieveAsync(String customerId) {
     String path = buildPathWithParams("/cards/{customer-id}", "customer-id", customerId);
 
-    return getAsync(path, null)
+    return getAsync("card", "retrieve", path, null)
         .thenApply(response -> CardRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -133,7 +133,7 @@ public final class CardService extends BaseService<CardService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/switch_gateway", "customer-id", customerId);
 
-    return post(path, null);
+    return post("card", "switchGatewayForCustomer", path, null);
   }
 
   /**
@@ -144,7 +144,7 @@ public final class CardService extends BaseService<CardService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/switch_gateway", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("card", "switchGatewayForCustomer", path, params.toFormData());
   }
 
   /**
@@ -155,7 +155,7 @@ public final class CardService extends BaseService<CardService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/switch_gateway", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("card", "switchGatewayForCustomer", path, jsonPayload);
   }
 
   public CardSwitchGatewayForCustomerResponse switchGatewayForCustomer(
@@ -169,7 +169,7 @@ public final class CardService extends BaseService<CardService> {
       String customerId, CardSwitchGatewayForCustomerParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/switch_gateway", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("card", "switchGatewayForCustomer", path, params.toFormData())
         .thenApply(
             response ->
                 CardSwitchGatewayForCustomerResponse.fromJson(
@@ -181,7 +181,7 @@ public final class CardService extends BaseService<CardService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/delete_card", "customer-id", customerId);
 
-    return post(path, null);
+    return post("card", "deleteCardForCustomer", path, null);
   }
 
   public DeleteCardForCustomerResponse deleteCardForCustomer(String customerId)
@@ -196,7 +196,7 @@ public final class CardService extends BaseService<CardService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/delete_card", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("card", "deleteCardForCustomer", path, null)
         .thenApply(
             response ->
                 DeleteCardForCustomerResponse.fromJson(response.getBodyAsString(), response));
@@ -207,7 +207,7 @@ public final class CardService extends BaseService<CardService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/credit_card", "customer-id", customerId);
 
-    return post(path, null);
+    return post("card", "updateCardForCustomer", path, null);
   }
 
   /**
@@ -218,7 +218,7 @@ public final class CardService extends BaseService<CardService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/credit_card", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("card", "updateCardForCustomer", path, params.toFormData());
   }
 
   /**
@@ -229,7 +229,7 @@ public final class CardService extends BaseService<CardService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/credit_card", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("card", "updateCardForCustomer", path, jsonPayload);
   }
 
   public UpdateCardForCustomerResponse updateCardForCustomer(
@@ -243,7 +243,7 @@ public final class CardService extends BaseService<CardService> {
       String customerId, UpdateCardForCustomerParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/credit_card", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("card", "updateCardForCustomer", path, params.toFormData())
         .thenApply(
             response ->
                 UpdateCardForCustomerResponse.fromJson(response.getBodyAsString(), response));

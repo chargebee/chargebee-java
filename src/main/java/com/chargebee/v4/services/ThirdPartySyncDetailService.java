@@ -70,7 +70,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
             "tp-integ-sync-detail-id",
             tpIntegSyncDetailId);
 
-    return get(path, null);
+    return get("thirdPartySyncDetail", "retrieve", path, null);
   }
 
   public ThirdPartySyncDetailRetrieveResponse retrieve(String tpIntegSyncDetailId)
@@ -88,7 +88,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
             "tp-integ-sync-detail-id",
             tpIntegSyncDetailId);
 
-    return getAsync(path, null)
+    return getAsync("thirdPartySyncDetail", "retrieve", path, null)
         .thenApply(
             response ->
                 ThirdPartySyncDetailRetrieveResponse.fromJson(
@@ -103,7 +103,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
             "tp-integ-sync-detail-id",
             tpIntegSyncDetailId);
 
-    return post(path, null);
+    return post("thirdPartySyncDetail", "update", path, null);
   }
 
   /**
@@ -117,7 +117,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
             "/third_party_sync_details/{tp-integ-sync-detail-id}",
             "tp-integ-sync-detail-id",
             tpIntegSyncDetailId);
-    return post(path, params.toFormData());
+    return post("thirdPartySyncDetail", "update", path, params.toFormData());
   }
 
   /**
@@ -130,7 +130,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
             "/third_party_sync_details/{tp-integ-sync-detail-id}",
             "tp-integ-sync-detail-id",
             tpIntegSyncDetailId);
-    return postJson(path, jsonPayload);
+    return postJson("thirdPartySyncDetail", "update", path, jsonPayload);
   }
 
   public ThirdPartySyncDetailUpdateResponse update(
@@ -148,7 +148,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
             "/third_party_sync_details/{tp-integ-sync-detail-id}",
             "tp-integ-sync-detail-id",
             tpIntegSyncDetailId);
-    return postAsync(path, params.toFormData())
+    return postAsync("thirdPartySyncDetail", "update", path, params.toFormData())
         .thenApply(
             response ->
                 ThirdPartySyncDetailUpdateResponse.fromJson(response.getBodyAsString(), response));
@@ -160,7 +160,11 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
    */
   Response createRaw(ThirdPartySyncDetailCreateParams params) throws ChargebeeException {
 
-    return post("/third_party_sync_details", params != null ? params.toFormData() : null);
+    return post(
+        "thirdPartySyncDetail",
+        "create",
+        "/third_party_sync_details",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -169,7 +173,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
    */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/third_party_sync_details", jsonPayload);
+    return postJson("thirdPartySyncDetail", "create", "/third_party_sync_details", jsonPayload);
   }
 
   public ThirdPartySyncDetailCreateResponse create(ThirdPartySyncDetailCreateParams params)
@@ -183,7 +187,11 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
   public CompletableFuture<ThirdPartySyncDetailCreateResponse> createAsync(
       ThirdPartySyncDetailCreateParams params) {
 
-    return postAsync("/third_party_sync_details", params != null ? params.toFormData() : null)
+    return postAsync(
+            "thirdPartySyncDetail",
+            "create",
+            "/third_party_sync_details",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 ThirdPartySyncDetailCreateResponse.fromJson(response.getBodyAsString(), response));
@@ -197,6 +205,8 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
       throws ChargebeeException {
 
     return get(
+        "thirdPartySyncDetail",
+        "retrieveLatestSync",
         "/third_party_sync_details/retrieve_latest_sync",
         params != null ? params.toQueryParams() : null);
   }
@@ -207,7 +217,11 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
    */
   Response retrieveLatestSyncRaw() throws ChargebeeException {
 
-    return get("/third_party_sync_details/retrieve_latest_sync", null);
+    return get(
+        "thirdPartySyncDetail",
+        "retrieveLatestSync",
+        "/third_party_sync_details/retrieve_latest_sync",
+        null);
   }
 
   /**
@@ -232,6 +246,8 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
       ThirdPartySyncDetailRetrieveLatestSyncParams params) {
 
     return getAsync(
+            "thirdPartySyncDetail",
+            "retrieveLatestSync",
             "/third_party_sync_details/retrieve_latest_sync",
             params != null ? params.toQueryParams() : null)
         .thenApply(
@@ -252,7 +268,11 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
   public CompletableFuture<ThirdPartySyncDetailRetrieveLatestSyncResponse>
       retrieveLatestSyncAsync() {
 
-    return getAsync("/third_party_sync_details/retrieve_latest_sync", null)
+    return getAsync(
+            "thirdPartySyncDetail",
+            "retrieveLatestSync",
+            "/third_party_sync_details/retrieve_latest_sync",
+            null)
         .thenApply(
             response ->
                 ThirdPartySyncDetailRetrieveLatestSyncResponse.fromJson(

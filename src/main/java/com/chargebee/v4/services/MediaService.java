@@ -55,7 +55,7 @@ public final class MediaService extends BaseService<MediaService> {
   Response createMediaAndAttachToItemRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/media", "item-id", itemId);
 
-    return post(path, null);
+    return post("media", "createMediaAndAttachToItem", path, null);
   }
 
   /**
@@ -65,7 +65,7 @@ public final class MediaService extends BaseService<MediaService> {
   Response createMediaAndAttachToItemRaw(String itemId, CreateMediaAndAttachToItemParams params)
       throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/media", "item-id", itemId);
-    return post(path, params.toFormData());
+    return post("media", "createMediaAndAttachToItem", path, params.toFormData());
   }
 
   /**
@@ -75,7 +75,7 @@ public final class MediaService extends BaseService<MediaService> {
   Response createMediaAndAttachToItemRaw(String itemId, String jsonPayload)
       throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/media", "item-id", itemId);
-    return postJson(path, jsonPayload);
+    return postJson("media", "createMediaAndAttachToItem", path, jsonPayload);
   }
 
   public CreateMediaAndAttachToItemResponse createMediaAndAttachToItem(
@@ -88,7 +88,7 @@ public final class MediaService extends BaseService<MediaService> {
   public CompletableFuture<CreateMediaAndAttachToItemResponse> createMediaAndAttachToItemAsync(
       String itemId, CreateMediaAndAttachToItemParams params) {
     String path = buildPathWithParams("/items/{item-id}/media", "item-id", itemId);
-    return postAsync(path, params.toFormData())
+    return postAsync("media", "createMediaAndAttachToItem", path, params.toFormData())
         .thenApply(
             response ->
                 CreateMediaAndAttachToItemResponse.fromJson(response.getBodyAsString(), response));

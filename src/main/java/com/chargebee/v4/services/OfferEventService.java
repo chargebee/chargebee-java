@@ -59,7 +59,11 @@ public final class OfferEventService extends BaseService<OfferEventService> {
   Response offerEventsRaw(OfferEventsParams params) throws ChargebeeException {
 
     return postJsonWithSubDomain(
-        "/offer_events", SubDomain.GROW.getValue(), params != null ? params.toJsonString() : null);
+        "offerEvent",
+        "offerEvents",
+        "/offer_events",
+        SubDomain.GROW.getValue(),
+        params != null ? params.toJsonString() : null);
   }
 
   /**
@@ -67,7 +71,8 @@ public final class OfferEventService extends BaseService<OfferEventService> {
    */
   Response offerEventsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJsonWithSubDomain("/offer_events", SubDomain.GROW.getValue(), jsonPayload);
+    return postJsonWithSubDomain(
+        "offerEvent", "offerEvents", "/offer_events", SubDomain.GROW.getValue(), jsonPayload);
   }
 
   public OfferEventsResponse offerEvents(OfferEventsParams params) throws ChargebeeException {
@@ -80,6 +85,8 @@ public final class OfferEventService extends BaseService<OfferEventService> {
   public CompletableFuture<OfferEventsResponse> offerEventsAsync(OfferEventsParams params) {
 
     return postJsonWithSubDomainAsync(
+            "offerEvent",
+            "offerEvents",
             "/offer_events",
             SubDomain.GROW.getValue(),
             params != null ? params.toJsonString() : null)

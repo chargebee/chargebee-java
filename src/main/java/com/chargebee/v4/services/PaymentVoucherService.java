@@ -70,7 +70,11 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/payment_vouchers", "customer-id", customerId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "paymentVoucher",
+        "paymentVouchersForCustomer",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -80,7 +84,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
   Response paymentVouchersForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/payment_vouchers", "customer-id", customerId);
-    return get(path, null);
+    return get("paymentVoucher", "paymentVouchersForCustomer", path, null);
   }
 
   /**
@@ -113,7 +117,11 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
       String customerId, PaymentVouchersForCustomerParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/payment_vouchers", "customer-id", customerId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "paymentVoucher",
+            "paymentVouchersForCustomer",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 PaymentVouchersForCustomerResponse.fromJson(
@@ -125,7 +133,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
       String customerId) {
     String path =
         buildPathWithParams("/customers/{customer-id}/payment_vouchers", "customer-id", customerId);
-    return getAsync(path, null)
+    return getAsync("paymentVoucher", "paymentVouchersForCustomer", path, null)
         .thenApply(
             response ->
                 PaymentVouchersForCustomerResponse.fromJson(
@@ -140,7 +148,11 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/payment_vouchers", "invoice-id", invoiceId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "paymentVoucher",
+        "paymentVouchersForInvoice",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -150,7 +162,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
   Response paymentVouchersForInvoiceRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/payment_vouchers", "invoice-id", invoiceId);
-    return get(path, null);
+    return get("paymentVoucher", "paymentVouchersForInvoice", path, null);
   }
 
   /**
@@ -183,7 +195,11 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
       String invoiceId, PaymentVouchersForInvoiceParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/payment_vouchers", "invoice-id", invoiceId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "paymentVoucher",
+            "paymentVouchersForInvoice",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 PaymentVouchersForInvoiceResponse.fromJson(
@@ -195,7 +211,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
       String invoiceId) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/payment_vouchers", "invoice-id", invoiceId);
-    return getAsync(path, null)
+    return getAsync("paymentVoucher", "paymentVouchersForInvoice", path, null)
         .thenApply(
             response ->
                 PaymentVouchersForInvoiceResponse.fromJson(
@@ -208,7 +224,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
         buildPathWithParams(
             "/payment_vouchers/{payment-voucher-id}", "payment-voucher-id", paymentVoucherId);
 
-    return get(path, null);
+    return get("paymentVoucher", "retrieve", path, null);
   }
 
   public PaymentVoucherRetrieveResponse retrieve(String paymentVoucherId)
@@ -223,7 +239,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
         buildPathWithParams(
             "/payment_vouchers/{payment-voucher-id}", "payment-voucher-id", paymentVoucherId);
 
-    return getAsync(path, null)
+    return getAsync("paymentVoucher", "retrieve", path, null)
         .thenApply(
             response ->
                 PaymentVoucherRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -234,7 +250,11 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
    */
   Response createRaw(PaymentVoucherCreateParams params) throws ChargebeeException {
 
-    return post("/payment_vouchers", params != null ? params.toFormData() : null);
+    return post(
+        "paymentVoucher",
+        "create",
+        "/payment_vouchers",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -242,7 +262,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
    */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/payment_vouchers", jsonPayload);
+    return postJson("paymentVoucher", "create", "/payment_vouchers", jsonPayload);
   }
 
   public PaymentVoucherCreateResponse create(PaymentVoucherCreateParams params)
@@ -256,7 +276,11 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
   public CompletableFuture<PaymentVoucherCreateResponse> createAsync(
       PaymentVoucherCreateParams params) {
 
-    return postAsync("/payment_vouchers", params != null ? params.toFormData() : null)
+    return postAsync(
+            "paymentVoucher",
+            "create",
+            "/payment_vouchers",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 PaymentVoucherCreateResponse.fromJson(response.getBodyAsString(), response));

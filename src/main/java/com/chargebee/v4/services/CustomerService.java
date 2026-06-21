@@ -149,19 +149,19 @@ public final class CustomerService extends BaseService<CustomerService> {
   Response deleteRaw(String customerId) throws ChargebeeException {
     String path = buildPathWithParams("/customers/{customer-id}/delete", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "delete", path, null);
   }
 
   /** delete a customer using immutable params (executes immediately) - returns raw Response. */
   Response deleteRaw(String customerId, CustomerDeleteParams params) throws ChargebeeException {
     String path = buildPathWithParams("/customers/{customer-id}/delete", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "delete", path, params.toFormData());
   }
 
   /** delete a customer using raw JSON payload (executes immediately) - returns raw Response. */
   Response deleteRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/customers/{customer-id}/delete", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "delete", path, jsonPayload);
   }
 
   public CustomerDeleteResponse delete(String customerId, CustomerDeleteParams params)
@@ -174,7 +174,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CompletableFuture<CustomerDeleteResponse> deleteAsync(
       String customerId, CustomerDeleteParams params) {
     String path = buildPathWithParams("/customers/{customer-id}/delete", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "delete", path, params.toFormData())
         .thenApply(
             response -> CustomerDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -188,7 +188,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CompletableFuture<CustomerDeleteResponse> deleteAsync(String customerId) {
     String path = buildPathWithParams("/customers/{customer-id}/delete", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("customer", "delete", path, null)
         .thenApply(
             response -> CustomerDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -199,7 +199,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/add_promotional_credits", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "addPromotionalCredits", path, null);
   }
 
   /**
@@ -211,7 +211,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/add_promotional_credits", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "addPromotionalCredits", path, params.toFormData());
   }
 
   /**
@@ -223,7 +223,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/add_promotional_credits", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "addPromotionalCredits", path, jsonPayload);
   }
 
   public CustomerAddPromotionalCreditsResponse addPromotionalCredits(
@@ -238,7 +238,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/add_promotional_credits", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "addPromotionalCredits", path, params.toFormData())
         .thenApply(
             response ->
                 CustomerAddPromotionalCreditsResponse.fromJson(
@@ -250,7 +250,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/relationships", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "relationships", path, null);
   }
 
   /**
@@ -260,7 +260,7 @@ public final class CustomerService extends BaseService<CustomerService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/relationships", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "relationships", path, params.toFormData());
   }
 
   /**
@@ -269,7 +269,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   Response relationshipsRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/relationships", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "relationships", path, jsonPayload);
   }
 
   public CustomerRelationshipsResponse relationships(
@@ -283,7 +283,7 @@ public final class CustomerService extends BaseService<CustomerService> {
       String customerId, CustomerRelationshipsParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/relationships", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "relationships", path, params.toFormData())
         .thenApply(
             response ->
                 CustomerRelationshipsResponse.fromJson(response.getBodyAsString(), response));
@@ -299,7 +299,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/relationships", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("customer", "relationships", path, null)
         .thenApply(
             response ->
                 CustomerRelationshipsResponse.fromJson(response.getBodyAsString(), response));
@@ -311,7 +311,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/delete_relationship", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "deleteRelationship", path, null);
   }
 
   public CustomerDeleteRelationshipResponse deleteRelationship(String customerId)
@@ -327,7 +327,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/delete_relationship", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("customer", "deleteRelationship", path, null)
         .thenApply(
             response ->
                 CustomerDeleteRelationshipResponse.fromJson(response.getBodyAsString(), response));
@@ -338,7 +338,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/delete_contact", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "deleteContact", path, null);
   }
 
   /**
@@ -348,7 +348,7 @@ public final class CustomerService extends BaseService<CustomerService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/delete_contact", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "deleteContact", path, params.toFormData());
   }
 
   /**
@@ -357,7 +357,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   Response deleteContactRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/delete_contact", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "deleteContact", path, jsonPayload);
   }
 
   public CustomerDeleteContactResponse deleteContact(
@@ -371,7 +371,7 @@ public final class CustomerService extends BaseService<CustomerService> {
       String customerId, CustomerDeleteContactParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/delete_contact", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "deleteContact", path, params.toFormData())
         .thenApply(
             response ->
                 CustomerDeleteContactResponse.fromJson(response.getBodyAsString(), response));
@@ -387,7 +387,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/delete_contact", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("customer", "deleteContact", path, null)
         .thenApply(
             response ->
                 CustomerDeleteContactResponse.fromJson(response.getBodyAsString(), response));
@@ -399,7 +399,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/assign_payment_role", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "assignPaymentRole", path, null);
   }
 
   /**
@@ -411,7 +411,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/assign_payment_role", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "assignPaymentRole", path, params.toFormData());
   }
 
   /**
@@ -422,7 +422,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/assign_payment_role", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "assignPaymentRole", path, jsonPayload);
   }
 
   public CustomerAssignPaymentRoleResponse assignPaymentRole(
@@ -437,7 +437,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/assign_payment_role", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "assignPaymentRole", path, params.toFormData())
         .thenApply(
             response ->
                 CustomerAssignPaymentRoleResponse.fromJson(response.getBodyAsString(), response));
@@ -446,13 +446,13 @@ public final class CustomerService extends BaseService<CustomerService> {
   /** move a customer using immutable params (executes immediately) - returns raw Response. */
   Response moveRaw(CustomerMoveParams params) throws ChargebeeException {
 
-    return post("/customers/move", params != null ? params.toFormData() : null);
+    return post("customer", "move", "/customers/move", params != null ? params.toFormData() : null);
   }
 
   /** move a customer using raw JSON payload (executes immediately) - returns raw Response. */
   Response moveRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/customers/move", jsonPayload);
+    return postJson("customer", "move", "/customers/move", jsonPayload);
   }
 
   public CustomerMoveResponse move(CustomerMoveParams params) throws ChargebeeException {
@@ -464,7 +464,8 @@ public final class CustomerService extends BaseService<CustomerService> {
   /** Async variant of move for customer with params. */
   public CompletableFuture<CustomerMoveResponse> moveAsync(CustomerMoveParams params) {
 
-    return postAsync("/customers/move", params != null ? params.toFormData() : null)
+    return postAsync(
+            "customer", "move", "/customers/move", params != null ? params.toFormData() : null)
         .thenApply(response -> CustomerMoveResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -473,7 +474,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/hierarchy", "customer-id", customerId);
 
-    return get(path, null);
+    return get("customer", "hierarchy", path, null);
   }
 
   /** hierarchy a customer using immutable params (executes immediately) - returns raw Response. */
@@ -481,7 +482,7 @@ public final class CustomerService extends BaseService<CustomerService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/hierarchy", "customer-id", customerId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get("customer", "hierarchy", path, params != null ? params.toQueryParams() : null);
   }
 
   public CustomerHierarchyResponse hierarchy(String customerId, CustomerHierarchyParams params)
@@ -495,7 +496,7 @@ public final class CustomerService extends BaseService<CustomerService> {
       String customerId, CustomerHierarchyParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/hierarchy", "customer-id", customerId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync("customer", "hierarchy", path, params != null ? params.toQueryParams() : null)
         .thenApply(
             response -> CustomerHierarchyResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -510,7 +511,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/hierarchy", "customer-id", customerId);
 
-    return getAsync(path, null)
+    return getAsync("customer", "hierarchy", path, null)
         .thenApply(
             response -> CustomerHierarchyResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -521,7 +522,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/update_payment_method", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "updatePaymentMethod", path, null);
   }
 
   /**
@@ -533,7 +534,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_payment_method", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "updatePaymentMethod", path, params.toFormData());
   }
 
   /**
@@ -544,7 +545,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_payment_method", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "updatePaymentMethod", path, jsonPayload);
   }
 
   public CustomerUpdatePaymentMethodResponse updatePaymentMethod(
@@ -559,7 +560,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_payment_method", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "updatePaymentMethod", path, params.toFormData())
         .thenApply(
             response ->
                 CustomerUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response));
@@ -578,7 +579,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/update_payment_method", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("customer", "updatePaymentMethod", path, null)
         .thenApply(
             response ->
                 CustomerUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response));
@@ -588,7 +589,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   Response retrieveRaw(String customerId) throws ChargebeeException {
     String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
 
-    return get(path, null);
+    return get("customer", "retrieve", path, null);
   }
 
   public CustomerRetrieveResponse retrieve(String customerId) throws ChargebeeException {
@@ -600,7 +601,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CompletableFuture<CustomerRetrieveResponse> retrieveAsync(String customerId) {
     String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
 
-    return getAsync(path, null)
+    return getAsync("customer", "retrieve", path, null)
         .thenApply(
             response -> CustomerRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -609,19 +610,19 @@ public final class CustomerService extends BaseService<CustomerService> {
   Response updateRaw(String customerId) throws ChargebeeException {
     String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "update", path, null);
   }
 
   /** update a customer using immutable params (executes immediately) - returns raw Response. */
   Response updateRaw(String customerId, CustomerUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "update", path, params.toFormData());
   }
 
   /** update a customer using raw JSON payload (executes immediately) - returns raw Response. */
   Response updateRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "update", path, jsonPayload);
   }
 
   public CustomerUpdateResponse update(String customerId, CustomerUpdateParams params)
@@ -634,7 +635,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CompletableFuture<CustomerUpdateResponse> updateAsync(
       String customerId, CustomerUpdateParams params) {
     String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "update", path, params.toFormData())
         .thenApply(
             response -> CustomerUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -648,7 +649,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CompletableFuture<CustomerUpdateResponse> updateAsync(String customerId) {
     String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("customer", "update", path, null)
         .thenApply(
             response -> CustomerUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -661,7 +662,8 @@ public final class CustomerService extends BaseService<CustomerService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/hierarchy_detail", "customer-id", customerId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "customer", "listHierarchyDetail", path, params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -670,7 +672,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   Response listHierarchyDetailRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/hierarchy_detail", "customer-id", customerId);
-    return get(path, null);
+    return get("customer", "listHierarchyDetail", path, null);
   }
 
   /**
@@ -702,7 +704,8 @@ public final class CustomerService extends BaseService<CustomerService> {
       String customerId, CustomerListHierarchyDetailParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/hierarchy_detail", "customer-id", customerId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "customer", "listHierarchyDetail", path, params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 CustomerListHierarchyDetailResponse.fromJson(
@@ -714,7 +717,7 @@ public final class CustomerService extends BaseService<CustomerService> {
       String customerId) {
     String path =
         buildPathWithParams("/customers/{customer-id}/hierarchy_detail", "customer-id", customerId);
-    return getAsync(path, null)
+    return getAsync("customer", "listHierarchyDetail", path, null)
         .thenApply(
             response ->
                 CustomerListHierarchyDetailResponse.fromJson(
@@ -727,7 +730,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/change_billing_date", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "changeBillingDate", path, null);
   }
 
   /**
@@ -739,7 +742,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/change_billing_date", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "changeBillingDate", path, params.toFormData());
   }
 
   /**
@@ -750,7 +753,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/change_billing_date", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "changeBillingDate", path, jsonPayload);
   }
 
   public CustomerChangeBillingDateResponse changeBillingDate(
@@ -765,7 +768,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/change_billing_date", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "changeBillingDate", path, params.toFormData())
         .thenApply(
             response ->
                 CustomerChangeBillingDateResponse.fromJson(response.getBodyAsString(), response));
@@ -784,7 +787,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/change_billing_date", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("customer", "changeBillingDate", path, null)
         .thenApply(
             response ->
                 CustomerChangeBillingDateResponse.fromJson(response.getBodyAsString(), response));
@@ -793,13 +796,13 @@ public final class CustomerService extends BaseService<CustomerService> {
   /** list a customer using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(CustomerListParams params) throws ChargebeeException {
 
-    return get("/customers", params != null ? params.toQueryParams() : null);
+    return get("customer", "list", "/customers", params != null ? params.toQueryParams() : null);
   }
 
   /** list a customer without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/customers", null);
+    return get("customer", "list", "/customers", null);
   }
 
   /** list a customer using raw JSON payload (executes immediately) - returns raw Response. */
@@ -817,7 +820,8 @@ public final class CustomerService extends BaseService<CustomerService> {
   /** Async variant of list for customer with params. */
   public CompletableFuture<CustomerListResponse> listAsync(CustomerListParams params) {
 
-    return getAsync("/customers", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "customer", "list", "/customers", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 CustomerListResponse.fromJson(response.getBodyAsString(), this, params, response));
@@ -832,7 +836,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   /** Async variant of list for customer without params. */
   public CompletableFuture<CustomerListResponse> listAsync() {
 
-    return getAsync("/customers", null)
+    return getAsync("customer", "list", "/customers", null)
         .thenApply(
             response ->
                 CustomerListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -841,13 +845,13 @@ public final class CustomerService extends BaseService<CustomerService> {
   /** create a customer using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(CustomerCreateParams params) throws ChargebeeException {
 
-    return post("/customers", params != null ? params.toFormData() : null);
+    return post("customer", "create", "/customers", params != null ? params.toFormData() : null);
   }
 
   /** create a customer using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/customers", jsonPayload);
+    return postJson("customer", "create", "/customers", jsonPayload);
   }
 
   public CustomerCreateResponse create(CustomerCreateParams params) throws ChargebeeException {
@@ -859,7 +863,8 @@ public final class CustomerService extends BaseService<CustomerService> {
   /** Async variant of create for customer with params. */
   public CompletableFuture<CustomerCreateResponse> createAsync(CustomerCreateParams params) {
 
-    return postAsync("/customers", params != null ? params.toFormData() : null)
+    return postAsync(
+            "customer", "create", "/customers", params != null ? params.toFormData() : null)
         .thenApply(
             response -> CustomerCreateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -869,7 +874,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/add_contact", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "addContact", path, null);
   }
 
   /** addContact a customer using immutable params (executes immediately) - returns raw Response. */
@@ -877,14 +882,14 @@ public final class CustomerService extends BaseService<CustomerService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/add_contact", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "addContact", path, params.toFormData());
   }
 
   /** addContact a customer using raw JSON payload (executes immediately) - returns raw Response. */
   Response addContactRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/add_contact", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "addContact", path, jsonPayload);
   }
 
   public CustomerAddContactResponse addContact(String customerId, CustomerAddContactParams params)
@@ -898,7 +903,7 @@ public final class CustomerService extends BaseService<CustomerService> {
       String customerId, CustomerAddContactParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/add_contact", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "addContact", path, params.toFormData())
         .thenApply(
             response -> CustomerAddContactResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -913,7 +918,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/add_contact", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("customer", "addContact", path, null)
         .thenApply(
             response -> CustomerAddContactResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -926,7 +931,8 @@ public final class CustomerService extends BaseService<CustomerService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/contacts", "customer-id", customerId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "customer", "contactsForCustomer", path, params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -935,7 +941,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   Response contactsForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/contacts", "customer-id", customerId);
-    return get(path, null);
+    return get("customer", "contactsForCustomer", path, null);
   }
 
   /**
@@ -967,7 +973,8 @@ public final class CustomerService extends BaseService<CustomerService> {
       String customerId, ContactsForCustomerParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/contacts", "customer-id", customerId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "customer", "contactsForCustomer", path, params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ContactsForCustomerResponse.fromJson(
@@ -979,7 +986,7 @@ public final class CustomerService extends BaseService<CustomerService> {
       String customerId) {
     String path =
         buildPathWithParams("/customers/{customer-id}/contacts", "customer-id", customerId);
-    return getAsync(path, null)
+    return getAsync("customer", "contactsForCustomer", path, null)
         .thenApply(
             response ->
                 ContactsForCustomerResponse.fromJson(
@@ -992,7 +999,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/deduct_promotional_credits", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "deductPromotionalCredits", path, null);
   }
 
   /**
@@ -1004,7 +1011,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/deduct_promotional_credits", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "deductPromotionalCredits", path, params.toFormData());
   }
 
   /**
@@ -1016,7 +1023,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/deduct_promotional_credits", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "deductPromotionalCredits", path, jsonPayload);
   }
 
   public CustomerDeductPromotionalCreditsResponse deductPromotionalCredits(
@@ -1031,7 +1038,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/deduct_promotional_credits", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "deductPromotionalCredits", path, params.toFormData())
         .thenApply(
             response ->
                 CustomerDeductPromotionalCreditsResponse.fromJson(
@@ -1044,7 +1051,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/clear_personal_data", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "clearPersonalData", path, null);
   }
 
   public CustomerClearPersonalDataResponse clearPersonalData(String customerId)
@@ -1060,7 +1067,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/clear_personal_data", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("customer", "clearPersonalData", path, null)
         .thenApply(
             response ->
                 CustomerClearPersonalDataResponse.fromJson(response.getBodyAsString(), response));
@@ -1069,13 +1076,14 @@ public final class CustomerService extends BaseService<CustomerService> {
   /** merge a customer using immutable params (executes immediately) - returns raw Response. */
   Response mergeRaw(CustomerMergeParams params) throws ChargebeeException {
 
-    return post("/customers/merge", params != null ? params.toFormData() : null);
+    return post(
+        "customer", "merge", "/customers/merge", params != null ? params.toFormData() : null);
   }
 
   /** merge a customer using raw JSON payload (executes immediately) - returns raw Response. */
   Response mergeRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/customers/merge", jsonPayload);
+    return postJson("customer", "merge", "/customers/merge", jsonPayload);
   }
 
   public CustomerMergeResponse merge(CustomerMergeParams params) throws ChargebeeException {
@@ -1087,7 +1095,8 @@ public final class CustomerService extends BaseService<CustomerService> {
   /** Async variant of merge for customer with params. */
   public CompletableFuture<CustomerMergeResponse> mergeAsync(CustomerMergeParams params) {
 
-    return postAsync("/customers/merge", params != null ? params.toFormData() : null)
+    return postAsync(
+            "customer", "merge", "/customers/merge", params != null ? params.toFormData() : null)
         .thenApply(
             response -> CustomerMergeResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1097,7 +1106,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/collect_payment", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "collectPayment", path, null);
   }
 
   /**
@@ -1107,7 +1116,7 @@ public final class CustomerService extends BaseService<CustomerService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/collect_payment", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "collectPayment", path, params.toFormData());
   }
 
   /**
@@ -1116,7 +1125,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   Response collectPaymentRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/collect_payment", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "collectPayment", path, jsonPayload);
   }
 
   public CustomerCollectPaymentResponse collectPayment(
@@ -1130,7 +1139,7 @@ public final class CustomerService extends BaseService<CustomerService> {
       String customerId, CustomerCollectPaymentParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/collect_payment", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "collectPayment", path, params.toFormData())
         .thenApply(
             response ->
                 CustomerCollectPaymentResponse.fromJson(response.getBodyAsString(), response));
@@ -1147,7 +1156,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/collect_payment", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("customer", "collectPayment", path, null)
         .thenApply(
             response ->
                 CustomerCollectPaymentResponse.fromJson(response.getBodyAsString(), response));
@@ -1159,7 +1168,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/record_excess_payment", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "recordExcessPayment", path, null);
   }
 
   /**
@@ -1171,7 +1180,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/record_excess_payment", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "recordExcessPayment", path, params.toFormData());
   }
 
   /**
@@ -1182,7 +1191,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/record_excess_payment", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "recordExcessPayment", path, jsonPayload);
   }
 
   public CustomerRecordExcessPaymentResponse recordExcessPayment(
@@ -1197,7 +1206,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/record_excess_payment", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "recordExcessPayment", path, params.toFormData())
         .thenApply(
             response ->
                 CustomerRecordExcessPaymentResponse.fromJson(response.getBodyAsString(), response));
@@ -1216,7 +1225,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/record_excess_payment", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("customer", "recordExcessPayment", path, null)
         .thenApply(
             response ->
                 CustomerRecordExcessPaymentResponse.fromJson(response.getBodyAsString(), response));
@@ -1228,7 +1237,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/set_promotional_credits", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "setPromotionalCredits", path, null);
   }
 
   /**
@@ -1240,7 +1249,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/set_promotional_credits", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "setPromotionalCredits", path, params.toFormData());
   }
 
   /**
@@ -1252,7 +1261,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/set_promotional_credits", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "setPromotionalCredits", path, jsonPayload);
   }
 
   public CustomerSetPromotionalCreditsResponse setPromotionalCredits(
@@ -1267,7 +1276,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/set_promotional_credits", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "setPromotionalCredits", path, params.toFormData())
         .thenApply(
             response ->
                 CustomerSetPromotionalCreditsResponse.fromJson(
@@ -1279,7 +1288,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/update_contact", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "updateContact", path, null);
   }
 
   /**
@@ -1289,7 +1298,7 @@ public final class CustomerService extends BaseService<CustomerService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/update_contact", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "updateContact", path, params.toFormData());
   }
 
   /**
@@ -1298,7 +1307,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   Response updateContactRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/update_contact", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "updateContact", path, jsonPayload);
   }
 
   public CustomerUpdateContactResponse updateContact(
@@ -1312,7 +1321,7 @@ public final class CustomerService extends BaseService<CustomerService> {
       String customerId, CustomerUpdateContactParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/update_contact", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "updateContact", path, params.toFormData())
         .thenApply(
             response ->
                 CustomerUpdateContactResponse.fromJson(response.getBodyAsString(), response));
@@ -1328,7 +1337,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams("/customers/{customer-id}/update_contact", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("customer", "updateContact", path, null)
         .thenApply(
             response ->
                 CustomerUpdateContactResponse.fromJson(response.getBodyAsString(), response));
@@ -1340,7 +1349,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/update_hierarchy_settings", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "updateHierarchySettings", path, null);
   }
 
   /**
@@ -1352,7 +1361,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_hierarchy_settings", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "updateHierarchySettings", path, params.toFormData());
   }
 
   /**
@@ -1364,7 +1373,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_hierarchy_settings", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "updateHierarchySettings", path, jsonPayload);
   }
 
   public CustomerUpdateHierarchySettingsResponse updateHierarchySettings(
@@ -1379,7 +1388,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_hierarchy_settings", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "updateHierarchySettings", path, params.toFormData())
         .thenApply(
             response ->
                 CustomerUpdateHierarchySettingsResponse.fromJson(
@@ -1399,7 +1408,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/update_hierarchy_settings", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("customer", "updateHierarchySettings", path, null)
         .thenApply(
             response ->
                 CustomerUpdateHierarchySettingsResponse.fromJson(
@@ -1412,7 +1421,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/update_billing_info", "customer-id", customerId);
 
-    return post(path, null);
+    return post("customer", "updateBillingInfo", path, null);
   }
 
   /**
@@ -1424,7 +1433,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_billing_info", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("customer", "updateBillingInfo", path, params.toFormData());
   }
 
   /**
@@ -1435,7 +1444,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_billing_info", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("customer", "updateBillingInfo", path, jsonPayload);
   }
 
   public CustomerUpdateBillingInfoResponse updateBillingInfo(
@@ -1450,7 +1459,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_billing_info", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("customer", "updateBillingInfo", path, params.toFormData())
         .thenApply(
             response ->
                 CustomerUpdateBillingInfoResponse.fromJson(response.getBodyAsString(), response));
@@ -1469,7 +1478,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams(
             "/customers/{customer-id}/update_billing_info", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("customer", "updateBillingInfo", path, null)
         .thenApply(
             response ->
                 CustomerUpdateBillingInfoResponse.fromJson(response.getBodyAsString(), response));

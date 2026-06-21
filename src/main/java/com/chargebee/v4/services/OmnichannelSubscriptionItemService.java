@@ -66,7 +66,11 @@ public final class OmnichannelSubscriptionItemService
             "/omnichannel_subscription_items/{omnichannel-subscription-item-id}/scheduled_changes",
             "omnichannel-subscription-item-id",
             omnichannelSubscriptionItemId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "omnichannelSubscriptionItem",
+        "listOmniSubscriptionItemScheduleChanges",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -80,7 +84,8 @@ public final class OmnichannelSubscriptionItemService
             "/omnichannel_subscription_items/{omnichannel-subscription-item-id}/scheduled_changes",
             "omnichannel-subscription-item-id",
             omnichannelSubscriptionItemId);
-    return get(path, null);
+    return get(
+        "omnichannelSubscriptionItem", "listOmniSubscriptionItemScheduleChanges", path, null);
   }
 
   /**
@@ -130,7 +135,11 @@ public final class OmnichannelSubscriptionItemService
             "/omnichannel_subscription_items/{omnichannel-subscription-item-id}/scheduled_changes",
             "omnichannel-subscription-item-id",
             omnichannelSubscriptionItemId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "omnichannelSubscriptionItem",
+            "listOmniSubscriptionItemScheduleChanges",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse.fromJson(
@@ -153,7 +162,8 @@ public final class OmnichannelSubscriptionItemService
             "/omnichannel_subscription_items/{omnichannel-subscription-item-id}/scheduled_changes",
             "omnichannel-subscription-item-id",
             omnichannelSubscriptionItemId);
-    return getAsync(path, null)
+    return getAsync(
+            "omnichannelSubscriptionItem", "listOmniSubscriptionItemScheduleChanges", path, null)
         .thenApply(
             response ->
                 OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse.fromJson(

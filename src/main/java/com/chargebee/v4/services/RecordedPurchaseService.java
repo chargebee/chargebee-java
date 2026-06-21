@@ -62,7 +62,7 @@ public final class RecordedPurchaseService extends BaseService<RecordedPurchaseS
             "recorded-purchase-id",
             recordedPurchaseId);
 
-    return get(path, null);
+    return get("recordedPurchase", "retrieve", path, null);
   }
 
   public RecordedPurchaseRetrieveResponse retrieve(String recordedPurchaseId)
@@ -80,7 +80,7 @@ public final class RecordedPurchaseService extends BaseService<RecordedPurchaseS
             "recorded-purchase-id",
             recordedPurchaseId);
 
-    return getAsync(path, null)
+    return getAsync("recordedPurchase", "retrieve", path, null)
         .thenApply(
             response ->
                 RecordedPurchaseRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -91,7 +91,11 @@ public final class RecordedPurchaseService extends BaseService<RecordedPurchaseS
    */
   Response createRaw(RecordedPurchaseCreateParams params) throws ChargebeeException {
 
-    return post("/recorded_purchases", params != null ? params.toFormData() : null);
+    return post(
+        "recordedPurchase",
+        "create",
+        "/recorded_purchases",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -99,7 +103,7 @@ public final class RecordedPurchaseService extends BaseService<RecordedPurchaseS
    */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/recorded_purchases", jsonPayload);
+    return postJson("recordedPurchase", "create", "/recorded_purchases", jsonPayload);
   }
 
   public RecordedPurchaseCreateResponse create(RecordedPurchaseCreateParams params)
@@ -113,7 +117,11 @@ public final class RecordedPurchaseService extends BaseService<RecordedPurchaseS
   public CompletableFuture<RecordedPurchaseCreateResponse> createAsync(
       RecordedPurchaseCreateParams params) {
 
-    return postAsync("/recorded_purchases", params != null ? params.toFormData() : null)
+    return postAsync(
+            "recordedPurchase",
+            "create",
+            "/recorded_purchases",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 RecordedPurchaseCreateResponse.fromJson(response.getBodyAsString(), response));

@@ -75,7 +75,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
   Response retrieveRaw(String itemPriceId) throws ChargebeeException {
     String path = buildPathWithParams("/item_prices/{item-price-id}", "item-price-id", itemPriceId);
 
-    return get(path, null);
+    return get("itemPrice", "retrieve", path, null);
   }
 
   public ItemPriceRetrieveResponse retrieve(String itemPriceId) throws ChargebeeException {
@@ -87,7 +87,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
   public CompletableFuture<ItemPriceRetrieveResponse> retrieveAsync(String itemPriceId) {
     String path = buildPathWithParams("/item_prices/{item-price-id}", "item-price-id", itemPriceId);
 
-    return getAsync(path, null)
+    return getAsync("itemPrice", "retrieve", path, null)
         .thenApply(
             response -> ItemPriceRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -96,19 +96,19 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
   Response updateRaw(String itemPriceId) throws ChargebeeException {
     String path = buildPathWithParams("/item_prices/{item-price-id}", "item-price-id", itemPriceId);
 
-    return post(path, null);
+    return post("itemPrice", "update", path, null);
   }
 
   /** update a itemPrice using immutable params (executes immediately) - returns raw Response. */
   Response updateRaw(String itemPriceId, ItemPriceUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/item_prices/{item-price-id}", "item-price-id", itemPriceId);
-    return post(path, params.toFormData());
+    return post("itemPrice", "update", path, params.toFormData());
   }
 
   /** update a itemPrice using raw JSON payload (executes immediately) - returns raw Response. */
   Response updateRaw(String itemPriceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/item_prices/{item-price-id}", "item-price-id", itemPriceId);
-    return postJson(path, jsonPayload);
+    return postJson("itemPrice", "update", path, jsonPayload);
   }
 
   public ItemPriceUpdateResponse update(String itemPriceId, ItemPriceUpdateParams params)
@@ -121,7 +121,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
   public CompletableFuture<ItemPriceUpdateResponse> updateAsync(
       String itemPriceId, ItemPriceUpdateParams params) {
     String path = buildPathWithParams("/item_prices/{item-price-id}", "item-price-id", itemPriceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("itemPrice", "update", path, params.toFormData())
         .thenApply(
             response -> ItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -135,7 +135,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
   public CompletableFuture<ItemPriceUpdateResponse> updateAsync(String itemPriceId) {
     String path = buildPathWithParams("/item_prices/{item-price-id}", "item-price-id", itemPriceId);
 
-    return postAsync(path, null)
+    return postAsync("itemPrice", "update", path, null)
         .thenApply(
             response -> ItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -145,7 +145,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     String path =
         buildPathWithParams("/item_prices/{item-price-id}/delete", "item-price-id", itemPriceId);
 
-    return post(path, null);
+    return post("itemPrice", "delete", path, null);
   }
 
   public ItemPriceDeleteResponse delete(String itemPriceId) throws ChargebeeException {
@@ -158,7 +158,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     String path =
         buildPathWithParams("/item_prices/{item-price-id}/delete", "item-price-id", itemPriceId);
 
-    return postAsync(path, null)
+    return postAsync("itemPrice", "delete", path, null)
         .thenApply(
             response -> ItemPriceDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -172,7 +172,11 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     String path =
         buildPathWithParams(
             "/item_prices/{item-price-id}/applicable_item_prices", "item-price-id", itemPriceId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "itemPrice",
+        "findApplicableItemPrices",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -183,7 +187,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     String path =
         buildPathWithParams(
             "/item_prices/{item-price-id}/applicable_item_prices", "item-price-id", itemPriceId);
-    return get(path, null);
+    return get("itemPrice", "findApplicableItemPrices", path, null);
   }
 
   /**
@@ -218,7 +222,11 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     String path =
         buildPathWithParams(
             "/item_prices/{item-price-id}/applicable_item_prices", "item-price-id", itemPriceId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "itemPrice",
+            "findApplicableItemPrices",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 FindApplicableItemPricesResponse.fromJson(
@@ -231,7 +239,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     String path =
         buildPathWithParams(
             "/item_prices/{item-price-id}/applicable_item_prices", "item-price-id", itemPriceId);
-    return getAsync(path, null)
+    return getAsync("itemPrice", "findApplicableItemPrices", path, null)
         .thenApply(
             response ->
                 FindApplicableItemPricesResponse.fromJson(
@@ -247,7 +255,8 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     String path =
         buildPathWithParams(
             "/item_prices/{item-price-id}/applicable_items", "item-price-id", itemPriceId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "itemPrice", "findApplicableItems", path, params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -257,7 +266,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     String path =
         buildPathWithParams(
             "/item_prices/{item-price-id}/applicable_items", "item-price-id", itemPriceId);
-    return get(path, null);
+    return get("itemPrice", "findApplicableItems", path, null);
   }
 
   /**
@@ -292,7 +301,11 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     String path =
         buildPathWithParams(
             "/item_prices/{item-price-id}/applicable_items", "item-price-id", itemPriceId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "itemPrice",
+            "findApplicableItems",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ItemPriceFindApplicableItemsResponse.fromJson(
@@ -305,7 +318,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     String path =
         buildPathWithParams(
             "/item_prices/{item-price-id}/applicable_items", "item-price-id", itemPriceId);
-    return getAsync(path, null)
+    return getAsync("itemPrice", "findApplicableItems", path, null)
         .thenApply(
             response ->
                 ItemPriceFindApplicableItemsResponse.fromJson(
@@ -315,13 +328,13 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
   /** list a itemPrice using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(ItemPriceListParams params) throws ChargebeeException {
 
-    return get("/item_prices", params != null ? params.toQueryParams() : null);
+    return get("itemPrice", "list", "/item_prices", params != null ? params.toQueryParams() : null);
   }
 
   /** list a itemPrice without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/item_prices", null);
+    return get("itemPrice", "list", "/item_prices", null);
   }
 
   /** list a itemPrice using raw JSON payload (executes immediately) - returns raw Response. */
@@ -339,7 +352,8 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
   /** Async variant of list for itemPrice with params. */
   public CompletableFuture<ItemPriceListResponse> listAsync(ItemPriceListParams params) {
 
-    return getAsync("/item_prices", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "itemPrice", "list", "/item_prices", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ItemPriceListResponse.fromJson(response.getBodyAsString(), this, params, response));
@@ -354,7 +368,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
   /** Async variant of list for itemPrice without params. */
   public CompletableFuture<ItemPriceListResponse> listAsync() {
 
-    return getAsync("/item_prices", null)
+    return getAsync("itemPrice", "list", "/item_prices", null)
         .thenApply(
             response ->
                 ItemPriceListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -363,13 +377,13 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
   /** create a itemPrice using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(ItemPriceCreateParams params) throws ChargebeeException {
 
-    return post("/item_prices", params != null ? params.toFormData() : null);
+    return post("itemPrice", "create", "/item_prices", params != null ? params.toFormData() : null);
   }
 
   /** create a itemPrice using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/item_prices", jsonPayload);
+    return postJson("itemPrice", "create", "/item_prices", jsonPayload);
   }
 
   public ItemPriceCreateResponse create(ItemPriceCreateParams params) throws ChargebeeException {
@@ -381,7 +395,8 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
   /** Async variant of create for itemPrice with params. */
   public CompletableFuture<ItemPriceCreateResponse> createAsync(ItemPriceCreateParams params) {
 
-    return postAsync("/item_prices", params != null ? params.toFormData() : null)
+    return postAsync(
+            "itemPrice", "create", "/item_prices", params != null ? params.toFormData() : null)
         .thenApply(
             response -> ItemPriceCreateResponse.fromJson(response.getBodyAsString(), response));
   }

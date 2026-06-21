@@ -53,7 +53,7 @@ public final class RuleService extends BaseService<RuleService> {
   Response retrieveRaw(String ruleId) throws ChargebeeException {
     String path = buildPathWithParams("/rules/{rule-id}", "rule-id", ruleId);
 
-    return get(path, null);
+    return get("rule", "retrieve", path, null);
   }
 
   public RuleRetrieveResponse retrieve(String ruleId) throws ChargebeeException {
@@ -65,7 +65,7 @@ public final class RuleService extends BaseService<RuleService> {
   public CompletableFuture<RuleRetrieveResponse> retrieveAsync(String ruleId) {
     String path = buildPathWithParams("/rules/{rule-id}", "rule-id", ruleId);
 
-    return getAsync(path, null)
+    return getAsync("rule", "retrieve", path, null)
         .thenApply(response -> RuleRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 }

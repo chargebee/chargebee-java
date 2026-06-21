@@ -71,7 +71,7 @@ public final class ProductService extends BaseService<ProductService> {
   Response retrieveRaw(String productId) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
 
-    return get(path, null);
+    return get("product", "retrieve", path, null);
   }
 
   public ProductRetrieveResponse retrieve(String productId) throws ChargebeeException {
@@ -83,7 +83,7 @@ public final class ProductService extends BaseService<ProductService> {
   public CompletableFuture<ProductRetrieveResponse> retrieveAsync(String productId) {
     String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
 
-    return getAsync(path, null)
+    return getAsync("product", "retrieve", path, null)
         .thenApply(
             response -> ProductRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -92,19 +92,19 @@ public final class ProductService extends BaseService<ProductService> {
   Response updateRaw(String productId) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
 
-    return post(path, null);
+    return post("product", "update", path, null);
   }
 
   /** update a product using immutable params (executes immediately) - returns raw Response. */
   Response updateRaw(String productId, ProductUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
-    return post(path, params.toFormData());
+    return post("product", "update", path, params.toFormData());
   }
 
   /** update a product using raw JSON payload (executes immediately) - returns raw Response. */
   Response updateRaw(String productId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
-    return postJson(path, jsonPayload);
+    return postJson("product", "update", path, jsonPayload);
   }
 
   public ProductUpdateResponse update(String productId, ProductUpdateParams params)
@@ -117,7 +117,7 @@ public final class ProductService extends BaseService<ProductService> {
   public CompletableFuture<ProductUpdateResponse> updateAsync(
       String productId, ProductUpdateParams params) {
     String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
-    return postAsync(path, params.toFormData())
+    return postAsync("product", "update", path, params.toFormData())
         .thenApply(
             response -> ProductUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -131,7 +131,7 @@ public final class ProductService extends BaseService<ProductService> {
   public CompletableFuture<ProductUpdateResponse> updateAsync(String productId) {
     String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
 
-    return postAsync(path, null)
+    return postAsync("product", "update", path, null)
         .thenApply(
             response -> ProductUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -140,7 +140,7 @@ public final class ProductService extends BaseService<ProductService> {
   Response deleteRaw(String productId) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}/delete", "product-id", productId);
 
-    return post(path, null);
+    return post("product", "delete", path, null);
   }
 
   public ProductDeleteResponse delete(String productId) throws ChargebeeException {
@@ -152,7 +152,7 @@ public final class ProductService extends BaseService<ProductService> {
   public CompletableFuture<ProductDeleteResponse> deleteAsync(String productId) {
     String path = buildPathWithParams("/products/{product-id}/delete", "product-id", productId);
 
-    return postAsync(path, null)
+    return postAsync("product", "delete", path, null)
         .thenApply(
             response -> ProductDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -162,7 +162,7 @@ public final class ProductService extends BaseService<ProductService> {
     String path =
         buildPathWithParams("/products/{product-id}/update_options", "product-id", productId);
 
-    return post(path, null);
+    return post("product", "updateOptions", path, null);
   }
 
   /**
@@ -172,7 +172,7 @@ public final class ProductService extends BaseService<ProductService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/products/{product-id}/update_options", "product-id", productId);
-    return post(path, params.toFormData());
+    return post("product", "updateOptions", path, params.toFormData());
   }
 
   /**
@@ -181,7 +181,7 @@ public final class ProductService extends BaseService<ProductService> {
   Response updateOptionsRaw(String productId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/products/{product-id}/update_options", "product-id", productId);
-    return postJson(path, jsonPayload);
+    return postJson("product", "updateOptions", path, jsonPayload);
   }
 
   public ProductUpdateOptionsResponse updateOptions(
@@ -195,7 +195,7 @@ public final class ProductService extends BaseService<ProductService> {
       String productId, ProductUpdateOptionsParams params) {
     String path =
         buildPathWithParams("/products/{product-id}/update_options", "product-id", productId);
-    return postAsync(path, params.toFormData())
+    return postAsync("product", "updateOptions", path, params.toFormData())
         .thenApply(
             response ->
                 ProductUpdateOptionsResponse.fromJson(response.getBodyAsString(), response));
@@ -211,7 +211,7 @@ public final class ProductService extends BaseService<ProductService> {
     String path =
         buildPathWithParams("/products/{product-id}/update_options", "product-id", productId);
 
-    return postAsync(path, null)
+    return postAsync("product", "updateOptions", path, null)
         .thenApply(
             response ->
                 ProductUpdateOptionsResponse.fromJson(response.getBodyAsString(), response));
@@ -220,13 +220,13 @@ public final class ProductService extends BaseService<ProductService> {
   /** list a product using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(ProductListParams params) throws ChargebeeException {
 
-    return get("/products", params != null ? params.toQueryParams() : null);
+    return get("product", "list", "/products", params != null ? params.toQueryParams() : null);
   }
 
   /** list a product without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/products", null);
+    return get("product", "list", "/products", null);
   }
 
   /** list a product using raw JSON payload (executes immediately) - returns raw Response. */
@@ -244,7 +244,7 @@ public final class ProductService extends BaseService<ProductService> {
   /** Async variant of list for product with params. */
   public CompletableFuture<ProductListResponse> listAsync(ProductListParams params) {
 
-    return getAsync("/products", params != null ? params.toQueryParams() : null)
+    return getAsync("product", "list", "/products", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ProductListResponse.fromJson(response.getBodyAsString(), this, params, response));
@@ -259,7 +259,7 @@ public final class ProductService extends BaseService<ProductService> {
   /** Async variant of list for product without params. */
   public CompletableFuture<ProductListResponse> listAsync() {
 
-    return getAsync("/products", null)
+    return getAsync("product", "list", "/products", null)
         .thenApply(
             response ->
                 ProductListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -268,13 +268,13 @@ public final class ProductService extends BaseService<ProductService> {
   /** create a product using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(ProductCreateParams params) throws ChargebeeException {
 
-    return post("/products", params != null ? params.toFormData() : null);
+    return post("product", "create", "/products", params != null ? params.toFormData() : null);
   }
 
   /** create a product using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/products", jsonPayload);
+    return postJson("product", "create", "/products", jsonPayload);
   }
 
   public ProductCreateResponse create(ProductCreateParams params) throws ChargebeeException {
@@ -286,7 +286,7 @@ public final class ProductService extends BaseService<ProductService> {
   /** Async variant of create for product with params. */
   public CompletableFuture<ProductCreateResponse> createAsync(ProductCreateParams params) {
 
-    return postAsync("/products", params != null ? params.toFormData() : null)
+    return postAsync("product", "create", "/products", params != null ? params.toFormData() : null)
         .thenApply(
             response -> ProductCreateResponse.fromJson(response.getBodyAsString(), response));
   }

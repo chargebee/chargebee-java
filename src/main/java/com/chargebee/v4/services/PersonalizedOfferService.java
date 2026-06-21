@@ -61,6 +61,8 @@ public final class PersonalizedOfferService extends BaseService<PersonalizedOffe
   Response personalizedOffersRaw(PersonalizedOffersParams params) throws ChargebeeException {
 
     return postJsonWithSubDomain(
+        "personalizedOffer",
+        "personalizedOffers",
         "/personalized_offers",
         SubDomain.GROW.getValue(),
         params != null ? params.toJsonString() : null);
@@ -72,7 +74,12 @@ public final class PersonalizedOfferService extends BaseService<PersonalizedOffe
    */
   Response personalizedOffersRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJsonWithSubDomain("/personalized_offers", SubDomain.GROW.getValue(), jsonPayload);
+    return postJsonWithSubDomain(
+        "personalizedOffer",
+        "personalizedOffers",
+        "/personalized_offers",
+        SubDomain.GROW.getValue(),
+        jsonPayload);
   }
 
   public PersonalizedOffersResponse personalizedOffers(PersonalizedOffersParams params)
@@ -87,6 +94,8 @@ public final class PersonalizedOfferService extends BaseService<PersonalizedOffe
       PersonalizedOffersParams params) {
 
     return postJsonWithSubDomainAsync(
+            "personalizedOffer",
+            "personalizedOffers",
             "/personalized_offers",
             SubDomain.GROW.getValue(),
             params != null ? params.toJsonString() : null)

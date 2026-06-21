@@ -64,7 +64,7 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
             "payment-schedule-scheme-id",
             paymentScheduleSchemeId);
 
-    return get(path, null);
+    return get("paymentScheduleScheme", "retrieve", path, null);
   }
 
   public PaymentScheduleSchemeRetrieveResponse retrieve(String paymentScheduleSchemeId)
@@ -82,7 +82,7 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
             "payment-schedule-scheme-id",
             paymentScheduleSchemeId);
 
-    return getAsync(path, null)
+    return getAsync("paymentScheduleScheme", "retrieve", path, null)
         .thenApply(
             response ->
                 PaymentScheduleSchemeRetrieveResponse.fromJson(
@@ -95,7 +95,11 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
    */
   Response createRaw(PaymentScheduleSchemeCreateParams params) throws ChargebeeException {
 
-    return post("/payment_schedule_schemes", params != null ? params.toFormData() : null);
+    return post(
+        "paymentScheduleScheme",
+        "create",
+        "/payment_schedule_schemes",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -104,7 +108,7 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
    */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/payment_schedule_schemes", jsonPayload);
+    return postJson("paymentScheduleScheme", "create", "/payment_schedule_schemes", jsonPayload);
   }
 
   public PaymentScheduleSchemeCreateResponse create(PaymentScheduleSchemeCreateParams params)
@@ -118,7 +122,11 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
   public CompletableFuture<PaymentScheduleSchemeCreateResponse> createAsync(
       PaymentScheduleSchemeCreateParams params) {
 
-    return postAsync("/payment_schedule_schemes", params != null ? params.toFormData() : null)
+    return postAsync(
+            "paymentScheduleScheme",
+            "create",
+            "/payment_schedule_schemes",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 PaymentScheduleSchemeCreateResponse.fromJson(response.getBodyAsString(), response));
@@ -132,7 +140,7 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
             "payment-schedule-scheme-id",
             paymentScheduleSchemeId);
 
-    return post(path, null);
+    return post("paymentScheduleScheme", "delete", path, null);
   }
 
   public PaymentScheduleSchemeDeleteResponse delete(String paymentScheduleSchemeId)
@@ -150,7 +158,7 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
             "payment-schedule-scheme-id",
             paymentScheduleSchemeId);
 
-    return postAsync(path, null)
+    return postAsync("paymentScheduleScheme", "delete", path, null)
         .thenApply(
             response ->
                 PaymentScheduleSchemeDeleteResponse.fromJson(response.getBodyAsString(), response));

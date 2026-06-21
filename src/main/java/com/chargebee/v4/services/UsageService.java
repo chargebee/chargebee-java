@@ -70,13 +70,13 @@ public final class UsageService extends BaseService<UsageService> {
   /** pdf a usage using immutable params (executes immediately) - returns raw Response. */
   Response pdfRaw(UsagePdfParams params) throws ChargebeeException {
 
-    return post("/usages/pdf", params != null ? params.toFormData() : null);
+    return post("usage", "pdf", "/usages/pdf", params != null ? params.toFormData() : null);
   }
 
   /** pdf a usage using raw JSON payload (executes immediately) - returns raw Response. */
   Response pdfRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/usages/pdf", jsonPayload);
+    return postJson("usage", "pdf", "/usages/pdf", jsonPayload);
   }
 
   public UsagePdfResponse pdf(UsagePdfParams params) throws ChargebeeException {
@@ -88,7 +88,7 @@ public final class UsageService extends BaseService<UsageService> {
   /** Async variant of pdf for usage with params. */
   public CompletableFuture<UsagePdfResponse> pdfAsync(UsagePdfParams params) {
 
-    return postAsync("/usages/pdf", params != null ? params.toFormData() : null)
+    return postAsync("usage", "pdf", "/usages/pdf", params != null ? params.toFormData() : null)
         .thenApply(response -> UsagePdfResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -98,7 +98,7 @@ public final class UsageService extends BaseService<UsageService> {
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
 
-    return get(path, null);
+    return get("usage", "retrieve", path, null);
   }
 
   /** retrieve a usage using immutable params (executes immediately) - returns raw Response. */
@@ -107,7 +107,7 @@ public final class UsageService extends BaseService<UsageService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get("usage", "retrieve", path, params != null ? params.toQueryParams() : null);
   }
 
   public UsageRetrieveResponse retrieve(String subscriptionId, UsageRetrieveParams params)
@@ -122,7 +122,7 @@ public final class UsageService extends BaseService<UsageService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync("usage", "retrieve", path, params != null ? params.toQueryParams() : null)
         .thenApply(
             response -> UsageRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -138,7 +138,7 @@ public final class UsageService extends BaseService<UsageService> {
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
 
-    return getAsync(path, null)
+    return getAsync("usage", "retrieve", path, null)
         .thenApply(
             response -> UsageRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -149,7 +149,7 @@ public final class UsageService extends BaseService<UsageService> {
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
 
-    return post(path, null);
+    return post("usage", "create", path, null);
   }
 
   /** create a usage using immutable params (executes immediately) - returns raw Response. */
@@ -157,7 +157,7 @@ public final class UsageService extends BaseService<UsageService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
-    return post(path, params.toFormData());
+    return post("usage", "create", path, params.toFormData());
   }
 
   /** create a usage using raw JSON payload (executes immediately) - returns raw Response. */
@@ -165,7 +165,7 @@ public final class UsageService extends BaseService<UsageService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("usage", "create", path, jsonPayload);
   }
 
   public UsageCreateResponse create(String subscriptionId, UsageCreateParams params)
@@ -180,7 +180,7 @@ public final class UsageService extends BaseService<UsageService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("usage", "create", path, params.toFormData())
         .thenApply(response -> UsageCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -190,7 +190,7 @@ public final class UsageService extends BaseService<UsageService> {
         buildPathWithParams(
             "/subscriptions/{subscription-id}/delete_usage", "subscription-id", subscriptionId);
 
-    return post(path, null);
+    return post("usage", "delete", path, null);
   }
 
   /** delete a usage using immutable params (executes immediately) - returns raw Response. */
@@ -198,7 +198,7 @@ public final class UsageService extends BaseService<UsageService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/delete_usage", "subscription-id", subscriptionId);
-    return post(path, params.toFormData());
+    return post("usage", "delete", path, params.toFormData());
   }
 
   /** delete a usage using raw JSON payload (executes immediately) - returns raw Response. */
@@ -206,7 +206,7 @@ public final class UsageService extends BaseService<UsageService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/delete_usage", "subscription-id", subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("usage", "delete", path, jsonPayload);
   }
 
   public UsageDeleteResponse delete(String subscriptionId, UsageDeleteParams params)
@@ -221,20 +221,20 @@ public final class UsageService extends BaseService<UsageService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/delete_usage", "subscription-id", subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("usage", "delete", path, params.toFormData())
         .thenApply(response -> UsageDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** list a usage using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(UsageListParams params) throws ChargebeeException {
 
-    return get("/usages", params != null ? params.toQueryParams() : null);
+    return get("usage", "list", "/usages", params != null ? params.toQueryParams() : null);
   }
 
   /** list a usage without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/usages", null);
+    return get("usage", "list", "/usages", null);
   }
 
   /** list a usage using raw JSON payload (executes immediately) - returns raw Response. */
@@ -252,7 +252,7 @@ public final class UsageService extends BaseService<UsageService> {
   /** Async variant of list for usage with params. */
   public CompletableFuture<UsageListResponse> listAsync(UsageListParams params) {
 
-    return getAsync("/usages", params != null ? params.toQueryParams() : null)
+    return getAsync("usage", "list", "/usages", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 UsageListResponse.fromJson(response.getBodyAsString(), this, params, response));
@@ -267,7 +267,7 @@ public final class UsageService extends BaseService<UsageService> {
   /** Async variant of list for usage without params. */
   public CompletableFuture<UsageListResponse> listAsync() {
 
-    return getAsync("/usages", null)
+    return getAsync("usage", "list", "/usages", null)
         .thenApply(
             response ->
                 UsageListResponse.fromJson(response.getBodyAsString(), this, null, response));

@@ -54,13 +54,14 @@ public final class CsvTaxRuleService extends BaseService<CsvTaxRuleService> {
   /** create a csvTaxRule using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(CsvTaxRuleCreateParams params) throws ChargebeeException {
 
-    return post("/csv_tax_rules", params != null ? params.toFormData() : null);
+    return post(
+        "csvTaxRule", "create", "/csv_tax_rules", params != null ? params.toFormData() : null);
   }
 
   /** create a csvTaxRule using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/csv_tax_rules", jsonPayload);
+    return postJson("csvTaxRule", "create", "/csv_tax_rules", jsonPayload);
   }
 
   public CsvTaxRuleCreateResponse create(CsvTaxRuleCreateParams params) throws ChargebeeException {
@@ -72,7 +73,8 @@ public final class CsvTaxRuleService extends BaseService<CsvTaxRuleService> {
   /** Async variant of create for csvTaxRule with params. */
   public CompletableFuture<CsvTaxRuleCreateResponse> createAsync(CsvTaxRuleCreateParams params) {
 
-    return postAsync("/csv_tax_rules", params != null ? params.toFormData() : null)
+    return postAsync(
+            "csvTaxRule", "create", "/csv_tax_rules", params != null ? params.toFormData() : null)
         .thenApply(
             response -> CsvTaxRuleCreateResponse.fromJson(response.getBodyAsString(), response));
   }

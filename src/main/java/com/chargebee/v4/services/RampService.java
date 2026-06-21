@@ -67,7 +67,7 @@ public final class RampService extends BaseService<RampService> {
   Response retrieveRaw(String rampId) throws ChargebeeException {
     String path = buildPathWithParams("/ramps/{ramp-id}", "ramp-id", rampId);
 
-    return get(path, null);
+    return get("ramp", "retrieve", path, null);
   }
 
   public RampRetrieveResponse retrieve(String rampId) throws ChargebeeException {
@@ -79,7 +79,7 @@ public final class RampService extends BaseService<RampService> {
   public CompletableFuture<RampRetrieveResponse> retrieveAsync(String rampId) {
     String path = buildPathWithParams("/ramps/{ramp-id}", "ramp-id", rampId);
 
-    return getAsync(path, null)
+    return getAsync("ramp", "retrieve", path, null)
         .thenApply(response -> RampRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -89,7 +89,7 @@ public final class RampService extends BaseService<RampService> {
         buildPathWithParams(
             "/subscriptions/{subscription-id}/create_ramp", "subscription-id", subscriptionId);
 
-    return post(path, null);
+    return post("ramp", "createForSubscription", path, null);
   }
 
   /**
@@ -101,7 +101,7 @@ public final class RampService extends BaseService<RampService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/create_ramp", "subscription-id", subscriptionId);
-    return post(path, params.toFormData());
+    return post("ramp", "createForSubscription", path, params.toFormData());
   }
 
   /**
@@ -113,7 +113,7 @@ public final class RampService extends BaseService<RampService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/create_ramp", "subscription-id", subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("ramp", "createForSubscription", path, jsonPayload);
   }
 
   public RampCreateForSubscriptionResponse createForSubscription(
@@ -128,7 +128,7 @@ public final class RampService extends BaseService<RampService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/create_ramp", "subscription-id", subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("ramp", "createForSubscription", path, params.toFormData())
         .thenApply(
             response ->
                 RampCreateForSubscriptionResponse.fromJson(response.getBodyAsString(), response));
@@ -137,13 +137,13 @@ public final class RampService extends BaseService<RampService> {
   /** list a ramp using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(RampListParams params) throws ChargebeeException {
 
-    return get("/ramps", params != null ? params.toQueryParams() : null);
+    return get("ramp", "list", "/ramps", params != null ? params.toQueryParams() : null);
   }
 
   /** list a ramp without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/ramps", null);
+    return get("ramp", "list", "/ramps", null);
   }
 
   /** list a ramp using raw JSON payload (executes immediately) - returns raw Response. */
@@ -161,7 +161,7 @@ public final class RampService extends BaseService<RampService> {
   /** Async variant of list for ramp with params. */
   public CompletableFuture<RampListResponse> listAsync(RampListParams params) {
 
-    return getAsync("/ramps", params != null ? params.toQueryParams() : null)
+    return getAsync("ramp", "list", "/ramps", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 RampListResponse.fromJson(response.getBodyAsString(), this, params, response));
@@ -176,7 +176,7 @@ public final class RampService extends BaseService<RampService> {
   /** Async variant of list for ramp without params. */
   public CompletableFuture<RampListResponse> listAsync() {
 
-    return getAsync("/ramps", null)
+    return getAsync("ramp", "list", "/ramps", null)
         .thenApply(
             response ->
                 RampListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -186,19 +186,19 @@ public final class RampService extends BaseService<RampService> {
   Response updateRaw(String rampId) throws ChargebeeException {
     String path = buildPathWithParams("/ramps/{ramp-id}/update", "ramp-id", rampId);
 
-    return post(path, null);
+    return post("ramp", "update", path, null);
   }
 
   /** update a ramp using immutable params (executes immediately) - returns raw Response. */
   Response updateRaw(String rampId, RampUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/ramps/{ramp-id}/update", "ramp-id", rampId);
-    return post(path, params.toFormData());
+    return post("ramp", "update", path, params.toFormData());
   }
 
   /** update a ramp using raw JSON payload (executes immediately) - returns raw Response. */
   Response updateRaw(String rampId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/ramps/{ramp-id}/update", "ramp-id", rampId);
-    return postJson(path, jsonPayload);
+    return postJson("ramp", "update", path, jsonPayload);
   }
 
   public RampUpdateResponse update(String rampId, RampUpdateParams params)
@@ -210,7 +210,7 @@ public final class RampService extends BaseService<RampService> {
   /** Async variant of update for ramp with params. */
   public CompletableFuture<RampUpdateResponse> updateAsync(String rampId, RampUpdateParams params) {
     String path = buildPathWithParams("/ramps/{ramp-id}/update", "ramp-id", rampId);
-    return postAsync(path, params.toFormData())
+    return postAsync("ramp", "update", path, params.toFormData())
         .thenApply(response -> RampUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -218,7 +218,7 @@ public final class RampService extends BaseService<RampService> {
   Response deleteRaw(String rampId) throws ChargebeeException {
     String path = buildPathWithParams("/ramps/{ramp-id}/delete", "ramp-id", rampId);
 
-    return post(path, null);
+    return post("ramp", "delete", path, null);
   }
 
   public RampDeleteResponse delete(String rampId) throws ChargebeeException {
@@ -230,7 +230,7 @@ public final class RampService extends BaseService<RampService> {
   public CompletableFuture<RampDeleteResponse> deleteAsync(String rampId) {
     String path = buildPathWithParams("/ramps/{ramp-id}/delete", "ramp-id", rampId);
 
-    return postAsync(path, null)
+    return postAsync("ramp", "delete", path, null)
         .thenApply(response -> RampDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 }

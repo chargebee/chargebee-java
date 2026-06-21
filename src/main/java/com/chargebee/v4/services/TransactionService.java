@@ -92,13 +92,14 @@ public final class TransactionService extends BaseService<TransactionService> {
   /** list a transaction using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(TransactionListParams params) throws ChargebeeException {
 
-    return get("/transactions", params != null ? params.toQueryParams() : null);
+    return get(
+        "transaction", "list", "/transactions", params != null ? params.toQueryParams() : null);
   }
 
   /** list a transaction without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/transactions", null);
+    return get("transaction", "list", "/transactions", null);
   }
 
   /** list a transaction using raw JSON payload (executes immediately) - returns raw Response. */
@@ -116,7 +117,8 @@ public final class TransactionService extends BaseService<TransactionService> {
   /** Async variant of list for transaction with params. */
   public CompletableFuture<TransactionListResponse> listAsync(TransactionListParams params) {
 
-    return getAsync("/transactions", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "transaction", "list", "/transactions", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 TransactionListResponse.fromJson(
@@ -132,7 +134,7 @@ public final class TransactionService extends BaseService<TransactionService> {
   /** Async variant of list for transaction without params. */
   public CompletableFuture<TransactionListResponse> listAsync() {
 
-    return getAsync("/transactions", null)
+    return getAsync("transaction", "list", "/transactions", null)
         .thenApply(
             response ->
                 TransactionListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -144,7 +146,7 @@ public final class TransactionService extends BaseService<TransactionService> {
         buildPathWithParams(
             "/transactions/{transaction-id}/reconcile", "transaction-id", transactionId);
 
-    return post(path, null);
+    return post("transaction", "reconcile", path, null);
   }
 
   /**
@@ -155,7 +157,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/reconcile", "transaction-id", transactionId);
-    return post(path, params.toFormData());
+    return post("transaction", "reconcile", path, params.toFormData());
   }
 
   /**
@@ -165,7 +167,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/reconcile", "transaction-id", transactionId);
-    return postJson(path, jsonPayload);
+    return postJson("transaction", "reconcile", path, jsonPayload);
   }
 
   public TransactionReconcileResponse reconcile(
@@ -180,7 +182,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/reconcile", "transaction-id", transactionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("transaction", "reconcile", path, params.toFormData())
         .thenApply(
             response ->
                 TransactionReconcileResponse.fromJson(response.getBodyAsString(), response));
@@ -197,7 +199,7 @@ public final class TransactionService extends BaseService<TransactionService> {
         buildPathWithParams(
             "/transactions/{transaction-id}/reconcile", "transaction-id", transactionId);
 
-    return postAsync(path, null)
+    return postAsync("transaction", "reconcile", path, null)
         .thenApply(
             response ->
                 TransactionReconcileResponse.fromJson(response.getBodyAsString(), response));
@@ -208,7 +210,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams("/transactions/{transaction-id}", "transaction-id", transactionId);
 
-    return get(path, null);
+    return get("transaction", "retrieve", path, null);
   }
 
   public TransactionRetrieveResponse retrieve(String transactionId) throws ChargebeeException {
@@ -221,7 +223,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams("/transactions/{transaction-id}", "transaction-id", transactionId);
 
-    return getAsync(path, null)
+    return getAsync("transaction", "retrieve", path, null)
         .thenApply(
             response -> TransactionRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -232,7 +234,7 @@ public final class TransactionService extends BaseService<TransactionService> {
         buildPathWithParams(
             "/transactions/{transaction-id}/refund", "transaction-id", transactionId);
 
-    return post(path, null);
+    return post("transaction", "refund", path, null);
   }
 
   /** refund a transaction using immutable params (executes immediately) - returns raw Response. */
@@ -241,7 +243,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/refund", "transaction-id", transactionId);
-    return post(path, params.toFormData());
+    return post("transaction", "refund", path, params.toFormData());
   }
 
   /** refund a transaction using raw JSON payload (executes immediately) - returns raw Response. */
@@ -249,7 +251,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/refund", "transaction-id", transactionId);
-    return postJson(path, jsonPayload);
+    return postJson("transaction", "refund", path, jsonPayload);
   }
 
   public TransactionRefundResponse refund(String transactionId, TransactionRefundParams params)
@@ -264,7 +266,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/refund", "transaction-id", transactionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("transaction", "refund", path, params.toFormData())
         .thenApply(
             response -> TransactionRefundResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -280,7 +282,7 @@ public final class TransactionService extends BaseService<TransactionService> {
         buildPathWithParams(
             "/transactions/{transaction-id}/refund", "transaction-id", transactionId);
 
-    return postAsync(path, null)
+    return postAsync("transaction", "refund", path, null)
         .thenApply(
             response -> TransactionRefundResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -293,7 +295,11 @@ public final class TransactionService extends BaseService<TransactionService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/transactions", "customer-id", customerId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "transaction",
+        "transactionsForCustomer",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -303,7 +309,7 @@ public final class TransactionService extends BaseService<TransactionService> {
   Response transactionsForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/transactions", "customer-id", customerId);
-    return get(path, null);
+    return get("transaction", "transactionsForCustomer", path, null);
   }
 
   /**
@@ -336,7 +342,11 @@ public final class TransactionService extends BaseService<TransactionService> {
       String customerId, TransactionsForCustomerParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/transactions", "customer-id", customerId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "transaction",
+            "transactionsForCustomer",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 TransactionsForCustomerResponse.fromJson(
@@ -348,7 +358,7 @@ public final class TransactionService extends BaseService<TransactionService> {
       String customerId) {
     String path =
         buildPathWithParams("/customers/{customer-id}/transactions", "customer-id", customerId);
-    return getAsync(path, null)
+    return getAsync("transaction", "transactionsForCustomer", path, null)
         .thenApply(
             response ->
                 TransactionsForCustomerResponse.fromJson(
@@ -361,7 +371,7 @@ public final class TransactionService extends BaseService<TransactionService> {
         buildPathWithParams(
             "/transactions/{transaction-id}/record_refund", "transaction-id", transactionId);
 
-    return post(path, null);
+    return post("transaction", "recordRefund", path, null);
   }
 
   /**
@@ -373,7 +383,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/record_refund", "transaction-id", transactionId);
-    return post(path, params.toFormData());
+    return post("transaction", "recordRefund", path, params.toFormData());
   }
 
   /**
@@ -384,7 +394,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/record_refund", "transaction-id", transactionId);
-    return postJson(path, jsonPayload);
+    return postJson("transaction", "recordRefund", path, jsonPayload);
   }
 
   public TransactionRecordRefundResponse recordRefund(
@@ -399,7 +409,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/record_refund", "transaction-id", transactionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("transaction", "recordRefund", path, params.toFormData())
         .thenApply(
             response ->
                 TransactionRecordRefundResponse.fromJson(response.getBodyAsString(), response));
@@ -414,7 +424,11 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/transactions", "subscription-id", subscriptionId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "transaction",
+        "transactionsForSubscription",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -425,7 +439,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/transactions", "subscription-id", subscriptionId);
-    return get(path, null);
+    return get("transaction", "transactionsForSubscription", path, null);
   }
 
   /**
@@ -460,7 +474,11 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/transactions", "subscription-id", subscriptionId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "transaction",
+            "transactionsForSubscription",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 TransactionsForSubscriptionResponse.fromJson(
@@ -473,7 +491,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/transactions", "subscription-id", subscriptionId);
-    return getAsync(path, null)
+    return getAsync("transaction", "transactionsForSubscription", path, null)
         .thenApply(
             response ->
                 TransactionsForSubscriptionResponse.fromJson(
@@ -485,7 +503,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams("/transactions/{transaction-id}/void", "transaction-id", transactionId);
 
-    return post(path, null);
+    return post("transaction", "voidTransaction", path, null);
   }
 
   public VoidTransactionResponse voidTransaction(String transactionId) throws ChargebeeException {
@@ -498,7 +516,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams("/transactions/{transaction-id}/void", "transaction-id", transactionId);
 
-    return postAsync(path, null)
+    return postAsync("transaction", "voidTransaction", path, null)
         .thenApply(
             response -> VoidTransactionResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -508,7 +526,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams("/transactions/{transaction-id}/sync", "transaction-id", transactionId);
 
-    return post(path, null);
+    return post("transaction", "syncTransaction", path, null);
   }
 
   public SyncTransactionResponse syncTransaction(String transactionId) throws ChargebeeException {
@@ -521,7 +539,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     String path =
         buildPathWithParams("/transactions/{transaction-id}/sync", "transaction-id", transactionId);
 
-    return postAsync(path, null)
+    return postAsync("transaction", "syncTransaction", path, null)
         .thenApply(
             response -> SyncTransactionResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -533,7 +551,11 @@ public final class TransactionService extends BaseService<TransactionService> {
   Response createAuthorizationRaw(TransactionCreateAuthorizationParams params)
       throws ChargebeeException {
 
-    return post("/transactions/create_authorization", params != null ? params.toFormData() : null);
+    return post(
+        "transaction",
+        "createAuthorization",
+        "/transactions/create_authorization",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -542,7 +564,8 @@ public final class TransactionService extends BaseService<TransactionService> {
    */
   Response createAuthorizationRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/transactions/create_authorization", jsonPayload);
+    return postJson(
+        "transaction", "createAuthorization", "/transactions/create_authorization", jsonPayload);
   }
 
   public TransactionCreateAuthorizationResponse createAuthorization(
@@ -557,7 +580,10 @@ public final class TransactionService extends BaseService<TransactionService> {
       TransactionCreateAuthorizationParams params) {
 
     return postAsync(
-            "/transactions/create_authorization", params != null ? params.toFormData() : null)
+            "transaction",
+            "createAuthorization",
+            "/transactions/create_authorization",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 TransactionCreateAuthorizationResponse.fromJson(
@@ -571,7 +597,8 @@ public final class TransactionService extends BaseService<TransactionService> {
   Response paymentsForInvoiceRaw(String invoiceId, TransactionPaymentsForInvoiceParams params)
       throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/payments", "invoice-id", invoiceId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "transaction", "paymentsForInvoice", path, params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -579,7 +606,7 @@ public final class TransactionService extends BaseService<TransactionService> {
    */
   Response paymentsForInvoiceRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/payments", "invoice-id", invoiceId);
-    return get(path, null);
+    return get("transaction", "paymentsForInvoice", path, null);
   }
 
   /**
@@ -609,7 +636,11 @@ public final class TransactionService extends BaseService<TransactionService> {
   public CompletableFuture<TransactionPaymentsForInvoiceResponse> paymentsForInvoiceAsync(
       String invoiceId, TransactionPaymentsForInvoiceParams params) {
     String path = buildPathWithParams("/invoices/{invoice-id}/payments", "invoice-id", invoiceId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "transaction",
+            "paymentsForInvoice",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 TransactionPaymentsForInvoiceResponse.fromJson(
@@ -620,7 +651,7 @@ public final class TransactionService extends BaseService<TransactionService> {
   public CompletableFuture<TransactionPaymentsForInvoiceResponse> paymentsForInvoiceAsync(
       String invoiceId) {
     String path = buildPathWithParams("/invoices/{invoice-id}/payments", "invoice-id", invoiceId);
-    return getAsync(path, null)
+    return getAsync("transaction", "paymentsForInvoice", path, null)
         .thenApply(
             response ->
                 TransactionPaymentsForInvoiceResponse.fromJson(
@@ -635,7 +666,7 @@ public final class TransactionService extends BaseService<TransactionService> {
             "transaction-id",
             transactionId);
 
-    return post(path, null);
+    return post("transaction", "deleteOfflineTransaction", path, null);
   }
 
   /**
@@ -649,7 +680,7 @@ public final class TransactionService extends BaseService<TransactionService> {
             "/transactions/{transaction-id}/delete_offline_transaction",
             "transaction-id",
             transactionId);
-    return post(path, params.toFormData());
+    return post("transaction", "deleteOfflineTransaction", path, params.toFormData());
   }
 
   /**
@@ -663,7 +694,7 @@ public final class TransactionService extends BaseService<TransactionService> {
             "/transactions/{transaction-id}/delete_offline_transaction",
             "transaction-id",
             transactionId);
-    return postJson(path, jsonPayload);
+    return postJson("transaction", "deleteOfflineTransaction", path, jsonPayload);
   }
 
   public DeleteOfflineTransactionResponse deleteOfflineTransaction(
@@ -680,7 +711,7 @@ public final class TransactionService extends BaseService<TransactionService> {
             "/transactions/{transaction-id}/delete_offline_transaction",
             "transaction-id",
             transactionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("transaction", "deleteOfflineTransaction", path, params.toFormData())
         .thenApply(
             response ->
                 DeleteOfflineTransactionResponse.fromJson(response.getBodyAsString(), response));
@@ -701,7 +732,7 @@ public final class TransactionService extends BaseService<TransactionService> {
             "transaction-id",
             transactionId);
 
-    return postAsync(path, null)
+    return postAsync("transaction", "deleteOfflineTransaction", path, null)
         .thenApply(
             response ->
                 DeleteOfflineTransactionResponse.fromJson(response.getBodyAsString(), response));

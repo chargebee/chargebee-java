@@ -61,7 +61,11 @@ public final class UsageChargeService extends BaseService<UsageChargeService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usage_charges", "subscription-id", subscriptionId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "usageCharge",
+        "retrieveUsageChargesForSubscription",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -72,7 +76,7 @@ public final class UsageChargeService extends BaseService<UsageChargeService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usage_charges", "subscription-id", subscriptionId);
-    return get(path, null);
+    return get("usageCharge", "retrieveUsageChargesForSubscription", path, null);
   }
 
   /**
@@ -109,7 +113,11 @@ public final class UsageChargeService extends BaseService<UsageChargeService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usage_charges", "subscription-id", subscriptionId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "usageCharge",
+            "retrieveUsageChargesForSubscription",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 RetrieveUsageChargesForSubscriptionResponse.fromJson(
@@ -122,7 +130,7 @@ public final class UsageChargeService extends BaseService<UsageChargeService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usage_charges", "subscription-id", subscriptionId);
-    return getAsync(path, null)
+    return getAsync("usageCharge", "retrieveUsageChargesForSubscription", path, null)
         .thenApply(
             response ->
                 RetrieveUsageChargesForSubscriptionResponse.fromJson(
