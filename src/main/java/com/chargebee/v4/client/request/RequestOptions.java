@@ -1,6 +1,7 @@
 package com.chargebee.v4.client.request;
 
 import com.chargebee.v4.transport.RequestLogger;
+import com.chargebee.v4.telemetry.TelemetryAdapter;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -21,6 +22,7 @@ public final class RequestOptions {
     private final Boolean followRedirects;
     private final Boolean gzipCompression;
     private final RequestLogger requestLogger;
+    private final TelemetryAdapter telemetryAdapter;
 
     private RequestOptions(
             Map<String, String> headers,
@@ -32,7 +34,8 @@ public final class RequestOptions {
             Integer readTimeoutMs,
             Boolean followRedirects,
             Boolean gzipCompression,
-            RequestLogger requestLogger
+            RequestLogger requestLogger,
+            TelemetryAdapter telemetryAdapter
     ) {
         // Java 8 compatibility - use HashMap constructor instead of Map.copyOf
         this.headers = new HashMap<>(headers);
@@ -45,10 +48,11 @@ public final class RequestOptions {
         this.followRedirects = followRedirects;
         this.gzipCompression = gzipCompression;
         this.requestLogger = requestLogger;
+        this.telemetryAdapter = telemetryAdapter;
     }
 
     public static RequestOptions empty() {
-        return new RequestOptions(new HashMap<>(), null, null, null, null, null, null, null, null, null);
+        return new RequestOptions(new HashMap<>(), null, null, null, null, null, null, null, null, null, null);
     }
 
     public static Builder builder() {
@@ -58,13 +62,13 @@ public final class RequestOptions {
     public RequestOptions withHeader(String key, String value) {
         Map<String, String> copy = new HashMap<>(headers);
         copy.put(key, value);
-        return new RequestOptions(copy, maxNetworkRetries, retryEnabled, retryBaseDelayMs, retryOnStatus, connectTimeoutMs, readTimeoutMs, followRedirects, gzipCompression, requestLogger);
+        return new RequestOptions(copy, maxNetworkRetries, retryEnabled, retryBaseDelayMs, retryOnStatus, connectTimeoutMs, readTimeoutMs, followRedirects, gzipCompression, requestLogger, telemetryAdapter);
     }
 
     public RequestOptions withHeaders(Map<String, String> newHeaders) {
         Map<String, String> copy = new HashMap<>(headers);
         copy.putAll(newHeaders);
-        return new RequestOptions(copy, maxNetworkRetries, retryEnabled, retryBaseDelayMs, retryOnStatus, connectTimeoutMs, readTimeoutMs, followRedirects, gzipCompression, requestLogger);
+        return new RequestOptions(copy, maxNetworkRetries, retryEnabled, retryBaseDelayMs, retryOnStatus, connectTimeoutMs, readTimeoutMs, followRedirects, gzipCompression, requestLogger, telemetryAdapter);
     }
 
     public Map<String, String> getHeaders() {
@@ -116,6 +120,10 @@ public final class RequestOptions {
         return requestLogger;
     }
 
+    public TelemetryAdapter getTelemetryAdapter() {
+        return telemetryAdapter;
+    }
+
     public static final class Builder {
         private final Map<String, String> headers = new HashMap<>();
         private Integer maxNetworkRetries;
@@ -127,6 +135,7 @@ public final class RequestOptions {
         private Boolean followRedirects;
         private Boolean gzipCompression;
         private RequestLogger requestLogger;
+        private TelemetryAdapter telemetryAdapter;
 
         public Builder header(String name, String value) {
             if (name != null && value != null) {
@@ -222,8 +231,13 @@ public final class RequestOptions {
             return this;
         }
 
+        public Builder telemetryAdapter(TelemetryAdapter telemetryAdapter) {
+            this.telemetryAdapter = telemetryAdapter;
+            return this;
+        }
+
         public RequestOptions build() {
-            return new RequestOptions(headers, maxNetworkRetries, retryEnabled, retryBaseDelayMs, retryOnStatus, connectTimeoutMs, readTimeoutMs, followRedirects, gzipCompression, requestLogger);
+            return new RequestOptions(headers, maxNetworkRetries, retryEnabled, retryBaseDelayMs, retryOnStatus, connectTimeoutMs, readTimeoutMs, followRedirects, gzipCompression, requestLogger, telemetryAdapter);
         }
     }
 }
