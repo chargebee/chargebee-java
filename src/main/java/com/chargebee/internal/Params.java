@@ -79,8 +79,50 @@ public class Params {
     }
 
     public String toJson() {
-        JSONObject jsonObject = new JSONObject(rawMap);
+        Map<String, Object> jsonMap = new HashMap<String, Object>(rawMap.size());
+        for (Map.Entry<String, Object> e : rawMap.entrySet()) {
+            if (e.getValue() == null) {
+                continue;
+            }
+            jsonMap.put(e.getKey(), toJsonValue(e.getValue()));
+        }
+        JSONObject jsonObject = new JSONObject(jsonMap);
         return jsonObject.toString();
+    }
+
+    private static Object toJsonValue(Object value) {
+        if (value == null) {
+            return JSONObject.NULL;
+        }
+        Class<?> c = value.getClass();
+        if (c == Timestamp.class) {
+            return asUnixTimestamp((Timestamp) value);
+        } else if (c == Date.class) {
+            return new SimpleDateFormat("yyyy-MM-dd").format((Date) value);
+        } else if (c.isEnum()) {
+            return value.toString().toLowerCase();
+        } else if (value instanceof List) {
+            List<Object> out = new ArrayList<Object>(((List<?>) value).size());
+            for (Object item : (List<?>) value) {
+                out.add(toJsonValue(item));
+            }
+            return out;
+        } else if (value instanceof Object[]) {
+            Object[] arr = (Object[]) value;
+            List<Object> out = new ArrayList<Object>(arr.length);
+            for (Object item : arr) {
+                out.add(toJsonValue(item));
+            }
+            return out;
+        } else if (value instanceof Map) {
+            Map<?, ?> src = (Map<?, ?>) value;
+            Map<String, Object> out = new HashMap<String, Object>(src.size());
+            for (Map.Entry<?, ?> e : src.entrySet()) {
+                out.put(String.valueOf(e.getKey()), toJsonValue(e.getValue()));
+            }
+            return out;
+        }
+        return value;
     }
 
     public static Long asUnixTimestamp(Timestamp ts) {
