@@ -1,3 +1,10 @@
+### v3.50.0 (2026-06-22)
+* * *
+### Bug Fixes:
+- Fixed JSON request body serialization where `Timestamp` parameters were sent in a human-readable format (e.g. `"expires_at":"2026-06-23 09:54:44.513"`) instead of Unix seconds. They are now serialized as numeric Unix seconds (e.g. `"expires_at":1782189229`), matching the form-url-encoded path and the format expected by the API. This affects all JSON content-type endpoints, such as [`create_promotional_grant`](https://apidocs.chargebee.com/docs/api/promotional_grants/create-promotional-grant) in [`PromotionalGrant`](https://apidocs.chargebee.com/docs/api/promotional_grants).
+
+
+
 ### v3.49.0 (2026-06-12)
 * * *
 ### New Resources:
