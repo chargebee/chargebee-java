@@ -6,6 +6,7 @@ import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("JsonUtil Tests")
 class JsonUtilTest {
+
+    private enum Status { ACTIVE, IN_TRIAL, NON_RENEWING }
 
     // ========== parse / parseToArray ==========
     @Nested
@@ -641,6 +644,142 @@ class JsonUtilTest {
             String json = JsonUtil.toJson(outer);
             assertTrue(json.contains("\"data\":{"));
             assertTrue(json.contains("\"id\":123"));
+        }
+    }
+
+    // ========== Timestamp / Date / Enum serialization ==========
+    // Regression coverage for a bug where java.sql.Timestamp values were emitted
+    // in human-readable form (e.g. "2026-06-23 09:54:44.513") because they fell
+    // through to the default `value.toString()` branch in toJsonElement(...).
+    // The Chargebee API expects Unix seconds.
+    @Nested
+    @DisplayName("Timestamp / Date / Enum serialization")
+    class TimestampDateEnumSerialization {
+
+        @Test void timestampIsEmittedAsUnixSecondsNumber() {
+            Timestamp ts = Timestamp.from(java.time.Instant.parse("2026-06-23T09:54:44Z"));
+            long expected = ts.getTime() / 1000L;
+            Map<String, Object> map = new java.util.LinkedHashMap<>();
+            map.put("expires_at", ts);
+
+            String json = JsonUtil.toJson(map);
+            JsonObject parsed = JsonUtil.parse(json);
+
+            assertEquals(expected, JsonUtil.getLong(parsed, "expires_at"),
+                    "Timestamp must be serialized as Unix-seconds number");
+            assertTrue(json.contains("\"expires_at\":" + expected),
+                    "JSON should contain numeric expires_at. Got: " + json);
+            // And must NOT be a quoted string of any shape.
+            assertFalse(json.matches(".*\"expires_at\"\\s*:\\s*\"[^\"]+\".*"),
+                    "Timestamp must not be quoted. Got: " + json);
+            assertFalse(json.contains(ts.toString()),
+                    "JSON must not contain Timestamp.toString() output. Got: " + json);
+        }
+
+        @Test void dateIsEmittedAsYyyyMmDdString() {
+            java.util.Calendar cal = java.util.Calendar.getInstance(java.util.TimeZone.getDefault());
+            cal.clear();
+            cal.set(2025, java.util.Calendar.DECEMBER, 31, 10, 0, 0);
+            Date d = cal.getTime();
+            String expected = new java.text.SimpleDateFormat("yyyy-MM-dd").format(d);
+
+            Map<String, Object> map = new java.util.HashMap<>();
+            map.put("trial_end_date", d);
+
+            String json = JsonUtil.toJson(map);
+            assertEquals(expected, JsonUtil.getString(JsonUtil.parse(json), "trial_end_date"));
+        }
+
+        @Test void enumIsEmittedAsLowercaseString() {
+            Map<String, Object> map = new java.util.HashMap<>();
+            map.put("status", Status.IN_TRIAL);
+
+            String json = JsonUtil.toJson(map);
+            assertEquals("in_trial", JsonUtil.getString(JsonUtil.parse(json), "status"));
+        }
+
+        @Test void timestampNestedInsideMapIsConverted() {
+            Timestamp ts = Timestamp.from(java.time.Instant.parse("2026-01-01T00:00:00Z"));
+            long expected = ts.getTime() / 1000L;
+
+            Map<String, Object> inner = new java.util.LinkedHashMap<>();
+            inner.put("seen_at", ts);
+            Map<String, Object> outer = new java.util.LinkedHashMap<>();
+            outer.put("metadata", inner);
+
+            JsonObject parsed = JsonUtil.parse(JsonUtil.toJson(outer));
+            JsonObject got = JsonUtil.getJsonObject(parsed, "metadata");
+            assertNotNull(got);
+            assertEquals(expected, JsonUtil.getLong(got, "seen_at"));
+        }
+
+        @Test void timestampInsideListIsConvertedPerElement() {
+            Timestamp t1 = Timestamp.from(java.time.Instant.parse("2026-01-01T00:00:00Z"));
+            Timestamp t2 = Timestamp.from(java.time.Instant.parse("2026-02-01T00:00:00Z"));
+
+            Map<String, Object> map = new java.util.HashMap<>();
+            map.put("checkpoints", java.util.Arrays.asList(t1, t2));
+
+            String json = JsonUtil.toJson(map);
+            JsonArray arr = JsonUtil.getJsonArray(JsonUtil.parse(json), "checkpoints");
+            assertNotNull(arr);
+            assertEquals(2, arr.size());
+            assertEquals(t1.getTime() / 1000L, arr.get(0).getAsLong());
+            assertEquals(t2.getTime() / 1000L, arr.get(1).getAsLong());
+        }
+
+        @Test void objectArrayIsConvertedRecursively() {
+            Timestamp ts = Timestamp.from(java.time.Instant.parse("2026-03-01T00:00:00Z"));
+
+            Map<String, Object> map = new java.util.HashMap<>();
+            map.put("mixed", new Object[] { ts, "hello", 7 });
+
+            JsonArray arr = JsonUtil.getJsonArray(JsonUtil.parse(JsonUtil.toJson(map)), "mixed");
+            assertNotNull(arr);
+            assertEquals(3, arr.size());
+            assertEquals(ts.getTime() / 1000L, arr.get(0).getAsLong());
+            assertEquals("hello", arr.get(1).getAsString());
+            assertEquals(7, arr.get(2).getAsInt());
+        }
+
+        @Test void deeplyNestedMapAndListAreFullyTraversed() {
+            Timestamp ts = Timestamp.from(java.time.Instant.parse("2026-04-15T12:00:00Z"));
+            long expected = ts.getTime() / 1000L;
+
+            Map<String, Object> inner = new java.util.HashMap<>();
+            inner.put("at", ts);
+            inner.put("status", Status.ACTIVE);
+
+            Map<String, Object> outer = new java.util.HashMap<>();
+            outer.put("events", java.util.Arrays.asList(inner, java.util.Arrays.asList(ts, "x")));
+
+            JsonObject parsed = JsonUtil.parse(JsonUtil.toJson(outer));
+            JsonArray events = JsonUtil.getJsonArray(parsed, "events");
+            assertNotNull(events);
+
+            JsonObject first = events.get(0).getAsJsonObject();
+            assertEquals(expected, JsonUtil.getLong(first, "at"));
+            assertEquals("active", JsonUtil.getString(first, "status"));
+
+            JsonArray second = events.get(1).getAsJsonArray();
+            assertEquals(expected, second.get(0).getAsLong());
+            assertEquals("x", second.get(1).getAsString());
+        }
+
+        @Test void numericTypesAreStillEmittedAsJsonNumbers() {
+            Map<String, Object> map = new java.util.LinkedHashMap<>();
+            map.put("int_val", 42);
+            map.put("long_val", 1234567890123L);
+            map.put("double_val", 3.14);
+            map.put("decimal_val", new BigDecimal("19.99"));
+            map.put("bool_val", true);
+
+            JsonObject parsed = JsonUtil.parse(JsonUtil.toJson(map));
+            assertEquals(42, JsonUtil.getInteger(parsed, "int_val"));
+            assertEquals(1234567890123L, JsonUtil.getLong(parsed, "long_val"));
+            assertEquals(3.14, JsonUtil.getDouble(parsed, "double_val"), 0.0001);
+            assertEquals(new BigDecimal("19.99"), JsonUtil.getBigDecimal(parsed, "decimal_val"));
+            assertTrue(JsonUtil.getBoolean(parsed, "bool_val"));
         }
     }
 

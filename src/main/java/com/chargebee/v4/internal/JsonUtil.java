@@ -9,7 +9,9 @@ import com.google.gson.JsonPrimitive;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -372,6 +374,15 @@ public class JsonUtil {
         if (value instanceof String) return new JsonPrimitive((String) value);
         if (value instanceof Number) return new JsonPrimitive((Number) value);
         if (value instanceof Boolean) return new JsonPrimitive((Boolean) value);
+        if (value instanceof Timestamp) {
+            return new JsonPrimitive(((Timestamp) value).getTime() / 1000L);
+        }
+        if (value instanceof Date) {
+            return new JsonPrimitive(new SimpleDateFormat("yyyy-MM-dd").format((Date) value));
+        }
+        if (value instanceof Enum<?>) {
+            return new JsonPrimitive(((Enum<?>) value).name().toLowerCase());
+        }
         if (value instanceof Map) {
             JsonObject obj = new JsonObject();
             for (Map.Entry<String, Object> entry : ((Map<String, Object>) value).entrySet()) {
@@ -382,6 +393,13 @@ public class JsonUtil {
         if (value instanceof List) {
             JsonArray array = new JsonArray();
             for (Object item : (List<?>) value) {
+                array.add(toJsonElement(item));
+            }
+            return array;
+        }
+        if (value instanceof Object[]) {
+            JsonArray array = new JsonArray();
+            for (Object item : (Object[]) value) {
                 array.add(toJsonElement(item));
             }
             return array;
