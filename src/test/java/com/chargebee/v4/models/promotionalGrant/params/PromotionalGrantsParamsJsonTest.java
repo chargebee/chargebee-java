@@ -33,10 +33,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class PromotionalGrantsParamsJsonTest {
 
     @Test
-    @DisplayName("JSON body: expires_at must be Unix-seconds number, not human-readable")
-    void jsonBodyEmitsExpiresAtAsUnixSecondsNumber() {
+    @DisplayName("JSON body: expires_at must be Unix-millis number, not human-readable")
+    void jsonBodyEmitsExpiresAtAsUnixMillisNumber() {
         Timestamp expiresAt = Timestamp.from(Instant.parse("2026-06-23T09:54:44Z"));
-        long expectedUnixSeconds = expiresAt.getTime() / 1000L;
+        long expectedUnixMillis = expiresAt.getTime();
 
         PromotionalGrantsParams params = PromotionalGrantsParams.builder()
                 .subscriptionId("1mGETgZVF2umUZq")
@@ -52,9 +52,9 @@ class PromotionalGrantsParamsJsonTest {
         assertEquals("ai_credits",      JsonUtil.getString(parsed, "unit_id"));
         assertEquals("500",              JsonUtil.getString(parsed, "amount"));
 
-        // Core regression assertion: must be a JSON number equal to Unix seconds.
-        assertEquals(expectedUnixSeconds, JsonUtil.getLong(parsed, "expires_at"),
-                "expires_at must be Unix seconds (number) in the JSON body");
+        // Core regression assertion: must be a JSON number equal to Unix millis.
+        assertEquals(expectedUnixMillis, JsonUtil.getLong(parsed, "expires_at"),
+                "expires_at must be Unix millis (number) in the JSON body");
 
         // Belt-and-braces: the raw JSON string must not embed a human-readable timestamp.
         assertFalse(json.matches(".*\"expires_at\"\\s*:\\s*\"[^\"]+\".*"),
@@ -67,7 +67,7 @@ class PromotionalGrantsParamsJsonTest {
     @DisplayName("JSON body mirrors the user-reported snippet (Instant.now() + 1 day)")
     void jsonBodyMatchesUserExampleShape() {
         Timestamp expiresAt = Timestamp.from(Instant.now().plus(1, ChronoUnit.DAYS));
-        long expectedUnixSeconds = expiresAt.getTime() / 1000L;
+        long expectedUnixMillis = expiresAt.getTime();
 
         PromotionalGrantsParams params = PromotionalGrantsParams.builder()
                 .subscriptionId("1mGETgZVF2umUZq")
@@ -77,7 +77,7 @@ class PromotionalGrantsParamsJsonTest {
                 .build();
 
         JsonObject parsed = JsonUtil.parse(params.toJsonString());
-        assertEquals(expectedUnixSeconds, JsonUtil.getLong(parsed, "expires_at"));
+        assertEquals(expectedUnixMillis, JsonUtil.getLong(parsed, "expires_at"));
     }
 
     @Test
@@ -101,7 +101,7 @@ class PromotionalGrantsParamsJsonTest {
 
         JsonObject parsed = JsonUtil.parse(params.toJsonString());
         // expires_at still a number.
-        assertEquals(expiresAt.getTime() / 1000L, JsonUtil.getLong(parsed, "expires_at"));
+        assertEquals(expiresAt.getTime(), JsonUtil.getLong(parsed, "expires_at"));
         // metadata is a JSON-encoded string.
         String metaStr = JsonUtil.getString(parsed, "metadata");
         assertNotNull(metaStr);

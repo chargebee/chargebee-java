@@ -651,14 +651,14 @@ class JsonUtilTest {
     // Regression coverage for a bug where java.sql.Timestamp values were emitted
     // in human-readable form (e.g. "2026-06-23 09:54:44.513") because they fell
     // through to the default `value.toString()` branch in toJsonElement(...).
-    // The Chargebee API expects Unix seconds.
+    // The JSON path emits Timestamp as Unix milliseconds (Timestamp.getTime()).
     @Nested
     @DisplayName("Timestamp / Date / Enum serialization")
     class TimestampDateEnumSerialization {
 
-        @Test void timestampIsEmittedAsUnixSecondsNumber() {
+        @Test void timestampIsEmittedAsUnixMillisNumber() {
             Timestamp ts = Timestamp.from(java.time.Instant.parse("2026-06-23T09:54:44Z"));
-            long expected = ts.getTime() / 1000L;
+            long expected = ts.getTime();
             Map<String, Object> map = new java.util.LinkedHashMap<>();
             map.put("expires_at", ts);
 
@@ -666,7 +666,7 @@ class JsonUtilTest {
             JsonObject parsed = JsonUtil.parse(json);
 
             assertEquals(expected, JsonUtil.getLong(parsed, "expires_at"),
-                    "Timestamp must be serialized as Unix-seconds number");
+                    "Timestamp must be serialized as Unix-millis number");
             assertTrue(json.contains("\"expires_at\":" + expected),
                     "JSON should contain numeric expires_at. Got: " + json);
             // And must NOT be a quoted string of any shape.
@@ -700,7 +700,7 @@ class JsonUtilTest {
 
         @Test void timestampNestedInsideMapIsConverted() {
             Timestamp ts = Timestamp.from(java.time.Instant.parse("2026-01-01T00:00:00Z"));
-            long expected = ts.getTime() / 1000L;
+            long expected = ts.getTime();
 
             Map<String, Object> inner = new java.util.LinkedHashMap<>();
             inner.put("seen_at", ts);
@@ -724,8 +724,8 @@ class JsonUtilTest {
             JsonArray arr = JsonUtil.getJsonArray(JsonUtil.parse(json), "checkpoints");
             assertNotNull(arr);
             assertEquals(2, arr.size());
-            assertEquals(t1.getTime() / 1000L, arr.get(0).getAsLong());
-            assertEquals(t2.getTime() / 1000L, arr.get(1).getAsLong());
+            assertEquals(t1.getTime(), arr.get(0).getAsLong());
+            assertEquals(t2.getTime(), arr.get(1).getAsLong());
         }
 
         @Test void objectArrayIsConvertedRecursively() {
@@ -737,14 +737,14 @@ class JsonUtilTest {
             JsonArray arr = JsonUtil.getJsonArray(JsonUtil.parse(JsonUtil.toJson(map)), "mixed");
             assertNotNull(arr);
             assertEquals(3, arr.size());
-            assertEquals(ts.getTime() / 1000L, arr.get(0).getAsLong());
+            assertEquals(ts.getTime(), arr.get(0).getAsLong());
             assertEquals("hello", arr.get(1).getAsString());
             assertEquals(7, arr.get(2).getAsInt());
         }
 
         @Test void deeplyNestedMapAndListAreFullyTraversed() {
             Timestamp ts = Timestamp.from(java.time.Instant.parse("2026-04-15T12:00:00Z"));
-            long expected = ts.getTime() / 1000L;
+            long expected = ts.getTime();
 
             Map<String, Object> inner = new java.util.HashMap<>();
             inner.put("at", ts);
