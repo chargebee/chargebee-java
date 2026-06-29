@@ -81,11 +81,11 @@ class PromotionalGrantsParamsJsonTest {
     }
 
     @Test
-    @DisplayName("JSON body: metadata Map is preserved verbatim as a JSON string field")
-    void jsonBodyPreservesMetadataJsonString() {
-        // PromotionalGrantsParams.toFormData() puts metadata as a pre-serialized JSON string:
-        //   formData.put("metadata", JsonUtil.toJson(this.metadata));
-        // The outer toJsonString() must therefore emit it as a string, not double-serialize it.
+    @DisplayName("JSON body: metadata Map is preserved as a nested JSON object")
+    void jsonBodyPreservesMetadataJsonObject() {
+        // toFormData() flattens metadata into a pre-serialized JSON string for the
+        // form-urlencoded transport, but the JSON transport (toJsonMap()/toJsonString())
+        // must keep it as a real nested JSON object rather than a double-encoded string.
         Timestamp expiresAt = Timestamp.from(Instant.parse("2026-06-23T09:54:44Z"));
         Map<String, Object> meta = new LinkedHashMap<>();
         meta.put("source", "ui");
@@ -99,15 +99,16 @@ class PromotionalGrantsParamsJsonTest {
                 .metadata(meta)
                 .build();
 
-        JsonObject parsed = JsonUtil.parse(params.toJsonString());
+        String json = params.toJsonString();
+        JsonObject parsed = JsonUtil.parse(json);
         // expires_at still a number.
         assertEquals(expiresAt.getTime(), JsonUtil.getLong(parsed, "expires_at"));
-        // metadata is a JSON-encoded string.
-        String metaStr = JsonUtil.getString(parsed, "metadata");
-        assertNotNull(metaStr);
-        JsonObject reparsed = JsonUtil.parse(metaStr);
-        assertEquals("ui", JsonUtil.getString(reparsed, "source"));
-        assertEquals(1L,   JsonUtil.getLong(reparsed, "tier"));
+        // metadata is a nested JSON object, not a quoted/stringified JSON value.
+        assertTrue(parsed.get("metadata") != null && parsed.get("metadata").isJsonObject(),
+                "metadata must be a nested JSON object in the JSON body. JSON: " + json);
+        JsonObject metaObj = parsed.getAsJsonObject("metadata");
+        assertEquals("ui", JsonUtil.getString(metaObj, "source"));
+        assertEquals(1L,   JsonUtil.getLong(metaObj, "tier"));
     }
 
     @Test

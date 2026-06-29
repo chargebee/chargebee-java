@@ -147,9 +147,70 @@ public final class PersonalizedOffersParams {
     return formData;
   }
 
+  /**
+   * Get the nested JSON body representation for this request.
+   *
+   * <p>Unlike {@link #toFormData()}, which flattens nested objects/arrays into bracketed {@code
+   * qs}-style keys for {@code application/x-www-form-urlencoded} requests, this method preserves
+   * the real object/array hierarchy so the payload can be serialized as a JSON string. Leaf values
+   * (e.g. {@code Timestamp}) are converted to their API representation by {@link JsonUtil} during
+   * serialization.
+   */
+  public Map<String, Object> toJsonMap() {
+    Map<String, Object> jsonData = new LinkedHashMap<>();
+
+    if (this.firstName != null) {
+
+      jsonData.put("first_name", this.firstName);
+    }
+
+    if (this.lastName != null) {
+
+      jsonData.put("last_name", this.lastName);
+    }
+
+    if (this.email != null) {
+
+      jsonData.put("email", this.email);
+    }
+
+    if (this.roles != null) {
+
+      jsonData.put("roles", this.roles);
+    }
+
+    if (this.externalUserId != null) {
+
+      jsonData.put("external_user_id", this.externalUserId);
+    }
+
+    if (this.subscriptionId != null) {
+
+      jsonData.put("subscription_id", this.subscriptionId);
+    }
+
+    if (this.customerId != null) {
+
+      jsonData.put("customer_id", this.customerId);
+    }
+
+    if (this.custom != null) {
+
+      jsonData.put("custom", this.custom);
+    }
+
+    if (this.requestContext != null) {
+
+      // Single object -> nested JSON object
+      jsonData.put("request_context", this.requestContext.toJsonMap());
+    }
+
+    return jsonData;
+  }
+
   /** Get the JSON string representation for this request. */
   public String toJsonString() {
-    return JsonUtil.toJson(toFormData());
+    return JsonUtil.toJson(toJsonMap());
   }
 
   /** Create a new builder for PersonalizedOffersParams. */
@@ -307,9 +368,49 @@ public final class PersonalizedOffersParams {
       return formData;
     }
 
+    /**
+     * Get the nested JSON body representation for this request.
+     *
+     * <p>Unlike {@link #toFormData()}, which flattens nested objects/arrays into bracketed {@code
+     * qs}-style keys for {@code application/x-www-form-urlencoded} requests, this method preserves
+     * the real object/array hierarchy so the payload can be serialized as a JSON string. Leaf
+     * values (e.g. {@code Timestamp}) are converted to their API representation by {@link JsonUtil}
+     * during serialization.
+     */
+    public Map<String, Object> toJsonMap() {
+      Map<String, Object> jsonData = new LinkedHashMap<>();
+
+      if (this.userAgent != null) {
+
+        jsonData.put("user_agent", this.userAgent);
+      }
+
+      if (this.locale != null) {
+
+        jsonData.put("locale", this.locale);
+      }
+
+      if (this.timezone != null) {
+
+        jsonData.put("timezone", this.timezone);
+      }
+
+      if (this.url != null) {
+
+        jsonData.put("url", this.url);
+      }
+
+      if (this.referrerUrl != null) {
+
+        jsonData.put("referrer_url", this.referrerUrl);
+      }
+
+      return jsonData;
+    }
+
     /** Get the JSON string representation for this request. */
     public String toJsonString() {
-      return JsonUtil.toJson(toFormData());
+      return JsonUtil.toJson(toJsonMap());
     }
 
     /** Create a new builder for RequestContextParams. */
