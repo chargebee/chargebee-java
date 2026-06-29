@@ -1,3 +1,12 @@
+### v4.11.0 (2026-06-29)
+* * *
+### Bug Fixes:
+- Fixed JSON request body serialization where `Timestamp` parameters were sent in a human-readable format (e.g. `"expires_at":"2026-06-23 09:54:44.513"`) instead of Unix seconds. They are now serialized as numeric Unix seconds (e.g. `"expires_at":1782189229`), matching the form-url-encoded path and the format expected by the API. This affects all JSON content-type endpoints, such as [`create_promotional_grant`](https://apidocs.chargebee.com/docs/api/promotional_grants/create-promotional-grant) in [`PromotionalGrant`](https://apidocs.chargebee.com/docs/api/promotional_grants).
+- Fixed JSON request body serialization for endpoints that accept nested objects and arrays. Previously the JSON body reused the `application/x-www-form-urlencoded` flattening (e.g. `events[deduplication_id][]`) and double-encoded nested objects; the JSON content-type now emits a proper nested structure. This affects JSON endpoints such as [`ingest_usages_in_batch`](https://apidocs.chargebee.com/docs/api/usage_events/ingest-usages-in-batch) and [`create_a_usage_event`](https://apidocs.chargebee.com/docs/api/usage_events/create-a-usage-event) in [`UsageEvent`](https://apidocs.chargebee.com/docs/api/usage_events).
+- Fixed `usage_timestamp` for [`UsageEvent`](https://apidocs.chargebee.com/docs/api/usage_events) to be sent as epoch milliseconds. The `usage_timestamp` parameter in [`create_a_usage_event`](https://apidocs.chargebee.com/docs/api/usage_events/create-a-usage-event) and [`ingest_usages_in_batch`](https://apidocs.chargebee.com/docs/api/usage_events/ingest-usages-in-batch) is now typed as `Long` (epoch milliseconds) instead of `Timestamp`, preserving the millisecond precision required by the ingestion API.
+
+
+
 ### v4.10.0 (2026-06-12)
 * * *
 ### New Resources:

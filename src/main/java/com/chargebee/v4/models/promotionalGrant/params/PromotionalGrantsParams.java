@@ -90,9 +90,49 @@ public final class PromotionalGrantsParams {
     return formData;
   }
 
+  /**
+   * Get the nested JSON body representation for this request.
+   *
+   * <p>Unlike {@link #toFormData()}, which flattens nested objects/arrays into bracketed {@code
+   * qs}-style keys for {@code application/x-www-form-urlencoded} requests, this method preserves
+   * the real object/array hierarchy so the payload can be serialized as a JSON string. Leaf values
+   * (e.g. {@code Timestamp}) are converted to their API representation by {@link JsonUtil} during
+   * serialization.
+   */
+  public Map<String, Object> toJsonMap() {
+    Map<String, Object> jsonData = new LinkedHashMap<>();
+
+    if (this.subscriptionId != null) {
+
+      jsonData.put("subscription_id", this.subscriptionId);
+    }
+
+    if (this.unitId != null) {
+
+      jsonData.put("unit_id", this.unitId);
+    }
+
+    if (this.amount != null) {
+
+      jsonData.put("amount", this.amount);
+    }
+
+    if (this.expiresAt != null) {
+
+      jsonData.put("expires_at", this.expiresAt);
+    }
+
+    if (this.metadata != null) {
+
+      jsonData.put("metadata", this.metadata);
+    }
+
+    return jsonData;
+  }
+
   /** Get the JSON string representation for this request. */
   public String toJsonString() {
-    return JsonUtil.toJson(toFormData());
+    return JsonUtil.toJson(toJsonMap());
   }
 
   /** Create a new builder for PromotionalGrantsParams. */
