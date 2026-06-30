@@ -198,48 +198,6 @@ public final class ListLedgerOperationsParams {
     }
   }
 
-  public enum TypeIs {
-    ALLOCATION("allocation"),
-
-    CAPTURE("capture"),
-
-    AUTHORIZE("authorize"),
-
-    RELEASE_AUTHORIZATION("release_authorization"),
-
-    CAPTURE_AUTHORIZATION("capture_authorization"),
-
-    EXPIRY("expiry"),
-
-    VOID("void"),
-
-    ROLLOVER("rollover"),
-
-    ADJUSTMENT("adjustment"),
-
-    /** An enum member indicating that TypeIs was instantiated with an unknown value. */
-    _UNKNOWN(null);
-    private final String value;
-
-    TypeIs(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    public static TypeIs fromString(String value) {
-      if (value == null) return _UNKNOWN;
-      for (TypeIs enumValue : TypeIs.values()) {
-        if (enumValue.value != null && enumValue.value.equals(value)) {
-          return enumValue;
-        }
-      }
-      return _UNKNOWN;
-    }
-  }
-
   public enum TypeIn {
     ALLOCATION("allocation"),
 
@@ -274,6 +232,48 @@ public final class ListLedgerOperationsParams {
     public static TypeIn fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (TypeIn enumValue : TypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeIs {
+    ALLOCATION("allocation"),
+
+    CAPTURE("capture"),
+
+    AUTHORIZE("authorize"),
+
+    RELEASE_AUTHORIZATION("release_authorization"),
+
+    CAPTURE_AUTHORIZATION("capture_authorization"),
+
+    EXPIRY("expiry"),
+
+    VOID("void"),
+
+    ROLLOVER("rollover"),
+
+    ADJUSTMENT("adjustment"),
+
+    /** An enum member indicating that TypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIs enumValue : TypeIs.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

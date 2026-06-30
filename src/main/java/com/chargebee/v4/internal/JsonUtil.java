@@ -1,15 +1,19 @@
 package com.chargebee.v4.internal;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializer;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +22,29 @@ import java.util.function.Function;
 
 /** Gson-backed JSON parsing utility. */
 public class JsonUtil {
+
+    /**
+     * Gson instance configured with Chargebee-specific serializers so that
+     * non-trivial leaf types are emitted in the shape the Chargebee API expects:
+     * <ul>
+     *   <li>{@link Timestamp} → Unix seconds (JSON number)</li>
+     *   <li>{@link Date}      → {@code "yyyy-MM-dd"} JSON string</li>
+     *   <li>{@link Enum}      → lowercase {@code name()} JSON string</li>
+     * </ul>
+     * HTML escaping is disabled so characters like {@code <}, {@code >}, {@code &}
+     * pass through verbatim (matches the previous {@code JsonElement.toString()} behavior).
+     */
+    private static final Gson GSON = new GsonBuilder()
+            .disableHtmlEscaping()
+            .serializeNulls()
+            .registerTypeAdapter(Timestamp.class,
+                    (JsonSerializer<Timestamp>) (src, t, c) -> new JsonPrimitive(src.getTime()))
+            .registerTypeAdapter(Date.class,
+                    (JsonSerializer<Date>) (src, t, c) ->
+                            new JsonPrimitive(new SimpleDateFormat("yyyy-MM-dd").format(src)))
+            .registerTypeHierarchyAdapter(Enum.class,
+                    (JsonSerializer<Enum<?>>) (src, t, c) -> new JsonPrimitive(src.name().toLowerCase()))
+            .create();
 
     private JsonUtil() {}
 
@@ -320,25 +347,16 @@ public class JsonUtil {
 
     // --- Serialization ---
 
-    /** Serializes a Map to a JSON string. */
-    @SuppressWarnings("unchecked")
+    /** Serializes a Map to a JSON string using the configured {@link #GSON} instance. */
     public static String toJson(Map<String, Object> map) {
         if (map == null || map.isEmpty()) return "{}";
-        JsonObject obj = new JsonObject();
-        for (Map.Entry<String, Object> entry : map.entrySet()) {
-            obj.add(entry.getKey(), toJsonElement(entry.getValue()));
-        }
-        return obj.toString();
+        return GSON.toJson(map);
     }
 
-    /** Serializes a List to a JSON string. */
+    /** Serializes a List to a JSON string using the configured {@link #GSON} instance. */
     public static String toJson(List<?> list) {
         if (list == null || list.isEmpty()) return "[]";
-        JsonArray array = new JsonArray();
-        for (Object item : list) {
-            array.add(toJsonElement(item));
-        }
-        return array.toString();
+        return GSON.toJson(list);
     }
 
     // --- Internal helpers ---
@@ -364,28 +382,5 @@ public class JsonUtil {
             return mapArrayToObjects(value.getAsJsonArray());
         }
         return null;
-    }
-
-    @SuppressWarnings("unchecked")
-    private static JsonElement toJsonElement(Object value) {
-        if (value == null) return JsonNull.INSTANCE;
-        if (value instanceof String) return new JsonPrimitive((String) value);
-        if (value instanceof Number) return new JsonPrimitive((Number) value);
-        if (value instanceof Boolean) return new JsonPrimitive((Boolean) value);
-        if (value instanceof Map) {
-            JsonObject obj = new JsonObject();
-            for (Map.Entry<String, Object> entry : ((Map<String, Object>) value).entrySet()) {
-                obj.add(entry.getKey(), toJsonElement(entry.getValue()));
-            }
-            return obj;
-        }
-        if (value instanceof List) {
-            JsonArray array = new JsonArray();
-            for (Object item : (List<?>) value) {
-                array.add(toJsonElement(item));
-            }
-            return array;
-        }
-        return new JsonPrimitive(value.toString());
     }
 }

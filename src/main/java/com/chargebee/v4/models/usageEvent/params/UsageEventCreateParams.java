@@ -76,9 +76,44 @@ public final class UsageEventCreateParams {
     return formData;
   }
 
+  /**
+   * Get the nested JSON body representation for this request.
+   *
+   * <p>Unlike {@link #toFormData()}, which flattens nested objects/arrays into bracketed {@code
+   * qs}-style keys for {@code application/x-www-form-urlencoded} requests, this method preserves
+   * the real object/array hierarchy so the payload can be serialized as a JSON string. Leaf values
+   * (e.g. {@code Timestamp}) are converted to their API representation by {@link JsonUtil} during
+   * serialization.
+   */
+  public Map<String, Object> toJsonMap() {
+    Map<String, Object> jsonData = new LinkedHashMap<>();
+
+    if (this.deduplicationId != null) {
+
+      jsonData.put("deduplication_id", this.deduplicationId);
+    }
+
+    if (this.subscriptionId != null) {
+
+      jsonData.put("subscription_id", this.subscriptionId);
+    }
+
+    if (this.usageTimestamp != null) {
+
+      jsonData.put("usage_timestamp", this.usageTimestamp);
+    }
+
+    if (this.properties != null) {
+
+      jsonData.put("properties", this.properties);
+    }
+
+    return jsonData;
+  }
+
   /** Get the JSON string representation for this request. */
   public String toJsonString() {
-    return JsonUtil.toJson(toFormData());
+    return JsonUtil.toJson(toJsonMap());
   }
 
   /** Create a new builder for UsageEventCreateParams. */
