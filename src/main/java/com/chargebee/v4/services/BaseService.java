@@ -284,6 +284,186 @@ public abstract class BaseService<T extends BaseService<T>> {
         return client.executeWithInterceptorAsync(builder.build());
     }
 
+    // === Telemetry-aware request helpers ===
+    // These overloads carry the resource/operation names so the configured
+    // TelemetryAdapter can name spans (chargebee.{resource}.{operation}) and
+    // record attributes. They mirror the plain helpers above.
+
+    /**
+     * Stamp telemetry metadata (resource/operation and any per-request adapter override)
+     * onto the outbound request so {@code TelemetryExecutor} can emit a span.
+     */
+    private void applyTelemetry(Request.Builder builder, String resource, String operation) {
+        builder.telemetryResource(resource).telemetryOperation(operation);
+        if (options != null && options.getTelemetryAdapter() != null) {
+            builder.telemetryAdapterOverride(options.getTelemetryAdapter());
+        }
+    }
+
+    /**
+     * GET with Object query parameters (telemetry-aware).
+     */
+    protected Response get(String resource, String operation, String path, Map<String, Object> queryParams) throws ChargebeeException {
+        String fullUrl = UrlBuilder.buildUrl(client.getBaseUrl(), path, queryParams);
+        Request.Builder builder = Request.builder()
+                .method("GET")
+                .url(fullUrl);
+        applyMergedHeaders(builder);
+        applyTelemetry(builder, resource, operation);
+        return client.executeWithInterceptor(builder.build());
+    }
+
+    /**
+     * GET with subdomain routing (telemetry-aware).
+     */
+    protected Response getWithSubDomain(String resource, String operation, String path, String subDomain, Map<String, Object> queryParams) throws ChargebeeException {
+        String fullUrl = UrlBuilder.buildUrl(baseUrlWithSubDomain(subDomain), path, queryParams);
+        Request.Builder builder = Request.builder()
+                .method("GET")
+                .url(fullUrl);
+        applyMergedHeaders(builder);
+        applyTelemetry(builder, resource, operation);
+        return client.executeWithInterceptor(builder.build());
+    }
+
+    /**
+     * GET async with Object query parameters (telemetry-aware).
+     */
+    protected CompletableFuture<Response> getAsync(String resource, String operation, String path, Map<String, Object> queryParams) {
+        String fullUrl = UrlBuilder.buildUrl(client.getBaseUrl(), path, queryParams);
+        Request.Builder builder = Request.builder()
+                .method("GET")
+                .url(fullUrl);
+        applyMergedHeaders(builder);
+        applyTelemetry(builder, resource, operation);
+        return client.executeWithInterceptorAsync(builder.build());
+    }
+
+    /**
+     * GET async with subdomain routing (telemetry-aware).
+     */
+    protected CompletableFuture<Response> getWithSubDomainAsync(String resource, String operation, String path, String subDomain, Map<String, Object> queryParams) {
+        String fullUrl = UrlBuilder.buildUrl(baseUrlWithSubDomain(subDomain), path, queryParams);
+        Request.Builder builder = Request.builder()
+                .method("GET")
+                .url(fullUrl);
+        applyMergedHeaders(builder);
+        applyTelemetry(builder, resource, operation);
+        return client.executeWithInterceptorAsync(builder.build());
+    }
+
+    /**
+     * POST with optional headers (telemetry-aware).
+     */
+    protected Response post(String resource, String operation, String path, Map<String, Object> formData) throws ChargebeeException {
+        String fullUrl = UrlBuilder.buildUrl(client.getBaseUrl(), path, null);
+        Request.Builder builder = Request.builder()
+                .method("POST")
+                .url(fullUrl)
+                .formBody(formData);
+        applyMergedHeaders(builder);
+        applyTelemetry(builder, resource, operation);
+        return client.executeWithInterceptor(builder.build());
+    }
+
+    /**
+     * POST with subdomain routing (telemetry-aware).
+     */
+    protected Response postWithSubDomain(String resource, String operation, String path, String subDomain, Map<String, Object> formData) throws ChargebeeException {
+        String fullUrl = UrlBuilder.buildUrl(baseUrlWithSubDomain(subDomain), path, null);
+        Request.Builder builder = Request.builder()
+                .method("POST")
+                .url(fullUrl)
+                .formBody(formData);
+        applyMergedHeaders(builder);
+        applyTelemetry(builder, resource, operation);
+        return client.executeWithInterceptor(builder.build());
+    }
+
+    /**
+     * POST async with optional headers (telemetry-aware).
+     */
+    protected CompletableFuture<Response> postAsync(String resource, String operation, String path, Map<String, Object> formData) {
+        String fullUrl = UrlBuilder.buildUrl(client.getBaseUrl(), path, null);
+        Request.Builder builder = Request.builder()
+                .method("POST")
+                .url(fullUrl)
+                .formBody(formData);
+        applyMergedHeaders(builder);
+        applyTelemetry(builder, resource, operation);
+        return client.executeWithInterceptorAsync(builder.build());
+    }
+
+    /**
+     * POST async with subdomain routing (telemetry-aware).
+     */
+    protected CompletableFuture<Response> postWithSubDomainAsync(String resource, String operation, String path, String subDomain, Map<String, Object> formData) {
+        String fullUrl = UrlBuilder.buildUrl(baseUrlWithSubDomain(subDomain), path, null);
+        Request.Builder builder = Request.builder()
+                .method("POST")
+                .url(fullUrl)
+                .formBody(formData);
+        applyMergedHeaders(builder);
+        applyTelemetry(builder, resource, operation);
+        return client.executeWithInterceptorAsync(builder.build());
+    }
+
+    /**
+     * POST JSON with optional headers (telemetry-aware).
+     */
+    protected Response postJson(String resource, String operation, String path, String jsonData) throws ChargebeeException {
+        String fullUrl = UrlBuilder.buildUrl(client.getBaseUrl(), path, null);
+        Request.Builder builder = Request.builder()
+                .method("POST")
+                .url(fullUrl)
+                .jsonBody(jsonData);
+        applyMergedHeaders(builder);
+        applyTelemetry(builder, resource, operation);
+        return client.executeWithInterceptor(builder.build());
+    }
+
+    /**
+     * POST JSON with subdomain routing (telemetry-aware).
+     */
+    protected Response postJsonWithSubDomain(String resource, String operation, String path, String subDomain, String jsonData) throws ChargebeeException {
+        String fullUrl = UrlBuilder.buildUrl(baseUrlWithSubDomain(subDomain), path, null);
+        Request.Builder builder = Request.builder()
+                .method("POST")
+                .url(fullUrl)
+                .jsonBody(jsonData);
+        applyMergedHeaders(builder);
+        applyTelemetry(builder, resource, operation);
+        return client.executeWithInterceptor(builder.build());
+    }
+
+    /**
+     * POST JSON async with optional headers (telemetry-aware).
+     */
+    protected CompletableFuture<Response> postJsonAsync(String resource, String operation, String path, String jsonData) {
+        String fullUrl = UrlBuilder.buildUrl(client.getBaseUrl(), path, null);
+        Request.Builder builder = Request.builder()
+                .method("POST")
+                .url(fullUrl)
+                .jsonBody(jsonData);
+        applyMergedHeaders(builder);
+        applyTelemetry(builder, resource, operation);
+        return client.executeWithInterceptorAsync(builder.build());
+    }
+
+    /**
+     * POST JSON async with subdomain routing (telemetry-aware).
+     */
+    protected CompletableFuture<Response> postJsonWithSubDomainAsync(String resource, String operation, String path, String subDomain, String jsonData) {
+        String fullUrl = UrlBuilder.buildUrl(baseUrlWithSubDomain(subDomain), path, null);
+        Request.Builder builder = Request.builder()
+                .method("POST")
+                .url(fullUrl)
+                .jsonBody(jsonData);
+        applyMergedHeaders(builder);
+        applyTelemetry(builder, resource, operation);
+        return client.executeWithInterceptorAsync(builder.build());
+    }
+
     private void applyMergedHeaders(Request.Builder builder) {
         RequestContext operation = new RequestContext(options.getHeaders());
         Map<String, String> merged = client.getClientHeaders().merge(operation).getHeaders();
