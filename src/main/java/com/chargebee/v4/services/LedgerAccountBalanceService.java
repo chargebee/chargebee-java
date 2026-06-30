@@ -59,7 +59,11 @@ public final class LedgerAccountBalanceService extends BaseService<LedgerAccount
   Response listLedgerAccountBalancesRaw(ListLedgerAccountBalancesParams params)
       throws ChargebeeException {
 
-    return get("/ledger_account_balances", params != null ? params.toQueryParams() : null);
+    return get(
+        "ledgerAccountBalance",
+        "listLedgerAccountBalances",
+        "/ledger_account_balances",
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -68,7 +72,8 @@ public final class LedgerAccountBalanceService extends BaseService<LedgerAccount
    */
   Response listLedgerAccountBalancesRaw() throws ChargebeeException {
 
-    return get("/ledger_account_balances", null);
+    return get(
+        "ledgerAccountBalance", "listLedgerAccountBalances", "/ledger_account_balances", null);
   }
 
   /**
@@ -92,7 +97,11 @@ public final class LedgerAccountBalanceService extends BaseService<LedgerAccount
   public CompletableFuture<ListLedgerAccountBalancesResponse> listLedgerAccountBalancesAsync(
       ListLedgerAccountBalancesParams params) {
 
-    return getAsync("/ledger_account_balances", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "ledgerAccountBalance",
+            "listLedgerAccountBalances",
+            "/ledger_account_balances",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ListLedgerAccountBalancesResponse.fromJson(
@@ -109,7 +118,8 @@ public final class LedgerAccountBalanceService extends BaseService<LedgerAccount
   /** Async variant of listLedgerAccountBalances for ledgerAccountBalance without params. */
   public CompletableFuture<ListLedgerAccountBalancesResponse> listLedgerAccountBalancesAsync() {
 
-    return getAsync("/ledger_account_balances", null)
+    return getAsync(
+            "ledgerAccountBalance", "listLedgerAccountBalances", "/ledger_account_balances", null)
         .thenApply(
             response ->
                 ListLedgerAccountBalancesResponse.fromJson(

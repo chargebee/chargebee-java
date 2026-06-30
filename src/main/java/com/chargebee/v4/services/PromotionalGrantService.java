@@ -58,7 +58,11 @@ public final class PromotionalGrantService extends BaseService<PromotionalGrantS
    */
   Response promotionalGrantsRaw(PromotionalGrantsParams params) throws ChargebeeException {
 
-    return postJson("/promotional_grants", params != null ? params.toJsonString() : null);
+    return postJson(
+        "promotionalGrant",
+        "promotionalGrants",
+        "/promotional_grants",
+        params != null ? params.toJsonString() : null);
   }
 
   /**
@@ -67,7 +71,7 @@ public final class PromotionalGrantService extends BaseService<PromotionalGrantS
    */
   Response promotionalGrantsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/promotional_grants", jsonPayload);
+    return postJson("promotionalGrant", "promotionalGrants", "/promotional_grants", jsonPayload);
   }
 
   public PromotionalGrantsResponse promotionalGrants(PromotionalGrantsParams params)
@@ -81,7 +85,11 @@ public final class PromotionalGrantService extends BaseService<PromotionalGrantS
   public CompletableFuture<PromotionalGrantsResponse> promotionalGrantsAsync(
       PromotionalGrantsParams params) {
 
-    return postJsonAsync("/promotional_grants", params != null ? params.toJsonString() : null)
+    return postJsonAsync(
+            "promotionalGrant",
+            "promotionalGrants",
+            "/promotional_grants",
+            params != null ? params.toJsonString() : null)
         .thenApply(
             response -> PromotionalGrantsResponse.fromJson(response.getBodyAsString(), response));
   }
