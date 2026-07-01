@@ -58,13 +58,13 @@ public final class PurchaseService extends BaseService<PurchaseService> {
   /** create a purchase using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(PurchaseCreateParams params) throws ChargebeeException {
 
-    return post("/purchases", params != null ? params.toFormData() : null);
+    return post("purchase", "create", "/purchases", params != null ? params.toFormData() : null);
   }
 
   /** create a purchase using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/purchases", jsonPayload);
+    return postJson("purchase", "create", "/purchases", jsonPayload);
   }
 
   public PurchaseCreateResponse create(PurchaseCreateParams params) throws ChargebeeException {
@@ -76,7 +76,8 @@ public final class PurchaseService extends BaseService<PurchaseService> {
   /** Async variant of create for purchase with params. */
   public CompletableFuture<PurchaseCreateResponse> createAsync(PurchaseCreateParams params) {
 
-    return postAsync("/purchases", params != null ? params.toFormData() : null)
+    return postAsync(
+            "purchase", "create", "/purchases", params != null ? params.toFormData() : null)
         .thenApply(
             response -> PurchaseCreateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -84,13 +85,14 @@ public final class PurchaseService extends BaseService<PurchaseService> {
   /** estimate a purchase using immutable params (executes immediately) - returns raw Response. */
   Response estimateRaw(PurchaseEstimateParams params) throws ChargebeeException {
 
-    return post("/purchases/estimate", params != null ? params.toFormData() : null);
+    return post(
+        "purchase", "estimate", "/purchases/estimate", params != null ? params.toFormData() : null);
   }
 
   /** estimate a purchase using raw JSON payload (executes immediately) - returns raw Response. */
   Response estimateRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/purchases/estimate", jsonPayload);
+    return postJson("purchase", "estimate", "/purchases/estimate", jsonPayload);
   }
 
   public PurchaseEstimateResponse estimate(PurchaseEstimateParams params)
@@ -103,7 +105,11 @@ public final class PurchaseService extends BaseService<PurchaseService> {
   /** Async variant of estimate for purchase with params. */
   public CompletableFuture<PurchaseEstimateResponse> estimateAsync(PurchaseEstimateParams params) {
 
-    return postAsync("/purchases/estimate", params != null ? params.toFormData() : null)
+    return postAsync(
+            "purchase",
+            "estimate",
+            "/purchases/estimate",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> PurchaseEstimateResponse.fromJson(response.getBodyAsString(), response));
   }

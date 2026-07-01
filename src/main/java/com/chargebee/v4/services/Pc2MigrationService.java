@@ -66,7 +66,7 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
             "pc2-migration-id",
             pc2MigrationId);
 
-    return post(path, null);
+    return post("pc2Migration", "contactSupport", path, null);
   }
 
   public Pc2MigrationContactSupportResponse contactSupport(String pc2MigrationId)
@@ -84,7 +84,7 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
             "pc2-migration-id",
             pc2MigrationId);
 
-    return postAsync(path, null)
+    return postAsync("pc2Migration", "contactSupport", path, null)
         .thenApply(
             response ->
                 Pc2MigrationContactSupportResponse.fromJson(response.getBodyAsString(), response));
@@ -96,7 +96,7 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
         buildPathWithParams(
             "/pc2_migrations/{pc2-migration-id}", "pc2-migration-id", pc2MigrationId);
 
-    return get(path, null);
+    return get("pc2Migration", "retrieve", path, null);
   }
 
   public Pc2MigrationRetrieveResponse retrieve(String pc2MigrationId) throws ChargebeeException {
@@ -110,7 +110,7 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
         buildPathWithParams(
             "/pc2_migrations/{pc2-migration-id}", "pc2-migration-id", pc2MigrationId);
 
-    return getAsync(path, null)
+    return getAsync("pc2Migration", "retrieve", path, null)
         .thenApply(
             response ->
                 Pc2MigrationRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -119,13 +119,14 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
   /** create a pc2Migration using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(Pc2MigrationCreateParams params) throws ChargebeeException {
 
-    return post("/pc2_migrations", params != null ? params.toFormData() : null);
+    return post(
+        "pc2Migration", "create", "/pc2_migrations", params != null ? params.toFormData() : null);
   }
 
   /** create a pc2Migration using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/pc2_migrations", jsonPayload);
+    return postJson("pc2Migration", "create", "/pc2_migrations", jsonPayload);
   }
 
   public Pc2MigrationCreateResponse create(Pc2MigrationCreateParams params)
@@ -139,7 +140,11 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
   public CompletableFuture<Pc2MigrationCreateResponse> createAsync(
       Pc2MigrationCreateParams params) {
 
-    return postAsync("/pc2_migrations", params != null ? params.toFormData() : null)
+    return postAsync(
+            "pc2Migration",
+            "create",
+            "/pc2_migrations",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> Pc2MigrationCreateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -150,7 +155,7 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
         buildPathWithParams(
             "/pc2_migrations/{pc2-migration-id}/initiate", "pc2-migration-id", pc2MigrationId);
 
-    return post(path, null);
+    return post("pc2Migration", "initiate", path, null);
   }
 
   public Pc2MigrationInitiateResponse initiate(String pc2MigrationId) throws ChargebeeException {
@@ -164,7 +169,7 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
         buildPathWithParams(
             "/pc2_migrations/{pc2-migration-id}/initiate", "pc2-migration-id", pc2MigrationId);
 
-    return postAsync(path, null)
+    return postAsync("pc2Migration", "initiate", path, null)
         .thenApply(
             response ->
                 Pc2MigrationInitiateResponse.fromJson(response.getBodyAsString(), response));

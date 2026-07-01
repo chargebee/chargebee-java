@@ -69,7 +69,7 @@ public final class SubscriptionEntitlementService
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("subscriptionEntitlement", "setSubscriptionEntitlementAvailability", path, null);
   }
 
   /**
@@ -84,7 +84,11 @@ public final class SubscriptionEntitlementService
             "/subscriptions/{subscription-id}/subscription_entitlements/set_availability",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post(
+        "subscriptionEntitlement",
+        "setSubscriptionEntitlementAvailability",
+        path,
+        params.toFormData());
   }
 
   /**
@@ -98,7 +102,8 @@ public final class SubscriptionEntitlementService
             "/subscriptions/{subscription-id}/subscription_entitlements/set_availability",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson(
+        "subscriptionEntitlement", "setSubscriptionEntitlementAvailability", path, jsonPayload);
   }
 
   public SetSubscriptionEntitlementAvailabilityResponse setSubscriptionEntitlementAvailability(
@@ -121,7 +126,11 @@ public final class SubscriptionEntitlementService
             "/subscriptions/{subscription-id}/subscription_entitlements/set_availability",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync(
+            "subscriptionEntitlement",
+            "setSubscriptionEntitlementAvailability",
+            path,
+            params.toFormData())
         .thenApply(
             response ->
                 SetSubscriptionEntitlementAvailabilityResponse.fromJson(
@@ -140,7 +149,11 @@ public final class SubscriptionEntitlementService
             "/subscriptions/{subscription-id}/subscription_entitlements",
             "subscription-id",
             subscriptionId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "subscriptionEntitlement",
+        "subscriptionEntitlementsForSubscription",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -154,7 +167,7 @@ public final class SubscriptionEntitlementService
             "/subscriptions/{subscription-id}/subscription_entitlements",
             "subscription-id",
             subscriptionId);
-    return get(path, null);
+    return get("subscriptionEntitlement", "subscriptionEntitlementsForSubscription", path, null);
   }
 
   /**
@@ -198,7 +211,11 @@ public final class SubscriptionEntitlementService
             "/subscriptions/{subscription-id}/subscription_entitlements",
             "subscription-id",
             subscriptionId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "subscriptionEntitlement",
+            "subscriptionEntitlementsForSubscription",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 SubscriptionEntitlementsForSubscriptionResponse.fromJson(
@@ -216,7 +233,8 @@ public final class SubscriptionEntitlementService
             "/subscriptions/{subscription-id}/subscription_entitlements",
             "subscription-id",
             subscriptionId);
-    return getAsync(path, null)
+    return getAsync(
+            "subscriptionEntitlement", "subscriptionEntitlementsForSubscription", path, null)
         .thenApply(
             response ->
                 SubscriptionEntitlementsForSubscriptionResponse.fromJson(

@@ -71,7 +71,7 @@ public final class OmnichannelSubscriptionService
             "omnichannel-subscription-id",
             omnichannelSubscriptionId);
 
-    return post(path, null);
+    return post("omnichannelSubscription", "move", path, null);
   }
 
   /**
@@ -85,7 +85,7 @@ public final class OmnichannelSubscriptionService
             "/omnichannel_subscriptions/{omnichannel-subscription-id}/move",
             "omnichannel-subscription-id",
             omnichannelSubscriptionId);
-    return post(path, params.toFormData());
+    return post("omnichannelSubscription", "move", path, params.toFormData());
   }
 
   /**
@@ -98,7 +98,7 @@ public final class OmnichannelSubscriptionService
             "/omnichannel_subscriptions/{omnichannel-subscription-id}/move",
             "omnichannel-subscription-id",
             omnichannelSubscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("omnichannelSubscription", "move", path, jsonPayload);
   }
 
   public OmnichannelSubscriptionMoveResponse move(
@@ -116,7 +116,7 @@ public final class OmnichannelSubscriptionService
             "/omnichannel_subscriptions/{omnichannel-subscription-id}/move",
             "omnichannel-subscription-id",
             omnichannelSubscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("omnichannelSubscription", "move", path, params.toFormData())
         .thenApply(
             response ->
                 OmnichannelSubscriptionMoveResponse.fromJson(response.getBodyAsString(), response));
@@ -130,7 +130,7 @@ public final class OmnichannelSubscriptionService
             "omnichannel-subscription-id",
             omnichannelSubscriptionId);
 
-    return get(path, null);
+    return get("omnichannelSubscription", "retrieve", path, null);
   }
 
   public OmnichannelSubscriptionRetrieveResponse retrieve(String omnichannelSubscriptionId)
@@ -148,7 +148,7 @@ public final class OmnichannelSubscriptionService
             "omnichannel-subscription-id",
             omnichannelSubscriptionId);
 
-    return getAsync(path, null)
+    return getAsync("omnichannelSubscription", "retrieve", path, null)
         .thenApply(
             response ->
                 OmnichannelSubscriptionRetrieveResponse.fromJson(
@@ -168,7 +168,11 @@ public final class OmnichannelSubscriptionService
             "/omnichannel_subscriptions/{omnichannel-subscription-id}/omnichannel_transactions",
             "omnichannel-subscription-id",
             omnichannelSubscriptionId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "omnichannelSubscription",
+        "omnichannelTransactionsForOmnichannelSubscription",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -182,7 +186,8 @@ public final class OmnichannelSubscriptionService
             "/omnichannel_subscriptions/{omnichannel-subscription-id}/omnichannel_transactions",
             "omnichannel-subscription-id",
             omnichannelSubscriptionId);
-    return get(path, null);
+    return get(
+        "omnichannelSubscription", "omnichannelTransactionsForOmnichannelSubscription", path, null);
   }
 
   /**
@@ -232,7 +237,11 @@ public final class OmnichannelSubscriptionService
             "/omnichannel_subscriptions/{omnichannel-subscription-id}/omnichannel_transactions",
             "omnichannel-subscription-id",
             omnichannelSubscriptionId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "omnichannelSubscription",
+            "omnichannelTransactionsForOmnichannelSubscription",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 OmnichannelTransactionsForOmnichannelSubscriptionResponse.fromJson(
@@ -250,7 +259,11 @@ public final class OmnichannelSubscriptionService
             "/omnichannel_subscriptions/{omnichannel-subscription-id}/omnichannel_transactions",
             "omnichannel-subscription-id",
             omnichannelSubscriptionId);
-    return getAsync(path, null)
+    return getAsync(
+            "omnichannelSubscription",
+            "omnichannelTransactionsForOmnichannelSubscription",
+            path,
+            null)
         .thenApply(
             response ->
                 OmnichannelTransactionsForOmnichannelSubscriptionResponse.fromJson(
@@ -263,7 +276,11 @@ public final class OmnichannelSubscriptionService
    */
   Response listRaw(OmnichannelSubscriptionListParams params) throws ChargebeeException {
 
-    return get("/omnichannel_subscriptions", params != null ? params.toQueryParams() : null);
+    return get(
+        "omnichannelSubscription",
+        "list",
+        "/omnichannel_subscriptions",
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -271,7 +288,7 @@ public final class OmnichannelSubscriptionService
    */
   Response listRaw() throws ChargebeeException {
 
-    return get("/omnichannel_subscriptions", null);
+    return get("omnichannelSubscription", "list", "/omnichannel_subscriptions", null);
   }
 
   /**
@@ -295,7 +312,11 @@ public final class OmnichannelSubscriptionService
   public CompletableFuture<OmnichannelSubscriptionListResponse> listAsync(
       OmnichannelSubscriptionListParams params) {
 
-    return getAsync("/omnichannel_subscriptions", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "omnichannelSubscription",
+            "list",
+            "/omnichannel_subscriptions",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 OmnichannelSubscriptionListResponse.fromJson(
@@ -312,7 +333,7 @@ public final class OmnichannelSubscriptionService
   /** Async variant of list for omnichannelSubscription without params. */
   public CompletableFuture<OmnichannelSubscriptionListResponse> listAsync() {
 
-    return getAsync("/omnichannel_subscriptions", null)
+    return getAsync("omnichannelSubscription", "list", "/omnichannel_subscriptions", null)
         .thenApply(
             response ->
                 OmnichannelSubscriptionListResponse.fromJson(

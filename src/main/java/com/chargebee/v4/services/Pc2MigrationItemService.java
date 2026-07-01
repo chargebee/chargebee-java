@@ -76,7 +76,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
             "pc2-migration-item-id",
             pc2MigrationItemId);
 
-    return get(path, null);
+    return get("pc2MigrationItem", "retrieve", path, null);
   }
 
   public Pc2MigrationItemRetrieveResponse retrieve(String pc2MigrationItemId)
@@ -94,7 +94,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
             "pc2-migration-item-id",
             pc2MigrationItemId);
 
-    return getAsync(path, null)
+    return getAsync("pc2MigrationItem", "retrieve", path, null)
         .thenApply(
             response ->
                 Pc2MigrationItemRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -108,7 +108,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
             "pc2-migration-item-id",
             pc2MigrationItemId);
 
-    return post(path, null);
+    return post("pc2MigrationItem", "update", path, null);
   }
 
   /**
@@ -121,7 +121,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
             "/pc2_migration_items/{pc2-migration-item-id}",
             "pc2-migration-item-id",
             pc2MigrationItemId);
-    return post(path, params.toFormData());
+    return post("pc2MigrationItem", "update", path, params.toFormData());
   }
 
   /**
@@ -133,7 +133,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
             "/pc2_migration_items/{pc2-migration-item-id}",
             "pc2-migration-item-id",
             pc2MigrationItemId);
-    return postJson(path, jsonPayload);
+    return postJson("pc2MigrationItem", "update", path, jsonPayload);
   }
 
   public Pc2MigrationItemUpdateResponse update(
@@ -150,7 +150,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
             "/pc2_migration_items/{pc2-migration-item-id}",
             "pc2-migration-item-id",
             pc2MigrationItemId);
-    return postAsync(path, params.toFormData())
+    return postAsync("pc2MigrationItem", "update", path, params.toFormData())
         .thenApply(
             response ->
                 Pc2MigrationItemUpdateResponse.fromJson(response.getBodyAsString(), response));
@@ -170,7 +170,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
             "pc2-migration-item-id",
             pc2MigrationItemId);
 
-    return postAsync(path, null)
+    return postAsync("pc2MigrationItem", "update", path, null)
         .thenApply(
             response ->
                 Pc2MigrationItemUpdateResponse.fromJson(response.getBodyAsString(), response));
@@ -184,7 +184,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
             "pc2-migration-item-id",
             pc2MigrationItemId);
 
-    return post(path, null);
+    return post("pc2MigrationItem", "delete", path, null);
   }
 
   public Pc2MigrationItemDeleteResponse delete(String pc2MigrationItemId)
@@ -201,7 +201,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
             "pc2-migration-item-id",
             pc2MigrationItemId);
 
-    return postAsync(path, null)
+    return postAsync("pc2MigrationItem", "delete", path, null)
         .thenApply(
             response ->
                 Pc2MigrationItemDeleteResponse.fromJson(response.getBodyAsString(), response));
@@ -212,13 +212,17 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
    */
   Response listRaw(Pc2MigrationItemListParams params) throws ChargebeeException {
 
-    return get("/pc2_migration_items", params != null ? params.toQueryParams() : null);
+    return get(
+        "pc2MigrationItem",
+        "list",
+        "/pc2_migration_items",
+        params != null ? params.toQueryParams() : null);
   }
 
   /** list a pc2MigrationItem without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/pc2_migration_items", null);
+    return get("pc2MigrationItem", "list", "/pc2_migration_items", null);
   }
 
   /**
@@ -241,7 +245,11 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
   public CompletableFuture<Pc2MigrationItemListResponse> listAsync(
       Pc2MigrationItemListParams params) {
 
-    return getAsync("/pc2_migration_items", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "pc2MigrationItem",
+            "list",
+            "/pc2_migration_items",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 Pc2MigrationItemListResponse.fromJson(
@@ -257,7 +265,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
   /** Async variant of list for pc2MigrationItem without params. */
   public CompletableFuture<Pc2MigrationItemListResponse> listAsync() {
 
-    return getAsync("/pc2_migration_items", null)
+    return getAsync("pc2MigrationItem", "list", "/pc2_migration_items", null)
         .thenApply(
             response ->
                 Pc2MigrationItemListResponse.fromJson(
@@ -269,7 +277,11 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
    */
   Response createRaw(Pc2MigrationItemCreateParams params) throws ChargebeeException {
 
-    return post("/pc2_migration_items", params != null ? params.toFormData() : null);
+    return post(
+        "pc2MigrationItem",
+        "create",
+        "/pc2_migration_items",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -277,7 +289,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
    */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/pc2_migration_items", jsonPayload);
+    return postJson("pc2MigrationItem", "create", "/pc2_migration_items", jsonPayload);
   }
 
   public Pc2MigrationItemCreateResponse create(Pc2MigrationItemCreateParams params)
@@ -291,7 +303,11 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
   public CompletableFuture<Pc2MigrationItemCreateResponse> createAsync(
       Pc2MigrationItemCreateParams params) {
 
-    return postAsync("/pc2_migration_items", params != null ? params.toFormData() : null)
+    return postAsync(
+            "pc2MigrationItem",
+            "create",
+            "/pc2_migration_items",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 Pc2MigrationItemCreateResponse.fromJson(response.getBodyAsString(), response));
@@ -305,7 +321,10 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
       throws ChargebeeException {
 
     return get(
-        "/pc2_migration_items/applicable_items", params != null ? params.toQueryParams() : null);
+        "pc2MigrationItem",
+        "listApplicableAddons",
+        "/pc2_migration_items/applicable_items",
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -314,7 +333,8 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
    */
   Response listApplicableAddonsRaw() throws ChargebeeException {
 
-    return get("/pc2_migration_items/applicable_items", null);
+    return get(
+        "pc2MigrationItem", "listApplicableAddons", "/pc2_migration_items/applicable_items", null);
   }
 
   /**
@@ -339,7 +359,10 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
       Pc2MigrationItemListApplicableAddonsParams params) {
 
     return getAsync(
-            "/pc2_migration_items/applicable_items", params != null ? params.toQueryParams() : null)
+            "pc2MigrationItem",
+            "listApplicableAddons",
+            "/pc2_migration_items/applicable_items",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 Pc2MigrationItemListApplicableAddonsResponse.fromJson(
@@ -358,7 +381,11 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
   public CompletableFuture<Pc2MigrationItemListApplicableAddonsResponse>
       listApplicableAddonsAsync() {
 
-    return getAsync("/pc2_migration_items/applicable_items", null)
+    return getAsync(
+            "pc2MigrationItem",
+            "listApplicableAddons",
+            "/pc2_migration_items/applicable_items",
+            null)
         .thenApply(
             response ->
                 Pc2MigrationItemListApplicableAddonsResponse.fromJson(

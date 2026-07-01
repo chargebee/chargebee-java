@@ -190,7 +190,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "removeAdvanceInvoiceSchedule", path, null);
   }
 
   /**
@@ -205,7 +205,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/remove_advance_invoice_schedule",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "removeAdvanceInvoiceSchedule", path, params.toFormData());
   }
 
   /**
@@ -219,7 +219,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/remove_advance_invoice_schedule",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "removeAdvanceInvoiceSchedule", path, jsonPayload);
   }
 
   public SubscriptionRemoveAdvanceInvoiceScheduleResponse removeAdvanceInvoiceSchedule(
@@ -239,7 +239,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/remove_advance_invoice_schedule",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "removeAdvanceInvoiceSchedule", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionRemoveAdvanceInvoiceScheduleResponse.fromJson(
@@ -262,7 +262,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "removeAdvanceInvoiceSchedule", path, null)
         .thenApply(
             response ->
                 SubscriptionRemoveAdvanceInvoiceScheduleResponse.fromJson(
@@ -275,7 +275,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/update_for_items", "subscription-id", subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "updateForItems", path, null);
   }
 
   /**
@@ -287,7 +287,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/update_for_items", "subscription-id", subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "updateForItems", path, params.toFormData());
   }
 
   /**
@@ -298,7 +298,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/update_for_items", "subscription-id", subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "updateForItems", path, jsonPayload);
   }
 
   public SubscriptionUpdateForItemsResponse updateForItems(
@@ -313,7 +313,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/update_for_items", "subscription-id", subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "updateForItems", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionUpdateForItemsResponse.fromJson(response.getBodyAsString(), response));
@@ -332,7 +332,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/update_for_items", "subscription-id", subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "updateForItems", path, null)
         .thenApply(
             response ->
                 SubscriptionUpdateForItemsResponse.fromJson(response.getBodyAsString(), response));
@@ -344,7 +344,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_coupons", "subscription-id", subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "removeCoupons", path, null);
   }
 
   /**
@@ -356,7 +356,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_coupons", "subscription-id", subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "removeCoupons", path, params.toFormData());
   }
 
   /**
@@ -367,7 +367,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_coupons", "subscription-id", subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "removeCoupons", path, jsonPayload);
   }
 
   public SubscriptionRemoveCouponsResponse removeCoupons(
@@ -382,7 +382,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_coupons", "subscription-id", subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "removeCoupons", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionRemoveCouponsResponse.fromJson(response.getBodyAsString(), response));
@@ -401,7 +401,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_coupons", "subscription-id", subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "removeCoupons", path, null)
         .thenApply(
             response ->
                 SubscriptionRemoveCouponsResponse.fromJson(response.getBodyAsString(), response));
@@ -413,7 +413,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/resume", "subscription-id", subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "resume", path, null);
   }
 
   /** resume a subscription using immutable params (executes immediately) - returns raw Response. */
@@ -422,7 +422,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/resume", "subscription-id", subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "resume", path, params.toFormData());
   }
 
   /** resume a subscription using raw JSON payload (executes immediately) - returns raw Response. */
@@ -430,7 +430,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/resume", "subscription-id", subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "resume", path, jsonPayload);
   }
 
   public SubscriptionResumeResponse resume(String subscriptionId, SubscriptionResumeParams params)
@@ -445,7 +445,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/resume", "subscription-id", subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "resume", path, params.toFormData())
         .thenApply(
             response -> SubscriptionResumeResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -461,7 +461,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/resume", "subscription-id", subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "resume", path, null)
         .thenApply(
             response -> SubscriptionResumeResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -472,7 +472,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel_for_items", "subscription-id", subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "cancelForItems", path, null);
   }
 
   /**
@@ -484,7 +484,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel_for_items", "subscription-id", subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "cancelForItems", path, params.toFormData());
   }
 
   /**
@@ -495,7 +495,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel_for_items", "subscription-id", subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "cancelForItems", path, jsonPayload);
   }
 
   public SubscriptionCancelForItemsResponse cancelForItems(
@@ -510,7 +510,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel_for_items", "subscription-id", subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "cancelForItems", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionCancelForItemsResponse.fromJson(response.getBodyAsString(), response));
@@ -529,7 +529,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel_for_items", "subscription-id", subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "cancelForItems", path, null)
         .thenApply(
             response ->
                 SubscriptionCancelForItemsResponse.fromJson(response.getBodyAsString(), response));
@@ -543,7 +543,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "regenerateInvoice", path, null);
   }
 
   /**
@@ -557,7 +557,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/regenerate_invoice",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "regenerateInvoice", path, params.toFormData());
   }
 
   /**
@@ -571,7 +571,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/regenerate_invoice",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "regenerateInvoice", path, jsonPayload);
   }
 
   public SubscriptionRegenerateInvoiceResponse regenerateInvoice(
@@ -588,7 +588,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/regenerate_invoice",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "regenerateInvoice", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionRegenerateInvoiceResponse.fromJson(
@@ -610,7 +610,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "regenerateInvoice", path, null)
         .thenApply(
             response ->
                 SubscriptionRegenerateInvoiceResponse.fromJson(
@@ -620,13 +620,14 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   /** list a subscription using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(SubscriptionListParams params) throws ChargebeeException {
 
-    return get("/subscriptions", params != null ? params.toQueryParams() : null);
+    return get(
+        "subscription", "list", "/subscriptions", params != null ? params.toQueryParams() : null);
   }
 
   /** list a subscription without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/subscriptions", null);
+    return get("subscription", "list", "/subscriptions", null);
   }
 
   /** list a subscription using raw JSON payload (executes immediately) - returns raw Response. */
@@ -644,7 +645,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   /** Async variant of list for subscription with params. */
   public CompletableFuture<SubscriptionListResponse> listAsync(SubscriptionListParams params) {
 
-    return getAsync("/subscriptions", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "subscription",
+            "list",
+            "/subscriptions",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 SubscriptionListResponse.fromJson(
@@ -660,7 +665,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   /** Async variant of list for subscription without params. */
   public CompletableFuture<SubscriptionListResponse> listAsync() {
 
-    return getAsync("/subscriptions", null)
+    return getAsync("subscription", "list", "/subscriptions", null)
         .thenApply(
             response ->
                 SubscriptionListResponse.fromJson(
@@ -670,13 +675,14 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   /** create a subscription using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(SubscriptionCreateParams params) throws ChargebeeException {
 
-    return post("/subscriptions", params != null ? params.toFormData() : null);
+    return post(
+        "subscription", "create", "/subscriptions", params != null ? params.toFormData() : null);
   }
 
   /** create a subscription using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/subscriptions", jsonPayload);
+    return postJson("subscription", "create", "/subscriptions", jsonPayload);
   }
 
   public SubscriptionCreateResponse create(SubscriptionCreateParams params)
@@ -690,7 +696,8 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public CompletableFuture<SubscriptionCreateResponse> createAsync(
       SubscriptionCreateParams params) {
 
-    return postAsync("/subscriptions", params != null ? params.toFormData() : null)
+    return postAsync(
+            "subscription", "create", "/subscriptions", params != null ? params.toFormData() : null)
         .thenApply(
             response -> SubscriptionCreateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -701,7 +708,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/move", "subscription-id", subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "move", path, null);
   }
 
   /** move a subscription using immutable params (executes immediately) - returns raw Response. */
@@ -709,7 +716,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/move", "subscription-id", subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "move", path, params.toFormData());
   }
 
   /** move a subscription using raw JSON payload (executes immediately) - returns raw Response. */
@@ -717,7 +724,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/move", "subscription-id", subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "move", path, jsonPayload);
   }
 
   public SubscriptionMoveResponse move(String subscriptionId, SubscriptionMoveParams params)
@@ -732,7 +739,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/move", "subscription-id", subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "move", path, params.toFormData())
         .thenApply(
             response -> SubscriptionMoveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -745,7 +752,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "subscription",
+        "subscriptionsForCustomer",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -755,7 +766,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   Response subscriptionsForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
-    return get(path, null);
+    return get("subscription", "subscriptionsForCustomer", path, null);
   }
 
   /**
@@ -788,7 +799,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       String customerId, SubscriptionsForCustomerParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "subscription",
+            "subscriptionsForCustomer",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 SubscriptionsForCustomerResponse.fromJson(
@@ -800,7 +815,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       String customerId) {
     String path =
         buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
-    return getAsync(path, null)
+    return getAsync("subscription", "subscriptionsForCustomer", path, null)
         .thenApply(
             response ->
                 SubscriptionsForCustomerResponse.fromJson(
@@ -812,7 +827,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
 
-    return post(path, null);
+    return post("subscription", "createForCustomer", path, null);
   }
 
   /**
@@ -823,7 +838,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("subscription", "createForCustomer", path, params.toFormData());
   }
 
   /**
@@ -833,7 +848,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   Response createForCustomerRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "createForCustomer", path, jsonPayload);
   }
 
   public SubscriptionCreateForCustomerResponse createForCustomer(
@@ -847,7 +862,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       String customerId, SubscriptionCreateForCustomerParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "createForCustomer", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionCreateForCustomerResponse.fromJson(
@@ -859,7 +874,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams("/customers/{customer-id}/import_for_items", "customer-id", customerId);
 
-    return post(path, null);
+    return post("subscription", "importForItems", path, null);
   }
 
   /**
@@ -870,7 +885,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/import_for_items", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("subscription", "importForItems", path, params.toFormData());
   }
 
   /**
@@ -880,7 +895,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   Response importForItemsRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/import_for_items", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "importForItems", path, jsonPayload);
   }
 
   public SubscriptionImportForItemsResponse importForItems(
@@ -894,7 +909,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       String customerId, SubscriptionImportForItemsParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/import_for_items", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "importForItems", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionImportForItemsResponse.fromJson(response.getBodyAsString(), response));
@@ -910,7 +925,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return get(path, null);
+    return get("subscription", "retrieveAdvanceInvoiceSchedule", path, null);
   }
 
   public SubscriptionRetrieveAdvanceInvoiceScheduleResponse retrieveAdvanceInvoiceSchedule(
@@ -929,7 +944,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return getAsync(path, null)
+    return getAsync("subscription", "retrieveAdvanceInvoiceSchedule", path, null)
         .thenApply(
             response ->
                 SubscriptionRetrieveAdvanceInvoiceScheduleResponse.fromJson(
@@ -944,7 +959,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "removeScheduledCancellation", path, null);
   }
 
   /**
@@ -959,7 +974,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/remove_scheduled_cancellation",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "removeScheduledCancellation", path, params.toFormData());
   }
 
   /**
@@ -973,7 +988,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/remove_scheduled_cancellation",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "removeScheduledCancellation", path, jsonPayload);
   }
 
   public SubscriptionRemoveScheduledCancellationResponse removeScheduledCancellation(
@@ -993,7 +1008,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/remove_scheduled_cancellation",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "removeScheduledCancellation", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionRemoveScheduledCancellationResponse.fromJson(
@@ -1016,7 +1031,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "removeScheduledCancellation", path, null)
         .thenApply(
             response ->
                 SubscriptionRemoveScheduledCancellationResponse.fromJson(
@@ -1031,7 +1046,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return get(path, null);
+    return get("subscription", "retrieveWithScheduledChanges", path, null);
   }
 
   public SubscriptionRetrieveWithScheduledChangesResponse retrieveWithScheduledChanges(
@@ -1050,7 +1065,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return getAsync(path, null)
+    return getAsync("subscription", "retrieveWithScheduledChanges", path, null)
         .thenApply(
             response ->
                 SubscriptionRetrieveWithScheduledChangesResponse.fromJson(
@@ -1063,7 +1078,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/reactivate", "subscription-id", subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "reactivate", path, null);
   }
 
   /**
@@ -1074,7 +1089,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/reactivate", "subscription-id", subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "reactivate", path, params.toFormData());
   }
 
   /**
@@ -1084,7 +1099,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/reactivate", "subscription-id", subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "reactivate", path, jsonPayload);
   }
 
   public SubscriptionReactivateResponse reactivate(
@@ -1099,7 +1114,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/reactivate", "subscription-id", subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "reactivate", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionReactivateResponse.fromJson(response.getBodyAsString(), response));
@@ -1117,7 +1132,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/reactivate", "subscription-id", subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "reactivate", path, null)
         .thenApply(
             response ->
                 SubscriptionReactivateResponse.fromJson(response.getBodyAsString(), response));
@@ -1131,7 +1146,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "chargeFutureRenewals", path, null);
   }
 
   /**
@@ -1146,7 +1161,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/charge_future_renewals",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "chargeFutureRenewals", path, params.toFormData());
   }
 
   /**
@@ -1160,7 +1175,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/charge_future_renewals",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "chargeFutureRenewals", path, jsonPayload);
   }
 
   public SubscriptionChargeFutureRenewalsResponse chargeFutureRenewals(
@@ -1178,7 +1193,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/charge_future_renewals",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "chargeFutureRenewals", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionChargeFutureRenewalsResponse.fromJson(
@@ -1200,7 +1215,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "chargeFutureRenewals", path, null)
         .thenApply(
             response ->
                 SubscriptionChargeFutureRenewalsResponse.fromJson(
@@ -1215,7 +1230,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "addChargeAtTermEnd", path, null);
   }
 
   /**
@@ -1229,7 +1244,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/add_charge_at_term_end",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "addChargeAtTermEnd", path, params.toFormData());
   }
 
   /**
@@ -1243,7 +1258,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/add_charge_at_term_end",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "addChargeAtTermEnd", path, jsonPayload);
   }
 
   public SubscriptionAddChargeAtTermEndResponse addChargeAtTermEnd(
@@ -1261,7 +1276,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/add_charge_at_term_end",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "addChargeAtTermEnd", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionAddChargeAtTermEndResponse.fromJson(
@@ -1276,7 +1291,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "removeScheduledChanges", path, null);
   }
 
   public SubscriptionRemoveScheduledChangesResponse removeScheduledChanges(String subscriptionId)
@@ -1295,7 +1310,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "removeScheduledChanges", path, null)
         .thenApply(
             response ->
                 SubscriptionRemoveScheduledChangesResponse.fromJson(
@@ -1308,7 +1323,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/change_term_end", "subscription-id", subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "changeTermEnd", path, null);
   }
 
   /**
@@ -1320,7 +1335,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/change_term_end", "subscription-id", subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "changeTermEnd", path, params.toFormData());
   }
 
   /**
@@ -1331,7 +1346,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/change_term_end", "subscription-id", subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "changeTermEnd", path, jsonPayload);
   }
 
   public SubscriptionChangeTermEndResponse changeTermEnd(
@@ -1346,7 +1361,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/change_term_end", "subscription-id", subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "changeTermEnd", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionChangeTermEndResponse.fromJson(response.getBodyAsString(), response));
@@ -1358,7 +1373,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/delete", "subscription-id", subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "delete", path, null);
   }
 
   public SubscriptionDeleteResponse delete(String subscriptionId) throws ChargebeeException {
@@ -1372,7 +1387,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/delete", "subscription-id", subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "delete", path, null)
         .thenApply(
             response -> SubscriptionDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1383,7 +1398,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/customers/{customer-id}/subscription_for_items", "customer-id", customerId);
 
-    return post(path, null);
+    return post("subscription", "createWithItems", path, null);
   }
 
   /**
@@ -1395,7 +1410,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/subscription_for_items", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("subscription", "createWithItems", path, params.toFormData());
   }
 
   /**
@@ -1406,7 +1421,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/subscription_for_items", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "createWithItems", path, jsonPayload);
   }
 
   public SubscriptionCreateWithItemsResponse createWithItems(
@@ -1421,7 +1436,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/subscription_for_items", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "createWithItems", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionCreateWithItemsResponse.fromJson(response.getBodyAsString(), response));
@@ -1440,7 +1455,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/customers/{customer-id}/subscription_for_items", "customer-id", customerId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "createWithItems", path, null)
         .thenApply(
             response ->
                 SubscriptionCreateWithItemsResponse.fromJson(response.getBodyAsString(), response));
@@ -1454,7 +1469,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "importUnbilledCharges", path, null);
   }
 
   /**
@@ -1469,7 +1484,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/import_unbilled_charges",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "importUnbilledCharges", path, params.toFormData());
   }
 
   /**
@@ -1483,7 +1498,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/import_unbilled_charges",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "importUnbilledCharges", path, jsonPayload);
   }
 
   public SubscriptionImportUnbilledChargesResponse importUnbilledCharges(
@@ -1501,7 +1516,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/import_unbilled_charges",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "importUnbilledCharges", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionImportUnbilledChargesResponse.fromJson(
@@ -1523,7 +1538,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "importUnbilledCharges", path, null)
         .thenApply(
             response ->
                 SubscriptionImportUnbilledChargesResponse.fromJson(
@@ -1538,7 +1553,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "removeScheduledResumption", path, null);
   }
 
   public SubscriptionRemoveScheduledResumptionResponse removeScheduledResumption(
@@ -1557,7 +1572,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "removeScheduledResumption", path, null)
         .thenApply(
             response ->
                 SubscriptionRemoveScheduledResumptionResponse.fromJson(
@@ -1569,7 +1584,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
 
-    return get(path, null);
+    return get("subscription", "retrieve", path, null);
   }
 
   public SubscriptionRetrieveResponse retrieve(String subscriptionId) throws ChargebeeException {
@@ -1582,7 +1597,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
 
-    return getAsync(path, null)
+    return getAsync("subscription", "retrieve", path, null)
         .thenApply(
             response ->
                 SubscriptionRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -1593,7 +1608,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "update", path, null);
   }
 
   /** update a subscription using immutable params (executes immediately) - returns raw Response. */
@@ -1601,14 +1616,14 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       throws ChargebeeException {
     String path =
         buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "update", path, params.toFormData());
   }
 
   /** update a subscription using raw JSON payload (executes immediately) - returns raw Response. */
   Response updateRaw(String subscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "update", path, jsonPayload);
   }
 
   public SubscriptionUpdateResponse update(String subscriptionId, SubscriptionUpdateParams params)
@@ -1622,7 +1637,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       String subscriptionId, SubscriptionUpdateParams params) {
     String path =
         buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "update", path, params.toFormData())
         .thenApply(
             response -> SubscriptionUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1637,7 +1652,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "update", path, null)
         .thenApply(
             response -> SubscriptionUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1650,7 +1665,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "importContractTerm", path, null);
   }
 
   /**
@@ -1664,7 +1679,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/import_contract_term",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "importContractTerm", path, params.toFormData());
   }
 
   /**
@@ -1678,7 +1693,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/import_contract_term",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "importContractTerm", path, jsonPayload);
   }
 
   public SubscriptionImportContractTermResponse importContractTerm(
@@ -1696,7 +1711,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/import_contract_term",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "importContractTerm", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionImportContractTermResponse.fromJson(
@@ -1718,7 +1733,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "importContractTerm", path, null)
         .thenApply(
             response ->
                 SubscriptionImportContractTermResponse.fromJson(
@@ -1733,7 +1748,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "overrideBillingProfile", path, null);
   }
 
   /**
@@ -1748,7 +1763,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/override_billing_profile",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "overrideBillingProfile", path, params.toFormData());
   }
 
   /**
@@ -1762,7 +1777,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/override_billing_profile",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "overrideBillingProfile", path, jsonPayload);
   }
 
   public SubscriptionOverrideBillingProfileResponse overrideBillingProfile(
@@ -1781,7 +1796,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/override_billing_profile",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "overrideBillingProfile", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionOverrideBillingProfileResponse.fromJson(
@@ -1804,7 +1819,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "overrideBillingProfile", path, null)
         .thenApply(
             response ->
                 SubscriptionOverrideBillingProfileResponse.fromJson(
@@ -1819,7 +1834,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "removeScheduledPause", path, null);
   }
 
   public SubscriptionRemoveScheduledPauseResponse removeScheduledPause(String subscriptionId)
@@ -1837,7 +1852,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "removeScheduledPause", path, null)
         .thenApply(
             response ->
                 SubscriptionRemoveScheduledPauseResponse.fromJson(
@@ -1852,7 +1867,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "editAdvanceInvoiceSchedule", path, null);
   }
 
   /**
@@ -1867,7 +1882,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/edit_advance_invoice_schedule",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "editAdvanceInvoiceSchedule", path, params.toFormData());
   }
 
   /**
@@ -1881,7 +1896,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/edit_advance_invoice_schedule",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "editAdvanceInvoiceSchedule", path, jsonPayload);
   }
 
   public SubscriptionEditAdvanceInvoiceScheduleResponse editAdvanceInvoiceSchedule(
@@ -1901,7 +1916,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/edit_advance_invoice_schedule",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "editAdvanceInvoiceSchedule", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionEditAdvanceInvoiceScheduleResponse.fromJson(
@@ -1924,7 +1939,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "editAdvanceInvoiceSchedule", path, null)
         .thenApply(
             response ->
                 SubscriptionEditAdvanceInvoiceScheduleResponse.fromJson(
@@ -1940,7 +1955,8 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/discounts", "subscription-id", subscriptionId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "subscription", "listDiscounts", path, params != null ? params.toQueryParams() : null);
   }
 
   /** listDiscounts a subscription without params (executes immediately) - returns raw Response. */
@@ -1948,7 +1964,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/discounts", "subscription-id", subscriptionId);
-    return get(path, null);
+    return get("subscription", "listDiscounts", path, null);
   }
 
   /**
@@ -1982,7 +1998,8 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/discounts", "subscription-id", subscriptionId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "subscription", "listDiscounts", path, params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 SubscriptionListDiscountsResponse.fromJson(
@@ -1995,7 +2012,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/discounts", "subscription-id", subscriptionId);
-    return getAsync(path, null)
+    return getAsync("subscription", "listDiscounts", path, null)
         .thenApply(
             response ->
                 SubscriptionListDiscountsResponse.fromJson(
@@ -2011,7 +2028,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/contract_terms", "subscription-id", subscriptionId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "subscription",
+        "contractTermsForSubscription",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -2022,7 +2043,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/contract_terms", "subscription-id", subscriptionId);
-    return get(path, null);
+    return get("subscription", "contractTermsForSubscription", path, null);
   }
 
   /**
@@ -2057,7 +2078,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/contract_terms", "subscription-id", subscriptionId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "subscription",
+            "contractTermsForSubscription",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ContractTermsForSubscriptionResponse.fromJson(
@@ -2070,7 +2095,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/contract_terms", "subscription-id", subscriptionId);
-    return getAsync(path, null)
+    return getAsync("subscription", "contractTermsForSubscription", path, null)
         .thenApply(
             response ->
                 ContractTermsForSubscriptionResponse.fromJson(
@@ -2083,7 +2108,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/pause", "subscription-id", subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "pause", path, null);
   }
 
   /** pause a subscription using immutable params (executes immediately) - returns raw Response. */
@@ -2092,7 +2117,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/pause", "subscription-id", subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "pause", path, params.toFormData());
   }
 
   /** pause a subscription using raw JSON payload (executes immediately) - returns raw Response. */
@@ -2100,7 +2125,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/pause", "subscription-id", subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "pause", path, jsonPayload);
   }
 
   public SubscriptionPauseResponse pause(String subscriptionId, SubscriptionPauseParams params)
@@ -2115,7 +2140,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/pause", "subscription-id", subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "pause", path, params.toFormData())
         .thenApply(
             response -> SubscriptionPauseResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -2131,7 +2156,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/pause", "subscription-id", subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "pause", path, null)
         .thenApply(
             response -> SubscriptionPauseResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -2142,7 +2167,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/customers/{customer-id}/import_subscription", "customer-id", customerId);
 
-    return post(path, null);
+    return post("subscription", "importForCustomer", path, null);
   }
 
   /**
@@ -2154,7 +2179,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/import_subscription", "customer-id", customerId);
-    return post(path, params.toFormData());
+    return post("subscription", "importForCustomer", path, params.toFormData());
   }
 
   /**
@@ -2165,7 +2190,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/import_subscription", "customer-id", customerId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "importForCustomer", path, jsonPayload);
   }
 
   public SubscriptionImportForCustomerResponse importForCustomer(
@@ -2180,7 +2205,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/import_subscription", "customer-id", customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "importForCustomer", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionImportForCustomerResponse.fromJson(
@@ -2193,7 +2218,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
    */
   Response importSubscriptionRaw(ImportSubscriptionParams params) throws ChargebeeException {
 
-    return post("/subscriptions/import_subscription", params != null ? params.toFormData() : null);
+    return post(
+        "subscription",
+        "importSubscription",
+        "/subscriptions/import_subscription",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -2202,7 +2231,8 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
    */
   Response importSubscriptionRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/subscriptions/import_subscription", jsonPayload);
+    return postJson(
+        "subscription", "importSubscription", "/subscriptions/import_subscription", jsonPayload);
   }
 
   public ImportSubscriptionResponse importSubscription(ImportSubscriptionParams params)
@@ -2217,7 +2247,10 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       ImportSubscriptionParams params) {
 
     return postAsync(
-            "/subscriptions/import_subscription", params != null ? params.toFormData() : null)
+            "subscription",
+            "importSubscription",
+            "/subscriptions/import_subscription",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> ImportSubscriptionResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -2228,7 +2261,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel", "subscription-id", subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "cancel", path, null);
   }
 
   /** cancel a subscription using immutable params (executes immediately) - returns raw Response. */
@@ -2237,7 +2270,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel", "subscription-id", subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "cancel", path, params.toFormData());
   }
 
   /** cancel a subscription using raw JSON payload (executes immediately) - returns raw Response. */
@@ -2245,7 +2278,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel", "subscription-id", subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "cancel", path, jsonPayload);
   }
 
   public SubscriptionCancelResponse cancel(String subscriptionId, SubscriptionCancelParams params)
@@ -2260,7 +2293,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel", "subscription-id", subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "cancel", path, params.toFormData())
         .thenApply(
             response -> SubscriptionCancelResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -2276,7 +2309,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel", "subscription-id", subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("subscription", "cancel", path, null)
         .thenApply(
             response -> SubscriptionCancelResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -2289,7 +2322,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("subscription", "chargeAddonAtTermEnd", path, null);
   }
 
   /**
@@ -2304,7 +2337,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/charge_addon_at_term_end",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("subscription", "chargeAddonAtTermEnd", path, params.toFormData());
   }
 
   /**
@@ -2318,7 +2351,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/charge_addon_at_term_end",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("subscription", "chargeAddonAtTermEnd", path, jsonPayload);
   }
 
   public SubscriptionChargeAddonAtTermEndResponse chargeAddonAtTermEnd(
@@ -2336,7 +2369,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
             "/subscriptions/{subscription-id}/charge_addon_at_term_end",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("subscription", "chargeAddonAtTermEnd", path, params.toFormData())
         .thenApply(
             response ->
                 SubscriptionChargeAddonAtTermEndResponse.fromJson(

@@ -72,7 +72,11 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
       throws ChargebeeException {
     String path =
         buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "itemEntitlement",
+        "itemEntitlementsForFeature",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -82,7 +86,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
   Response itemEntitlementsForFeatureRaw(String featureId) throws ChargebeeException {
     String path =
         buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
-    return get(path, null);
+    return get("itemEntitlement", "itemEntitlementsForFeature", path, null);
   }
 
   /**
@@ -115,7 +119,11 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
       String featureId, ItemEntitlementsForFeatureParams params) {
     String path =
         buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "itemEntitlement",
+            "itemEntitlementsForFeature",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ItemEntitlementsForFeatureResponse.fromJson(
@@ -127,7 +135,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
       String featureId) {
     String path =
         buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
-    return getAsync(path, null)
+    return getAsync("itemEntitlement", "itemEntitlementsForFeature", path, null)
         .thenApply(
             response ->
                 ItemEntitlementsForFeatureResponse.fromJson(
@@ -139,7 +147,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
     String path =
         buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
 
-    return post(path, null);
+    return post("itemEntitlement", "addItemEntitlements", path, null);
   }
 
   /**
@@ -150,7 +158,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
       throws ChargebeeException {
     String path =
         buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
-    return post(path, params.toFormData());
+    return post("itemEntitlement", "addItemEntitlements", path, params.toFormData());
   }
 
   /**
@@ -160,7 +168,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
   Response addItemEntitlementsRaw(String featureId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
-    return postJson(path, jsonPayload);
+    return postJson("itemEntitlement", "addItemEntitlements", path, jsonPayload);
   }
 
   public AddItemEntitlementsResponse addItemEntitlements(
@@ -174,7 +182,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
       String featureId, AddItemEntitlementsParams params) {
     String path =
         buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
-    return postAsync(path, params.toFormData())
+    return postAsync("itemEntitlement", "addItemEntitlements", path, params.toFormData())
         .thenApply(
             response -> AddItemEntitlementsResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -186,7 +194,11 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
   Response itemEntitlementsForItemRaw(String itemId, ItemEntitlementsForItemParams params)
       throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "itemEntitlement",
+        "itemEntitlementsForItem",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -195,7 +207,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
    */
   Response itemEntitlementsForItemRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
-    return get(path, null);
+    return get("itemEntitlement", "itemEntitlementsForItem", path, null);
   }
 
   /**
@@ -225,7 +237,11 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
   public CompletableFuture<ItemEntitlementsForItemResponse> itemEntitlementsForItemAsync(
       String itemId, ItemEntitlementsForItemParams params) {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "itemEntitlement",
+            "itemEntitlementsForItem",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ItemEntitlementsForItemResponse.fromJson(
@@ -236,7 +252,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
   public CompletableFuture<ItemEntitlementsForItemResponse> itemEntitlementsForItemAsync(
       String itemId) {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
-    return getAsync(path, null)
+    return getAsync("itemEntitlement", "itemEntitlementsForItem", path, null)
         .thenApply(
             response ->
                 ItemEntitlementsForItemResponse.fromJson(
@@ -250,7 +266,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
   Response upsertOrRemoveItemEntitlementsForItemRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
 
-    return post(path, null);
+    return post("itemEntitlement", "upsertOrRemoveItemEntitlementsForItem", path, null);
   }
 
   /**
@@ -260,7 +276,8 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
   Response upsertOrRemoveItemEntitlementsForItemRaw(
       String itemId, UpsertOrRemoveItemEntitlementsForItemParams params) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
-    return post(path, params.toFormData());
+    return post(
+        "itemEntitlement", "upsertOrRemoveItemEntitlementsForItem", path, params.toFormData());
   }
 
   /**
@@ -270,7 +287,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
   Response upsertOrRemoveItemEntitlementsForItemRaw(String itemId, String jsonPayload)
       throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
-    return postJson(path, jsonPayload);
+    return postJson("itemEntitlement", "upsertOrRemoveItemEntitlementsForItem", path, jsonPayload);
   }
 
   public UpsertOrRemoveItemEntitlementsForItemResponse upsertOrRemoveItemEntitlementsForItem(
@@ -285,7 +302,8 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
       upsertOrRemoveItemEntitlementsForItemAsync(
           String itemId, UpsertOrRemoveItemEntitlementsForItemParams params) {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
-    return postAsync(path, params.toFormData())
+    return postAsync(
+            "itemEntitlement", "upsertOrRemoveItemEntitlementsForItem", path, params.toFormData())
         .thenApply(
             response ->
                 UpsertOrRemoveItemEntitlementsForItemResponse.fromJson(

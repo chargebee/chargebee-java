@@ -61,7 +61,8 @@ public final class UsageFileService extends BaseService<UsageFileService> {
         buildPathWithParams(
             "/usage_files/{usage-file-id}/processing_status", "usage-file-id", usageFileId);
 
-    return getWithSubDomain(path, SubDomain.FILE_INGEST.getValue(), null);
+    return getWithSubDomain(
+        "usageFile", "processingStatus", path, SubDomain.FILE_INGEST.getValue(), null);
   }
 
   public UsageFileProcessingStatusResponse processingStatus(String usageFileId)
@@ -77,7 +78,8 @@ public final class UsageFileService extends BaseService<UsageFileService> {
         buildPathWithParams(
             "/usage_files/{usage-file-id}/processing_status", "usage-file-id", usageFileId);
 
-    return getWithSubDomainAsync(path, SubDomain.FILE_INGEST.getValue(), null)
+    return getWithSubDomainAsync(
+            "usageFile", "processingStatus", path, SubDomain.FILE_INGEST.getValue(), null)
         .thenApply(
             response ->
                 UsageFileProcessingStatusResponse.fromJson(response.getBodyAsString(), response));
@@ -87,6 +89,8 @@ public final class UsageFileService extends BaseService<UsageFileService> {
   Response uploadUrlRaw(UsageFileUploadUrlParams params) throws ChargebeeException {
 
     return postWithSubDomain(
+        "usageFile",
+        "uploadUrl",
         "/usage_files/upload_url",
         SubDomain.FILE_INGEST.getValue(),
         params != null ? params.toFormData() : null);
@@ -96,7 +100,11 @@ public final class UsageFileService extends BaseService<UsageFileService> {
   Response uploadUrlRaw(String jsonPayload) throws ChargebeeException {
 
     return postJsonWithSubDomain(
-        "/usage_files/upload_url", SubDomain.FILE_INGEST.getValue(), jsonPayload);
+        "usageFile",
+        "uploadUrl",
+        "/usage_files/upload_url",
+        SubDomain.FILE_INGEST.getValue(),
+        jsonPayload);
   }
 
   public UsageFileUploadUrlResponse uploadUrl(UsageFileUploadUrlParams params)
@@ -111,6 +119,8 @@ public final class UsageFileService extends BaseService<UsageFileService> {
       UsageFileUploadUrlParams params) {
 
     return postWithSubDomainAsync(
+            "usageFile",
+            "uploadUrl",
             "/usage_files/upload_url",
             SubDomain.FILE_INGEST.getValue(),
             params != null ? params.toFormData() : null)

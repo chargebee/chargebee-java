@@ -59,7 +59,11 @@ public final class UnbilledChargesSettingService
    */
   Response retrieveRaw(UnbilledChargesSettingRetrieveParams params) throws ChargebeeException {
 
-    return get("/unbilled_charges_settings", params != null ? params.toQueryParams() : null);
+    return get(
+        "unbilledChargesSetting",
+        "retrieve",
+        "/unbilled_charges_settings",
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -67,7 +71,7 @@ public final class UnbilledChargesSettingService
    */
   Response retrieveRaw() throws ChargebeeException {
 
-    return get("/unbilled_charges_settings", null);
+    return get("unbilledChargesSetting", "retrieve", "/unbilled_charges_settings", null);
   }
 
   /**
@@ -90,7 +94,11 @@ public final class UnbilledChargesSettingService
   public CompletableFuture<UnbilledChargesSettingRetrieveResponse> retrieveAsync(
       UnbilledChargesSettingRetrieveParams params) {
 
-    return getAsync("/unbilled_charges_settings", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "unbilledChargesSetting",
+            "retrieve",
+            "/unbilled_charges_settings",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 UnbilledChargesSettingRetrieveResponse.fromJson(
@@ -106,7 +114,7 @@ public final class UnbilledChargesSettingService
   /** Async variant of retrieve for unbilledChargesSetting without params. */
   public CompletableFuture<UnbilledChargesSettingRetrieveResponse> retrieveAsync() {
 
-    return getAsync("/unbilled_charges_settings", null)
+    return getAsync("unbilledChargesSetting", "retrieve", "/unbilled_charges_settings", null)
         .thenApply(
             response ->
                 UnbilledChargesSettingRetrieveResponse.fromJson(

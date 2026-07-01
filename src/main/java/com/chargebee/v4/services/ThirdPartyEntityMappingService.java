@@ -73,7 +73,10 @@ public final class ThirdPartyEntityMappingService
       throws ChargebeeException {
 
     return get(
-        "/third_party_entity_mappings/retrieve", params != null ? params.toQueryParams() : null);
+        "thirdPartyEntityMapping",
+        "retrieveEntity",
+        "/third_party_entity_mappings/retrieve",
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -98,7 +101,10 @@ public final class ThirdPartyEntityMappingService
       ThirdPartyEntityMappingRetrieveEntityParams params) {
 
     return getAsync(
-            "/third_party_entity_mappings/retrieve", params != null ? params.toQueryParams() : null)
+            "thirdPartyEntityMapping",
+            "retrieveEntity",
+            "/third_party_entity_mappings/retrieve",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ThirdPartyEntityMappingRetrieveEntityResponse.fromJson(
@@ -112,7 +118,10 @@ public final class ThirdPartyEntityMappingService
   Response listAllRaw(ThirdPartyEntityMappingListAllParams params) throws ChargebeeException {
 
     return get(
-        "/third_party_entity_mappings/list_all", params != null ? params.toQueryParams() : null);
+        "thirdPartyEntityMapping",
+        "listAll",
+        "/third_party_entity_mappings/list_all",
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -136,7 +145,10 @@ public final class ThirdPartyEntityMappingService
       ThirdPartyEntityMappingListAllParams params) {
 
     return getAsync(
-            "/third_party_entity_mappings/list_all", params != null ? params.toQueryParams() : null)
+            "thirdPartyEntityMapping",
+            "listAll",
+            "/third_party_entity_mappings/list_all",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ThirdPartyEntityMappingListAllResponse.fromJson(
@@ -151,7 +163,10 @@ public final class ThirdPartyEntityMappingService
       throws ChargebeeException {
 
     return post(
-        "/third_party_entity_mappings/update_entity", params != null ? params.toFormData() : null);
+        "thirdPartyEntityMapping",
+        "updateEntity",
+        "/third_party_entity_mappings/update_entity",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -160,7 +175,11 @@ public final class ThirdPartyEntityMappingService
    */
   Response updateEntityRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/third_party_entity_mappings/update_entity", jsonPayload);
+    return postJson(
+        "thirdPartyEntityMapping",
+        "updateEntity",
+        "/third_party_entity_mappings/update_entity",
+        jsonPayload);
   }
 
   public ThirdPartyEntityMappingUpdateEntityResponse updateEntity(
@@ -176,6 +195,8 @@ public final class ThirdPartyEntityMappingService
       ThirdPartyEntityMappingUpdateEntityParams params) {
 
     return postAsync(
+            "thirdPartyEntityMapping",
+            "updateEntity",
             "/third_party_entity_mappings/update_entity",
             params != null ? params.toFormData() : null)
         .thenApply(
@@ -190,7 +211,11 @@ public final class ThirdPartyEntityMappingService
    */
   Response listRaw(ThirdPartyEntityMappingListParams params) throws ChargebeeException {
 
-    return get("/third_party_entity_mappings", params != null ? params.toQueryParams() : null);
+    return get(
+        "thirdPartyEntityMapping",
+        "list",
+        "/third_party_entity_mappings",
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -198,7 +223,7 @@ public final class ThirdPartyEntityMappingService
    */
   Response listRaw() throws ChargebeeException {
 
-    return get("/third_party_entity_mappings", null);
+    return get("thirdPartyEntityMapping", "list", "/third_party_entity_mappings", null);
   }
 
   /**
@@ -222,7 +247,11 @@ public final class ThirdPartyEntityMappingService
   public CompletableFuture<ThirdPartyEntityMappingListResponse> listAsync(
       ThirdPartyEntityMappingListParams params) {
 
-    return getAsync("/third_party_entity_mappings", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "thirdPartyEntityMapping",
+            "list",
+            "/third_party_entity_mappings",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ThirdPartyEntityMappingListResponse.fromJson(
@@ -239,7 +268,7 @@ public final class ThirdPartyEntityMappingService
   /** Async variant of list for thirdPartyEntityMapping without params. */
   public CompletableFuture<ThirdPartyEntityMappingListResponse> listAsync() {
 
-    return getAsync("/third_party_entity_mappings", null)
+    return getAsync("thirdPartyEntityMapping", "list", "/third_party_entity_mappings", null)
         .thenApply(
             response ->
                 ThirdPartyEntityMappingListResponse.fromJson(

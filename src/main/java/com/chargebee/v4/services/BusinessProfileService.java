@@ -58,13 +58,17 @@ public final class BusinessProfileService extends BaseService<BusinessProfileSer
    */
   Response retrieveRaw(BusinessProfileRetrieveParams params) throws ChargebeeException {
 
-    return get("/business_profiles", params != null ? params.toQueryParams() : null);
+    return get(
+        "businessProfile",
+        "retrieve",
+        "/business_profiles",
+        params != null ? params.toQueryParams() : null);
   }
 
   /** retrieve a businessProfile without params (executes immediately) - returns raw Response. */
   Response retrieveRaw() throws ChargebeeException {
 
-    return get("/business_profiles", null);
+    return get("businessProfile", "retrieve", "/business_profiles", null);
   }
 
   /**
@@ -87,7 +91,11 @@ public final class BusinessProfileService extends BaseService<BusinessProfileSer
   public CompletableFuture<BusinessProfileRetrieveResponse> retrieveAsync(
       BusinessProfileRetrieveParams params) {
 
-    return getAsync("/business_profiles", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "businessProfile",
+            "retrieve",
+            "/business_profiles",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 BusinessProfileRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -102,7 +110,7 @@ public final class BusinessProfileService extends BaseService<BusinessProfileSer
   /** Async variant of retrieve for businessProfile without params. */
   public CompletableFuture<BusinessProfileRetrieveResponse> retrieveAsync() {
 
-    return getAsync("/business_profiles", null)
+    return getAsync("businessProfile", "retrieve", "/business_profiles", null)
         .thenApply(
             response ->
                 BusinessProfileRetrieveResponse.fromJson(response.getBodyAsString(), response));

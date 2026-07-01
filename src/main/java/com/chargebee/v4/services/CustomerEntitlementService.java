@@ -62,7 +62,11 @@ public final class CustomerEntitlementService extends BaseService<CustomerEntitl
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/customer_entitlements", "customer-id", customerId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "customerEntitlement",
+        "entitlementsForCustomer",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -73,7 +77,7 @@ public final class CustomerEntitlementService extends BaseService<CustomerEntitl
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/customer_entitlements", "customer-id", customerId);
-    return get(path, null);
+    return get("customerEntitlement", "entitlementsForCustomer", path, null);
   }
 
   /**
@@ -110,7 +114,11 @@ public final class CustomerEntitlementService extends BaseService<CustomerEntitl
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/customer_entitlements", "customer-id", customerId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "customerEntitlement",
+            "entitlementsForCustomer",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 CustomerEntitlementEntitlementsForCustomerResponse.fromJson(
@@ -123,7 +131,7 @@ public final class CustomerEntitlementService extends BaseService<CustomerEntitl
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/customer_entitlements", "customer-id", customerId);
-    return getAsync(path, null)
+    return getAsync("customerEntitlement", "entitlementsForCustomer", path, null)
         .thenApply(
             response ->
                 CustomerEntitlementEntitlementsForCustomerResponse.fromJson(

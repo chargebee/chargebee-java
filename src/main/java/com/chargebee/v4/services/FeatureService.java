@@ -72,13 +72,13 @@ public final class FeatureService extends BaseService<FeatureService> {
   /** list a feature using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(FeatureListParams params) throws ChargebeeException {
 
-    return get("/features", params != null ? params.toQueryParams() : null);
+    return get("feature", "list", "/features", params != null ? params.toQueryParams() : null);
   }
 
   /** list a feature without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/features", null);
+    return get("feature", "list", "/features", null);
   }
 
   /** list a feature using raw JSON payload (executes immediately) - returns raw Response. */
@@ -96,7 +96,7 @@ public final class FeatureService extends BaseService<FeatureService> {
   /** Async variant of list for feature with params. */
   public CompletableFuture<FeatureListResponse> listAsync(FeatureListParams params) {
 
-    return getAsync("/features", params != null ? params.toQueryParams() : null)
+    return getAsync("feature", "list", "/features", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 FeatureListResponse.fromJson(response.getBodyAsString(), this, params, response));
@@ -111,7 +111,7 @@ public final class FeatureService extends BaseService<FeatureService> {
   /** Async variant of list for feature without params. */
   public CompletableFuture<FeatureListResponse> listAsync() {
 
-    return getAsync("/features", null)
+    return getAsync("feature", "list", "/features", null)
         .thenApply(
             response ->
                 FeatureListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -120,13 +120,13 @@ public final class FeatureService extends BaseService<FeatureService> {
   /** create a feature using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(FeatureCreateParams params) throws ChargebeeException {
 
-    return post("/features", params != null ? params.toFormData() : null);
+    return post("feature", "create", "/features", params != null ? params.toFormData() : null);
   }
 
   /** create a feature using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/features", jsonPayload);
+    return postJson("feature", "create", "/features", jsonPayload);
   }
 
   public FeatureCreateResponse create(FeatureCreateParams params) throws ChargebeeException {
@@ -138,7 +138,7 @@ public final class FeatureService extends BaseService<FeatureService> {
   /** Async variant of create for feature with params. */
   public CompletableFuture<FeatureCreateResponse> createAsync(FeatureCreateParams params) {
 
-    return postAsync("/features", params != null ? params.toFormData() : null)
+    return postAsync("feature", "create", "/features", params != null ? params.toFormData() : null)
         .thenApply(
             response -> FeatureCreateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -147,7 +147,7 @@ public final class FeatureService extends BaseService<FeatureService> {
   Response deleteRaw(String featureId) throws ChargebeeException {
     String path = buildPathWithParams("/features/{feature-id}/delete", "feature-id", featureId);
 
-    return post(path, null);
+    return post("feature", "delete", path, null);
   }
 
   public FeatureDeleteResponse delete(String featureId) throws ChargebeeException {
@@ -159,7 +159,7 @@ public final class FeatureService extends BaseService<FeatureService> {
   public CompletableFuture<FeatureDeleteResponse> deleteAsync(String featureId) {
     String path = buildPathWithParams("/features/{feature-id}/delete", "feature-id", featureId);
 
-    return postAsync(path, null)
+    return postAsync("feature", "delete", path, null)
         .thenApply(
             response -> FeatureDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -168,7 +168,7 @@ public final class FeatureService extends BaseService<FeatureService> {
   Response retrieveRaw(String featureId) throws ChargebeeException {
     String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
 
-    return get(path, null);
+    return get("feature", "retrieve", path, null);
   }
 
   public FeatureRetrieveResponse retrieve(String featureId) throws ChargebeeException {
@@ -180,7 +180,7 @@ public final class FeatureService extends BaseService<FeatureService> {
   public CompletableFuture<FeatureRetrieveResponse> retrieveAsync(String featureId) {
     String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
 
-    return getAsync(path, null)
+    return getAsync("feature", "retrieve", path, null)
         .thenApply(
             response -> FeatureRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -189,19 +189,19 @@ public final class FeatureService extends BaseService<FeatureService> {
   Response updateRaw(String featureId) throws ChargebeeException {
     String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
 
-    return post(path, null);
+    return post("feature", "update", path, null);
   }
 
   /** update a feature using immutable params (executes immediately) - returns raw Response. */
   Response updateRaw(String featureId, FeatureUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
-    return post(path, params.toFormData());
+    return post("feature", "update", path, params.toFormData());
   }
 
   /** update a feature using raw JSON payload (executes immediately) - returns raw Response. */
   Response updateRaw(String featureId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
-    return postJson(path, jsonPayload);
+    return postJson("feature", "update", path, jsonPayload);
   }
 
   public FeatureUpdateResponse update(String featureId, FeatureUpdateParams params)
@@ -214,7 +214,7 @@ public final class FeatureService extends BaseService<FeatureService> {
   public CompletableFuture<FeatureUpdateResponse> updateAsync(
       String featureId, FeatureUpdateParams params) {
     String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
-    return postAsync(path, params.toFormData())
+    return postAsync("feature", "update", path, params.toFormData())
         .thenApply(
             response -> FeatureUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -228,7 +228,7 @@ public final class FeatureService extends BaseService<FeatureService> {
   public CompletableFuture<FeatureUpdateResponse> updateAsync(String featureId) {
     String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
 
-    return postAsync(path, null)
+    return postAsync("feature", "update", path, null)
         .thenApply(
             response -> FeatureUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -238,7 +238,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     String path =
         buildPathWithParams("/features/{feature-id}/archive_command", "feature-id", featureId);
 
-    return post(path, null);
+    return post("feature", "archive", path, null);
   }
 
   public FeatureArchiveResponse archive(String featureId) throws ChargebeeException {
@@ -251,7 +251,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     String path =
         buildPathWithParams("/features/{feature-id}/archive_command", "feature-id", featureId);
 
-    return postAsync(path, null)
+    return postAsync("feature", "archive", path, null)
         .thenApply(
             response -> FeatureArchiveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -261,7 +261,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     String path =
         buildPathWithParams("/features/{feature-id}/activate_command", "feature-id", featureId);
 
-    return post(path, null);
+    return post("feature", "activate", path, null);
   }
 
   public FeatureActivateResponse activate(String featureId) throws ChargebeeException {
@@ -274,7 +274,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     String path =
         buildPathWithParams("/features/{feature-id}/activate_command", "feature-id", featureId);
 
-    return postAsync(path, null)
+    return postAsync("feature", "activate", path, null)
         .thenApply(
             response -> FeatureActivateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -284,7 +284,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     String path =
         buildPathWithParams("/features/{feature-id}/reactivate_command", "feature-id", featureId);
 
-    return post(path, null);
+    return post("feature", "reactivate", path, null);
   }
 
   public FeatureReactivateResponse reactivate(String featureId) throws ChargebeeException {
@@ -297,7 +297,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     String path =
         buildPathWithParams("/features/{feature-id}/reactivate_command", "feature-id", featureId);
 
-    return postAsync(path, null)
+    return postAsync("feature", "reactivate", path, null)
         .thenApply(
             response -> FeatureReactivateResponse.fromJson(response.getBodyAsString(), response));
   }

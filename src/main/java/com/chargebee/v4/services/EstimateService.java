@@ -133,7 +133,7 @@ public final class EstimateService extends BaseService<EstimateService> {
         buildPathWithParams(
             "/subscriptions/{subscription-id}/renewal_estimate", "subscription-id", subscriptionId);
 
-    return get(path, null);
+    return get("estimate", "renewalEstimate", path, null);
   }
 
   /**
@@ -145,7 +145,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/renewal_estimate", "subscription-id", subscriptionId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get("estimate", "renewalEstimate", path, params != null ? params.toQueryParams() : null);
   }
 
   public RenewalEstimateResponse renewalEstimate(
@@ -160,7 +160,8 @@ public final class EstimateService extends BaseService<EstimateService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/renewal_estimate", "subscription-id", subscriptionId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "estimate", "renewalEstimate", path, params != null ? params.toQueryParams() : null)
         .thenApply(
             response -> RenewalEstimateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -176,7 +177,7 @@ public final class EstimateService extends BaseService<EstimateService> {
         buildPathWithParams(
             "/subscriptions/{subscription-id}/renewal_estimate", "subscription-id", subscriptionId);
 
-    return getAsync(path, null)
+    return getAsync("estimate", "renewalEstimate", path, null)
         .thenApply(
             response -> RenewalEstimateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -189,7 +190,10 @@ public final class EstimateService extends BaseService<EstimateService> {
       throws ChargebeeException {
 
     return post(
-        "/estimates/create_subscription_for_items", params != null ? params.toFormData() : null);
+        "estimate",
+        "createSubscriptionItemEstimate",
+        "/estimates/create_subscription_for_items",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -198,7 +202,11 @@ public final class EstimateService extends BaseService<EstimateService> {
    */
   Response createSubscriptionItemEstimateRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/estimates/create_subscription_for_items", jsonPayload);
+    return postJson(
+        "estimate",
+        "createSubscriptionItemEstimate",
+        "/estimates/create_subscription_for_items",
+        jsonPayload);
   }
 
   public CreateSubscriptionItemEstimateResponse createSubscriptionItemEstimate(
@@ -213,7 +221,10 @@ public final class EstimateService extends BaseService<EstimateService> {
       createSubscriptionItemEstimateAsync(CreateSubscriptionItemEstimateParams params) {
 
     return postAsync(
-            "/estimates/create_subscription_for_items", params != null ? params.toFormData() : null)
+            "estimate",
+            "createSubscriptionItemEstimate",
+            "/estimates/create_subscription_for_items",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 CreateSubscriptionItemEstimateResponse.fromJson(
@@ -226,7 +237,11 @@ public final class EstimateService extends BaseService<EstimateService> {
    */
   Response paymentSchedulesRaw(EstimatePaymentSchedulesParams params) throws ChargebeeException {
 
-    return post("/estimates/payment_schedules", params != null ? params.toFormData() : null);
+    return post(
+        "estimate",
+        "paymentSchedules",
+        "/estimates/payment_schedules",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -235,7 +250,7 @@ public final class EstimateService extends BaseService<EstimateService> {
    */
   Response paymentSchedulesRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/estimates/payment_schedules", jsonPayload);
+    return postJson("estimate", "paymentSchedules", "/estimates/payment_schedules", jsonPayload);
   }
 
   public EstimatePaymentSchedulesResponse paymentSchedules(EstimatePaymentSchedulesParams params)
@@ -249,7 +264,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   public CompletableFuture<EstimatePaymentSchedulesResponse> paymentSchedulesAsync(
       EstimatePaymentSchedulesParams params) {
 
-    return postAsync("/estimates/payment_schedules", params != null ? params.toFormData() : null)
+    return postAsync(
+            "estimate",
+            "paymentSchedules",
+            "/estimates/payment_schedules",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 EstimatePaymentSchedulesResponse.fromJson(response.getBodyAsString(), response));
@@ -263,7 +282,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("estimate", "cancelSubscriptionForItems", path, null);
   }
 
   /**
@@ -278,7 +297,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/cancel_subscription_for_items_estimate",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("estimate", "cancelSubscriptionForItems", path, params.toFormData());
   }
 
   /**
@@ -292,7 +311,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/cancel_subscription_for_items_estimate",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("estimate", "cancelSubscriptionForItems", path, jsonPayload);
   }
 
   public EstimateCancelSubscriptionForItemsResponse cancelSubscriptionForItems(
@@ -312,7 +331,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/cancel_subscription_for_items_estimate",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("estimate", "cancelSubscriptionForItems", path, params.toFormData())
         .thenApply(
             response ->
                 EstimateCancelSubscriptionForItemsResponse.fromJson(
@@ -335,7 +354,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("estimate", "cancelSubscriptionForItems", path, null)
         .thenApply(
             response ->
                 EstimateCancelSubscriptionForItemsResponse.fromJson(
@@ -350,7 +369,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("estimate", "resumeSubscription", path, null);
   }
 
   /**
@@ -364,7 +383,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/resume_subscription_estimate",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("estimate", "resumeSubscription", path, params.toFormData());
   }
 
   /**
@@ -378,7 +397,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/resume_subscription_estimate",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("estimate", "resumeSubscription", path, jsonPayload);
   }
 
   public EstimateResumeSubscriptionResponse resumeSubscription(
@@ -395,7 +414,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/resume_subscription_estimate",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("estimate", "resumeSubscription", path, params.toFormData())
         .thenApply(
             response ->
                 EstimateResumeSubscriptionResponse.fromJson(response.getBodyAsString(), response));
@@ -416,7 +435,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("estimate", "resumeSubscription", path, null)
         .thenApply(
             response ->
                 EstimateResumeSubscriptionResponse.fromJson(response.getBodyAsString(), response));
@@ -429,7 +448,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   Response createInvoiceForItemsRaw(EstimateCreateInvoiceForItemsParams params)
       throws ChargebeeException {
 
-    return post("/estimates/create_invoice_for_items", params != null ? params.toFormData() : null);
+    return post(
+        "estimate",
+        "createInvoiceForItems",
+        "/estimates/create_invoice_for_items",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -438,7 +461,8 @@ public final class EstimateService extends BaseService<EstimateService> {
    */
   Response createInvoiceForItemsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/estimates/create_invoice_for_items", jsonPayload);
+    return postJson(
+        "estimate", "createInvoiceForItems", "/estimates/create_invoice_for_items", jsonPayload);
   }
 
   public EstimateCreateInvoiceForItemsResponse createInvoiceForItems(
@@ -453,7 +477,10 @@ public final class EstimateService extends BaseService<EstimateService> {
       EstimateCreateInvoiceForItemsParams params) {
 
     return postAsync(
-            "/estimates/create_invoice_for_items", params != null ? params.toFormData() : null)
+            "estimate",
+            "createInvoiceForItems",
+            "/estimates/create_invoice_for_items",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 EstimateCreateInvoiceForItemsResponse.fromJson(
@@ -468,7 +495,10 @@ public final class EstimateService extends BaseService<EstimateService> {
       throws ChargebeeException {
 
     return post(
-        "/estimates/gift_subscription_for_items", params != null ? params.toFormData() : null);
+        "estimate",
+        "giftSubscriptionForItems",
+        "/estimates/gift_subscription_for_items",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -477,7 +507,11 @@ public final class EstimateService extends BaseService<EstimateService> {
    */
   Response giftSubscriptionForItemsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/estimates/gift_subscription_for_items", jsonPayload);
+    return postJson(
+        "estimate",
+        "giftSubscriptionForItems",
+        "/estimates/gift_subscription_for_items",
+        jsonPayload);
   }
 
   public EstimateGiftSubscriptionForItemsResponse giftSubscriptionForItems(
@@ -492,7 +526,10 @@ public final class EstimateService extends BaseService<EstimateService> {
       EstimateGiftSubscriptionForItemsParams params) {
 
     return postAsync(
-            "/estimates/gift_subscription_for_items", params != null ? params.toFormData() : null)
+            "estimate",
+            "giftSubscriptionForItems",
+            "/estimates/gift_subscription_for_items",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 EstimateGiftSubscriptionForItemsResponse.fromJson(
@@ -507,7 +544,10 @@ public final class EstimateService extends BaseService<EstimateService> {
       throws ChargebeeException {
 
     return post(
-        "/estimates/update_subscription_for_items", params != null ? params.toFormData() : null);
+        "estimate",
+        "updateSubscriptionForItems",
+        "/estimates/update_subscription_for_items",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -516,7 +556,11 @@ public final class EstimateService extends BaseService<EstimateService> {
    */
   Response updateSubscriptionForItemsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/estimates/update_subscription_for_items", jsonPayload);
+    return postJson(
+        "estimate",
+        "updateSubscriptionForItems",
+        "/estimates/update_subscription_for_items",
+        jsonPayload);
   }
 
   public EstimateUpdateSubscriptionForItemsResponse updateSubscriptionForItems(
@@ -532,7 +576,10 @@ public final class EstimateService extends BaseService<EstimateService> {
       updateSubscriptionForItemsAsync(EstimateUpdateSubscriptionForItemsParams params) {
 
     return postAsync(
-            "/estimates/update_subscription_for_items", params != null ? params.toFormData() : null)
+            "estimate",
+            "updateSubscriptionForItems",
+            "/estimates/update_subscription_for_items",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 EstimateUpdateSubscriptionForItemsResponse.fromJson(
@@ -545,7 +592,7 @@ public final class EstimateService extends BaseService<EstimateService> {
         buildPathWithParams(
             "/customers/{customer-id}/upcoming_invoices_estimate", "customer-id", customerId);
 
-    return get(path, null);
+    return get("estimate", "upcomingInvoicesEstimate", path, null);
   }
 
   /**
@@ -557,7 +604,11 @@ public final class EstimateService extends BaseService<EstimateService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/upcoming_invoices_estimate", "customer-id", customerId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "estimate",
+        "upcomingInvoicesEstimate",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   public UpcomingInvoicesEstimateResponse upcomingInvoicesEstimate(
@@ -572,7 +623,11 @@ public final class EstimateService extends BaseService<EstimateService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/upcoming_invoices_estimate", "customer-id", customerId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "estimate",
+            "upcomingInvoicesEstimate",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 UpcomingInvoicesEstimateResponse.fromJson(response.getBodyAsString(), response));
@@ -591,7 +646,7 @@ public final class EstimateService extends BaseService<EstimateService> {
         buildPathWithParams(
             "/customers/{customer-id}/upcoming_invoices_estimate", "customer-id", customerId);
 
-    return getAsync(path, null)
+    return getAsync("estimate", "upcomingInvoicesEstimate", path, null)
         .thenApply(
             response ->
                 UpcomingInvoicesEstimateResponse.fromJson(response.getBodyAsString(), response));
@@ -605,7 +660,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("estimate", "regenerateInvoiceEstimate", path, null);
   }
 
   /**
@@ -619,7 +674,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/regenerate_invoice_estimate",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("estimate", "regenerateInvoiceEstimate", path, params.toFormData());
   }
 
   /**
@@ -633,7 +688,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/regenerate_invoice_estimate",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("estimate", "regenerateInvoiceEstimate", path, jsonPayload);
   }
 
   public RegenerateInvoiceEstimateResponse regenerateInvoiceEstimate(
@@ -650,7 +705,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/regenerate_invoice_estimate",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("estimate", "regenerateInvoiceEstimate", path, params.toFormData())
         .thenApply(
             response ->
                 RegenerateInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response));
@@ -671,7 +726,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("estimate", "regenerateInvoiceEstimate", path, null)
         .thenApply(
             response ->
                 RegenerateInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response));
@@ -689,7 +744,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "customer-id",
             customerId);
 
-    return post(path, null);
+    return post("estimate", "createSubscriptionItemForCustomerEstimate", path, null);
   }
 
   /**
@@ -704,7 +759,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/customers/{customer-id}/create_subscription_for_items_estimate",
             "customer-id",
             customerId);
-    return post(path, params.toFormData());
+    return post("estimate", "createSubscriptionItemForCustomerEstimate", path, params.toFormData());
   }
 
   /**
@@ -718,7 +773,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/customers/{customer-id}/create_subscription_for_items_estimate",
             "customer-id",
             customerId);
-    return postJson(path, jsonPayload);
+    return postJson("estimate", "createSubscriptionItemForCustomerEstimate", path, jsonPayload);
   }
 
   public CreateSubscriptionItemForCustomerEstimateResponse
@@ -739,7 +794,8 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/customers/{customer-id}/create_subscription_for_items_estimate",
             "customer-id",
             customerId);
-    return postAsync(path, params.toFormData())
+    return postAsync(
+            "estimate", "createSubscriptionItemForCustomerEstimate", path, params.toFormData())
         .thenApply(
             response ->
                 CreateSubscriptionItemForCustomerEstimateResponse.fromJson(
@@ -762,7 +818,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "customer-id",
             customerId);
 
-    return postAsync(path, null)
+    return postAsync("estimate", "createSubscriptionItemForCustomerEstimate", path, null)
         .thenApply(
             response ->
                 CreateSubscriptionItemForCustomerEstimateResponse.fromJson(
@@ -777,7 +833,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("estimate", "changeTermEnd", path, null);
   }
 
   /**
@@ -790,7 +846,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/change_term_end_estimate",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("estimate", "changeTermEnd", path, params.toFormData());
   }
 
   /**
@@ -802,7 +858,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/change_term_end_estimate",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("estimate", "changeTermEnd", path, jsonPayload);
   }
 
   public EstimateChangeTermEndResponse changeTermEnd(
@@ -819,7 +875,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/change_term_end_estimate",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("estimate", "changeTermEnd", path, params.toFormData())
         .thenApply(
             response ->
                 EstimateChangeTermEndResponse.fromJson(response.getBodyAsString(), response));
@@ -833,7 +889,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("estimate", "pauseSubscription", path, null);
   }
 
   /**
@@ -847,7 +903,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/pause_subscription_estimate",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("estimate", "pauseSubscription", path, params.toFormData());
   }
 
   /**
@@ -861,7 +917,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/pause_subscription_estimate",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("estimate", "pauseSubscription", path, jsonPayload);
   }
 
   public EstimatePauseSubscriptionResponse pauseSubscription(
@@ -878,7 +934,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/pause_subscription_estimate",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("estimate", "pauseSubscription", path, params.toFormData())
         .thenApply(
             response ->
                 EstimatePauseSubscriptionResponse.fromJson(response.getBodyAsString(), response));
@@ -899,7 +955,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("estimate", "pauseSubscription", path, null)
         .thenApply(
             response ->
                 EstimatePauseSubscriptionResponse.fromJson(response.getBodyAsString(), response));
@@ -913,7 +969,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("estimate", "advanceInvoiceEstimate", path, null);
   }
 
   /**
@@ -927,7 +983,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/advance_invoice_estimate",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("estimate", "advanceInvoiceEstimate", path, params.toFormData());
   }
 
   /**
@@ -941,7 +997,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/advance_invoice_estimate",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("estimate", "advanceInvoiceEstimate", path, jsonPayload);
   }
 
   public AdvanceInvoiceEstimateResponse advanceInvoiceEstimate(
@@ -958,7 +1014,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/advance_invoice_estimate",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("estimate", "advanceInvoiceEstimate", path, params.toFormData())
         .thenApply(
             response ->
                 AdvanceInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response));
@@ -979,7 +1035,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("estimate", "advanceInvoiceEstimate", path, null)
         .thenApply(
             response ->
                 AdvanceInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response));
@@ -992,7 +1048,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   Response updateSubscriptionRaw(EstimateUpdateSubscriptionParams params)
       throws ChargebeeException {
 
-    return post("/estimates/update_subscription", params != null ? params.toFormData() : null);
+    return post(
+        "estimate",
+        "updateSubscription",
+        "/estimates/update_subscription",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -1001,7 +1061,8 @@ public final class EstimateService extends BaseService<EstimateService> {
    */
   Response updateSubscriptionRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/estimates/update_subscription", jsonPayload);
+    return postJson(
+        "estimate", "updateSubscription", "/estimates/update_subscription", jsonPayload);
   }
 
   public EstimateUpdateSubscriptionResponse updateSubscription(
@@ -1015,7 +1076,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   public CompletableFuture<EstimateUpdateSubscriptionResponse> updateSubscriptionAsync(
       EstimateUpdateSubscriptionParams params) {
 
-    return postAsync("/estimates/update_subscription", params != null ? params.toFormData() : null)
+    return postAsync(
+            "estimate",
+            "updateSubscription",
+            "/estimates/update_subscription",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 EstimateUpdateSubscriptionResponse.fromJson(response.getBodyAsString(), response));
@@ -1027,7 +1092,11 @@ public final class EstimateService extends BaseService<EstimateService> {
    */
   Response giftSubscriptionRaw(EstimateGiftSubscriptionParams params) throws ChargebeeException {
 
-    return post("/estimates/gift_subscription", params != null ? params.toFormData() : null);
+    return post(
+        "estimate",
+        "giftSubscription",
+        "/estimates/gift_subscription",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -1036,7 +1105,7 @@ public final class EstimateService extends BaseService<EstimateService> {
    */
   Response giftSubscriptionRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/estimates/gift_subscription", jsonPayload);
+    return postJson("estimate", "giftSubscription", "/estimates/gift_subscription", jsonPayload);
   }
 
   public EstimateGiftSubscriptionResponse giftSubscription(EstimateGiftSubscriptionParams params)
@@ -1050,7 +1119,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   public CompletableFuture<EstimateGiftSubscriptionResponse> giftSubscriptionAsync(
       EstimateGiftSubscriptionParams params) {
 
-    return postAsync("/estimates/gift_subscription", params != null ? params.toFormData() : null)
+    return postAsync(
+            "estimate",
+            "giftSubscription",
+            "/estimates/gift_subscription",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 EstimateGiftSubscriptionResponse.fromJson(response.getBodyAsString(), response));
@@ -1064,7 +1137,7 @@ public final class EstimateService extends BaseService<EstimateService> {
         buildPathWithParams(
             "/customers/{customer-id}/create_subscription_estimate", "customer-id", customerId);
 
-    return get(path, null);
+    return get("estimate", "createSubscriptionForCustomerEstimate", path, null);
   }
 
   /**
@@ -1077,7 +1150,11 @@ public final class EstimateService extends BaseService<EstimateService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/create_subscription_estimate", "customer-id", customerId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "estimate",
+        "createSubscriptionForCustomerEstimate",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   public CreateSubscriptionForCustomerEstimateResponse createSubscriptionForCustomerEstimate(
@@ -1095,7 +1172,11 @@ public final class EstimateService extends BaseService<EstimateService> {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/create_subscription_estimate", "customer-id", customerId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "estimate",
+            "createSubscriptionForCustomerEstimate",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 CreateSubscriptionForCustomerEstimateResponse.fromJson(
@@ -1116,7 +1197,7 @@ public final class EstimateService extends BaseService<EstimateService> {
         buildPathWithParams(
             "/customers/{customer-id}/create_subscription_estimate", "customer-id", customerId);
 
-    return getAsync(path, null)
+    return getAsync("estimate", "createSubscriptionForCustomerEstimate", path, null)
         .thenApply(
             response ->
                 CreateSubscriptionForCustomerEstimateResponse.fromJson(
@@ -1130,7 +1211,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   Response createSubscriptionRaw(EstimateCreateSubscriptionParams params)
       throws ChargebeeException {
 
-    return post("/estimates/create_subscription", params != null ? params.toFormData() : null);
+    return post(
+        "estimate",
+        "createSubscription",
+        "/estimates/create_subscription",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -1139,7 +1224,8 @@ public final class EstimateService extends BaseService<EstimateService> {
    */
   Response createSubscriptionRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/estimates/create_subscription", jsonPayload);
+    return postJson(
+        "estimate", "createSubscription", "/estimates/create_subscription", jsonPayload);
   }
 
   public EstimateCreateSubscriptionResponse createSubscription(
@@ -1153,7 +1239,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   public CompletableFuture<EstimateCreateSubscriptionResponse> createSubscriptionAsync(
       EstimateCreateSubscriptionParams params) {
 
-    return postAsync("/estimates/create_subscription", params != null ? params.toFormData() : null)
+    return postAsync(
+            "estimate",
+            "createSubscription",
+            "/estimates/create_subscription",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 EstimateCreateSubscriptionResponse.fromJson(response.getBodyAsString(), response));
@@ -1164,7 +1254,11 @@ public final class EstimateService extends BaseService<EstimateService> {
    */
   Response createInvoiceRaw(EstimateCreateInvoiceParams params) throws ChargebeeException {
 
-    return post("/estimates/create_invoice", params != null ? params.toFormData() : null);
+    return post(
+        "estimate",
+        "createInvoice",
+        "/estimates/create_invoice",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -1172,7 +1266,7 @@ public final class EstimateService extends BaseService<EstimateService> {
    */
   Response createInvoiceRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/estimates/create_invoice", jsonPayload);
+    return postJson("estimate", "createInvoice", "/estimates/create_invoice", jsonPayload);
   }
 
   public EstimateCreateInvoiceResponse createInvoice(EstimateCreateInvoiceParams params)
@@ -1186,7 +1280,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   public CompletableFuture<EstimateCreateInvoiceResponse> createInvoiceAsync(
       EstimateCreateInvoiceParams params) {
 
-    return postAsync("/estimates/create_invoice", params != null ? params.toFormData() : null)
+    return postAsync(
+            "estimate",
+            "createInvoice",
+            "/estimates/create_invoice",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 EstimateCreateInvoiceResponse.fromJson(response.getBodyAsString(), response));
@@ -1200,7 +1298,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("estimate", "cancelSubscription", path, null);
   }
 
   /**
@@ -1214,7 +1312,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/cancel_subscription_estimate",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post("estimate", "cancelSubscription", path, params.toFormData());
   }
 
   /**
@@ -1228,7 +1326,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/cancel_subscription_estimate",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson("estimate", "cancelSubscription", path, jsonPayload);
   }
 
   public EstimateCancelSubscriptionResponse cancelSubscription(
@@ -1245,7 +1343,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/cancel_subscription_estimate",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("estimate", "cancelSubscription", path, params.toFormData())
         .thenApply(
             response ->
                 EstimateCancelSubscriptionResponse.fromJson(response.getBodyAsString(), response));
@@ -1266,7 +1364,7 @@ public final class EstimateService extends BaseService<EstimateService> {
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("estimate", "cancelSubscription", path, null)
         .thenApply(
             response ->
                 EstimateCancelSubscriptionResponse.fromJson(response.getBodyAsString(), response));

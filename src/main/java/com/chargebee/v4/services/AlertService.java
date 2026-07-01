@@ -79,7 +79,11 @@ public final class AlertService extends BaseService<AlertService> {
             "/subscriptions/{subscription-id}/applicable_alerts",
             "subscription-id",
             subscriptionId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "alert",
+        "applicationAlertsForSubscription",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -92,7 +96,7 @@ public final class AlertService extends BaseService<AlertService> {
             "/subscriptions/{subscription-id}/applicable_alerts",
             "subscription-id",
             subscriptionId);
-    return get(path, null);
+    return get("alert", "applicationAlertsForSubscription", path, null);
   }
 
   /**
@@ -133,7 +137,11 @@ public final class AlertService extends BaseService<AlertService> {
             "/subscriptions/{subscription-id}/applicable_alerts",
             "subscription-id",
             subscriptionId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "alert",
+            "applicationAlertsForSubscription",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ApplicationAlertsForSubscriptionResponse.fromJson(
@@ -148,7 +156,7 @@ public final class AlertService extends BaseService<AlertService> {
             "/subscriptions/{subscription-id}/applicable_alerts",
             "subscription-id",
             subscriptionId);
-    return getAsync(path, null)
+    return getAsync("alert", "applicationAlertsForSubscription", path, null)
         .thenApply(
             response ->
                 ApplicationAlertsForSubscriptionResponse.fromJson(
@@ -159,7 +167,7 @@ public final class AlertService extends BaseService<AlertService> {
   Response retrieveRaw(String alertId) throws ChargebeeException {
     String path = buildPathWithParams("/alerts/{alert-id}", "alert-id", alertId);
 
-    return get(path, null);
+    return get("alert", "retrieve", path, null);
   }
 
   public AlertRetrieveResponse retrieve(String alertId) throws ChargebeeException {
@@ -171,7 +179,7 @@ public final class AlertService extends BaseService<AlertService> {
   public CompletableFuture<AlertRetrieveResponse> retrieveAsync(String alertId) {
     String path = buildPathWithParams("/alerts/{alert-id}", "alert-id", alertId);
 
-    return getAsync(path, null)
+    return getAsync("alert", "retrieve", path, null)
         .thenApply(
             response -> AlertRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -180,19 +188,19 @@ public final class AlertService extends BaseService<AlertService> {
   Response updateRaw(String alertId) throws ChargebeeException {
     String path = buildPathWithParams("/alerts/{alert-id}", "alert-id", alertId);
 
-    return post(path, null);
+    return post("alert", "update", path, null);
   }
 
   /** update a alert using immutable params (executes immediately) - returns raw Response. */
   Response updateRaw(String alertId, AlertUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/alerts/{alert-id}", "alert-id", alertId);
-    return post(path, params.toFormData());
+    return post("alert", "update", path, params.toFormData());
   }
 
   /** update a alert using raw JSON payload (executes immediately) - returns raw Response. */
   Response updateRaw(String alertId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/alerts/{alert-id}", "alert-id", alertId);
-    return postJson(path, jsonPayload);
+    return postJson("alert", "update", path, jsonPayload);
   }
 
   public AlertUpdateResponse update(String alertId, AlertUpdateParams params)
@@ -205,7 +213,7 @@ public final class AlertService extends BaseService<AlertService> {
   public CompletableFuture<AlertUpdateResponse> updateAsync(
       String alertId, AlertUpdateParams params) {
     String path = buildPathWithParams("/alerts/{alert-id}", "alert-id", alertId);
-    return postAsync(path, params.toFormData())
+    return postAsync("alert", "update", path, params.toFormData())
         .thenApply(response -> AlertUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -218,7 +226,7 @@ public final class AlertService extends BaseService<AlertService> {
   public CompletableFuture<AlertUpdateResponse> updateAsync(String alertId) {
     String path = buildPathWithParams("/alerts/{alert-id}", "alert-id", alertId);
 
-    return postAsync(path, null)
+    return postAsync("alert", "update", path, null)
         .thenApply(response -> AlertUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -226,7 +234,7 @@ public final class AlertService extends BaseService<AlertService> {
   Response deleteRaw(String alertId) throws ChargebeeException {
     String path = buildPathWithParams("/alerts/{alert-id}/delete", "alert-id", alertId);
 
-    return post(path, null);
+    return post("alert", "delete", path, null);
   }
 
   public AlertDeleteResponse delete(String alertId) throws ChargebeeException {
@@ -238,20 +246,20 @@ public final class AlertService extends BaseService<AlertService> {
   public CompletableFuture<AlertDeleteResponse> deleteAsync(String alertId) {
     String path = buildPathWithParams("/alerts/{alert-id}/delete", "alert-id", alertId);
 
-    return postAsync(path, null)
+    return postAsync("alert", "delete", path, null)
         .thenApply(response -> AlertDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** list a alert using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(AlertListParams params) throws ChargebeeException {
 
-    return get("/alerts", params != null ? params.toQueryParams() : null);
+    return get("alert", "list", "/alerts", params != null ? params.toQueryParams() : null);
   }
 
   /** list a alert without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/alerts", null);
+    return get("alert", "list", "/alerts", null);
   }
 
   /** list a alert using raw JSON payload (executes immediately) - returns raw Response. */
@@ -269,7 +277,7 @@ public final class AlertService extends BaseService<AlertService> {
   /** Async variant of list for alert with params. */
   public CompletableFuture<AlertListResponse> listAsync(AlertListParams params) {
 
-    return getAsync("/alerts", params != null ? params.toQueryParams() : null)
+    return getAsync("alert", "list", "/alerts", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 AlertListResponse.fromJson(response.getBodyAsString(), this, params, response));
@@ -284,7 +292,7 @@ public final class AlertService extends BaseService<AlertService> {
   /** Async variant of list for alert without params. */
   public CompletableFuture<AlertListResponse> listAsync() {
 
-    return getAsync("/alerts", null)
+    return getAsync("alert", "list", "/alerts", null)
         .thenApply(
             response ->
                 AlertListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -293,13 +301,13 @@ public final class AlertService extends BaseService<AlertService> {
   /** create a alert using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(AlertCreateParams params) throws ChargebeeException {
 
-    return post("/alerts", params != null ? params.toFormData() : null);
+    return post("alert", "create", "/alerts", params != null ? params.toFormData() : null);
   }
 
   /** create a alert using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/alerts", jsonPayload);
+    return postJson("alert", "create", "/alerts", jsonPayload);
   }
 
   public AlertCreateResponse create(AlertCreateParams params) throws ChargebeeException {
@@ -311,7 +319,7 @@ public final class AlertService extends BaseService<AlertService> {
   /** Async variant of create for alert with params. */
   public CompletableFuture<AlertCreateResponse> createAsync(AlertCreateParams params) {
 
-    return postAsync("/alerts", params != null ? params.toFormData() : null)
+    return postAsync("alert", "create", "/alerts", params != null ? params.toFormData() : null)
         .thenApply(response -> AlertCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

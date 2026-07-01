@@ -58,13 +58,17 @@ public final class BrandConfigurationService extends BaseService<BrandConfigurat
    */
   Response retrieveRaw(BrandConfigurationRetrieveParams params) throws ChargebeeException {
 
-    return get("/brand_configurations", params != null ? params.toQueryParams() : null);
+    return get(
+        "brandConfiguration",
+        "retrieve",
+        "/brand_configurations",
+        params != null ? params.toQueryParams() : null);
   }
 
   /** retrieve a brandConfiguration without params (executes immediately) - returns raw Response. */
   Response retrieveRaw() throws ChargebeeException {
 
-    return get("/brand_configurations", null);
+    return get("brandConfiguration", "retrieve", "/brand_configurations", null);
   }
 
   /**
@@ -87,7 +91,11 @@ public final class BrandConfigurationService extends BaseService<BrandConfigurat
   public CompletableFuture<BrandConfigurationRetrieveResponse> retrieveAsync(
       BrandConfigurationRetrieveParams params) {
 
-    return getAsync("/brand_configurations", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "brandConfiguration",
+            "retrieve",
+            "/brand_configurations",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 BrandConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -102,7 +110,7 @@ public final class BrandConfigurationService extends BaseService<BrandConfigurat
   /** Async variant of retrieve for brandConfiguration without params. */
   public CompletableFuture<BrandConfigurationRetrieveResponse> retrieveAsync() {
 
-    return getAsync("/brand_configurations", null)
+    return getAsync("brandConfiguration", "retrieve", "/brand_configurations", null)
         .thenApply(
             response ->
                 BrandConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response));

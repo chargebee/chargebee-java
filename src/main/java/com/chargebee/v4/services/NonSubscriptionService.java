@@ -60,7 +60,7 @@ public final class NonSubscriptionService extends BaseService<NonSubscriptionSer
             "non-subscription-app-id",
             nonSubscriptionAppId);
 
-    return post(path, null);
+    return post("nonSubscription", "processReceipt", path, null);
   }
 
   /**
@@ -75,7 +75,7 @@ public final class NonSubscriptionService extends BaseService<NonSubscriptionSer
             "/non_subscriptions/{non-subscription-app-id}/one_time_purchase",
             "non-subscription-app-id",
             nonSubscriptionAppId);
-    return post(path, params.toFormData());
+    return post("nonSubscription", "processReceipt", path, params.toFormData());
   }
 
   /**
@@ -89,7 +89,7 @@ public final class NonSubscriptionService extends BaseService<NonSubscriptionSer
             "/non_subscriptions/{non-subscription-app-id}/one_time_purchase",
             "non-subscription-app-id",
             nonSubscriptionAppId);
-    return postJson(path, jsonPayload);
+    return postJson("nonSubscription", "processReceipt", path, jsonPayload);
   }
 
   public NonSubscriptionProcessReceiptResponse processReceipt(
@@ -107,7 +107,7 @@ public final class NonSubscriptionService extends BaseService<NonSubscriptionSer
             "/non_subscriptions/{non-subscription-app-id}/one_time_purchase",
             "non-subscription-app-id",
             nonSubscriptionAppId);
-    return postAsync(path, params.toFormData())
+    return postAsync("nonSubscription", "processReceipt", path, params.toFormData())
         .thenApply(
             response ->
                 NonSubscriptionProcessReceiptResponse.fromJson(

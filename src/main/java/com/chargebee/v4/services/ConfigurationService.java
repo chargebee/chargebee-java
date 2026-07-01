@@ -55,13 +55,14 @@ public final class ConfigurationService extends BaseService<ConfigurationService
   /** list a configuration using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(ConfigurationListParams params) throws ChargebeeException {
 
-    return get("/configurations", params != null ? params.toQueryParams() : null);
+    return get(
+        "configuration", "list", "/configurations", params != null ? params.toQueryParams() : null);
   }
 
   /** list a configuration without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/configurations", null);
+    return get("configuration", "list", "/configurations", null);
   }
 
   /** list a configuration using raw JSON payload (executes immediately) - returns raw Response. */
@@ -79,7 +80,11 @@ public final class ConfigurationService extends BaseService<ConfigurationService
   /** Async variant of list for configuration with params. */
   public CompletableFuture<ConfigurationListResponse> listAsync(ConfigurationListParams params) {
 
-    return getAsync("/configurations", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "configuration",
+            "list",
+            "/configurations",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response -> ConfigurationListResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -93,7 +98,7 @@ public final class ConfigurationService extends BaseService<ConfigurationService
   /** Async variant of list for configuration without params. */
   public CompletableFuture<ConfigurationListResponse> listAsync() {
 
-    return getAsync("/configurations", null)
+    return getAsync("configuration", "list", "/configurations", null)
         .thenApply(
             response -> ConfigurationListResponse.fromJson(response.getBodyAsString(), response));
   }

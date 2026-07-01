@@ -68,7 +68,11 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
             "/subscriptions/{subscription-id}/entitlement_overrides",
             "subscription-id",
             subscriptionId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "entitlementOverride",
+        "listEntitlementOverrideForSubscription",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -82,7 +86,7 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
             "/subscriptions/{subscription-id}/entitlement_overrides",
             "subscription-id",
             subscriptionId);
-    return get(path, null);
+    return get("entitlementOverride", "listEntitlementOverrideForSubscription", path, null);
   }
 
   /**
@@ -125,7 +129,11 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
             "/subscriptions/{subscription-id}/entitlement_overrides",
             "subscription-id",
             subscriptionId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "entitlementOverride",
+            "listEntitlementOverrideForSubscription",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ListEntitlementOverrideForSubscriptionResponse.fromJson(
@@ -142,7 +150,7 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
             "/subscriptions/{subscription-id}/entitlement_overrides",
             "subscription-id",
             subscriptionId);
-    return getAsync(path, null)
+    return getAsync("entitlementOverride", "listEntitlementOverrideForSubscription", path, null)
         .thenApply(
             response ->
                 ListEntitlementOverrideForSubscriptionResponse.fromJson(
@@ -161,7 +169,7 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
             "subscription-id",
             subscriptionId);
 
-    return post(path, null);
+    return post("entitlementOverride", "addEntitlementOverrideForSubscription", path, null);
   }
 
   /**
@@ -176,7 +184,8 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
             "/subscriptions/{subscription-id}/entitlement_overrides",
             "subscription-id",
             subscriptionId);
-    return post(path, params.toFormData());
+    return post(
+        "entitlementOverride", "addEntitlementOverrideForSubscription", path, params.toFormData());
   }
 
   /**
@@ -190,7 +199,8 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
             "/subscriptions/{subscription-id}/entitlement_overrides",
             "subscription-id",
             subscriptionId);
-    return postJson(path, jsonPayload);
+    return postJson(
+        "entitlementOverride", "addEntitlementOverrideForSubscription", path, jsonPayload);
   }
 
   public AddEntitlementOverrideForSubscriptionResponse addEntitlementOverrideForSubscription(
@@ -210,7 +220,11 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
             "/subscriptions/{subscription-id}/entitlement_overrides",
             "subscription-id",
             subscriptionId);
-    return postAsync(path, params.toFormData())
+    return postAsync(
+            "entitlementOverride",
+            "addEntitlementOverrideForSubscription",
+            path,
+            params.toFormData())
         .thenApply(
             response ->
                 AddEntitlementOverrideForSubscriptionResponse.fromJson(
@@ -235,7 +249,7 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
             "subscription-id",
             subscriptionId);
 
-    return postAsync(path, null)
+    return postAsync("entitlementOverride", "addEntitlementOverrideForSubscription", path, null)
         .thenApply(
             response ->
                 AddEntitlementOverrideForSubscriptionResponse.fromJson(

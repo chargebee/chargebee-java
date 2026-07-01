@@ -58,7 +58,11 @@ public final class SubscriptionSettingService extends BaseService<SubscriptionSe
    */
   Response retrieveRaw(SubscriptionSettingRetrieveParams params) throws ChargebeeException {
 
-    return get("/subscription_settings/retrieve", params != null ? params.toQueryParams() : null);
+    return get(
+        "subscriptionSetting",
+        "retrieve",
+        "/subscription_settings/retrieve",
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -66,7 +70,7 @@ public final class SubscriptionSettingService extends BaseService<SubscriptionSe
    */
   Response retrieveRaw() throws ChargebeeException {
 
-    return get("/subscription_settings/retrieve", null);
+    return get("subscriptionSetting", "retrieve", "/subscription_settings/retrieve", null);
   }
 
   /**
@@ -90,7 +94,10 @@ public final class SubscriptionSettingService extends BaseService<SubscriptionSe
       SubscriptionSettingRetrieveParams params) {
 
     return getAsync(
-            "/subscription_settings/retrieve", params != null ? params.toQueryParams() : null)
+            "subscriptionSetting",
+            "retrieve",
+            "/subscription_settings/retrieve",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 SubscriptionSettingRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -105,7 +112,7 @@ public final class SubscriptionSettingService extends BaseService<SubscriptionSe
   /** Async variant of retrieve for subscriptionSetting without params. */
   public CompletableFuture<SubscriptionSettingRetrieveResponse> retrieveAsync() {
 
-    return getAsync("/subscription_settings/retrieve", null)
+    return getAsync("subscriptionSetting", "retrieve", "/subscription_settings/retrieve", null)
         .thenApply(
             response ->
                 SubscriptionSettingRetrieveResponse.fromJson(response.getBodyAsString(), response));

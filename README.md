@@ -691,6 +691,139 @@ public class Sample {
  }
 ```
 
+### Telemetry (OpenTelemetry)
+
+Optional. Pass a `telemetryAdapter` when you want Chargebee API calls traced in your observability stack (Datadog, Splunk, Honeycomb, Jaeger, etc.). OpenTelemetry is not bundled with `chargebee-java` — add and configure it in your app, implement `TelemetryAdapter`, and wire it on the client.
+
+The SDK builds standardized span attributes (`ctx.getStartAttributes()`, `result.getEndAttributes()`) following the stable [OpenTelemetry HTTP semantic conventions](https://opentelemetry.io/docs/specs/semconv/http/http-spans/) (`url.full`, `http.request.method`, `http.response.status_code`, `server.address`, `error.type`) plus Chargebee-specific `chargebee.*` attributes — use them as-is so spans render correctly in your APM and stay consistent across SDKs.
+
+Spans are named `chargebee.{resource}.{operation}` (e.g. `chargebee.subscription.create`).
+
+#### OpenTelemetry example
+
+```kotlin
+dependencies {
+    implementation("io.opentelemetry:opentelemetry-api:1.49.0")
+    implementation("io.opentelemetry:opentelemetry-sdk:1.49.0")
+    implementation("io.opentelemetry:opentelemetry-exporter-otlp:1.49.0")
+}
+```
+
+Configure OpenTelemetry at app startup, then pass your adapter:
+
+```java
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
+import io.opentelemetry.sdk.OpenTelemetrySdk;
+import io.opentelemetry.sdk.resources.Resource;
+import io.opentelemetry.sdk.trace.SdkTracerProvider;
+import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
+
+// App startup — configure once
+OtlpGrpcSpanExporter spanExporter =
+    OtlpGrpcSpanExporter.builder()
+        .setEndpoint(System.getenv().getOrDefault("OTEL_EXPORTER_OTLP_ENDPOINT", "http://localhost:4317"))
+        .build();
+
+SdkTracerProvider tracerProvider =
+    SdkTracerProvider.builder()
+        .addSpanProcessor(BatchSpanProcessor.builder(spanExporter).build())
+        .setResource(
+            Resource.getDefault()
+                .merge(
+                    Resource.create(
+                        Attributes.of(AttributeKey.stringKey("service.name"), "billing-service"))))
+        .build();
+
+OpenTelemetry openTelemetry =
+    OpenTelemetrySdk.builder().setTracerProvider(tracerProvider).buildAndRegisterGlobal();
+```
+
+```java
+import com.chargebee.v4.client.ChargebeeClient;
+import com.chargebee.v4.telemetry.RequestTelemetryContext;
+import com.chargebee.v4.telemetry.RequestTelemetryResult;
+import com.chargebee.v4.telemetry.TelemetryAdapter;
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.common.AttributesBuilder;
+import io.opentelemetry.api.trace.Span;
+import io.opentelemetry.api.trace.SpanKind;
+import io.opentelemetry.api.trace.StatusCode;
+import io.opentelemetry.api.trace.Tracer;
+import io.opentelemetry.context.Context;
+import java.util.Map;
+
+class OtelTelemetryAdapter implements TelemetryAdapter {
+  private final OpenTelemetry openTelemetry;
+  private final Tracer tracer;
+
+  OtelTelemetryAdapter(OpenTelemetry openTelemetry) {
+    this.openTelemetry = openTelemetry;
+    this.tracer = openTelemetry.getTracer("chargebee-java");
+  }
+
+  @Override
+  public Object onRequestStart(RequestTelemetryContext ctx, Map<String, String> requestHeaders) {
+    AttributesBuilder attrs = Attributes.builder();
+    ctx.getStartAttributes().forEach((k, v) -> attrs.put(AttributeKey.stringKey(k), v));
+
+    Span span =
+        tracer
+            .spanBuilder(ctx.getSpanName())
+            .setSpanKind(SpanKind.CLIENT)
+            .setAllAttributes(attrs.build())
+            .startSpan();
+
+    Context context = Context.current().with(span);
+    openTelemetry
+        .getPropagators()
+        .getTextMapPropagator()
+        .inject(context, requestHeaders, (carrier, key, value) -> carrier.put(key, value));
+
+    return span;
+  }
+
+  @Override
+  public void onRequestEnd(Object handle, RequestTelemetryResult result) {
+    if (!(handle instanceof Span)) {
+      return;
+    }
+    Span span = (Span) handle;
+    result
+        .getEndAttributes()
+        .forEach(
+            (k, v) -> {
+              if (v instanceof String) {
+                span.setAttribute(k, (String) v);
+              } else if (v instanceof Long) {
+                span.setAttribute(k, (Long) v);
+              } else if (v instanceof Integer) {
+                span.setAttribute(k, ((Integer) v).longValue());
+              }
+            });
+    if (result.getError() != null) {
+      span.setStatus(StatusCode.ERROR, result.getError().getMessage());
+    } else {
+      span.setStatus(StatusCode.OK);
+    }
+    span.end();
+  }
+}
+
+ChargebeeClient client =
+    ChargebeeClient.builder()
+        .apiKey("{{api-key}}")
+        .siteName("{{site}}")
+        .telemetryAdapter(new OtelTelemetryAdapter(openTelemetry))
+        .build();
+```
+
+Spans are exported by your own OpenTelemetry setup, so they flow to whatever backend you've configured (Datadog, Splunk, Honeycomb, Jaeger, etc.). The Chargebee config above stays the same regardless of backend — refer to your APM vendor's OpenTelemetry/OTLP documentation for exporter endpoints.
+
 ## Features
 
 ### SDK Features

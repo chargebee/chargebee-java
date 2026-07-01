@@ -116,6 +116,8 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       throws ChargebeeException {
 
     return post(
+        "paymentSource",
+        "createUsingPermanentToken",
         "/payment_sources/create_using_permanent_token",
         params != null ? params.toFormData() : null);
   }
@@ -126,7 +128,11 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    */
   Response createUsingPermanentTokenRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/payment_sources/create_using_permanent_token", jsonPayload);
+    return postJson(
+        "paymentSource",
+        "createUsingPermanentToken",
+        "/payment_sources/create_using_permanent_token",
+        jsonPayload);
   }
 
   public PaymentSourceCreateUsingPermanentTokenResponse createUsingPermanentToken(
@@ -142,6 +148,8 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       createUsingPermanentTokenAsync(PaymentSourceCreateUsingPermanentTokenParams params) {
 
     return postAsync(
+            "paymentSource",
+            "createUsingPermanentToken",
             "/payment_sources/create_using_permanent_token",
             params != null ? params.toFormData() : null)
         .thenApply(
@@ -158,7 +166,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "cust-payment-source-id",
             custPaymentSourceId);
 
-    return post(path, null);
+    return post("paymentSource", "delete", path, null);
   }
 
   public PaymentSourceDeleteResponse delete(String custPaymentSourceId) throws ChargebeeException {
@@ -174,7 +182,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "cust-payment-source-id",
             custPaymentSourceId);
 
-    return postAsync(path, null)
+    return postAsync("paymentSource", "delete", path, null)
         .thenApply(
             response -> PaymentSourceDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -185,7 +193,11 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    */
   Response createCardRaw(PaymentSourceCreateCardParams params) throws ChargebeeException {
 
-    return post("/payment_sources/create_card", params != null ? params.toFormData() : null);
+    return post(
+        "paymentSource",
+        "createCard",
+        "/payment_sources/create_card",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -194,7 +206,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    */
   Response createCardRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/payment_sources/create_card", jsonPayload);
+    return postJson("paymentSource", "createCard", "/payment_sources/create_card", jsonPayload);
   }
 
   public PaymentSourceCreateCardResponse createCard(PaymentSourceCreateCardParams params)
@@ -208,7 +220,11 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   public CompletableFuture<PaymentSourceCreateCardResponse> createCardAsync(
       PaymentSourceCreateCardParams params) {
 
-    return postAsync("/payment_sources/create_card", params != null ? params.toFormData() : null)
+    return postAsync(
+            "paymentSource",
+            "createCard",
+            "/payment_sources/create_card",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 PaymentSourceCreateCardResponse.fromJson(response.getBodyAsString(), response));
@@ -222,7 +238,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "cust-payment-source-id",
             custPaymentSourceId);
 
-    return post(path, null);
+    return post("paymentSource", "verifyBankAccount", path, null);
   }
 
   /**
@@ -237,7 +253,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "/payment_sources/{cust-payment-source-id}/verify_bank_account",
             "cust-payment-source-id",
             custPaymentSourceId);
-    return post(path, params.toFormData());
+    return post("paymentSource", "verifyBankAccount", path, params.toFormData());
   }
 
   /**
@@ -251,7 +267,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "/payment_sources/{cust-payment-source-id}/verify_bank_account",
             "cust-payment-source-id",
             custPaymentSourceId);
-    return postJson(path, jsonPayload);
+    return postJson("paymentSource", "verifyBankAccount", path, jsonPayload);
   }
 
   public PaymentSourceVerifyBankAccountResponse verifyBankAccount(
@@ -269,7 +285,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "/payment_sources/{cust-payment-source-id}/verify_bank_account",
             "cust-payment-source-id",
             custPaymentSourceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("paymentSource", "verifyBankAccount", path, params.toFormData())
         .thenApply(
             response ->
                 PaymentSourceVerifyBankAccountResponse.fromJson(
@@ -279,13 +295,17 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   /** list a paymentSource using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(PaymentSourceListParams params) throws ChargebeeException {
 
-    return get("/payment_sources", params != null ? params.toQueryParams() : null);
+    return get(
+        "paymentSource",
+        "list",
+        "/payment_sources",
+        params != null ? params.toQueryParams() : null);
   }
 
   /** list a paymentSource without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/payment_sources", null);
+    return get("paymentSource", "list", "/payment_sources", null);
   }
 
   /** list a paymentSource using raw JSON payload (executes immediately) - returns raw Response. */
@@ -303,7 +323,11 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   /** Async variant of list for paymentSource with params. */
   public CompletableFuture<PaymentSourceListResponse> listAsync(PaymentSourceListParams params) {
 
-    return getAsync("/payment_sources", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "paymentSource",
+            "list",
+            "/payment_sources",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 PaymentSourceListResponse.fromJson(
@@ -319,7 +343,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   /** Async variant of list for paymentSource without params. */
   public CompletableFuture<PaymentSourceListResponse> listAsync() {
 
-    return getAsync("/payment_sources", null)
+    return getAsync("paymentSource", "list", "/payment_sources", null)
         .thenApply(
             response ->
                 PaymentSourceListResponse.fromJson(
@@ -334,7 +358,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "cust-payment-source-id",
             custPaymentSourceId);
 
-    return post(path, null);
+    return post("paymentSource", "exportPaymentSource", path, null);
   }
 
   /**
@@ -348,7 +372,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "/payment_sources/{cust-payment-source-id}/export_payment_source",
             "cust-payment-source-id",
             custPaymentSourceId);
-    return post(path, params.toFormData());
+    return post("paymentSource", "exportPaymentSource", path, params.toFormData());
   }
 
   /**
@@ -362,7 +386,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "/payment_sources/{cust-payment-source-id}/export_payment_source",
             "cust-payment-source-id",
             custPaymentSourceId);
-    return postJson(path, jsonPayload);
+    return postJson("paymentSource", "exportPaymentSource", path, jsonPayload);
   }
 
   public ExportPaymentSourceResponse exportPaymentSource(
@@ -379,7 +403,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "/payment_sources/{cust-payment-source-id}/export_payment_source",
             "cust-payment-source-id",
             custPaymentSourceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("paymentSource", "exportPaymentSource", path, params.toFormData())
         .thenApply(
             response -> ExportPaymentSourceResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -392,6 +416,8 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       throws ChargebeeException {
 
     return post(
+        "paymentSource",
+        "createUsingPaymentIntent",
         "/payment_sources/create_using_payment_intent",
         params != null ? params.toFormData() : null);
   }
@@ -402,7 +428,11 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    */
   Response createUsingPaymentIntentRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/payment_sources/create_using_payment_intent", jsonPayload);
+    return postJson(
+        "paymentSource",
+        "createUsingPaymentIntent",
+        "/payment_sources/create_using_payment_intent",
+        jsonPayload);
   }
 
   public PaymentSourceCreateUsingPaymentIntentResponse createUsingPaymentIntent(
@@ -418,6 +448,8 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       createUsingPaymentIntentAsync(PaymentSourceCreateUsingPaymentIntentParams params) {
 
     return postAsync(
+            "paymentSource",
+            "createUsingPaymentIntent",
             "/payment_sources/create_using_payment_intent",
             params != null ? params.toFormData() : null)
         .thenApply(
@@ -434,7 +466,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "cust-payment-source-id",
             custPaymentSourceId);
 
-    return post(path, null);
+    return post("paymentSource", "agreementPdf", path, null);
   }
 
   public PaymentSourceAgreementPdfResponse agreementPdf(String custPaymentSourceId)
@@ -452,7 +484,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "cust-payment-source-id",
             custPaymentSourceId);
 
-    return postAsync(path, null)
+    return postAsync("paymentSource", "agreementPdf", path, null)
         .thenApply(
             response ->
                 PaymentSourceAgreementPdfResponse.fromJson(response.getBodyAsString(), response));
@@ -466,7 +498,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "cust-payment-source-id",
             custPaymentSourceId);
 
-    return get(path, null);
+    return get("paymentSource", "retrieve", path, null);
   }
 
   public PaymentSourceRetrieveResponse retrieve(String custPaymentSourceId)
@@ -484,7 +516,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "cust-payment-source-id",
             custPaymentSourceId);
 
-    return getAsync(path, null)
+    return getAsync("paymentSource", "retrieve", path, null)
         .thenApply(
             response ->
                 PaymentSourceRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -498,6 +530,8 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       throws ChargebeeException {
 
     return post(
+        "paymentSource",
+        "createVoucherPaymentSource",
         "/payment_sources/create_voucher_payment_source",
         params != null ? params.toFormData() : null);
   }
@@ -508,7 +542,11 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    */
   Response createVoucherPaymentSourceRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/payment_sources/create_voucher_payment_source", jsonPayload);
+    return postJson(
+        "paymentSource",
+        "createVoucherPaymentSource",
+        "/payment_sources/create_voucher_payment_source",
+        jsonPayload);
   }
 
   public CreateVoucherPaymentSourceResponse createVoucherPaymentSource(
@@ -523,6 +561,8 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       CreateVoucherPaymentSourceParams params) {
 
     return postAsync(
+            "paymentSource",
+            "createVoucherPaymentSource",
             "/payment_sources/create_voucher_payment_source",
             params != null ? params.toFormData() : null)
         .thenApply(
@@ -538,7 +578,10 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       throws ChargebeeException {
 
     return post(
-        "/payment_sources/create_using_temp_token", params != null ? params.toFormData() : null);
+        "paymentSource",
+        "createUsingTempToken",
+        "/payment_sources/create_using_temp_token",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -547,7 +590,11 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    */
   Response createUsingTempTokenRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/payment_sources/create_using_temp_token", jsonPayload);
+    return postJson(
+        "paymentSource",
+        "createUsingTempToken",
+        "/payment_sources/create_using_temp_token",
+        jsonPayload);
   }
 
   public PaymentSourceCreateUsingTempTokenResponse createUsingTempToken(
@@ -562,7 +609,10 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       PaymentSourceCreateUsingTempTokenParams params) {
 
     return postAsync(
-            "/payment_sources/create_using_temp_token", params != null ? params.toFormData() : null)
+            "paymentSource",
+            "createUsingTempToken",
+            "/payment_sources/create_using_temp_token",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 PaymentSourceCreateUsingTempTokenResponse.fromJson(
@@ -577,7 +627,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "cust-payment-source-id",
             custPaymentSourceId);
 
-    return post(path, null);
+    return post("paymentSource", "updateCard", path, null);
   }
 
   /**
@@ -591,7 +641,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "/payment_sources/{cust-payment-source-id}/update_card",
             "cust-payment-source-id",
             custPaymentSourceId);
-    return post(path, params.toFormData());
+    return post("paymentSource", "updateCard", path, params.toFormData());
   }
 
   /**
@@ -604,7 +654,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "/payment_sources/{cust-payment-source-id}/update_card",
             "cust-payment-source-id",
             custPaymentSourceId);
-    return postJson(path, jsonPayload);
+    return postJson("paymentSource", "updateCard", path, jsonPayload);
   }
 
   public PaymentSourceUpdateCardResponse updateCard(
@@ -621,7 +671,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "/payment_sources/{cust-payment-source-id}/update_card",
             "cust-payment-source-id",
             custPaymentSourceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("paymentSource", "updateCard", path, params.toFormData())
         .thenApply(
             response ->
                 PaymentSourceUpdateCardResponse.fromJson(response.getBodyAsString(), response));
@@ -642,7 +692,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "cust-payment-source-id",
             custPaymentSourceId);
 
-    return postAsync(path, null)
+    return postAsync("paymentSource", "updateCard", path, null)
         .thenApply(
             response ->
                 PaymentSourceUpdateCardResponse.fromJson(response.getBodyAsString(), response));
@@ -656,7 +706,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "cust-payment-source-id",
             custPaymentSourceId);
 
-    return post(path, null);
+    return post("paymentSource", "switchGatewayAccount", path, null);
   }
 
   /**
@@ -671,7 +721,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "/payment_sources/{cust-payment-source-id}/switch_gateway_account",
             "cust-payment-source-id",
             custPaymentSourceId);
-    return post(path, params.toFormData());
+    return post("paymentSource", "switchGatewayAccount", path, params.toFormData());
   }
 
   /**
@@ -685,7 +735,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "/payment_sources/{cust-payment-source-id}/switch_gateway_account",
             "cust-payment-source-id",
             custPaymentSourceId);
-    return postJson(path, jsonPayload);
+    return postJson("paymentSource", "switchGatewayAccount", path, jsonPayload);
   }
 
   public PaymentSourceSwitchGatewayAccountResponse switchGatewayAccount(
@@ -703,7 +753,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "/payment_sources/{cust-payment-source-id}/switch_gateway_account",
             "cust-payment-source-id",
             custPaymentSourceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("paymentSource", "switchGatewayAccount", path, params.toFormData())
         .thenApply(
             response ->
                 PaymentSourceSwitchGatewayAccountResponse.fromJson(
@@ -717,7 +767,11 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   Response createUsingTokenRaw(PaymentSourceCreateUsingTokenParams params)
       throws ChargebeeException {
 
-    return post("/payment_sources/create_using_token", params != null ? params.toFormData() : null);
+    return post(
+        "paymentSource",
+        "createUsingToken",
+        "/payment_sources/create_using_token",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -726,7 +780,8 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    */
   Response createUsingTokenRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/payment_sources/create_using_token", jsonPayload);
+    return postJson(
+        "paymentSource", "createUsingToken", "/payment_sources/create_using_token", jsonPayload);
   }
 
   public PaymentSourceCreateUsingTokenResponse createUsingToken(
@@ -741,7 +796,10 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       PaymentSourceCreateUsingTokenParams params) {
 
     return postAsync(
-            "/payment_sources/create_using_token", params != null ? params.toFormData() : null)
+            "paymentSource",
+            "createUsingToken",
+            "/payment_sources/create_using_token",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 PaymentSourceCreateUsingTokenResponse.fromJson(
@@ -756,7 +814,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "cust-payment-source-id",
             custPaymentSourceId);
 
-    return post(path, null);
+    return post("paymentSource", "deleteLocal", path, null);
   }
 
   public PaymentSourceDeleteLocalResponse deleteLocal(String custPaymentSourceId)
@@ -774,7 +832,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "cust-payment-source-id",
             custPaymentSourceId);
 
-    return postAsync(path, null)
+    return postAsync("paymentSource", "deleteLocal", path, null)
         .thenApply(
             response ->
                 PaymentSourceDeleteLocalResponse.fromJson(response.getBodyAsString(), response));
@@ -788,7 +846,10 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       throws ChargebeeException {
 
     return post(
-        "/payment_sources/create_bank_account", params != null ? params.toFormData() : null);
+        "paymentSource",
+        "createBankAccount",
+        "/payment_sources/create_bank_account",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -797,7 +858,8 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    */
   Response createBankAccountRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/payment_sources/create_bank_account", jsonPayload);
+    return postJson(
+        "paymentSource", "createBankAccount", "/payment_sources/create_bank_account", jsonPayload);
   }
 
   public PaymentSourceCreateBankAccountResponse createBankAccount(
@@ -812,7 +874,10 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       PaymentSourceCreateBankAccountParams params) {
 
     return postAsync(
-            "/payment_sources/create_bank_account", params != null ? params.toFormData() : null)
+            "paymentSource",
+            "createBankAccount",
+            "/payment_sources/create_bank_account",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 PaymentSourceCreateBankAccountResponse.fromJson(
@@ -827,7 +892,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "cust-payment-source-id",
             custPaymentSourceId);
 
-    return post(path, null);
+    return post("paymentSource", "updateBankAccount", path, null);
   }
 
   /**
@@ -842,7 +907,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "/payment_sources/{cust-payment-source-id}/update_bank_account",
             "cust-payment-source-id",
             custPaymentSourceId);
-    return post(path, params.toFormData());
+    return post("paymentSource", "updateBankAccount", path, params.toFormData());
   }
 
   /**
@@ -856,7 +921,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "/payment_sources/{cust-payment-source-id}/update_bank_account",
             "cust-payment-source-id",
             custPaymentSourceId);
-    return postJson(path, jsonPayload);
+    return postJson("paymentSource", "updateBankAccount", path, jsonPayload);
   }
 
   public PaymentSourceUpdateBankAccountResponse updateBankAccount(
@@ -874,7 +939,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "/payment_sources/{cust-payment-source-id}/update_bank_account",
             "cust-payment-source-id",
             custPaymentSourceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("paymentSource", "updateBankAccount", path, params.toFormData())
         .thenApply(
             response ->
                 PaymentSourceUpdateBankAccountResponse.fromJson(
@@ -896,7 +961,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
             "cust-payment-source-id",
             custPaymentSourceId);
 
-    return postAsync(path, null)
+    return postAsync("paymentSource", "updateBankAccount", path, null)
         .thenApply(
             response ->
                 PaymentSourceUpdateBankAccountResponse.fromJson(

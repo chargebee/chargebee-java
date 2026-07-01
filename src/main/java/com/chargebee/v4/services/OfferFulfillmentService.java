@@ -67,6 +67,8 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
   Response offerFulfillmentsRaw(OfferFulfillmentsParams params) throws ChargebeeException {
 
     return postJsonWithSubDomain(
+        "offerFulfillment",
+        "offerFulfillments",
         "/offer_fulfillments",
         SubDomain.GROW.getValue(),
         params != null ? params.toJsonString() : null);
@@ -78,7 +80,12 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
    */
   Response offerFulfillmentsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJsonWithSubDomain("/offer_fulfillments", SubDomain.GROW.getValue(), jsonPayload);
+    return postJsonWithSubDomain(
+        "offerFulfillment",
+        "offerFulfillments",
+        "/offer_fulfillments",
+        SubDomain.GROW.getValue(),
+        jsonPayload);
   }
 
   public OfferFulfillmentsResponse offerFulfillments(OfferFulfillmentsParams params)
@@ -93,6 +100,8 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
       OfferFulfillmentsParams params) {
 
     return postJsonWithSubDomainAsync(
+            "offerFulfillment",
+            "offerFulfillments",
             "/offer_fulfillments",
             SubDomain.GROW.getValue(),
             params != null ? params.toJsonString() : null)
@@ -108,7 +117,8 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
             "offer-fulfillment-id",
             offerFulfillmentId);
 
-    return getWithSubDomain(path, SubDomain.GROW.getValue(), null);
+    return getWithSubDomain(
+        "offerFulfillment", "offerFulfillmentsGet", path, SubDomain.GROW.getValue(), null);
   }
 
   public OfferFulfillmentsGetResponse offerFulfillmentsGet(String offerFulfillmentId)
@@ -126,7 +136,8 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
             "offer-fulfillment-id",
             offerFulfillmentId);
 
-    return getWithSubDomainAsync(path, SubDomain.GROW.getValue(), null)
+    return getWithSubDomainAsync(
+            "offerFulfillment", "offerFulfillmentsGet", path, SubDomain.GROW.getValue(), null)
         .thenApply(
             response ->
                 OfferFulfillmentsGetResponse.fromJson(response.getBodyAsString(), response));
@@ -140,7 +151,8 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
             "offer-fulfillment-id",
             offerFulfillmentId);
 
-    return postWithSubDomain(path, SubDomain.GROW.getValue(), null);
+    return postWithSubDomain(
+        "offerFulfillment", "offerFulfillmentsUpdate", path, SubDomain.GROW.getValue(), null);
   }
 
   /**
@@ -155,7 +167,11 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
             "offer-fulfillment-id",
             offerFulfillmentId);
     return postJsonWithSubDomain(
-        path, SubDomain.GROW.getValue(), params != null ? params.toJsonString() : null);
+        "offerFulfillment",
+        "offerFulfillmentsUpdate",
+        path,
+        SubDomain.GROW.getValue(),
+        params != null ? params.toJsonString() : null);
   }
 
   /**
@@ -169,7 +185,12 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
             "/offer_fulfillments/{offer-fulfillment-id}",
             "offer-fulfillment-id",
             offerFulfillmentId);
-    return postJsonWithSubDomain(path, SubDomain.GROW.getValue(), jsonPayload);
+    return postJsonWithSubDomain(
+        "offerFulfillment",
+        "offerFulfillmentsUpdate",
+        path,
+        SubDomain.GROW.getValue(),
+        jsonPayload);
   }
 
   public OfferFulfillmentsUpdateResponse offerFulfillmentsUpdate(
@@ -187,7 +208,11 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
             "offer-fulfillment-id",
             offerFulfillmentId);
     return postJsonWithSubDomainAsync(
-            path, SubDomain.GROW.getValue(), params != null ? params.toJsonString() : null)
+            "offerFulfillment",
+            "offerFulfillmentsUpdate",
+            path,
+            SubDomain.GROW.getValue(),
+            params != null ? params.toJsonString() : null)
         .thenApply(
             response ->
                 OfferFulfillmentsUpdateResponse.fromJson(response.getBodyAsString(), response));

@@ -1,5 +1,6 @@
 package com.chargebee.v4.transport;
 
+import com.chargebee.v4.telemetry.TelemetryAdapter;
 import java.util.*;
 
 /**
@@ -15,6 +16,9 @@ public final class Request {
     private final RequestBody body;
     private final Integer maxNetworkRetriesOverride;
     private final Boolean followRedirectsOverride;
+    private final String telemetryResource;
+    private final String telemetryOperation;
+    private final TelemetryAdapter telemetryAdapterOverride;
     
     private Request(Builder builder) {
         this.method = builder.method;
@@ -24,6 +28,9 @@ public final class Request {
         this.body = builder.body;
         this.maxNetworkRetriesOverride = builder.maxNetworkRetriesOverride;
         this.followRedirectsOverride = builder.followRedirectsOverride;
+        this.telemetryResource = builder.telemetryResource;
+        this.telemetryOperation = builder.telemetryOperation;
+        this.telemetryAdapterOverride = builder.telemetryAdapterOverride;
     }
     
     public String getMethod() { 
@@ -53,6 +60,22 @@ public final class Request {
     public Boolean getFollowRedirectsOverride() {
         return followRedirectsOverride;
     }
+
+    public String getTelemetryResource() {
+        return telemetryResource;
+    }
+
+    public String getTelemetryOperation() {
+        return telemetryOperation;
+    }
+
+    public TelemetryAdapter getTelemetryAdapterOverride() {
+        return telemetryAdapterOverride;
+    }
+
+    public boolean hasTelemetryMetadata() {
+        return telemetryResource != null && telemetryOperation != null;
+    }
     
     public Request withHeader(String key, String value) {
         Map<String, String> newHeaders = new HashMap<>(this.headers);
@@ -68,6 +91,9 @@ public final class Request {
         this.body = source.body;
         this.maxNetworkRetriesOverride = source.maxNetworkRetriesOverride;
         this.followRedirectsOverride = source.followRedirectsOverride;
+        this.telemetryResource = source.telemetryResource;
+        this.telemetryOperation = source.telemetryOperation;
+        this.telemetryAdapterOverride = source.telemetryAdapterOverride;
     }
     
     public static Builder builder() {
@@ -82,6 +108,9 @@ public final class Request {
         private RequestBody body;
         private Integer maxNetworkRetriesOverride;
         private Boolean followRedirectsOverride;
+        private String telemetryResource;
+        private String telemetryOperation;
+        private TelemetryAdapter telemetryAdapterOverride;
         
         public Builder method(String method) {
             this.method = method;
@@ -140,6 +169,21 @@ public final class Request {
 
         public Builder followRedirectsOverride(Boolean followRedirects) {
             this.followRedirectsOverride = followRedirects;
+            return this;
+        }
+
+        public Builder telemetryResource(String telemetryResource) {
+            this.telemetryResource = telemetryResource;
+            return this;
+        }
+
+        public Builder telemetryOperation(String telemetryOperation) {
+            this.telemetryOperation = telemetryOperation;
+            return this;
+        }
+
+        public Builder telemetryAdapterOverride(TelemetryAdapter telemetryAdapterOverride) {
+            this.telemetryAdapterOverride = telemetryAdapterOverride;
             return this;
         }
         

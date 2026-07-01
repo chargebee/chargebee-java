@@ -66,13 +66,17 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
    */
   Response listRaw(Pc2MigrationItemPriceListParams params) throws ChargebeeException {
 
-    return get("/pc2_migration_item_prices", params != null ? params.toQueryParams() : null);
+    return get(
+        "pc2MigrationItemPrice",
+        "list",
+        "/pc2_migration_item_prices",
+        params != null ? params.toQueryParams() : null);
   }
 
   /** list a pc2MigrationItemPrice without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/pc2_migration_item_prices", null);
+    return get("pc2MigrationItemPrice", "list", "/pc2_migration_item_prices", null);
   }
 
   /**
@@ -96,7 +100,11 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
   public CompletableFuture<Pc2MigrationItemPriceListResponse> listAsync(
       Pc2MigrationItemPriceListParams params) {
 
-    return getAsync("/pc2_migration_item_prices", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "pc2MigrationItemPrice",
+            "list",
+            "/pc2_migration_item_prices",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 Pc2MigrationItemPriceListResponse.fromJson(
@@ -113,7 +121,7 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
   /** Async variant of list for pc2MigrationItemPrice without params. */
   public CompletableFuture<Pc2MigrationItemPriceListResponse> listAsync() {
 
-    return getAsync("/pc2_migration_item_prices", null)
+    return getAsync("pc2MigrationItemPrice", "list", "/pc2_migration_item_prices", null)
         .thenApply(
             response ->
                 Pc2MigrationItemPriceListResponse.fromJson(
@@ -128,7 +136,7 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
             "pc2-migration-item-price-id",
             pc2MigrationItemPriceId);
 
-    return post(path, null);
+    return post("pc2MigrationItemPrice", "delete", path, null);
   }
 
   public Pc2MigrationItemPriceDeleteResponse delete(String pc2MigrationItemPriceId)
@@ -146,7 +154,7 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
             "pc2-migration-item-price-id",
             pc2MigrationItemPriceId);
 
-    return postAsync(path, null)
+    return postAsync("pc2MigrationItemPrice", "delete", path, null)
         .thenApply(
             response ->
                 Pc2MigrationItemPriceDeleteResponse.fromJson(response.getBodyAsString(), response));
@@ -160,7 +168,7 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
             "pc2-migration-item-price-id",
             pc2MigrationItemPriceId);
 
-    return get(path, null);
+    return get("pc2MigrationItemPrice", "retrieve", path, null);
   }
 
   public Pc2MigrationItemPriceRetrieveResponse retrieve(String pc2MigrationItemPriceId)
@@ -178,7 +186,7 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
             "pc2-migration-item-price-id",
             pc2MigrationItemPriceId);
 
-    return getAsync(path, null)
+    return getAsync("pc2MigrationItemPrice", "retrieve", path, null)
         .thenApply(
             response ->
                 Pc2MigrationItemPriceRetrieveResponse.fromJson(
@@ -193,7 +201,7 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
             "pc2-migration-item-price-id",
             pc2MigrationItemPriceId);
 
-    return post(path, null);
+    return post("pc2MigrationItemPrice", "update", path, null);
   }
 
   /**
@@ -207,7 +215,7 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
             "/pc2_migration_item_prices/{pc2-migration-item-price-id}",
             "pc2-migration-item-price-id",
             pc2MigrationItemPriceId);
-    return post(path, params.toFormData());
+    return post("pc2MigrationItemPrice", "update", path, params.toFormData());
   }
 
   /**
@@ -220,7 +228,7 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
             "/pc2_migration_item_prices/{pc2-migration-item-price-id}",
             "pc2-migration-item-price-id",
             pc2MigrationItemPriceId);
-    return postJson(path, jsonPayload);
+    return postJson("pc2MigrationItemPrice", "update", path, jsonPayload);
   }
 
   public Pc2MigrationItemPriceUpdateResponse update(
@@ -238,7 +246,7 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
             "/pc2_migration_item_prices/{pc2-migration-item-price-id}",
             "pc2-migration-item-price-id",
             pc2MigrationItemPriceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("pc2MigrationItemPrice", "update", path, params.toFormData())
         .thenApply(
             response ->
                 Pc2MigrationItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response));
@@ -259,7 +267,7 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
             "pc2-migration-item-price-id",
             pc2MigrationItemPriceId);
 
-    return postAsync(path, null)
+    return postAsync("pc2MigrationItemPrice", "update", path, null)
         .thenApply(
             response ->
                 Pc2MigrationItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response));

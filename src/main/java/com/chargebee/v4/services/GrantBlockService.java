@@ -57,13 +57,17 @@ public final class GrantBlockService extends BaseService<GrantBlockService> {
    */
   Response listGrantBlocksRaw(ListGrantBlocksParams params) throws ChargebeeException {
 
-    return get("/grant_blocks", params != null ? params.toQueryParams() : null);
+    return get(
+        "grantBlock",
+        "listGrantBlocks",
+        "/grant_blocks",
+        params != null ? params.toQueryParams() : null);
   }
 
   /** listGrantBlocks a grantBlock without params (executes immediately) - returns raw Response. */
   Response listGrantBlocksRaw() throws ChargebeeException {
 
-    return get("/grant_blocks", null);
+    return get("grantBlock", "listGrantBlocks", "/grant_blocks", null);
   }
 
   /**
@@ -86,7 +90,11 @@ public final class GrantBlockService extends BaseService<GrantBlockService> {
   public CompletableFuture<ListGrantBlocksResponse> listGrantBlocksAsync(
       ListGrantBlocksParams params) {
 
-    return getAsync("/grant_blocks", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "grantBlock",
+            "listGrantBlocks",
+            "/grant_blocks",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ListGrantBlocksResponse.fromJson(
@@ -102,7 +110,7 @@ public final class GrantBlockService extends BaseService<GrantBlockService> {
   /** Async variant of listGrantBlocks for grantBlock without params. */
   public CompletableFuture<ListGrantBlocksResponse> listGrantBlocksAsync() {
 
-    return getAsync("/grant_blocks", null)
+    return getAsync("grantBlock", "listGrantBlocks", "/grant_blocks", null)
         .thenApply(
             response ->
                 ListGrantBlocksResponse.fromJson(response.getBodyAsString(), this, null, response));

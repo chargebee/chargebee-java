@@ -9,6 +9,8 @@ import com.chargebee.v4.exceptions.NetworkException;
 import com.chargebee.v4.exceptions.TimeoutException;
 import com.chargebee.v4.exceptions.TransportException;
 import com.chargebee.v4.internal.RetryConfig;
+import com.chargebee.v4.telemetry.TelemetryAdapter;
+import com.chargebee.v4.telemetry.TelemetryExecutor;
 import com.chargebee.v4.transport.*;
 import com.chargebee.v4.transport.Transport;
 
@@ -40,6 +42,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
     private final String protocol;
     private final RequestInterceptor requestInterceptor;
     private final RequestContext clientHeaders;
+    private final TelemetryAdapter telemetryAdapter;
     private final ScheduledExecutorService retryScheduler;
 
     // Auto-generated service registry for lazy loading
@@ -57,6 +60,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
         this.protocol = builder.protocol;
         this.requestInterceptor = builder.requestInterceptor;
         this.clientHeaders = new RequestContext(builder.clientHeaders.getHeaders());
+        this.telemetryAdapter = builder.telemetryAdapter;
         this.retryScheduler = Executors.newSingleThreadScheduledExecutor(r -> {
             Thread t = new Thread(r, "chargebee-retry-scheduler");
             t.setDaemon(true);
@@ -92,6 +96,11 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
     public String getProtocol() { return protocol; }
     public RequestInterceptor getRequestInterceptor() { return requestInterceptor; }
     public RequestContext getClientHeaders() { return clientHeaders; }
+    public TelemetryAdapter getTelemetryAdapter() { return telemetryAdapter; }
+
+    public String getSdkVersion() {
+        return getVersion();
+    }
 
     @Override
     public void close() {
@@ -303,6 +312,10 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
      * Send a request with retry logic based on the configured RetryConfig.
      */
     public Response sendWithRetry(Request request) {
+        return TelemetryExecutor.execute(this, request, this::sendWithRetryInternal);
+    }
+
+    private Response sendWithRetryInternal(Request request) {
         Request enrichedRequest = addDefaultHeaders(request);
 
         Integer overrideRetries = enrichedRequest.getMaxNetworkRetriesOverride();
@@ -368,6 +381,16 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
 
         if (request.getFollowRedirectsOverride() != null) {
             builder.followRedirectsOverride(request.getFollowRedirectsOverride());
+        }
+
+        if (request.getTelemetryResource() != null) {
+            builder.telemetryResource(request.getTelemetryResource());
+        }
+        if (request.getTelemetryOperation() != null) {
+            builder.telemetryOperation(request.getTelemetryOperation());
+        }
+        if (request.getTelemetryAdapterOverride() != null) {
+            builder.telemetryAdapterOverride(request.getTelemetryAdapterOverride());
         }
 
         addStandardHeaders(builder);
@@ -456,6 +479,10 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
      * Send a request asynchronously with retry logic based on the configured RetryConfig.
      */
     public CompletableFuture<Response> sendWithRetryAsync(Request request) {
+        return TelemetryExecutor.executeAsync(this, request, this::sendWithRetryAsyncInternal);
+    }
+
+    private CompletableFuture<Response> sendWithRetryAsyncInternal(Request request) {
         Request enrichedRequest = addDefaultHeaders(request);
 
         Integer overrideRetries = enrichedRequest.getMaxNetworkRetriesOverride();
@@ -549,6 +576,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
         private String domainSuffix = "chargebee.com";
         private String protocol = "https";
         private RequestInterceptor requestInterceptor;
+        private TelemetryAdapter telemetryAdapter;
         private final RequestContext clientHeaders = new RequestContext();
 
         private Builder() {}
@@ -571,6 +599,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
         public Builder domainSuffix(String domainSuffix) { this.domainSuffix = domainSuffix; return this; }
         public Builder protocol(String protocol) { this.protocol = protocol; return this; }
         public Builder requestInterceptor(RequestInterceptor requestInterceptor) { this.requestInterceptor = requestInterceptor; return this; }
+        public Builder telemetryAdapter(TelemetryAdapter telemetryAdapter) { this.telemetryAdapter = telemetryAdapter; return this; }
 
         // Header helpers
         public Builder header(String name, String value) {

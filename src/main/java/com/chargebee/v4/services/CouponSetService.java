@@ -72,13 +72,13 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   /** list a couponSet using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(CouponSetListParams params) throws ChargebeeException {
 
-    return get("/coupon_sets", params != null ? params.toQueryParams() : null);
+    return get("couponSet", "list", "/coupon_sets", params != null ? params.toQueryParams() : null);
   }
 
   /** list a couponSet without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/coupon_sets", null);
+    return get("couponSet", "list", "/coupon_sets", null);
   }
 
   /** list a couponSet using raw JSON payload (executes immediately) - returns raw Response. */
@@ -96,7 +96,8 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   /** Async variant of list for couponSet with params. */
   public CompletableFuture<CouponSetListResponse> listAsync(CouponSetListParams params) {
 
-    return getAsync("/coupon_sets", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "couponSet", "list", "/coupon_sets", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 CouponSetListResponse.fromJson(response.getBodyAsString(), this, params, response));
@@ -111,7 +112,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   /** Async variant of list for couponSet without params. */
   public CompletableFuture<CouponSetListResponse> listAsync() {
 
-    return getAsync("/coupon_sets", null)
+    return getAsync("couponSet", "list", "/coupon_sets", null)
         .thenApply(
             response ->
                 CouponSetListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -120,13 +121,13 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   /** create a couponSet using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(CouponSetCreateParams params) throws ChargebeeException {
 
-    return post("/coupon_sets", params != null ? params.toFormData() : null);
+    return post("couponSet", "create", "/coupon_sets", params != null ? params.toFormData() : null);
   }
 
   /** create a couponSet using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/coupon_sets", jsonPayload);
+    return postJson("couponSet", "create", "/coupon_sets", jsonPayload);
   }
 
   public CouponSetCreateResponse create(CouponSetCreateParams params) throws ChargebeeException {
@@ -138,7 +139,8 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   /** Async variant of create for couponSet with params. */
   public CompletableFuture<CouponSetCreateResponse> createAsync(CouponSetCreateParams params) {
 
-    return postAsync("/coupon_sets", params != null ? params.toFormData() : null)
+    return postAsync(
+            "couponSet", "create", "/coupon_sets", params != null ? params.toFormData() : null)
         .thenApply(
             response -> CouponSetCreateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -148,21 +150,21 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     String path =
         buildPathWithParams("/coupon_sets/{coupon-set-id}/update", "coupon-set-id", couponSetId);
 
-    return post(path, null);
+    return post("couponSet", "update", path, null);
   }
 
   /** update a couponSet using immutable params (executes immediately) - returns raw Response. */
   Response updateRaw(String couponSetId, CouponSetUpdateParams params) throws ChargebeeException {
     String path =
         buildPathWithParams("/coupon_sets/{coupon-set-id}/update", "coupon-set-id", couponSetId);
-    return post(path, params.toFormData());
+    return post("couponSet", "update", path, params.toFormData());
   }
 
   /** update a couponSet using raw JSON payload (executes immediately) - returns raw Response. */
   Response updateRaw(String couponSetId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/coupon_sets/{coupon-set-id}/update", "coupon-set-id", couponSetId);
-    return postJson(path, jsonPayload);
+    return postJson("couponSet", "update", path, jsonPayload);
   }
 
   public CouponSetUpdateResponse update(String couponSetId, CouponSetUpdateParams params)
@@ -176,7 +178,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
       String couponSetId, CouponSetUpdateParams params) {
     String path =
         buildPathWithParams("/coupon_sets/{coupon-set-id}/update", "coupon-set-id", couponSetId);
-    return postAsync(path, params.toFormData())
+    return postAsync("couponSet", "update", path, params.toFormData())
         .thenApply(
             response -> CouponSetUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -191,7 +193,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     String path =
         buildPathWithParams("/coupon_sets/{coupon-set-id}/update", "coupon-set-id", couponSetId);
 
-    return postAsync(path, null)
+    return postAsync("couponSet", "update", path, null)
         .thenApply(
             response -> CouponSetUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -200,7 +202,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   Response retrieveRaw(String couponSetId) throws ChargebeeException {
     String path = buildPathWithParams("/coupon_sets/{coupon-set-id}", "coupon-set-id", couponSetId);
 
-    return get(path, null);
+    return get("couponSet", "retrieve", path, null);
   }
 
   public CouponSetRetrieveResponse retrieve(String couponSetId) throws ChargebeeException {
@@ -212,7 +214,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   public CompletableFuture<CouponSetRetrieveResponse> retrieveAsync(String couponSetId) {
     String path = buildPathWithParams("/coupon_sets/{coupon-set-id}", "coupon-set-id", couponSetId);
 
-    return getAsync(path, null)
+    return getAsync("couponSet", "retrieve", path, null)
         .thenApply(
             response -> CouponSetRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -223,7 +225,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
         buildPathWithParams(
             "/coupon_sets/{coupon-set-id}/add_coupon_codes", "coupon-set-id", couponSetId);
 
-    return post(path, null);
+    return post("couponSet", "addCouponCodes", path, null);
   }
 
   /**
@@ -235,7 +237,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     String path =
         buildPathWithParams(
             "/coupon_sets/{coupon-set-id}/add_coupon_codes", "coupon-set-id", couponSetId);
-    return post(path, params.toFormData());
+    return post("couponSet", "addCouponCodes", path, params.toFormData());
   }
 
   /**
@@ -246,7 +248,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     String path =
         buildPathWithParams(
             "/coupon_sets/{coupon-set-id}/add_coupon_codes", "coupon-set-id", couponSetId);
-    return postJson(path, jsonPayload);
+    return postJson("couponSet", "addCouponCodes", path, jsonPayload);
   }
 
   public CouponSetAddCouponCodesResponse addCouponCodes(
@@ -261,7 +263,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     String path =
         buildPathWithParams(
             "/coupon_sets/{coupon-set-id}/add_coupon_codes", "coupon-set-id", couponSetId);
-    return postAsync(path, params.toFormData())
+    return postAsync("couponSet", "addCouponCodes", path, params.toFormData())
         .thenApply(
             response ->
                 CouponSetAddCouponCodesResponse.fromJson(response.getBodyAsString(), response));
@@ -280,7 +282,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
         buildPathWithParams(
             "/coupon_sets/{coupon-set-id}/add_coupon_codes", "coupon-set-id", couponSetId);
 
-    return postAsync(path, null)
+    return postAsync("couponSet", "addCouponCodes", path, null)
         .thenApply(
             response ->
                 CouponSetAddCouponCodesResponse.fromJson(response.getBodyAsString(), response));
@@ -294,7 +296,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
             "coupon-set-id",
             couponSetId);
 
-    return post(path, null);
+    return post("couponSet", "deleteUnusedCouponCodes", path, null);
   }
 
   public CouponSetDeleteUnusedCouponCodesResponse deleteUnusedCouponCodes(String couponSetId)
@@ -312,7 +314,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
             "coupon-set-id",
             couponSetId);
 
-    return postAsync(path, null)
+    return postAsync("couponSet", "deleteUnusedCouponCodes", path, null)
         .thenApply(
             response ->
                 CouponSetDeleteUnusedCouponCodesResponse.fromJson(
@@ -324,7 +326,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     String path =
         buildPathWithParams("/coupon_sets/{coupon-set-id}/delete", "coupon-set-id", couponSetId);
 
-    return post(path, null);
+    return post("couponSet", "delete", path, null);
   }
 
   public CouponSetDeleteResponse delete(String couponSetId) throws ChargebeeException {
@@ -337,7 +339,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     String path =
         buildPathWithParams("/coupon_sets/{coupon-set-id}/delete", "coupon-set-id", couponSetId);
 
-    return postAsync(path, null)
+    return postAsync("couponSet", "delete", path, null)
         .thenApply(
             response -> CouponSetDeleteResponse.fromJson(response.getBodyAsString(), response));
   }

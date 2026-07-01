@@ -1,3 +1,14 @@
+### v4.12.0 (2026-06-30)
+* * *
+
+### New Features
+* Added an optional `telemetryAdapter` hook for tracing Chargebee API calls via OpenTelemetry (or any APM). Configure it once on the client (`ChargebeeClient.Builder#telemetryAdapter`) or per call (`RequestOptions.Builder#telemetryAdapter`). When unconfigured, the SDK skips all telemetry work — no behavior change for existing integrations.
+* Each API call emits one CLIENT span (`chargebee.{resource}.{operation}`) with OpenTelemetry HTTP semantic-convention attributes (`url.full`, `http.request.method`, `server.address`, `http.response.status_code`) plus `chargebee.*` attributes. Adapters may inject W3C trace context (`traceparent`, `tracestate`) into outbound request headers for distributed tracing.
+* Exposed the `TelemetryAdapter`, `RequestTelemetryContext`, `RequestTelemetryResult`, `RequestTelemetryError` types, the `TelemetrySupport` helpers, and the `TelemetryAttributeKeys` constants under `com.chargebee.v4.telemetry`.
+* Added a convenience `updateGift(String giftId)` overload (and its `updateGiftAsync` async variant) to `GiftService` for invoking `update_gift` without params.
+
+
+
 ### v4.11.0 (2026-06-29)
 * * *
 ### Bug Fixes:

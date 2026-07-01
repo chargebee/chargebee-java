@@ -69,6 +69,8 @@ public final class ThirdPartyConfigurationService
       throws ChargebeeException {
 
     return get(
+        "thirdPartyConfiguration",
+        "configurations",
         "/third_party_configurations/configurations",
         params != null ? params.toQueryParams() : null);
   }
@@ -95,6 +97,8 @@ public final class ThirdPartyConfigurationService
       ThirdPartyConfigurationConfigurationsParams params) {
 
     return getAsync(
+            "thirdPartyConfiguration",
+            "configurations",
             "/third_party_configurations/configurations",
             params != null ? params.toQueryParams() : null)
         .thenApply(
@@ -109,7 +113,11 @@ public final class ThirdPartyConfigurationService
    */
   Response retrieveRaw(ThirdPartyConfigurationRetrieveParams params) throws ChargebeeException {
 
-    return get("/third_party_configurations", params != null ? params.toQueryParams() : null);
+    return get(
+        "thirdPartyConfiguration",
+        "retrieve",
+        "/third_party_configurations",
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -132,7 +140,11 @@ public final class ThirdPartyConfigurationService
   public CompletableFuture<ThirdPartyConfigurationRetrieveResponse> retrieveAsync(
       ThirdPartyConfigurationRetrieveParams params) {
 
-    return getAsync("/third_party_configurations", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "thirdPartyConfiguration",
+            "retrieve",
+            "/third_party_configurations",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ThirdPartyConfigurationRetrieveResponse.fromJson(
@@ -145,7 +157,11 @@ public final class ThirdPartyConfigurationService
    */
   Response updateRaw(ThirdPartyConfigurationUpdateParams params) throws ChargebeeException {
 
-    return post("/third_party_configurations", params != null ? params.toFormData() : null);
+    return post(
+        "thirdPartyConfiguration",
+        "update",
+        "/third_party_configurations",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -154,7 +170,8 @@ public final class ThirdPartyConfigurationService
    */
   Response updateRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/third_party_configurations", jsonPayload);
+    return postJson(
+        "thirdPartyConfiguration", "update", "/third_party_configurations", jsonPayload);
   }
 
   public ThirdPartyConfigurationUpdateResponse update(ThirdPartyConfigurationUpdateParams params)
@@ -168,7 +185,11 @@ public final class ThirdPartyConfigurationService
   public CompletableFuture<ThirdPartyConfigurationUpdateResponse> updateAsync(
       ThirdPartyConfigurationUpdateParams params) {
 
-    return postAsync("/third_party_configurations", params != null ? params.toFormData() : null)
+    return postAsync(
+            "thirdPartyConfiguration",
+            "update",
+            "/third_party_configurations",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 ThirdPartyConfigurationUpdateResponse.fromJson(

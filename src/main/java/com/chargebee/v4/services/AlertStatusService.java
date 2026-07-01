@@ -64,7 +64,11 @@ public final class AlertStatusService extends BaseService<AlertStatusService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/alert_statuses", "subscription-id", subscriptionId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "alertStatus",
+        "alertStatusesForSubscription",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -75,7 +79,7 @@ public final class AlertStatusService extends BaseService<AlertStatusService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/alert_statuses", "subscription-id", subscriptionId);
-    return get(path, null);
+    return get("alertStatus", "alertStatusesForSubscription", path, null);
   }
 
   /**
@@ -110,7 +114,11 @@ public final class AlertStatusService extends BaseService<AlertStatusService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/alert_statuses", "subscription-id", subscriptionId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "alertStatus",
+            "alertStatusesForSubscription",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 AlertStatusesForSubscriptionResponse.fromJson(
@@ -123,7 +131,7 @@ public final class AlertStatusService extends BaseService<AlertStatusService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/alert_statuses", "subscription-id", subscriptionId);
-    return getAsync(path, null)
+    return getAsync("alertStatus", "alertStatusesForSubscription", path, null)
         .thenApply(
             response ->
                 AlertStatusesForSubscriptionResponse.fromJson(
@@ -137,7 +145,11 @@ public final class AlertStatusService extends BaseService<AlertStatusService> {
   Response alertStatusesForAlertRaw(String alertId, AlertStatusesForAlertParams params)
       throws ChargebeeException {
     String path = buildPathWithParams("/alerts/{alert-id}/alert_statuses", "alert-id", alertId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "alertStatus",
+        "alertStatusesForAlert",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -146,7 +158,7 @@ public final class AlertStatusService extends BaseService<AlertStatusService> {
    */
   Response alertStatusesForAlertRaw(String alertId) throws ChargebeeException {
     String path = buildPathWithParams("/alerts/{alert-id}/alert_statuses", "alert-id", alertId);
-    return get(path, null);
+    return get("alertStatus", "alertStatusesForAlert", path, null);
   }
 
   /**
@@ -176,7 +188,11 @@ public final class AlertStatusService extends BaseService<AlertStatusService> {
   public CompletableFuture<AlertStatusesForAlertResponse> alertStatusesForAlertAsync(
       String alertId, AlertStatusesForAlertParams params) {
     String path = buildPathWithParams("/alerts/{alert-id}/alert_statuses", "alert-id", alertId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "alertStatus",
+            "alertStatusesForAlert",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 AlertStatusesForAlertResponse.fromJson(
@@ -187,7 +203,7 @@ public final class AlertStatusService extends BaseService<AlertStatusService> {
   public CompletableFuture<AlertStatusesForAlertResponse> alertStatusesForAlertAsync(
       String alertId) {
     String path = buildPathWithParams("/alerts/{alert-id}/alert_statuses", "alert-id", alertId);
-    return getAsync(path, null)
+    return getAsync("alertStatus", "alertStatusesForAlert", path, null)
         .thenApply(
             response ->
                 AlertStatusesForAlertResponse.fromJson(

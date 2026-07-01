@@ -65,7 +65,8 @@ public final class PortalSessionService extends BaseService<PortalSessionService
    */
   Response createRaw(PortalSessionCreateParams params) throws ChargebeeException {
 
-    return post("/portal_sessions", params != null ? params.toFormData() : null);
+    return post(
+        "portalSession", "create", "/portal_sessions", params != null ? params.toFormData() : null);
   }
 
   /**
@@ -73,7 +74,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
    */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/portal_sessions", jsonPayload);
+    return postJson("portalSession", "create", "/portal_sessions", jsonPayload);
   }
 
   public PortalSessionCreateResponse create(PortalSessionCreateParams params)
@@ -87,7 +88,11 @@ public final class PortalSessionService extends BaseService<PortalSessionService
   public CompletableFuture<PortalSessionCreateResponse> createAsync(
       PortalSessionCreateParams params) {
 
-    return postAsync("/portal_sessions", params != null ? params.toFormData() : null)
+    return postAsync(
+            "portalSession",
+            "create",
+            "/portal_sessions",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> PortalSessionCreateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -98,7 +103,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
         buildPathWithParams(
             "/portal_sessions/{portal-session-id}/activate", "portal-session-id", portalSessionId);
 
-    return post(path, null);
+    return post("portalSession", "activate", path, null);
   }
 
   /**
@@ -109,7 +114,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
     String path =
         buildPathWithParams(
             "/portal_sessions/{portal-session-id}/activate", "portal-session-id", portalSessionId);
-    return post(path, params.toFormData());
+    return post("portalSession", "activate", path, params.toFormData());
   }
 
   /**
@@ -119,7 +124,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
     String path =
         buildPathWithParams(
             "/portal_sessions/{portal-session-id}/activate", "portal-session-id", portalSessionId);
-    return postJson(path, jsonPayload);
+    return postJson("portalSession", "activate", path, jsonPayload);
   }
 
   public PortalSessionActivateResponse activate(
@@ -134,7 +139,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
     String path =
         buildPathWithParams(
             "/portal_sessions/{portal-session-id}/activate", "portal-session-id", portalSessionId);
-    return postAsync(path, params.toFormData())
+    return postAsync("portalSession", "activate", path, params.toFormData())
         .thenApply(
             response ->
                 PortalSessionActivateResponse.fromJson(response.getBodyAsString(), response));
@@ -146,7 +151,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
         buildPathWithParams(
             "/portal_sessions/{portal-session-id}/logout", "portal-session-id", portalSessionId);
 
-    return post(path, null);
+    return post("portalSession", "logout", path, null);
   }
 
   public PortalSessionLogoutResponse logout(String portalSessionId) throws ChargebeeException {
@@ -160,7 +165,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
         buildPathWithParams(
             "/portal_sessions/{portal-session-id}/logout", "portal-session-id", portalSessionId);
 
-    return postAsync(path, null)
+    return postAsync("portalSession", "logout", path, null)
         .thenApply(
             response -> PortalSessionLogoutResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -171,7 +176,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
         buildPathWithParams(
             "/portal_sessions/{portal-session-id}", "portal-session-id", portalSessionId);
 
-    return get(path, null);
+    return get("portalSession", "retrieve", path, null);
   }
 
   public PortalSessionRetrieveResponse retrieve(String portalSessionId) throws ChargebeeException {
@@ -185,7 +190,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
         buildPathWithParams(
             "/portal_sessions/{portal-session-id}", "portal-session-id", portalSessionId);
 
-    return getAsync(path, null)
+    return getAsync("portalSession", "retrieve", path, null)
         .thenApply(
             response ->
                 PortalSessionRetrieveResponse.fromJson(response.getBodyAsString(), response));

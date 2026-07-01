@@ -60,7 +60,10 @@ public final class ResourceMigrationService extends BaseService<ResourceMigratio
       throws ChargebeeException {
 
     return get(
-        "/resource_migrations/retrieve_latest", params != null ? params.toQueryParams() : null);
+        "resourceMigration",
+        "retrieveLatest",
+        "/resource_migrations/retrieve_latest",
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -84,7 +87,10 @@ public final class ResourceMigrationService extends BaseService<ResourceMigratio
       ResourceMigrationRetrieveLatestParams params) {
 
     return getAsync(
-            "/resource_migrations/retrieve_latest", params != null ? params.toQueryParams() : null)
+            "resourceMigration",
+            "retrieveLatest",
+            "/resource_migrations/retrieve_latest",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ResourceMigrationRetrieveLatestResponse.fromJson(

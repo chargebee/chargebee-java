@@ -73,7 +73,7 @@ public final class PlanService extends BaseService<PlanService> {
   Response unarchiveRaw(String planId) throws ChargebeeException {
     String path = buildPathWithParams("/plans/{plan-id}/unarchive", "plan-id", planId);
 
-    return post(path, null);
+    return post("plan", "unarchive", path, null);
   }
 
   public PlanUnarchiveResponse unarchive(String planId) throws ChargebeeException {
@@ -85,7 +85,7 @@ public final class PlanService extends BaseService<PlanService> {
   public CompletableFuture<PlanUnarchiveResponse> unarchiveAsync(String planId) {
     String path = buildPathWithParams("/plans/{plan-id}/unarchive", "plan-id", planId);
 
-    return postAsync(path, null)
+    return postAsync("plan", "unarchive", path, null)
         .thenApply(
             response -> PlanUnarchiveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -94,7 +94,7 @@ public final class PlanService extends BaseService<PlanService> {
   Response deleteRaw(String planId) throws ChargebeeException {
     String path = buildPathWithParams("/plans/{plan-id}/delete", "plan-id", planId);
 
-    return post(path, null);
+    return post("plan", "delete", path, null);
   }
 
   public PlanDeleteResponse delete(String planId) throws ChargebeeException {
@@ -106,20 +106,20 @@ public final class PlanService extends BaseService<PlanService> {
   public CompletableFuture<PlanDeleteResponse> deleteAsync(String planId) {
     String path = buildPathWithParams("/plans/{plan-id}/delete", "plan-id", planId);
 
-    return postAsync(path, null)
+    return postAsync("plan", "delete", path, null)
         .thenApply(response -> PlanDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** copy a plan using immutable params (executes immediately) - returns raw Response. */
   Response copyRaw(PlanCopyParams params) throws ChargebeeException {
 
-    return post("/plans/copy", params != null ? params.toFormData() : null);
+    return post("plan", "copy", "/plans/copy", params != null ? params.toFormData() : null);
   }
 
   /** copy a plan using raw JSON payload (executes immediately) - returns raw Response. */
   Response copyRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/plans/copy", jsonPayload);
+    return postJson("plan", "copy", "/plans/copy", jsonPayload);
   }
 
   public PlanCopyResponse copy(PlanCopyParams params) throws ChargebeeException {
@@ -131,20 +131,20 @@ public final class PlanService extends BaseService<PlanService> {
   /** Async variant of copy for plan with params. */
   public CompletableFuture<PlanCopyResponse> copyAsync(PlanCopyParams params) {
 
-    return postAsync("/plans/copy", params != null ? params.toFormData() : null)
+    return postAsync("plan", "copy", "/plans/copy", params != null ? params.toFormData() : null)
         .thenApply(response -> PlanCopyResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** list a plan using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(PlanListParams params) throws ChargebeeException {
 
-    return get("/plans", params != null ? params.toQueryParams() : null);
+    return get("plan", "list", "/plans", params != null ? params.toQueryParams() : null);
   }
 
   /** list a plan without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/plans", null);
+    return get("plan", "list", "/plans", null);
   }
 
   /** list a plan using raw JSON payload (executes immediately) - returns raw Response. */
@@ -162,7 +162,7 @@ public final class PlanService extends BaseService<PlanService> {
   /** Async variant of list for plan with params. */
   public CompletableFuture<PlanListResponse> listAsync(PlanListParams params) {
 
-    return getAsync("/plans", params != null ? params.toQueryParams() : null)
+    return getAsync("plan", "list", "/plans", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 PlanListResponse.fromJson(response.getBodyAsString(), this, params, response));
@@ -177,7 +177,7 @@ public final class PlanService extends BaseService<PlanService> {
   /** Async variant of list for plan without params. */
   public CompletableFuture<PlanListResponse> listAsync() {
 
-    return getAsync("/plans", null)
+    return getAsync("plan", "list", "/plans", null)
         .thenApply(
             response ->
                 PlanListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -186,13 +186,13 @@ public final class PlanService extends BaseService<PlanService> {
   /** create a plan using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(PlanCreateParams params) throws ChargebeeException {
 
-    return post("/plans", params != null ? params.toFormData() : null);
+    return post("plan", "create", "/plans", params != null ? params.toFormData() : null);
   }
 
   /** create a plan using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/plans", jsonPayload);
+    return postJson("plan", "create", "/plans", jsonPayload);
   }
 
   public PlanCreateResponse create(PlanCreateParams params) throws ChargebeeException {
@@ -204,7 +204,7 @@ public final class PlanService extends BaseService<PlanService> {
   /** Async variant of create for plan with params. */
   public CompletableFuture<PlanCreateResponse> createAsync(PlanCreateParams params) {
 
-    return postAsync("/plans", params != null ? params.toFormData() : null)
+    return postAsync("plan", "create", "/plans", params != null ? params.toFormData() : null)
         .thenApply(response -> PlanCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -212,7 +212,7 @@ public final class PlanService extends BaseService<PlanService> {
   Response retrieveRaw(String planId) throws ChargebeeException {
     String path = buildPathWithParams("/plans/{plan-id}", "plan-id", planId);
 
-    return get(path, null);
+    return get("plan", "retrieve", path, null);
   }
 
   public PlanRetrieveResponse retrieve(String planId) throws ChargebeeException {
@@ -224,7 +224,7 @@ public final class PlanService extends BaseService<PlanService> {
   public CompletableFuture<PlanRetrieveResponse> retrieveAsync(String planId) {
     String path = buildPathWithParams("/plans/{plan-id}", "plan-id", planId);
 
-    return getAsync(path, null)
+    return getAsync("plan", "retrieve", path, null)
         .thenApply(response -> PlanRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -232,19 +232,19 @@ public final class PlanService extends BaseService<PlanService> {
   Response updateRaw(String planId) throws ChargebeeException {
     String path = buildPathWithParams("/plans/{plan-id}", "plan-id", planId);
 
-    return post(path, null);
+    return post("plan", "update", path, null);
   }
 
   /** update a plan using immutable params (executes immediately) - returns raw Response. */
   Response updateRaw(String planId, PlanUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/plans/{plan-id}", "plan-id", planId);
-    return post(path, params.toFormData());
+    return post("plan", "update", path, params.toFormData());
   }
 
   /** update a plan using raw JSON payload (executes immediately) - returns raw Response. */
   Response updateRaw(String planId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/plans/{plan-id}", "plan-id", planId);
-    return postJson(path, jsonPayload);
+    return postJson("plan", "update", path, jsonPayload);
   }
 
   public PlanUpdateResponse update(String planId, PlanUpdateParams params)
@@ -256,7 +256,7 @@ public final class PlanService extends BaseService<PlanService> {
   /** Async variant of update for plan with params. */
   public CompletableFuture<PlanUpdateResponse> updateAsync(String planId, PlanUpdateParams params) {
     String path = buildPathWithParams("/plans/{plan-id}", "plan-id", planId);
-    return postAsync(path, params.toFormData())
+    return postAsync("plan", "update", path, params.toFormData())
         .thenApply(response -> PlanUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -269,7 +269,7 @@ public final class PlanService extends BaseService<PlanService> {
   public CompletableFuture<PlanUpdateResponse> updateAsync(String planId) {
     String path = buildPathWithParams("/plans/{plan-id}", "plan-id", planId);
 
-    return postAsync(path, null)
+    return postAsync("plan", "update", path, null)
         .thenApply(response -> PlanUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

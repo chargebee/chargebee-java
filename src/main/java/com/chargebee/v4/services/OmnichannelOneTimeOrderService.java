@@ -61,7 +61,11 @@ public final class OmnichannelOneTimeOrderService
    */
   Response listRaw(OmnichannelOneTimeOrderListParams params) throws ChargebeeException {
 
-    return get("/omnichannel_one_time_orders", params != null ? params.toQueryParams() : null);
+    return get(
+        "omnichannelOneTimeOrder",
+        "list",
+        "/omnichannel_one_time_orders",
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -69,7 +73,7 @@ public final class OmnichannelOneTimeOrderService
    */
   Response listRaw() throws ChargebeeException {
 
-    return get("/omnichannel_one_time_orders", null);
+    return get("omnichannelOneTimeOrder", "list", "/omnichannel_one_time_orders", null);
   }
 
   /**
@@ -93,7 +97,11 @@ public final class OmnichannelOneTimeOrderService
   public CompletableFuture<OmnichannelOneTimeOrderListResponse> listAsync(
       OmnichannelOneTimeOrderListParams params) {
 
-    return getAsync("/omnichannel_one_time_orders", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "omnichannelOneTimeOrder",
+            "list",
+            "/omnichannel_one_time_orders",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 OmnichannelOneTimeOrderListResponse.fromJson(
@@ -110,7 +118,7 @@ public final class OmnichannelOneTimeOrderService
   /** Async variant of list for omnichannelOneTimeOrder without params. */
   public CompletableFuture<OmnichannelOneTimeOrderListResponse> listAsync() {
 
-    return getAsync("/omnichannel_one_time_orders", null)
+    return getAsync("omnichannelOneTimeOrder", "list", "/omnichannel_one_time_orders", null)
         .thenApply(
             response ->
                 OmnichannelOneTimeOrderListResponse.fromJson(
@@ -125,7 +133,7 @@ public final class OmnichannelOneTimeOrderService
             "omnichannel-one-time-order-id",
             omnichannelOneTimeOrderId);
 
-    return get(path, null);
+    return get("omnichannelOneTimeOrder", "retrieve", path, null);
   }
 
   public OmnichannelOneTimeOrderRetrieveResponse retrieve(String omnichannelOneTimeOrderId)
@@ -143,7 +151,7 @@ public final class OmnichannelOneTimeOrderService
             "omnichannel-one-time-order-id",
             omnichannelOneTimeOrderId);
 
-    return getAsync(path, null)
+    return getAsync("omnichannelOneTimeOrder", "retrieve", path, null)
         .thenApply(
             response ->
                 OmnichannelOneTimeOrderRetrieveResponse.fromJson(

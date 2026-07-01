@@ -58,13 +58,17 @@ public final class SiteMigrationDetailService extends BaseService<SiteMigrationD
    */
   Response listRaw(SiteMigrationDetailListParams params) throws ChargebeeException {
 
-    return get("/site_migration_details", params != null ? params.toQueryParams() : null);
+    return get(
+        "siteMigrationDetail",
+        "list",
+        "/site_migration_details",
+        params != null ? params.toQueryParams() : null);
   }
 
   /** list a siteMigrationDetail without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/site_migration_details", null);
+    return get("siteMigrationDetail", "list", "/site_migration_details", null);
   }
 
   /**
@@ -88,7 +92,11 @@ public final class SiteMigrationDetailService extends BaseService<SiteMigrationD
   public CompletableFuture<SiteMigrationDetailListResponse> listAsync(
       SiteMigrationDetailListParams params) {
 
-    return getAsync("/site_migration_details", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "siteMigrationDetail",
+            "list",
+            "/site_migration_details",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 SiteMigrationDetailListResponse.fromJson(
@@ -105,7 +113,7 @@ public final class SiteMigrationDetailService extends BaseService<SiteMigrationD
   /** Async variant of list for siteMigrationDetail without params. */
   public CompletableFuture<SiteMigrationDetailListResponse> listAsync() {
 
-    return getAsync("/site_migration_details", null)
+    return getAsync("siteMigrationDetail", "list", "/site_migration_details", null)
         .thenApply(
             response ->
                 SiteMigrationDetailListResponse.fromJson(

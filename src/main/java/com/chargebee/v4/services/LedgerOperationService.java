@@ -78,7 +78,10 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
       throws ChargebeeException {
 
     return postJson(
-        "/ledger_operations/release_authorization", params != null ? params.toJsonString() : null);
+        "ledgerOperation",
+        "releaseAuthorization",
+        "/ledger_operations/release_authorization",
+        params != null ? params.toJsonString() : null);
   }
 
   /**
@@ -87,7 +90,11 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
    */
   Response releaseAuthorizationRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/ledger_operations/release_authorization", jsonPayload);
+    return postJson(
+        "ledgerOperation",
+        "releaseAuthorization",
+        "/ledger_operations/release_authorization",
+        jsonPayload);
   }
 
   public LedgerOperationReleaseAuthorizationResponse releaseAuthorization(
@@ -103,6 +110,8 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
       LedgerOperationReleaseAuthorizationParams params) {
 
     return postJsonAsync(
+            "ledgerOperation",
+            "releaseAuthorization",
             "/ledger_operations/release_authorization",
             params != null ? params.toJsonString() : null)
         .thenApply(
@@ -116,7 +125,11 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
    */
   Response captureRaw(LedgerOperationCaptureParams params) throws ChargebeeException {
 
-    return postJson("/ledger_operations/capture", params != null ? params.toJsonString() : null);
+    return postJson(
+        "ledgerOperation",
+        "capture",
+        "/ledger_operations/capture",
+        params != null ? params.toJsonString() : null);
   }
 
   /**
@@ -124,7 +137,7 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
    */
   Response captureRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/ledger_operations/capture", jsonPayload);
+    return postJson("ledgerOperation", "capture", "/ledger_operations/capture", jsonPayload);
   }
 
   public LedgerOperationCaptureResponse capture(LedgerOperationCaptureParams params)
@@ -139,7 +152,10 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
       LedgerOperationCaptureParams params) {
 
     return postJsonAsync(
-            "/ledger_operations/capture", params != null ? params.toJsonString() : null)
+            "ledgerOperation",
+            "capture",
+            "/ledger_operations/capture",
+            params != null ? params.toJsonString() : null)
         .thenApply(
             response ->
                 LedgerOperationCaptureResponse.fromJson(response.getBodyAsString(), response));
@@ -151,7 +167,11 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
    */
   Response authorizeRaw(LedgerOperationAuthorizeParams params) throws ChargebeeException {
 
-    return postJson("/ledger_operations/authorize", params != null ? params.toJsonString() : null);
+    return postJson(
+        "ledgerOperation",
+        "authorize",
+        "/ledger_operations/authorize",
+        params != null ? params.toJsonString() : null);
   }
 
   /**
@@ -160,7 +180,7 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
    */
   Response authorizeRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/ledger_operations/authorize", jsonPayload);
+    return postJson("ledgerOperation", "authorize", "/ledger_operations/authorize", jsonPayload);
   }
 
   public LedgerOperationAuthorizeResponse authorize(LedgerOperationAuthorizeParams params)
@@ -175,7 +195,10 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
       LedgerOperationAuthorizeParams params) {
 
     return postJsonAsync(
-            "/ledger_operations/authorize", params != null ? params.toJsonString() : null)
+            "ledgerOperation",
+            "authorize",
+            "/ledger_operations/authorize",
+            params != null ? params.toJsonString() : null)
         .thenApply(
             response ->
                 LedgerOperationAuthorizeResponse.fromJson(response.getBodyAsString(), response));
@@ -187,7 +210,11 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
    */
   Response listLedgerOperationsRaw(ListLedgerOperationsParams params) throws ChargebeeException {
 
-    return get("/ledger_operations", params != null ? params.toQueryParams() : null);
+    return get(
+        "ledgerOperation",
+        "listLedgerOperations",
+        "/ledger_operations",
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -196,7 +223,7 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
    */
   Response listLedgerOperationsRaw() throws ChargebeeException {
 
-    return get("/ledger_operations", null);
+    return get("ledgerOperation", "listLedgerOperations", "/ledger_operations", null);
   }
 
   /**
@@ -220,7 +247,11 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
   public CompletableFuture<ListLedgerOperationsResponse> listLedgerOperationsAsync(
       ListLedgerOperationsParams params) {
 
-    return getAsync("/ledger_operations", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "ledgerOperation",
+            "listLedgerOperations",
+            "/ledger_operations",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ListLedgerOperationsResponse.fromJson(
@@ -236,7 +267,7 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
   /** Async variant of listLedgerOperations for ledgerOperation without params. */
   public CompletableFuture<ListLedgerOperationsResponse> listLedgerOperationsAsync() {
 
-    return getAsync("/ledger_operations", null)
+    return getAsync("ledgerOperation", "listLedgerOperations", "/ledger_operations", null)
         .thenApply(
             response ->
                 ListLedgerOperationsResponse.fromJson(
@@ -251,7 +282,10 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
       throws ChargebeeException {
 
     return postJson(
-        "/ledger_operations/capture_authorization", params != null ? params.toJsonString() : null);
+        "ledgerOperation",
+        "captureAuthorization",
+        "/ledger_operations/capture_authorization",
+        params != null ? params.toJsonString() : null);
   }
 
   /**
@@ -260,7 +294,11 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
    */
   Response captureAuthorizationRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/ledger_operations/capture_authorization", jsonPayload);
+    return postJson(
+        "ledgerOperation",
+        "captureAuthorization",
+        "/ledger_operations/capture_authorization",
+        jsonPayload);
   }
 
   public LedgerOperationCaptureAuthorizationResponse captureAuthorization(
@@ -276,6 +314,8 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
       LedgerOperationCaptureAuthorizationParams params) {
 
     return postJsonAsync(
+            "ledgerOperation",
+            "captureAuthorization",
             "/ledger_operations/capture_authorization",
             params != null ? params.toJsonString() : null)
         .thenApply(
@@ -290,7 +330,7 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
         buildPathWithParams(
             "/ledger_operations/{ledger-operation-id}", "ledger-operation-id", ledgerOperationId);
 
-    return get(path, null);
+    return get("ledgerOperation", "retrieveLedgerOperation", path, null);
   }
 
   public RetrieveLedgerOperationResponse retrieveLedgerOperation(String ledgerOperationId)
@@ -306,7 +346,7 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
         buildPathWithParams(
             "/ledger_operations/{ledger-operation-id}", "ledger-operation-id", ledgerOperationId);
 
-    return getAsync(path, null)
+    return getAsync("ledgerOperation", "retrieveLedgerOperation", path, null)
         .thenApply(
             response ->
                 RetrieveLedgerOperationResponse.fromJson(response.getBodyAsString(), response));

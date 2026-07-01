@@ -64,6 +64,8 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
       PricingPageSessionCreateForExistingSubscriptionParams params) throws ChargebeeException {
 
     return post(
+        "pricingPageSession",
+        "createForExistingSubscription",
         "/pricing_page_sessions/create_for_existing_subscription",
         params != null ? params.toFormData() : null);
   }
@@ -74,7 +76,11 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
    */
   Response createForExistingSubscriptionRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/pricing_page_sessions/create_for_existing_subscription", jsonPayload);
+    return postJson(
+        "pricingPageSession",
+        "createForExistingSubscription",
+        "/pricing_page_sessions/create_for_existing_subscription",
+        jsonPayload);
   }
 
   public PricingPageSessionCreateForExistingSubscriptionResponse createForExistingSubscription(
@@ -91,6 +97,8 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
           PricingPageSessionCreateForExistingSubscriptionParams params) {
 
     return postAsync(
+            "pricingPageSession",
+            "createForExistingSubscription",
             "/pricing_page_sessions/create_for_existing_subscription",
             params != null ? params.toFormData() : null)
         .thenApply(
@@ -107,6 +115,8 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
       throws ChargebeeException {
 
     return post(
+        "pricingPageSession",
+        "createForNewSubscription",
         "/pricing_page_sessions/create_for_new_subscription",
         params != null ? params.toFormData() : null);
   }
@@ -117,7 +127,11 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
    */
   Response createForNewSubscriptionRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/pricing_page_sessions/create_for_new_subscription", jsonPayload);
+    return postJson(
+        "pricingPageSession",
+        "createForNewSubscription",
+        "/pricing_page_sessions/create_for_new_subscription",
+        jsonPayload);
   }
 
   public PricingPageSessionCreateForNewSubscriptionResponse createForNewSubscription(
@@ -133,6 +147,8 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
       createForNewSubscriptionAsync(PricingPageSessionCreateForNewSubscriptionParams params) {
 
     return postAsync(
+            "pricingPageSession",
+            "createForNewSubscription",
             "/pricing_page_sessions/create_for_new_subscription",
             params != null ? params.toFormData() : null)
         .thenApply(

@@ -69,7 +69,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
         buildPathWithParams(
             "/item_families/{item-family-id}/delete", "item-family-id", itemFamilyId);
 
-    return post(path, null);
+    return post("itemFamily", "delete", path, null);
   }
 
   public ItemFamilyDeleteResponse delete(String itemFamilyId) throws ChargebeeException {
@@ -83,7 +83,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
         buildPathWithParams(
             "/item_families/{item-family-id}/delete", "item-family-id", itemFamilyId);
 
-    return postAsync(path, null)
+    return postAsync("itemFamily", "delete", path, null)
         .thenApply(
             response -> ItemFamilyDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -91,13 +91,14 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
   /** list a itemFamily using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(ItemFamilyListParams params) throws ChargebeeException {
 
-    return get("/item_families", params != null ? params.toQueryParams() : null);
+    return get(
+        "itemFamily", "list", "/item_families", params != null ? params.toQueryParams() : null);
   }
 
   /** list a itemFamily without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/item_families", null);
+    return get("itemFamily", "list", "/item_families", null);
   }
 
   /** list a itemFamily using raw JSON payload (executes immediately) - returns raw Response. */
@@ -115,7 +116,8 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
   /** Async variant of list for itemFamily with params. */
   public CompletableFuture<ItemFamilyListResponse> listAsync(ItemFamilyListParams params) {
 
-    return getAsync("/item_families", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "itemFamily", "list", "/item_families", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 ItemFamilyListResponse.fromJson(
@@ -131,7 +133,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
   /** Async variant of list for itemFamily without params. */
   public CompletableFuture<ItemFamilyListResponse> listAsync() {
 
-    return getAsync("/item_families", null)
+    return getAsync("itemFamily", "list", "/item_families", null)
         .thenApply(
             response ->
                 ItemFamilyListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -140,13 +142,14 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
   /** create a itemFamily using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(ItemFamilyCreateParams params) throws ChargebeeException {
 
-    return post("/item_families", params != null ? params.toFormData() : null);
+    return post(
+        "itemFamily", "create", "/item_families", params != null ? params.toFormData() : null);
   }
 
   /** create a itemFamily using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/item_families", jsonPayload);
+    return postJson("itemFamily", "create", "/item_families", jsonPayload);
   }
 
   public ItemFamilyCreateResponse create(ItemFamilyCreateParams params) throws ChargebeeException {
@@ -158,7 +161,8 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
   /** Async variant of create for itemFamily with params. */
   public CompletableFuture<ItemFamilyCreateResponse> createAsync(ItemFamilyCreateParams params) {
 
-    return postAsync("/item_families", params != null ? params.toFormData() : null)
+    return postAsync(
+            "itemFamily", "create", "/item_families", params != null ? params.toFormData() : null)
         .thenApply(
             response -> ItemFamilyCreateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -168,7 +172,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     String path =
         buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);
 
-    return get(path, null);
+    return get("itemFamily", "retrieve", path, null);
   }
 
   public ItemFamilyRetrieveResponse retrieve(String itemFamilyId) throws ChargebeeException {
@@ -181,7 +185,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     String path =
         buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);
 
-    return getAsync(path, null)
+    return getAsync("itemFamily", "retrieve", path, null)
         .thenApply(
             response -> ItemFamilyRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -191,21 +195,21 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     String path =
         buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);
 
-    return post(path, null);
+    return post("itemFamily", "update", path, null);
   }
 
   /** update a itemFamily using immutable params (executes immediately) - returns raw Response. */
   Response updateRaw(String itemFamilyId, ItemFamilyUpdateParams params) throws ChargebeeException {
     String path =
         buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);
-    return post(path, params.toFormData());
+    return post("itemFamily", "update", path, params.toFormData());
   }
 
   /** update a itemFamily using raw JSON payload (executes immediately) - returns raw Response. */
   Response updateRaw(String itemFamilyId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);
-    return postJson(path, jsonPayload);
+    return postJson("itemFamily", "update", path, jsonPayload);
   }
 
   public ItemFamilyUpdateResponse update(String itemFamilyId, ItemFamilyUpdateParams params)
@@ -219,7 +223,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
       String itemFamilyId, ItemFamilyUpdateParams params) {
     String path =
         buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);
-    return postAsync(path, params.toFormData())
+    return postAsync("itemFamily", "update", path, params.toFormData())
         .thenApply(
             response -> ItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -234,7 +238,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     String path =
         buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);
 
-    return postAsync(path, null)
+    return postAsync("itemFamily", "update", path, null)
         .thenApply(
             response -> ItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response));
   }

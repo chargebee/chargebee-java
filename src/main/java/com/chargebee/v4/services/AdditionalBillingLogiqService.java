@@ -59,7 +59,11 @@ public final class AdditionalBillingLogiqService
    */
   Response retrieveRaw(AdditionalBillingLogiqRetrieveParams params) throws ChargebeeException {
 
-    return get("/additional_billing_logiqs", params != null ? params.toQueryParams() : null);
+    return get(
+        "additionalBillingLogiq",
+        "retrieve",
+        "/additional_billing_logiqs",
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -67,7 +71,7 @@ public final class AdditionalBillingLogiqService
    */
   Response retrieveRaw() throws ChargebeeException {
 
-    return get("/additional_billing_logiqs", null);
+    return get("additionalBillingLogiq", "retrieve", "/additional_billing_logiqs", null);
   }
 
   /**
@@ -90,7 +94,11 @@ public final class AdditionalBillingLogiqService
   public CompletableFuture<AdditionalBillingLogiqRetrieveResponse> retrieveAsync(
       AdditionalBillingLogiqRetrieveParams params) {
 
-    return getAsync("/additional_billing_logiqs", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "additionalBillingLogiq",
+            "retrieve",
+            "/additional_billing_logiqs",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 AdditionalBillingLogiqRetrieveResponse.fromJson(
@@ -106,7 +114,7 @@ public final class AdditionalBillingLogiqService
   /** Async variant of retrieve for additionalBillingLogiq without params. */
   public CompletableFuture<AdditionalBillingLogiqRetrieveResponse> retrieveAsync() {
 
-    return getAsync("/additional_billing_logiqs", null)
+    return getAsync("additionalBillingLogiq", "retrieve", "/additional_billing_logiqs", null)
         .thenApply(
             response ->
                 AdditionalBillingLogiqRetrieveResponse.fromJson(

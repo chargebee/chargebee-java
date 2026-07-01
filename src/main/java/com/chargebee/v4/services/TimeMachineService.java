@@ -69,7 +69,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
         buildPathWithParams(
             "/time_machines/{time-machine-name}", "time-machine-name", timeMachineName);
 
-    return get(path, null);
+    return get("timeMachine", "retrieve", path, null);
   }
 
   public TimeMachineRetrieveResponse retrieve(String timeMachineName) throws ChargebeeException {
@@ -83,7 +83,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
         buildPathWithParams(
             "/time_machines/{time-machine-name}", "time-machine-name", timeMachineName);
 
-    return getAsync(path, null)
+    return getAsync("timeMachine", "retrieve", path, null)
         .thenApply(
             response -> TimeMachineRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -96,7 +96,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
             "time-machine-name",
             timeMachineName);
 
-    return post(path, null);
+    return post("timeMachine", "travelForward", path, null);
   }
 
   /**
@@ -110,7 +110,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
             "/time_machines/{time-machine-name}/travel_forward",
             "time-machine-name",
             timeMachineName);
-    return post(path, params.toFormData());
+    return post("timeMachine", "travelForward", path, params.toFormData());
   }
 
   /**
@@ -123,7 +123,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
             "/time_machines/{time-machine-name}/travel_forward",
             "time-machine-name",
             timeMachineName);
-    return postJson(path, jsonPayload);
+    return postJson("timeMachine", "travelForward", path, jsonPayload);
   }
 
   public TimeMachineTravelForwardResponse travelForward(
@@ -140,7 +140,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
             "/time_machines/{time-machine-name}/travel_forward",
             "time-machine-name",
             timeMachineName);
-    return postAsync(path, params.toFormData())
+    return postAsync("timeMachine", "travelForward", path, params.toFormData())
         .thenApply(
             response ->
                 TimeMachineTravelForwardResponse.fromJson(response.getBodyAsString(), response));
@@ -161,7 +161,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
             "time-machine-name",
             timeMachineName);
 
-    return postAsync(path, null)
+    return postAsync("timeMachine", "travelForward", path, null)
         .thenApply(
             response ->
                 TimeMachineTravelForwardResponse.fromJson(response.getBodyAsString(), response));
@@ -175,7 +175,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
             "time-machine-name",
             timeMachineName);
 
-    return post(path, null);
+    return post("timeMachine", "startAfresh", path, null);
   }
 
   /**
@@ -188,7 +188,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
             "/time_machines/{time-machine-name}/start_afresh",
             "time-machine-name",
             timeMachineName);
-    return post(path, params.toFormData());
+    return post("timeMachine", "startAfresh", path, params.toFormData());
   }
 
   /**
@@ -200,7 +200,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
             "/time_machines/{time-machine-name}/start_afresh",
             "time-machine-name",
             timeMachineName);
-    return postJson(path, jsonPayload);
+    return postJson("timeMachine", "startAfresh", path, jsonPayload);
   }
 
   public TimeMachineStartAfreshResponse startAfresh(
@@ -217,7 +217,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
             "/time_machines/{time-machine-name}/start_afresh",
             "time-machine-name",
             timeMachineName);
-    return postAsync(path, params.toFormData())
+    return postAsync("timeMachine", "startAfresh", path, params.toFormData())
         .thenApply(
             response ->
                 TimeMachineStartAfreshResponse.fromJson(response.getBodyAsString(), response));
@@ -238,7 +238,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
             "time-machine-name",
             timeMachineName);
 
-    return postAsync(path, null)
+    return postAsync("timeMachine", "startAfresh", path, null)
         .thenApply(
             response ->
                 TimeMachineStartAfreshResponse.fromJson(response.getBodyAsString(), response));

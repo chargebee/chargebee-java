@@ -74,7 +74,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
 
-    return post(path, null);
+    return post("inAppSubscription", "retrieveStoreSubscriptions", path, null);
   }
 
   /**
@@ -89,7 +89,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "/in_app_subscriptions/{in-app-subscription-app-id}/retrieve",
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
-    return post(path, params.toFormData());
+    return post("inAppSubscription", "retrieveStoreSubscriptions", path, params.toFormData());
   }
 
   /**
@@ -103,7 +103,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "/in_app_subscriptions/{in-app-subscription-app-id}/retrieve",
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
-    return postJson(path, jsonPayload);
+    return postJson("inAppSubscription", "retrieveStoreSubscriptions", path, jsonPayload);
   }
 
   public InAppSubscriptionRetrieveStoreSubscriptionsResponse retrieveStoreSubscriptions(
@@ -123,7 +123,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "/in_app_subscriptions/{in-app-subscription-app-id}/retrieve",
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
-    return postAsync(path, params.toFormData())
+    return postAsync("inAppSubscription", "retrieveStoreSubscriptions", path, params.toFormData())
         .thenApply(
             response ->
                 InAppSubscriptionRetrieveStoreSubscriptionsResponse.fromJson(
@@ -138,7 +138,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
 
-    return post(path, null);
+    return post("inAppSubscription", "importReceipt", path, null);
   }
 
   /**
@@ -153,7 +153,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "/in_app_subscriptions/{in-app-subscription-app-id}/import_receipt",
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
-    return post(path, params.toFormData());
+    return post("inAppSubscription", "importReceipt", path, params.toFormData());
   }
 
   /**
@@ -167,7 +167,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "/in_app_subscriptions/{in-app-subscription-app-id}/import_receipt",
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
-    return postJson(path, jsonPayload);
+    return postJson("inAppSubscription", "importReceipt", path, jsonPayload);
   }
 
   public InAppSubscriptionImportReceiptResponse importReceipt(
@@ -185,7 +185,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "/in_app_subscriptions/{in-app-subscription-app-id}/import_receipt",
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
-    return postAsync(path, params.toFormData())
+    return postAsync("inAppSubscription", "importReceipt", path, params.toFormData())
         .thenApply(
             response ->
                 InAppSubscriptionImportReceiptResponse.fromJson(
@@ -200,7 +200,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
 
-    return post(path, null);
+    return post("inAppSubscription", "importSubscription", path, null);
   }
 
   /**
@@ -215,7 +215,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "/in_app_subscriptions/{in-app-subscription-app-id}/import_subscription",
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
-    return post(path, params.toFormData());
+    return post("inAppSubscription", "importSubscription", path, params.toFormData());
   }
 
   /**
@@ -229,7 +229,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "/in_app_subscriptions/{in-app-subscription-app-id}/import_subscription",
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
-    return postJson(path, jsonPayload);
+    return postJson("inAppSubscription", "importSubscription", path, jsonPayload);
   }
 
   public InAppSubscriptionImportSubscriptionResponse importSubscription(
@@ -248,7 +248,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "/in_app_subscriptions/{in-app-subscription-app-id}/import_subscription",
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
-    return postAsync(path, params.toFormData())
+    return postAsync("inAppSubscription", "importSubscription", path, params.toFormData())
         .thenApply(
             response ->
                 InAppSubscriptionImportSubscriptionResponse.fromJson(
@@ -271,7 +271,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
 
-    return postAsync(path, null)
+    return postAsync("inAppSubscription", "importSubscription", path, null)
         .thenApply(
             response ->
                 InAppSubscriptionImportSubscriptionResponse.fromJson(
@@ -286,7 +286,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
 
-    return post(path, null);
+    return post("inAppSubscription", "processReceipt", path, null);
   }
 
   /**
@@ -301,7 +301,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "/in_app_subscriptions/{in-app-subscription-app-id}/process_purchase_command",
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
-    return post(path, params.toFormData());
+    return post("inAppSubscription", "processReceipt", path, params.toFormData());
   }
 
   /**
@@ -315,7 +315,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "/in_app_subscriptions/{in-app-subscription-app-id}/process_purchase_command",
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
-    return postJson(path, jsonPayload);
+    return postJson("inAppSubscription", "processReceipt", path, jsonPayload);
   }
 
   public InAppSubscriptionProcessReceiptResponse processReceipt(
@@ -333,7 +333,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
             "/in_app_subscriptions/{in-app-subscription-app-id}/process_purchase_command",
             "in-app-subscription-app-id",
             inAppSubscriptionAppId);
-    return postAsync(path, params.toFormData())
+    return postAsync("inAppSubscription", "processReceipt", path, params.toFormData())
         .thenApply(
             response ->
                 InAppSubscriptionProcessReceiptResponse.fromJson(

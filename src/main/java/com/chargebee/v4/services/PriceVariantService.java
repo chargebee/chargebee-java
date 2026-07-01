@@ -70,7 +70,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
         buildPathWithParams(
             "/price_variants/{price-variant-id}/delete", "price-variant-id", priceVariantId);
 
-    return post(path, null);
+    return post("priceVariant", "delete", path, null);
   }
 
   public PriceVariantDeleteResponse delete(String priceVariantId) throws ChargebeeException {
@@ -84,7 +84,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
         buildPathWithParams(
             "/price_variants/{price-variant-id}/delete", "price-variant-id", priceVariantId);
 
-    return postAsync(path, null)
+    return postAsync("priceVariant", "delete", path, null)
         .thenApply(
             response -> PriceVariantDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -92,13 +92,14 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
   /** list a priceVariant using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(PriceVariantListParams params) throws ChargebeeException {
 
-    return get("/price_variants", params != null ? params.toQueryParams() : null);
+    return get(
+        "priceVariant", "list", "/price_variants", params != null ? params.toQueryParams() : null);
   }
 
   /** list a priceVariant without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/price_variants", null);
+    return get("priceVariant", "list", "/price_variants", null);
   }
 
   /** list a priceVariant using raw JSON payload (executes immediately) - returns raw Response. */
@@ -116,7 +117,11 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
   /** Async variant of list for priceVariant with params. */
   public CompletableFuture<PriceVariantListResponse> listAsync(PriceVariantListParams params) {
 
-    return getAsync("/price_variants", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "priceVariant",
+            "list",
+            "/price_variants",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 PriceVariantListResponse.fromJson(
@@ -132,7 +137,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
   /** Async variant of list for priceVariant without params. */
   public CompletableFuture<PriceVariantListResponse> listAsync() {
 
-    return getAsync("/price_variants", null)
+    return getAsync("priceVariant", "list", "/price_variants", null)
         .thenApply(
             response ->
                 PriceVariantListResponse.fromJson(
@@ -142,13 +147,14 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
   /** create a priceVariant using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(PriceVariantCreateParams params) throws ChargebeeException {
 
-    return post("/price_variants", params != null ? params.toFormData() : null);
+    return post(
+        "priceVariant", "create", "/price_variants", params != null ? params.toFormData() : null);
   }
 
   /** create a priceVariant using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/price_variants", jsonPayload);
+    return postJson("priceVariant", "create", "/price_variants", jsonPayload);
   }
 
   public PriceVariantCreateResponse create(PriceVariantCreateParams params)
@@ -162,7 +168,11 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
   public CompletableFuture<PriceVariantCreateResponse> createAsync(
       PriceVariantCreateParams params) {
 
-    return postAsync("/price_variants", params != null ? params.toFormData() : null)
+    return postAsync(
+            "priceVariant",
+            "create",
+            "/price_variants",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> PriceVariantCreateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -173,7 +183,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
         buildPathWithParams(
             "/price_variants/{price-variant-id}", "price-variant-id", priceVariantId);
 
-    return get(path, null);
+    return get("priceVariant", "retrieve", path, null);
   }
 
   public PriceVariantRetrieveResponse retrieve(String priceVariantId) throws ChargebeeException {
@@ -187,7 +197,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
         buildPathWithParams(
             "/price_variants/{price-variant-id}", "price-variant-id", priceVariantId);
 
-    return getAsync(path, null)
+    return getAsync("priceVariant", "retrieve", path, null)
         .thenApply(
             response ->
                 PriceVariantRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -199,7 +209,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
         buildPathWithParams(
             "/price_variants/{price-variant-id}", "price-variant-id", priceVariantId);
 
-    return post(path, null);
+    return post("priceVariant", "update", path, null);
   }
 
   /** update a priceVariant using immutable params (executes immediately) - returns raw Response. */
@@ -208,7 +218,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
     String path =
         buildPathWithParams(
             "/price_variants/{price-variant-id}", "price-variant-id", priceVariantId);
-    return post(path, params.toFormData());
+    return post("priceVariant", "update", path, params.toFormData());
   }
 
   /** update a priceVariant using raw JSON payload (executes immediately) - returns raw Response. */
@@ -216,7 +226,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
     String path =
         buildPathWithParams(
             "/price_variants/{price-variant-id}", "price-variant-id", priceVariantId);
-    return postJson(path, jsonPayload);
+    return postJson("priceVariant", "update", path, jsonPayload);
   }
 
   public PriceVariantUpdateResponse update(String priceVariantId, PriceVariantUpdateParams params)
@@ -231,7 +241,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
     String path =
         buildPathWithParams(
             "/price_variants/{price-variant-id}", "price-variant-id", priceVariantId);
-    return postAsync(path, params.toFormData())
+    return postAsync("priceVariant", "update", path, params.toFormData())
         .thenApply(
             response -> PriceVariantUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -247,7 +257,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
         buildPathWithParams(
             "/price_variants/{price-variant-id}", "price-variant-id", priceVariantId);
 
-    return postAsync(path, null)
+    return postAsync("priceVariant", "update", path, null)
         .thenApply(
             response -> PriceVariantUpdateResponse.fromJson(response.getBodyAsString(), response));
   }

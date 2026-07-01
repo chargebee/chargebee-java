@@ -74,7 +74,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
         buildPathWithParams(
             "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
 
-    return get(path, null);
+    return get("attachedItem", "retrieve", path, null);
   }
 
   /**
@@ -85,7 +85,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get("attachedItem", "retrieve", path, params != null ? params.toQueryParams() : null);
   }
 
   public AttachedItemRetrieveResponse retrieve(
@@ -100,7 +100,8 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "attachedItem", "retrieve", path, params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 AttachedItemRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -117,7 +118,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
         buildPathWithParams(
             "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
 
-    return getAsync(path, null)
+    return getAsync("attachedItem", "retrieve", path, null)
         .thenApply(
             response ->
                 AttachedItemRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -129,7 +130,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
         buildPathWithParams(
             "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
 
-    return post(path, null);
+    return post("attachedItem", "update", path, null);
   }
 
   /** update a attachedItem using immutable params (executes immediately) - returns raw Response. */
@@ -138,7 +139,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
-    return post(path, params.toFormData());
+    return post("attachedItem", "update", path, params.toFormData());
   }
 
   /** update a attachedItem using raw JSON payload (executes immediately) - returns raw Response. */
@@ -146,7 +147,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
-    return postJson(path, jsonPayload);
+    return postJson("attachedItem", "update", path, jsonPayload);
   }
 
   public AttachedItemUpdateResponse update(String attachedItemId, AttachedItemUpdateParams params)
@@ -161,7 +162,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
-    return postAsync(path, params.toFormData())
+    return postAsync("attachedItem", "update", path, params.toFormData())
         .thenApply(
             response -> AttachedItemUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -169,13 +170,13 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
   /** list a attachedItem using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(String itemId, AttachedItemListParams params) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get("attachedItem", "list", path, params != null ? params.toQueryParams() : null);
   }
 
   /** list a attachedItem without params (executes immediately) - returns raw Response. */
   Response listRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
-    return get(path, null);
+    return get("attachedItem", "list", path, null);
   }
 
   /** list a attachedItem using raw JSON payload (executes immediately) - returns raw Response. */
@@ -201,7 +202,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
   public CompletableFuture<AttachedItemListResponse> listAsync(
       String itemId, AttachedItemListParams params) {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync("attachedItem", "list", path, params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 AttachedItemListResponse.fromJson(
@@ -211,7 +212,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
   /** Async variant of list for attachedItem without params. */
   public CompletableFuture<AttachedItemListResponse> listAsync(String itemId) {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
-    return getAsync(path, null)
+    return getAsync("attachedItem", "list", path, null)
         .thenApply(
             response ->
                 AttachedItemListResponse.fromJson(
@@ -222,19 +223,19 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
   Response createRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
 
-    return post(path, null);
+    return post("attachedItem", "create", path, null);
   }
 
   /** create a attachedItem using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(String itemId, AttachedItemCreateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
-    return post(path, params.toFormData());
+    return post("attachedItem", "create", path, params.toFormData());
   }
 
   /** create a attachedItem using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String itemId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
-    return postJson(path, jsonPayload);
+    return postJson("attachedItem", "create", path, jsonPayload);
   }
 
   public AttachedItemCreateResponse create(String itemId, AttachedItemCreateParams params)
@@ -247,7 +248,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
   public CompletableFuture<AttachedItemCreateResponse> createAsync(
       String itemId, AttachedItemCreateParams params) {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
-    return postAsync(path, params.toFormData())
+    return postAsync("attachedItem", "create", path, params.toFormData())
         .thenApply(
             response -> AttachedItemCreateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -258,7 +259,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
         buildPathWithParams(
             "/attached_items/{attached-item-id}/delete", "attached-item-id", attachedItemId);
 
-    return post(path, null);
+    return post("attachedItem", "delete", path, null);
   }
 
   /** delete a attachedItem using immutable params (executes immediately) - returns raw Response. */
@@ -267,7 +268,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}/delete", "attached-item-id", attachedItemId);
-    return post(path, params.toFormData());
+    return post("attachedItem", "delete", path, params.toFormData());
   }
 
   /** delete a attachedItem using raw JSON payload (executes immediately) - returns raw Response. */
@@ -275,7 +276,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}/delete", "attached-item-id", attachedItemId);
-    return postJson(path, jsonPayload);
+    return postJson("attachedItem", "delete", path, jsonPayload);
   }
 
   public AttachedItemDeleteResponse delete(String attachedItemId, AttachedItemDeleteParams params)
@@ -290,7 +291,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}/delete", "attached-item-id", attachedItemId);
-    return postAsync(path, params.toFormData())
+    return postAsync("attachedItem", "delete", path, params.toFormData())
         .thenApply(
             response -> AttachedItemDeleteResponse.fromJson(response.getBodyAsString(), response));
   }

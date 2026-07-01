@@ -58,13 +58,14 @@ public final class EntitlementService extends BaseService<EntitlementService> {
   /** list a entitlement using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(EntitlementListParams params) throws ChargebeeException {
 
-    return get("/entitlements", params != null ? params.toQueryParams() : null);
+    return get(
+        "entitlement", "list", "/entitlements", params != null ? params.toQueryParams() : null);
   }
 
   /** list a entitlement without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/entitlements", null);
+    return get("entitlement", "list", "/entitlements", null);
   }
 
   /** list a entitlement using raw JSON payload (executes immediately) - returns raw Response. */
@@ -82,7 +83,8 @@ public final class EntitlementService extends BaseService<EntitlementService> {
   /** Async variant of list for entitlement with params. */
   public CompletableFuture<EntitlementListResponse> listAsync(EntitlementListParams params) {
 
-    return getAsync("/entitlements", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "entitlement", "list", "/entitlements", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 EntitlementListResponse.fromJson(
@@ -98,7 +100,7 @@ public final class EntitlementService extends BaseService<EntitlementService> {
   /** Async variant of list for entitlement without params. */
   public CompletableFuture<EntitlementListResponse> listAsync() {
 
-    return getAsync("/entitlements", null)
+    return getAsync("entitlement", "list", "/entitlements", null)
         .thenApply(
             response ->
                 EntitlementListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -107,13 +109,14 @@ public final class EntitlementService extends BaseService<EntitlementService> {
   /** create a entitlement using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(EntitlementCreateParams params) throws ChargebeeException {
 
-    return post("/entitlements", params != null ? params.toFormData() : null);
+    return post(
+        "entitlement", "create", "/entitlements", params != null ? params.toFormData() : null);
   }
 
   /** create a entitlement using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/entitlements", jsonPayload);
+    return postJson("entitlement", "create", "/entitlements", jsonPayload);
   }
 
   public EntitlementCreateResponse create(EntitlementCreateParams params)
@@ -126,7 +129,8 @@ public final class EntitlementService extends BaseService<EntitlementService> {
   /** Async variant of create for entitlement with params. */
   public CompletableFuture<EntitlementCreateResponse> createAsync(EntitlementCreateParams params) {
 
-    return postAsync("/entitlements", params != null ? params.toFormData() : null)
+    return postAsync(
+            "entitlement", "create", "/entitlements", params != null ? params.toFormData() : null)
         .thenApply(
             response -> EntitlementCreateResponse.fromJson(response.getBodyAsString(), response));
   }

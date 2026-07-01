@@ -54,7 +54,11 @@ public final class FullExportService extends BaseService<FullExportService> {
   /** status a fullExport using immutable params (executes immediately) - returns raw Response. */
   Response statusRaw(FullExportStatusParams params) throws ChargebeeException {
 
-    return get("/full_exports/status", params != null ? params.toQueryParams() : null);
+    return get(
+        "fullExport",
+        "status",
+        "/full_exports/status",
+        params != null ? params.toQueryParams() : null);
   }
 
   /** status a fullExport using raw JSON payload (executes immediately) - returns raw Response. */
@@ -72,7 +76,11 @@ public final class FullExportService extends BaseService<FullExportService> {
   /** Async variant of status for fullExport with params. */
   public CompletableFuture<FullExportStatusResponse> statusAsync(FullExportStatusParams params) {
 
-    return getAsync("/full_exports/status", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "fullExport",
+            "status",
+            "/full_exports/status",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response -> FullExportStatusResponse.fromJson(response.getBodyAsString(), response));
   }

@@ -103,7 +103,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/record_refund", "credit-note-id", creditNoteId);
 
-    return post(path, null);
+    return post("creditNote", "recordRefund", path, null);
   }
 
   /**
@@ -114,7 +114,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     String path =
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/record_refund", "credit-note-id", creditNoteId);
-    return post(path, params.toFormData());
+    return post("creditNote", "recordRefund", path, params.toFormData());
   }
 
   /**
@@ -124,7 +124,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     String path =
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/record_refund", "credit-note-id", creditNoteId);
-    return postJson(path, jsonPayload);
+    return postJson("creditNote", "recordRefund", path, jsonPayload);
   }
 
   public CreditNoteRecordRefundResponse recordRefund(
@@ -139,7 +139,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     String path =
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/record_refund", "credit-note-id", creditNoteId);
-    return postAsync(path, params.toFormData())
+    return postAsync("creditNote", "recordRefund", path, params.toFormData())
         .thenApply(
             response ->
                 CreditNoteRecordRefundResponse.fromJson(response.getBodyAsString(), response));
@@ -157,7 +157,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/record_refund", "credit-note-id", creditNoteId);
 
-    return postAsync(path, null)
+    return postAsync("creditNote", "recordRefund", path, null)
         .thenApply(
             response ->
                 CreditNoteRecordRefundResponse.fromJson(response.getBodyAsString(), response));
@@ -169,7 +169,11 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
    */
   Response importCreditNoteRaw(ImportCreditNoteParams params) throws ChargebeeException {
 
-    return post("/credit_notes/import_credit_note", params != null ? params.toFormData() : null);
+    return post(
+        "creditNote",
+        "importCreditNote",
+        "/credit_notes/import_credit_note",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -178,7 +182,8 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
    */
   Response importCreditNoteRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/credit_notes/import_credit_note", jsonPayload);
+    return postJson(
+        "creditNote", "importCreditNote", "/credit_notes/import_credit_note", jsonPayload);
   }
 
   public ImportCreditNoteResponse importCreditNote(ImportCreditNoteParams params)
@@ -193,7 +198,10 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
       ImportCreditNoteParams params) {
 
     return postAsync(
-            "/credit_notes/import_credit_note", params != null ? params.toFormData() : null)
+            "creditNote",
+            "importCreditNote",
+            "/credit_notes/import_credit_note",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> ImportCreditNoteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -204,7 +212,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/delete", "credit-note-id", creditNoteId);
 
-    return post(path, null);
+    return post("creditNote", "delete", path, null);
   }
 
   /** delete a creditNote using immutable params (executes immediately) - returns raw Response. */
@@ -212,7 +220,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     String path =
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/delete", "credit-note-id", creditNoteId);
-    return post(path, params.toFormData());
+    return post("creditNote", "delete", path, params.toFormData());
   }
 
   /** delete a creditNote using raw JSON payload (executes immediately) - returns raw Response. */
@@ -220,7 +228,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     String path =
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/delete", "credit-note-id", creditNoteId);
-    return postJson(path, jsonPayload);
+    return postJson("creditNote", "delete", path, jsonPayload);
   }
 
   public CreditNoteDeleteResponse delete(String creditNoteId, CreditNoteDeleteParams params)
@@ -235,7 +243,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     String path =
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/delete", "credit-note-id", creditNoteId);
-    return postAsync(path, params.toFormData())
+    return postAsync("creditNote", "delete", path, params.toFormData())
         .thenApply(
             response -> CreditNoteDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -251,7 +259,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/delete", "credit-note-id", creditNoteId);
 
-    return postAsync(path, null)
+    return postAsync("creditNote", "delete", path, null)
         .thenApply(
             response -> CreditNoteDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -264,7 +272,11 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/credit_notes", "customer-id", customerId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "creditNote",
+        "creditNotesForCustomer",
+        path,
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -274,7 +286,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   Response creditNotesForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/credit_notes", "customer-id", customerId);
-    return get(path, null);
+    return get("creditNote", "creditNotesForCustomer", path, null);
   }
 
   /**
@@ -307,7 +319,11 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
       String customerId, CreditNotesForCustomerParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/credit_notes", "customer-id", customerId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "creditNote",
+            "creditNotesForCustomer",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 CreditNotesForCustomerResponse.fromJson(
@@ -319,7 +335,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
       String customerId) {
     String path =
         buildPathWithParams("/customers/{customer-id}/credit_notes", "customer-id", customerId);
-    return getAsync(path, null)
+    return getAsync("creditNote", "creditNotesForCustomer", path, null)
         .thenApply(
             response ->
                 CreditNotesForCustomerResponse.fromJson(
@@ -331,21 +347,21 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}/pdf", "credit-note-id", creditNoteId);
 
-    return post(path, null);
+    return post("creditNote", "pdf", path, null);
   }
 
   /** pdf a creditNote using immutable params (executes immediately) - returns raw Response. */
   Response pdfRaw(String creditNoteId, CreditNotePdfParams params) throws ChargebeeException {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}/pdf", "credit-note-id", creditNoteId);
-    return post(path, params.toFormData());
+    return post("creditNote", "pdf", path, params.toFormData());
   }
 
   /** pdf a creditNote using raw JSON payload (executes immediately) - returns raw Response. */
   Response pdfRaw(String creditNoteId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}/pdf", "credit-note-id", creditNoteId);
-    return postJson(path, jsonPayload);
+    return postJson("creditNote", "pdf", path, jsonPayload);
   }
 
   public CreditNotePdfResponse pdf(String creditNoteId, CreditNotePdfParams params)
@@ -359,7 +375,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
       String creditNoteId, CreditNotePdfParams params) {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}/pdf", "credit-note-id", creditNoteId);
-    return postAsync(path, params.toFormData())
+    return postAsync("creditNote", "pdf", path, params.toFormData())
         .thenApply(
             response -> CreditNotePdfResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -374,7 +390,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}/pdf", "credit-note-id", creditNoteId);
 
-    return postAsync(path, null)
+    return postAsync("creditNote", "pdf", path, null)
         .thenApply(
             response -> CreditNotePdfResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -385,7 +401,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/send_einvoice", "credit-note-id", creditNoteId);
 
-    return post(path, null);
+    return post("creditNote", "sendEinvoice", path, null);
   }
 
   public CreditNoteSendEinvoiceResponse sendEinvoice(String creditNoteId)
@@ -400,7 +416,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/send_einvoice", "credit-note-id", creditNoteId);
 
-    return postAsync(path, null)
+    return postAsync("creditNote", "sendEinvoice", path, null)
         .thenApply(
             response ->
                 CreditNoteSendEinvoiceResponse.fromJson(response.getBodyAsString(), response));
@@ -411,7 +427,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}/void", "credit-note-id", creditNoteId);
 
-    return post(path, null);
+    return post("creditNote", "voidCreditNote", path, null);
   }
 
   /**
@@ -422,7 +438,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}/void", "credit-note-id", creditNoteId);
-    return post(path, params.toFormData());
+    return post("creditNote", "voidCreditNote", path, params.toFormData());
   }
 
   /**
@@ -432,7 +448,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   Response voidCreditNoteRaw(String creditNoteId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}/void", "credit-note-id", creditNoteId);
-    return postJson(path, jsonPayload);
+    return postJson("creditNote", "voidCreditNote", path, jsonPayload);
   }
 
   public VoidCreditNoteResponse voidCreditNote(String creditNoteId, VoidCreditNoteParams params)
@@ -446,7 +462,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
       String creditNoteId, VoidCreditNoteParams params) {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}/void", "credit-note-id", creditNoteId);
-    return postAsync(path, params.toFormData())
+    return postAsync("creditNote", "voidCreditNote", path, params.toFormData())
         .thenApply(
             response -> VoidCreditNoteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -461,7 +477,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}/void", "credit-note-id", creditNoteId);
 
-    return postAsync(path, null)
+    return postAsync("creditNote", "voidCreditNote", path, null)
         .thenApply(
             response -> VoidCreditNoteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -472,7 +488,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/refund", "credit-note-id", creditNoteId);
 
-    return post(path, null);
+    return post("creditNote", "refund", path, null);
   }
 
   /** refund a creditNote using immutable params (executes immediately) - returns raw Response. */
@@ -480,7 +496,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     String path =
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/refund", "credit-note-id", creditNoteId);
-    return post(path, params.toFormData());
+    return post("creditNote", "refund", path, params.toFormData());
   }
 
   /** refund a creditNote using raw JSON payload (executes immediately) - returns raw Response. */
@@ -488,7 +504,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     String path =
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/refund", "credit-note-id", creditNoteId);
-    return postJson(path, jsonPayload);
+    return postJson("creditNote", "refund", path, jsonPayload);
   }
 
   public CreditNoteRefundResponse refund(String creditNoteId, CreditNoteRefundParams params)
@@ -503,7 +519,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     String path =
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/refund", "credit-note-id", creditNoteId);
-    return postAsync(path, params.toFormData())
+    return postAsync("creditNote", "refund", path, params.toFormData())
         .thenApply(
             response -> CreditNoteRefundResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -519,7 +535,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/refund", "credit-note-id", creditNoteId);
 
-    return postAsync(path, null)
+    return postAsync("creditNote", "refund", path, null)
         .thenApply(
             response -> CreditNoteRefundResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -527,13 +543,14 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   /** list a creditNote using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(CreditNoteListParams params) throws ChargebeeException {
 
-    return get("/credit_notes", params != null ? params.toQueryParams() : null);
+    return get(
+        "creditNote", "list", "/credit_notes", params != null ? params.toQueryParams() : null);
   }
 
   /** list a creditNote without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/credit_notes", null);
+    return get("creditNote", "list", "/credit_notes", null);
   }
 
   /** list a creditNote using raw JSON payload (executes immediately) - returns raw Response. */
@@ -551,7 +568,8 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   /** Async variant of list for creditNote with params. */
   public CompletableFuture<CreditNoteListResponse> listAsync(CreditNoteListParams params) {
 
-    return getAsync("/credit_notes", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "creditNote", "list", "/credit_notes", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 CreditNoteListResponse.fromJson(
@@ -567,7 +585,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   /** Async variant of list for creditNote without params. */
   public CompletableFuture<CreditNoteListResponse> listAsync() {
 
-    return getAsync("/credit_notes", null)
+    return getAsync("creditNote", "list", "/credit_notes", null)
         .thenApply(
             response ->
                 CreditNoteListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -576,13 +594,14 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   /** create a creditNote using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(CreditNoteCreateParams params) throws ChargebeeException {
 
-    return post("/credit_notes", params != null ? params.toFormData() : null);
+    return post(
+        "creditNote", "create", "/credit_notes", params != null ? params.toFormData() : null);
   }
 
   /** create a creditNote using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/credit_notes", jsonPayload);
+    return postJson("creditNote", "create", "/credit_notes", jsonPayload);
   }
 
   public CreditNoteCreateResponse create(CreditNoteCreateParams params) throws ChargebeeException {
@@ -594,7 +613,8 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   /** Async variant of create for creditNote with params. */
   public CompletableFuture<CreditNoteCreateResponse> createAsync(CreditNoteCreateParams params) {
 
-    return postAsync("/credit_notes", params != null ? params.toFormData() : null)
+    return postAsync(
+            "creditNote", "create", "/credit_notes", params != null ? params.toFormData() : null)
         .thenApply(
             response -> CreditNoteCreateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -605,7 +625,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/download_einvoice", "credit-note-id", creditNoteId);
 
-    return get(path, null);
+    return get("creditNote", "downloadEinvoice", path, null);
   }
 
   public CreditNoteDownloadEinvoiceResponse downloadEinvoice(String creditNoteId)
@@ -621,7 +641,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/download_einvoice", "credit-note-id", creditNoteId);
 
-    return getAsync(path, null)
+    return getAsync("creditNote", "downloadEinvoice", path, null)
         .thenApply(
             response ->
                 CreditNoteDownloadEinvoiceResponse.fromJson(response.getBodyAsString(), response));
@@ -633,7 +653,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/resend_einvoice", "credit-note-id", creditNoteId);
 
-    return post(path, null);
+    return post("creditNote", "resendEinvoice", path, null);
   }
 
   public CreditNoteResendEinvoiceResponse resendEinvoice(String creditNoteId)
@@ -649,7 +669,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         buildPathWithParams(
             "/credit_notes/{credit-note-id}/resend_einvoice", "credit-note-id", creditNoteId);
 
-    return postAsync(path, null)
+    return postAsync("creditNote", "resendEinvoice", path, null)
         .thenApply(
             response ->
                 CreditNoteResendEinvoiceResponse.fromJson(response.getBodyAsString(), response));
@@ -663,7 +683,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
             "credit-note-id",
             creditNoteId);
 
-    return post(path, null);
+    return post("creditNote", "removeTaxWithheldRefund", path, null);
   }
 
   /**
@@ -678,7 +698,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
             "/credit_notes/{credit-note-id}/remove_tax_withheld_refund",
             "credit-note-id",
             creditNoteId);
-    return post(path, params.toFormData());
+    return post("creditNote", "removeTaxWithheldRefund", path, params.toFormData());
   }
 
   /**
@@ -692,7 +712,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
             "/credit_notes/{credit-note-id}/remove_tax_withheld_refund",
             "credit-note-id",
             creditNoteId);
-    return postJson(path, jsonPayload);
+    return postJson("creditNote", "removeTaxWithheldRefund", path, jsonPayload);
   }
 
   public CreditNoteRemoveTaxWithheldRefundResponse removeTaxWithheldRefund(
@@ -710,7 +730,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
             "/credit_notes/{credit-note-id}/remove_tax_withheld_refund",
             "credit-note-id",
             creditNoteId);
-    return postAsync(path, params.toFormData())
+    return postAsync("creditNote", "removeTaxWithheldRefund", path, params.toFormData())
         .thenApply(
             response ->
                 CreditNoteRemoveTaxWithheldRefundResponse.fromJson(
@@ -732,7 +752,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
             "credit-note-id",
             creditNoteId);
 
-    return postAsync(path, null)
+    return postAsync("creditNote", "removeTaxWithheldRefund", path, null)
         .thenApply(
             response ->
                 CreditNoteRemoveTaxWithheldRefundResponse.fromJson(
@@ -744,7 +764,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}", "credit-note-id", creditNoteId);
 
-    return get(path, null);
+    return get("creditNote", "retrieve", path, null);
   }
 
   /** retrieve a creditNote using immutable params (executes immediately) - returns raw Response. */
@@ -752,7 +772,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}", "credit-note-id", creditNoteId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get("creditNote", "retrieve", path, params != null ? params.toQueryParams() : null);
   }
 
   public CreditNoteRetrieveResponse retrieve(String creditNoteId, CreditNoteRetrieveParams params)
@@ -766,7 +786,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
       String creditNoteId, CreditNoteRetrieveParams params) {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}", "credit-note-id", creditNoteId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync("creditNote", "retrieve", path, params != null ? params.toQueryParams() : null)
         .thenApply(
             response -> CreditNoteRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -781,7 +801,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}", "credit-note-id", creditNoteId);
 
-    return getAsync(path, null)
+    return getAsync("creditNote", "retrieve", path, null)
         .thenApply(
             response -> CreditNoteRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }

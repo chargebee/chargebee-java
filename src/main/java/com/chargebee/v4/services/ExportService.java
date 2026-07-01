@@ -120,13 +120,14 @@ public final class ExportService extends BaseService<ExportService> {
   /** customers a export using immutable params (executes immediately) - returns raw Response. */
   Response customersRaw(ExportCustomersParams params) throws ChargebeeException {
 
-    return post("/exports/customers", params != null ? params.toFormData() : null);
+    return post(
+        "export", "customers", "/exports/customers", params != null ? params.toFormData() : null);
   }
 
   /** customers a export using raw JSON payload (executes immediately) - returns raw Response. */
   Response customersRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/customers", jsonPayload);
+    return postJson("export", "customers", "/exports/customers", jsonPayload);
   }
 
   public ExportCustomersResponse customers(ExportCustomersParams params) throws ChargebeeException {
@@ -138,7 +139,11 @@ public final class ExportService extends BaseService<ExportService> {
   /** Async variant of customers for export with params. */
   public CompletableFuture<ExportCustomersResponse> customersAsync(ExportCustomersParams params) {
 
-    return postAsync("/exports/customers", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export",
+            "customers",
+            "/exports/customers",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> ExportCustomersResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -148,7 +153,11 @@ public final class ExportService extends BaseService<ExportService> {
    */
   Response attachedItemsRaw(ExportAttachedItemsParams params) throws ChargebeeException {
 
-    return post("/exports/attached_items", params != null ? params.toFormData() : null);
+    return post(
+        "export",
+        "attachedItems",
+        "/exports/attached_items",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -156,7 +165,7 @@ public final class ExportService extends BaseService<ExportService> {
    */
   Response attachedItemsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/attached_items", jsonPayload);
+    return postJson("export", "attachedItems", "/exports/attached_items", jsonPayload);
   }
 
   public ExportAttachedItemsResponse attachedItems(ExportAttachedItemsParams params)
@@ -170,7 +179,11 @@ public final class ExportService extends BaseService<ExportService> {
   public CompletableFuture<ExportAttachedItemsResponse> attachedItemsAsync(
       ExportAttachedItemsParams params) {
 
-    return postAsync("/exports/attached_items", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export",
+            "attachedItems",
+            "/exports/attached_items",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> ExportAttachedItemsResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -178,13 +191,17 @@ public final class ExportService extends BaseService<ExportService> {
   /** transactions a export using immutable params (executes immediately) - returns raw Response. */
   Response transactionsRaw(ExportTransactionsParams params) throws ChargebeeException {
 
-    return post("/exports/transactions", params != null ? params.toFormData() : null);
+    return post(
+        "export",
+        "transactions",
+        "/exports/transactions",
+        params != null ? params.toFormData() : null);
   }
 
   /** transactions a export using raw JSON payload (executes immediately) - returns raw Response. */
   Response transactionsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/transactions", jsonPayload);
+    return postJson("export", "transactions", "/exports/transactions", jsonPayload);
   }
 
   public ExportTransactionsResponse transactions(ExportTransactionsParams params)
@@ -198,7 +215,11 @@ public final class ExportService extends BaseService<ExportService> {
   public CompletableFuture<ExportTransactionsResponse> transactionsAsync(
       ExportTransactionsParams params) {
 
-    return postAsync("/exports/transactions", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export",
+            "transactions",
+            "/exports/transactions",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> ExportTransactionsResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -209,7 +230,11 @@ public final class ExportService extends BaseService<ExportService> {
    */
   Response differentialPricesRaw(ExportDifferentialPricesParams params) throws ChargebeeException {
 
-    return post("/exports/differential_prices", params != null ? params.toFormData() : null);
+    return post(
+        "export",
+        "differentialPrices",
+        "/exports/differential_prices",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -218,7 +243,7 @@ public final class ExportService extends BaseService<ExportService> {
    */
   Response differentialPricesRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/differential_prices", jsonPayload);
+    return postJson("export", "differentialPrices", "/exports/differential_prices", jsonPayload);
   }
 
   public ExportDifferentialPricesResponse differentialPrices(ExportDifferentialPricesParams params)
@@ -232,7 +257,11 @@ public final class ExportService extends BaseService<ExportService> {
   public CompletableFuture<ExportDifferentialPricesResponse> differentialPricesAsync(
       ExportDifferentialPricesParams params) {
 
-    return postAsync("/exports/differential_prices", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export",
+            "differentialPrices",
+            "/exports/differential_prices",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 ExportDifferentialPricesResponse.fromJson(response.getBodyAsString(), response));
@@ -241,13 +270,17 @@ public final class ExportService extends BaseService<ExportService> {
   /** itemFamilies a export using immutable params (executes immediately) - returns raw Response. */
   Response itemFamiliesRaw(ExportItemFamiliesParams params) throws ChargebeeException {
 
-    return post("/exports/item_families", params != null ? params.toFormData() : null);
+    return post(
+        "export",
+        "itemFamilies",
+        "/exports/item_families",
+        params != null ? params.toFormData() : null);
   }
 
   /** itemFamilies a export using raw JSON payload (executes immediately) - returns raw Response. */
   Response itemFamiliesRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/item_families", jsonPayload);
+    return postJson("export", "itemFamilies", "/exports/item_families", jsonPayload);
   }
 
   public ExportItemFamiliesResponse itemFamilies(ExportItemFamiliesParams params)
@@ -261,7 +294,11 @@ public final class ExportService extends BaseService<ExportService> {
   public CompletableFuture<ExportItemFamiliesResponse> itemFamiliesAsync(
       ExportItemFamiliesParams params) {
 
-    return postAsync("/exports/item_families", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export",
+            "itemFamilies",
+            "/exports/item_families",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> ExportItemFamiliesResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -269,13 +306,14 @@ public final class ExportService extends BaseService<ExportService> {
   /** invoices a export using immutable params (executes immediately) - returns raw Response. */
   Response invoicesRaw(ExportInvoicesParams params) throws ChargebeeException {
 
-    return post("/exports/invoices", params != null ? params.toFormData() : null);
+    return post(
+        "export", "invoices", "/exports/invoices", params != null ? params.toFormData() : null);
   }
 
   /** invoices a export using raw JSON payload (executes immediately) - returns raw Response. */
   Response invoicesRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/invoices", jsonPayload);
+    return postJson("export", "invoices", "/exports/invoices", jsonPayload);
   }
 
   public ExportInvoicesResponse invoices(ExportInvoicesParams params) throws ChargebeeException {
@@ -287,7 +325,8 @@ public final class ExportService extends BaseService<ExportService> {
   /** Async variant of invoices for export with params. */
   public CompletableFuture<ExportInvoicesResponse> invoicesAsync(ExportInvoicesParams params) {
 
-    return postAsync("/exports/invoices", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export", "invoices", "/exports/invoices", params != null ? params.toFormData() : null)
         .thenApply(
             response -> ExportInvoicesResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -296,7 +335,7 @@ public final class ExportService extends BaseService<ExportService> {
   Response retrieveRaw(String exportId) throws ChargebeeException {
     String path = buildPathWithParams("/exports/{export-id}", "export-id", exportId);
 
-    return get(path, null);
+    return get("export", "retrieve", path, null);
   }
 
   public ExportRetrieveResponse retrieve(String exportId) throws ChargebeeException {
@@ -308,7 +347,7 @@ public final class ExportService extends BaseService<ExportService> {
   public CompletableFuture<ExportRetrieveResponse> retrieveAsync(String exportId) {
     String path = buildPathWithParams("/exports/{export-id}", "export-id", exportId);
 
-    return getAsync(path, null)
+    return getAsync("export", "retrieve", path, null)
         .thenApply(
             response -> ExportRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -318,7 +357,11 @@ public final class ExportService extends BaseService<ExportService> {
    */
   Response priceVariantsRaw(ExportPriceVariantsParams params) throws ChargebeeException {
 
-    return post("/exports/price_variants", params != null ? params.toFormData() : null);
+    return post(
+        "export",
+        "priceVariants",
+        "/exports/price_variants",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -326,7 +369,7 @@ public final class ExportService extends BaseService<ExportService> {
    */
   Response priceVariantsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/price_variants", jsonPayload);
+    return postJson("export", "priceVariants", "/exports/price_variants", jsonPayload);
   }
 
   public ExportPriceVariantsResponse priceVariants(ExportPriceVariantsParams params)
@@ -340,7 +383,11 @@ public final class ExportService extends BaseService<ExportService> {
   public CompletableFuture<ExportPriceVariantsResponse> priceVariantsAsync(
       ExportPriceVariantsParams params) {
 
-    return postAsync("/exports/price_variants", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export",
+            "priceVariants",
+            "/exports/price_variants",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> ExportPriceVariantsResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -348,13 +395,13 @@ public final class ExportService extends BaseService<ExportService> {
   /** items a export using immutable params (executes immediately) - returns raw Response. */
   Response itemsRaw(ExportItemsParams params) throws ChargebeeException {
 
-    return post("/exports/items", params != null ? params.toFormData() : null);
+    return post("export", "items", "/exports/items", params != null ? params.toFormData() : null);
   }
 
   /** items a export using raw JSON payload (executes immediately) - returns raw Response. */
   Response itemsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/items", jsonPayload);
+    return postJson("export", "items", "/exports/items", jsonPayload);
   }
 
   public ExportItemsResponse items(ExportItemsParams params) throws ChargebeeException {
@@ -366,7 +413,8 @@ public final class ExportService extends BaseService<ExportService> {
   /** Async variant of items for export with params. */
   public CompletableFuture<ExportItemsResponse> itemsAsync(ExportItemsParams params) {
 
-    return postAsync("/exports/items", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export", "items", "/exports/items", params != null ? params.toFormData() : null)
         .thenApply(response -> ExportItemsResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -375,7 +423,11 @@ public final class ExportService extends BaseService<ExportService> {
    */
   Response deferredRevenueRaw(ExportDeferredRevenueParams params) throws ChargebeeException {
 
-    return post("/exports/deferred_revenue", params != null ? params.toFormData() : null);
+    return post(
+        "export",
+        "deferredRevenue",
+        "/exports/deferred_revenue",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -383,7 +435,7 @@ public final class ExportService extends BaseService<ExportService> {
    */
   Response deferredRevenueRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/deferred_revenue", jsonPayload);
+    return postJson("export", "deferredRevenue", "/exports/deferred_revenue", jsonPayload);
   }
 
   public ExportDeferredRevenueResponse deferredRevenue(ExportDeferredRevenueParams params)
@@ -397,7 +449,11 @@ public final class ExportService extends BaseService<ExportService> {
   public CompletableFuture<ExportDeferredRevenueResponse> deferredRevenueAsync(
       ExportDeferredRevenueParams params) {
 
-    return postAsync("/exports/deferred_revenue", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export",
+            "deferredRevenue",
+            "/exports/deferred_revenue",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 ExportDeferredRevenueResponse.fromJson(response.getBodyAsString(), response));
@@ -409,7 +465,11 @@ public final class ExportService extends BaseService<ExportService> {
    */
   Response revenueRecognitionRaw(ExportRevenueRecognitionParams params) throws ChargebeeException {
 
-    return post("/exports/revenue_recognition", params != null ? params.toFormData() : null);
+    return post(
+        "export",
+        "revenueRecognition",
+        "/exports/revenue_recognition",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -418,7 +478,7 @@ public final class ExportService extends BaseService<ExportService> {
    */
   Response revenueRecognitionRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/revenue_recognition", jsonPayload);
+    return postJson("export", "revenueRecognition", "/exports/revenue_recognition", jsonPayload);
   }
 
   public ExportRevenueRecognitionResponse revenueRecognition(ExportRevenueRecognitionParams params)
@@ -432,7 +492,11 @@ public final class ExportService extends BaseService<ExportService> {
   public CompletableFuture<ExportRevenueRecognitionResponse> revenueRecognitionAsync(
       ExportRevenueRecognitionParams params) {
 
-    return postAsync("/exports/revenue_recognition", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export",
+            "revenueRecognition",
+            "/exports/revenue_recognition",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 ExportRevenueRecognitionResponse.fromJson(response.getBodyAsString(), response));
@@ -441,13 +505,17 @@ public final class ExportService extends BaseService<ExportService> {
   /** creditNotes a export using immutable params (executes immediately) - returns raw Response. */
   Response creditNotesRaw(ExportCreditNotesParams params) throws ChargebeeException {
 
-    return post("/exports/credit_notes", params != null ? params.toFormData() : null);
+    return post(
+        "export",
+        "creditNotes",
+        "/exports/credit_notes",
+        params != null ? params.toFormData() : null);
   }
 
   /** creditNotes a export using raw JSON payload (executes immediately) - returns raw Response. */
   Response creditNotesRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/credit_notes", jsonPayload);
+    return postJson("export", "creditNotes", "/exports/credit_notes", jsonPayload);
   }
 
   public ExportCreditNotesResponse creditNotes(ExportCreditNotesParams params)
@@ -461,7 +529,11 @@ public final class ExportService extends BaseService<ExportService> {
   public CompletableFuture<ExportCreditNotesResponse> creditNotesAsync(
       ExportCreditNotesParams params) {
 
-    return postAsync("/exports/credit_notes", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export",
+            "creditNotes",
+            "/exports/credit_notes",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> ExportCreditNotesResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -469,13 +541,14 @@ public final class ExportService extends BaseService<ExportService> {
   /** coupons a export using immutable params (executes immediately) - returns raw Response. */
   Response couponsRaw(ExportCouponsParams params) throws ChargebeeException {
 
-    return post("/exports/coupons", params != null ? params.toFormData() : null);
+    return post(
+        "export", "coupons", "/exports/coupons", params != null ? params.toFormData() : null);
   }
 
   /** coupons a export using raw JSON payload (executes immediately) - returns raw Response. */
   Response couponsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/coupons", jsonPayload);
+    return postJson("export", "coupons", "/exports/coupons", jsonPayload);
   }
 
   public ExportCouponsResponse coupons(ExportCouponsParams params) throws ChargebeeException {
@@ -487,7 +560,8 @@ public final class ExportService extends BaseService<ExportService> {
   /** Async variant of coupons for export with params. */
   public CompletableFuture<ExportCouponsResponse> couponsAsync(ExportCouponsParams params) {
 
-    return postAsync("/exports/coupons", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export", "coupons", "/exports/coupons", params != null ? params.toFormData() : null)
         .thenApply(
             response -> ExportCouponsResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -495,13 +569,13 @@ public final class ExportService extends BaseService<ExportService> {
   /** orders a export using immutable params (executes immediately) - returns raw Response. */
   Response ordersRaw(ExportOrdersParams params) throws ChargebeeException {
 
-    return post("/exports/orders", params != null ? params.toFormData() : null);
+    return post("export", "orders", "/exports/orders", params != null ? params.toFormData() : null);
   }
 
   /** orders a export using raw JSON payload (executes immediately) - returns raw Response. */
   Response ordersRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/orders", jsonPayload);
+    return postJson("export", "orders", "/exports/orders", jsonPayload);
   }
 
   public ExportOrdersResponse orders(ExportOrdersParams params) throws ChargebeeException {
@@ -513,20 +587,25 @@ public final class ExportService extends BaseService<ExportService> {
   /** Async variant of orders for export with params. */
   public CompletableFuture<ExportOrdersResponse> ordersAsync(ExportOrdersParams params) {
 
-    return postAsync("/exports/orders", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export", "orders", "/exports/orders", params != null ? params.toFormData() : null)
         .thenApply(response -> ExportOrdersResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** itemPrices a export using immutable params (executes immediately) - returns raw Response. */
   Response itemPricesRaw(ExportItemPricesParams params) throws ChargebeeException {
 
-    return post("/exports/item_prices", params != null ? params.toFormData() : null);
+    return post(
+        "export",
+        "itemPrices",
+        "/exports/item_prices",
+        params != null ? params.toFormData() : null);
   }
 
   /** itemPrices a export using raw JSON payload (executes immediately) - returns raw Response. */
   Response itemPricesRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/item_prices", jsonPayload);
+    return postJson("export", "itemPrices", "/exports/item_prices", jsonPayload);
   }
 
   public ExportItemPricesResponse itemPrices(ExportItemPricesParams params)
@@ -540,7 +619,11 @@ public final class ExportService extends BaseService<ExportService> {
   public CompletableFuture<ExportItemPricesResponse> itemPricesAsync(
       ExportItemPricesParams params) {
 
-    return postAsync("/exports/item_prices", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export",
+            "itemPrices",
+            "/exports/item_prices",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> ExportItemPricesResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -550,7 +633,11 @@ public final class ExportService extends BaseService<ExportService> {
    */
   Response subscriptionsRaw(ExportSubscriptionsParams params) throws ChargebeeException {
 
-    return post("/exports/subscriptions", params != null ? params.toFormData() : null);
+    return post(
+        "export",
+        "subscriptions",
+        "/exports/subscriptions",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -558,7 +645,7 @@ public final class ExportService extends BaseService<ExportService> {
    */
   Response subscriptionsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/subscriptions", jsonPayload);
+    return postJson("export", "subscriptions", "/exports/subscriptions", jsonPayload);
   }
 
   public ExportSubscriptionsResponse subscriptions(ExportSubscriptionsParams params)
@@ -572,7 +659,11 @@ public final class ExportService extends BaseService<ExportService> {
   public CompletableFuture<ExportSubscriptionsResponse> subscriptionsAsync(
       ExportSubscriptionsParams params) {
 
-    return postAsync("/exports/subscriptions", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export",
+            "subscriptions",
+            "/exports/subscriptions",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> ExportSubscriptionsResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -580,13 +671,13 @@ public final class ExportService extends BaseService<ExportService> {
   /** addons a export using immutable params (executes immediately) - returns raw Response. */
   Response addonsRaw(ExportAddonsParams params) throws ChargebeeException {
 
-    return post("/exports/addons", params != null ? params.toFormData() : null);
+    return post("export", "addons", "/exports/addons", params != null ? params.toFormData() : null);
   }
 
   /** addons a export using raw JSON payload (executes immediately) - returns raw Response. */
   Response addonsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/addons", jsonPayload);
+    return postJson("export", "addons", "/exports/addons", jsonPayload);
   }
 
   public ExportAddonsResponse addons(ExportAddonsParams params) throws ChargebeeException {
@@ -598,20 +689,21 @@ public final class ExportService extends BaseService<ExportService> {
   /** Async variant of addons for export with params. */
   public CompletableFuture<ExportAddonsResponse> addonsAsync(ExportAddonsParams params) {
 
-    return postAsync("/exports/addons", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export", "addons", "/exports/addons", params != null ? params.toFormData() : null)
         .thenApply(response -> ExportAddonsResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** plans a export using immutable params (executes immediately) - returns raw Response. */
   Response plansRaw(ExportPlansParams params) throws ChargebeeException {
 
-    return post("/exports/plans", params != null ? params.toFormData() : null);
+    return post("export", "plans", "/exports/plans", params != null ? params.toFormData() : null);
   }
 
   /** plans a export using raw JSON payload (executes immediately) - returns raw Response. */
   Response plansRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/exports/plans", jsonPayload);
+    return postJson("export", "plans", "/exports/plans", jsonPayload);
   }
 
   public ExportPlansResponse plans(ExportPlansParams params) throws ChargebeeException {
@@ -623,7 +715,8 @@ public final class ExportService extends BaseService<ExportService> {
   /** Async variant of plans for export with params. */
   public CompletableFuture<ExportPlansResponse> plansAsync(ExportPlansParams params) {
 
-    return postAsync("/exports/plans", params != null ? params.toFormData() : null)
+    return postAsync(
+            "export", "plans", "/exports/plans", params != null ? params.toFormData() : null)
         .thenApply(response -> ExportPlansResponse.fromJson(response.getBodyAsString(), response));
   }
 

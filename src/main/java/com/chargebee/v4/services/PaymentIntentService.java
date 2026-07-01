@@ -64,7 +64,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
         buildPathWithParams(
             "/payment_intents/{payment-intent-id}", "payment-intent-id", paymentIntentId);
 
-    return get(path, null);
+    return get("paymentIntent", "retrieve", path, null);
   }
 
   public PaymentIntentRetrieveResponse retrieve(String paymentIntentId) throws ChargebeeException {
@@ -78,7 +78,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
         buildPathWithParams(
             "/payment_intents/{payment-intent-id}", "payment-intent-id", paymentIntentId);
 
-    return getAsync(path, null)
+    return getAsync("paymentIntent", "retrieve", path, null)
         .thenApply(
             response ->
                 PaymentIntentRetrieveResponse.fromJson(response.getBodyAsString(), response));
@@ -90,7 +90,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
         buildPathWithParams(
             "/payment_intents/{payment-intent-id}", "payment-intent-id", paymentIntentId);
 
-    return post(path, null);
+    return post("paymentIntent", "update", path, null);
   }
 
   /**
@@ -101,7 +101,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
     String path =
         buildPathWithParams(
             "/payment_intents/{payment-intent-id}", "payment-intent-id", paymentIntentId);
-    return post(path, params.toFormData());
+    return post("paymentIntent", "update", path, params.toFormData());
   }
 
   /**
@@ -111,7 +111,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
     String path =
         buildPathWithParams(
             "/payment_intents/{payment-intent-id}", "payment-intent-id", paymentIntentId);
-    return postJson(path, jsonPayload);
+    return postJson("paymentIntent", "update", path, jsonPayload);
   }
 
   public PaymentIntentUpdateResponse update(
@@ -126,7 +126,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
     String path =
         buildPathWithParams(
             "/payment_intents/{payment-intent-id}", "payment-intent-id", paymentIntentId);
-    return postAsync(path, params.toFormData())
+    return postAsync("paymentIntent", "update", path, params.toFormData())
         .thenApply(
             response -> PaymentIntentUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -142,7 +142,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
         buildPathWithParams(
             "/payment_intents/{payment-intent-id}", "payment-intent-id", paymentIntentId);
 
-    return postAsync(path, null)
+    return postAsync("paymentIntent", "update", path, null)
         .thenApply(
             response -> PaymentIntentUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -152,7 +152,8 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
    */
   Response createRaw(PaymentIntentCreateParams params) throws ChargebeeException {
 
-    return post("/payment_intents", params != null ? params.toFormData() : null);
+    return post(
+        "paymentIntent", "create", "/payment_intents", params != null ? params.toFormData() : null);
   }
 
   /**
@@ -160,7 +161,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
    */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/payment_intents", jsonPayload);
+    return postJson("paymentIntent", "create", "/payment_intents", jsonPayload);
   }
 
   public PaymentIntentCreateResponse create(PaymentIntentCreateParams params)
@@ -174,7 +175,11 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
   public CompletableFuture<PaymentIntentCreateResponse> createAsync(
       PaymentIntentCreateParams params) {
 
-    return postAsync("/payment_intents", params != null ? params.toFormData() : null)
+    return postAsync(
+            "paymentIntent",
+            "create",
+            "/payment_intents",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> PaymentIntentCreateResponse.fromJson(response.getBodyAsString(), response));
   }

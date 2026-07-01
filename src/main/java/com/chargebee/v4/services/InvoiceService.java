@@ -206,7 +206,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_line_items", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "deleteLineItems", path, null);
   }
 
   /**
@@ -216,7 +216,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_line_items", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "deleteLineItems", path, params.toFormData());
   }
 
   /**
@@ -225,7 +225,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response deleteLineItemsRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_line_items", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "deleteLineItems", path, jsonPayload);
   }
 
   public InvoiceDeleteLineItemsResponse deleteLineItems(
@@ -239,7 +239,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceDeleteLineItemsParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_line_items", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "deleteLineItems", path, params.toFormData())
         .thenApply(
             response ->
                 InvoiceDeleteLineItemsResponse.fromJson(response.getBodyAsString(), response));
@@ -256,7 +256,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_line_items", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "deleteLineItems", path, null)
         .thenApply(
             response ->
                 InvoiceDeleteLineItemsResponse.fromJson(response.getBodyAsString(), response));
@@ -267,7 +267,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_credit_note", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "removeCreditNote", path, null);
   }
 
   /**
@@ -278,7 +278,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_credit_note", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "removeCreditNote", path, params.toFormData());
   }
 
   /**
@@ -288,7 +288,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response removeCreditNoteRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_credit_note", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "removeCreditNote", path, jsonPayload);
   }
 
   public InvoiceRemoveCreditNoteResponse removeCreditNote(
@@ -302,7 +302,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceRemoveCreditNoteParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_credit_note", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "removeCreditNote", path, params.toFormData())
         .thenApply(
             response ->
                 InvoiceRemoveCreditNoteResponse.fromJson(response.getBodyAsString(), response));
@@ -320,7 +320,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_credit_note", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "removeCreditNote", path, null)
         .thenApply(
             response ->
                 InvoiceRemoveCreditNoteResponse.fromJson(response.getBodyAsString(), response));
@@ -331,7 +331,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_payment", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "removePayment", path, null);
   }
 
   /**
@@ -341,7 +341,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_payment", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "removePayment", path, params.toFormData());
   }
 
   /**
@@ -350,7 +350,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response removePaymentRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_payment", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "removePayment", path, jsonPayload);
   }
 
   public InvoiceRemovePaymentResponse removePayment(
@@ -364,7 +364,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceRemovePaymentParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_payment", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "removePayment", path, params.toFormData())
         .thenApply(
             response ->
                 InvoiceRemovePaymentResponse.fromJson(response.getBodyAsString(), response));
@@ -380,7 +380,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_payment", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "removePayment", path, null)
         .thenApply(
             response ->
                 InvoiceRemovePaymentResponse.fromJson(response.getBodyAsString(), response));
@@ -391,7 +391,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/stop_dunning", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "stopDunning", path, null);
   }
 
   /** stopDunning a invoice using immutable params (executes immediately) - returns raw Response. */
@@ -399,14 +399,14 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/stop_dunning", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "stopDunning", path, params.toFormData());
   }
 
   /** stopDunning a invoice using raw JSON payload (executes immediately) - returns raw Response. */
   Response stopDunningRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/stop_dunning", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "stopDunning", path, jsonPayload);
   }
 
   public InvoiceStopDunningResponse stopDunning(String invoiceId, InvoiceStopDunningParams params)
@@ -420,7 +420,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceStopDunningParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/stop_dunning", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "stopDunning", path, params.toFormData())
         .thenApply(
             response -> InvoiceStopDunningResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -435,7 +435,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/stop_dunning", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "stopDunning", path, null)
         .thenApply(
             response -> InvoiceStopDunningResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -445,7 +445,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/apply_payments", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "applyPayments", path, null);
   }
 
   /**
@@ -455,7 +455,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/apply_payments", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "applyPayments", path, params.toFormData());
   }
 
   /**
@@ -464,7 +464,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response applyPaymentsRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/apply_payments", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "applyPayments", path, jsonPayload);
   }
 
   public InvoiceApplyPaymentsResponse applyPayments(
@@ -478,7 +478,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceApplyPaymentsParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/apply_payments", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "applyPayments", path, params.toFormData())
         .thenApply(
             response ->
                 InvoiceApplyPaymentsResponse.fromJson(response.getBodyAsString(), response));
@@ -494,7 +494,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/apply_payments", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "applyPayments", path, null)
         .thenApply(
             response ->
                 InvoiceApplyPaymentsResponse.fromJson(response.getBodyAsString(), response));
@@ -506,7 +506,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
         buildPathWithParams(
             "/invoices/{invoice-id}/apply_payment_schedule_scheme", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "applyPaymentScheduleScheme", path, null);
   }
 
   /**
@@ -518,7 +518,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams(
             "/invoices/{invoice-id}/apply_payment_schedule_scheme", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "applyPaymentScheduleScheme", path, params.toFormData());
   }
 
   /**
@@ -530,7 +530,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams(
             "/invoices/{invoice-id}/apply_payment_schedule_scheme", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "applyPaymentScheduleScheme", path, jsonPayload);
   }
 
   public InvoiceApplyPaymentScheduleSchemeResponse applyPaymentScheduleScheme(
@@ -546,7 +546,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams(
             "/invoices/{invoice-id}/apply_payment_schedule_scheme", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "applyPaymentScheduleScheme", path, params.toFormData())
         .thenApply(
             response ->
                 InvoiceApplyPaymentScheduleSchemeResponse.fromJson(
@@ -557,19 +557,19 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response voidInvoiceRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/void", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "voidInvoice", path, null);
   }
 
   /** voidInvoice a invoice using immutable params (executes immediately) - returns raw Response. */
   Response voidInvoiceRaw(String invoiceId, VoidInvoiceParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/void", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "voidInvoice", path, params.toFormData());
   }
 
   /** voidInvoice a invoice using raw JSON payload (executes immediately) - returns raw Response. */
   Response voidInvoiceRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/void", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "voidInvoice", path, jsonPayload);
   }
 
   public VoidInvoiceResponse voidInvoice(String invoiceId, VoidInvoiceParams params)
@@ -582,7 +582,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<VoidInvoiceResponse> voidInvoiceAsync(
       String invoiceId, VoidInvoiceParams params) {
     String path = buildPathWithParams("/invoices/{invoice-id}/void", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "voidInvoice", path, params.toFormData())
         .thenApply(response -> VoidInvoiceResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -595,7 +595,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<VoidInvoiceResponse> voidInvoiceAsync(String invoiceId) {
     String path = buildPathWithParams("/invoices/{invoice-id}/void", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "voidInvoice", path, null)
         .thenApply(response -> VoidInvoiceResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -603,19 +603,19 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response addChargeRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/add_charge", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "addCharge", path, null);
   }
 
   /** addCharge a invoice using immutable params (executes immediately) - returns raw Response. */
   Response addChargeRaw(String invoiceId, InvoiceAddChargeParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/add_charge", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "addCharge", path, params.toFormData());
   }
 
   /** addCharge a invoice using raw JSON payload (executes immediately) - returns raw Response. */
   Response addChargeRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/add_charge", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "addCharge", path, jsonPayload);
   }
 
   public InvoiceAddChargeResponse addCharge(String invoiceId, InvoiceAddChargeParams params)
@@ -628,7 +628,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<InvoiceAddChargeResponse> addChargeAsync(
       String invoiceId, InvoiceAddChargeParams params) {
     String path = buildPathWithParams("/invoices/{invoice-id}/add_charge", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "addCharge", path, params.toFormData())
         .thenApply(
             response -> InvoiceAddChargeResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -638,7 +638,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/send_einvoice", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "sendEinvoice", path, null);
   }
 
   public SendEinvoiceResponse sendEinvoice(String invoiceId) throws ChargebeeException {
@@ -651,7 +651,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/send_einvoice", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "sendEinvoice", path, null)
         .thenApply(response -> SendEinvoiceResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -660,7 +660,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/payment_schedules", "invoice-id", invoiceId);
 
-    return get(path, null);
+    return get("invoice", "paymentSchedules", path, null);
   }
 
   public InvoicePaymentSchedulesResponse paymentSchedules(String invoiceId)
@@ -675,7 +675,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/payment_schedules", "invoice-id", invoiceId);
 
-    return getAsync(path, null)
+    return getAsync("invoice", "paymentSchedules", path, null)
         .thenApply(
             response ->
                 InvoicePaymentSchedulesResponse.fromJson(response.getBodyAsString(), response));
@@ -685,19 +685,19 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response writeOffRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/write_off", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "writeOff", path, null);
   }
 
   /** writeOff a invoice using immutable params (executes immediately) - returns raw Response. */
   Response writeOffRaw(String invoiceId, InvoiceWriteOffParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/write_off", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "writeOff", path, params.toFormData());
   }
 
   /** writeOff a invoice using raw JSON payload (executes immediately) - returns raw Response. */
   Response writeOffRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/write_off", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "writeOff", path, jsonPayload);
   }
 
   public InvoiceWriteOffResponse writeOff(String invoiceId, InvoiceWriteOffParams params)
@@ -710,7 +710,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<InvoiceWriteOffResponse> writeOffAsync(
       String invoiceId, InvoiceWriteOffParams params) {
     String path = buildPathWithParams("/invoices/{invoice-id}/write_off", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "writeOff", path, params.toFormData())
         .thenApply(
             response -> InvoiceWriteOffResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -724,7 +724,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<InvoiceWriteOffResponse> writeOffAsync(String invoiceId) {
     String path = buildPathWithParams("/invoices/{invoice-id}/write_off", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "writeOff", path, null)
         .thenApply(
             response -> InvoiceWriteOffResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -734,7 +734,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/add_charge_item", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "addChargeItem", path, null);
   }
 
   /**
@@ -744,7 +744,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/add_charge_item", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "addChargeItem", path, params.toFormData());
   }
 
   /**
@@ -753,7 +753,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response addChargeItemRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/add_charge_item", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "addChargeItem", path, jsonPayload);
   }
 
   public InvoiceAddChargeItemResponse addChargeItem(
@@ -767,7 +767,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceAddChargeItemParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/add_charge_item", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "addChargeItem", path, params.toFormData())
         .thenApply(
             response ->
                 InvoiceAddChargeItemResponse.fromJson(response.getBodyAsString(), response));
@@ -783,7 +783,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/add_charge_item", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "addChargeItem", path, null)
         .thenApply(
             response ->
                 InvoiceAddChargeItemResponse.fromJson(response.getBodyAsString(), response));
@@ -794,7 +794,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/pause_dunning", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "pauseDunning", path, null);
   }
 
   /**
@@ -804,7 +804,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/pause_dunning", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "pauseDunning", path, params.toFormData());
   }
 
   /**
@@ -813,7 +813,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response pauseDunningRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/pause_dunning", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "pauseDunning", path, jsonPayload);
   }
 
   public InvoicePauseDunningResponse pauseDunning(
@@ -827,7 +827,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoicePauseDunningParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/pause_dunning", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "pauseDunning", path, params.toFormData())
         .thenApply(
             response -> InvoicePauseDunningResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -835,13 +835,13 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   /** list a invoice using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(InvoiceListParams params) throws ChargebeeException {
 
-    return get("/invoices", params != null ? params.toQueryParams() : null);
+    return get("invoice", "list", "/invoices", params != null ? params.toQueryParams() : null);
   }
 
   /** list a invoice without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/invoices", null);
+    return get("invoice", "list", "/invoices", null);
   }
 
   /** list a invoice using raw JSON payload (executes immediately) - returns raw Response. */
@@ -859,7 +859,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   /** Async variant of list for invoice with params. */
   public CompletableFuture<InvoiceListResponse> listAsync(InvoiceListParams params) {
 
-    return getAsync("/invoices", params != null ? params.toQueryParams() : null)
+    return getAsync("invoice", "list", "/invoices", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 InvoiceListResponse.fromJson(response.getBodyAsString(), this, params, response));
@@ -874,7 +874,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   /** Async variant of list for invoice without params. */
   public CompletableFuture<InvoiceListResponse> listAsync() {
 
-    return getAsync("/invoices", null)
+    return getAsync("invoice", "list", "/invoices", null)
         .thenApply(
             response ->
                 InvoiceListResponse.fromJson(response.getBodyAsString(), this, null, response));
@@ -883,13 +883,13 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   /** create a invoice using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(InvoiceCreateParams params) throws ChargebeeException {
 
-    return post("/invoices", params != null ? params.toFormData() : null);
+    return post("invoice", "create", "/invoices", params != null ? params.toFormData() : null);
   }
 
   /** create a invoice using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/invoices", jsonPayload);
+    return postJson("invoice", "create", "/invoices", jsonPayload);
   }
 
   public InvoiceCreateResponse create(InvoiceCreateParams params) throws ChargebeeException {
@@ -901,7 +901,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   /** Async variant of create for invoice with params. */
   public CompletableFuture<InvoiceCreateResponse> createAsync(InvoiceCreateParams params) {
 
-    return postAsync("/invoices", params != null ? params.toFormData() : null)
+    return postAsync("invoice", "create", "/invoices", params != null ? params.toFormData() : null)
         .thenApply(
             response -> InvoiceCreateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -910,19 +910,19 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response closeRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/close", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "close", path, null);
   }
 
   /** close a invoice using immutable params (executes immediately) - returns raw Response. */
   Response closeRaw(String invoiceId, InvoiceCloseParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/close", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "close", path, params.toFormData());
   }
 
   /** close a invoice using raw JSON payload (executes immediately) - returns raw Response. */
   Response closeRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/close", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "close", path, jsonPayload);
   }
 
   public InvoiceCloseResponse close(String invoiceId, InvoiceCloseParams params)
@@ -935,7 +935,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<InvoiceCloseResponse> closeAsync(
       String invoiceId, InvoiceCloseParams params) {
     String path = buildPathWithParams("/invoices/{invoice-id}/close", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "close", path, params.toFormData())
         .thenApply(response -> InvoiceCloseResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -948,7 +948,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<InvoiceCloseResponse> closeAsync(String invoiceId) {
     String path = buildPathWithParams("/invoices/{invoice-id}/close", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "close", path, null)
         .thenApply(response -> InvoiceCloseResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -957,7 +957,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/apply_credits", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "applyCredits", path, null);
   }
 
   /**
@@ -967,7 +967,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/apply_credits", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "applyCredits", path, params.toFormData());
   }
 
   /**
@@ -976,7 +976,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response applyCreditsRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/apply_credits", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "applyCredits", path, jsonPayload);
   }
 
   public InvoiceApplyCreditsResponse applyCredits(
@@ -990,7 +990,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceApplyCreditsParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/apply_credits", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "applyCredits", path, params.toFormData())
         .thenApply(
             response -> InvoiceApplyCreditsResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1005,7 +1005,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/apply_credits", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "applyCredits", path, null)
         .thenApply(
             response -> InvoiceApplyCreditsResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1014,13 +1014,13 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response retrieveRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}", "invoice-id", invoiceId);
 
-    return get(path, null);
+    return get("invoice", "retrieve", path, null);
   }
 
   /** retrieve a invoice using immutable params (executes immediately) - returns raw Response. */
   Response retrieveRaw(String invoiceId, InvoiceRetrieveParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}", "invoice-id", invoiceId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get("invoice", "retrieve", path, params != null ? params.toQueryParams() : null);
   }
 
   public InvoiceRetrieveResponse retrieve(String invoiceId, InvoiceRetrieveParams params)
@@ -1033,7 +1033,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<InvoiceRetrieveResponse> retrieveAsync(
       String invoiceId, InvoiceRetrieveParams params) {
     String path = buildPathWithParams("/invoices/{invoice-id}", "invoice-id", invoiceId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync("invoice", "retrieve", path, params != null ? params.toQueryParams() : null)
         .thenApply(
             response -> InvoiceRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1047,7 +1047,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<InvoiceRetrieveResponse> retrieveAsync(String invoiceId) {
     String path = buildPathWithParams("/invoices/{invoice-id}", "invoice-id", invoiceId);
 
-    return getAsync(path, null)
+    return getAsync("invoice", "retrieve", path, null)
         .thenApply(
             response -> InvoiceRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1059,7 +1059,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response createForChargeItemRaw(InvoiceCreateForChargeItemParams params)
       throws ChargebeeException {
 
-    return post("/invoices/create_for_charge_item", params != null ? params.toFormData() : null);
+    return post(
+        "invoice",
+        "createForChargeItem",
+        "/invoices/create_for_charge_item",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -1068,7 +1072,8 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    */
   Response createForChargeItemRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/invoices/create_for_charge_item", jsonPayload);
+    return postJson(
+        "invoice", "createForChargeItem", "/invoices/create_for_charge_item", jsonPayload);
   }
 
   public InvoiceCreateForChargeItemResponse createForChargeItem(
@@ -1083,7 +1088,10 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       InvoiceCreateForChargeItemParams params) {
 
     return postAsync(
-            "/invoices/create_for_charge_item", params != null ? params.toFormData() : null)
+            "invoice",
+            "createForChargeItem",
+            "/invoices/create_for_charge_item",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response ->
                 InvoiceCreateForChargeItemResponse.fromJson(response.getBodyAsString(), response));
@@ -1097,6 +1105,8 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
 
     return post(
+        "invoice",
+        "createForChargeItemsAndCharges",
         "/invoices/create_for_charge_items_and_charges",
         params != null ? params.toFormData() : null);
   }
@@ -1107,7 +1117,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    */
   Response createForChargeItemsAndChargesRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/invoices/create_for_charge_items_and_charges", jsonPayload);
+    return postJson(
+        "invoice",
+        "createForChargeItemsAndCharges",
+        "/invoices/create_for_charge_items_and_charges",
+        jsonPayload);
   }
 
   public InvoiceCreateForChargeItemsAndChargesResponse createForChargeItemsAndCharges(
@@ -1123,6 +1137,8 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       createForChargeItemsAndChargesAsync(InvoiceCreateForChargeItemsAndChargesParams params) {
 
     return postAsync(
+            "invoice",
+            "createForChargeItemsAndCharges",
             "/invoices/create_for_charge_items_and_charges",
             params != null ? params.toFormData() : null)
         .thenApply(
@@ -1136,7 +1152,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_imported", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "deleteImported", path, null);
   }
 
   /**
@@ -1146,7 +1162,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_imported", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "deleteImported", path, params.toFormData());
   }
 
   /**
@@ -1155,7 +1171,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response deleteImportedRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_imported", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "deleteImported", path, jsonPayload);
   }
 
   public InvoiceDeleteImportedResponse deleteImported(
@@ -1169,7 +1185,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceDeleteImportedParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_imported", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "deleteImported", path, params.toFormData())
         .thenApply(
             response ->
                 InvoiceDeleteImportedResponse.fromJson(response.getBodyAsString(), response));
@@ -1185,7 +1201,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_imported", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "deleteImported", path, null)
         .thenApply(
             response ->
                 InvoiceDeleteImportedResponse.fromJson(response.getBodyAsString(), response));
@@ -1196,7 +1212,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/update_details", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "updateDetails", path, null);
   }
 
   /**
@@ -1206,7 +1222,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/update_details", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "updateDetails", path, params.toFormData());
   }
 
   /**
@@ -1215,7 +1231,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response updateDetailsRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/update_details", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "updateDetails", path, jsonPayload);
   }
 
   public InvoiceUpdateDetailsResponse updateDetails(
@@ -1229,7 +1245,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceUpdateDetailsParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/update_details", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "updateDetails", path, params.toFormData())
         .thenApply(
             response ->
                 InvoiceUpdateDetailsResponse.fromJson(response.getBodyAsString(), response));
@@ -1245,7 +1261,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/update_details", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "updateDetails", path, null)
         .thenApply(
             response ->
                 InvoiceUpdateDetailsResponse.fromJson(response.getBodyAsString(), response));
@@ -1259,14 +1275,15 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/invoices", "customer-id", customerId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "invoice", "invoicesForCustomer", path, params != null ? params.toQueryParams() : null);
   }
 
   /** invoicesForCustomer a invoice without params (executes immediately) - returns raw Response. */
   Response invoicesForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/invoices", "customer-id", customerId);
-    return get(path, null);
+    return get("invoice", "invoicesForCustomer", path, null);
   }
 
   /**
@@ -1298,7 +1315,8 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String customerId, InvoicesForCustomerParams params) {
     String path =
         buildPathWithParams("/customers/{customer-id}/invoices", "customer-id", customerId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "invoice", "invoicesForCustomer", path, params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 InvoicesForCustomerResponse.fromJson(
@@ -1310,7 +1328,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String customerId) {
     String path =
         buildPathWithParams("/customers/{customer-id}/invoices", "customer-id", customerId);
-    return getAsync(path, null)
+    return getAsync("invoice", "invoicesForCustomer", path, null)
         .thenApply(
             response ->
                 InvoicesForCustomerResponse.fromJson(
@@ -1322,7 +1340,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_payment", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "recordPayment", path, null);
   }
 
   /**
@@ -1332,7 +1350,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_payment", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "recordPayment", path, params.toFormData());
   }
 
   /**
@@ -1341,7 +1359,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response recordPaymentRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_payment", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "recordPayment", path, jsonPayload);
   }
 
   public InvoiceRecordPaymentResponse recordPayment(
@@ -1355,7 +1373,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceRecordPaymentParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_payment", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "recordPayment", path, params.toFormData())
         .thenApply(
             response ->
                 InvoiceRecordPaymentResponse.fromJson(response.getBodyAsString(), response));
@@ -1371,7 +1389,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_payment", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "recordPayment", path, null)
         .thenApply(
             response ->
                 InvoiceRecordPaymentResponse.fromJson(response.getBodyAsString(), response));
@@ -1381,19 +1399,19 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response deleteRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/delete", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "delete", path, null);
   }
 
   /** delete a invoice using immutable params (executes immediately) - returns raw Response. */
   Response deleteRaw(String invoiceId, InvoiceDeleteParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/delete", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "delete", path, params.toFormData());
   }
 
   /** delete a invoice using raw JSON payload (executes immediately) - returns raw Response. */
   Response deleteRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/delete", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "delete", path, jsonPayload);
   }
 
   public InvoiceDeleteResponse delete(String invoiceId, InvoiceDeleteParams params)
@@ -1406,7 +1424,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<InvoiceDeleteResponse> deleteAsync(
       String invoiceId, InvoiceDeleteParams params) {
     String path = buildPathWithParams("/invoices/{invoice-id}/delete", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "delete", path, params.toFormData())
         .thenApply(
             response -> InvoiceDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1420,7 +1438,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<InvoiceDeleteResponse> deleteAsync(String invoiceId) {
     String path = buildPathWithParams("/invoices/{invoice-id}/delete", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "delete", path, null)
         .thenApply(
             response -> InvoiceDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1430,7 +1448,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    */
   Response importInvoiceRaw(ImportInvoiceParams params) throws ChargebeeException {
 
-    return post("/invoices/import_invoice", params != null ? params.toFormData() : null);
+    return post(
+        "invoice",
+        "importInvoice",
+        "/invoices/import_invoice",
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -1438,7 +1460,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    */
   Response importInvoiceRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/invoices/import_invoice", jsonPayload);
+    return postJson("invoice", "importInvoice", "/invoices/import_invoice", jsonPayload);
   }
 
   public ImportInvoiceResponse importInvoice(ImportInvoiceParams params) throws ChargebeeException {
@@ -1450,7 +1472,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   /** Async variant of importInvoice for invoice with params. */
   public CompletableFuture<ImportInvoiceResponse> importInvoiceAsync(ImportInvoiceParams params) {
 
-    return postAsync("/invoices/import_invoice", params != null ? params.toFormData() : null)
+    return postAsync(
+            "invoice",
+            "importInvoice",
+            "/invoices/import_invoice",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> ImportInvoiceResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1460,7 +1486,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/resume_dunning", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "resumeDunning", path, null);
   }
 
   /**
@@ -1470,7 +1496,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/resume_dunning", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "resumeDunning", path, params.toFormData());
   }
 
   /**
@@ -1479,7 +1505,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response resumeDunningRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/resume_dunning", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "resumeDunning", path, jsonPayload);
   }
 
   public InvoiceResumeDunningResponse resumeDunning(
@@ -1493,7 +1519,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceResumeDunningParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/resume_dunning", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "resumeDunning", path, params.toFormData())
         .thenApply(
             response ->
                 InvoiceResumeDunningResponse.fromJson(response.getBodyAsString(), response));
@@ -1509,7 +1535,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/resume_dunning", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "resumeDunning", path, null)
         .thenApply(
             response ->
                 InvoiceResumeDunningResponse.fromJson(response.getBodyAsString(), response));
@@ -1520,7 +1546,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_tax_withheld", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "recordTaxWithheld", path, null);
   }
 
   /**
@@ -1531,7 +1557,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_tax_withheld", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "recordTaxWithheld", path, params.toFormData());
   }
 
   /**
@@ -1541,7 +1567,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response recordTaxWithheldRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_tax_withheld", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "recordTaxWithheld", path, jsonPayload);
   }
 
   public InvoiceRecordTaxWithheldResponse recordTaxWithheld(
@@ -1555,7 +1581,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceRecordTaxWithheldParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_tax_withheld", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "recordTaxWithheld", path, params.toFormData())
         .thenApply(
             response ->
                 InvoiceRecordTaxWithheldResponse.fromJson(response.getBodyAsString(), response));
@@ -1573,7 +1599,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_tax_withheld", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "recordTaxWithheld", path, null)
         .thenApply(
             response ->
                 InvoiceRecordTaxWithheldResponse.fromJson(response.getBodyAsString(), response));
@@ -1584,7 +1610,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/resend_einvoice", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "resendEinvoice", path, null);
   }
 
   public ResendEinvoiceResponse resendEinvoice(String invoiceId) throws ChargebeeException {
@@ -1597,7 +1623,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/resend_einvoice", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "resendEinvoice", path, null)
         .thenApply(
             response -> ResendEinvoiceResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1607,7 +1633,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_tax_withheld", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "removeTaxWithheld", path, null);
   }
 
   /**
@@ -1618,7 +1644,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_tax_withheld", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "removeTaxWithheld", path, params.toFormData());
   }
 
   /**
@@ -1628,7 +1654,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response removeTaxWithheldRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_tax_withheld", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "removeTaxWithheld", path, jsonPayload);
   }
 
   public InvoiceRemoveTaxWithheldResponse removeTaxWithheld(
@@ -1642,7 +1668,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceRemoveTaxWithheldParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_tax_withheld", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "removeTaxWithheld", path, params.toFormData())
         .thenApply(
             response ->
                 InvoiceRemoveTaxWithheldResponse.fromJson(response.getBodyAsString(), response));
@@ -1660,7 +1686,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_tax_withheld", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "removeTaxWithheld", path, null)
         .thenApply(
             response ->
                 InvoiceRemoveTaxWithheldResponse.fromJson(response.getBodyAsString(), response));
@@ -1674,7 +1700,10 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
 
     return get(
-        "/invoices/payment_reference_numbers", params != null ? params.toQueryParams() : null);
+        "invoice",
+        "listPaymentReferenceNumbers",
+        "/invoices/payment_reference_numbers",
+        params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -1683,7 +1712,8 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    */
   Response listPaymentReferenceNumbersRaw() throws ChargebeeException {
 
-    return get("/invoices/payment_reference_numbers", null);
+    return get(
+        "invoice", "listPaymentReferenceNumbers", "/invoices/payment_reference_numbers", null);
   }
 
   /**
@@ -1708,7 +1738,10 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       listPaymentReferenceNumbersAsync(InvoiceListPaymentReferenceNumbersParams params) {
 
     return getAsync(
-            "/invoices/payment_reference_numbers", params != null ? params.toQueryParams() : null)
+            "invoice",
+            "listPaymentReferenceNumbers",
+            "/invoices/payment_reference_numbers",
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 InvoiceListPaymentReferenceNumbersResponse.fromJson(
@@ -1727,7 +1760,8 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<InvoiceListPaymentReferenceNumbersResponse>
       listPaymentReferenceNumbersAsync() {
 
-    return getAsync("/invoices/payment_reference_numbers", null)
+    return getAsync(
+            "invoice", "listPaymentReferenceNumbers", "/invoices/payment_reference_numbers", null)
         .thenApply(
             response ->
                 InvoiceListPaymentReferenceNumbersResponse.fromJson(
@@ -1739,7 +1773,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/collect_payment", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "collectPayment", path, null);
   }
 
   /**
@@ -1749,7 +1783,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/collect_payment", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "collectPayment", path, params.toFormData());
   }
 
   /**
@@ -1758,7 +1792,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response collectPaymentRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/collect_payment", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "collectPayment", path, jsonPayload);
   }
 
   public InvoiceCollectPaymentResponse collectPayment(
@@ -1772,7 +1806,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceCollectPaymentParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/collect_payment", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "collectPayment", path, params.toFormData())
         .thenApply(
             response ->
                 InvoiceCollectPaymentResponse.fromJson(response.getBodyAsString(), response));
@@ -1788,7 +1822,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/collect_payment", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "collectPayment", path, null)
         .thenApply(
             response ->
                 InvoiceCollectPaymentResponse.fromJson(response.getBodyAsString(), response));
@@ -1799,7 +1833,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/sync_usages", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "syncUsages", path, null);
   }
 
   public InvoiceSyncUsagesResponse syncUsages(String invoiceId) throws ChargebeeException {
@@ -1812,7 +1846,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/sync_usages", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "syncUsages", path, null)
         .thenApply(
             response -> InvoiceSyncUsagesResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1821,19 +1855,19 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response refundRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/refund", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "refund", path, null);
   }
 
   /** refund a invoice using immutable params (executes immediately) - returns raw Response. */
   Response refundRaw(String invoiceId, InvoiceRefundParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/refund", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "refund", path, params.toFormData());
   }
 
   /** refund a invoice using raw JSON payload (executes immediately) - returns raw Response. */
   Response refundRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/refund", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "refund", path, jsonPayload);
   }
 
   public InvoiceRefundResponse refund(String invoiceId, InvoiceRefundParams params)
@@ -1846,7 +1880,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<InvoiceRefundResponse> refundAsync(
       String invoiceId, InvoiceRefundParams params) {
     String path = buildPathWithParams("/invoices/{invoice-id}/refund", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "refund", path, params.toFormData())
         .thenApply(
             response -> InvoiceRefundResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1860,7 +1894,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<InvoiceRefundResponse> refundAsync(String invoiceId) {
     String path = buildPathWithParams("/invoices/{invoice-id}/refund", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "refund", path, null)
         .thenApply(
             response -> InvoiceRefundResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1870,7 +1904,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_refund", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "recordRefund", path, null);
   }
 
   /**
@@ -1880,7 +1914,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_refund", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "recordRefund", path, params.toFormData());
   }
 
   /**
@@ -1889,7 +1923,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response recordRefundRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_refund", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "recordRefund", path, jsonPayload);
   }
 
   public InvoiceRecordRefundResponse recordRefund(
@@ -1903,7 +1937,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceRecordRefundParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_refund", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "recordRefund", path, params.toFormData())
         .thenApply(
             response -> InvoiceRecordRefundResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1918,7 +1952,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_refund", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "recordRefund", path, null)
         .thenApply(
             response -> InvoiceRecordRefundResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -1927,19 +1961,19 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response pdfRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/pdf", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "pdf", path, null);
   }
 
   /** pdf a invoice using immutable params (executes immediately) - returns raw Response. */
   Response pdfRaw(String invoiceId, InvoicePdfParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/pdf", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "pdf", path, params.toFormData());
   }
 
   /** pdf a invoice using raw JSON payload (executes immediately) - returns raw Response. */
   Response pdfRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/pdf", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "pdf", path, jsonPayload);
   }
 
   public InvoicePdfResponse pdf(String invoiceId, InvoicePdfParams params)
@@ -1951,7 +1985,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   /** Async variant of pdf for invoice with params. */
   public CompletableFuture<InvoicePdfResponse> pdfAsync(String invoiceId, InvoicePdfParams params) {
     String path = buildPathWithParams("/invoices/{invoice-id}/pdf", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "pdf", path, params.toFormData())
         .thenApply(response -> InvoicePdfResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -1964,7 +1998,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<InvoicePdfResponse> pdfAsync(String invoiceId) {
     String path = buildPathWithParams("/invoices/{invoice-id}/pdf", "invoice-id", invoiceId);
 
-    return postAsync(path, null)
+    return postAsync("invoice", "pdf", path, null)
         .thenApply(response -> InvoicePdfResponse.fromJson(response.getBodyAsString(), response));
   }
 
@@ -1977,7 +2011,8 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/invoices", "subscription-id", subscriptionId);
-    return get(path, params != null ? params.toQueryParams() : null);
+    return get(
+        "invoice", "invoicesForSubscription", path, params != null ? params.toQueryParams() : null);
   }
 
   /**
@@ -1987,7 +2022,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/invoices", "subscription-id", subscriptionId);
-    return get(path, null);
+    return get("invoice", "invoicesForSubscription", path, null);
   }
 
   /**
@@ -2022,7 +2057,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/invoices", "subscription-id", subscriptionId);
-    return getAsync(path, params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "invoice",
+            "invoicesForSubscription",
+            path,
+            params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 InvoicesForSubscriptionResponse.fromJson(
@@ -2035,7 +2074,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/invoices", "subscription-id", subscriptionId);
-    return getAsync(path, null)
+    return getAsync("invoice", "invoicesForSubscription", path, null)
         .thenApply(
             response ->
                 InvoicesForSubscriptionResponse.fromJson(
@@ -2047,7 +2086,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/download_einvoice", "invoice-id", invoiceId);
 
-    return get(path, null);
+    return get("invoice", "downloadEinvoice", path, null);
   }
 
   public DownloadEinvoiceResponse downloadEinvoice(String invoiceId) throws ChargebeeException {
@@ -2060,7 +2099,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/download_einvoice", "invoice-id", invoiceId);
 
-    return getAsync(path, null)
+    return getAsync("invoice", "downloadEinvoice", path, null)
         .thenApply(
             response -> DownloadEinvoiceResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -2068,13 +2107,17 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   /** chargeAddon a invoice using immutable params (executes immediately) - returns raw Response. */
   Response chargeAddonRaw(InvoiceChargeAddonParams params) throws ChargebeeException {
 
-    return post("/invoices/charge_addon", params != null ? params.toFormData() : null);
+    return post(
+        "invoice",
+        "chargeAddon",
+        "/invoices/charge_addon",
+        params != null ? params.toFormData() : null);
   }
 
   /** chargeAddon a invoice using raw JSON payload (executes immediately) - returns raw Response. */
   Response chargeAddonRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/invoices/charge_addon", jsonPayload);
+    return postJson("invoice", "chargeAddon", "/invoices/charge_addon", jsonPayload);
   }
 
   public InvoiceChargeAddonResponse chargeAddon(InvoiceChargeAddonParams params)
@@ -2088,7 +2131,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public CompletableFuture<InvoiceChargeAddonResponse> chargeAddonAsync(
       InvoiceChargeAddonParams params) {
 
-    return postAsync("/invoices/charge_addon", params != null ? params.toFormData() : null)
+    return postAsync(
+            "invoice",
+            "chargeAddon",
+            "/invoices/charge_addon",
+            params != null ? params.toFormData() : null)
         .thenApply(
             response -> InvoiceChargeAddonResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -2098,7 +2145,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/add_addon_charge", "invoice-id", invoiceId);
 
-    return post(path, null);
+    return post("invoice", "addAddonCharge", path, null);
   }
 
   /**
@@ -2108,7 +2155,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/add_addon_charge", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
+    return post("invoice", "addAddonCharge", path, params.toFormData());
   }
 
   /**
@@ -2117,7 +2164,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   Response addAddonChargeRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/add_addon_charge", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
+    return postJson("invoice", "addAddonCharge", path, jsonPayload);
   }
 
   public InvoiceAddAddonChargeResponse addAddonCharge(
@@ -2131,7 +2178,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String invoiceId, InvoiceAddAddonChargeParams params) {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/add_addon_charge", "invoice-id", invoiceId);
-    return postAsync(path, params.toFormData())
+    return postAsync("invoice", "addAddonCharge", path, params.toFormData())
         .thenApply(
             response ->
                 InvoiceAddAddonChargeResponse.fromJson(response.getBodyAsString(), response));
@@ -2140,13 +2187,14 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   /** charge a invoice using immutable params (executes immediately) - returns raw Response. */
   Response chargeRaw(InvoiceChargeParams params) throws ChargebeeException {
 
-    return post("/invoices/charge", params != null ? params.toFormData() : null);
+    return post(
+        "invoice", "charge", "/invoices/charge", params != null ? params.toFormData() : null);
   }
 
   /** charge a invoice using raw JSON payload (executes immediately) - returns raw Response. */
   Response chargeRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/invoices/charge", jsonPayload);
+    return postJson("invoice", "charge", "/invoices/charge", jsonPayload);
   }
 
   public InvoiceChargeResponse charge(InvoiceChargeParams params) throws ChargebeeException {
@@ -2158,7 +2206,8 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   /** Async variant of charge for invoice with params. */
   public CompletableFuture<InvoiceChargeResponse> chargeAsync(InvoiceChargeParams params) {
 
-    return postAsync("/invoices/charge", params != null ? params.toFormData() : null)
+    return postAsync(
+            "invoice", "charge", "/invoices/charge", params != null ? params.toFormData() : null)
         .thenApply(
             response -> InvoiceChargeResponse.fromJson(response.getBodyAsString(), response));
   }

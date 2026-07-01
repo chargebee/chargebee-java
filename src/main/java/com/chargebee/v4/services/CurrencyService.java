@@ -73,7 +73,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
         buildPathWithParams(
             "/currencies/{site-currency-id}/add_schedule", "site-currency-id", siteCurrencyId);
 
-    return post(path, null);
+    return post("currency", "addSchedule", path, null);
   }
 
   /**
@@ -84,7 +84,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     String path =
         buildPathWithParams(
             "/currencies/{site-currency-id}/add_schedule", "site-currency-id", siteCurrencyId);
-    return post(path, params.toFormData());
+    return post("currency", "addSchedule", path, params.toFormData());
   }
 
   /**
@@ -94,7 +94,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     String path =
         buildPathWithParams(
             "/currencies/{site-currency-id}/add_schedule", "site-currency-id", siteCurrencyId);
-    return postJson(path, jsonPayload);
+    return postJson("currency", "addSchedule", path, jsonPayload);
   }
 
   public CurrencyAddScheduleResponse addSchedule(
@@ -109,7 +109,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     String path =
         buildPathWithParams(
             "/currencies/{site-currency-id}/add_schedule", "site-currency-id", siteCurrencyId);
-    return postAsync(path, params.toFormData())
+    return postAsync("currency", "addSchedule", path, params.toFormData())
         .thenApply(
             response -> CurrencyAddScheduleResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -117,13 +117,13 @@ public final class CurrencyService extends BaseService<CurrencyService> {
   /** create a currency using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(CurrencyCreateParams params) throws ChargebeeException {
 
-    return post("/currencies", params != null ? params.toFormData() : null);
+    return post("currency", "create", "/currencies", params != null ? params.toFormData() : null);
   }
 
   /** create a currency using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/currencies", jsonPayload);
+    return postJson("currency", "create", "/currencies", jsonPayload);
   }
 
   public CurrencyCreateResponse create(CurrencyCreateParams params) throws ChargebeeException {
@@ -135,7 +135,8 @@ public final class CurrencyService extends BaseService<CurrencyService> {
   /** Async variant of create for currency with params. */
   public CompletableFuture<CurrencyCreateResponse> createAsync(CurrencyCreateParams params) {
 
-    return postAsync("/currencies", params != null ? params.toFormData() : null)
+    return postAsync(
+            "currency", "create", "/currencies", params != null ? params.toFormData() : null)
         .thenApply(
             response -> CurrencyCreateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -145,7 +146,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     String path =
         buildPathWithParams("/currencies/{site-currency-id}", "site-currency-id", siteCurrencyId);
 
-    return get(path, null);
+    return get("currency", "retrieve", path, null);
   }
 
   public CurrencyRetrieveResponse retrieve(String siteCurrencyId) throws ChargebeeException {
@@ -158,7 +159,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     String path =
         buildPathWithParams("/currencies/{site-currency-id}", "site-currency-id", siteCurrencyId);
 
-    return getAsync(path, null)
+    return getAsync("currency", "retrieve", path, null)
         .thenApply(
             response -> CurrencyRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -168,21 +169,21 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     String path =
         buildPathWithParams("/currencies/{site-currency-id}", "site-currency-id", siteCurrencyId);
 
-    return post(path, null);
+    return post("currency", "update", path, null);
   }
 
   /** update a currency using immutable params (executes immediately) - returns raw Response. */
   Response updateRaw(String siteCurrencyId, CurrencyUpdateParams params) throws ChargebeeException {
     String path =
         buildPathWithParams("/currencies/{site-currency-id}", "site-currency-id", siteCurrencyId);
-    return post(path, params.toFormData());
+    return post("currency", "update", path, params.toFormData());
   }
 
   /** update a currency using raw JSON payload (executes immediately) - returns raw Response. */
   Response updateRaw(String siteCurrencyId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/currencies/{site-currency-id}", "site-currency-id", siteCurrencyId);
-    return postJson(path, jsonPayload);
+    return postJson("currency", "update", path, jsonPayload);
   }
 
   public CurrencyUpdateResponse update(String siteCurrencyId, CurrencyUpdateParams params)
@@ -196,7 +197,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
       String siteCurrencyId, CurrencyUpdateParams params) {
     String path =
         buildPathWithParams("/currencies/{site-currency-id}", "site-currency-id", siteCurrencyId);
-    return postAsync(path, params.toFormData())
+    return postAsync("currency", "update", path, params.toFormData())
         .thenApply(
             response -> CurrencyUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
@@ -207,7 +208,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
         buildPathWithParams(
             "/currencies/{site-currency-id}/remove_schedule", "site-currency-id", siteCurrencyId);
 
-    return post(path, null);
+    return post("currency", "removeSchedule", path, null);
   }
 
   public CurrencyRemoveScheduleResponse removeSchedule(String siteCurrencyId)
@@ -223,7 +224,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
         buildPathWithParams(
             "/currencies/{site-currency-id}/remove_schedule", "site-currency-id", siteCurrencyId);
 
-    return postAsync(path, null)
+    return postAsync("currency", "removeSchedule", path, null)
         .thenApply(
             response ->
                 CurrencyRemoveScheduleResponse.fromJson(response.getBodyAsString(), response));
@@ -232,13 +233,14 @@ public final class CurrencyService extends BaseService<CurrencyService> {
   /** list a currency using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(CurrencyListParams params) throws ChargebeeException {
 
-    return get("/currencies/list", params != null ? params.toQueryParams() : null);
+    return get(
+        "currency", "list", "/currencies/list", params != null ? params.toQueryParams() : null);
   }
 
   /** list a currency without params (executes immediately) - returns raw Response. */
   Response listRaw() throws ChargebeeException {
 
-    return get("/currencies/list", null);
+    return get("currency", "list", "/currencies/list", null);
   }
 
   /** list a currency using raw JSON payload (executes immediately) - returns raw Response. */
@@ -256,7 +258,8 @@ public final class CurrencyService extends BaseService<CurrencyService> {
   /** Async variant of list for currency with params. */
   public CompletableFuture<CurrencyListResponse> listAsync(CurrencyListParams params) {
 
-    return getAsync("/currencies/list", params != null ? params.toQueryParams() : null)
+    return getAsync(
+            "currency", "list", "/currencies/list", params != null ? params.toQueryParams() : null)
         .thenApply(
             response ->
                 CurrencyListResponse.fromJson(response.getBodyAsString(), this, params, response));
@@ -271,7 +274,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
   /** Async variant of list for currency without params. */
   public CompletableFuture<CurrencyListResponse> listAsync() {
 
-    return getAsync("/currencies/list", null)
+    return getAsync("currency", "list", "/currencies/list", null)
         .thenApply(
             response ->
                 CurrencyListResponse.fromJson(response.getBodyAsString(), this, null, response));
