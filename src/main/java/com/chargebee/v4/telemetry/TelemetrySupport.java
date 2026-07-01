@@ -10,6 +10,7 @@ package com.chargebee.v4.telemetry;
 import com.chargebee.v4.exceptions.APIException;
 import com.chargebee.v4.exceptions.HttpException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /** Helpers for building standardized Chargebee telemetry context and results. */
@@ -29,6 +30,7 @@ public final class TelemetrySupport {
     private final String chargebeeSite;
     private final String chargebeeApiVersion;
     private final String sdkVersion;
+    private final Map<String, String> requestHeaders;
 
     public BuildRequestTelemetryContextInput(
         String resource,
@@ -39,6 +41,28 @@ public final class TelemetrySupport {
         String chargebeeSite,
         String chargebeeApiVersion,
         String sdkVersion) {
+      this(
+          resource,
+          operation,
+          httpMethod,
+          httpUrl,
+          serverAddress,
+          chargebeeSite,
+          chargebeeApiVersion,
+          sdkVersion,
+          null);
+    }
+
+    public BuildRequestTelemetryContextInput(
+        String resource,
+        String operation,
+        String httpMethod,
+        String httpUrl,
+        String serverAddress,
+        String chargebeeSite,
+        String chargebeeApiVersion,
+        String sdkVersion,
+        Map<String, String> requestHeaders) {
       this.resource = resource;
       this.operation = operation;
       this.httpMethod = httpMethod;
@@ -47,6 +71,7 @@ public final class TelemetrySupport {
       this.chargebeeSite = chargebeeSite;
       this.chargebeeApiVersion = chargebeeApiVersion;
       this.sdkVersion = sdkVersion;
+      this.requestHeaders = requestHeaders;
     }
 
     public String getResource() {
@@ -79,6 +104,10 @@ public final class TelemetrySupport {
 
     public String getSdkVersion() {
       return sdkVersion;
+    }
+
+    public Map<String, String> getRequestHeaders() {
+      return requestHeaders;
     }
   }
 
@@ -128,6 +157,33 @@ public final class TelemetrySupport {
     attributes.put(TelemetryAttributeKeys.CHARGEBEE_OPERATION, input.getOperation());
     attributes.put(TelemetryAttributeKeys.CHARGEBEE_SDK_NAME, TelemetryAttributeKeys.SDK_NAME);
     attributes.put(TelemetryAttributeKeys.CHARGEBEE_SDK_VERSION, input.getSdkVersion());
+    attributes.putAll(buildRequestHeaderSpanAttributes(input.getRequestHeaders()));
+    return attributes;
+  }
+
+  public static Map<String, String> buildRequestHeaderSpanAttributes(
+      Map<String, String> requestHeaders) {
+    Map<String, String> attributes = new HashMap<>();
+    if (requestHeaders == null) {
+      return attributes;
+    }
+
+    for (Map.Entry<String, String> entry : requestHeaders.entrySet()) {
+      String name = entry.getKey();
+      String value = entry.getValue();
+      if (name == null || value == null) {
+        continue;
+      }
+      String lowerName = name.toLowerCase(Locale.ROOT);
+      if (!lowerName.startsWith(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_HEADER_PREFIX)
+          || lowerName.startsWith(
+              TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_HEADER_EXCLUDE_PREFIX)) {
+        continue;
+      }
+      attributes.put(
+          TelemetryAttributeKeys.HTTP_REQUEST_HEADER_ATTRIBUTE_PREFIX + lowerName, value);
+    }
+
     return attributes;
   }
 
@@ -138,14 +194,14 @@ public final class TelemetrySupport {
 
     RequestTelemetryError error = result.getError();
     if (error != null) {
-      attributes.put(TelemetryAttributeKeys.ERROR_TYPE, String.valueOf(result.getHttpStatusCode()));
+      if (error.getChargebeeApiErrorType() != null) {
+        attributes.put(TelemetryAttributeKeys.ERROR_TYPE, error.getChargebeeApiErrorType());
+        attributes.put(
+            TelemetryAttributeKeys.CHARGEBEE_ERROR_TYPE, error.getChargebeeApiErrorType());
+      }
 
       if (error.getChargebeeErrorCode() != null) {
         attributes.put(TelemetryAttributeKeys.CHARGEBEE_ERROR_CODE, error.getChargebeeErrorCode());
-      }
-      if (error.getChargebeeApiErrorType() != null) {
-        attributes.put(
-            TelemetryAttributeKeys.CHARGEBEE_ERROR_TYPE, error.getChargebeeApiErrorType());
       }
       if (error.getChargebeeErrorParam() != null) {
         attributes.put(

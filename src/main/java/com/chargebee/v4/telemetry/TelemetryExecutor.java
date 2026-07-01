@@ -143,7 +143,8 @@ public final class TelemetryExecutor {
             uri.getHost(),
             client.getSiteName(),
             TelemetrySupport.resolveChargebeeApiVersion(apiPath),
-            client.getSdkVersion()));
+            client.getSdkVersion(),
+            request.getHeaders()));
   }
 
   private static String extractApiPath(String baseUrl) {
