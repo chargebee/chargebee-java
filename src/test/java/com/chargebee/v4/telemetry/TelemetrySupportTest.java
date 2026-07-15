@@ -7,12 +7,57 @@ import com.chargebee.v4.exceptions.codes.NotFoundApiErrorCode;
 import com.chargebee.v4.transport.Request;
 import com.chargebee.v4.transport.Response;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("TelemetrySupport")
 class TelemetrySupportTest {
+
+  @Test
+  @DisplayName("Should promote X-Chargebee-Telemetry response header to end span attributes")
+  void shouldBuildResponseHeaderSpanAttributes() {
+    Map<String, List<String>> headers = new HashMap<>();
+    headers.put(
+        "X-Chargebee-Telemetry",
+        List.of(
+            "cb;start_time=@1781280400;time_ms=3800, tp-stripe;pm=card;time_ms=620, ft-account_hierarchy"));
+
+    Map<String, Object> attributes = TelemetrySupport.buildResponseHeaderSpanAttributes(headers);
+
+    assertEquals(
+        "cb;start_time=@1781280400;time_ms=3800, tp-stripe;pm=card;time_ms=620, ft-account_hierarchy",
+        attributes.get("http.response.header.x-chargebee-telemetry"));
+    assertEquals(1781280400L, attributes.get("chargebee.telemetry.cb.start_time"));
+    assertEquals(3800L, attributes.get("chargebee.telemetry.cb.time_ms"));
+    assertEquals(620L, attributes.get("chargebee.telemetry.tp.stripe.time_ms"));
+    assertEquals("card", attributes.get("chargebee.telemetry.tp.stripe.pm"));
+    assertEquals(List.of("account_hierarchy"), attributes.get("chargebee.telemetry.features"));
+    assertFalse(attributes.containsKey("http.response.header.content-type"));
+  }
+
+  @Test
+  @DisplayName("Should omit telemetry attributes when response header is absent")
+  void shouldOmitTelemetryAttributesWhenHeaderAbsent() {
+    Map<String, Object> attributes =
+        TelemetrySupport.buildResponseHeaderSpanAttributes(new HashMap<>());
+
+    assertFalse(attributes.containsKey("http.response.header.x-chargebee-telemetry"));
+    assertFalse(attributes.containsKey("chargebee.telemetry.cb.time_ms"));
+  }
+
+  @Test
+  @DisplayName("Should emit raw header only when parsing fails")
+  void shouldEmitRawOnlyWhenParsingFails() {
+    Map<String, List<String>> headers = new HashMap<>();
+    headers.put("X-Chargebee-Telemetry", List.of("cb;=missing_key"));
+
+    Map<String, Object> attributes = TelemetrySupport.buildResponseHeaderSpanAttributes(headers);
+
+    assertEquals("cb;=missing_key", attributes.get("http.response.header.x-chargebee-telemetry"));
+    assertFalse(attributes.containsKey("chargebee.telemetry.cb.time_ms"));
+  }
 
   @Test
   @DisplayName("Should promote chargebee-* headers and exclude the PII origin family")

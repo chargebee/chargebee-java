@@ -40,6 +40,22 @@ class TelemetryExecutorTest {
     }
   }
 
+  private static final class TelemetryResponseTransport implements Transport {
+    @Override
+    public Response send(Request request) {
+      Map<String, List<String>> headers = new HashMap<>();
+      headers.put(
+          "X-Chargebee-Telemetry",
+          List.of("cb;start_time=@1781280400;time_ms=3800, tp-stripe;pm=card;time_ms=620"));
+      return new Response(200, headers, "{}".getBytes());
+    }
+
+    @Override
+    public CompletableFuture<Response> sendAsync(Request request) {
+      return CompletableFuture.completedFuture(send(request));
+    }
+  }
+
   @Test
   @DisplayName("Should skip telemetry when no adapter is configured")
   void shouldSkipWhenNoAdapter() {
@@ -135,6 +151,51 @@ class TelemetryExecutorTest {
     assertEquals(2, allRequests.size());
     assertEquals("00-test-trace", allRequests.get(0).getHeaders().get("traceparent"));
     assertEquals("00-test-trace", allRequests.get(1).getHeaders().get("traceparent"));
+  }
+
+  @Test
+  @DisplayName("Should capture X-Chargebee-Telemetry response header on success")
+  void shouldCaptureChargebeeTelemetryResponseHeader() {
+    RequestTelemetryResult[] capturedResult = new RequestTelemetryResult[1];
+
+    TelemetryAdapter adapter =
+        new TelemetryAdapter() {
+          @Override
+          public Object onRequestStart(
+              RequestTelemetryContext context, Map<String, String> requestHeaders) {
+            return "span-1";
+          }
+
+          @Override
+          public void onRequestEnd(Object handle, RequestTelemetryResult result) {
+            capturedResult[0] = result;
+          }
+        };
+
+    ChargebeeClient client =
+        ChargebeeClient.builder("key_test", "acme")
+            .transport(new TelemetryResponseTransport())
+            .retry(RetryConfig.builder().enabled(false).build())
+            .telemetryAdapter(adapter)
+            .build();
+
+    Request request =
+        Request.builder()
+            .method("POST")
+            .url("https://acme.chargebee.com/api/v2/invoices/consolidate")
+            .telemetryResource("invoice")
+            .telemetryOperation("consolidate")
+            .build();
+
+    client.sendWithRetry(request);
+
+    Map<String, Object> endAttributes = capturedResult[0].getEndAttributes();
+    assertEquals(
+        "cb;start_time=@1781280400;time_ms=3800, tp-stripe;pm=card;time_ms=620",
+        endAttributes.get("http.response.header.x-chargebee-telemetry"));
+    assertEquals(3800L, endAttributes.get("chargebee.telemetry.cb.time_ms"));
+    assertEquals(620L, endAttributes.get("chargebee.telemetry.tp.stripe.time_ms"));
+    assertEquals("card", endAttributes.get("chargebee.telemetry.tp.stripe.pm"));
   }
 
   @Test

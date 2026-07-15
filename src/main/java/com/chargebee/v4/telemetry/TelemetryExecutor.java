@@ -36,7 +36,7 @@ public final class TelemetryExecutor {
 
     try {
       Response response = action.apply(requestWithHeaders);
-      endTelemetrySuccess(adapter, handle, startTime, response.getStatusCode());
+      endTelemetrySuccess(adapter, handle, startTime, response);
       return response;
     } catch (RuntimeException e) {
       endTelemetryFailure(adapter, handle, startTime, e);
@@ -66,7 +66,7 @@ public final class TelemetryExecutor {
                 Throwable cause = throwable.getCause() != null ? throwable.getCause() : throwable;
                 endTelemetryFailure(adapter, handle, startTime, cause);
               } else {
-                endTelemetrySuccess(adapter, handle, startTime, response.getStatusCode());
+                endTelemetrySuccess(adapter, handle, startTime, response);
               }
             });
   }
@@ -98,13 +98,16 @@ public final class TelemetryExecutor {
   }
 
   private static void endTelemetrySuccess(
-      TelemetryAdapter adapter, Object handle, long startTime, int httpStatusCode) {
+      TelemetryAdapter adapter, Object handle, long startTime, Response response) {
     try {
       adapter.onRequestEnd(
           handle,
           TelemetrySupport.buildRequestTelemetryResult(
               new TelemetrySupport.RequestTelemetryResultInput(
-                  httpStatusCode, System.currentTimeMillis() - startTime, null)));
+                  response.getStatusCode(),
+                  System.currentTimeMillis() - startTime,
+                  null,
+                  response.getHeaders())));
     } catch (Exception err) {
       LOGGER.log(Level.WARNING, "Telemetry adapter onRequestEnd failed: " + err.getMessage(), err);
     }
@@ -121,7 +124,8 @@ public final class TelemetryExecutor {
               new TelemetrySupport.RequestTelemetryResultInput(
                   httpStatusCode,
                   System.currentTimeMillis() - startTime,
-                  TelemetrySupport.extractRequestTelemetryError(err))));
+                  TelemetrySupport.extractRequestTelemetryError(err),
+                  TelemetrySupport.extractResponseHeaders(err))));
     } catch (Exception telemetryErr) {
       LOGGER.log(
           Level.WARNING,
