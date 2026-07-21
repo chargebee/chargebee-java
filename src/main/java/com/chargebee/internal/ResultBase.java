@@ -16,6 +16,14 @@ public class ResultBase {
     }
 
 
+    public AsyncResponseList asyncResponseList() {
+        return (AsyncResponseList)get("async_response_list");
+    }
+
+    public AsyncResponse asyncResponse() {
+        return (AsyncResponse)get("async_response");
+    }
+
     public Subscription subscription() {
         return (Subscription)get("subscription");
     }
@@ -356,8 +364,16 @@ public class ResultBase {
         return (Rule)get("rule");
     }
 
+    public Meter meter() {
+        return (Meter)get("meter");
+    }
+
     public UsageEvent usageEvent() {
         return (UsageEvent)get("usage_event");
+    }
+
+    public MeteredFeature meteredFeature() {
+        return (MeteredFeature)get("metered_feature");
     }
 
     public UsageFile usageFile() {

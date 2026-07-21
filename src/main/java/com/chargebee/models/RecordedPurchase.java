@@ -154,6 +154,21 @@ public class RecordedPurchase extends Resource<RecordedPurchase> {
             return this;
         }
         
+        public CreateRequest customerEmail(String customerEmail) {
+            params.addOpt("customer[email]", customerEmail);
+            return this;
+        }
+        
+        public CreateRequest customerFirstName(String customerFirstName) {
+            params.addOpt("customer[first_name]", customerFirstName);
+            return this;
+        }
+        
+        public CreateRequest customerLastName(String customerLastName) {
+            params.addOpt("customer[last_name]", customerLastName);
+            return this;
+        }
+        
         public CreateRequest appleAppStoreTransactionId(String appleAppStoreTransactionId) {
             params.addOpt("apple_app_store[transaction_id]", appleAppStoreTransactionId);
             return this;

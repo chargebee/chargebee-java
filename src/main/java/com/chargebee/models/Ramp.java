@@ -205,7 +205,7 @@ public class Ramp extends Resource<Ramp> {
 
     public static class DiscountsToAdd extends Resource<DiscountsToAdd> {
         public enum Type {
-             FIXED_AMOUNT,PERCENTAGE,
+             FIXED_AMOUNT,PERCENTAGE,OFFER_QUANTITY,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -244,6 +244,10 @@ public class Ramp extends Resource<Ramp> {
 
         public Long amount() {
             return optLong("amount");
+        }
+
+        public Integer quantity() {
+            return optInteger("quantity");
         }
 
         public DurationType durationType() {
@@ -743,6 +747,11 @@ public class Ramp extends Resource<Ramp> {
             paramsV2.addOpt(new CompositeArrayParameter("discounts_to_add", "amount", index), discountsToAddAmount);
             return this;
         }
+        public CreateForSubscriptionRequest discountsToAddQuantity(int index, Integer discountsToAddQuantity) {
+            params.addOpt("discounts_to_add[quantity][" + index + "]", discountsToAddQuantity);
+            paramsV2.addOpt(new CompositeArrayParameter("discounts_to_add", "quantity", index), discountsToAddQuantity);
+            return this;
+        }
         public CreateForSubscriptionRequest discountsToAddPeriod(int index, Integer discountsToAddPeriod) {
             params.addOpt("discounts_to_add[period][" + index + "]", discountsToAddPeriod);
             paramsV2.addOpt(new CompositeArrayParameter("discounts_to_add", "period", index), discountsToAddPeriod);
@@ -1023,6 +1032,11 @@ public class Ramp extends Resource<Ramp> {
         public UpdateRequest discountsToAddAmount(int index, Long discountsToAddAmount) {
             params.addOpt("discounts_to_add[amount][" + index + "]", discountsToAddAmount);
             paramsV2.addOpt(new CompositeArrayParameter("discounts_to_add", "amount", index), discountsToAddAmount);
+            return this;
+        }
+        public UpdateRequest discountsToAddQuantity(int index, Integer discountsToAddQuantity) {
+            params.addOpt("discounts_to_add[quantity][" + index + "]", discountsToAddQuantity);
+            paramsV2.addOpt(new CompositeArrayParameter("discounts_to_add", "quantity", index), discountsToAddQuantity);
             return this;
         }
         public UpdateRequest discountsToAddPeriod(int index, Integer discountsToAddPeriod) {

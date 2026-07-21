@@ -103,6 +103,10 @@ public class Feature extends Resource<Feature> {
         return reqTimestamp("created_at");
     }
 
+    public Boolean metered() {
+        return reqBoolean("metered");
+    }
+
     public List<Feature.Level> levels() {
         return optList("levels", Feature.Level.class);
     }
@@ -177,6 +181,11 @@ public class Feature extends Resource<Feature> {
 
         public EnumFilter<Feature.Type, FeatureListRequest> type() {
             return new EnumFilter<Feature.Type, FeatureListRequest>("type",this);        
+        }
+
+
+        public BooleanFilter<FeatureListRequest> metered() {
+            return new BooleanFilter<FeatureListRequest>("metered",this);        
         }
 
 

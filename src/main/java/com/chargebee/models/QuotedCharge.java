@@ -30,6 +30,10 @@ public class QuotedCharge extends Resource<QuotedCharge> {
             return optString("description");
         }
 
+        public String entityDescription() {
+            return optString("entity_description");
+        }
+
         public Integer servicePeriodInDays() {
             return optInteger("service_period_in_days");
         }
@@ -106,6 +110,14 @@ public class QuotedCharge extends Resource<QuotedCharge> {
 
         public String unitPriceInDecimal() {
             return optString("unit_price_in_decimal");
+        }
+
+        public String description() {
+            return optString("description");
+        }
+
+        public String entityDescription() {
+            return optString("entity_description");
         }
 
         public Integer servicePeriodDays() {

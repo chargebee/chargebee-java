@@ -98,10 +98,6 @@ public class GrantBlock extends Resource<GrantBlock> {
         return reqEnum("status", Status.class);
     }
 
-    public String metadata() {
-        return optString("metadata");
-    }
-
     public GrantSource grantSource() {
         return reqEnum("grant_source", GrantSource.class);
     }
@@ -120,6 +116,10 @@ public class GrantBlock extends Resource<GrantBlock> {
 
     public UnitType unitType() {
         return optEnum("unit_type", UnitType.class);
+    }
+
+    public JSONObject metadata() {
+        return optJSONObject("metadata");
     }
 
     // Operations
@@ -177,7 +177,6 @@ public class GrantBlock extends Resource<GrantBlock> {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
             return this;
         }
-
 
 
         @Override

@@ -34,9 +34,30 @@ public class Invoice extends Resource<Invoice> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public static class ExchangeRate extends Resource<ExchangeRate> {
+        public ExchangeRate(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String currencyCode() {
+            return reqString("currency_code");
+        }
+
+        public BigDecimal rate() {
+            return reqBigDecimal("rate");
+        }
+
+    }
+
     public static class LineItem extends Resource<LineItem> {
         public enum EntityType {
              ADHOC,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,PLAN_SETUP,PLAN,ADDON,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum ProrationMode {
+             RESET,DELTA,SERVICE_PERIOD_REVISION,ADJUSTED_TERM,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -143,6 +164,10 @@ public class Invoice extends Resource<Invoice> {
 
         public String customerId() {
             return optString("customer_id");
+        }
+
+        public ProrationMode prorationMode() {
+            return optEnum("proration_mode", ProrationMode.class);
         }
 
     }
@@ -1100,6 +1125,10 @@ public class Invoice extends Resource<Invoice> {
 
     public String lineItemsNextOffset() {
         return optString("line_items_next_offset");
+    }
+
+    public List<Invoice.ExchangeRate> exchangeRates() {
+        return optList("exchange_rates", Invoice.ExchangeRate.class);
     }
 
     public Boolean firstInvoice() {
@@ -2092,6 +2121,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public CreateForChargeItemsAndChargesRequest createPendingInvoice(Boolean createPendingInvoice) {
+            params.addOpt("create_pending_invoice", createPendingInvoice);
+            return this;
+        }
+
+
         public CreateForChargeItemsAndChargesRequest tokenId(String tokenId) {
             params.addOpt("token_id", tokenId);
             return this;
@@ -2508,6 +2543,18 @@ public class Invoice extends Resource<Invoice> {
         }
         public CreateForChargeItemsAndChargesRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
             params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest itemPriceDescription(int index, String itemPriceDescription) {
+            params.addOpt("item_prices[description][" + index + "]", itemPriceDescription);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest itemPriceEntityDescription(int index, String itemPriceEntityDescription) {
+            params.addOpt("item_prices[entity_description][" + index + "]", itemPriceEntityDescription);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest chargeEntityDescription(int index, String chargeEntityDescription) {
+            params.addOpt("charges[entity_description][" + index + "]", chargeEntityDescription);
             return this;
         }
         public CreateForChargeItemsAndChargesRequest chargeAmount(int index, Long chargeAmount) {
@@ -3165,6 +3212,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public ImportInvoiceRequest paidAt(Timestamp paidAt) {
+            params.addOpt("paid_at", paidAt);
+            return this;
+        }
+
+
         public ImportInvoiceRequest creditNoteId(String creditNoteId) {
             params.addOpt("credit_note[id]", creditNoteId);
             return this;
@@ -3456,6 +3509,10 @@ public class Invoice extends Resource<Invoice> {
         }
         public ImportInvoiceRequest lineItemTax10Amount(int index, Long lineItemTax10Amount) {
             params.addOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemProrationMode(int index, Invoice.LineItem.ProrationMode lineItemProrationMode) {
+            params.addOpt("line_items[proration_mode][" + index + "]", lineItemProrationMode);
             return this;
         }
         public ImportInvoiceRequest lineItemCreatedAt(int index, Timestamp lineItemCreatedAt) {

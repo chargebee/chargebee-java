@@ -121,7 +121,7 @@ public class UsageEvent extends Resource<UsageEvent> {
     public static class EventBatchIngestInputParams { 
         private final String DeduplicationId;
         private final String SubscriptionId;
-        private final Timestamp UsageTimestamp;
+        private final Long UsageTimestamp;
         private final Map<String, Object> Properties;
         private EventBatchIngestInputParams(EventBatchIngestInputParamsBuilder builder){
             this.DeduplicationId = builder.DeduplicationId;
@@ -134,7 +134,7 @@ public class UsageEvent extends Resource<UsageEvent> {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("deduplication_id", this.DeduplicationId);
             jsonObject.put("subscription_id", this.SubscriptionId);
-            jsonObject.put("usage_timestamp", this.UsageTimestamp.getTime());
+            jsonObject.put("usage_timestamp", this.UsageTimestamp);
             jsonObject.put("properties", this.Properties);
             
             return jsonObject;
@@ -143,7 +143,7 @@ public class UsageEvent extends Resource<UsageEvent> {
     public static class EventBatchIngestInputParamsBuilder { 
         private String DeduplicationId;
         private String SubscriptionId;
-        private Timestamp UsageTimestamp;
+        private Long UsageTimestamp;
         private Map<String, Object> Properties;
         
         public EventBatchIngestInputParamsBuilder setDeduplicationId( String DeduplicationId ) {
@@ -154,7 +154,7 @@ public class UsageEvent extends Resource<UsageEvent> {
             this.SubscriptionId = SubscriptionId;
             return this;
         } 
-        public EventBatchIngestInputParamsBuilder setUsageTimestamp( Timestamp UsageTimestamp ) {
+        public EventBatchIngestInputParamsBuilder setUsageTimestamp( Long UsageTimestamp ) {
             this.UsageTimestamp = UsageTimestamp;
             return this;
         } 

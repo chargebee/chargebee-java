@@ -69,6 +69,9 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         PAYPAY,
         GCASH,
         SOUTH_KOREAN_CARDS,
+        PAYNOW,
+        BIZUM,
+        PROMPTPAY,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -122,6 +125,35 @@ public class PaymentIntent extends Resource<PaymentIntent> {
 
         public GatewayErrorDetail errorDetail() {
             return optSubResource("error_detail", GatewayErrorDetail.class);
+        }
+
+    }
+
+    public static class PaymentIntentMetadata extends Resource<PaymentIntentMetadata> {
+        public enum Source {
+             CB_JS,COMPONENTS_FIELDS,CHECKOUT_V3,PAYNOW_V3,PORTAL_V3,GIFT_V3,CHECKOUT_V4,PAYMENT_COMPONENT,PC_INAPP_V4,PC_FPC_V4,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public PaymentIntentMetadata(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Source source() {
+            return reqEnum("source", Source.class);
+        }
+
+        public String clientIpAddress() {
+            return optString("client_ip_address");
+        }
+
+        public String userAgent() {
+            return optString("user_agent");
+        }
+
+        public Timestamp createdAt() {
+            return optTimestamp("created_at");
         }
 
     }
@@ -210,6 +242,10 @@ public class PaymentIntent extends Resource<PaymentIntent> {
 
     public List<PaymentIntent.PaymentAttempt> paymentAttempts() {
         return optList("payment_attempts", PaymentIntent.PaymentAttempt.class);
+    }
+
+    public PaymentIntent.PaymentIntentMetadata paymentIntentMetadata() {
+        return optSubResource("payment_intent_metadata", PaymentIntent.PaymentIntentMetadata.class);
     }
 
     public String businessEntityId() {

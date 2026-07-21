@@ -20,6 +20,52 @@ public class Alert extends Resource<Alert> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public static class Threshold extends Resource<Threshold> {
+        public Threshold(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Mode mode() {
+            return reqEnum("mode", Mode.class);
+        }
+
+        public Double value() {
+            return reqDouble("value");
+        }
+
+    }
+
+    public static class FilterCondition extends Resource<FilterCondition> {
+        public enum Field {
+             PLAN_PRICE_ID,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum Operator {
+             EQUALS,NOT_EQUALS,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public FilterCondition(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Field field() {
+            return reqEnum("field", Field.class);
+        }
+
+        public Operator operator() {
+            return reqEnum("operator", Operator.class);
+        }
+
+        public String value() {
+            return reqString("value");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -51,7 +97,11 @@ public class Alert extends Resource<Alert> {
     }
 
     public String meteredFeatureId() {
-        return reqString("metered_feature_id");
+        return optString("metered_feature_id");
+    }
+
+    public String currencyCode() {
+        return optString("currency_code");
     }
 
     public String subscriptionId() {
@@ -72,6 +122,14 @@ public class Alert extends Resource<Alert> {
 
     public Timestamp updatedAt() {
         return reqTimestamp("updated_at");
+    }
+
+    public List<Alert.Threshold> threshold() {
+        return optList("threshold", Alert.Threshold.class);
+    }
+
+    public List<Alert.FilterCondition> filterConditions() {
+        return optList("filter_conditions", Alert.FilterCondition.class);
     }
 
     // Operations
@@ -136,7 +194,13 @@ public class Alert extends Resource<Alert> {
 
 
         public CreateRequest meteredFeatureId(String meteredFeatureId) {
-            params.add("metered_feature_id", meteredFeatureId);
+            params.addOpt("metered_feature_id", meteredFeatureId);
+            return this;
+        }
+
+
+        public CreateRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
             return this;
         }
 
@@ -154,7 +218,7 @@ public class Alert extends Resource<Alert> {
 
 
         public CreateRequest thresholdMode(com.chargebee.models.enums.Mode thresholdMode) {
-            params.add("threshold[mode]", thresholdMode);
+            params.addOpt("threshold[mode]", thresholdMode);
             return this;
         }
         

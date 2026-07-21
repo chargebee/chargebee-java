@@ -45,6 +45,12 @@ public class Quote extends Resource<Quote> {
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
+        public enum ProrationMode {
+             RESET,DELTA,SERVICE_PERIOD_REVISION,ADJUSTED_TERM,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public LineItem(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -147,6 +153,10 @@ public class Quote extends Resource<Quote> {
 
         public String customerId() {
             return optString("customer_id");
+        }
+
+        public ProrationMode prorationMode() {
+            return optEnum("proration_mode", ProrationMode.class);
         }
 
     }

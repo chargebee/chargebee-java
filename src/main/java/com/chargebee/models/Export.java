@@ -1210,6 +1210,11 @@ public Export waitForExportCompletion()
         }
 
 
+        public BooleanFilter<SubscriptionsRequest> subscriptionDecommissioned() {
+            return new BooleanFilter<SubscriptionsRequest>("subscription[decommissioned]",this);        
+        }
+
+
         @Override
         public Params params() {
             return params;

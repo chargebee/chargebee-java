@@ -43,8 +43,8 @@ public class PromotionalGrant extends Resource<PromotionalGrant> {
         return reqTimestamp("expires_at");
     }
 
-    public String metadata() {
-        return optString("metadata");
+    public Map<String, Object> metadata() {
+        return optMap("metadata");
     }
 
     // Operations
