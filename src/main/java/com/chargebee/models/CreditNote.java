@@ -55,6 +55,12 @@ public class CreditNote extends Resource<CreditNote> {
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
+        public enum ProrationMode {
+             RESET,DELTA,SERVICE_PERIOD_REVISION,ADJUSTED_TERM,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public LineItem(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -157,6 +163,10 @@ public class CreditNote extends Resource<CreditNote> {
 
         public String customerId() {
             return optString("customer_id");
+        }
+
+        public ProrationMode prorationMode() {
+            return optEnum("proration_mode", ProrationMode.class);
         }
 
     }
@@ -538,6 +548,21 @@ public class CreditNote extends Resource<CreditNote> {
 
     }
 
+    public static class ExchangeRate extends Resource<ExchangeRate> {
+        public ExchangeRate(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String currencyCode() {
+            return reqString("currency_code");
+        }
+
+        public BigDecimal rate() {
+            return reqBigDecimal("rate");
+        }
+
+    }
+
     public static class ShippingAddress extends Resource<ShippingAddress> {
         public ShippingAddress(JSONObject jsonObj) {
             super(jsonObj);
@@ -896,6 +921,10 @@ public class CreditNote extends Resource<CreditNote> {
 
     public BigDecimal localCurrencyExchangeRate() {
         return optBigDecimal("local_currency_exchange_rate");
+    }
+
+    public List<CreditNote.ExchangeRate> exchangeRates() {
+        return optList("exchange_rates", CreditNote.ExchangeRate.class);
     }
 
     public String createReasonCode() {
@@ -1682,6 +1711,10 @@ public class CreditNote extends Resource<CreditNote> {
         }
         public ImportCreditNoteRequest lineItemTax10Amount(int index, Long lineItemTax10Amount) {
             params.addOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemProrationMode(int index, CreditNote.LineItem.ProrationMode lineItemProrationMode) {
+            params.addOpt("line_items[proration_mode][" + index + "]", lineItemProrationMode);
             return this;
         }
         public ImportCreditNoteRequest lineItemTierLineItemId(int index, String lineItemTierLineItemId) {

@@ -48,10 +48,16 @@ public enum Type {
     PAYPAY,
     GCASH,
     SOUTH_KOREAN_CARDS,
+    PAYNOW,
+    BIZUM,
+    PROMPTPAY,
     FREE_TRIAL,
     PAY_UP_FRONT,
     PAY_AS_YOU_GO,
+    SIMPLE,
+    COMPOUND,
     USAGE_EXCEEDED,
+    SPEND_EXCEEDED,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

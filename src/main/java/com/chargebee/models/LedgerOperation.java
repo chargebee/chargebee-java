@@ -59,14 +59,6 @@ public class LedgerOperation extends Resource<LedgerOperation> {
         return reqString("amount");
     }
 
-    public String startBalance() {
-        return reqString("start_balance");
-    }
-
-    public String endBalance() {
-        return reqString("end_balance");
-    }
-
     public String provisionedStartBalance() {
         return reqString("provisioned_start_balance");
     }
@@ -95,10 +87,6 @@ public class LedgerOperation extends Resource<LedgerOperation> {
         return optTimestamp("auto_release_timestamp");
     }
 
-    public String metadata() {
-        return optString("metadata");
-    }
-
     public Timestamp createdAt() {
         return optTimestamp("created_at");
     }
@@ -117,6 +105,10 @@ public class LedgerOperation extends Resource<LedgerOperation> {
 
     public UnitType unitType() {
         return optEnum("unit_type", UnitType.class);
+    }
+
+    public Map<String, Object> metadata() {
+        return optMap("metadata");
     }
 
     // Operations
@@ -186,7 +178,6 @@ public class LedgerOperation extends Resource<LedgerOperation> {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
             return this;
         }
-
 
 
         @Override

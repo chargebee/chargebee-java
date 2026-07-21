@@ -135,7 +135,6 @@ public class LedgerAccountBalance extends Resource<LedgerAccountBalance> {
         }
 
 
-
         @Override
         public Params params() {
             return params;

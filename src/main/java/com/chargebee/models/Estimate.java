@@ -3754,6 +3754,18 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
             return this;
         }
+        public CreateInvoiceForItemsRequest itemPriceDescription(int index, String itemPriceDescription) {
+            params.addOpt("item_prices[description][" + index + "]", itemPriceDescription);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest itemPriceEntityDescription(int index, String itemPriceEntityDescription) {
+            params.addOpt("item_prices[entity_description][" + index + "]", itemPriceEntityDescription);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest chargeEntityDescription(int index, String chargeEntityDescription) {
+            params.addOpt("charges[entity_description][" + index + "]", chargeEntityDescription);
+            return this;
+        }
         public CreateInvoiceForItemsRequest notesToRemoveEntityType(int index, com.chargebee.models.enums.EntityType notesToRemoveEntityType) {
             params.addOpt("notes_to_remove[entity_type][" + index + "]", notesToRemoveEntityType);
             return this;

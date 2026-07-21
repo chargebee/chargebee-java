@@ -1,6 +1,9 @@
 package com.chargebee.models.enums;
 
 public enum Status {
+    ACTIVE,
+    ARCHIVED,
+    DELETED,
     AVAILABLE,
     EXHAUSTED,
     SCHEDULED,

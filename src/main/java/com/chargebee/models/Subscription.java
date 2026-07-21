@@ -3049,6 +3049,11 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public BooleanFilter<SubscriptionListRequest> decommissioned() {
+            return new BooleanFilter<SubscriptionListRequest>("decommissioned",this);        
+        }
+
+
         @Override
         public Params params() {
             return params;
