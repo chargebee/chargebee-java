@@ -16,8 +16,6 @@ public class LedgerOperation {
   private String id;
   private Type type;
   private String amount;
-  private String startBalance;
-  private String endBalance;
   private String provisionedStartBalance;
   private String provisionedEndBalance;
   private String overdraftStartBalance;
@@ -25,12 +23,12 @@ public class LedgerOperation {
   private String parentLedgerOperationId;
   private Timestamp ledgerOperationTimestamp;
   private Timestamp autoReleaseTimestamp;
-  private String metadata;
   private Timestamp createdAt;
   private Timestamp modifiedAt;
   private String subscriptionId;
   private String unitId;
   private UnitType unitType;
+  private java.util.Map<String, Object> metadata;
 
   public String getId() {
     return id;
@@ -42,14 +40,6 @@ public class LedgerOperation {
 
   public String getAmount() {
     return amount;
-  }
-
-  public String getStartBalance() {
-    return startBalance;
-  }
-
-  public String getEndBalance() {
-    return endBalance;
   }
 
   public String getProvisionedStartBalance() {
@@ -80,10 +70,6 @@ public class LedgerOperation {
     return autoReleaseTimestamp;
   }
 
-  public String getMetadata() {
-    return metadata;
-  }
-
   public Timestamp getCreatedAt() {
     return createdAt;
   }
@@ -102,6 +88,10 @@ public class LedgerOperation {
 
   public UnitType getUnitType() {
     return unitType;
+  }
+
+  public java.util.Map<String, Object> getMetadata() {
+    return metadata;
   }
 
   public enum Type {
@@ -189,10 +179,6 @@ public class LedgerOperation {
 
     obj.amount = JsonUtil.getString(jsonObj, "amount");
 
-    obj.startBalance = JsonUtil.getString(jsonObj, "start_balance");
-
-    obj.endBalance = JsonUtil.getString(jsonObj, "end_balance");
-
     obj.provisionedStartBalance = JsonUtil.getString(jsonObj, "provisioned_start_balance");
 
     obj.provisionedEndBalance = JsonUtil.getString(jsonObj, "provisioned_end_balance");
@@ -207,8 +193,6 @@ public class LedgerOperation {
 
     obj.autoReleaseTimestamp = JsonUtil.getTimestamp(jsonObj, "auto_release_timestamp");
 
-    obj.metadata = JsonUtil.getString(jsonObj, "metadata");
-
     obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
     obj.modifiedAt = JsonUtil.getTimestamp(jsonObj, "modified_at");
@@ -218,6 +202,12 @@ public class LedgerOperation {
     obj.unitId = JsonUtil.getString(jsonObj, "unit_id");
 
     obj.unitType = UnitType.fromString(JsonUtil.getString(jsonObj, "unit_type"));
+
+    JsonObject __metadataObj = JsonUtil.getJsonObject(jsonObj, "metadata");
+    obj.metadata =
+        __metadataObj != null
+            ? JsonUtil.parseJsonObjectToMap(__metadataObj)
+            : new java.util.HashMap<>();
 
     return obj;
   }
@@ -231,10 +221,6 @@ public class LedgerOperation {
         + type
         + ", amount="
         + amount
-        + ", startBalance="
-        + startBalance
-        + ", endBalance="
-        + endBalance
         + ", provisionedStartBalance="
         + provisionedStartBalance
         + ", provisionedEndBalance="
@@ -249,8 +235,6 @@ public class LedgerOperation {
         + ledgerOperationTimestamp
         + ", autoReleaseTimestamp="
         + autoReleaseTimestamp
-        + ", metadata="
-        + metadata
         + ", createdAt="
         + createdAt
         + ", modifiedAt="
@@ -261,6 +245,8 @@ public class LedgerOperation {
         + unitId
         + ", unitType="
         + unitType
+        + ", metadata="
+        + metadata
         + "}";
   }
 
@@ -273,8 +259,6 @@ public class LedgerOperation {
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(type, that.type)
         && java.util.Objects.equals(amount, that.amount)
-        && java.util.Objects.equals(startBalance, that.startBalance)
-        && java.util.Objects.equals(endBalance, that.endBalance)
         && java.util.Objects.equals(provisionedStartBalance, that.provisionedStartBalance)
         && java.util.Objects.equals(provisionedEndBalance, that.provisionedEndBalance)
         && java.util.Objects.equals(overdraftStartBalance, that.overdraftStartBalance)
@@ -282,12 +266,12 @@ public class LedgerOperation {
         && java.util.Objects.equals(parentLedgerOperationId, that.parentLedgerOperationId)
         && java.util.Objects.equals(ledgerOperationTimestamp, that.ledgerOperationTimestamp)
         && java.util.Objects.equals(autoReleaseTimestamp, that.autoReleaseTimestamp)
-        && java.util.Objects.equals(metadata, that.metadata)
         && java.util.Objects.equals(createdAt, that.createdAt)
         && java.util.Objects.equals(modifiedAt, that.modifiedAt)
         && java.util.Objects.equals(subscriptionId, that.subscriptionId)
         && java.util.Objects.equals(unitId, that.unitId)
-        && java.util.Objects.equals(unitType, that.unitType);
+        && java.util.Objects.equals(unitType, that.unitType)
+        && java.util.Objects.equals(metadata, that.metadata);
   }
 
   @Override
@@ -297,8 +281,6 @@ public class LedgerOperation {
         id,
         type,
         amount,
-        startBalance,
-        endBalance,
         provisionedStartBalance,
         provisionedEndBalance,
         overdraftStartBalance,
@@ -306,11 +288,11 @@ public class LedgerOperation {
         parentLedgerOperationId,
         ledgerOperationTimestamp,
         autoReleaseTimestamp,
-        metadata,
         createdAt,
         modifiedAt,
         subscriptionId,
         unitId,
-        unitType);
+        unitType,
+        metadata);
   }
 }

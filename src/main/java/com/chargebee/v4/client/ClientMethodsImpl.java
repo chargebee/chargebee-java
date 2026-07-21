@@ -54,6 +54,8 @@ import com.chargebee.v4.services.OmnichannelSubscriptionService;
 
 import com.chargebee.v4.services.OmnichannelSubscriptionItemService;
 
+import com.chargebee.v4.services.MeterService;
+
 import com.chargebee.v4.services.RampService;
 
 import com.chargebee.v4.services.OmnichannelOneTimeOrderService;
@@ -83,6 +85,8 @@ import com.chargebee.v4.services.CardService;
 import com.chargebee.v4.services.AttachedItemService;
 
 import com.chargebee.v4.services.UsageEventService;
+
+import com.chargebee.v4.services.MeteredFeatureService;
 
 import com.chargebee.v4.services.PriceVariantService;
 
@@ -322,6 +326,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   }
 
   @Override
+  public MeterService meters() {
+    return getServiceRegistry().meters();
+  }
+
+  @Override
   public RampService ramps() {
     return getServiceRegistry().ramps();
   }
@@ -394,6 +403,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public UsageEventService usageEvents() {
     return getServiceRegistry().usageEvents();
+  }
+
+  @Override
+  public MeteredFeatureService meteredFeatures() {
+    return getServiceRegistry().meteredFeatures();
   }
 
   @Override

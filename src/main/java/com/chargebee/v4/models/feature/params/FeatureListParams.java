@@ -10,6 +10,7 @@ package com.chargebee.v4.models.feature.params;
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.EnumFilter;
+import com.chargebee.v4.filters.BooleanFilter;
 
 import com.chargebee.v4.filters.CustomFieldSelector;
 
@@ -71,6 +72,10 @@ public final class FeatureListParams {
 
     public TypeFilter type() {
       return new TypeFilter("type", this, queryParams);
+    }
+
+    public MeteredFilter metered() {
+      return new MeteredFilter("metered", this, queryParams);
     }
 
     /**
@@ -214,6 +219,25 @@ public final class FeatureListParams {
       @Deprecated
       public FeatureListBuilder notIn(String... values) {
         params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+    }
+
+    public static final class MeteredFilter extends BooleanFilter<FeatureListBuilder> {
+      MeteredFilter(String fieldName, FeatureListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe boolean overload instead:
+       *     <pre>{@code .metered().is(true)}</pre>
+       *
+       * @see #is(boolean)
+       */
+      @Deprecated
+      public FeatureListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
         return builder;
       }
     }
@@ -459,6 +483,34 @@ public final class FeatureListParams {
     public static TypeNotIn fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (TypeNotIn enumValue : TypeNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum MeteredIs {
+    TRUE("true"),
+
+    FALSE("false"),
+
+    /** An enum member indicating that MeteredIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    MeteredIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static MeteredIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (MeteredIs enumValue : MeteredIs.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

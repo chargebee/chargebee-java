@@ -145,6 +145,10 @@ public final class SubscriptionListParams {
       return new ChannelFilter("channel", this, queryParams);
     }
 
+    public DecommissionedFilter decommissioned() {
+      return new DecommissionedFilter("decommissioned", this, queryParams);
+    }
+
     public PlanIdFilter planId() {
       return new PlanIdFilter("plan_id", this, queryParams);
     }
@@ -548,6 +552,26 @@ public final class SubscriptionListParams {
       @Deprecated
       public SubscriptionListBuilder notIn(String... values) {
         params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+    }
+
+    public static final class DecommissionedFilter extends BooleanFilter<SubscriptionListBuilder> {
+      DecommissionedFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe boolean overload instead:
+       *     <pre>{@code .decommissioned().is(true)}</pre>
+       *
+       * @see #is(boolean)
+       */
+      @Deprecated
+      public SubscriptionListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
         return builder;
       }
     }
@@ -1462,6 +1486,34 @@ public final class SubscriptionListParams {
     public static ChannelNotIn fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (ChannelNotIn enumValue : ChannelNotIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum DecommissionedIs {
+    TRUE("true"),
+
+    FALSE("false"),
+
+    /** An enum member indicating that DecommissionedIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    DecommissionedIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static DecommissionedIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (DecommissionedIs enumValue : DecommissionedIs.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

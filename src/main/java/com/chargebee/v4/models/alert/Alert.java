@@ -10,6 +10,7 @@ package com.chargebee.v4.models.alert;
 import com.chargebee.v4.internal.JsonUtil;
 import com.google.gson.JsonObject;
 import java.sql.Timestamp;
+import java.util.List;
 
 public class Alert {
 
@@ -18,11 +19,14 @@ public class Alert {
   private String name;
   private String description;
   private String meteredFeatureId;
+  private String currencyCode;
   private String subscriptionId;
   private Status status;
   private String meta;
   private Timestamp createdAt;
   private Timestamp updatedAt;
+  private List<Threshold> threshold;
+  private List<FilterConditions> filterConditions;
 
   public String getId() {
     return id;
@@ -42,6 +46,10 @@ public class Alert {
 
   public String getMeteredFeatureId() {
     return meteredFeatureId;
+  }
+
+  public String getCurrencyCode() {
+    return currencyCode;
   }
 
   public String getSubscriptionId() {
@@ -64,8 +72,18 @@ public class Alert {
     return updatedAt;
   }
 
+  public List<Threshold> getThreshold() {
+    return threshold;
+  }
+
+  public List<FilterConditions> getFilterConditions() {
+    return filterConditions;
+  }
+
   public enum Type {
     USAGE_EXCEEDED("usage_exceeded"),
+
+    SPEND_EXCEEDED("spend_exceeded"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -139,6 +157,8 @@ public class Alert {
 
     obj.meteredFeatureId = JsonUtil.getString(jsonObj, "metered_feature_id");
 
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
+
     obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
     obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
@@ -148,6 +168,13 @@ public class Alert {
     obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
     obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
+
+    obj.threshold =
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "threshold"), Threshold::fromJson);
+
+    obj.filterConditions =
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "filter_conditions"), FilterConditions::fromJson);
 
     return obj;
   }
@@ -165,6 +192,8 @@ public class Alert {
         + description
         + ", meteredFeatureId="
         + meteredFeatureId
+        + ", currencyCode="
+        + currencyCode
         + ", subscriptionId="
         + subscriptionId
         + ", status="
@@ -175,6 +204,10 @@ public class Alert {
         + createdAt
         + ", updatedAt="
         + updatedAt
+        + ", threshold="
+        + threshold
+        + ", filterConditions="
+        + filterConditions
         + "}";
   }
 
@@ -189,11 +222,14 @@ public class Alert {
         && java.util.Objects.equals(name, that.name)
         && java.util.Objects.equals(description, that.description)
         && java.util.Objects.equals(meteredFeatureId, that.meteredFeatureId)
+        && java.util.Objects.equals(currencyCode, that.currencyCode)
         && java.util.Objects.equals(subscriptionId, that.subscriptionId)
         && java.util.Objects.equals(status, that.status)
         && java.util.Objects.equals(meta, that.meta)
         && java.util.Objects.equals(createdAt, that.createdAt)
-        && java.util.Objects.equals(updatedAt, that.updatedAt);
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(threshold, that.threshold)
+        && java.util.Objects.equals(filterConditions, that.filterConditions);
   }
 
   @Override
@@ -205,10 +241,216 @@ public class Alert {
         name,
         description,
         meteredFeatureId,
+        currencyCode,
         subscriptionId,
         status,
         meta,
         createdAt,
-        updatedAt);
+        updatedAt,
+        threshold,
+        filterConditions);
+  }
+
+  public static class Threshold {
+
+    private Mode mode;
+    private Double value;
+
+    public Mode getMode() {
+      return mode;
+    }
+
+    public Double getValue() {
+      return value;
+    }
+
+    public enum Mode {
+      ABSOLUTE("absolute"),
+
+      PERCENTAGE("percentage"),
+
+      /** An enum member indicating that Mode was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      Mode(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static Mode fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Mode enumValue : Mode.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public static Threshold fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Threshold fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
+    public static Threshold fromJson(JsonObject jsonObj) {
+      Threshold obj = new Threshold();
+
+      obj.mode = Mode.fromString(JsonUtil.getString(jsonObj, "mode"));
+
+      obj.value = JsonUtil.getDouble(jsonObj, "value");
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Threshold{" + "mode=" + mode + ", value=" + value + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      Threshold that = (Threshold) o;
+      return java.util.Objects.equals(mode, that.mode)
+          && java.util.Objects.equals(value, that.value);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(mode, value);
+    }
+  }
+
+  public static class FilterConditions {
+
+    private Field field;
+    private Operator operator;
+    private String value;
+
+    public Field getField() {
+      return field;
+    }
+
+    public Operator getOperator() {
+      return operator;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public enum Field {
+      PLAN_PRICE_ID("plan_price_id"),
+
+      /** An enum member indicating that Field was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      Field(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static Field fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Field enumValue : Field.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum Operator {
+      EQUALS("equals"),
+
+      NOT_EQUALS("not_equals"),
+
+      /** An enum member indicating that Operator was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      Operator(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static Operator fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Operator enumValue : Operator.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public static FilterConditions fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static FilterConditions fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
+    public static FilterConditions fromJson(JsonObject jsonObj) {
+      FilterConditions obj = new FilterConditions();
+
+      obj.field = Field.fromString(JsonUtil.getString(jsonObj, "field"));
+
+      obj.operator = Operator.fromString(JsonUtil.getString(jsonObj, "operator"));
+
+      obj.value = JsonUtil.getString(jsonObj, "value");
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "FilterConditions{"
+          + "field="
+          + field
+          + ", operator="
+          + operator
+          + ", value="
+          + value
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      FilterConditions that = (FilterConditions) o;
+      return java.util.Objects.equals(field, that.field)
+          && java.util.Objects.equals(operator, that.operator)
+          && java.util.Objects.equals(value, that.value);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(field, operator, value);
+    }
   }
 }

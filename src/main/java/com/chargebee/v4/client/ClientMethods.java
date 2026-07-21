@@ -54,6 +54,8 @@ import com.chargebee.v4.services.OmnichannelSubscriptionService;
 
 import com.chargebee.v4.services.OmnichannelSubscriptionItemService;
 
+import com.chargebee.v4.services.MeterService;
+
 import com.chargebee.v4.services.RampService;
 
 import com.chargebee.v4.services.OmnichannelOneTimeOrderService;
@@ -83,6 +85,8 @@ import com.chargebee.v4.services.CardService;
 import com.chargebee.v4.services.AttachedItemService;
 
 import com.chargebee.v4.services.UsageEventService;
+
+import com.chargebee.v4.services.MeteredFeatureService;
 
 import com.chargebee.v4.services.PriceVariantService;
 
@@ -374,6 +378,13 @@ public interface ClientMethods {
   OmnichannelSubscriptionItemService omnichannelSubscriptionItems();
 
   /**
+   * Access meter-related operations.
+   *
+   * @return MeterService instance for fluent API access
+   */
+  MeterService meters();
+
+  /**
    * Access ramp-related operations.
    *
    * @return RampService instance for fluent API access
@@ -477,6 +488,13 @@ public interface ClientMethods {
    * @return UsageEventService instance for fluent API access
    */
   UsageEventService usageEvents();
+
+  /**
+   * Access metered_feature-related operations.
+   *
+   * @return MeteredFeatureService instance for fluent API access
+   */
+  MeteredFeatureService meteredFeatures();
 
   /**
    * Access price_variant-related operations.

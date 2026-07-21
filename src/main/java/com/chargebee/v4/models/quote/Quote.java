@@ -762,6 +762,7 @@ public class Quote {
     private TaxExemptReason taxExemptReason;
     private String entityId;
     private String customerId;
+    private ProrationMode prorationMode;
 
     public String getId() {
       return id;
@@ -861,6 +862,10 @@ public class Quote {
 
     public String getCustomerId() {
       return customerId;
+    }
+
+    public ProrationMode getProrationMode() {
+      return prorationMode;
     }
 
     public enum PricingModel {
@@ -979,6 +984,38 @@ public class Quote {
       }
     }
 
+    public enum ProrationMode {
+      RESET("reset"),
+
+      DELTA("delta"),
+
+      SERVICE_PERIOD_REVISION("service_period_revision"),
+
+      ADJUSTED_TERM("adjusted_term"),
+
+      /** An enum member indicating that ProrationMode was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      ProrationMode(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static ProrationMode fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ProrationMode enumValue : ProrationMode.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
     public static LineItems fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
     }
@@ -1041,6 +1078,8 @@ public class Quote {
 
       obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
+      obj.prorationMode = ProrationMode.fromString(JsonUtil.getString(jsonObj, "proration_mode"));
+
       return obj;
     }
 
@@ -1097,6 +1136,8 @@ public class Quote {
           + entityId
           + ", customerId="
           + customerId
+          + ", prorationMode="
+          + prorationMode
           + "}";
     }
 
@@ -1130,7 +1171,8 @@ public class Quote {
           && java.util.Objects.equals(entityType, that.entityType)
           && java.util.Objects.equals(taxExemptReason, that.taxExemptReason)
           && java.util.Objects.equals(entityId, that.entityId)
-          && java.util.Objects.equals(customerId, that.customerId);
+          && java.util.Objects.equals(customerId, that.customerId)
+          && java.util.Objects.equals(prorationMode, that.prorationMode);
     }
 
     @Override
@@ -1161,7 +1203,8 @@ public class Quote {
           entityType,
           taxExemptReason,
           entityId,
-          customerId);
+          customerId,
+          prorationMode);
     }
   }
 

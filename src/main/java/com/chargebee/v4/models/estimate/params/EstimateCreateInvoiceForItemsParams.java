@@ -1169,6 +1169,10 @@ public final class EstimateCreateInvoiceForItemsParams {
 
     private final Timestamp dateTo;
 
+    private final String description;
+
+    private final String entityDescription;
+
     private ItemPricesParams(ItemPricesBuilder builder) {
 
       this.itemPriceId = builder.itemPriceId;
@@ -1184,6 +1188,10 @@ public final class EstimateCreateInvoiceForItemsParams {
       this.dateFrom = builder.dateFrom;
 
       this.dateTo = builder.dateTo;
+
+      this.description = builder.description;
+
+      this.entityDescription = builder.entityDescription;
     }
 
     public String getItemPriceId() {
@@ -1212,6 +1220,14 @@ public final class EstimateCreateInvoiceForItemsParams {
 
     public Timestamp getDateTo() {
       return dateTo;
+    }
+
+    public String getDescription() {
+      return description;
+    }
+
+    public String getEntityDescription() {
+      return entityDescription;
     }
 
     /** Get the form data for this request. */
@@ -1253,6 +1269,16 @@ public final class EstimateCreateInvoiceForItemsParams {
         formData.put("date_to", this.dateTo);
       }
 
+      if (this.description != null) {
+
+        formData.put("description", this.description);
+      }
+
+      if (this.entityDescription != null) {
+
+        formData.put("entity_description", this.entityDescription);
+      }
+
       return formData;
     }
 
@@ -1277,6 +1303,10 @@ public final class EstimateCreateInvoiceForItemsParams {
       private Timestamp dateFrom;
 
       private Timestamp dateTo;
+
+      private String description;
+
+      private String entityDescription;
 
       private ItemPricesBuilder() {}
 
@@ -1312,6 +1342,16 @@ public final class EstimateCreateInvoiceForItemsParams {
 
       public ItemPricesBuilder dateTo(Timestamp value) {
         this.dateTo = value;
+        return this;
+      }
+
+      public ItemPricesBuilder description(String value) {
+        this.description = value;
+        return this;
+      }
+
+      public ItemPricesBuilder entityDescription(String value) {
+        this.entityDescription = value;
         return this;
       }
 
@@ -1587,6 +1627,8 @@ public final class EstimateCreateInvoiceForItemsParams {
 
     private final Timestamp dateTo;
 
+    private final String entityDescription;
+
     private ChargesParams(ChargesBuilder builder) {
 
       this.amount = builder.amount;
@@ -1614,6 +1656,8 @@ public final class EstimateCreateInvoiceForItemsParams {
       this.dateFrom = builder.dateFrom;
 
       this.dateTo = builder.dateTo;
+
+      this.entityDescription = builder.entityDescription;
     }
 
     public Long getAmount() {
@@ -1666,6 +1710,10 @@ public final class EstimateCreateInvoiceForItemsParams {
 
     public Timestamp getDateTo() {
       return dateTo;
+    }
+
+    public String getEntityDescription() {
+      return entityDescription;
     }
 
     /** Get the form data for this request. */
@@ -1737,6 +1785,11 @@ public final class EstimateCreateInvoiceForItemsParams {
         formData.put("date_to", this.dateTo);
       }
 
+      if (this.entityDescription != null) {
+
+        formData.put("entity_description", this.entityDescription);
+      }
+
       return formData;
     }
 
@@ -1773,6 +1826,8 @@ public final class EstimateCreateInvoiceForItemsParams {
       private Timestamp dateFrom;
 
       private Timestamp dateTo;
+
+      private String entityDescription;
 
       private ChargesBuilder() {}
 
@@ -1838,6 +1893,11 @@ public final class EstimateCreateInvoiceForItemsParams {
 
       public ChargesBuilder dateTo(Timestamp value) {
         this.dateTo = value;
+        return this;
+      }
+
+      public ChargesBuilder entityDescription(String value) {
+        this.entityDescription = value;
         return this;
       }
 

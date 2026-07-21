@@ -812,6 +812,8 @@ public final class EventListParams {
 
     SUBSCRIPTION_BUSINESS_ENTITY_CHANGED("subscription_business_entity_changed"),
 
+    PAYMENT_SOURCE_BUSINESS_ENTITY_CHANGED("payment_source_business_entity_changed"),
+
     PURCHASE_CREATED("purchase_created"),
 
     VOUCHER_CREATED("voucher_created"),
@@ -1287,6 +1289,8 @@ public final class EventListParams {
     CUSTOMER_BUSINESS_ENTITY_CHANGED("customer_business_entity_changed"),
 
     SUBSCRIPTION_BUSINESS_ENTITY_CHANGED("subscription_business_entity_changed"),
+
+    PAYMENT_SOURCE_BUSINESS_ENTITY_CHANGED("payment_source_business_entity_changed"),
 
     PURCHASE_CREATED("purchase_created"),
 
@@ -1764,6 +1768,8 @@ public final class EventListParams {
 
     SUBSCRIPTION_BUSINESS_ENTITY_CHANGED("subscription_business_entity_changed"),
 
+    PAYMENT_SOURCE_BUSINESS_ENTITY_CHANGED("payment_source_business_entity_changed"),
+
     PURCHASE_CREATED("purchase_created"),
 
     VOUCHER_CREATED("voucher_created"),
@@ -2239,6 +2245,8 @@ public final class EventListParams {
     CUSTOMER_BUSINESS_ENTITY_CHANGED("customer_business_entity_changed"),
 
     SUBSCRIPTION_BUSINESS_ENTITY_CHANGED("subscription_business_entity_changed"),
+
+    PAYMENT_SOURCE_BUSINESS_ENTITY_CHANGED("payment_source_business_entity_changed"),
 
     PURCHASE_CREATED("purchase_created"),
 
@@ -2993,6 +3001,8 @@ public final class EventListParams {
     CUSTOMER_BUSINESS_ENTITY_CHANGED("customer_business_entity_changed"),
 
     SUBSCRIPTION_BUSINESS_ENTITY_CHANGED("subscription_business_entity_changed"),
+
+    PAYMENT_SOURCE_BUSINESS_ENTITY_CHANGED("payment_source_business_entity_changed"),
 
     PURCHASE_CREATED("purchase_created"),
 

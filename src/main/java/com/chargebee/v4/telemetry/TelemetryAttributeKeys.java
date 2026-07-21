@@ -24,7 +24,8 @@ public final class TelemetryAttributeKeys {
 
   public static final String HTTP_REQUEST_HEADER_ATTRIBUTE_PREFIX = "http.request.header.";
   public static final String CHARGEBEE_TELEMETRY_HEADER_PREFIX = "chargebee-";
-  public static final String CHARGEBEE_TELEMETRY_HEADER_EXCLUDE_PREFIX = "chargebee-request-origin-";
+  public static final String CHARGEBEE_TELEMETRY_HEADER_EXCLUDE_PREFIX =
+      "chargebee-request-origin-";
 
   public static final String URL_FULL = "url.full";
   public static final String HTTP_REQUEST_METHOD = "http.request.method";

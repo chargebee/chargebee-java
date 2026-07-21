@@ -3464,6 +3464,12 @@ public final class SubscriptionCreateParams {
 
       SOUTH_KOREAN_CARDS("south_korean_cards"),
 
+      PAYNOW("paynow"),
+
+      BIZUM("bizum"),
+
+      PROMPTPAY("promptpay"),
+
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -3888,6 +3894,12 @@ public final class SubscriptionCreateParams {
       GCASH("gcash"),
 
       SOUTH_KOREAN_CARDS("south_korean_cards"),
+
+      PAYNOW("paynow"),
+
+      BIZUM("bizum"),
+
+      PROMPTPAY("promptpay"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
