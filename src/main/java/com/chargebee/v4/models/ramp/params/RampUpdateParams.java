@@ -1327,6 +1327,8 @@ public final class RampUpdateParams {
 
     private final Long amount;
 
+    private final Integer quantity;
+
     private final Integer period;
 
     private final PeriodUnit periodUnit;
@@ -1344,6 +1346,8 @@ public final class RampUpdateParams {
       this.percentage = builder.percentage;
 
       this.amount = builder.amount;
+
+      this.quantity = builder.quantity;
 
       this.period = builder.period;
 
@@ -1368,6 +1372,10 @@ public final class RampUpdateParams {
 
     public Long getAmount() {
       return amount;
+    }
+
+    public Integer getQuantity() {
+      return quantity;
     }
 
     public Integer getPeriod() {
@@ -1410,6 +1418,11 @@ public final class RampUpdateParams {
         formData.put("amount", this.amount);
       }
 
+      if (this.quantity != null) {
+
+        formData.put("quantity", this.quantity);
+      }
+
       if (this.period != null) {
 
         formData.put("period", this.period);
@@ -1449,6 +1462,8 @@ public final class RampUpdateParams {
 
       private Long amount;
 
+      private Integer quantity;
+
       private Integer period;
 
       private PeriodUnit periodUnit;
@@ -1476,6 +1491,11 @@ public final class RampUpdateParams {
 
       public DiscountsToAddBuilder amount(Long value) {
         this.amount = value;
+        return this;
+      }
+
+      public DiscountsToAddBuilder quantity(Integer value) {
+        this.quantity = value;
         return this;
       }
 

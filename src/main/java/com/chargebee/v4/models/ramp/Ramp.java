@@ -984,6 +984,7 @@ public class Ramp {
     private Type type;
     private Double percentage;
     private Long amount;
+    private Integer quantity;
     private DurationType durationType;
     private Integer period;
     private PeriodUnit periodUnit;
@@ -1010,6 +1011,10 @@ public class Ramp {
 
     public Long getAmount() {
       return amount;
+    }
+
+    public Integer getQuantity() {
+      return quantity;
     }
 
     public DurationType getDurationType() {
@@ -1044,6 +1049,8 @@ public class Ramp {
       FIXED_AMOUNT("fixed_amount"),
 
       PERCENTAGE("percentage"),
+
+      OFFER_QUANTITY("offer_quantity"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1179,6 +1186,8 @@ public class Ramp {
 
       obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
+      obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
+
       obj.durationType = DurationType.fromString(JsonUtil.getString(jsonObj, "duration_type"));
 
       obj.period = JsonUtil.getInteger(jsonObj, "period");
@@ -1209,6 +1218,8 @@ public class Ramp {
           + percentage
           + ", amount="
           + amount
+          + ", quantity="
+          + quantity
           + ", durationType="
           + durationType
           + ", period="
@@ -1237,6 +1248,7 @@ public class Ramp {
           && java.util.Objects.equals(type, that.type)
           && java.util.Objects.equals(percentage, that.percentage)
           && java.util.Objects.equals(amount, that.amount)
+          && java.util.Objects.equals(quantity, that.quantity)
           && java.util.Objects.equals(durationType, that.durationType)
           && java.util.Objects.equals(period, that.period)
           && java.util.Objects.equals(periodUnit, that.periodUnit)
@@ -1255,6 +1267,7 @@ public class Ramp {
           type,
           percentage,
           amount,
+          quantity,
           durationType,
           period,
           periodUnit,

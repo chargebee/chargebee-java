@@ -222,6 +222,8 @@ public final class ApplicationAlertsForSubscriptionParams {
   public enum TypeIs {
     USAGE_EXCEEDED("usage_exceeded"),
 
+    SPEND_EXCEEDED("spend_exceeded"),
+
     /** An enum member indicating that TypeIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -275,6 +277,8 @@ public final class ApplicationAlertsForSubscriptionParams {
 
   public enum Type {
     USAGE_EXCEEDED("usage_exceeded"),
+
+    SPEND_EXCEEDED("spend_exceeded"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);

@@ -257,6 +257,10 @@ public final class ExportSubscriptionsParams {
         return new ChannelFilter("channel", this, filterParams);
       }
 
+      public DecommissionedFilter decommissioned() {
+        return new DecommissionedFilter("decommissioned", this, filterParams);
+      }
+
       public PlanIdFilter planId() {
         return new PlanIdFilter("plan_id", this, filterParams);
       }
@@ -359,6 +363,13 @@ public final class ExportSubscriptionsParams {
       public static final class ChannelFilter extends EnumFilter<Channel, SubscriptionBuilder> {
         ChannelFilter(String fieldName, SubscriptionBuilder builder, Map<String, Object> params) {
           super(fieldName, builder, params, Channel::getValue);
+        }
+      }
+
+      public static final class DecommissionedFilter extends BooleanFilter<SubscriptionBuilder> {
+        DecommissionedFilter(
+            String fieldName, SubscriptionBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
         }
       }
 

@@ -780,6 +780,12 @@ public final class SubscriptionReactivateParams {
 
       SOUTH_KOREAN_CARDS("south_korean_cards"),
 
+      PAYNOW("paynow"),
+
+      BIZUM("bizum"),
+
+      PROMPTPAY("promptpay"),
+
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
        */

@@ -732,6 +732,8 @@ public final class ImportCreditNoteParams {
 
     private final Long tax10Amount;
 
+    private final ProrationMode prorationMode;
+
     private LineItemsParams(LineItemsBuilder builder) {
 
       this.referenceLineItemId = builder.referenceLineItemId;
@@ -809,6 +811,8 @@ public final class ImportCreditNoteParams {
       this.tax10Name = builder.tax10Name;
 
       this.tax10Amount = builder.tax10Amount;
+
+      this.prorationMode = builder.prorationMode;
     }
 
     public String getReferenceLineItemId() {
@@ -961,6 +965,10 @@ public final class ImportCreditNoteParams {
 
     public Long getTax10Amount() {
       return tax10Amount;
+    }
+
+    public ProrationMode getProrationMode() {
+      return prorationMode;
     }
 
     /** Get the form data for this request. */
@@ -1157,6 +1165,11 @@ public final class ImportCreditNoteParams {
         formData.put("tax10_amount", this.tax10Amount);
       }
 
+      if (this.prorationMode != null) {
+
+        formData.put("proration_mode", this.prorationMode);
+      }
+
       return formData;
     }
 
@@ -1243,6 +1256,8 @@ public final class ImportCreditNoteParams {
       private String tax10Name;
 
       private Long tax10Amount;
+
+      private ProrationMode prorationMode;
 
       private LineItemsBuilder() {}
 
@@ -1436,6 +1451,11 @@ public final class ImportCreditNoteParams {
         return this;
       }
 
+      public LineItemsBuilder prorationMode(ProrationMode value) {
+        this.prorationMode = value;
+        return this;
+      }
+
       public LineItemsParams build() {
         return new LineItemsParams(this);
       }
@@ -1471,6 +1491,38 @@ public final class ImportCreditNoteParams {
       public static EntityType fromString(String value) {
         if (value == null) return _UNKNOWN;
         for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum ProrationMode {
+      RESET("reset"),
+
+      DELTA("delta"),
+
+      SERVICE_PERIOD_REVISION("service_period_revision"),
+
+      ADJUSTED_TERM("adjusted_term"),
+
+      /** An enum member indicating that ProrationMode was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      ProrationMode(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static ProrationMode fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ProrationMode enumValue : ProrationMode.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }

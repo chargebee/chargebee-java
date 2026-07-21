@@ -60,6 +60,8 @@ public final class ImportInvoiceParams {
 
   private final Boolean useForProration;
 
+  private final Timestamp paidAt;
+
   private final CreditNoteParams creditNote;
 
   private final BillingAddressParams billingAddress;
@@ -129,6 +131,8 @@ public final class ImportInvoiceParams {
     this.hasAdvanceCharges = builder.hasAdvanceCharges;
 
     this.useForProration = builder.useForProration;
+
+    this.paidAt = builder.paidAt;
 
     this.creditNote = builder.creditNote;
 
@@ -244,6 +248,10 @@ public final class ImportInvoiceParams {
 
   public Boolean getUseForProration() {
     return useForProration;
+  }
+
+  public Timestamp getPaidAt() {
+    return paidAt;
   }
 
   public CreditNoteParams getCreditNote() {
@@ -406,6 +414,11 @@ public final class ImportInvoiceParams {
     if (this.useForProration != null) {
 
       formData.put("use_for_proration", this.useForProration);
+    }
+
+    if (this.paidAt != null) {
+
+      formData.put("paid_at", this.paidAt);
     }
 
     if (this.creditNote != null) {
@@ -615,6 +628,8 @@ public final class ImportInvoiceParams {
 
     private Boolean useForProration;
 
+    private Timestamp paidAt;
+
     private CreditNoteParams creditNote;
 
     private BillingAddressParams billingAddress;
@@ -751,6 +766,11 @@ public final class ImportInvoiceParams {
       return this;
     }
 
+    public ImportInvoiceBuilder paidAt(Timestamp value) {
+      this.paidAt = value;
+      return this;
+    }
+
     public ImportInvoiceBuilder creditNote(CreditNoteParams value) {
       this.creditNote = value;
       return this;
@@ -876,11 +896,23 @@ public final class ImportInvoiceParams {
   }
 
   public enum TaxOverrideReason {
+    ZERO_RATED("zero_rated"),
+
     ID_EXEMPT("id_exempt"),
 
     CUSTOMER_EXEMPT("customer_exempt"),
 
+    REGION_NON_TAXABLE("region_non_taxable"),
+
+    PRODUCT_EXEMPT("product_exempt"),
+
     EXPORT("export"),
+
+    HIGH_VALUE_PHYSICAL_GOODS("high_value_physical_goods"),
+
+    ZERO_VALUE_ITEM("zero_value_item"),
+
+    TAX_NOT_CONFIGURED_EXTERNAL_PROVIDER("tax_not_configured_external_provider"),
 
     /** An enum member indicating that TaxOverrideReason was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1745,6 +1777,8 @@ public final class ImportInvoiceParams {
 
     private final Long tax10Amount;
 
+    private final ProrationMode prorationMode;
+
     private final Timestamp createdAt;
 
     private LineItemsParams(LineItemsBuilder builder) {
@@ -1822,6 +1856,8 @@ public final class ImportInvoiceParams {
       this.tax10Name = builder.tax10Name;
 
       this.tax10Amount = builder.tax10Amount;
+
+      this.prorationMode = builder.prorationMode;
 
       this.createdAt = builder.createdAt;
     }
@@ -1972,6 +2008,10 @@ public final class ImportInvoiceParams {
 
     public Long getTax10Amount() {
       return tax10Amount;
+    }
+
+    public ProrationMode getProrationMode() {
+      return prorationMode;
     }
 
     public Timestamp getCreatedAt() {
@@ -2167,6 +2207,11 @@ public final class ImportInvoiceParams {
         formData.put("tax10_amount", this.tax10Amount);
       }
 
+      if (this.prorationMode != null) {
+
+        formData.put("proration_mode", this.prorationMode);
+      }
+
       if (this.createdAt != null) {
 
         formData.put("created_at", this.createdAt);
@@ -2256,6 +2301,8 @@ public final class ImportInvoiceParams {
       private String tax10Name;
 
       private Long tax10Amount;
+
+      private ProrationMode prorationMode;
 
       private Timestamp createdAt;
 
@@ -2446,6 +2493,11 @@ public final class ImportInvoiceParams {
         return this;
       }
 
+      public LineItemsBuilder prorationMode(ProrationMode value) {
+        this.prorationMode = value;
+        return this;
+      }
+
       public LineItemsBuilder createdAt(Timestamp value) {
         this.createdAt = value;
         return this;
@@ -2486,6 +2538,38 @@ public final class ImportInvoiceParams {
       public static EntityType fromString(String value) {
         if (value == null) return _UNKNOWN;
         for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum ProrationMode {
+      RESET("reset"),
+
+      DELTA("delta"),
+
+      SERVICE_PERIOD_REVISION("service_period_revision"),
+
+      ADJUSTED_TERM("adjusted_term"),
+
+      /** An enum member indicating that ProrationMode was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      ProrationMode(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static ProrationMode fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ProrationMode enumValue : ProrationMode.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }

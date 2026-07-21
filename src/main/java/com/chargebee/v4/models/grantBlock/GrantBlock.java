@@ -25,12 +25,12 @@ public class GrantBlock {
   private String voidedAmount;
   private String originGrantBlockId;
   private Status status;
-  private String metadata;
   private GrantSource grantSource;
   private Timestamp createdAt;
   private AccountType accountType;
   private String unitId;
   private UnitType unitType;
+  private java.util.Map<String, Object> metadata;
 
   public String getId() {
     return id;
@@ -80,10 +80,6 @@ public class GrantBlock {
     return status;
   }
 
-  public String getMetadata() {
-    return metadata;
-  }
-
   public GrantSource getGrantSource() {
     return grantSource;
   }
@@ -102,6 +98,10 @@ public class GrantBlock {
 
   public UnitType getUnitType() {
     return unitType;
+  }
+
+  public java.util.Map<String, Object> getMetadata() {
+    return metadata;
   }
 
   public enum Status {
@@ -259,8 +259,6 @@ public class GrantBlock {
 
     obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.metadata = JsonUtil.getString(jsonObj, "metadata");
-
     obj.grantSource = GrantSource.fromString(JsonUtil.getString(jsonObj, "grant_source"));
 
     obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
@@ -270,6 +268,12 @@ public class GrantBlock {
     obj.unitId = JsonUtil.getString(jsonObj, "unit_id");
 
     obj.unitType = UnitType.fromString(JsonUtil.getString(jsonObj, "unit_type"));
+
+    JsonObject __metadataObj = JsonUtil.getJsonObject(jsonObj, "metadata");
+    obj.metadata =
+        __metadataObj != null
+            ? JsonUtil.parseJsonObjectToMap(__metadataObj)
+            : new java.util.HashMap<>();
 
     return obj;
   }
@@ -301,8 +305,6 @@ public class GrantBlock {
         + originGrantBlockId
         + ", status="
         + status
-        + ", metadata="
-        + metadata
         + ", grantSource="
         + grantSource
         + ", createdAt="
@@ -313,6 +315,8 @@ public class GrantBlock {
         + unitId
         + ", unitType="
         + unitType
+        + ", metadata="
+        + metadata
         + "}";
   }
 
@@ -334,12 +338,12 @@ public class GrantBlock {
         && java.util.Objects.equals(voidedAmount, that.voidedAmount)
         && java.util.Objects.equals(originGrantBlockId, that.originGrantBlockId)
         && java.util.Objects.equals(status, that.status)
-        && java.util.Objects.equals(metadata, that.metadata)
         && java.util.Objects.equals(grantSource, that.grantSource)
         && java.util.Objects.equals(createdAt, that.createdAt)
         && java.util.Objects.equals(accountType, that.accountType)
         && java.util.Objects.equals(unitId, that.unitId)
-        && java.util.Objects.equals(unitType, that.unitType);
+        && java.util.Objects.equals(unitType, that.unitType)
+        && java.util.Objects.equals(metadata, that.metadata);
   }
 
   @Override
@@ -358,11 +362,11 @@ public class GrantBlock {
         voidedAmount,
         originGrantBlockId,
         status,
-        metadata,
         grantSource,
         createdAt,
         accountType,
         unitId,
-        unitType);
+        unitType,
+        metadata);
   }
 }
