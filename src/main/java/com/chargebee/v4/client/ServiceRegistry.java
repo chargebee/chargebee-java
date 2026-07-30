@@ -148,6 +148,8 @@ import com.chargebee.v4.services.PortalSessionService;
 
 import com.chargebee.v4.services.ItemPriceService;
 
+import com.chargebee.v4.services.CreditUnitService;
+
 import com.chargebee.v4.services.OfferFulfillmentService;
 
 import com.chargebee.v4.services.HostedPageService;
@@ -336,6 +338,8 @@ final class ServiceRegistry {
   private volatile PortalSessionService portalSessionService;
 
   private volatile ItemPriceService itemPriceService;
+
+  private volatile CreditUnitService creditUnitService;
 
   private volatile OfferFulfillmentService offerFulfillmentService;
 
@@ -1483,6 +1487,21 @@ final class ServiceRegistry {
       }
     }
     return itemPriceService;
+  }
+
+  /**
+   * Get or create the CreditUnitService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  CreditUnitService creditUnits() {
+    if (creditUnitService == null) {
+      synchronized (this) {
+        if (creditUnitService == null) {
+          creditUnitService = new CreditUnitService(client);
+        }
+      }
+    }
+    return creditUnitService;
   }
 
   /**

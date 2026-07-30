@@ -944,6 +944,14 @@ public final class EventListParams {
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
+    LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
+
+    GRANT_BLOCKS_CREATED("grant_blocks_created"),
+
+    GRANT_BLOCKS_UPDATED("grant_blocks_updated"),
+
+    LEDGER_UPDATED("ledger_updated"),
+
     /** An enum member indicating that EventTypeIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -1421,6 +1429,14 @@ public final class EventListParams {
     OMNICHANNEL_SUBSCRIPTION_ITEM_UPDATED("omnichannel_subscription_item_updated"),
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
+
+    LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
+
+    GRANT_BLOCKS_CREATED("grant_blocks_created"),
+
+    GRANT_BLOCKS_UPDATED("grant_blocks_updated"),
+
+    LEDGER_UPDATED("ledger_updated"),
 
     /** An enum member indicating that EventTypeIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1900,6 +1916,14 @@ public final class EventListParams {
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
+    LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
+
+    GRANT_BLOCKS_CREATED("grant_blocks_created"),
+
+    GRANT_BLOCKS_UPDATED("grant_blocks_updated"),
+
+    LEDGER_UPDATED("ledger_updated"),
+
     /** An enum member indicating that EventTypeIn was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -2377,6 +2401,14 @@ public final class EventListParams {
     OMNICHANNEL_SUBSCRIPTION_ITEM_UPDATED("omnichannel_subscription_item_updated"),
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
+
+    LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
+
+    GRANT_BLOCKS_CREATED("grant_blocks_created"),
+
+    GRANT_BLOCKS_UPDATED("grant_blocks_updated"),
+
+    LEDGER_UPDATED("ledger_updated"),
 
     /** An enum member indicating that EventTypeNotIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -3133,6 +3165,14 @@ public final class EventListParams {
     OMNICHANNEL_SUBSCRIPTION_ITEM_UPDATED("omnichannel_subscription_item_updated"),
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
+
+    LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
+
+    GRANT_BLOCKS_CREATED("grant_blocks_created"),
+
+    GRANT_BLOCKS_UPDATED("grant_blocks_updated"),
+
+    LEDGER_UPDATED("ledger_updated"),
 
     /** An enum member indicating that EventType was instantiated with an unknown value. */
     _UNKNOWN(null);

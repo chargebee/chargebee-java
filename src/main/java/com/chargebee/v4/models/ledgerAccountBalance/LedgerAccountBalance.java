@@ -16,7 +16,9 @@ public class LedgerAccountBalance {
   private String subscriptionId;
   private String unitId;
   private UnitType unitType;
+  private Timestamp createdAt;
   private Timestamp modifiedAt;
+  private Long resourceVersion;
   private ProvisionedBalance provisionedBalance;
   private OverdraftBalance overdraftBalance;
 
@@ -32,8 +34,16 @@ public class LedgerAccountBalance {
     return unitType;
   }
 
+  public Timestamp getCreatedAt() {
+    return createdAt;
+  }
+
   public Timestamp getModifiedAt() {
     return modifiedAt;
+  }
+
+  public Long getResourceVersion() {
+    return resourceVersion;
   }
 
   public ProvisionedBalance getProvisionedBalance() {
@@ -87,7 +97,11 @@ public class LedgerAccountBalance {
 
     obj.unitType = UnitType.fromString(JsonUtil.getString(jsonObj, "unit_type"));
 
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
+
     obj.modifiedAt = JsonUtil.getTimestamp(jsonObj, "modified_at");
+
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
     JsonObject __provisionedBalanceObj = JsonUtil.getJsonObject(jsonObj, "provisioned_balance");
     if (__provisionedBalanceObj != null) {
@@ -111,8 +125,12 @@ public class LedgerAccountBalance {
         + unitId
         + ", unitType="
         + unitType
+        + ", createdAt="
+        + createdAt
         + ", modifiedAt="
         + modifiedAt
+        + ", resourceVersion="
+        + resourceVersion
         + ", provisionedBalance="
         + provisionedBalance
         + ", overdraftBalance="
@@ -129,7 +147,9 @@ public class LedgerAccountBalance {
     return java.util.Objects.equals(subscriptionId, that.subscriptionId)
         && java.util.Objects.equals(unitId, that.unitId)
         && java.util.Objects.equals(unitType, that.unitType)
+        && java.util.Objects.equals(createdAt, that.createdAt)
         && java.util.Objects.equals(modifiedAt, that.modifiedAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
         && java.util.Objects.equals(provisionedBalance, that.provisionedBalance)
         && java.util.Objects.equals(overdraftBalance, that.overdraftBalance);
   }
@@ -138,7 +158,14 @@ public class LedgerAccountBalance {
   public int hashCode() {
 
     return java.util.Objects.hash(
-        subscriptionId, unitId, unitType, modifiedAt, provisionedBalance, overdraftBalance);
+        subscriptionId,
+        unitId,
+        unitType,
+        createdAt,
+        modifiedAt,
+        resourceVersion,
+        provisionedBalance,
+        overdraftBalance);
   }
 
   public static class ProvisionedBalance {

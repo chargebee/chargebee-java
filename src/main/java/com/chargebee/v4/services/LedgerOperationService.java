@@ -17,6 +17,8 @@ import com.chargebee.v4.models.ledgerOperation.params.LedgerOperationReleaseAuth
 
 import com.chargebee.v4.models.ledgerOperation.params.LedgerOperationCaptureParams;
 
+import com.chargebee.v4.models.ledgerOperation.params.LedgerOperationAllocateParams;
+
 import com.chargebee.v4.models.ledgerOperation.params.LedgerOperationAuthorizeParams;
 
 import com.chargebee.v4.models.ledgerOperation.params.ListLedgerOperationsParams;
@@ -26,6 +28,8 @@ import com.chargebee.v4.models.ledgerOperation.params.LedgerOperationCaptureAuth
 import com.chargebee.v4.models.ledgerOperation.responses.LedgerOperationReleaseAuthorizationResponse;
 
 import com.chargebee.v4.models.ledgerOperation.responses.LedgerOperationCaptureResponse;
+
+import com.chargebee.v4.models.ledgerOperation.responses.LedgerOperationAllocateResponse;
 
 import com.chargebee.v4.models.ledgerOperation.responses.LedgerOperationAuthorizeResponse;
 
@@ -159,6 +163,49 @@ public final class LedgerOperationService extends BaseService<LedgerOperationSer
         .thenApply(
             response ->
                 LedgerOperationCaptureResponse.fromJson(response.getBodyAsString(), response));
+  }
+
+  /**
+   * allocate a ledgerOperation using immutable params (executes immediately) - returns raw
+   * Response.
+   */
+  Response allocateRaw(LedgerOperationAllocateParams params) throws ChargebeeException {
+
+    return postJson(
+        "ledgerOperation",
+        "allocate",
+        "/ledger_operations/allocate",
+        params != null ? params.toJsonString() : null);
+  }
+
+  /**
+   * allocate a ledgerOperation using raw JSON payload (executes immediately) - returns raw
+   * Response.
+   */
+  Response allocateRaw(String jsonPayload) throws ChargebeeException {
+
+    return postJson("ledgerOperation", "allocate", "/ledger_operations/allocate", jsonPayload);
+  }
+
+  public LedgerOperationAllocateResponse allocate(LedgerOperationAllocateParams params)
+      throws ChargebeeException {
+    Response response = allocateRaw(params);
+
+    return LedgerOperationAllocateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of allocate for ledgerOperation with params. */
+  public CompletableFuture<LedgerOperationAllocateResponse> allocateAsync(
+      LedgerOperationAllocateParams params) {
+
+    return postJsonAsync(
+            "ledgerOperation",
+            "allocate",
+            "/ledger_operations/allocate",
+            params != null ? params.toJsonString() : null)
+        .thenApply(
+            response ->
+                LedgerOperationAllocateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**

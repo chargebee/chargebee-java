@@ -148,6 +148,8 @@ import com.chargebee.v4.services.PortalSessionService;
 
 import com.chargebee.v4.services.ItemPriceService;
 
+import com.chargebee.v4.services.CreditUnitService;
+
 import com.chargebee.v4.services.OfferFulfillmentService;
 
 import com.chargebee.v4.services.HostedPageService;
@@ -705,6 +707,13 @@ public interface ClientMethods {
    * @return ItemPriceService instance for fluent API access
    */
   ItemPriceService itemPrices();
+
+  /**
+   * Access credit_unit-related operations.
+   *
+   * @return CreditUnitService instance for fluent API access
+   */
+  CreditUnitService creditUnits();
 
   /**
    * Access offer_fulfillment-related operations.

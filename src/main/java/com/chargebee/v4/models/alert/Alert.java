@@ -20,12 +20,13 @@ public class Alert {
   private String description;
   private String meteredFeatureId;
   private String currencyCode;
+  private String unitId;
   private String subscriptionId;
   private Status status;
   private String meta;
   private Timestamp createdAt;
   private Timestamp updatedAt;
-  private List<Threshold> threshold;
+  private Threshold threshold;
   private List<FilterConditions> filterConditions;
 
   public String getId() {
@@ -52,6 +53,10 @@ public class Alert {
     return currencyCode;
   }
 
+  public String getUnitId() {
+    return unitId;
+  }
+
   public String getSubscriptionId() {
     return subscriptionId;
   }
@@ -72,7 +77,7 @@ public class Alert {
     return updatedAt;
   }
 
-  public List<Threshold> getThreshold() {
+  public Threshold getThreshold() {
     return threshold;
   }
 
@@ -84,6 +89,8 @@ public class Alert {
     USAGE_EXCEEDED("usage_exceeded"),
 
     SPEND_EXCEEDED("spend_exceeded"),
+
+    CREDIT_BALANCE_DROPPED("credit_balance_dropped"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -159,6 +166,8 @@ public class Alert {
 
     obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
+    obj.unitId = JsonUtil.getString(jsonObj, "unit_id");
+
     obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
     obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
@@ -169,8 +178,10 @@ public class Alert {
 
     obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.threshold =
-        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "threshold"), Threshold::fromJson);
+    JsonObject __thresholdObj = JsonUtil.getJsonObject(jsonObj, "threshold");
+    if (__thresholdObj != null) {
+      obj.threshold = Threshold.fromJson(__thresholdObj);
+    }
 
     obj.filterConditions =
         JsonUtil.mapArray(
@@ -194,6 +205,8 @@ public class Alert {
         + meteredFeatureId
         + ", currencyCode="
         + currencyCode
+        + ", unitId="
+        + unitId
         + ", subscriptionId="
         + subscriptionId
         + ", status="
@@ -223,6 +236,7 @@ public class Alert {
         && java.util.Objects.equals(description, that.description)
         && java.util.Objects.equals(meteredFeatureId, that.meteredFeatureId)
         && java.util.Objects.equals(currencyCode, that.currencyCode)
+        && java.util.Objects.equals(unitId, that.unitId)
         && java.util.Objects.equals(subscriptionId, that.subscriptionId)
         && java.util.Objects.equals(status, that.status)
         && java.util.Objects.equals(meta, that.meta)
@@ -242,6 +256,7 @@ public class Alert {
         description,
         meteredFeatureId,
         currencyCode,
+        unitId,
         subscriptionId,
         status,
         meta,
