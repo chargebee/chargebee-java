@@ -76,11 +76,11 @@ public class AttachedItem extends Resource<AttachedItem> {
     }
 
     public ChargeOnEvent chargeOnEvent() {
-        return reqEnum("charge_on_event", ChargeOnEvent.class);
+        return optEnum("charge_on_event", ChargeOnEvent.class);
     }
 
     public Boolean chargeOnce() {
-        return reqBoolean("charge_once");
+        return optBoolean("charge_once");
     }
 
     public Timestamp createdAt() {

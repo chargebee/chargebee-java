@@ -95,8 +95,16 @@ public class LedgerAccountBalance extends Resource<LedgerAccountBalance> {
         return reqEnum("unit_type", UnitType.class);
     }
 
+    public Timestamp createdAt() {
+        return reqTimestamp("created_at");
+    }
+
     public Timestamp modifiedAt() {
-        return optTimestamp("modified_at");
+        return reqTimestamp("modified_at");
+    }
+
+    public Long resourceVersion() {
+        return optLong("resource_version");
     }
 
     public LedgerAccountBalance.ProvisionedBalance provisionedBalance() {

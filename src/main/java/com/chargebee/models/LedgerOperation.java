@@ -13,6 +13,12 @@ import java.util.*;
 
 public class LedgerOperation extends Resource<LedgerOperation> {
 
+    public enum UnitType {
+        CREDIT_UNIT,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public enum Type {
         ALLOCATION,
         CAPTURE,
@@ -23,12 +29,6 @@ public class LedgerOperation extends Resource<LedgerOperation> {
         VOID,
         ROLLOVER,
         ADJUSTMENT,
-        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-        java-client version incompatibility. We suggest you to upgrade to the latest version */
-    }
-
-    public enum UnitType {
-        CREDIT_UNIT,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -49,6 +49,18 @@ public class LedgerOperation extends Resource<LedgerOperation> {
 
     public String id() {
         return reqString("id");
+    }
+
+    public String subscriptionId() {
+        return optString("subscription_id");
+    }
+
+    public String unitId() {
+        return optString("unit_id");
+    }
+
+    public UnitType unitType() {
+        return optEnum("unit_type", UnitType.class);
     }
 
     public Type type() {
@@ -80,7 +92,7 @@ public class LedgerOperation extends Resource<LedgerOperation> {
     }
 
     public Timestamp ledgerOperationTimestamp() {
-        return optTimestamp("ledger_operation_timestamp");
+        return reqTimestamp("ledger_operation_timestamp");
     }
 
     public Timestamp autoReleaseTimestamp() {
@@ -88,23 +100,11 @@ public class LedgerOperation extends Resource<LedgerOperation> {
     }
 
     public Timestamp createdAt() {
-        return optTimestamp("created_at");
+        return reqTimestamp("created_at");
     }
 
     public Timestamp modifiedAt() {
-        return optTimestamp("modified_at");
-    }
-
-    public String subscriptionId() {
-        return optString("subscription_id");
-    }
-
-    public String unitId() {
-        return optString("unit_id");
-    }
-
-    public UnitType unitType() {
-        return optEnum("unit_type", UnitType.class);
+        return reqTimestamp("modified_at");
     }
 
     public Map<String, Object> metadata() {
@@ -142,6 +142,11 @@ public class LedgerOperation extends Resource<LedgerOperation> {
     public static ReleaseAuthorizationRequest releaseAuthorization() {
         String uri = uri("ledger_operations", "release_authorization");
         return new ReleaseAuthorizationRequest(Method.POST, uri).setIdempotency(false);
+    }
+
+    public static AllocateRequest allocate() {
+        String uri = uri("ledger_operations", "allocate");
+        return new AllocateRequest(Method.POST, uri).setIdempotency(false);
     }
 
 
@@ -358,6 +363,49 @@ public class LedgerOperation extends Resource<LedgerOperation> {
 
 
         public ReleaseAuthorizationRequest metadata(Map<String, Object> metadata) {
+            params.addOpt("metadata", metadata);
+            return this;
+        }
+
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AllocateRequest extends Request<AllocateRequest> {
+
+        private AllocateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri, null, null,true);
+        }
+    
+        public AllocateRequest subscriptionId(String subscriptionId) {
+            params.add("subscription_id", subscriptionId);
+            return this;
+        }
+
+
+        public AllocateRequest unitId(String unitId) {
+            params.add("unit_id", unitId);
+            return this;
+        }
+
+
+        public AllocateRequest amount(String amount) {
+            params.add("amount", amount);
+            return this;
+        }
+
+
+        public AllocateRequest expiresAt(Timestamp expiresAt) {
+            params.add("expires_at", expiresAt);
+            return this;
+        }
+
+
+        public AllocateRequest metadata(Map<String, Object> metadata) {
             params.addOpt("metadata", metadata);
             return this;
         }
