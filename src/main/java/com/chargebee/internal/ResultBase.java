@@ -280,6 +280,10 @@ public class ResultBase {
         return (Metadata)get("metadata");
     }
 
+    public CreditUnit creditUnit() {
+        return (CreditUnit)get("credit_unit");
+    }
+
     public SubscriptionEntitlement subscriptionEntitlement() {
         return (SubscriptionEntitlement)get("subscription_entitlement");
     }
@@ -432,6 +436,10 @@ public class ResultBase {
         return (GrantBlock)get("grant_block");
     }
 
+    public LedgerEntry ledgerEntry() {
+        return (LedgerEntry)get("ledger_entry");
+    }
+
     public PromotionalGrant promotionalGrant() {
         return (PromotionalGrant)get("promotional_grant");
     }
@@ -494,6 +502,10 @@ public class ResultBase {
 
     public List<GrantBlock> grantBlocks() {
         return (List<GrantBlock>) getList("grant_blocks", "grant_block");
+    }
+
+    public List<LedgerEntry> ledgerEntries() {
+        return (List<LedgerEntry>) getList("ledger_entries", "ledger_entry");
     }
 
 

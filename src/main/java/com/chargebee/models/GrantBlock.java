@@ -13,16 +13,6 @@ import java.util.*;
 
 public class GrantBlock extends Resource<GrantBlock> {
 
-    public enum GrantSource {
-        SUBSCRIPTION_CREATED,
-        SUBSCRIPTION_CHANGED,
-        TOP_UP,
-        PROMOTIONAL_GRANTS,
-        ROLLOVER,
-        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-        java-client version incompatibility. We suggest you to upgrade to the latest version */
-    }
-
     public enum AccountType {
         PROVISIONED,
         OVERDRAFT,
@@ -32,6 +22,18 @@ public class GrantBlock extends Resource<GrantBlock> {
 
     public enum UnitType {
         CREDIT_UNIT,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
+    public enum GrantSource {
+        SUBSCRIPTION_CREATED,
+        SUBSCRIPTION_CHANGED,
+        TOP_UP,
+        PROMOTIONAL_GRANTS,
+        ROLLOVER,
+        GRANT_RENEWAL,
+        SUBSCRIPTION_RENEWED,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -52,6 +54,22 @@ public class GrantBlock extends Resource<GrantBlock> {
 
     public String id() {
         return reqString("id");
+    }
+
+    public String subscriptionId() {
+        return optString("subscription_id");
+    }
+
+    public AccountType accountType() {
+        return optEnum("account_type", AccountType.class);
+    }
+
+    public String unitId() {
+        return optString("unit_id");
+    }
+
+    public UnitType unitType() {
+        return optEnum("unit_type", UnitType.class);
     }
 
     public String grantedAmount() {
@@ -103,19 +121,15 @@ public class GrantBlock extends Resource<GrantBlock> {
     }
 
     public Timestamp createdAt() {
-        return optTimestamp("created_at");
+        return reqTimestamp("created_at");
     }
 
-    public AccountType accountType() {
-        return optEnum("account_type", AccountType.class);
+    public Timestamp modifiedAt() {
+        return reqTimestamp("modified_at");
     }
 
-    public String unitId() {
-        return optString("unit_id");
-    }
-
-    public UnitType unitType() {
-        return optEnum("unit_type", UnitType.class);
+    public Long resourceVersion() {
+        return optLong("resource_version");
     }
 
     public JSONObject metadata() {
@@ -147,6 +161,11 @@ public class GrantBlock extends Resource<GrantBlock> {
 
         public StringFilter<GrantBlockListGrantBlocksRequest> unitId() {
             return new StringFilter<GrantBlockListGrantBlocksRequest>("unit_id",this);        
+        }
+
+
+        public EnumFilter<AccountType, GrantBlockListGrantBlocksRequest> accountType() {
+            return new EnumFilter<AccountType, GrantBlockListGrantBlocksRequest>("account_type",this);        
         }
 
 

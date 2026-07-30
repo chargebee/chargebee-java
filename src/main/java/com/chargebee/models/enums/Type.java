@@ -51,6 +51,10 @@ public enum Type {
     PAYNOW,
     BIZUM,
     PROMPTPAY,
+    DANA,
+    TOUCH_N_GO,
+    TAMARA,
+    QPAY,
     FREE_TRIAL,
     PAY_UP_FRONT,
     PAY_AS_YOU_GO,
@@ -58,6 +62,11 @@ public enum Type {
     COMPOUND,
     USAGE_EXCEEDED,
     SPEND_EXCEEDED,
+    CREDIT_BALANCE_DROPPED,
+    CREDIT,
+    DEBIT,
+    HOLD,
+    UNHOLD,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

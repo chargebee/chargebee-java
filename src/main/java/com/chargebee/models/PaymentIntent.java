@@ -72,6 +72,10 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         PAYNOW,
         BIZUM,
         PROMPTPAY,
+        DANA,
+        TOUCH_N_GO,
+        TAMARA,
+        QPAY,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }

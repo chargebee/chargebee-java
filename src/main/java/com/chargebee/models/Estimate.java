@@ -2637,6 +2637,12 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public CancelSubscriptionForItemsRequest includeCancellationDayInBilling(Boolean includeCancellationDayInBilling) {
+            params.addOpt("include_cancellation_day_in_billing", includeCancellationDayInBilling);
+            return this;
+        }
+
+
         public CancelSubscriptionForItemsRequest cancelReasonCode(String cancelReasonCode) {
             params.addOpt("cancel_reason_code", cancelReasonCode);
             return this;

@@ -104,6 +104,10 @@ public class Alert extends Resource<Alert> {
         return optString("currency_code");
     }
 
+    public String unitId() {
+        return optString("unit_id");
+    }
+
     public String subscriptionId() {
         return optString("subscription_id");
     }
@@ -124,8 +128,8 @@ public class Alert extends Resource<Alert> {
         return reqTimestamp("updated_at");
     }
 
-    public List<Alert.Threshold> threshold() {
-        return optList("threshold", Alert.Threshold.class);
+    public Alert.Threshold threshold() {
+        return optSubResource("threshold", Alert.Threshold.class);
     }
 
     public List<Alert.FilterCondition> filterConditions() {
@@ -201,6 +205,12 @@ public class Alert extends Resource<Alert> {
 
         public CreateRequest currencyCode(String currencyCode) {
             params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public CreateRequest unitId(String unitId) {
+            params.addOpt("unit_id", unitId);
             return this;
         }
 
