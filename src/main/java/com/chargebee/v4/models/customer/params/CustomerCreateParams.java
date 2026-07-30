@@ -2603,6 +2603,14 @@ public final class CustomerCreateParams {
 
       PROMPTPAY("promptpay"),
 
+      DANA("dana"),
+
+      TOUCH_N_GO("touch_n_go"),
+
+      TAMARA("tamara"),
+
+      QPAY("qpay"),
+
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -3033,6 +3041,14 @@ public final class CustomerCreateParams {
       BIZUM("bizum"),
 
       PROMPTPAY("promptpay"),
+
+      DANA("dana"),
+
+      TOUCH_N_GO("touch_n_go"),
+
+      TAMARA("tamara"),
+
+      QPAY("qpay"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.

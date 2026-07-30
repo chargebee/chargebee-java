@@ -3421,6 +3421,14 @@ public final class ImportInvoiceParams {
 
       CUSTOM("custom"),
 
+      DANA("dana"),
+
+      TOUCH_N_GO("touch_n_go"),
+
+      TAMARA("tamara"),
+
+      QPAY("qpay"),
+
       /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;

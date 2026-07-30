@@ -802,6 +802,14 @@ public final class GiftCreateForItemsParams {
 
       PROMPTPAY("promptpay"),
 
+      DANA("dana"),
+
+      TOUCH_N_GO("touch_n_go"),
+
+      TAMARA("tamara"),
+
+      QPAY("qpay"),
+
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
        */

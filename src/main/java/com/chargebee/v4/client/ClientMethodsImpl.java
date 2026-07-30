@@ -148,6 +148,8 @@ import com.chargebee.v4.services.PortalSessionService;
 
 import com.chargebee.v4.services.ItemPriceService;
 
+import com.chargebee.v4.services.CreditUnitService;
+
 import com.chargebee.v4.services.OfferFulfillmentService;
 
 import com.chargebee.v4.services.HostedPageService;
@@ -558,6 +560,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public ItemPriceService itemPrices() {
     return getServiceRegistry().itemPrices();
+  }
+
+  @Override
+  public CreditUnitService creditUnits() {
+    return getServiceRegistry().creditUnits();
   }
 
   @Override

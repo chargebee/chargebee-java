@@ -209,6 +209,8 @@ public final class AlertListParams {
 
     SPEND_EXCEEDED("spend_exceeded"),
 
+    CREDIT_BALANCE_DROPPED("credit_balance_dropped"),
+
     /** An enum member indicating that TypeIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -264,6 +266,8 @@ public final class AlertListParams {
     USAGE_EXCEEDED("usage_exceeded"),
 
     SPEND_EXCEEDED("spend_exceeded"),
+
+    CREDIT_BALANCE_DROPPED("credit_balance_dropped"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);

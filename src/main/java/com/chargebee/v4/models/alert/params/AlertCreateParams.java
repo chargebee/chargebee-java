@@ -24,6 +24,8 @@ public final class AlertCreateParams {
 
   private final String currencyCode;
 
+  private final String unitId;
+
   private final String subscriptionId;
 
   private final String meta;
@@ -43,6 +45,8 @@ public final class AlertCreateParams {
     this.meteredFeatureId = builder.meteredFeatureId;
 
     this.currencyCode = builder.currencyCode;
+
+    this.unitId = builder.unitId;
 
     this.subscriptionId = builder.subscriptionId;
 
@@ -71,6 +75,10 @@ public final class AlertCreateParams {
 
   public String getCurrencyCode() {
     return currencyCode;
+  }
+
+  public String getUnitId() {
+    return unitId;
   }
 
   public String getSubscriptionId() {
@@ -116,6 +124,11 @@ public final class AlertCreateParams {
     if (this.currencyCode != null) {
 
       formData.put("currency_code", this.currencyCode);
+    }
+
+    if (this.unitId != null) {
+
+      formData.put("unit_id", this.unitId);
     }
 
     if (this.subscriptionId != null) {
@@ -174,6 +187,8 @@ public final class AlertCreateParams {
 
     private String currencyCode;
 
+    private String unitId;
+
     private String subscriptionId;
 
     private String meta;
@@ -209,6 +224,11 @@ public final class AlertCreateParams {
       return this;
     }
 
+    public AlertCreateBuilder unitId(String value) {
+      this.unitId = value;
+      return this;
+    }
+
     public AlertCreateBuilder subscriptionId(String value) {
       this.subscriptionId = value;
       return this;
@@ -238,6 +258,8 @@ public final class AlertCreateParams {
     USAGE_EXCEEDED("usage_exceeded"),
 
     SPEND_EXCEEDED("spend_exceeded"),
+
+    CREDIT_BALANCE_DROPPED("credit_balance_dropped"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);

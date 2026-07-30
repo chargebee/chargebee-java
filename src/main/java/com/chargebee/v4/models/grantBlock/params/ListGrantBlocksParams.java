@@ -10,6 +10,7 @@ package com.chargebee.v4.models.grantBlock.params;
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.TimestampFilter;
+import com.chargebee.v4.filters.EnumFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -63,6 +64,10 @@ public final class ListGrantBlocksParams {
       return new UnitIdFilter("unit_id", this, queryParams);
     }
 
+    public AccountTypeFilter accountType() {
+      return new AccountTypeFilter("account_type", this, queryParams);
+    }
+
     public EffectiveFromFilter effectiveFrom() {
       return new EffectiveFromFilter("effective_from", this, queryParams);
     }
@@ -93,6 +98,66 @@ public final class ListGrantBlocksParams {
     public static final class UnitIdFilter extends StringFilter<ListGrantBlocksBuilder> {
       UnitIdFilter(String fieldName, ListGrantBlocksBuilder builder, Map<String, Object> params) {
         super(fieldName, builder, params);
+      }
+    }
+
+    public static final class AccountTypeFilter
+        extends EnumFilter<AccountType, ListGrantBlocksBuilder> {
+      AccountTypeFilter(
+          String fieldName, ListGrantBlocksBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params, AccountType::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .accountType().is(AccountType.YOUR_VALUE)}</pre>
+       *
+       * @see #is(AccountType)
+       */
+      @Deprecated
+      public ListGrantBlocksBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .accountType().isNot(AccountType.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(AccountType)
+       */
+      @Deprecated
+      public ListGrantBlocksBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .accountType().in(AccountType.VALUE1, AccountType.VALUE2)}</pre>
+       *
+       * @see #in(AccountType[])
+       */
+      @Deprecated
+      public ListGrantBlocksBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .accountType().notIn(AccountType.VALUE1, AccountType.VALUE2)}</pre>
+       *
+       * @see #notIn(AccountType[])
+       */
+      @Deprecated
+      public ListGrantBlocksBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -162,6 +227,34 @@ public final class ListGrantBlocksParams {
     }
   }
 
+  public enum AccountTypeIs {
+    PROVISIONED("provisioned"),
+
+    OVERDRAFT("overdraft"),
+
+    /** An enum member indicating that AccountTypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    AccountTypeIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static AccountTypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (AccountTypeIs enumValue : AccountTypeIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum SortByAsc {
     EFFECTIVE_FROM("effective_from"),
 
@@ -214,6 +307,34 @@ public final class ListGrantBlocksParams {
     public static SortByDesc fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (SortByDesc enumValue : SortByDesc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum AccountType {
+    PROVISIONED("provisioned"),
+
+    OVERDRAFT("overdraft"),
+
+    /** An enum member indicating that AccountType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    AccountType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static AccountType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (AccountType enumValue : AccountType.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
