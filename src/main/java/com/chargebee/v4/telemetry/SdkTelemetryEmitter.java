@@ -1,0 +1,199 @@
+/*
+ * Copyright 2026 Chargebee Inc.
+ */
+
+package com.chargebee.v4.telemetry;
+
+import com.chargebee.v4.client.ChargebeeClient;
+import com.chargebee.v4.exceptions.APIException;
+import com.chargebee.v4.exceptions.HttpException;
+import com.chargebee.v4.transport.DefaultTransport;
+import com.chargebee.v4.transport.Request;
+import com.chargebee.v4.transport.Response;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ * Emits the anonymous SDK telemetry request header, independently of any customer telemetry adapter.
+ *
+ * <p>Uses an N+1 scheme: the header sent with a call describes the previous completed call on the
+ * same client, so the first call of a client never carries the header. Every failure path is
+ * swallowed and logged at {@code WARNING}: telemetry must never fail an API call.
+ */
+final class SdkTelemetryEmitter {
+
+  private static final Logger LOGGER = Logger.getLogger(SdkTelemetryEmitter.class.getName());
+
+  private SdkTelemetryEmitter() {}
+
+  /** Attaches the header describing the previous call, then records this one for the next. */
+  static Response around(
+      ChargebeeClient client, Request request, Function<Request, Response> next) {
+    if (!client.isSdkTelemetryEnabled()) {
+      return next.apply(request);
+    }
+
+    long startTimeMs = System.currentTimeMillis();
+    try {
+      Response response = next.apply(attachHeader(client, request));
+      recordSuccess(client, request, response, startTimeMs);
+      return response;
+    } catch (RuntimeException err) {
+      recordFailure(client, request, err, startTimeMs);
+      throw err;
+    }
+  }
+
+  static CompletableFuture<Response> aroundAsync(
+      ChargebeeClient client,
+      Request request,
+      Function<Request, CompletableFuture<Response>> next) {
+    if (!client.isSdkTelemetryEnabled()) {
+      return next.apply(request);
+    }
+
+    long startTimeMs = System.currentTimeMillis();
+    return next.apply(attachHeader(client, request))
+        .whenComplete(
+            (response, throwable) -> {
+              if (throwable != null) {
+                Throwable cause = throwable.getCause() != null ? throwable.getCause() : throwable;
+                recordFailure(client, request, cause, startTimeMs);
+              } else {
+                recordSuccess(client, request, response, startTimeMs);
+              }
+            });
+  }
+
+  /** Returns {@code request} with the telemetry header, or {@code request} unchanged. */
+  private static Request attachHeader(ChargebeeClient client, Request request) {
+    try {
+      SdkTelemetrySnapshot previousCall = client.getSdkTelemetryState().lastCall();
+      if (previousCall == null) {
+        return request;
+      }
+      String headerValue = SdkTelemetryHeaderBuilder.build(previousCall);
+      if (headerValue == null) {
+        return request;
+      }
+      return request.withHeader(SdkTelemetryHeader.HEADER_NAME, headerValue);
+    } catch (Exception err) {
+      logSuppressed("attach header", err);
+      return request;
+    }
+  }
+
+  private static void recordSuccess(
+      ChargebeeClient client, Request request, Response response, long startTimeMs) {
+    if (!request.hasTelemetryMetadata()) {
+      return;
+    }
+    try {
+      record(
+          client,
+          buildSnapshot(
+              client,
+              request,
+              startTimeMs,
+              response != null ? response.getStatusCode() : null,
+              null,
+              extractRequestId(response)));
+    } catch (Exception err) {
+      logSuppressed("record success", err);
+    }
+  }
+
+  private static void recordFailure(
+      ChargebeeClient client, Request request, Throwable callError, long startTimeMs) {
+    if (!request.hasTelemetryMetadata()) {
+      return;
+    }
+    try {
+      Integer httpStatus = TelemetrySupport.extractHttpStatusCode(callError);
+      String errorCode = null;
+      Response response = null;
+      if (callError instanceof APIException) {
+        errorCode = ((APIException) callError).getApiErrorCodeRaw();
+      }
+      if (callError instanceof HttpException) {
+        response = ((HttpException) callError).getResponse();
+        if (httpStatus == null && response != null) {
+          httpStatus = response.getStatusCode();
+        }
+      }
+      record(
+          client,
+          buildSnapshot(
+              client, request, startTimeMs, httpStatus, errorCode, extractRequestId(response)));
+    } catch (Exception err) {
+      logSuppressed("record failure", err);
+    }
+  }
+
+  private static void record(ChargebeeClient client, SdkTelemetrySnapshot snapshot) {
+    client.getSdkTelemetryState().record(snapshot);
+  }
+
+  private static SdkTelemetrySnapshot buildSnapshot(
+      ChargebeeClient client,
+      Request request,
+      long startTimeMs,
+      Integer httpStatus,
+      String errorCode,
+      String requestId) {
+    return SdkTelemetrySnapshot.builder()
+        .sdkName(TelemetryAttributeKeys.SDK_NAME)
+        .sdkVersion(client.getSdkVersion())
+        .resource(request.getTelemetryResource())
+        .operation(request.getTelemetryOperation())
+        .startTimeEpochSeconds(startTimeMs / 1000L)
+        .timeMs(elapsedMs(startTimeMs))
+        .httpStatus(httpStatus)
+        .errorCode(errorCode)
+        .requestId(requestId)
+        .featureTokens(resolveFeatureTokens(client, request))
+        .build();
+  }
+
+  private static Set<String> resolveFeatureTokens(ChargebeeClient client, Request request) {
+    Set<String> features = new LinkedHashSet<>();
+    if (TelemetryAdapterExecutor.resolveAdapter(client, request) != null) {
+      features.add(SdkTelemetryHeader.FT_TELEMETRY_ADAPTER);
+    }
+    if (!(client.getTransport() instanceof DefaultTransport)) {
+      features.add(SdkTelemetryHeader.FT_CUSTOM_TRANSPORT);
+    }
+    if (isRetryConfigActive(client, request)) {
+      features.add(SdkTelemetryHeader.FT_RETRY_CONFIG);
+    }
+    return features;
+  }
+
+  /** Mirrors how {@code sendWithRetryInternal} decides whether retry configuration is in play. */
+  private static boolean isRetryConfigActive(ChargebeeClient client, Request request) {
+    if (request.getMaxNetworkRetriesOverride() != null) {
+      return true;
+    }
+    return client.getRetry() != null && client.getRetry().isEnabled();
+  }
+
+  private static String extractRequestId(Response response) {
+    return response != null ? response.getHeader(SdkTelemetryHeader.REQUEST_ID_HEADER) : null;
+  }
+
+  /** Elapsed wall time of the whole call, including any transport-level retries. */
+  private static long elapsedMs(long startTimeMs) {
+    return Math.max(0L, System.currentTimeMillis() - startTimeMs);
+  }
+
+  private static void logSuppressed(String step, Exception err) {
+    LOGGER.log(
+        Level.WARNING,
+        "SDK telemetry could not " + step + " (" + err.getMessage() + "); API call unaffected.",
+        err);
+  }
+}

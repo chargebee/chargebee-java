@@ -1,0 +1,148 @@
+/*
+ * Copyright 2026 Chargebee Inc.
+ */
+
+package com.chargebee.v4.telemetry;
+
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+
+/** Builds RFC 9651 sf-list values for {@link SdkTelemetryHeader#HEADER_NAME}. */
+final class SdkTelemetryHeaderBuilder {
+
+  private SdkTelemetryHeaderBuilder() {}
+
+  /**
+   * Serializes a prior-call snapshot. Returns {@code null} when the value exceeds
+   * {@link SdkTelemetryHeader#MAX_HEADER_BYTES} UTF-8 bytes, which the server drops anyway.
+   */
+  static String build(SdkTelemetrySnapshot snapshot) {
+    if (snapshot == null) {
+      return null;
+    }
+
+    StringBuilder segment = new StringBuilder(SdkTelemetryHeader.SDK_SEGMENT);
+    appendTokenParam(segment, "name", snapshot.getSdkName());
+    appendBareParam(segment, "version", snapshot.getSdkVersion());
+    appendTokenParam(segment, "runtime", SdkTelemetryHeader.RUNTIME);
+    appendTokenParam(segment, "resource", snapshot.getResource());
+    appendTokenParam(segment, "operation", snapshot.getOperation());
+    if (snapshot.getStartTimeEpochSeconds() > 0) {
+      appendDateParam(segment, "start_time", snapshot.getStartTimeEpochSeconds());
+    }
+    appendIntegerParam(segment, "time_ms", snapshot.getTimeMs());
+    if (snapshot.getHttpStatus() != null) {
+      appendIntegerParam(segment, "http_status", snapshot.getHttpStatus());
+    }
+    if (isNotBlank(snapshot.getErrorCode())) {
+      appendStringParam(segment, "error_code", snapshot.getErrorCode());
+    }
+    if (isNotBlank(snapshot.getRequestId())) {
+      appendStringParam(segment, "request_id", snapshot.getRequestId());
+    }
+
+    List<String> items = new ArrayList<>();
+    items.add(segment.toString());
+    for (String featureToken : snapshot.getFeatureTokens()) {
+      if (isNotBlank(featureToken)) {
+        items.add(featureToken);
+      }
+    }
+
+    String headerValue = String.join(", ", items);
+    if (headerValue.getBytes(StandardCharsets.UTF_8).length > SdkTelemetryHeader.MAX_HEADER_BYTES) {
+      return null;
+    }
+    return headerValue;
+  }
+
+  /** Emits an sf-token, falling back to an sf-string so an odd value cannot corrupt the list. */
+  private static void appendTokenParam(StringBuilder segment, String key, String value) {
+    if (!isNotBlank(value)) {
+      return;
+    }
+    String trimmed = value.trim();
+    segment.append(';').append(key).append('=');
+    segment.append(isSfToken(trimmed) ? trimmed : escapeSfString(trimmed));
+  }
+
+  private static boolean isSfToken(String value) {
+    char first = value.charAt(0);
+    if (!isAsciiLetter(first) && first != '*') {
+      return false;
+    }
+    for (int i = 0; i < value.length(); i++) {
+      char ch = value.charAt(i);
+      boolean allowed =
+          isAsciiLetter(ch)
+              || (ch >= '0' && ch <= '9')
+              || "!#$%&'*+-.^_`|~:/".indexOf(ch) >= 0;
+      if (!allowed) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private static boolean isAsciiLetter(char ch) {
+    return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z');
+  }
+
+  /**
+   * Emits a plain {@code key=value} without quotes when the value has no structural characters.
+   * Used for semver strings like {@code 4.14.0} so Splunk/KVL does not escape {@code -quot-}.
+   */
+  private static void appendBareParam(StringBuilder segment, String key, String value) {
+    if (!isNotBlank(value)) {
+      return;
+    }
+    String trimmed = value.trim();
+    segment.append(';').append(key).append('=');
+    segment.append(isBareSafe(trimmed) ? trimmed : escapeSfString(trimmed));
+  }
+
+  private static boolean isBareSafe(String value) {
+    for (int i = 0; i < value.length(); i++) {
+      char ch = value.charAt(i);
+      if (ch == '"' || ch == '\\' || ch == ',' || ch == ';' || ch == '=' || Character.isWhitespace(ch)) {
+        return false;
+      }
+    }
+    return !value.isEmpty();
+  }
+
+  private static void appendStringParam(StringBuilder segment, String key, String value) {
+    if (!isNotBlank(value)) {
+      return;
+    }
+    segment.append(';').append(key).append('=').append(escapeSfString(value.trim()));
+  }
+
+  private static void appendIntegerParam(StringBuilder segment, String key, long value) {
+    segment.append(';').append(key).append('=').append(value);
+  }
+
+  /** RFC 9651 sf-date: an {@code @}-prefixed Unix epoch second count. */
+  private static void appendDateParam(StringBuilder segment, String key, long epochSeconds) {
+    segment.append(';').append(key).append("=@").append(epochSeconds);
+  }
+
+  static String escapeSfString(String value) {
+    StringBuilder escaped = new StringBuilder(value.length() + 2);
+    escaped.append('"');
+    for (int i = 0; i < value.length(); i++) {
+      char ch = value.charAt(i);
+      if (ch == '\\' || ch == '"') {
+        escaped.append('\\');
+      }
+      escaped.append(ch);
+    }
+    escaped.append('"');
+    return escaped.toString();
+  }
+
+  private static boolean isNotBlank(String value) {
+    return value != null && !value.trim().isEmpty();
+  }
+}

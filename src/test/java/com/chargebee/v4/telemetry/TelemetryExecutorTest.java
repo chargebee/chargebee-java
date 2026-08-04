@@ -295,7 +295,7 @@ class TelemetryExecutorTest {
   @Test
   @DisplayName("Should log adapter failures at WARNING (not SEVERE) and still return the response")
   void shouldLogAdapterFailureAtWarning() {
-    Logger logger = Logger.getLogger(TelemetryExecutor.class.getName());
+    Logger logger = Logger.getLogger(TelemetryAdapterExecutor.class.getName());
     List<LogRecord> records = new ArrayList<>();
     Handler captor =
         new Handler() {

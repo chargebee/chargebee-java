@@ -1,0 +1,170 @@
+/*
+ * Copyright 2026 Chargebee Inc.
+ */
+
+package com.chargebee.v4.telemetry;
+
+import com.chargebee.v4.client.ChargebeeClient;
+import com.chargebee.v4.transport.Request;
+import com.chargebee.v4.transport.Response;
+import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ * Drives the customer-supplied {@link TelemetryAdapter} around an API call, so calls show up as
+ * spans in the customer's own observability stack.
+ *
+ * <p>Active only when the client (or request) supplies an adapter and the request carries telemetry
+ * metadata. Adapter failures are logged at {@code WARNING} and never propagate to the caller.
+ */
+final class TelemetryAdapterExecutor {
+
+  private static final Logger LOGGER = Logger.getLogger(TelemetryAdapterExecutor.class.getName());
+
+  private TelemetryAdapterExecutor() {}
+
+  static Response around(
+      ChargebeeClient client, Request request, Function<Request, Response> next) {
+    TelemetryAdapter adapter = resolveAdapter(client, request);
+    if (!isActive(adapter, request)) {
+      return next.apply(request);
+    }
+
+    Map<String, String> adapterHeaders = new HashMap<>();
+    Object handle = startTelemetry(client, adapter, request, adapterHeaders);
+    long startTime = System.currentTimeMillis();
+
+    try {
+      Response response = next.apply(withHeaders(request, adapterHeaders));
+      endTelemetrySuccess(adapter, handle, startTime, response.getStatusCode());
+      return response;
+    } catch (RuntimeException err) {
+      endTelemetryFailure(adapter, handle, startTime, err);
+      throw err;
+    }
+  }
+
+  static CompletableFuture<Response> aroundAsync(
+      ChargebeeClient client,
+      Request request,
+      Function<Request, CompletableFuture<Response>> next) {
+    TelemetryAdapter adapter = resolveAdapter(client, request);
+    if (!isActive(adapter, request)) {
+      return next.apply(request);
+    }
+
+    Map<String, String> adapterHeaders = new HashMap<>();
+    Object handle = startTelemetry(client, adapter, request, adapterHeaders);
+    long startTime = System.currentTimeMillis();
+
+    return next.apply(withHeaders(request, adapterHeaders))
+        .whenComplete(
+            (response, throwable) -> {
+              if (throwable != null) {
+                Throwable cause = throwable.getCause() != null ? throwable.getCause() : throwable;
+                endTelemetryFailure(adapter, handle, startTime, cause);
+              } else {
+                endTelemetrySuccess(adapter, handle, startTime, response.getStatusCode());
+              }
+            });
+  }
+
+  private static boolean isActive(TelemetryAdapter adapter, Request request) {
+    return adapter != null && request.hasTelemetryMetadata();
+  }
+
+  static TelemetryAdapter resolveAdapter(ChargebeeClient client, Request request) {
+    if (request.getTelemetryAdapterOverride() != null) {
+      return request.getTelemetryAdapterOverride();
+    }
+    return client.getTelemetryAdapter();
+  }
+
+  private static Object startTelemetry(
+      ChargebeeClient client,
+      TelemetryAdapter adapter,
+      Request request,
+      Map<String, String> telemetryHeaders) {
+    try {
+      RequestTelemetryContext context = buildContext(client, request);
+      return adapter.onRequestStart(context, telemetryHeaders);
+    } catch (Exception err) {
+      LOGGER.log(
+          Level.WARNING,
+          "Telemetry adapter onRequestStart failed: "
+              + err.getMessage()
+              + ". Continuing without telemetry.",
+          err);
+      return null;
+    }
+  }
+
+  private static void endTelemetrySuccess(
+      TelemetryAdapter adapter, Object handle, long startTime, int httpStatusCode) {
+    try {
+      adapter.onRequestEnd(
+          handle,
+          TelemetrySupport.buildRequestTelemetryResult(
+              new TelemetrySupport.RequestTelemetryResultInput(
+                  httpStatusCode, System.currentTimeMillis() - startTime, null)));
+    } catch (Exception err) {
+      LOGGER.log(Level.WARNING, "Telemetry adapter onRequestEnd failed: " + err.getMessage(), err);
+    }
+  }
+
+  private static void endTelemetryFailure(
+      TelemetryAdapter adapter, Object handle, long startTime, Throwable err) {
+    Integer status = TelemetrySupport.extractHttpStatusCode(err);
+    int httpStatusCode = status != null ? status : 500;
+    try {
+      adapter.onRequestEnd(
+          handle,
+          TelemetrySupport.buildRequestTelemetryResult(
+              new TelemetrySupport.RequestTelemetryResultInput(
+                  httpStatusCode,
+                  System.currentTimeMillis() - startTime,
+                  TelemetrySupport.extractRequestTelemetryError(err))));
+    } catch (Exception telemetryErr) {
+      LOGGER.log(
+          Level.WARNING,
+          "Telemetry adapter onRequestEnd failed: " + telemetryErr.getMessage(),
+          telemetryErr);
+    }
+  }
+
+  static RequestTelemetryContext buildContext(ChargebeeClient client, Request request) {
+    URI uri = URI.create(request.getUrl());
+    String httpUrl = uri.getScheme() + "://" + uri.getHost() + uri.getPath();
+    String apiPath = extractApiPath(client.getBaseUrl());
+    return TelemetrySupport.buildRequestTelemetryContext(
+        new TelemetrySupport.BuildRequestTelemetryContextInput(
+            request.getTelemetryResource(),
+            request.getTelemetryOperation(),
+            request.getMethod(),
+            httpUrl,
+            uri.getHost(),
+            client.getSiteName(),
+            TelemetrySupport.resolveChargebeeApiVersion(apiPath),
+            client.getSdkVersion(),
+            request.getHeaders()));
+  }
+
+  private static String extractApiPath(String baseUrl) {
+    URI uri = URI.create(baseUrl);
+    String path = uri.getPath();
+    return path != null && !path.isEmpty() ? path : "/api/v2";
+  }
+
+  static Request withHeaders(Request request, Map<String, String> headers) {
+    Request updated = request;
+    for (Map.Entry<String, String> header : headers.entrySet()) {
+      updated = updated.withHeader(header.getKey(), header.getValue());
+    }
+    return updated;
+  }
+}
