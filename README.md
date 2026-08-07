@@ -867,7 +867,7 @@ class OtelTelemetryAdapter implements TelemetryAdapter {
               } else if (v instanceof List) {
                 @SuppressWarnings("unchecked")
                 List<String> values = (List<String>) v;
-                span.setAttribute(k, values);
+                span.setAttribute(AttributeKey.stringArrayKey(k), values);
               }
             });
     if (result.getError() != null) {
