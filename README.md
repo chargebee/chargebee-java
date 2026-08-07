@@ -699,7 +699,11 @@ The SDK builds standardized span attributes (`ctx.getStartAttributes()`, `result
 
 Spans are named `chargebee.{resource}.{operation}` (e.g. `chargebee.subscription.create`).
 
-#### X-Chargebee-Telemetry response header
+#### Server-side timing telemetry (Beta)
+
+> **Beta.** `X-Chargebee-Telemetry` response parsing and `preferChargebeeTelemetry` are in beta. Header availability, wire format, and SDK behavior may change.
+
+Chargebee returns `X-Chargebee-Telemetry` only when the client opts in with `Prefer: chargebee-telemetry=include`. Call `.preferChargebeeTelemetry(true)` on the client builder to have the SDK add that header on each request when a `telemetryAdapter` is configured (parsed into `chargebee.telemetry.*` span attributes). You can also set the `Prefer` header yourself on individual requests.
 
 On select APIs, Chargebee may include an `X-Chargebee-Telemetry` response header with a server-side timing breakdown — treat it as optional enrichment, not a required contract.
 

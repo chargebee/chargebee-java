@@ -74,6 +74,17 @@ class ChargebeeTelemetryHeaderParserTest {
   }
 
   @Test
+  @DisplayName("Should keep delimiters inside escaped sf-strings")
+  void shouldKeepDelimitersInsideEscapedSfStrings() {
+    String header = "cb;desc=\"a\\\"b;c\";time_ms=1";
+
+    Map<String, Object> attributes = ChargebeeTelemetryHeaderParser.parseToSpanAttributes(header);
+
+    assertEquals("a\"b;c", attributes.get("chargebee.telemetry.cb.desc"));
+    assertEquals(1L, attributes.get("chargebee.telemetry.cb.time_ms"));
+  }
+
+  @Test
   @DisplayName("Should return empty map for blank or malformed headers")
   void shouldReturnEmptyForInvalidInput() {
     assertTrue(ChargebeeTelemetryHeaderParser.parseToSpanAttributes(null).isEmpty());

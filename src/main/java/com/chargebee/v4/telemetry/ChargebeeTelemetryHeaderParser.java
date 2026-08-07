@@ -183,7 +183,9 @@ public final class ChargebeeTelemetryHeaderParser {
     for (int i = 0; i < input.length(); i++) {
       char currentChar = input.charAt(i);
       if (currentChar == '"') {
-        inQuotes = !inQuotes;
+        if (!isEscapedQuote(input, i)) {
+          inQuotes = !inQuotes;
+        }
         current.append(currentChar);
       } else if (currentChar == delimiter && !inQuotes) {
         addIfNotBlank(parts, current);
@@ -202,7 +204,9 @@ public final class ChargebeeTelemetryHeaderParser {
     for (int i = 0; i < item.length(); i++) {
       char current = item.charAt(i);
       if (current == '"') {
-        inQuotes = !inQuotes;
+        if (!isEscapedQuote(item, i)) {
+          inQuotes = !inQuotes;
+        }
       } else if (current == ';' && !inQuotes) {
         return i;
       }
@@ -215,12 +219,23 @@ public final class ChargebeeTelemetryHeaderParser {
     for (int i = 0; i < parameter.length(); i++) {
       char current = parameter.charAt(i);
       if (current == '"') {
-        inQuotes = !inQuotes;
+        if (!isEscapedQuote(parameter, i)) {
+          inQuotes = !inQuotes;
+        }
       } else if (current == '=' && !inQuotes) {
         return i;
       }
     }
     return -1;
+  }
+
+  /** Returns true when {@code input[index]} is a quote escaped by a preceding backslash. */
+  private static boolean isEscapedQuote(String input, int index) {
+    int backslashes = 0;
+    for (int i = index - 1; i >= 0 && input.charAt(i) == '\\'; i--) {
+      backslashes++;
+    }
+    return backslashes % 2 == 1;
   }
 
   private static void addIfNotBlank(List<String> parts, StringBuilder current) {

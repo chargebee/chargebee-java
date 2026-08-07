@@ -106,4 +106,44 @@ class TelemetrySupportTest {
     assertEquals("resource_not_found", attributes.get(TelemetryAttributeKeys.CHARGEBEE_ERROR_CODE));
     assertFalse(attributes.containsValue("404"));
   }
+
+  @Test
+  @DisplayName("Should add Prefer chargebee-telemetry=include when not already set")
+  void shouldApplyResponseTelemetryPreferHeader() {
+    Map<String, String> headers = new HashMap<>();
+    TelemetrySupport.applyResponseTelemetryPreferHeader(headers);
+
+    assertEquals(
+        TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_VALUE,
+        headers.get(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER));
+  }
+
+  @Test
+  @DisplayName("Should not override an existing Prefer request header")
+  void shouldNotOverrideExistingPreferHeader() {
+    Map<String, String> headers = new HashMap<>();
+    headers.put("prefer", "respond-async");
+
+    TelemetrySupport.applyResponseTelemetryPreferHeader(headers);
+
+    assertEquals("respond-async", headers.get("prefer"));
+    assertFalse(headers.containsKey(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER));
+  }
+
+  @Test
+  @DisplayName("Should add Prefer to immutable request copies")
+  void shouldApplyResponseTelemetryPreferHeaderToRequest() {
+    Request request =
+        Request.builder()
+            .method("GET")
+            .url("https://acme.chargebee.com/api/v2/customers")
+            .build();
+
+    Request updated = TelemetrySupport.applyResponseTelemetryPreferHeader(request);
+
+    assertEquals(
+        TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_VALUE,
+        updated.getHeaders().get(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER));
+    assertFalse(request.getHeaders().containsKey(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER));
+  }
 }

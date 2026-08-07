@@ -177,6 +177,7 @@ class TelemetryExecutorTest {
             .transport(new TelemetryResponseTransport())
             .retry(RetryConfig.builder().enabled(false).build())
             .telemetryAdapter(adapter)
+            .preferChargebeeTelemetry(true)
             .build();
 
     Request request =
@@ -221,6 +222,7 @@ class TelemetryExecutorTest {
             .transport(new RecordingTransport())
             .retry(RetryConfig.builder().enabled(false).build())
             .telemetryAdapter(adapter)
+            .preferChargebeeTelemetry(true)
             .build();
 
     Request request =
@@ -310,6 +312,7 @@ class TelemetryExecutorTest {
                 })
             .retry(RetryConfig.builder().enabled(false).build())
             .telemetryAdapter(adapter)
+            .preferChargebeeTelemetry(true)
             .build();
 
     assertThrows(APIException.class, () -> client.sendWithRetry(request));
@@ -422,5 +425,179 @@ class TelemetryExecutorTest {
       logger.setLevel(previousLevel);
       logger.setUseParentHandlers(previousUseParent);
     }
+  }
+
+  @Test
+  @DisplayName("Should send Prefer chargebee-telemetry=include when preferChargebeeTelemetry is true")
+  void shouldSendPreferHeaderWhenOptedIn() {
+    RecordingTransport transport = new RecordingTransport();
+    TelemetryAdapter adapter =
+        new TelemetryAdapter() {
+          @Override
+          public Object onRequestStart(
+              RequestTelemetryContext context, Map<String, String> requestHeaders) {
+            return "span-1";
+          }
+
+          @Override
+          public void onRequestEnd(Object handle, RequestTelemetryResult result) {}
+        };
+
+    ChargebeeClient client =
+        ChargebeeClient.builder("key_test", "acme")
+            .transport(transport)
+            .retry(RetryConfig.builder().enabled(false).build())
+            .telemetryAdapter(adapter)
+            .preferChargebeeTelemetry(true)
+            .build();
+
+    Request request =
+        Request.builder()
+            .method("GET")
+            .url("https://acme.chargebee.com/api/v2/customers")
+            .telemetryResource("customer")
+            .telemetryOperation("list")
+            .build();
+
+    client.sendWithRetry(request);
+
+    assertEquals(1, transport.requests.size());
+    assertEquals(
+        TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_VALUE,
+        transport.requests.get(0).getHeaders().get(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER));
+  }
+
+  @Test
+  @DisplayName("Should not override an existing Prefer request header")
+  void shouldNotOverrideExistingPreferHeader() {
+    RecordingTransport transport = new RecordingTransport();
+    TelemetryAdapter adapter =
+        new TelemetryAdapter() {
+          @Override
+          public Object onRequestStart(
+              RequestTelemetryContext context, Map<String, String> requestHeaders) {
+            return "span-1";
+          }
+
+          @Override
+          public void onRequestEnd(Object handle, RequestTelemetryResult result) {}
+        };
+
+    ChargebeeClient client =
+        ChargebeeClient.builder("key_test", "acme")
+            .transport(transport)
+            .retry(RetryConfig.builder().enabled(false).build())
+            .telemetryAdapter(adapter)
+            .preferChargebeeTelemetry(true)
+            .build();
+
+    Request request =
+        Request.builder()
+            .method("GET")
+            .url("https://acme.chargebee.com/api/v2/customers")
+            .header("Prefer", "respond-async")
+            .telemetryResource("customer")
+            .telemetryOperation("list")
+            .build();
+
+    client.sendWithRetry(request);
+
+    assertEquals("respond-async", transport.requests.get(0).getHeaders().get("Prefer"));
+  }
+
+  @Test
+  @DisplayName("Should not send Prefer by default when telemetry adapter is configured")
+  void shouldNotSendPreferByDefault() {
+    RecordingTransport transport = new RecordingTransport();
+    TelemetryAdapter adapter =
+        new TelemetryAdapter() {
+          @Override
+          public Object onRequestStart(
+              RequestTelemetryContext context, Map<String, String> requestHeaders) {
+            return "span-1";
+          }
+
+          @Override
+          public void onRequestEnd(Object handle, RequestTelemetryResult result) {}
+        };
+
+    ChargebeeClient client =
+        ChargebeeClient.builder("key_test", "acme")
+            .transport(transport)
+            .retry(RetryConfig.builder().enabled(false).build())
+            .telemetryAdapter(adapter)
+            .build();
+
+    Request request =
+        Request.builder()
+            .method("GET")
+            .url("https://acme.chargebee.com/api/v2/customers")
+            .telemetryResource("customer")
+            .telemetryOperation("list")
+            .build();
+
+    client.sendWithRetry(request);
+
+    assertFalse(transport.requests.get(0).getHeaders().containsKey("Prefer"));
+  }
+
+  @Test
+  @DisplayName("Should not send Prefer when preferChargebeeTelemetry is false")
+  void shouldNotSendPreferWhenDisabled() {
+    RecordingTransport transport = new RecordingTransport();
+    TelemetryAdapter adapter =
+        new TelemetryAdapter() {
+          @Override
+          public Object onRequestStart(
+              RequestTelemetryContext context, Map<String, String> requestHeaders) {
+            return "span-1";
+          }
+
+          @Override
+          public void onRequestEnd(Object handle, RequestTelemetryResult result) {}
+        };
+
+    ChargebeeClient client =
+        ChargebeeClient.builder("key_test", "acme")
+            .transport(transport)
+            .retry(RetryConfig.builder().enabled(false).build())
+            .telemetryAdapter(adapter)
+            .preferChargebeeTelemetry(false)
+            .build();
+
+    Request request =
+        Request.builder()
+            .method("GET")
+            .url("https://acme.chargebee.com/api/v2/customers")
+            .telemetryResource("customer")
+            .telemetryOperation("list")
+            .build();
+
+    client.sendWithRetry(request);
+
+    assertFalse(transport.requests.get(0).getHeaders().containsKey("Prefer"));
+  }
+
+  @Test
+  @DisplayName("Should not send Prefer when telemetry adapter is not configured")
+  void shouldNotSendPreferWhenNoAdapter() {
+    RecordingTransport transport = new RecordingTransport();
+    ChargebeeClient client =
+        ChargebeeClient.builder("key_test", "acme")
+            .transport(transport)
+            .retry(RetryConfig.builder().enabled(false).build())
+            .build();
+
+    Request request =
+        Request.builder()
+            .method("GET")
+            .url("https://acme.chargebee.com/api/v2/customers")
+            .telemetryResource("customer")
+            .telemetryOperation("list")
+            .build();
+
+    client.sendWithRetry(request);
+
+    assertFalse(transport.requests.get(0).getHeaders().containsKey("Prefer"));
   }
 }
