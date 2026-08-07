@@ -483,6 +483,8 @@ public class Event {
 
     SUBSCRIPTION_BUSINESS_ENTITY_CHANGED("subscription_business_entity_changed"),
 
+    PAYMENT_SOURCE_BUSINESS_ENTITY_CHANGED("payment_source_business_entity_changed"),
+
     PURCHASE_CREATED("purchase_created"),
 
     VOUCHER_CREATED("voucher_created"),
@@ -612,6 +614,14 @@ public class Event {
     OMNICHANNEL_SUBSCRIPTION_ITEM_UPDATED("omnichannel_subscription_item_updated"),
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
+
+    LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
+
+    GRANT_BLOCKS_CREATED("grant_blocks_created"),
+
+    GRANT_BLOCKS_UPDATED("grant_blocks_updated"),
+
+    LEDGER_UPDATED("ledger_updated"),
 
     PLAN_CREATED("plan_created"),
 

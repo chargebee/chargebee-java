@@ -64,6 +64,7 @@ public class Invoice {
   private String vatNumberPrefix;
   private Channel channel;
   private String businessEntityId;
+  private List<ExchangeRates> exchangeRates;
   private List<LineItems> lineItems;
   private List<LineItemTiers> lineItemTiers;
   private List<LineItemDiscounts> lineItemDiscounts;
@@ -279,6 +280,10 @@ public class Invoice {
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public List<ExchangeRates> getExchangeRates() {
+    return exchangeRates;
   }
 
   public List<LineItems> getLineItems() {
@@ -624,6 +629,8 @@ public class Invoice {
 
     knownFields.add("business_entity_id");
 
+    knownFields.add("exchange_rates");
+
     knownFields.add("line_items");
 
     knownFields.add("line_item_tiers");
@@ -763,6 +770,10 @@ public class Invoice {
     obj.channel = Channel.fromString(JsonUtil.getString(jsonObj, "channel"));
 
     obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
+
+    obj.exchangeRates =
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "exchange_rates"), ExchangeRates::fromJson);
 
     obj.lineItems =
         JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "line_items"), LineItems::fromJson);
@@ -958,6 +969,8 @@ public class Invoice {
         + channel
         + ", businessEntityId="
         + businessEntityId
+        + ", exchangeRates="
+        + exchangeRates
         + ", lineItems="
         + lineItems
         + ", lineItemTiers="
@@ -1061,6 +1074,7 @@ public class Invoice {
         && java.util.Objects.equals(vatNumberPrefix, that.vatNumberPrefix)
         && java.util.Objects.equals(channel, that.channel)
         && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(exchangeRates, that.exchangeRates)
         && java.util.Objects.equals(lineItems, that.lineItems)
         && java.util.Objects.equals(lineItemTiers, that.lineItemTiers)
         && java.util.Objects.equals(lineItemDiscounts, that.lineItemDiscounts)
@@ -1138,6 +1152,7 @@ public class Invoice {
         vatNumberPrefix,
         channel,
         businessEntityId,
+        exchangeRates,
         lineItems,
         lineItemTiers,
         lineItemDiscounts,
@@ -1161,6 +1176,59 @@ public class Invoice {
         einvoice,
         siteDetailsAtCreation,
         customFields);
+  }
+
+  public static class ExchangeRates {
+
+    private String currencyCode;
+    private BigDecimal rate;
+
+    public String getCurrencyCode() {
+      return currencyCode;
+    }
+
+    public BigDecimal getRate() {
+      return rate;
+    }
+
+    public static ExchangeRates fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ExchangeRates fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
+    public static ExchangeRates fromJson(JsonObject jsonObj) {
+      ExchangeRates obj = new ExchangeRates();
+
+      obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
+
+      obj.rate = JsonUtil.getBigDecimal(jsonObj, "rate");
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "ExchangeRates{" + "currencyCode=" + currencyCode + ", rate=" + rate + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      ExchangeRates that = (ExchangeRates) o;
+      return java.util.Objects.equals(currencyCode, that.currencyCode)
+          && java.util.Objects.equals(rate, that.rate);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(currencyCode, rate);
+    }
   }
 
   public static class LineItems {
@@ -1190,6 +1258,7 @@ public class Invoice {
     private TaxExemptReason taxExemptReason;
     private String entityId;
     private String customerId;
+    private ProrationMode prorationMode;
 
     public String getId() {
       return id;
@@ -1289,6 +1358,10 @@ public class Invoice {
 
     public String getCustomerId() {
       return customerId;
+    }
+
+    public ProrationMode getProrationMode() {
+      return prorationMode;
     }
 
     public enum PricingModel {
@@ -1407,6 +1480,38 @@ public class Invoice {
       }
     }
 
+    public enum ProrationMode {
+      RESET("reset"),
+
+      DELTA("delta"),
+
+      SERVICE_PERIOD_REVISION("service_period_revision"),
+
+      ADJUSTED_TERM("adjusted_term"),
+
+      /** An enum member indicating that ProrationMode was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      ProrationMode(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static ProrationMode fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ProrationMode enumValue : ProrationMode.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
     public static LineItems fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
     }
@@ -1469,6 +1574,8 @@ public class Invoice {
 
       obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
+      obj.prorationMode = ProrationMode.fromString(JsonUtil.getString(jsonObj, "proration_mode"));
+
       return obj;
     }
 
@@ -1525,6 +1632,8 @@ public class Invoice {
           + entityId
           + ", customerId="
           + customerId
+          + ", prorationMode="
+          + prorationMode
           + "}";
     }
 
@@ -1558,7 +1667,8 @@ public class Invoice {
           && java.util.Objects.equals(entityType, that.entityType)
           && java.util.Objects.equals(taxExemptReason, that.taxExemptReason)
           && java.util.Objects.equals(entityId, that.entityId)
-          && java.util.Objects.equals(customerId, that.customerId);
+          && java.util.Objects.equals(customerId, that.customerId)
+          && java.util.Objects.equals(prorationMode, that.prorationMode);
     }
 
     @Override
@@ -1589,7 +1699,8 @@ public class Invoice {
           entityType,
           taxExemptReason,
           entityId,
-          customerId);
+          customerId,
+          prorationMode);
     }
   }
 
@@ -3172,6 +3283,8 @@ public class Invoice {
       OFFLINE("offline"),
 
       DIRECT_DEBIT("direct_debit"),
+
+      REAL_TIME_PAYMENTS("real_time_payments"),
 
       /** An enum member indicating that DunningType was instantiated with an unknown value. */
       _UNKNOWN(null);

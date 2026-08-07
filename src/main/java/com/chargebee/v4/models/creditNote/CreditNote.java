@@ -61,6 +61,7 @@ public class CreditNote {
   private TaxOrigin taxOrigin;
   private List<LinkedRefunds> linkedRefunds;
   private List<Allocations> allocations;
+  private List<ExchangeRates> exchangeRates;
   private ShippingAddress shippingAddress;
   private BillingAddress billingAddress;
   private Einvoice einvoice;
@@ -246,6 +247,10 @@ public class CreditNote {
 
   public List<Allocations> getAllocations() {
     return allocations;
+  }
+
+  public List<ExchangeRates> getExchangeRates() {
+    return exchangeRates;
   }
 
   public ShippingAddress getShippingAddress() {
@@ -555,6 +560,8 @@ public class CreditNote {
 
     knownFields.add("allocations");
 
+    knownFields.add("exchange_rates");
+
     knownFields.add("shipping_address");
 
     knownFields.add("billing_address");
@@ -671,6 +678,10 @@ public class CreditNote {
 
     obj.allocations =
         JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "allocations"), Allocations::fromJson);
+
+    obj.exchangeRates =
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "exchange_rates"), ExchangeRates::fromJson);
 
     JsonObject __shippingAddressObj = JsonUtil.getJsonObject(jsonObj, "shipping_address");
     if (__shippingAddressObj != null) {
@@ -791,6 +802,8 @@ public class CreditNote {
         + linkedRefunds
         + ", allocations="
         + allocations
+        + ", exchangeRates="
+        + exchangeRates
         + ", shippingAddress="
         + shippingAddress
         + ", billingAddress="
@@ -855,6 +868,7 @@ public class CreditNote {
         && java.util.Objects.equals(taxOrigin, that.taxOrigin)
         && java.util.Objects.equals(linkedRefunds, that.linkedRefunds)
         && java.util.Objects.equals(allocations, that.allocations)
+        && java.util.Objects.equals(exchangeRates, that.exchangeRates)
         && java.util.Objects.equals(shippingAddress, that.shippingAddress)
         && java.util.Objects.equals(billingAddress, that.billingAddress)
         && java.util.Objects.equals(einvoice, that.einvoice)
@@ -911,6 +925,7 @@ public class CreditNote {
         taxOrigin,
         linkedRefunds,
         allocations,
+        exchangeRates,
         shippingAddress,
         billingAddress,
         einvoice,
@@ -945,6 +960,7 @@ public class CreditNote {
     private TaxExemptReason taxExemptReason;
     private String entityId;
     private String customerId;
+    private ProrationMode prorationMode;
 
     public String getId() {
       return id;
@@ -1044,6 +1060,10 @@ public class CreditNote {
 
     public String getCustomerId() {
       return customerId;
+    }
+
+    public ProrationMode getProrationMode() {
+      return prorationMode;
     }
 
     public enum PricingModel {
@@ -1162,6 +1182,38 @@ public class CreditNote {
       }
     }
 
+    public enum ProrationMode {
+      RESET("reset"),
+
+      DELTA("delta"),
+
+      SERVICE_PERIOD_REVISION("service_period_revision"),
+
+      ADJUSTED_TERM("adjusted_term"),
+
+      /** An enum member indicating that ProrationMode was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      ProrationMode(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static ProrationMode fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ProrationMode enumValue : ProrationMode.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
     public static LineItems fromJson(String json) {
       return fromJson(JsonUtil.parse(json));
     }
@@ -1224,6 +1276,8 @@ public class CreditNote {
 
       obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
+      obj.prorationMode = ProrationMode.fromString(JsonUtil.getString(jsonObj, "proration_mode"));
+
       return obj;
     }
 
@@ -1280,6 +1334,8 @@ public class CreditNote {
           + entityId
           + ", customerId="
           + customerId
+          + ", prorationMode="
+          + prorationMode
           + "}";
     }
 
@@ -1313,7 +1369,8 @@ public class CreditNote {
           && java.util.Objects.equals(entityType, that.entityType)
           && java.util.Objects.equals(taxExemptReason, that.taxExemptReason)
           && java.util.Objects.equals(entityId, that.entityId)
-          && java.util.Objects.equals(customerId, that.customerId);
+          && java.util.Objects.equals(customerId, that.customerId)
+          && java.util.Objects.equals(prorationMode, that.prorationMode);
     }
 
     @Override
@@ -1344,7 +1401,8 @@ public class CreditNote {
           entityType,
           taxExemptReason,
           entityId,
-          customerId);
+          customerId,
+          prorationMode);
     }
   }
 
@@ -2747,6 +2805,59 @@ public class CreditNote {
 
       return java.util.Objects.hash(
           invoiceId, allocatedAmount, allocatedAt, invoiceDate, invoiceStatus, taxApplication);
+    }
+  }
+
+  public static class ExchangeRates {
+
+    private String currencyCode;
+    private BigDecimal rate;
+
+    public String getCurrencyCode() {
+      return currencyCode;
+    }
+
+    public BigDecimal getRate() {
+      return rate;
+    }
+
+    public static ExchangeRates fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ExchangeRates fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
+    public static ExchangeRates fromJson(JsonObject jsonObj) {
+      ExchangeRates obj = new ExchangeRates();
+
+      obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
+
+      obj.rate = JsonUtil.getBigDecimal(jsonObj, "rate");
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "ExchangeRates{" + "currencyCode=" + currencyCode + ", rate=" + rate + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      ExchangeRates that = (ExchangeRates) o;
+      return java.util.Objects.equals(currencyCode, that.currencyCode)
+          && java.util.Objects.equals(rate, that.rate);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(currencyCode, rate);
     }
   }
 

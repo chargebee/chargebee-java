@@ -33,6 +33,8 @@ public final class SubscriptionCancelForItemsParams {
 
   private final Timestamp invoiceDate;
 
+  private final Boolean includeCancellationDayInBilling;
+
   private final String cancelReasonCode;
 
   private final Boolean decommissioned;
@@ -58,6 +60,8 @@ public final class SubscriptionCancelForItemsParams {
     this.contractTermCancelOption = builder.contractTermCancelOption;
 
     this.invoiceDate = builder.invoiceDate;
+
+    this.includeCancellationDayInBilling = builder.includeCancellationDayInBilling;
 
     this.cancelReasonCode = builder.cancelReasonCode;
 
@@ -100,6 +104,10 @@ public final class SubscriptionCancelForItemsParams {
 
   public Timestamp getInvoiceDate() {
     return invoiceDate;
+  }
+
+  public Boolean getIncludeCancellationDayInBilling() {
+    return includeCancellationDayInBilling;
   }
 
   public String getCancelReasonCode() {
@@ -164,6 +172,11 @@ public final class SubscriptionCancelForItemsParams {
       formData.put("invoice_date", this.invoiceDate);
     }
 
+    if (this.includeCancellationDayInBilling != null) {
+
+      formData.put("include_cancellation_day_in_billing", this.includeCancellationDayInBilling);
+    }
+
     if (this.cancelReasonCode != null) {
 
       formData.put("cancel_reason_code", this.cancelReasonCode);
@@ -217,6 +230,8 @@ public final class SubscriptionCancelForItemsParams {
     private ContractTermCancelOption contractTermCancelOption;
 
     private Timestamp invoiceDate;
+
+    private Boolean includeCancellationDayInBilling;
 
     private String cancelReasonCode;
 
@@ -272,6 +287,11 @@ public final class SubscriptionCancelForItemsParams {
 
     public SubscriptionCancelForItemsBuilder invoiceDate(Timestamp value) {
       this.invoiceDate = value;
+      return this;
+    }
+
+    public SubscriptionCancelForItemsBuilder includeCancellationDayInBilling(Boolean value) {
+      this.includeCancellationDayInBilling = value;
       return this;
     }
 

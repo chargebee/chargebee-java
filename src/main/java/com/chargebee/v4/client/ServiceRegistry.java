@@ -54,6 +54,8 @@ import com.chargebee.v4.services.OmnichannelSubscriptionService;
 
 import com.chargebee.v4.services.OmnichannelSubscriptionItemService;
 
+import com.chargebee.v4.services.MeterService;
+
 import com.chargebee.v4.services.RampService;
 
 import com.chargebee.v4.services.OmnichannelOneTimeOrderService;
@@ -83,6 +85,8 @@ import com.chargebee.v4.services.CardService;
 import com.chargebee.v4.services.AttachedItemService;
 
 import com.chargebee.v4.services.UsageEventService;
+
+import com.chargebee.v4.services.MeteredFeatureService;
 
 import com.chargebee.v4.services.PriceVariantService;
 
@@ -143,6 +147,8 @@ import com.chargebee.v4.services.CouponService;
 import com.chargebee.v4.services.PortalSessionService;
 
 import com.chargebee.v4.services.ItemPriceService;
+
+import com.chargebee.v4.services.CreditUnitService;
 
 import com.chargebee.v4.services.OfferFulfillmentService;
 
@@ -239,6 +245,8 @@ final class ServiceRegistry {
 
   private volatile OmnichannelSubscriptionItemService omnichannelSubscriptionItemService;
 
+  private volatile MeterService meterService;
+
   private volatile RampService rampService;
 
   private volatile OmnichannelOneTimeOrderService omnichannelOneTimeOrderService;
@@ -268,6 +276,8 @@ final class ServiceRegistry {
   private volatile AttachedItemService attachedItemService;
 
   private volatile UsageEventService usageEventService;
+
+  private volatile MeteredFeatureService meteredFeatureService;
 
   private volatile PriceVariantService priceVariantService;
 
@@ -328,6 +338,8 @@ final class ServiceRegistry {
   private volatile PortalSessionService portalSessionService;
 
   private volatile ItemPriceService itemPriceService;
+
+  private volatile CreditUnitService creditUnitService;
 
   private volatile OfferFulfillmentService offerFulfillmentService;
 
@@ -773,6 +785,21 @@ final class ServiceRegistry {
   }
 
   /**
+   * Get or create the MeterService instance. Thread-safe lazy initialization using double-checked
+   * locking.
+   */
+  MeterService meters() {
+    if (meterService == null) {
+      synchronized (this) {
+        if (meterService == null) {
+          meterService = new MeterService(client);
+        }
+      }
+    }
+    return meterService;
+  }
+
+  /**
    * Get or create the RampService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
@@ -995,6 +1022,21 @@ final class ServiceRegistry {
       }
     }
     return usageEventService;
+  }
+
+  /**
+   * Get or create the MeteredFeatureService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  MeteredFeatureService meteredFeatures() {
+    if (meteredFeatureService == null) {
+      synchronized (this) {
+        if (meteredFeatureService == null) {
+          meteredFeatureService = new MeteredFeatureService(client);
+        }
+      }
+    }
+    return meteredFeatureService;
   }
 
   /**
@@ -1445,6 +1487,21 @@ final class ServiceRegistry {
       }
     }
     return itemPriceService;
+  }
+
+  /**
+   * Get or create the CreditUnitService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  CreditUnitService creditUnits() {
+    if (creditUnitService == null) {
+      synchronized (this) {
+        if (creditUnitService == null) {
+          creditUnitService = new CreditUnitService(client);
+        }
+      }
+    }
+    return creditUnitService;
   }
 
   /**

@@ -23,6 +23,7 @@ public class Feature {
   private Long resourceVersion;
   private Timestamp updatedAt;
   private Timestamp createdAt;
+  private Boolean metered;
   private List<Levels> levels;
 
   private java.util.Map<String, String> customFields = new java.util.HashMap<>();
@@ -61,6 +62,10 @@ public class Feature {
 
   public Timestamp getCreatedAt() {
     return createdAt;
+  }
+
+  public Boolean getMetered() {
+    return metered;
   }
 
   public List<Levels> getLevels() {
@@ -180,6 +185,8 @@ public class Feature {
 
     knownFields.add("created_at");
 
+    knownFields.add("metered");
+
     knownFields.add("levels");
 
     obj.id = JsonUtil.getString(jsonObj, "id");
@@ -199,6 +206,8 @@ public class Feature {
     obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
     obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
+
+    obj.metered = JsonUtil.getBoolean(jsonObj, "metered");
 
     obj.levels = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "levels"), Levels::fromJson);
 
@@ -228,6 +237,8 @@ public class Feature {
         + updatedAt
         + ", createdAt="
         + createdAt
+        + ", metered="
+        + metered
         + ", levels="
         + levels
         + ", customFields="
@@ -250,6 +261,7 @@ public class Feature {
         && java.util.Objects.equals(resourceVersion, that.resourceVersion)
         && java.util.Objects.equals(updatedAt, that.updatedAt)
         && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(metered, that.metered)
         && java.util.Objects.equals(levels, that.levels)
         && java.util.Objects.equals(customFields, that.customFields);
   }
@@ -267,6 +279,7 @@ public class Feature {
         resourceVersion,
         updatedAt,
         createdAt,
+        metered,
         levels,
         customFields);
   }

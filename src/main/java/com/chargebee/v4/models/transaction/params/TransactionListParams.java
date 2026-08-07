@@ -686,6 +686,20 @@ public final class TransactionListParams {
 
     SOUTH_KOREAN_CARDS("south_korean_cards"),
 
+    PAYNOW("paynow"),
+
+    BIZUM("bizum"),
+
+    PROMPTPAY("promptpay"),
+
+    DANA("dana"),
+
+    TOUCH_N_GO("touch_n_go"),
+
+    TAMARA("tamara"),
+
+    QPAY("qpay"),
+
     /** An enum member indicating that PaymentMethodIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -823,6 +837,20 @@ public final class TransactionListParams {
     GCASH("gcash"),
 
     SOUTH_KOREAN_CARDS("south_korean_cards"),
+
+    PAYNOW("paynow"),
+
+    BIZUM("bizum"),
+
+    PROMPTPAY("promptpay"),
+
+    DANA("dana"),
+
+    TOUCH_N_GO("touch_n_go"),
+
+    TAMARA("tamara"),
+
+    QPAY("qpay"),
 
     /** An enum member indicating that PaymentMethodIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -962,6 +990,20 @@ public final class TransactionListParams {
 
     SOUTH_KOREAN_CARDS("south_korean_cards"),
 
+    PAYNOW("paynow"),
+
+    BIZUM("bizum"),
+
+    PROMPTPAY("promptpay"),
+
+    DANA("dana"),
+
+    TOUCH_N_GO("touch_n_go"),
+
+    TAMARA("tamara"),
+
+    QPAY("qpay"),
+
     /** An enum member indicating that PaymentMethodIn was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -1099,6 +1141,20 @@ public final class TransactionListParams {
     GCASH("gcash"),
 
     SOUTH_KOREAN_CARDS("south_korean_cards"),
+
+    PAYNOW("paynow"),
+
+    BIZUM("bizum"),
+
+    PROMPTPAY("promptpay"),
+
+    DANA("dana"),
+
+    TOUCH_N_GO("touch_n_go"),
+
+    TAMARA("tamara"),
+
+    QPAY("qpay"),
 
     /** An enum member indicating that PaymentMethodNotIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -2188,6 +2244,20 @@ public final class TransactionListParams {
     GCASH("gcash"),
 
     SOUTH_KOREAN_CARDS("south_korean_cards"),
+
+    PAYNOW("paynow"),
+
+    BIZUM("bizum"),
+
+    PROMPTPAY("promptpay"),
+
+    DANA("dana"),
+
+    TOUCH_N_GO("touch_n_go"),
+
+    TAMARA("tamara"),
+
+    QPAY("qpay"),
 
     /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
     _UNKNOWN(null);

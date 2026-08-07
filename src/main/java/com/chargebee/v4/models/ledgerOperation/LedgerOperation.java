@@ -14,10 +14,11 @@ import java.sql.Timestamp;
 public class LedgerOperation {
 
   private String id;
+  private String subscriptionId;
+  private String unitId;
+  private UnitType unitType;
   private Type type;
   private String amount;
-  private String startBalance;
-  private String endBalance;
   private String provisionedStartBalance;
   private String provisionedEndBalance;
   private String overdraftStartBalance;
@@ -25,15 +26,24 @@ public class LedgerOperation {
   private String parentLedgerOperationId;
   private Timestamp ledgerOperationTimestamp;
   private Timestamp autoReleaseTimestamp;
-  private String metadata;
   private Timestamp createdAt;
   private Timestamp modifiedAt;
-  private String subscriptionId;
-  private String unitId;
-  private UnitType unitType;
+  private java.util.Map<String, Object> metadata;
 
   public String getId() {
     return id;
+  }
+
+  public String getSubscriptionId() {
+    return subscriptionId;
+  }
+
+  public String getUnitId() {
+    return unitId;
+  }
+
+  public UnitType getUnitType() {
+    return unitType;
   }
 
   public Type getType() {
@@ -42,14 +52,6 @@ public class LedgerOperation {
 
   public String getAmount() {
     return amount;
-  }
-
-  public String getStartBalance() {
-    return startBalance;
-  }
-
-  public String getEndBalance() {
-    return endBalance;
   }
 
   public String getProvisionedStartBalance() {
@@ -80,10 +82,6 @@ public class LedgerOperation {
     return autoReleaseTimestamp;
   }
 
-  public String getMetadata() {
-    return metadata;
-  }
-
   public Timestamp getCreatedAt() {
     return createdAt;
   }
@@ -92,16 +90,34 @@ public class LedgerOperation {
     return modifiedAt;
   }
 
-  public String getSubscriptionId() {
-    return subscriptionId;
+  public java.util.Map<String, Object> getMetadata() {
+    return metadata;
   }
 
-  public String getUnitId() {
-    return unitId;
-  }
+  public enum UnitType {
+    CREDIT_UNIT("credit_unit"),
 
-  public UnitType getUnitType() {
-    return unitType;
+    /** An enum member indicating that UnitType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    UnitType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static UnitType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (UnitType enumValue : UnitType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
   }
 
   public enum Type {
@@ -146,32 +162,6 @@ public class LedgerOperation {
     }
   }
 
-  public enum UnitType {
-    CREDIT_UNIT("credit_unit"),
-
-    /** An enum member indicating that UnitType was instantiated with an unknown value. */
-    _UNKNOWN(null);
-    private final String value;
-
-    UnitType(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    public static UnitType fromString(String value) {
-      if (value == null) return _UNKNOWN;
-      for (UnitType enumValue : UnitType.values()) {
-        if (enumValue.value != null && enumValue.value.equals(value)) {
-          return enumValue;
-        }
-      }
-      return _UNKNOWN;
-    }
-  }
-
   public static LedgerOperation fromJson(String json) {
     return fromJson(JsonUtil.parse(json));
   }
@@ -185,13 +175,15 @@ public class LedgerOperation {
 
     obj.id = JsonUtil.getString(jsonObj, "id");
 
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
+
+    obj.unitId = JsonUtil.getString(jsonObj, "unit_id");
+
+    obj.unitType = UnitType.fromString(JsonUtil.getString(jsonObj, "unit_type"));
+
     obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
     obj.amount = JsonUtil.getString(jsonObj, "amount");
-
-    obj.startBalance = JsonUtil.getString(jsonObj, "start_balance");
-
-    obj.endBalance = JsonUtil.getString(jsonObj, "end_balance");
 
     obj.provisionedStartBalance = JsonUtil.getString(jsonObj, "provisioned_start_balance");
 
@@ -207,17 +199,15 @@ public class LedgerOperation {
 
     obj.autoReleaseTimestamp = JsonUtil.getTimestamp(jsonObj, "auto_release_timestamp");
 
-    obj.metadata = JsonUtil.getString(jsonObj, "metadata");
-
     obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
     obj.modifiedAt = JsonUtil.getTimestamp(jsonObj, "modified_at");
 
-    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
-
-    obj.unitId = JsonUtil.getString(jsonObj, "unit_id");
-
-    obj.unitType = UnitType.fromString(JsonUtil.getString(jsonObj, "unit_type"));
+    JsonObject __metadataObj = JsonUtil.getJsonObject(jsonObj, "metadata");
+    obj.metadata =
+        __metadataObj != null
+            ? JsonUtil.parseJsonObjectToMap(__metadataObj)
+            : new java.util.HashMap<>();
 
     return obj;
   }
@@ -227,14 +217,16 @@ public class LedgerOperation {
     return "LedgerOperation{"
         + "id="
         + id
+        + ", subscriptionId="
+        + subscriptionId
+        + ", unitId="
+        + unitId
+        + ", unitType="
+        + unitType
         + ", type="
         + type
         + ", amount="
         + amount
-        + ", startBalance="
-        + startBalance
-        + ", endBalance="
-        + endBalance
         + ", provisionedStartBalance="
         + provisionedStartBalance
         + ", provisionedEndBalance="
@@ -249,18 +241,12 @@ public class LedgerOperation {
         + ledgerOperationTimestamp
         + ", autoReleaseTimestamp="
         + autoReleaseTimestamp
-        + ", metadata="
-        + metadata
         + ", createdAt="
         + createdAt
         + ", modifiedAt="
         + modifiedAt
-        + ", subscriptionId="
-        + subscriptionId
-        + ", unitId="
-        + unitId
-        + ", unitType="
-        + unitType
+        + ", metadata="
+        + metadata
         + "}";
   }
 
@@ -271,10 +257,11 @@ public class LedgerOperation {
 
     LedgerOperation that = (LedgerOperation) o;
     return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+        && java.util.Objects.equals(unitId, that.unitId)
+        && java.util.Objects.equals(unitType, that.unitType)
         && java.util.Objects.equals(type, that.type)
         && java.util.Objects.equals(amount, that.amount)
-        && java.util.Objects.equals(startBalance, that.startBalance)
-        && java.util.Objects.equals(endBalance, that.endBalance)
         && java.util.Objects.equals(provisionedStartBalance, that.provisionedStartBalance)
         && java.util.Objects.equals(provisionedEndBalance, that.provisionedEndBalance)
         && java.util.Objects.equals(overdraftStartBalance, that.overdraftStartBalance)
@@ -282,12 +269,9 @@ public class LedgerOperation {
         && java.util.Objects.equals(parentLedgerOperationId, that.parentLedgerOperationId)
         && java.util.Objects.equals(ledgerOperationTimestamp, that.ledgerOperationTimestamp)
         && java.util.Objects.equals(autoReleaseTimestamp, that.autoReleaseTimestamp)
-        && java.util.Objects.equals(metadata, that.metadata)
         && java.util.Objects.equals(createdAt, that.createdAt)
         && java.util.Objects.equals(modifiedAt, that.modifiedAt)
-        && java.util.Objects.equals(subscriptionId, that.subscriptionId)
-        && java.util.Objects.equals(unitId, that.unitId)
-        && java.util.Objects.equals(unitType, that.unitType);
+        && java.util.Objects.equals(metadata, that.metadata);
   }
 
   @Override
@@ -295,10 +279,11 @@ public class LedgerOperation {
 
     return java.util.Objects.hash(
         id,
+        subscriptionId,
+        unitId,
+        unitType,
         type,
         amount,
-        startBalance,
-        endBalance,
         provisionedStartBalance,
         provisionedEndBalance,
         overdraftStartBalance,
@@ -306,11 +291,8 @@ public class LedgerOperation {
         parentLedgerOperationId,
         ledgerOperationTimestamp,
         autoReleaseTimestamp,
-        metadata,
         createdAt,
         modifiedAt,
-        subscriptionId,
-        unitId,
-        unitType);
+        metadata);
   }
 }

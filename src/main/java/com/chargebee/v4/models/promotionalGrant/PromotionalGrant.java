@@ -17,7 +17,7 @@ public class PromotionalGrant {
   private String unitId;
   private String amount;
   private Timestamp expiresAt;
-  private String metadata;
+  private java.util.Map<String, Object> metadata;
 
   public String getSubscriptionId() {
     return subscriptionId;
@@ -35,7 +35,7 @@ public class PromotionalGrant {
     return expiresAt;
   }
 
-  public String getMetadata() {
+  public java.util.Map<String, Object> getMetadata() {
     return metadata;
   }
 
@@ -58,7 +58,11 @@ public class PromotionalGrant {
 
     obj.expiresAt = JsonUtil.getTimestamp(jsonObj, "expires_at");
 
-    obj.metadata = JsonUtil.getString(jsonObj, "metadata");
+    JsonObject __metadataObj = JsonUtil.getJsonObject(jsonObj, "metadata");
+    obj.metadata =
+        __metadataObj != null
+            ? JsonUtil.parseJsonObjectToMap(__metadataObj)
+            : new java.util.HashMap<>();
 
     return obj;
   }

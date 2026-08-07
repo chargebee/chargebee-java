@@ -33,6 +33,7 @@ public class PaymentIntent {
   private String businessEntityId;
   private ActivePaymentAttempt activePaymentAttempt;
   private List<PaymentAttempts> paymentAttempts;
+  private PaymentIntentMetadata paymentIntentMetadata;
 
   public String getId() {
     return id;
@@ -108,6 +109,10 @@ public class PaymentIntent {
 
   public List<PaymentAttempts> getPaymentAttempts() {
     return paymentAttempts;
+  }
+
+  public PaymentIntentMetadata getPaymentIntentMetadata() {
+    return paymentIntentMetadata;
   }
 
   public enum Status {
@@ -235,6 +240,20 @@ public class PaymentIntent {
 
     SOUTH_KOREAN_CARDS("south_korean_cards"),
 
+    PAYNOW("paynow"),
+
+    BIZUM("bizum"),
+
+    PROMPTPAY("promptpay"),
+
+    DANA("dana"),
+
+    TOUCH_N_GO("touch_n_go"),
+
+    TAMARA("tamara"),
+
+    QPAY("qpay"),
+
     /** An enum member indicating that PaymentMethodType was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -314,6 +333,12 @@ public class PaymentIntent {
         JsonUtil.mapArray(
             JsonUtil.getJsonArray(jsonObj, "payment_attempts"), PaymentAttempts::fromJson);
 
+    JsonObject __paymentIntentMetadataObj =
+        JsonUtil.getJsonObject(jsonObj, "payment_intent_metadata");
+    if (__paymentIntentMetadataObj != null) {
+      obj.paymentIntentMetadata = PaymentIntentMetadata.fromJson(__paymentIntentMetadataObj);
+    }
+
     return obj;
   }
 
@@ -358,6 +383,8 @@ public class PaymentIntent {
         + activePaymentAttempt
         + ", paymentAttempts="
         + paymentAttempts
+        + ", paymentIntentMetadata="
+        + paymentIntentMetadata
         + "}";
   }
 
@@ -385,7 +412,8 @@ public class PaymentIntent {
         && java.util.Objects.equals(gateway, that.gateway)
         && java.util.Objects.equals(businessEntityId, that.businessEntityId)
         && java.util.Objects.equals(activePaymentAttempt, that.activePaymentAttempt)
-        && java.util.Objects.equals(paymentAttempts, that.paymentAttempts);
+        && java.util.Objects.equals(paymentAttempts, that.paymentAttempts)
+        && java.util.Objects.equals(paymentIntentMetadata, that.paymentIntentMetadata);
   }
 
   @Override
@@ -410,7 +438,8 @@ public class PaymentIntent {
         gateway,
         businessEntityId,
         activePaymentAttempt,
-        paymentAttempts);
+        paymentAttempts,
+        paymentIntentMetadata);
   }
 
   public static class ActivePaymentAttempt {
@@ -594,6 +623,20 @@ public class PaymentIntent {
       GCASH("gcash"),
 
       SOUTH_KOREAN_CARDS("south_korean_cards"),
+
+      PAYNOW("paynow"),
+
+      BIZUM("bizum"),
+
+      PROMPTPAY("promptpay"),
+
+      DANA("dana"),
+
+      TOUCH_N_GO("touch_n_go"),
+
+      TAMARA("tamara"),
+
+      QPAY("qpay"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
@@ -1104,6 +1147,20 @@ public class PaymentIntent {
 
       SOUTH_KOREAN_CARDS("south_korean_cards"),
 
+      PAYNOW("paynow"),
+
+      BIZUM("bizum"),
+
+      PROMPTPAY("promptpay"),
+
+      DANA("dana"),
+
+      TOUCH_N_GO("touch_n_go"),
+
+      TAMARA("tamara"),
+
+      QPAY("qpay"),
+
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
        */
@@ -1428,6 +1485,128 @@ public class PaymentIntent {
             errorCauseId,
             processorAdviceCode);
       }
+    }
+  }
+
+  public static class PaymentIntentMetadata {
+
+    private Source source;
+    private String clientIpAddress;
+    private String userAgent;
+    private Timestamp createdAt;
+
+    public Source getSource() {
+      return source;
+    }
+
+    public String getClientIpAddress() {
+      return clientIpAddress;
+    }
+
+    public String getUserAgent() {
+      return userAgent;
+    }
+
+    public Timestamp getCreatedAt() {
+      return createdAt;
+    }
+
+    public enum Source {
+      CB_JS("cb_js"),
+
+      COMPONENTS_FIELDS("components_fields"),
+
+      CHECKOUT_V_3("checkout_v3"),
+
+      PAYNOW_V_3("paynow_v3"),
+
+      PORTAL_V_3("portal_v3"),
+
+      GIFT_V_3("gift_v3"),
+
+      CHECKOUT_V_4("checkout_v4"),
+
+      PAYMENT_COMPONENT("payment_component"),
+
+      PC_INAPP_V_4("pc_inapp_v4"),
+
+      PC_FPC_V_4("pc_fpc_v4"),
+
+      /** An enum member indicating that Source was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      Source(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static Source fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Source enumValue : Source.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public static PaymentIntentMetadata fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static PaymentIntentMetadata fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
+    public static PaymentIntentMetadata fromJson(JsonObject jsonObj) {
+      PaymentIntentMetadata obj = new PaymentIntentMetadata();
+
+      obj.source = Source.fromString(JsonUtil.getString(jsonObj, "source"));
+
+      obj.clientIpAddress = JsonUtil.getString(jsonObj, "client_ip_address");
+
+      obj.userAgent = JsonUtil.getString(jsonObj, "user_agent");
+
+      obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "PaymentIntentMetadata{"
+          + "source="
+          + source
+          + ", clientIpAddress="
+          + clientIpAddress
+          + ", userAgent="
+          + userAgent
+          + ", createdAt="
+          + createdAt
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      PaymentIntentMetadata that = (PaymentIntentMetadata) o;
+      return java.util.Objects.equals(source, that.source)
+          && java.util.Objects.equals(clientIpAddress, that.clientIpAddress)
+          && java.util.Objects.equals(userAgent, that.userAgent)
+          && java.util.Objects.equals(createdAt, that.createdAt);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(source, clientIpAddress, userAgent, createdAt);
     }
   }
 }

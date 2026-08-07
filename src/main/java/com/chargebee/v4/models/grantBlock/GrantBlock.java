@@ -14,6 +14,10 @@ import java.sql.Timestamp;
 public class GrantBlock {
 
   private String id;
+  private String subscriptionId;
+  private AccountType accountType;
+  private String unitId;
+  private UnitType unitType;
   private String grantedAmount;
   private Timestamp effectiveFrom;
   private Timestamp expiresAt;
@@ -25,15 +29,30 @@ public class GrantBlock {
   private String voidedAmount;
   private String originGrantBlockId;
   private Status status;
-  private String metadata;
   private GrantSource grantSource;
   private Timestamp createdAt;
-  private AccountType accountType;
-  private String unitId;
-  private UnitType unitType;
+  private Timestamp modifiedAt;
+  private Long resourceVersion;
+  private java.util.Map<String, Object> metadata;
 
   public String getId() {
     return id;
+  }
+
+  public String getSubscriptionId() {
+    return subscriptionId;
+  }
+
+  public AccountType getAccountType() {
+    return accountType;
+  }
+
+  public String getUnitId() {
+    return unitId;
+  }
+
+  public UnitType getUnitType() {
+    return unitType;
   }
 
   public String getGrantedAmount() {
@@ -80,10 +99,6 @@ public class GrantBlock {
     return status;
   }
 
-  public String getMetadata() {
-    return metadata;
-  }
-
   public GrantSource getGrantSource() {
     return grantSource;
   }
@@ -92,82 +107,16 @@ public class GrantBlock {
     return createdAt;
   }
 
-  public AccountType getAccountType() {
-    return accountType;
+  public Timestamp getModifiedAt() {
+    return modifiedAt;
   }
 
-  public String getUnitId() {
-    return unitId;
+  public Long getResourceVersion() {
+    return resourceVersion;
   }
 
-  public UnitType getUnitType() {
-    return unitType;
-  }
-
-  public enum Status {
-    AVAILABLE("available"),
-
-    EXHAUSTED("exhausted"),
-
-    SCHEDULED("scheduled"),
-
-    IN_GRACE_PERIOD("in_grace_period"),
-
-    /** An enum member indicating that Status was instantiated with an unknown value. */
-    _UNKNOWN(null);
-    private final String value;
-
-    Status(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    public static Status fromString(String value) {
-      if (value == null) return _UNKNOWN;
-      for (Status enumValue : Status.values()) {
-        if (enumValue.value != null && enumValue.value.equals(value)) {
-          return enumValue;
-        }
-      }
-      return _UNKNOWN;
-    }
-  }
-
-  public enum GrantSource {
-    SUBSCRIPTION_CREATED("subscription_created"),
-
-    SUBSCRIPTION_CHANGED("subscription_changed"),
-
-    TOP_UP("top_up"),
-
-    PROMOTIONAL_GRANTS("promotional_grants"),
-
-    ROLLOVER("rollover"),
-
-    /** An enum member indicating that GrantSource was instantiated with an unknown value. */
-    _UNKNOWN(null);
-    private final String value;
-
-    GrantSource(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    public static GrantSource fromString(String value) {
-      if (value == null) return _UNKNOWN;
-      for (GrantSource enumValue : GrantSource.values()) {
-        if (enumValue.value != null && enumValue.value.equals(value)) {
-          return enumValue;
-        }
-      }
-      return _UNKNOWN;
-    }
+  public java.util.Map<String, Object> getMetadata() {
+    return metadata;
   }
 
   public enum AccountType {
@@ -224,6 +173,76 @@ public class GrantBlock {
     }
   }
 
+  public enum Status {
+    AVAILABLE("available"),
+
+    EXHAUSTED("exhausted"),
+
+    SCHEDULED("scheduled"),
+
+    IN_GRACE_PERIOD("in_grace_period"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum GrantSource {
+    SUBSCRIPTION_CREATED("subscription_created"),
+
+    SUBSCRIPTION_CHANGED("subscription_changed"),
+
+    TOP_UP("top_up"),
+
+    PROMOTIONAL_GRANTS("promotional_grants"),
+
+    ROLLOVER("rollover"),
+
+    GRANT_RENEWAL("grant_renewal"),
+
+    SUBSCRIPTION_RENEWED("subscription_renewed"),
+
+    /** An enum member indicating that GrantSource was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    GrantSource(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static GrantSource fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (GrantSource enumValue : GrantSource.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public static GrantBlock fromJson(String json) {
     return fromJson(JsonUtil.parse(json));
   }
@@ -236,6 +255,14 @@ public class GrantBlock {
     GrantBlock obj = new GrantBlock();
 
     obj.id = JsonUtil.getString(jsonObj, "id");
+
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
+
+    obj.accountType = AccountType.fromString(JsonUtil.getString(jsonObj, "account_type"));
+
+    obj.unitId = JsonUtil.getString(jsonObj, "unit_id");
+
+    obj.unitType = UnitType.fromString(JsonUtil.getString(jsonObj, "unit_type"));
 
     obj.grantedAmount = JsonUtil.getString(jsonObj, "granted_amount");
 
@@ -259,17 +286,19 @@ public class GrantBlock {
 
     obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.metadata = JsonUtil.getString(jsonObj, "metadata");
-
     obj.grantSource = GrantSource.fromString(JsonUtil.getString(jsonObj, "grant_source"));
 
     obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.accountType = AccountType.fromString(JsonUtil.getString(jsonObj, "account_type"));
+    obj.modifiedAt = JsonUtil.getTimestamp(jsonObj, "modified_at");
 
-    obj.unitId = JsonUtil.getString(jsonObj, "unit_id");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.unitType = UnitType.fromString(JsonUtil.getString(jsonObj, "unit_type"));
+    JsonObject __metadataObj = JsonUtil.getJsonObject(jsonObj, "metadata");
+    obj.metadata =
+        __metadataObj != null
+            ? JsonUtil.parseJsonObjectToMap(__metadataObj)
+            : new java.util.HashMap<>();
 
     return obj;
   }
@@ -279,6 +308,14 @@ public class GrantBlock {
     return "GrantBlock{"
         + "id="
         + id
+        + ", subscriptionId="
+        + subscriptionId
+        + ", accountType="
+        + accountType
+        + ", unitId="
+        + unitId
+        + ", unitType="
+        + unitType
         + ", grantedAmount="
         + grantedAmount
         + ", effectiveFrom="
@@ -301,18 +338,16 @@ public class GrantBlock {
         + originGrantBlockId
         + ", status="
         + status
-        + ", metadata="
-        + metadata
         + ", grantSource="
         + grantSource
         + ", createdAt="
         + createdAt
-        + ", accountType="
-        + accountType
-        + ", unitId="
-        + unitId
-        + ", unitType="
-        + unitType
+        + ", modifiedAt="
+        + modifiedAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", metadata="
+        + metadata
         + "}";
   }
 
@@ -323,6 +358,10 @@ public class GrantBlock {
 
     GrantBlock that = (GrantBlock) o;
     return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+        && java.util.Objects.equals(accountType, that.accountType)
+        && java.util.Objects.equals(unitId, that.unitId)
+        && java.util.Objects.equals(unitType, that.unitType)
         && java.util.Objects.equals(grantedAmount, that.grantedAmount)
         && java.util.Objects.equals(effectiveFrom, that.effectiveFrom)
         && java.util.Objects.equals(expiresAt, that.expiresAt)
@@ -334,12 +373,11 @@ public class GrantBlock {
         && java.util.Objects.equals(voidedAmount, that.voidedAmount)
         && java.util.Objects.equals(originGrantBlockId, that.originGrantBlockId)
         && java.util.Objects.equals(status, that.status)
-        && java.util.Objects.equals(metadata, that.metadata)
         && java.util.Objects.equals(grantSource, that.grantSource)
         && java.util.Objects.equals(createdAt, that.createdAt)
-        && java.util.Objects.equals(accountType, that.accountType)
-        && java.util.Objects.equals(unitId, that.unitId)
-        && java.util.Objects.equals(unitType, that.unitType);
+        && java.util.Objects.equals(modifiedAt, that.modifiedAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(metadata, that.metadata);
   }
 
   @Override
@@ -347,6 +385,10 @@ public class GrantBlock {
 
     return java.util.Objects.hash(
         id,
+        subscriptionId,
+        accountType,
+        unitId,
+        unitType,
         grantedAmount,
         effectiveFrom,
         expiresAt,
@@ -358,11 +400,10 @@ public class GrantBlock {
         voidedAmount,
         originGrantBlockId,
         status,
-        metadata,
         grantSource,
         createdAt,
-        accountType,
-        unitId,
-        unitType);
+        modifiedAt,
+        resourceVersion,
+        metadata);
   }
 }

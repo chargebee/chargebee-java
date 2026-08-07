@@ -120,6 +120,7 @@ public class QuotedCharge {
     private Long amount;
     private String amountInDecimal;
     private String description;
+    private String entityDescription;
     private Integer servicePeriodInDays;
     private AvalaraSaleType avalaraSaleType;
     private Integer avalaraTransactionType;
@@ -135,6 +136,10 @@ public class QuotedCharge {
 
     public String getDescription() {
       return description;
+    }
+
+    public String getEntityDescription() {
+      return entityDescription;
     }
 
     public Integer getServicePeriodInDays() {
@@ -202,6 +207,8 @@ public class QuotedCharge {
 
       obj.description = JsonUtil.getString(jsonObj, "description");
 
+      obj.entityDescription = JsonUtil.getString(jsonObj, "entity_description");
+
       obj.servicePeriodInDays = JsonUtil.getInteger(jsonObj, "service_period_in_days");
 
       obj.avalaraSaleType =
@@ -223,6 +230,8 @@ public class QuotedCharge {
           + amountInDecimal
           + ", description="
           + description
+          + ", entityDescription="
+          + entityDescription
           + ", servicePeriodInDays="
           + servicePeriodInDays
           + ", avalaraSaleType="
@@ -243,6 +252,7 @@ public class QuotedCharge {
       return java.util.Objects.equals(amount, that.amount)
           && java.util.Objects.equals(amountInDecimal, that.amountInDecimal)
           && java.util.Objects.equals(description, that.description)
+          && java.util.Objects.equals(entityDescription, that.entityDescription)
           && java.util.Objects.equals(servicePeriodInDays, that.servicePeriodInDays)
           && java.util.Objects.equals(avalaraSaleType, that.avalaraSaleType)
           && java.util.Objects.equals(avalaraTransactionType, that.avalaraTransactionType)
@@ -256,6 +266,7 @@ public class QuotedCharge {
           amount,
           amountInDecimal,
           description,
+          entityDescription,
           servicePeriodInDays,
           avalaraSaleType,
           avalaraTransactionType,
@@ -270,6 +281,8 @@ public class QuotedCharge {
     private String quantityInDecimal;
     private Long unitPrice;
     private String unitPriceInDecimal;
+    private String description;
+    private String entityDescription;
     private Integer servicePeriodDays;
 
     public String getItemPriceId() {
@@ -290,6 +303,14 @@ public class QuotedCharge {
 
     public String getUnitPriceInDecimal() {
       return unitPriceInDecimal;
+    }
+
+    public String getDescription() {
+      return description;
+    }
+
+    public String getEntityDescription() {
+      return entityDescription;
     }
 
     public Integer getServicePeriodDays() {
@@ -317,6 +338,10 @@ public class QuotedCharge {
 
       obj.unitPriceInDecimal = JsonUtil.getString(jsonObj, "unit_price_in_decimal");
 
+      obj.description = JsonUtil.getString(jsonObj, "description");
+
+      obj.entityDescription = JsonUtil.getString(jsonObj, "entity_description");
+
       obj.servicePeriodDays = JsonUtil.getInteger(jsonObj, "service_period_days");
 
       return obj;
@@ -335,6 +360,10 @@ public class QuotedCharge {
           + unitPrice
           + ", unitPriceInDecimal="
           + unitPriceInDecimal
+          + ", description="
+          + description
+          + ", entityDescription="
+          + entityDescription
           + ", servicePeriodDays="
           + servicePeriodDays
           + "}";
@@ -351,6 +380,8 @@ public class QuotedCharge {
           && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
           && java.util.Objects.equals(unitPrice, that.unitPrice)
           && java.util.Objects.equals(unitPriceInDecimal, that.unitPriceInDecimal)
+          && java.util.Objects.equals(description, that.description)
+          && java.util.Objects.equals(entityDescription, that.entityDescription)
           && java.util.Objects.equals(servicePeriodDays, that.servicePeriodDays);
     }
 
@@ -363,6 +394,8 @@ public class QuotedCharge {
           quantityInDecimal,
           unitPrice,
           unitPriceInDecimal,
+          description,
+          entityDescription,
           servicePeriodDays);
     }
   }

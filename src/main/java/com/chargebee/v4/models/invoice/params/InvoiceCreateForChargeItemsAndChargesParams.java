@@ -43,6 +43,8 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
   private final Timestamp invoiceDate;
 
+  private final Boolean createPendingInvoice;
+
   private final String tokenId;
 
   private final Boolean replacePrimaryPaymentSource;
@@ -105,6 +107,8 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
     this.netTermDays = builder.netTermDays;
 
     this.invoiceDate = builder.invoiceDate;
+
+    this.createPendingInvoice = builder.createPendingInvoice;
 
     this.tokenId = builder.tokenId;
 
@@ -194,6 +198,10 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
   public Timestamp getInvoiceDate() {
     return invoiceDate;
+  }
+
+  public Boolean getCreatePendingInvoice() {
+    return createPendingInvoice;
   }
 
   public String getTokenId() {
@@ -331,6 +339,11 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
     if (this.invoiceDate != null) {
 
       formData.put("invoice_date", this.invoiceDate);
+    }
+
+    if (this.createPendingInvoice != null) {
+
+      formData.put("create_pending_invoice", this.createPendingInvoice);
     }
 
     if (this.tokenId != null) {
@@ -542,6 +555,8 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
     private Timestamp invoiceDate;
 
+    private Boolean createPendingInvoice;
+
     private String tokenId;
 
     private Boolean replacePrimaryPaymentSource;
@@ -641,6 +656,11 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
     public InvoiceCreateForChargeItemsAndChargesBuilder invoiceDate(Timestamp value) {
       this.invoiceDate = value;
+      return this;
+    }
+
+    public InvoiceCreateForChargeItemsAndChargesBuilder createPendingInvoice(Boolean value) {
+      this.createPendingInvoice = value;
       return this;
     }
 
@@ -2521,6 +2541,20 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
       SOUTH_KOREAN_CARDS("south_korean_cards"),
 
+      PAYNOW("paynow"),
+
+      BIZUM("bizum"),
+
+      PROMPTPAY("promptpay"),
+
+      DANA("dana"),
+
+      TOUCH_N_GO("touch_n_go"),
+
+      TAMARA("tamara"),
+
+      QPAY("qpay"),
+
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -2946,6 +2980,20 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
       SOUTH_KOREAN_CARDS("south_korean_cards"),
 
+      PAYNOW("paynow"),
+
+      BIZUM("bizum"),
+
+      PROMPTPAY("promptpay"),
+
+      DANA("dana"),
+
+      TOUCH_N_GO("touch_n_go"),
+
+      TAMARA("tamara"),
+
+      QPAY("qpay"),
+
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
        */
@@ -2988,6 +3036,10 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
     private final Timestamp dateTo;
 
+    private final String description;
+
+    private final String entityDescription;
+
     private ItemPricesParams(ItemPricesBuilder builder) {
 
       this.itemPriceId = builder.itemPriceId;
@@ -3003,6 +3055,10 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
       this.dateFrom = builder.dateFrom;
 
       this.dateTo = builder.dateTo;
+
+      this.description = builder.description;
+
+      this.entityDescription = builder.entityDescription;
     }
 
     public String getItemPriceId() {
@@ -3031,6 +3087,14 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
     public Timestamp getDateTo() {
       return dateTo;
+    }
+
+    public String getDescription() {
+      return description;
+    }
+
+    public String getEntityDescription() {
+      return entityDescription;
     }
 
     /** Get the form data for this request. */
@@ -3072,6 +3136,16 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
         formData.put("date_to", this.dateTo);
       }
 
+      if (this.description != null) {
+
+        formData.put("description", this.description);
+      }
+
+      if (this.entityDescription != null) {
+
+        formData.put("entity_description", this.entityDescription);
+      }
+
       return formData;
     }
 
@@ -3096,6 +3170,10 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
       private Timestamp dateFrom;
 
       private Timestamp dateTo;
+
+      private String description;
+
+      private String entityDescription;
 
       private ItemPricesBuilder() {}
 
@@ -3131,6 +3209,16 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
       public ItemPricesBuilder dateTo(Timestamp value) {
         this.dateTo = value;
+        return this;
+      }
+
+      public ItemPricesBuilder description(String value) {
+        this.description = value;
+        return this;
+      }
+
+      public ItemPricesBuilder entityDescription(String value) {
+        this.entityDescription = value;
         return this;
       }
 
@@ -3380,6 +3468,8 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
   public static final class ChargesParams {
 
+    private final String entityDescription;
+
     private final Long amount;
 
     private final String amountInDecimal;
@@ -3408,6 +3498,8 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
     private ChargesParams(ChargesBuilder builder) {
 
+      this.entityDescription = builder.entityDescription;
+
       this.amount = builder.amount;
 
       this.amountInDecimal = builder.amountInDecimal;
@@ -3433,6 +3525,10 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
       this.dateFrom = builder.dateFrom;
 
       this.dateTo = builder.dateTo;
+    }
+
+    public String getEntityDescription() {
+      return entityDescription;
     }
 
     public Long getAmount() {
@@ -3490,6 +3586,11 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
     /** Get the form data for this request. */
     public Map<String, Object> toFormData() {
       Map<String, Object> formData = new LinkedHashMap<>();
+
+      if (this.entityDescription != null) {
+
+        formData.put("entity_description", this.entityDescription);
+      }
 
       if (this.amount != null) {
 
@@ -3567,6 +3668,8 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
     public static final class ChargesBuilder {
 
+      private String entityDescription;
+
       private Long amount;
 
       private String amountInDecimal;
@@ -3594,6 +3697,11 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
       private Timestamp dateTo;
 
       private ChargesBuilder() {}
+
+      public ChargesBuilder entityDescription(String value) {
+        this.entityDescription = value;
+        return this;
+      }
 
       public ChargesBuilder amount(Long value) {
         this.amount = value;

@@ -163,13 +163,37 @@ public final class RecordedPurchaseCreateParams {
 
     private final String id;
 
+    private final String email;
+
+    private final String firstName;
+
+    private final String lastName;
+
     private CustomerParams(CustomerBuilder builder) {
 
       this.id = builder.id;
+
+      this.email = builder.email;
+
+      this.firstName = builder.firstName;
+
+      this.lastName = builder.lastName;
     }
 
     public String getId() {
       return id;
+    }
+
+    public String getEmail() {
+      return email;
+    }
+
+    public String getFirstName() {
+      return firstName;
+    }
+
+    public String getLastName() {
+      return lastName;
     }
 
     /** Get the form data for this request. */
@@ -179,6 +203,21 @@ public final class RecordedPurchaseCreateParams {
       if (this.id != null) {
 
         formData.put("id", this.id);
+      }
+
+      if (this.email != null) {
+
+        formData.put("email", this.email);
+      }
+
+      if (this.firstName != null) {
+
+        formData.put("first_name", this.firstName);
+      }
+
+      if (this.lastName != null) {
+
+        formData.put("last_name", this.lastName);
       }
 
       return formData;
@@ -194,10 +233,31 @@ public final class RecordedPurchaseCreateParams {
 
       private String id;
 
+      private String email;
+
+      private String firstName;
+
+      private String lastName;
+
       private CustomerBuilder() {}
 
       public CustomerBuilder id(String value) {
         this.id = value;
+        return this;
+      }
+
+      public CustomerBuilder email(String value) {
+        this.email = value;
+        return this;
+      }
+
+      public CustomerBuilder firstName(String value) {
+        this.firstName = value;
+        return this;
+      }
+
+      public CustomerBuilder lastName(String value) {
+        this.lastName = value;
         return this;
       }
 

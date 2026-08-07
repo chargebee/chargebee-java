@@ -367,6 +367,20 @@ public final class PaymentSourceListParams {
 
     SOUTH_KOREAN_CARDS("south_korean_cards"),
 
+    PAYNOW("paynow"),
+
+    BIZUM("bizum"),
+
+    PROMPTPAY("promptpay"),
+
+    DANA("dana"),
+
+    TOUCH_N_GO("touch_n_go"),
+
+    TAMARA("tamara"),
+
+    QPAY("qpay"),
+
     /** An enum member indicating that TypeIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -484,6 +498,20 @@ public final class PaymentSourceListParams {
     GCASH("gcash"),
 
     SOUTH_KOREAN_CARDS("south_korean_cards"),
+
+    PAYNOW("paynow"),
+
+    BIZUM("bizum"),
+
+    PROMPTPAY("promptpay"),
+
+    DANA("dana"),
+
+    TOUCH_N_GO("touch_n_go"),
+
+    TAMARA("tamara"),
+
+    QPAY("qpay"),
 
     /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -603,6 +631,20 @@ public final class PaymentSourceListParams {
 
     SOUTH_KOREAN_CARDS("south_korean_cards"),
 
+    PAYNOW("paynow"),
+
+    BIZUM("bizum"),
+
+    PROMPTPAY("promptpay"),
+
+    DANA("dana"),
+
+    TOUCH_N_GO("touch_n_go"),
+
+    TAMARA("tamara"),
+
+    QPAY("qpay"),
+
     /** An enum member indicating that TypeIn was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -720,6 +762,20 @@ public final class PaymentSourceListParams {
     GCASH("gcash"),
 
     SOUTH_KOREAN_CARDS("south_korean_cards"),
+
+    PAYNOW("paynow"),
+
+    BIZUM("bizum"),
+
+    PROMPTPAY("promptpay"),
+
+    DANA("dana"),
+
+    TOUCH_N_GO("touch_n_go"),
+
+    TAMARA("tamara"),
+
+    QPAY("qpay"),
 
     /** An enum member indicating that TypeNotIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1030,6 +1086,20 @@ public final class PaymentSourceListParams {
     GCASH("gcash"),
 
     SOUTH_KOREAN_CARDS("south_korean_cards"),
+
+    PAYNOW("paynow"),
+
+    BIZUM("bizum"),
+
+    PROMPTPAY("promptpay"),
+
+    DANA("dana"),
+
+    TOUCH_N_GO("touch_n_go"),
+
+    TAMARA("tamara"),
+
+    QPAY("qpay"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
