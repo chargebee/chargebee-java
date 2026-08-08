@@ -3,7 +3,7 @@ plugins {
     `maven-publish`
     signing
     id("org.owasp.dependencycheck") version "9.2.0"
-    id("org.jreleaser") version "1.13.1"
+    id("org.jreleaser") version "1.21.0"
 }
 
 group = "com.chargebee"
