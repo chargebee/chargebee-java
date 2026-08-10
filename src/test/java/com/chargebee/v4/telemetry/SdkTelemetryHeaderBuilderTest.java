@@ -73,6 +73,80 @@ class SdkTelemetryHeaderBuilderTest {
   }
 
   @Test
+  @DisplayName("Should reject sf-string values containing CR, LF, or NUL")
+  void shouldRejectInvalidSfStringChars() {
+    assertNull(SdkTelemetryHeaderBuilder.escapeSfString("bad\rvalue"));
+    assertNull(SdkTelemetryHeaderBuilder.escapeSfString("bad\nvalue"));
+    assertNull(SdkTelemetryHeaderBuilder.escapeSfString("bad\0value"));
+  }
+
+  @Test
+  @DisplayName("Should omit invalid error_code while keeping the rest of the header")
+  void shouldOmitInvalidErrorCode() {
+    SdkTelemetrySnapshot snapshot =
+        SdkTelemetrySnapshot.builder()
+            .sdkName("chargebee-java")
+            .sdkVersion("4.14.0")
+            .resource("customer")
+            .operation("retrieve")
+            .timeMs(50)
+            .httpStatus(404)
+            .errorCode("resource_not_found\rinjected")
+            .build();
+
+    String header = SdkTelemetryHeaderBuilder.build(snapshot);
+
+    assertNotNull(header);
+    assertTrue(header.contains("http_status=404"));
+    assertFalse(header.contains("error_code="));
+  }
+
+  @Test
+  @DisplayName("Should omit the entire header when a required field contains invalid characters")
+  void shouldOmitHeaderWhenRequiredFieldInvalid() {
+    SdkTelemetrySnapshot snapshot =
+        SdkTelemetrySnapshot.builder()
+            .sdkName("chargebee-java")
+            .sdkVersion("4.14.0\0")
+            .resource("customer")
+            .operation("list")
+            .timeMs(5)
+            .build();
+
+    assertNull(SdkTelemetryHeaderBuilder.build(snapshot));
+  }
+
+  @Test
+  @DisplayName("Should skip invalid feature tokens while keeping valid ones")
+  void shouldSkipInvalidFeatureTokens() {
+    Set<String> features = new LinkedHashSet<>();
+    features.add(SdkTelemetryHeader.FT_RETRY_CONFIG);
+    features.add("ft-bad\rinjected");
+    features.add(SdkTelemetryHeader.FT_TELEMETRY_ADAPTER);
+    features.add("ft-bad\0");
+    features.add("ft-bad\n");
+
+    SdkTelemetrySnapshot snapshot =
+        SdkTelemetrySnapshot.builder()
+            .sdkName("chargebee-java")
+            .sdkVersion("4.14.0")
+            .resource("customer")
+            .operation("list")
+            .timeMs(5)
+            .featureTokens(features)
+            .build();
+
+    String header = SdkTelemetryHeaderBuilder.build(snapshot);
+
+    assertNotNull(header);
+    assertTrue(header.contains(SdkTelemetryHeader.FT_RETRY_CONFIG));
+    assertTrue(header.contains(SdkTelemetryHeader.FT_TELEMETRY_ADAPTER));
+    assertFalse(header.contains("ft-bad"));
+    assertFalse(header.contains("\r"));
+    assertFalse(header.contains("\n"));
+  }
+
+  @Test
   @DisplayName("Should omit start_time when the call start is unknown")
   void shouldOmitUnknownStartTime() {
     SdkTelemetrySnapshot snapshot =

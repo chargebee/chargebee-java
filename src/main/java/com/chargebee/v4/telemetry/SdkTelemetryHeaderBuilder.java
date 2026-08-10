@@ -16,21 +16,28 @@ final class SdkTelemetryHeaderBuilder {
 
   private SdkTelemetryHeaderBuilder() {}
 
-  /**
-   * Serializes a prior-call snapshot. Returns {@code null} when the value exceeds {@link
-   * SdkTelemetryHeader#MAX_HEADER_BYTES} UTF-8 bytes, which the server drops anyway.
-   */
+  /** Returns {@code null} when oversized or a required param contains CR/LF/NUL. */
   static String build(SdkTelemetrySnapshot snapshot) {
     if (snapshot == null) {
       return null;
     }
 
     StringBuilder segment = new StringBuilder(SdkTelemetryHeader.SDK_SEGMENT);
-    appendTokenParam(segment, "name", snapshot.getSdkName());
-    appendBareParam(segment, "version", snapshot.getSdkVersion());
-    appendTokenParam(segment, "runtime", SdkTelemetryHeader.RUNTIME);
-    appendTokenParam(segment, "resource", snapshot.getResource());
-    appendTokenParam(segment, "operation", snapshot.getOperation());
+    if (!appendTokenParam(segment, "name", snapshot.getSdkName())) {
+      return null;
+    }
+    if (!appendBareParam(segment, "version", snapshot.getSdkVersion())) {
+      return null;
+    }
+    if (!appendTokenParam(segment, "runtime", SdkTelemetryHeader.RUNTIME)) {
+      return null;
+    }
+    if (!appendTokenParam(segment, "resource", snapshot.getResource())) {
+      return null;
+    }
+    if (!appendTokenParam(segment, "operation", snapshot.getOperation())) {
+      return null;
+    }
     if (snapshot.getStartTimeEpochSeconds() > 0) {
       appendDateParam(segment, "start_time", snapshot.getStartTimeEpochSeconds());
     }
@@ -48,8 +55,8 @@ final class SdkTelemetryHeaderBuilder {
     List<String> items = new ArrayList<>();
     items.add(segment.toString());
     for (String featureToken : snapshot.getFeatureTokens()) {
-      if (isNotBlank(featureToken)) {
-        items.add(featureToken);
+      if (isValidFeatureToken(featureToken)) {
+        items.add(featureToken.trim());
       }
     }
 
@@ -60,14 +67,21 @@ final class SdkTelemetryHeaderBuilder {
     return headerValue;
   }
 
-  /** Emits an sf-token, falling back to an sf-string so an odd value cannot corrupt the list. */
-  private static void appendTokenParam(StringBuilder segment, String key, String value) {
+  /** Emits an sf-token, falling back to an sf-string. */
+  private static boolean appendTokenParam(StringBuilder segment, String key, String value) {
     if (!isNotBlank(value)) {
-      return;
+      return false;
+    }
+    if (containsInvalidSfStringChar(value)) {
+      return false;
     }
     String trimmed = value.trim();
-    segment.append(';').append(key).append('=');
-    segment.append(isSfToken(trimmed) ? trimmed : escapeSfString(trimmed));
+    String serialized = isSfToken(trimmed) ? trimmed : escapeSfString(trimmed);
+    if (serialized == null) {
+      return false;
+    }
+    segment.append(';').append(key).append('=').append(serialized);
+    return true;
   }
 
   private static boolean isSfToken(String value) {
@@ -90,17 +104,21 @@ final class SdkTelemetryHeaderBuilder {
     return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z');
   }
 
-  /**
-   * Emits a plain {@code key=value} without quotes when the value has no structural characters.
-   * Used for semver strings like {@code 4.14.0} so Splunk/KVL does not escape {@code -quot-}.
-   */
-  private static void appendBareParam(StringBuilder segment, String key, String value) {
+  /** Emits a bare {@code key=value}, or a quoted sf-string when the value needs escaping. */
+  private static boolean appendBareParam(StringBuilder segment, String key, String value) {
     if (!isNotBlank(value)) {
-      return;
+      return false;
+    }
+    if (containsInvalidSfStringChar(value)) {
+      return false;
     }
     String trimmed = value.trim();
-    segment.append(';').append(key).append('=');
-    segment.append(isBareSafe(trimmed) ? trimmed : escapeSfString(trimmed));
+    String serialized = isBareSafe(trimmed) ? trimmed : escapeSfString(trimmed);
+    if (serialized == null) {
+      return false;
+    }
+    segment.append(';').append(key).append('=').append(serialized);
+    return true;
   }
 
   private static boolean isBareSafe(String value) {
@@ -122,7 +140,14 @@ final class SdkTelemetryHeaderBuilder {
     if (!isNotBlank(value)) {
       return;
     }
-    segment.append(';').append(key).append('=').append(escapeSfString(value.trim()));
+    if (containsInvalidSfStringChar(value)) {
+      return;
+    }
+    String escaped = escapeSfString(value.trim());
+    if (escaped == null) {
+      return;
+    }
+    segment.append(';').append(key).append('=').append(escaped);
   }
 
   private static void appendIntegerParam(StringBuilder segment, String key, long value) {
@@ -134,7 +159,11 @@ final class SdkTelemetryHeaderBuilder {
     segment.append(';').append(key).append("=@").append(epochSeconds);
   }
 
+  /** Quotes an sf-string; returns {@code null} for CR/LF/NUL. */
   static String escapeSfString(String value) {
+    if (containsInvalidSfStringChar(value)) {
+      return null;
+    }
     StringBuilder escaped = new StringBuilder(value.length() + 2);
     escaped.append('"');
     for (int i = 0; i < value.length(); i++) {
@@ -146,6 +175,26 @@ final class SdkTelemetryHeaderBuilder {
     }
     escaped.append('"');
     return escaped.toString();
+  }
+
+  private static boolean containsInvalidSfStringChar(String value) {
+    for (int i = 0; i < value.length(); i++) {
+      char ch = value.charAt(i);
+      if (ch == '\0' || ch == '\n' || ch == '\r') {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private static boolean isValidFeatureToken(String value) {
+    if (!isNotBlank(value)) {
+      return false;
+    }
+    if (containsInvalidSfStringChar(value)) {
+      return false;
+    }
+    return isSfToken(value.trim());
   }
 
   private static boolean isNotBlank(String value) {
