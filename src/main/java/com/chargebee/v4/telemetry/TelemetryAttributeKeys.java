@@ -42,10 +42,6 @@ public final class TelemetryAttributeKeys {
   public static final String CHARGEBEE_ERROR_TYPE = "chargebee.error.type";
   public static final String CHARGEBEE_ERROR_PARAM = "chargebee.error.param";
 
-  public static final String CHARGEBEE_TELEMETRY_PREFER_HEADER = "Prefer";
-  public static final String CHARGEBEE_TELEMETRY_PREFER_VALUE = "chargebee-telemetry=include";
-  public static final String CHARGEBEE_TELEMETRY_PREFER_DIRECTIVE = "chargebee-telemetry=";
-
   private TelemetryAttributeKeys() {
     // constants only
   }
