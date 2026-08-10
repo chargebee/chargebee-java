@@ -19,14 +19,17 @@ public final class SdkTelemetryState {
 
   private final AtomicReference<SdkTelemetrySnapshot> lastCall = new AtomicReference<>();
 
+  /** Returns the last recorded call, or {@code null} if none. */
   SdkTelemetrySnapshot lastCall() {
     return lastCall.get();
   }
 
+  /** Stores {@code snapshot} as the last completed call. */
   void record(SdkTelemetrySnapshot snapshot) {
     lastCall.set(snapshot);
   }
 
+  /** Clears the last completed call. */
   void clear() {
     lastCall.set(null);
   }

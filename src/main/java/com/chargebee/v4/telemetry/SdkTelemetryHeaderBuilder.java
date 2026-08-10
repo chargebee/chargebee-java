@@ -84,6 +84,7 @@ final class SdkTelemetryHeaderBuilder {
     return true;
   }
 
+  /** Whether {@code value} is a valid RFC 9651 sf-token. */
   private static boolean isSfToken(String value) {
     char first = value.charAt(0);
     if (!isAsciiLetter(first) && first != '*') {
@@ -92,7 +93,9 @@ final class SdkTelemetryHeaderBuilder {
     for (int i = 0; i < value.length(); i++) {
       char ch = value.charAt(i);
       boolean allowed =
-          isAsciiLetter(ch) || (ch >= '0' && ch <= '9') || "!#$%&'*+-.^_`|~:/".indexOf(ch) >= 0;
+          isAsciiLetter(ch)
+              || (ch >= '0' && ch <= '9')
+              || "!#$%&'*+-.^_`|~:/".indexOf(ch) >= 0;
       if (!allowed) {
         return false;
       }
@@ -121,6 +124,7 @@ final class SdkTelemetryHeaderBuilder {
     return true;
   }
 
+  /** Whether {@code value} can be emitted unquoted without corrupting the sf-list. */
   private static boolean isBareSafe(String value) {
     for (int i = 0; i < value.length(); i++) {
       char ch = value.charAt(i);
@@ -136,6 +140,7 @@ final class SdkTelemetryHeaderBuilder {
     return !value.isEmpty();
   }
 
+  /** Emits a quoted sf-string parameter, skipping it when the value is invalid. */
   private static void appendStringParam(StringBuilder segment, String key, String value) {
     if (!isNotBlank(value)) {
       return;
@@ -150,6 +155,7 @@ final class SdkTelemetryHeaderBuilder {
     segment.append(';').append(key).append('=').append(escaped);
   }
 
+  /** Emits an integer parameter. */
   private static void appendIntegerParam(StringBuilder segment, String key, long value) {
     segment.append(';').append(key).append('=').append(value);
   }
@@ -177,6 +183,7 @@ final class SdkTelemetryHeaderBuilder {
     return escaped.toString();
   }
 
+  /** Whether {@code value} contains CR, LF, or NUL. */
   private static boolean containsInvalidSfStringChar(String value) {
     for (int i = 0; i < value.length(); i++) {
       char ch = value.charAt(i);
@@ -187,6 +194,7 @@ final class SdkTelemetryHeaderBuilder {
     return false;
   }
 
+  /** Whether {@code value} is a valid bare feature-token item. */
   private static boolean isValidFeatureToken(String value) {
     if (!isNotBlank(value)) {
       return false;

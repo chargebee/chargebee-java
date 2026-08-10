@@ -40,22 +40,27 @@ final class SdkTelemetrySnapshot {
             new LinkedHashSet<>(builder.featureTokens != null ? builder.featureTokens : Set.of()));
   }
 
+  /** Creates a new builder. */
   static Builder builder() {
     return new Builder();
   }
 
+  /** SDK identifier (e.g. {@code chargebee-java}). */
   public String getSdkName() {
     return sdkName;
   }
 
+  /** SDK version string. */
   public String getSdkVersion() {
     return sdkVersion;
   }
 
+  /** API resource of the completed call. */
   public String getResource() {
     return resource;
   }
 
+  /** API operation of the completed call. */
   public String getOperation() {
     return operation;
   }
@@ -65,26 +70,32 @@ final class SdkTelemetrySnapshot {
     return startTimeEpochSeconds;
   }
 
+  /** Client-side latency of the completed call in milliseconds. */
   public long getTimeMs() {
     return timeMs;
   }
 
+  /** HTTP status of the completed call, if known. */
   public Integer getHttpStatus() {
     return httpStatus;
   }
 
+  /** Chargebee API error code, if the call failed. */
   public String getErrorCode() {
     return errorCode;
   }
 
+  /** Value of the {@code chargebee-request-id} response header, if present. */
   public String getRequestId() {
     return requestId;
   }
 
+  /** Feature tokens describing SDK configuration for this call. */
   public Set<String> getFeatureTokens() {
     return featureTokens;
   }
 
+  /** Builder for {@link SdkTelemetrySnapshot}. */
   static final class Builder {
     private String sdkName;
     private String sdkVersion;
@@ -97,57 +108,68 @@ final class SdkTelemetrySnapshot {
     private String requestId;
     private Set<String> featureTokens = new LinkedHashSet<>();
 
+    /** Sets the SDK name. */
     public Builder sdkName(String sdkName) {
       this.sdkName = sdkName;
       return this;
     }
 
+    /** Sets the SDK version. */
     public Builder sdkVersion(String sdkVersion) {
       this.sdkVersion = sdkVersion;
       return this;
     }
 
+    /** Sets the API resource. */
     public Builder resource(String resource) {
       this.resource = resource;
       return this;
     }
 
+    /** Sets the API operation. */
     public Builder operation(String operation) {
       this.operation = operation;
       return this;
     }
 
+    /** Sets the call start time in Unix epoch seconds. */
     public Builder startTimeEpochSeconds(long startTimeEpochSeconds) {
       this.startTimeEpochSeconds = startTimeEpochSeconds;
       return this;
     }
 
+    /** Sets the client-side latency in milliseconds. */
     public Builder timeMs(long timeMs) {
       this.timeMs = timeMs;
       return this;
     }
 
+    /** Sets the HTTP status code. */
     public Builder httpStatus(Integer httpStatus) {
       this.httpStatus = httpStatus;
       return this;
     }
 
+    /** Sets the Chargebee API error code. */
     public Builder errorCode(String errorCode) {
       this.errorCode = errorCode;
       return this;
     }
 
+    /** Sets the Chargebee request id. */
     public Builder requestId(String requestId) {
       this.requestId = requestId;
       return this;
     }
 
+    /** Replaces the feature-token set. */
     public Builder featureTokens(Set<String> featureTokens) {
       this.featureTokens =
           featureTokens != null ? new LinkedHashSet<>(featureTokens) : new LinkedHashSet<>();
       return this;
     }
 
+    /** Adds a single feature token when non-blank. */
     public Builder addFeatureToken(String featureToken) {
       if (featureToken != null && !featureToken.isBlank()) {
         this.featureTokens.add(featureToken);
@@ -155,6 +177,7 @@ final class SdkTelemetrySnapshot {
       return this;
     }
 
+    /** Builds an immutable snapshot. */
     public SdkTelemetrySnapshot build() {
       return new SdkTelemetrySnapshot(this);
     }

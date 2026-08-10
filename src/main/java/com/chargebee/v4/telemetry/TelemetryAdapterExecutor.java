@@ -31,6 +31,7 @@ final class TelemetryAdapterExecutor {
 
   private TelemetryAdapterExecutor() {}
 
+  /** Runs {@code next} with the resolved telemetry adapter, if any. */
   static Response around(
       ChargebeeClient client, Request request, Function<Request, Response> next) {
     TelemetryAdapter adapter = resolveAdapter(client, request);
@@ -52,6 +53,7 @@ final class TelemetryAdapterExecutor {
     }
   }
 
+  /** Async variant of {@link #around}. */
   static CompletableFuture<Response> aroundAsync(
       ChargebeeClient client,
       Request request,
@@ -77,10 +79,12 @@ final class TelemetryAdapterExecutor {
             });
   }
 
+  /** Whether an adapter should run for this request. */
   private static boolean isActive(TelemetryAdapter adapter, Request request) {
     return adapter != null && request.hasTelemetryMetadata();
   }
 
+  /** Resolves the request-level adapter override, else the client adapter. */
   static TelemetryAdapter resolveAdapter(ChargebeeClient client, Request request) {
     if (request.getTelemetryAdapterOverride() != null) {
       return request.getTelemetryAdapterOverride();
@@ -88,6 +92,7 @@ final class TelemetryAdapterExecutor {
     return client.getTelemetryAdapter();
   }
 
+  /** Invokes {@link TelemetryAdapter#onRequestStart}; failures are logged and ignored. */
   private static Object startTelemetry(
       ChargebeeClient client,
       TelemetryAdapter adapter,
@@ -107,6 +112,7 @@ final class TelemetryAdapterExecutor {
     }
   }
 
+  /** Invokes {@link TelemetryAdapter#onRequestEnd} for a successful response. */
   private static void endTelemetrySuccess(
       TelemetryAdapter adapter, Object handle, long startTime, int httpStatusCode) {
     try {
@@ -120,6 +126,7 @@ final class TelemetryAdapterExecutor {
     }
   }
 
+  /** Invokes {@link TelemetryAdapter#onRequestEnd} for a failed call. */
   private static void endTelemetryFailure(
       TelemetryAdapter adapter, Object handle, long startTime, Throwable err) {
     Integer status = TelemetrySupport.extractHttpStatusCode(err);
@@ -140,6 +147,7 @@ final class TelemetryAdapterExecutor {
     }
   }
 
+  /** Builds the start context passed to the adapter. */
   static RequestTelemetryContext buildContext(ChargebeeClient client, Request request) {
     URI uri = URI.create(request.getUrl());
     String httpUrl = uri.getScheme() + "://" + uri.getHost() + uri.getPath();
@@ -157,12 +165,14 @@ final class TelemetryAdapterExecutor {
             request.getHeaders()));
   }
 
+  /** Extracts the API path prefix from the client base URL. */
   private static String extractApiPath(String baseUrl) {
     URI uri = URI.create(baseUrl);
     String path = uri.getPath();
     return path != null && !path.isEmpty() ? path : "/api/v2";
   }
 
+  /** Returns a copy of {@code request} with {@code headers} applied. */
   static Request withHeaders(Request request, Map<String, String> headers) {
     Request updated = request;
     for (Map.Entry<String, String> header : headers.entrySet()) {

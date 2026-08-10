@@ -33,19 +33,19 @@ public final class TelemetryExecutor {
 
   private TelemetryExecutor() {}
 
+  /** Runs {@code action} with SDK telemetry and the customer adapter layers applied. */
   public static Response execute(
       ChargebeeClient client, Request request, Function<Request, Response> action) {
     return SdkTelemetryEmitter.around(
         client, request, outgoing -> TelemetryAdapterExecutor.around(client, outgoing, action));
   }
 
+  /** Async variant of {@link #execute}. */
   public static CompletableFuture<Response> executeAsync(
       ChargebeeClient client,
       Request request,
       Function<Request, CompletableFuture<Response>> action) {
     return SdkTelemetryEmitter.aroundAsync(
-        client,
-        request,
-        outgoing -> TelemetryAdapterExecutor.aroundAsync(client, outgoing, action));
+        client, request, outgoing -> TelemetryAdapterExecutor.aroundAsync(client, outgoing, action));
   }
 }

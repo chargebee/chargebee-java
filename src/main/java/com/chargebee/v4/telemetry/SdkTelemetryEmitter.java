@@ -21,8 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Emits the anonymous SDK telemetry request header, independently of any customer telemetry
- * adapter.
+ * Emits the anonymous SDK telemetry request header, independently of any customer telemetry adapter.
  *
  * <p>Uses an N+1 scheme: the header sent with a call describes the previous completed call on the
  * same client, so the first call of a client never carries the header. Every failure path is
@@ -52,6 +51,7 @@ final class SdkTelemetryEmitter {
     }
   }
 
+  /** Async variant of {@link #around}. */
   static CompletableFuture<Response> aroundAsync(
       ChargebeeClient client,
       Request request,
@@ -91,6 +91,7 @@ final class SdkTelemetryEmitter {
     }
   }
 
+  /** Records a successful call for the next N+1 header. */
   private static void recordSuccess(
       ChargebeeClient client, Request request, Response response, long startTimeMs) {
     if (!request.hasTelemetryMetadata()) {
@@ -111,6 +112,7 @@ final class SdkTelemetryEmitter {
     }
   }
 
+  /** Records a failed call for the next N+1 header. */
   private static void recordFailure(
       ChargebeeClient client, Request request, Throwable callError, long startTimeMs) {
     if (!request.hasTelemetryMetadata()) {
@@ -138,10 +140,12 @@ final class SdkTelemetryEmitter {
     }
   }
 
+  /** Stores {@code snapshot} on the client. */
   private static void record(ChargebeeClient client, SdkTelemetrySnapshot snapshot) {
     client.getSdkTelemetryState().record(snapshot);
   }
 
+  /** Builds an immutable snapshot of the completed call. */
   private static SdkTelemetrySnapshot buildSnapshot(
       ChargebeeClient client,
       Request request,
@@ -163,6 +167,7 @@ final class SdkTelemetryEmitter {
         .build();
   }
 
+  /** Collects {@code ft-*} tokens for the current client/request configuration. */
   private static Set<String> resolveFeatureTokens(ChargebeeClient client, Request request) {
     Set<String> features = new LinkedHashSet<>();
     if (TelemetryAdapterExecutor.resolveAdapter(client, request) != null) {
@@ -185,6 +190,7 @@ final class SdkTelemetryEmitter {
     return client.getRetry() != null && client.getRetry().isEnabled();
   }
 
+  /** Reads {@code chargebee-request-id} from the response, if present. */
   private static String extractRequestId(Response response) {
     return response != null ? response.getHeader(SdkTelemetryHeader.REQUEST_ID_HEADER) : null;
   }
@@ -194,6 +200,7 @@ final class SdkTelemetryEmitter {
     return Math.max(0L, System.currentTimeMillis() - startTimeMs);
   }
 
+  /** Logs a suppressed telemetry failure without affecting the API call. */
   private static void logSuppressed(String step, Exception err) {
     LOGGER.log(
         Level.WARNING,
