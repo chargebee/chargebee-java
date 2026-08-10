@@ -9,9 +9,11 @@ package com.chargebee.v4.telemetry;
 
 import com.chargebee.v4.exceptions.APIException;
 import com.chargebee.v4.exceptions.HttpException;
+import com.chargebee.v4.transport.Request;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 /** Helpers for building standardized Chargebee telemetry context and results. */
 public final class TelemetrySupport {
@@ -259,6 +261,91 @@ public final class TelemetrySupport {
   public static Integer extractHttpStatusCode(Throwable err) {
     if (err instanceof HttpException) {
       return ((HttpException) err).getStatusCode();
+    }
+    return null;
+  }
+
+  /**
+   * Adds {@code chargebee-telemetry=include} to the Prefer request header when not already present.
+   *
+   * <p>Chargebee returns {@code X-Chargebee-Telemetry} only when this preference is set. Existing
+   * Prefer values (for example {@code return=minimal}) are preserved.
+   */
+  public static void applyResponseTelemetryPreferHeader(Map<String, String> requestHeaders) {
+    if (requestHeaders == null) {
+      return;
+    }
+    String preferHeaderKey =
+        findHeaderKeyIgnoreCase(
+            requestHeaders.keySet(), TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER);
+    if (preferHeaderKey == null) {
+      requestHeaders.put(
+          TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER,
+          TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_VALUE);
+      return;
+    }
+    String preferValue = requestHeaders.get(preferHeaderKey);
+    if (preferValueIncludesChargebeeTelemetry(preferValue)) {
+      return;
+    }
+    requestHeaders.put(preferHeaderKey, appendChargebeeTelemetryPreferDirective(preferValue));
+  }
+
+  /**
+   * Returns a copy of {@code request} with {@code chargebee-telemetry=include} added to Prefer when
+   * not already present.
+   */
+  public static Request applyResponseTelemetryPreferHeader(Request request) {
+    Map<String, String> headers = request.getHeaders();
+    String preferHeaderKey =
+        findHeaderKeyIgnoreCase(
+            headers.keySet(), TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER);
+    if (preferHeaderKey == null) {
+      return request.withHeader(
+          TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER,
+          TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_VALUE);
+    }
+    String preferValue = headers.get(preferHeaderKey);
+    if (preferValueIncludesChargebeeTelemetry(preferValue)) {
+      return request;
+    }
+    return request.withHeader(
+        preferHeaderKey, appendChargebeeTelemetryPreferDirective(preferValue));
+  }
+
+  private static String appendChargebeeTelemetryPreferDirective(String preferValue) {
+    if (preferValue == null || preferValue.isBlank()) {
+      return TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_VALUE;
+    }
+    return preferValue + ", " + TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_VALUE;
+  }
+
+  private static boolean preferValueIncludesChargebeeTelemetry(String preferValue) {
+    if (preferValue == null || preferValue.isBlank()) {
+      return false;
+    }
+    for (String preference : preferValue.split(",")) {
+      String trimmed = preference.trim();
+      if (trimmed.regionMatches(
+          true,
+          0,
+          TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_DIRECTIVE,
+          0,
+          TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_DIRECTIVE.length())) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private static String findHeaderKeyIgnoreCase(Set<String> headerNames, String headerName) {
+    if (headerNames == null) {
+      return null;
+    }
+    for (String name : headerNames) {
+      if (name.equalsIgnoreCase(headerName)) {
+        return name;
+      }
     }
     return null;
   }
