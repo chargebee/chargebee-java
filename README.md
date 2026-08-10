@@ -691,25 +691,17 @@ public class Sample {
  }
 ```
 
-### SDK telemetry header
+### SDK telemetry
 
-Chargebee uses anonymous SDK telemetry to understand which SDK versions, runtimes, and operations are in active use, so we can prioritise fixes and deprecations. It is enabled by default.
+By default, the library sends anonymous usage telemetry to Chargebee. This helps us improve the SDK and API.
 
-There is no extra network call: the SDK piggybacks a small `X-Chargebee-SDK-Telemetry` request header on your next API call describing the previous completed call on the same client. The first call a client makes never carries the header.
-
-What it contains: SDK name and version, runtime (`jvm`), the resource and operation of the previous call (for example `customer` / `list`), when that call started, its client-side latency and HTTP status, its `chargebee-request-id`, and tokens for SDK features you enabled (custom transport, retries, telemetry adapter). It never contains request or response payloads, API keys, or customer data. Telemetry failures are logged at `WARNING` and never affect your API call.
-
-Opt out:
+You can disable this behavior if you prefer:
 
 ```java
 ChargebeeClient client = ChargebeeClient.builder(apiKey, site)
     .sdkTelemetryEnabled(false)
     .build();
 ```
-
-This is independent of the OpenTelemetry adapter below — disabling one does not affect the other.
-
-See **[docs/sdk-telemetry-guide.md](docs/sdk-telemetry-guide.md)** for the full reference (header format, fields, feature tokens, Splunk queries, and predev verification).
 
 ### Telemetry (OpenTelemetry)
 
