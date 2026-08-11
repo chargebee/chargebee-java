@@ -19,12 +19,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Emits the anonymous SDK telemetry request header, independently of any customer telemetry adapter.
+ * Emits the anonymous SDK telemetry request header, independently of any customer telemetry
+ * adapter.
  *
- * <p>On the first API call of a client instance, attach {@code f;…} with enabled feature
- * codes when any are present; omit the header when none are enabled. Later calls on the same client
- * never attach again. SDK identity is correlated via {@code User-Agent}. Every failure path is
- * swallowed and logged at {@code WARNING}: telemetry must never fail an API call.
+ * <p>On the first API call of a client instance, attach {@code f;…} with enabled feature codes when
+ * any are present; omit the header when none are enabled. Later calls on the same client never
+ * attach again. SDK identity is correlated via {@code User-Agent}. Every failure path is swallowed
+ * and logged at {@code WARNING}: telemetry must never fail an API call.
  */
 final class SdkTelemetryEmitter {
 

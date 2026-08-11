@@ -46,6 +46,8 @@ public final class TelemetryExecutor {
       Request request,
       Function<Request, CompletableFuture<Response>> action) {
     return SdkTelemetryEmitter.aroundAsync(
-        client, request, outgoing -> TelemetryAdapterExecutor.aroundAsync(client, outgoing, action));
+        client,
+        request,
+        outgoing -> TelemetryAdapterExecutor.aroundAsync(client, outgoing, action));
   }
 }

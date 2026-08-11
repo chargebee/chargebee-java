@@ -11,9 +11,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 
 /**
- * Builds RFC 9651 values for {@link SdkTelemetryHeader#HEADER_NAME}: a features segment
- * keyed by {@link SdkTelemetryHeader#FEATURES_KEY} with enabled feature codes as boolean params
- * (for example {@code f;ta;rc}). Correlate SDK identity via {@code User-Agent}.
+ * Builds RFC 9651 values for {@link SdkTelemetryHeader#HEADER_NAME}: a features segment keyed by
+ * {@link SdkTelemetryHeader#FEATURES_KEY} with enabled feature codes as boolean params (for example
+ * {@code f;ta;rc}). Correlate SDK identity via {@code User-Agent}.
  */
 final class SdkTelemetryHeaderBuilder {
 

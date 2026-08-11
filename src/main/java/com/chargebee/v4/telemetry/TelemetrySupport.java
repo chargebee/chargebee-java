@@ -164,7 +164,9 @@ public final class TelemetrySupport {
     return attributes;
   }
 
-  /** Captures {@code chargebee-*} request headers as span attributes, excluding PII origin headers. */
+  /**
+   * Captures {@code chargebee-*} request headers as span attributes, excluding PII origin headers.
+   */
   public static Map<String, String> buildRequestHeaderSpanAttributes(
       Map<String, String> requestHeaders) {
     Map<String, String> attributes = new HashMap<>();
@@ -180,7 +182,8 @@ public final class TelemetrySupport {
       }
       String lowerName = name.toLowerCase(Locale.ROOT);
       if (!lowerName.startsWith(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_HEADER_PREFIX)
-          || lowerName.startsWith(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_HEADER_EXCLUDE_PREFIX)) {
+          || lowerName.startsWith(
+              TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_HEADER_EXCLUDE_PREFIX)) {
         continue;
       }
       attributes.put(
@@ -249,8 +252,7 @@ public final class TelemetrySupport {
       return null;
     }
 
-    String message =
-        err.getMessage() != null ? err.getMessage() : "Chargebee API request failed";
+    String message = err.getMessage() != null ? err.getMessage() : "Chargebee API request failed";
 
     if (err instanceof APIException) {
       APIException apiException = (APIException) err;
