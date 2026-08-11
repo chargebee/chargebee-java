@@ -3,8 +3,6 @@ package com.chargebee.v4.telemetry;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.chargebee.v4.client.ChargebeeClient;
-import com.chargebee.v4.exceptions.APIException;
-import com.chargebee.v4.exceptions.codes.NotFoundApiErrorCode;
 import com.chargebee.v4.internal.RetryConfig;
 import com.chargebee.v4.transport.Request;
 import com.chargebee.v4.transport.Response;
@@ -62,13 +60,34 @@ class SdkTelemetryEmitterTest {
     }
   }
 
-  @Test
-  @DisplayName("Should omit header on first call and attach N+1 header on second call")
-  void shouldEmitNPlusOneHeader() {
-    Map<String, List<String>> responseHeaders = new HashMap<>();
-    responseHeaders.put("chargebee-request-id", List.of("req_abc123"));
-    RecordingTransport transport = new RecordingTransport(responseHeaders);
+  /**
+   * Extends {@link com.chargebee.v4.transport.DefaultTransport} so {@code ct} is not reported, while
+   * still capturing outbound requests.
+   */
+  private static final class RecordingDefaultTransport
+      extends com.chargebee.v4.transport.DefaultTransport {
+    private final List<Request> requests = new ArrayList<>();
 
+    RecordingDefaultTransport() {
+      super(com.chargebee.v4.transport.TransportConfig.builder().apiKey("key_test").build());
+    }
+
+    @Override
+    public Response send(Request request) {
+      requests.add(request);
+      return new Response(200, Map.of(), "{\"list\":[]}".getBytes());
+    }
+
+    @Override
+    public CompletableFuture<Response> sendAsync(Request request) {
+      return CompletableFuture.completedFuture(send(request));
+    }
+  }
+
+  @Test
+  @DisplayName("Should omit header when no features are enabled")
+  void shouldOmitHeaderWhenNoFeatures() {
+    RecordingDefaultTransport transport = new RecordingDefaultTransport();
     ChargebeeClient client =
         ChargebeeClient.builder("key_test", "acme")
             .transport(transport)
@@ -80,23 +99,17 @@ class SdkTelemetryEmitterTest {
 
     assertEquals(2, transport.requests.size());
     assertNull(transport.requests.get(0).getHeaders().get(SdkTelemetryHeader.HEADER_NAME));
-
-    String header = transport.requests.get(1).getHeaders().get(SdkTelemetryHeader.HEADER_NAME);
-    assertNotNull(header);
-    assertTrue(header.contains("resource=customer;operation=list"));
-    assertTrue(header.contains("start_time=@"));
-    assertTrue(header.contains("http_status=200"));
-    assertTrue(header.contains("request_id=\"req_abc123\""));
+    assertNull(transport.requests.get(1).getHeaders().get(SdkTelemetryHeader.HEADER_NAME));
   }
 
   @Test
-  @DisplayName("Should not attach or record when sdk telemetry is disabled")
+  @DisplayName("Should not attach when sdk telemetry is disabled")
   void shouldRespectOptOut() {
     RecordingTransport transport = new RecordingTransport();
     ChargebeeClient client =
         ChargebeeClient.builder("key_test", "acme")
             .transport(transport)
-            .retry(RetryConfig.builder().enabled(false).build())
+            .retry(RetryConfig.builder().enabled(true).maxRetries(1).build())
             .sdkTelemetryEnabled(false)
             .build();
 
@@ -109,55 +122,8 @@ class SdkTelemetryEmitterTest {
   }
 
   @Test
-  @DisplayName("Should record failure details for the next header")
-  void shouldRecordFailureOnNextHeader() {
-    RecordingTransport successTransport =
-        new RecordingTransport(Map.of("chargebee-request-id", List.of("req_fail")));
-
-    ChargebeeClient client =
-        ChargebeeClient.builder("key_test", "acme")
-            .transport(
-                new Transport() {
-                  private int attempt;
-
-                  @Override
-                  public Response send(Request request) {
-                    attempt++;
-                    if (attempt == 1) {
-                      throw new APIException(
-                          404,
-                          "invalid_request",
-                          NotFoundApiErrorCode.RESOURCE_NOT_FOUND,
-                          "Not found",
-                          "{}",
-                          request,
-                          new Response(404, Map.of("chargebee-request-id", List.of("req_fail")), "{}".getBytes()));
-                    }
-                    successTransport.requests.add(request);
-                    return successTransport.send(request);
-                  }
-
-                  @Override
-                  public CompletableFuture<Response> sendAsync(Request request) {
-                    return CompletableFuture.completedFuture(send(request));
-                  }
-                })
-            .retry(RetryConfig.builder().enabled(false).build())
-            .build();
-
-    assertThrows(APIException.class, () -> client.sendWithRetry(retrieveCustomerRequest()));
-    client.sendWithRetry(listCustomersRequest());
-
-    String header = successTransport.requests.get(0).getHeaders().get(SdkTelemetryHeader.HEADER_NAME);
-    assertNotNull(header);
-    assertTrue(header.contains("operation=retrieve"));
-    assertTrue(header.contains("http_status=404"));
-    assertTrue(header.contains("error_code=\"resource_not_found\""));
-  }
-
-  @Test
-  @DisplayName("Should emit feature tokens independently of OTel adapter")
-  void shouldEmitFeatureTokensWithoutOtelAdapter() {
+  @DisplayName("Should emit keyed feature codes once on the first call only")
+  void shouldEmitFeaturesOncePerClient() {
     RecordingTransport transport = new RecordingTransport();
     ChargebeeClient client =
         ChargebeeClient.builder("key_test", "acme")
@@ -168,15 +134,14 @@ class SdkTelemetryEmitterTest {
     client.sendWithRetry(listCustomersRequest());
     client.sendWithRetry(retrieveCustomerRequest());
 
-    String header = transport.requests.get(1).getHeaders().get(SdkTelemetryHeader.HEADER_NAME);
-    assertNotNull(header);
-    assertTrue(header.contains(SdkTelemetryHeader.FT_RETRY_CONFIG));
-    assertTrue(header.contains(SdkTelemetryHeader.FT_CUSTOM_TRANSPORT));
-    assertFalse(header.contains(SdkTelemetryHeader.FT_TELEMETRY_ADAPTER));
+    String first = transport.requests.get(0).getHeaders().get(SdkTelemetryHeader.HEADER_NAME);
+    assertNotNull(first);
+    assertEquals("f;ct;rc", first);
+    assertNull(transport.requests.get(1).getHeaders().get(SdkTelemetryHeader.HEADER_NAME));
   }
 
   @Test
-  @DisplayName("Should emit ft-telemetry_adapter when OTel adapter is configured")
+  @DisplayName("Should emit ta when OTel adapter is configured")
   void shouldEmitTelemetryAdapterFeatureToken() {
     RecordingTransport transport = new RecordingTransport();
     TelemetryAdapter adapter =
@@ -201,33 +166,34 @@ class SdkTelemetryEmitterTest {
     client.sendWithRetry(listCustomersRequest());
     client.sendWithRetry(retrieveCustomerRequest());
 
-    String header = transport.requests.get(1).getHeaders().get(SdkTelemetryHeader.HEADER_NAME);
-    assertNotNull(header);
-    assertTrue(header.contains(SdkTelemetryHeader.FT_TELEMETRY_ADAPTER));
+    String header = transport.requests.get(0).getHeaders().get(SdkTelemetryHeader.HEADER_NAME);
+    assertEquals("f;ta;ct", header);
+    assertNull(transport.requests.get(1).getHeaders().get(SdkTelemetryHeader.HEADER_NAME));
   }
 
   @Test
-  @DisplayName("Should support async N+1 emission")
-  void shouldEmitAsyncNPlusOneHeader() throws Exception {
+  @DisplayName("Should support async once-per-client emission")
+  void shouldEmitAsyncOncePerClient() throws Exception {
     RecordingTransport transport = new RecordingTransport();
     ChargebeeClient client =
         ChargebeeClient.builder("key_test", "acme")
             .transport(transport)
-            .retry(RetryConfig.builder().enabled(false).build())
+            .retry(RetryConfig.builder().enabled(true).maxRetries(1).build())
             .build();
 
     client.sendWithRetryAsync(listCustomersRequest()).get();
     client.sendWithRetryAsync(retrieveCustomerRequest()).get();
 
-    assertNull(transport.requests.get(0).getHeaders().get(SdkTelemetryHeader.HEADER_NAME));
-    assertNotNull(transport.requests.get(1).getHeaders().get(SdkTelemetryHeader.HEADER_NAME));
+    assertEquals(
+        "f;ct;rc", transport.requests.get(0).getHeaders().get(SdkTelemetryHeader.HEADER_NAME));
+    assertNull(transport.requests.get(1).getHeaders().get(SdkTelemetryHeader.HEADER_NAME));
   }
 
   @Test
-  @DisplayName("Should keep telemetry state per client instance, not per configuration")
+  @DisplayName("Should keep telemetry state per client instance")
   void shouldNotShareStateBetweenIdenticallyConfiguredClients() {
     RecordingTransport transport = new RecordingTransport();
-    RetryConfig retry = RetryConfig.builder().enabled(false).build();
+    RetryConfig retry = RetryConfig.builder().enabled(true).maxRetries(1).build();
 
     ChargebeeClient first =
         ChargebeeClient.builder("key_test", "acme").transport(transport).retry(retry).build();
@@ -238,28 +204,9 @@ class SdkTelemetryEmitterTest {
     second.sendWithRetry(retrieveCustomerRequest());
 
     assertEquals(2, transport.requests.size());
-    assertNull(transport.requests.get(1).getHeaders().get(SdkTelemetryHeader.HEADER_NAME));
-  }
-
-  @Test
-  @DisplayName("Should not update snapshot when telemetry metadata is missing")
-  void shouldSkipSnapshotWithoutTelemetryMetadata() {
-    RecordingTransport transport = new RecordingTransport();
-    ChargebeeClient client =
-        ChargebeeClient.builder("key_test", "acme")
-            .transport(transport)
-            .retry(RetryConfig.builder().enabled(false).build())
-            .build();
-
-    Request withoutMetadata =
-        Request.builder()
-            .method("GET")
-            .url("https://acme.chargebee.com/api/v2/customers")
-            .build();
-
-    client.sendWithRetry(withoutMetadata);
-    client.sendWithRetry(listCustomersRequest());
-
-    assertNull(transport.requests.get(1).getHeaders().get(SdkTelemetryHeader.HEADER_NAME));
+    assertEquals(
+        "f;ct;rc", transport.requests.get(0).getHeaders().get(SdkTelemetryHeader.HEADER_NAME));
+    assertEquals(
+        "f;ct;rc", transport.requests.get(1).getHeaders().get(SdkTelemetryHeader.HEADER_NAME));
   }
 }

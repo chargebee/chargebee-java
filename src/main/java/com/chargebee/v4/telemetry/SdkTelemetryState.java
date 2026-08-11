@@ -7,30 +7,33 @@
 
 package com.chargebee.v4.telemetry;
 
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * Per-client holder for the last completed call, used by the N+1 SDK telemetry header.
+ * Per-client gate so the SDK telemetry header is considered at most once per client instance.
  *
  * <p>Internal SDK type: applications must not depend on it. It is public only so that {@code
  * ChargebeeClient} can own one instance; all accessors are package-private.
  */
 public final class SdkTelemetryState {
 
-  private final AtomicReference<SdkTelemetrySnapshot> lastCall = new AtomicReference<>();
+  private final AtomicBoolean emitted = new AtomicBoolean(false);
 
-  /** Returns the last recorded call, or {@code null} if none. */
-  SdkTelemetrySnapshot lastCall() {
-    return lastCall.get();
+  /**
+   * Claims the single emission slot for this client. Returns {@code true} only for the first
+   * caller.
+   */
+  boolean tryMarkEmitted() {
+    return emitted.compareAndSet(false, true);
   }
 
-  /** Stores {@code snapshot} as the last completed call. */
-  void record(SdkTelemetrySnapshot snapshot) {
-    lastCall.set(snapshot);
+  /** Whether this client has already considered emitting the telemetry header. */
+  boolean hasEmitted() {
+    return emitted.get();
   }
 
-  /** Clears the last completed call. */
+  /** Clears the emission gate (tests only). */
   void clear() {
-    lastCall.set(null);
+    emitted.set(false);
   }
 }
