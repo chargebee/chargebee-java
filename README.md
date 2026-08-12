@@ -824,6 +824,74 @@ ChargebeeClient client =
 
 Spans are exported by your own OpenTelemetry setup, so they flow to whatever backend you've configured (Datadog, Splunk, Honeycomb, Jaeger, etc.). The Chargebee config above stays the same regardless of backend — refer to your APM vendor's OpenTelemetry/OTLP documentation for exporter endpoints.
 
+### Webhook handler
+
+Use `WebhookEventHandler` to verify optional Basic Auth, parse the webhook payload into a typed event, and route it to a registered callback. See the [Events API](https://apidocs.chargebee.com/docs/api/events?lang=java) for event types and payloads.
+
+#### Quick start
+
+```java
+import com.chargebee.v4.models.customer.Customer;
+import com.chargebee.v4.models.event.CustomerCreatedEvent;
+import com.chargebee.v4.models.event.Event;
+import com.chargebee.v4.models.event.SubscriptionCancelledEvent;
+import com.chargebee.v4.models.subscription.Subscription;
+import com.chargebee.v4.webhook.WebhookEventHandler;
+import com.chargebee.v4.webhook.WebhookResult;
+
+WebhookEventHandler handler = WebhookEventHandler.create();
+
+handler.<CustomerCreatedEvent>on(Event.EventType.CUSTOMER_CREATED, event -> {
+    Customer customer = event.getContent().getCustomer();
+    System.out.println("Customer created: " + customer.getEmail());
+    return WebhookResult.success(event.getEventType(), event.getId());
+});
+
+handler.<SubscriptionCancelledEvent>on(Event.EventType.SUBSCRIPTION_CANCELLED, event -> {
+    Subscription subscription = event.getContent().getSubscription();
+    System.out.println("Subscription cancelled: " + subscription.getId());
+    return WebhookResult.success(event.getEventType(), event.getId());
+});
+
+// In your HTTP controller / servlet
+WebhookResult result = handler.handleWebhook(requestBody);
+if (!result.isSuccess()) {
+    // Return 401/400 based on result.getErrorMessage()
+}
+```
+
+The type witness (`.<CustomerCreatedEvent>on(...)`) selects the typed event class for that callback. Return `WebhookResult.success(...)`, `WebhookResult.unhandled(...)`, or `WebhookResult.failure(...)` from each handler.
+
+#### Basic Auth (optional)
+
+If Basic Authentication is enabled on the webhook in Chargebee (Settings → Configure Chargebee → Webhooks), configure matching credentials on the handler and pass the `Authorization` header:
+
+```java
+WebhookEventHandler handler = WebhookEventHandler.builder()
+    .basicAuth("username", "password")
+    .fallbackCallback((event, eventType, rawPayload) -> {
+        System.out.println("Unhandled event: " + eventType);
+        return WebhookResult.unhandled(eventType, event.getId());
+    })
+    .build();
+
+handler.<CustomerCreatedEvent>on(Event.EventType.CUSTOMER_CREATED, event ->
+    WebhookResult.success(event.getEventType(), event.getId()));
+
+WebhookResult result = handler.handleWebhook(requestBody, authorizationHeader);
+```
+
+Invalid credentials return `WebhookResult.failure("Invalid webhook credentials")`. Events with no registered callback use the fallback if set; otherwise they return `WebhookResult.unhandled(...)`.
+
+#### WebhookResult
+
+| Method | Meaning |
+|--------|---------|
+| `isSuccess()` | Processed without errors (includes unhandled events) |
+| `isHandled()` | A registered callback ran for the event |
+| `getEventType()` / `getEventId()` | Event metadata (null on failure) |
+| `getErrorMessage()` | Failure reason, if any |
+
 ## Features
 
 ### SDK Features
@@ -834,6 +902,7 @@ Spans are exported by your own OpenTelemetry setup, so they flow to whatever bac
 - Sync and async APIs with retry/backoff
 - Per-request options and headers
 - Enhanced error handling and debugging
+- Webhook event handler with typed callbacks and optional Basic Auth (see [Webhook handler](#webhook-handler))
 
 ## Build & Test
 - Java 8+
