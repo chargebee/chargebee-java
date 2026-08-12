@@ -11,9 +11,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Per-client gate so the SDK telemetry header is considered at most once per client instance.
- *
- * <p>Internal SDK type: applications must not depend on it. It is public only so that {@code
- * ChargebeeClient} can own one instance; all accessors are package-private.
  */
 public final class SdkTelemetryState {
 
