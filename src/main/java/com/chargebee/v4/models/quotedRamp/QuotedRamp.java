@@ -137,6 +137,7 @@ public class QuotedRamp {
     private String amountPerBillingCycleInDecimal;
     private Long netAmountPerBillingCycle;
     private String netAmountPerBillingCycleInDecimal;
+    private String description;
 
     public String getItemPriceId() {
       return itemPriceId;
@@ -253,6 +254,10 @@ public class QuotedRamp {
 
     public String getNetAmountPerBillingCycleInDecimal() {
       return netAmountPerBillingCycleInDecimal;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     public enum ItemType {
@@ -457,6 +462,8 @@ public class QuotedRamp {
       obj.netAmountPerBillingCycleInDecimal =
           JsonUtil.getString(jsonObj, "net_amount_per_billing_cycle_in_decimal");
 
+      obj.description = JsonUtil.getString(jsonObj, "description");
+
       return obj;
     }
 
@@ -521,6 +528,8 @@ public class QuotedRamp {
           + netAmountPerBillingCycle
           + ", netAmountPerBillingCycleInDecimal="
           + netAmountPerBillingCycleInDecimal
+          + ", description="
+          + description
           + "}";
     }
 
@@ -564,7 +573,8 @@ public class QuotedRamp {
               amountPerBillingCycleInDecimal, that.amountPerBillingCycleInDecimal)
           && java.util.Objects.equals(netAmountPerBillingCycle, that.netAmountPerBillingCycle)
           && java.util.Objects.equals(
-              netAmountPerBillingCycleInDecimal, that.netAmountPerBillingCycleInDecimal);
+              netAmountPerBillingCycleInDecimal, that.netAmountPerBillingCycleInDecimal)
+          && java.util.Objects.equals(description, that.description);
     }
 
     @Override
@@ -599,7 +609,8 @@ public class QuotedRamp {
           amountPerBillingCycle,
           amountPerBillingCycleInDecimal,
           netAmountPerBillingCycle,
-          netAmountPerBillingCycleInDecimal);
+          netAmountPerBillingCycleInDecimal,
+          description);
     }
   }
 

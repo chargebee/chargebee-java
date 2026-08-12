@@ -164,6 +164,8 @@ import com.chargebee.v4.services.SubscriptionEntitlementService;
 
 import com.chargebee.v4.services.ThirdPartyEntityMappingService;
 
+import com.chargebee.v4.services.VaultedPaymentMethodService;
+
 import com.chargebee.v4.services.UsageChargeService;
 
 import com.chargebee.v4.services.EntitlementOverrideService;
@@ -763,6 +765,13 @@ public interface ClientMethods {
    * @return ThirdPartyEntityMappingService instance for fluent API access
    */
   ThirdPartyEntityMappingService thirdPartyEntityMappings();
+
+  /**
+   * Access vaulted_payment_method-related operations.
+   *
+   * @return VaultedPaymentMethodService instance for fluent API access
+   */
+  VaultedPaymentMethodService vaultedPaymentMethods();
 
   /**
    * Access usage_charge-related operations.

@@ -164,6 +164,8 @@ import com.chargebee.v4.services.SubscriptionEntitlementService;
 
 import com.chargebee.v4.services.ThirdPartyEntityMappingService;
 
+import com.chargebee.v4.services.VaultedPaymentMethodService;
+
 import com.chargebee.v4.services.UsageChargeService;
 
 import com.chargebee.v4.services.EntitlementOverrideService;
@@ -600,6 +602,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public ThirdPartyEntityMappingService thirdPartyEntityMappings() {
     return getServiceRegistry().thirdPartyEntityMappings();
+  }
+
+  @Override
+  public VaultedPaymentMethodService vaultedPaymentMethods() {
+    return getServiceRegistry().vaultedPaymentMethods();
   }
 
   @Override

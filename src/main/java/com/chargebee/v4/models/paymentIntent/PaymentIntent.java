@@ -1512,25 +1512,17 @@ public class PaymentIntent {
     }
 
     public enum Source {
-      CB_JS("cb_js"),
+      PAYMENT_METHOD_HELPER("payment_method_helper"),
 
-      COMPONENTS_FIELDS("components_fields"),
+      CARD_COMPONENTS("card_components"),
 
-      CHECKOUT_V_3("checkout_v3"),
+      CHECKOUT("checkout"),
 
-      PAYNOW_V_3("paynow_v3"),
+      COLLECT_NOW("collect_now"),
 
-      PORTAL_V_3("portal_v3"),
+      PORTAL("portal"),
 
-      GIFT_V_3("gift_v3"),
-
-      CHECKOUT_V_4("checkout_v4"),
-
-      PAYMENT_COMPONENT("payment_component"),
-
-      PC_INAPP_V_4("pc_inapp_v4"),
-
-      PC_FPC_V_4("pc_fpc_v4"),
+      PAYMENT_COMPONENTS("payment_components"),
 
       /** An enum member indicating that Source was instantiated with an unknown value. */
       _UNKNOWN(null);

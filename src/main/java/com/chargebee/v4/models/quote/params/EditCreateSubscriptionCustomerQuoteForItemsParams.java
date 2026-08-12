@@ -1716,6 +1716,8 @@ public final class EditCreateSubscriptionCustomerQuoteForItemsParams {
 
     private final Timestamp endDate;
 
+    private final String description;
+
     private final String rampTierId;
 
     private SubscriptionItemsParams(SubscriptionItemsBuilder builder) {
@@ -1747,6 +1749,8 @@ public final class EditCreateSubscriptionCustomerQuoteForItemsParams {
       this.startDate = builder.startDate;
 
       this.endDate = builder.endDate;
+
+      this.description = builder.description;
 
       this.rampTierId = builder.rampTierId;
     }
@@ -1805,6 +1809,10 @@ public final class EditCreateSubscriptionCustomerQuoteForItemsParams {
 
     public Timestamp getEndDate() {
       return endDate;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     public String getRampTierId() {
@@ -1885,6 +1893,11 @@ public final class EditCreateSubscriptionCustomerQuoteForItemsParams {
         formData.put("end_date", this.endDate);
       }
 
+      if (this.description != null) {
+
+        formData.put("description", this.description);
+      }
+
       if (this.rampTierId != null) {
 
         formData.put("ramp_tier_id", this.rampTierId);
@@ -1928,6 +1941,8 @@ public final class EditCreateSubscriptionCustomerQuoteForItemsParams {
       private Timestamp startDate;
 
       private Timestamp endDate;
+
+      private String description;
 
       private String rampTierId;
 
@@ -2000,6 +2015,11 @@ public final class EditCreateSubscriptionCustomerQuoteForItemsParams {
 
       public SubscriptionItemsBuilder endDate(Timestamp value) {
         this.endDate = value;
+        return this;
+      }
+
+      public SubscriptionItemsBuilder description(String value) {
+        this.description = value;
         return this;
       }
 

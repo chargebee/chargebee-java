@@ -164,6 +164,8 @@ import com.chargebee.v4.services.SubscriptionEntitlementService;
 
 import com.chargebee.v4.services.ThirdPartyEntityMappingService;
 
+import com.chargebee.v4.services.VaultedPaymentMethodService;
+
 import com.chargebee.v4.services.UsageChargeService;
 
 import com.chargebee.v4.services.EntitlementOverrideService;
@@ -354,6 +356,8 @@ final class ServiceRegistry {
   private volatile SubscriptionEntitlementService subscriptionEntitlementService;
 
   private volatile ThirdPartyEntityMappingService thirdPartyEntityMappingService;
+
+  private volatile VaultedPaymentMethodService vaultedPaymentMethodService;
 
   private volatile UsageChargeService usageChargeService;
 
@@ -1607,6 +1611,21 @@ final class ServiceRegistry {
       }
     }
     return thirdPartyEntityMappingService;
+  }
+
+  /**
+   * Get or create the VaultedPaymentMethodService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  VaultedPaymentMethodService vaultedPaymentMethods() {
+    if (vaultedPaymentMethodService == null) {
+      synchronized (this) {
+        if (vaultedPaymentMethodService == null) {
+          vaultedPaymentMethodService = new VaultedPaymentMethodService(client);
+        }
+      }
+    }
+    return vaultedPaymentMethodService;
   }
 
   /**

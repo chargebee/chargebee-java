@@ -615,6 +615,8 @@ public class Event {
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
+    OMNICHANNEL_SUBSCRIPTION_ITEM_MRR_UPDATED("omnichannel_subscription_item_mrr_updated"),
+
     LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
 
     GRANT_BLOCKS_CREATED("grant_blocks_created"),
@@ -622,6 +624,12 @@ public class Event {
     GRANT_BLOCKS_UPDATED("grant_blocks_updated"),
 
     LEDGER_UPDATED("ledger_updated"),
+
+    VAULT_TOKEN_CREATED("vault_token_created"),
+
+    VAULT_TOKEN_UPDATED("vault_token_updated"),
+
+    VAULT_TOKEN_DELETED("vault_token_deleted"),
 
     PLAN_CREATED("plan_created"),
 
