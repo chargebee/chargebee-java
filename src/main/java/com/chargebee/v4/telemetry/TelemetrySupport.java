@@ -9,7 +9,10 @@ package com.chargebee.v4.telemetry;
 
 import com.chargebee.v4.exceptions.APIException;
 import com.chargebee.v4.exceptions.HttpException;
+import com.chargebee.v4.transport.Request;
+import com.chargebee.v4.transport.Response;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -116,12 +119,22 @@ public final class TelemetrySupport {
     private final int httpStatusCode;
     private final long durationMs;
     private final RequestTelemetryError error;
+    private final Map<String, List<String>> responseHeaders;
 
     public RequestTelemetryResultInput(
         int httpStatusCode, long durationMs, RequestTelemetryError error) {
+      this(httpStatusCode, durationMs, error, null);
+    }
+
+    public RequestTelemetryResultInput(
+        int httpStatusCode,
+        long durationMs,
+        RequestTelemetryError error,
+        Map<String, List<String>> responseHeaders) {
       this.httpStatusCode = httpStatusCode;
       this.durationMs = durationMs;
       this.error = error;
+      this.responseHeaders = responseHeaders;
     }
 
     public int getHttpStatusCode() {
@@ -134,6 +147,10 @@ public final class TelemetrySupport {
 
     public RequestTelemetryError getError() {
       return error;
+    }
+
+    public Map<String, List<String>> getResponseHeaders() {
+      return responseHeaders;
     }
   }
 
@@ -187,10 +204,35 @@ public final class TelemetrySupport {
     return attributes;
   }
 
+  /**
+   * Captures the {@code X-Chargebee-Telemetry} response header as OpenTelemetry span attributes.
+   */
+  public static Map<String, Object> buildResponseHeaderSpanAttributes(
+      Map<String, List<String>> responseHeaders) {
+    Map<String, Object> attributes = new HashMap<>();
+    if (responseHeaders == null) {
+      return attributes;
+    }
+
+    String value =
+        getHeaderValueIgnoreCase(
+            responseHeaders, TelemetryAttributeKeys.X_CHARGEBEE_TELEMETRY_HEADER);
+    if (value != null) {
+      attributes.put(
+          TelemetryAttributeKeys.HTTP_RESPONSE_HEADER_ATTRIBUTE_PREFIX
+              + TelemetryAttributeKeys.X_CHARGEBEE_TELEMETRY_HEADER,
+          value);
+      attributes.putAll(ChargebeeTelemetryHeaderParser.parseToSpanAttributes(value));
+    }
+
+    return attributes;
+  }
+
   public static Map<String, Object> buildRequestEndSpanAttributes(
       RequestTelemetryResultInput result) {
     Map<String, Object> attributes = new HashMap<>();
     attributes.put(TelemetryAttributeKeys.HTTP_RESPONSE_STATUS_CODE, result.getHttpStatusCode());
+    attributes.putAll(buildResponseHeaderSpanAttributes(result.getResponseHeaders()));
 
     RequestTelemetryError error = result.getError();
     if (error != null) {
@@ -259,6 +301,74 @@ public final class TelemetrySupport {
   public static Integer extractHttpStatusCode(Throwable err) {
     if (err instanceof HttpException) {
       return ((HttpException) err).getStatusCode();
+    }
+    return null;
+  }
+
+  public static Map<String, List<String>> extractResponseHeaders(Throwable err) {
+    if (err instanceof HttpException) {
+      Response response = ((HttpException) err).getResponse();
+      if (response != null) {
+        return response.getHeaders();
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Adds {@code Prefer: chargebee-telemetry=include} when not already set.
+   *
+   * <p>Chargebee returns {@code X-Chargebee-Telemetry} only when this header is present.
+   */
+  public static void applyResponseTelemetryPreferHeader(Map<String, String> requestHeaders) {
+    if (requestHeaders == null) {
+      return;
+    }
+    for (String name : requestHeaders.keySet()) {
+      if (name.equalsIgnoreCase(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER)) {
+        return;
+      }
+    }
+    requestHeaders.put(
+        TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER,
+        TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_VALUE);
+  }
+
+  /**
+   * Returns a copy of {@code request} with {@code Prefer: chargebee-telemetry=include} when not
+   * already set.
+   */
+  public static Request applyResponseTelemetryPreferHeader(Request request) {
+    if (hasRequestHeaderIgnoreCase(
+        request.getHeaders(), TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER)) {
+      return request;
+    }
+    return request.withHeader(
+        TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER,
+        TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_VALUE);
+  }
+
+  private static boolean hasRequestHeaderIgnoreCase(
+      Map<String, String> headers, String headerName) {
+    if (headers == null) {
+      return false;
+    }
+    for (String name : headers.keySet()) {
+      if (name.equalsIgnoreCase(headerName)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private static String getHeaderValueIgnoreCase(
+      Map<String, List<String>> headers, String headerName) {
+    for (Map.Entry<String, List<String>> entry : headers.entrySet()) {
+      if (entry.getKey().equalsIgnoreCase(headerName)
+          && entry.getValue() != null
+          && !entry.getValue().isEmpty()) {
+        return String.join(", ", entry.getValue());
+      }
     }
     return null;
   }

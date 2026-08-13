@@ -43,6 +43,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
     private final RequestInterceptor requestInterceptor;
     private final RequestContext clientHeaders;
     private final TelemetryAdapter telemetryAdapter;
+    private final boolean preferChargebeeTelemetry;
     private final ScheduledExecutorService retryScheduler;
 
     // Auto-generated service registry for lazy loading
@@ -61,6 +62,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
         this.requestInterceptor = builder.requestInterceptor;
         this.clientHeaders = new RequestContext(builder.clientHeaders.getHeaders());
         this.telemetryAdapter = builder.telemetryAdapter;
+        this.preferChargebeeTelemetry = builder.preferChargebeeTelemetry;
         this.retryScheduler = Executors.newSingleThreadScheduledExecutor(r -> {
             Thread t = new Thread(r, "chargebee-retry-scheduler");
             t.setDaemon(true);
@@ -97,6 +99,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
     public RequestInterceptor getRequestInterceptor() { return requestInterceptor; }
     public RequestContext getClientHeaders() { return clientHeaders; }
     public TelemetryAdapter getTelemetryAdapter() { return telemetryAdapter; }
+    public boolean isPreferChargebeeTelemetry() { return preferChargebeeTelemetry; }
 
     public String getSdkVersion() {
         return getVersion();
@@ -577,6 +580,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
         private String protocol = "https";
         private RequestInterceptor requestInterceptor;
         private TelemetryAdapter telemetryAdapter;
+        private boolean preferChargebeeTelemetry = false;
         private final RequestContext clientHeaders = new RequestContext();
 
         private Builder() {}
@@ -600,6 +604,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
         public Builder protocol(String protocol) { this.protocol = protocol; return this; }
         public Builder requestInterceptor(RequestInterceptor requestInterceptor) { this.requestInterceptor = requestInterceptor; return this; }
         public Builder telemetryAdapter(TelemetryAdapter telemetryAdapter) { this.telemetryAdapter = telemetryAdapter; return this; }
+        public Builder preferChargebeeTelemetry(boolean preferChargebeeTelemetry) { this.preferChargebeeTelemetry = preferChargebeeTelemetry; return this; }
 
         // Header helpers
         public Builder header(String name, String value) {

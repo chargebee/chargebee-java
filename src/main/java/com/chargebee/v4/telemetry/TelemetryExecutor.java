@@ -29,14 +29,15 @@ public final class TelemetryExecutor {
       return action.apply(request);
     }
 
+    Request requestForTelemetry = maybeApplyResponseTelemetryPreferHeader(client, request);
     long startTime = System.currentTimeMillis();
     Map<String, String> telemetryHeaders = new HashMap<>();
-    Object handle = startTelemetry(client, adapter, request, telemetryHeaders);
-    Request requestWithHeaders = withHeaders(request, telemetryHeaders);
+    Object handle = startTelemetry(client, adapter, requestForTelemetry, telemetryHeaders);
+    Request requestWithHeaders = withHeaders(requestForTelemetry, telemetryHeaders);
 
     try {
       Response response = action.apply(requestWithHeaders);
-      endTelemetrySuccess(adapter, handle, startTime, response.getStatusCode());
+      endTelemetrySuccess(adapter, handle, startTime, response);
       return response;
     } catch (RuntimeException e) {
       endTelemetryFailure(adapter, handle, startTime, e);
@@ -53,10 +54,11 @@ public final class TelemetryExecutor {
       return action.apply(request);
     }
 
+    Request requestForTelemetry = maybeApplyResponseTelemetryPreferHeader(client, request);
     long startTime = System.currentTimeMillis();
     Map<String, String> telemetryHeaders = new HashMap<>();
-    Object handle = startTelemetry(client, adapter, request, telemetryHeaders);
-    Request requestWithHeaders = withHeaders(request, telemetryHeaders);
+    Object handle = startTelemetry(client, adapter, requestForTelemetry, telemetryHeaders);
+    Request requestWithHeaders = withHeaders(requestForTelemetry, telemetryHeaders);
 
     return action
         .apply(requestWithHeaders)
@@ -66,7 +68,7 @@ public final class TelemetryExecutor {
                 Throwable cause = throwable.getCause() != null ? throwable.getCause() : throwable;
                 endTelemetryFailure(adapter, handle, startTime, cause);
               } else {
-                endTelemetrySuccess(adapter, handle, startTime, response.getStatusCode());
+                endTelemetrySuccess(adapter, handle, startTime, response);
               }
             });
   }
@@ -98,13 +100,16 @@ public final class TelemetryExecutor {
   }
 
   private static void endTelemetrySuccess(
-      TelemetryAdapter adapter, Object handle, long startTime, int httpStatusCode) {
+      TelemetryAdapter adapter, Object handle, long startTime, Response response) {
     try {
       adapter.onRequestEnd(
           handle,
           TelemetrySupport.buildRequestTelemetryResult(
               new TelemetrySupport.RequestTelemetryResultInput(
-                  httpStatusCode, System.currentTimeMillis() - startTime, null)));
+                  response.getStatusCode(),
+                  System.currentTimeMillis() - startTime,
+                  null,
+                  response.getHeaders())));
     } catch (Exception err) {
       LOGGER.log(Level.WARNING, "Telemetry adapter onRequestEnd failed: " + err.getMessage(), err);
     }
@@ -121,7 +126,8 @@ public final class TelemetryExecutor {
               new TelemetrySupport.RequestTelemetryResultInput(
                   httpStatusCode,
                   System.currentTimeMillis() - startTime,
-                  TelemetrySupport.extractRequestTelemetryError(err))));
+                  TelemetrySupport.extractRequestTelemetryError(err),
+                  TelemetrySupport.extractResponseHeaders(err))));
     } catch (Exception telemetryErr) {
       LOGGER.log(
           Level.WARNING,
@@ -159,5 +165,13 @@ public final class TelemetryExecutor {
       updated = updated.withHeader(header.getKey(), header.getValue());
     }
     return updated;
+  }
+
+  private static Request maybeApplyResponseTelemetryPreferHeader(
+      ChargebeeClient client, Request request) {
+    if (!client.isPreferChargebeeTelemetry()) {
+      return request;
+    }
+    return TelemetrySupport.applyResponseTelemetryPreferHeader(request);
   }
 }
