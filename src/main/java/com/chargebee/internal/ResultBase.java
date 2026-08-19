@@ -64,8 +64,16 @@ public class ResultBase {
         return (PaymentSource)get("payment_source");
     }
 
+    public GatewayPaymentMethodToken gatewayPaymentMethodToken() {
+        return (GatewayPaymentMethodToken)get("gateway_payment_method_token");
+    }
+
     public ThirdPartyPaymentMethod thirdPartyPaymentMethod() {
         return (ThirdPartyPaymentMethod)get("third_party_payment_method");
+    }
+
+    public VaultedPaymentMethod vaultedPaymentMethod() {
+        return (VaultedPaymentMethod)get("vaulted_payment_method");
     }
 
     public VirtualBankAccount virtualBankAccount() {
@@ -154,6 +162,10 @@ public class ResultBase {
 
     public QuoteLineGroup quoteLineGroup() {
         return (QuoteLineGroup)get("quote_line_group");
+    }
+
+    public QuoteEntitlement quoteEntitlement() {
+        return (QuoteEntitlement)get("quote_entitlement");
     }
 
     public CpqQuoteSignature cpqQuoteSignature() {
@@ -338,6 +350,10 @@ public class ResultBase {
 
     public OmnichannelSubscriptionItemScheduledChange omnichannelSubscriptionItemScheduledChange() {
         return (OmnichannelSubscriptionItemScheduledChange)get("omnichannel_subscription_item_scheduled_change");
+    }
+
+    public OmnichannelSubscriptionItemMetric omnichannelSubscriptionItemMetric() {
+        return (OmnichannelSubscriptionItemMetric)get("omnichannel_subscription_item_metric");
     }
 
     public OmnichannelSubscription omnichannelSubscription() {

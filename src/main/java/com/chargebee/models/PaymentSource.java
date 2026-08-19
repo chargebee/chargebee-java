@@ -451,6 +451,10 @@ public class PaymentSource extends Resource<PaymentSource> {
         return optList("mandates", PaymentSource.Mandate.class);
     }
 
+    public JSONObject vaultToken() {
+        return optJSONObject("vault_token");
+    }
+
     public Boolean deleted() {
         return reqBoolean("deleted");
     }
@@ -510,6 +514,11 @@ public class PaymentSource extends Resource<PaymentSource> {
     public static VerifyBankAccountRequest verifyBankAccount(String id) {
         String uri = uri("payment_sources", nullCheck(id), "verify_bank_account");
         return new VerifyBankAccountRequest(Method.POST, uri);
+    }
+
+    public static PaymentSourceListGatewayTokensForPaymentSourceRequest listGatewayTokensForPaymentSource(String id) {
+        String uri = uri("payment_sources", nullCheck(id), "gateway_payment_method_tokens");
+        return new PaymentSourceListGatewayTokensForPaymentSourceRequest(uri);
     }
 
     public static Request retrieve(String id) {
@@ -1241,6 +1250,24 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public VerifyBankAccountRequest amount2(Long amount2) {
             params.add("amount2", amount2);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class PaymentSourceListGatewayTokensForPaymentSourceRequest extends ListRequest<PaymentSourceListGatewayTokensForPaymentSourceRequest> {
+
+        private PaymentSourceListGatewayTokensForPaymentSourceRequest(String uri) {
+            super(uri);
+        }
+    
+        public PaymentSourceListGatewayTokensForPaymentSourceRequest includeDeleted(Boolean includeDeleted) {
+            params.addOpt("include_deleted", includeDeleted);
             return this;
         }
 

@@ -131,11 +131,19 @@ public class PaymentIntent extends Resource<PaymentIntent> {
             return optSubResource("error_detail", GatewayErrorDetail.class);
         }
 
+        public String routingRuleId() {
+            return optString("routing_rule_id");
+        }
+
+        public String paymentMethodDisplayRuleId() {
+            return optString("payment_method_display_rule_id");
+        }
+
     }
 
     public static class PaymentIntentMetadata extends Resource<PaymentIntentMetadata> {
         public enum Source {
-             CB_JS,COMPONENTS_FIELDS,CHECKOUT_V3,PAYNOW_V3,PORTAL_V3,GIFT_V3,CHECKOUT_V4,PAYMENT_COMPONENT,PC_INAPP_V4,PC_FPC_V4,
+             PAYMENT_METHOD_HELPER,CARD_COMPONENTS,CHECKOUT,COLLECT_NOW,PORTAL,PAYMENT_COMPONENTS,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -232,8 +240,12 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         return optTimestamp("updated_at");
     }
 
+    public JSONObject paymentMethodOptions() {
+        return optJSONObject("payment_method_options");
+    }
+
     public String customerId() {
-        return reqString("customer_id");
+        return optString("customer_id");
     }
 
     public String gateway() {
@@ -344,6 +356,12 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         }
 
 
+        public CreateRequest paymentMethodOptions(JSONObject paymentMethodOptions) {
+            params.addOpt("payment_method_options", paymentMethodOptions);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -388,6 +406,12 @@ public class PaymentIntent extends Resource<PaymentIntent> {
 
         public UpdateRequest failureUrl(String failureUrl) {
             params.addOpt("failure_url", failureUrl);
+            return this;
+        }
+
+
+        public UpdateRequest paymentMethodOptions(JSONObject paymentMethodOptions) {
+            params.addOpt("payment_method_options", paymentMethodOptions);
             return this;
         }
 

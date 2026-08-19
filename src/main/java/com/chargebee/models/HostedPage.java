@@ -3227,6 +3227,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public PreCancelRequest locale(String locale) {
+            params.addOpt("locale", locale);
+            return this;
+        }
+
+
         public PreCancelRequest subscriptionId(String subscriptionId) {
             params.add("subscription[id]", subscriptionId);
             return this;

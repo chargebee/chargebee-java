@@ -147,6 +147,10 @@ public class QuotedRamp extends Resource<QuotedRamp> {
             return optString("net_amount_per_billing_cycle_in_decimal");
         }
 
+        public String description() {
+            return optString("description");
+        }
+
     }
 
     public static class Discount extends Resource<Discount> {
