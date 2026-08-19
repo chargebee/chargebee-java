@@ -19,6 +19,8 @@ public final class HostedPagePreCancelParams {
 
   private final String redirectUrl;
 
+  private final String locale;
+
   private final SubscriptionParams subscription;
 
   private HostedPagePreCancelParams(HostedPagePreCancelBuilder builder) {
@@ -28,6 +30,8 @@ public final class HostedPagePreCancelParams {
     this.cancelUrl = builder.cancelUrl;
 
     this.redirectUrl = builder.redirectUrl;
+
+    this.locale = builder.locale;
 
     this.subscription = builder.subscription;
   }
@@ -42,6 +46,10 @@ public final class HostedPagePreCancelParams {
 
   public String getRedirectUrl() {
     return redirectUrl;
+  }
+
+  public String getLocale() {
+    return locale;
   }
 
   public SubscriptionParams getSubscription() {
@@ -65,6 +73,11 @@ public final class HostedPagePreCancelParams {
     if (this.redirectUrl != null) {
 
       formData.put("redirect_url", this.redirectUrl);
+    }
+
+    if (this.locale != null) {
+
+      formData.put("locale", this.locale);
     }
 
     if (this.subscription != null) {
@@ -94,6 +107,8 @@ public final class HostedPagePreCancelParams {
 
     private String redirectUrl;
 
+    private String locale;
+
     private SubscriptionParams subscription;
 
     private HostedPagePreCancelBuilder() {}
@@ -110,6 +125,11 @@ public final class HostedPagePreCancelParams {
 
     public HostedPagePreCancelBuilder redirectUrl(String value) {
       this.redirectUrl = value;
+      return this;
+    }
+
+    public HostedPagePreCancelBuilder locale(String value) {
+      this.locale = value;
       return this;
     }
 
