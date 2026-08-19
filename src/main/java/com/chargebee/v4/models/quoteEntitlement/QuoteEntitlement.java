@@ -15,6 +15,7 @@ public class QuoteEntitlement {
 
   private String entityId;
   private EntityType entityType;
+  @Deprecated private ActionType actionType;
   private String featureId;
   private String value;
   private Boolean isEnabled;
@@ -22,6 +23,12 @@ public class QuoteEntitlement {
   private Timestamp endDate;
   private Timestamp createdAt;
   private Timestamp modifiedAt;
+  private Boolean isOverridden;
+  private String featureName;
+  private String featureUnit;
+  private String featureType;
+  private String name;
+  private Boolean metered;
 
   public String getEntityId() {
     return entityId;
@@ -29,6 +36,11 @@ public class QuoteEntitlement {
 
   public EntityType getEntityType() {
     return entityType;
+  }
+
+  @Deprecated
+  public ActionType getActionType() {
+    return actionType;
   }
 
   public String getFeatureId() {
@@ -57,6 +69,30 @@ public class QuoteEntitlement {
 
   public Timestamp getModifiedAt() {
     return modifiedAt;
+  }
+
+  public Boolean getIsOverridden() {
+    return isOverridden;
+  }
+
+  public String getFeatureName() {
+    return featureName;
+  }
+
+  public String getFeatureUnit() {
+    return featureUnit;
+  }
+
+  public String getFeatureType() {
+    return featureType;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public Boolean getMetered() {
+    return metered;
   }
 
   public enum EntityType {
@@ -91,6 +127,34 @@ public class QuoteEntitlement {
     }
   }
 
+  public enum ActionType {
+    UPSERT("upsert"),
+
+    REMOVE("remove"),
+
+    /** An enum member indicating that ActionType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ActionType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ActionType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ActionType enumValue : ActionType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public static QuoteEntitlement fromJson(String json) {
     return fromJson(JsonUtil.parse(json));
   }
@@ -106,6 +170,8 @@ public class QuoteEntitlement {
 
     obj.entityType = EntityType.fromString(JsonUtil.getString(jsonObj, "entity_type"));
 
+    obj.actionType = ActionType.fromString(JsonUtil.getString(jsonObj, "action_type"));
+
     obj.featureId = JsonUtil.getString(jsonObj, "feature_id");
 
     obj.value = JsonUtil.getString(jsonObj, "value");
@@ -120,6 +186,18 @@ public class QuoteEntitlement {
 
     obj.modifiedAt = JsonUtil.getTimestamp(jsonObj, "modified_at");
 
+    obj.isOverridden = JsonUtil.getBoolean(jsonObj, "is_overridden");
+
+    obj.featureName = JsonUtil.getString(jsonObj, "feature_name");
+
+    obj.featureUnit = JsonUtil.getString(jsonObj, "feature_unit");
+
+    obj.featureType = JsonUtil.getString(jsonObj, "feature_type");
+
+    obj.name = JsonUtil.getString(jsonObj, "name");
+
+    obj.metered = JsonUtil.getBoolean(jsonObj, "metered");
+
     return obj;
   }
 
@@ -130,6 +208,8 @@ public class QuoteEntitlement {
         + entityId
         + ", entityType="
         + entityType
+        + ", actionType="
+        + actionType
         + ", featureId="
         + featureId
         + ", value="
@@ -144,6 +224,18 @@ public class QuoteEntitlement {
         + createdAt
         + ", modifiedAt="
         + modifiedAt
+        + ", isOverridden="
+        + isOverridden
+        + ", featureName="
+        + featureName
+        + ", featureUnit="
+        + featureUnit
+        + ", featureType="
+        + featureType
+        + ", name="
+        + name
+        + ", metered="
+        + metered
         + "}";
   }
 
@@ -155,13 +247,20 @@ public class QuoteEntitlement {
     QuoteEntitlement that = (QuoteEntitlement) o;
     return java.util.Objects.equals(entityId, that.entityId)
         && java.util.Objects.equals(entityType, that.entityType)
+        && java.util.Objects.equals(actionType, that.actionType)
         && java.util.Objects.equals(featureId, that.featureId)
         && java.util.Objects.equals(value, that.value)
         && java.util.Objects.equals(isEnabled, that.isEnabled)
         && java.util.Objects.equals(startDate, that.startDate)
         && java.util.Objects.equals(endDate, that.endDate)
         && java.util.Objects.equals(createdAt, that.createdAt)
-        && java.util.Objects.equals(modifiedAt, that.modifiedAt);
+        && java.util.Objects.equals(modifiedAt, that.modifiedAt)
+        && java.util.Objects.equals(isOverridden, that.isOverridden)
+        && java.util.Objects.equals(featureName, that.featureName)
+        && java.util.Objects.equals(featureUnit, that.featureUnit)
+        && java.util.Objects.equals(featureType, that.featureType)
+        && java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(metered, that.metered);
   }
 
   @Override
@@ -170,12 +269,19 @@ public class QuoteEntitlement {
     return java.util.Objects.hash(
         entityId,
         entityType,
+        actionType,
         featureId,
         value,
         isEnabled,
         startDate,
         endDate,
         createdAt,
-        modifiedAt);
+        modifiedAt,
+        isOverridden,
+        featureName,
+        featureUnit,
+        featureType,
+        name,
+        metered);
   }
 }

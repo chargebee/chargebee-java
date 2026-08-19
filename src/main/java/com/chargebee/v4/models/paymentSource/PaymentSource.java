@@ -26,6 +26,7 @@ public class PaymentSource {
   private String gatewayAccountId;
   private String ipAddress;
   private String issuingCountry;
+  private java.util.Map<String, Object> vaultToken;
   private Boolean deleted;
   private String businessEntityId;
   private Card card;
@@ -85,6 +86,10 @@ public class PaymentSource {
 
   public String getIssuingCountry() {
     return issuingCountry;
+  }
+
+  public java.util.Map<String, Object> getVaultToken() {
+    return vaultToken;
   }
 
   public Boolean getDeleted() {
@@ -482,6 +487,12 @@ public class PaymentSource {
 
     obj.issuingCountry = JsonUtil.getString(jsonObj, "issuing_country");
 
+    JsonObject __vaultTokenObj = JsonUtil.getJsonObject(jsonObj, "vault_token");
+    obj.vaultToken =
+        __vaultTokenObj != null
+            ? JsonUtil.parseJsonObjectToMap(__vaultTokenObj)
+            : new java.util.HashMap<>();
+
     obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
 
     obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
@@ -564,6 +575,8 @@ public class PaymentSource {
         + ipAddress
         + ", issuingCountry="
         + issuingCountry
+        + ", vaultToken="
+        + vaultToken
         + ", deleted="
         + deleted
         + ", businessEntityId="
@@ -609,6 +622,7 @@ public class PaymentSource {
         && java.util.Objects.equals(gatewayAccountId, that.gatewayAccountId)
         && java.util.Objects.equals(ipAddress, that.ipAddress)
         && java.util.Objects.equals(issuingCountry, that.issuingCountry)
+        && java.util.Objects.equals(vaultToken, that.vaultToken)
         && java.util.Objects.equals(deleted, that.deleted)
         && java.util.Objects.equals(businessEntityId, that.businessEntityId)
         && java.util.Objects.equals(card, that.card)
@@ -639,6 +653,7 @@ public class PaymentSource {
         gatewayAccountId,
         ipAddress,
         issuingCountry,
+        vaultToken,
         deleted,
         businessEntityId,
         card,

@@ -7,6 +7,7 @@
 package com.chargebee.v4.models.paymentIntent.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -25,6 +26,8 @@ public final class PaymentIntentUpdateParams {
 
   private final String failureUrl;
 
+  private final java.util.Map<String, Object> paymentMethodOptions;
+
   private PaymentIntentUpdateParams(PaymentIntentUpdateBuilder builder) {
 
     this.amount = builder.amount;
@@ -38,6 +41,8 @@ public final class PaymentIntentUpdateParams {
     this.successUrl = builder.successUrl;
 
     this.failureUrl = builder.failureUrl;
+
+    this.paymentMethodOptions = builder.paymentMethodOptions;
   }
 
   public Long getAmount() {
@@ -62,6 +67,10 @@ public final class PaymentIntentUpdateParams {
 
   public String getFailureUrl() {
     return failureUrl;
+  }
+
+  public java.util.Map<String, Object> getPaymentMethodOptions() {
+    return paymentMethodOptions;
   }
 
   /** Get the form data for this request. */
@@ -98,6 +107,11 @@ public final class PaymentIntentUpdateParams {
       formData.put("failure_url", this.failureUrl);
     }
 
+    if (this.paymentMethodOptions != null) {
+
+      formData.put("payment_method_options", JsonUtil.toJson(this.paymentMethodOptions));
+    }
+
     return formData;
   }
 
@@ -120,6 +134,8 @@ public final class PaymentIntentUpdateParams {
     private String successUrl;
 
     private String failureUrl;
+
+    private java.util.Map<String, Object> paymentMethodOptions;
 
     private PaymentIntentUpdateBuilder() {}
 
@@ -150,6 +166,11 @@ public final class PaymentIntentUpdateParams {
 
     public PaymentIntentUpdateBuilder failureUrl(String value) {
       this.failureUrl = value;
+      return this;
+    }
+
+    public PaymentIntentUpdateBuilder paymentMethodOptions(java.util.Map<String, Object> value) {
+      this.paymentMethodOptions = value;
       return this;
     }
 

@@ -4,6 +4,8 @@ import com.chargebee.v4.services.GiftService;
 
 import com.chargebee.v4.services.CsvTaxRuleService;
 
+import com.chargebee.v4.services.QuoteEntitlementService;
+
 import com.chargebee.v4.services.UsageService;
 
 import com.chargebee.v4.services.TimeMachineService;
@@ -164,6 +166,8 @@ import com.chargebee.v4.services.SubscriptionEntitlementService;
 
 import com.chargebee.v4.services.ThirdPartyEntityMappingService;
 
+import com.chargebee.v4.services.VaultedPaymentMethodService;
+
 import com.chargebee.v4.services.UsageChargeService;
 
 import com.chargebee.v4.services.EntitlementOverrideService;
@@ -200,6 +204,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public CsvTaxRuleService csvTaxRules() {
     return getServiceRegistry().csvTaxRules();
+  }
+
+  @Override
+  public QuoteEntitlementService quoteEntitlements() {
+    return getServiceRegistry().quoteEntitlements();
   }
 
   @Override
@@ -600,6 +609,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public ThirdPartyEntityMappingService thirdPartyEntityMappings() {
     return getServiceRegistry().thirdPartyEntityMappings();
+  }
+
+  @Override
+  public VaultedPaymentMethodService vaultedPaymentMethods() {
+    return getServiceRegistry().vaultedPaymentMethods();
   }
 
   @Override

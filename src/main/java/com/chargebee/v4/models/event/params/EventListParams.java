@@ -944,6 +944,8 @@ public final class EventListParams {
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
+    OMNICHANNEL_SUBSCRIPTION_ITEM_MRR_UPDATED("omnichannel_subscription_item_mrr_updated"),
+
     LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
 
     GRANT_BLOCKS_CREATED("grant_blocks_created"),
@@ -951,6 +953,12 @@ public final class EventListParams {
     GRANT_BLOCKS_UPDATED("grant_blocks_updated"),
 
     LEDGER_UPDATED("ledger_updated"),
+
+    VAULT_TOKEN_CREATED("vault_token_created"),
+
+    VAULT_TOKEN_UPDATED("vault_token_updated"),
+
+    VAULT_TOKEN_DELETED("vault_token_deleted"),
 
     /** An enum member indicating that EventTypeIs was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1430,6 +1438,8 @@ public final class EventListParams {
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
+    OMNICHANNEL_SUBSCRIPTION_ITEM_MRR_UPDATED("omnichannel_subscription_item_mrr_updated"),
+
     LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
 
     GRANT_BLOCKS_CREATED("grant_blocks_created"),
@@ -1437,6 +1447,12 @@ public final class EventListParams {
     GRANT_BLOCKS_UPDATED("grant_blocks_updated"),
 
     LEDGER_UPDATED("ledger_updated"),
+
+    VAULT_TOKEN_CREATED("vault_token_created"),
+
+    VAULT_TOKEN_UPDATED("vault_token_updated"),
+
+    VAULT_TOKEN_DELETED("vault_token_deleted"),
 
     /** An enum member indicating that EventTypeIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1916,6 +1932,8 @@ public final class EventListParams {
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
+    OMNICHANNEL_SUBSCRIPTION_ITEM_MRR_UPDATED("omnichannel_subscription_item_mrr_updated"),
+
     LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
 
     GRANT_BLOCKS_CREATED("grant_blocks_created"),
@@ -1923,6 +1941,12 @@ public final class EventListParams {
     GRANT_BLOCKS_UPDATED("grant_blocks_updated"),
 
     LEDGER_UPDATED("ledger_updated"),
+
+    VAULT_TOKEN_CREATED("vault_token_created"),
+
+    VAULT_TOKEN_UPDATED("vault_token_updated"),
+
+    VAULT_TOKEN_DELETED("vault_token_deleted"),
 
     /** An enum member indicating that EventTypeIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -2402,6 +2426,8 @@ public final class EventListParams {
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
+    OMNICHANNEL_SUBSCRIPTION_ITEM_MRR_UPDATED("omnichannel_subscription_item_mrr_updated"),
+
     LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
 
     GRANT_BLOCKS_CREATED("grant_blocks_created"),
@@ -2409,6 +2435,12 @@ public final class EventListParams {
     GRANT_BLOCKS_UPDATED("grant_blocks_updated"),
 
     LEDGER_UPDATED("ledger_updated"),
+
+    VAULT_TOKEN_CREATED("vault_token_created"),
+
+    VAULT_TOKEN_UPDATED("vault_token_updated"),
+
+    VAULT_TOKEN_DELETED("vault_token_deleted"),
 
     /** An enum member indicating that EventTypeNotIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -3166,6 +3198,8 @@ public final class EventListParams {
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
+    OMNICHANNEL_SUBSCRIPTION_ITEM_MRR_UPDATED("omnichannel_subscription_item_mrr_updated"),
+
     LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
 
     GRANT_BLOCKS_CREATED("grant_blocks_created"),
@@ -3173,6 +3207,12 @@ public final class EventListParams {
     GRANT_BLOCKS_UPDATED("grant_blocks_updated"),
 
     LEDGER_UPDATED("ledger_updated"),
+
+    VAULT_TOKEN_CREATED("vault_token_created"),
+
+    VAULT_TOKEN_UPDATED("vault_token_updated"),
+
+    VAULT_TOKEN_DELETED("vault_token_deleted"),
 
     /** An enum member indicating that EventType was instantiated with an unknown value. */
     _UNKNOWN(null);
