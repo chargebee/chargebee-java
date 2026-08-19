@@ -17,7 +17,16 @@ public class QuoteEntitlement extends Resource<QuoteEntitlement> {
         PLAN_PRICE,
         ADDON_PRICE,
         CHARGE_PRICE,
+        @Deprecated
         CHARGE,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
+    @Deprecated
+    public enum ActionType {
+        UPSERT,
+        REMOVE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -44,12 +53,17 @@ public class QuoteEntitlement extends Resource<QuoteEntitlement> {
         return reqEnum("entity_type", EntityType.class);
     }
 
+    @Deprecated
+    public ActionType actionType() {
+        return reqEnum("action_type", ActionType.class);
+    }
+
     public String featureId() {
         return reqString("feature_id");
     }
 
     public String value() {
-        return reqString("value");
+        return optString("value");
     }
 
     public Boolean isEnabled() {
@@ -72,8 +86,67 @@ public class QuoteEntitlement extends Resource<QuoteEntitlement> {
         return reqTimestamp("modified_at");
     }
 
+    public Boolean isOverridden() {
+        return optBoolean("is_overridden");
+    }
+
+    public String featureName() {
+        return optString("feature_name");
+    }
+
+    public String featureUnit() {
+        return optString("feature_unit");
+    }
+
+    public String featureType() {
+        return optString("feature_type");
+    }
+
+    public String name() {
+        return optString("name");
+    }
+
+    public Boolean metered() {
+        return optBoolean("metered");
+    }
+
     // Operations
     //===========
 
+    public static QuoteEntitlementListQuoteEntitlementsRequest listQuoteEntitlements(String id) {
+        String uri = uri("quotes", nullCheck(id), "quote_entitlements");
+        return new QuoteEntitlementListQuoteEntitlementsRequest(uri);
+    }
+
+
+    // Operation Request Classes
+    //==========================
+
+    public static class QuoteEntitlementListQuoteEntitlementsRequest extends ListRequest<QuoteEntitlementListQuoteEntitlementsRequest> {
+
+        private QuoteEntitlementListQuoteEntitlementsRequest(String uri) {
+            super(uri);
+        }
+    
+        public StringFilter<QuoteEntitlementListQuoteEntitlementsRequest> entityId() {
+            return new StringFilter<QuoteEntitlementListQuoteEntitlementsRequest>("entity_id",this);        
+        }
+
+
+        public TimestampFilter<QuoteEntitlementListQuoteEntitlementsRequest> startDate() {
+            return new TimestampFilter<QuoteEntitlementListQuoteEntitlementsRequest>("start_date",this);        
+        }
+
+
+        public TimestampFilter<QuoteEntitlementListQuoteEntitlementsRequest> endDate() {
+            return new TimestampFilter<QuoteEntitlementListQuoteEntitlementsRequest>("end_date",this);        
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
 }

@@ -688,6 +688,10 @@ public class Quote extends Resource<Quote> {
         return optLong("total_discount");
     }
 
+    public Boolean hasEntitlements() {
+        return optBoolean("has_entitlements");
+    }
+
     // Operations
     //===========
 
@@ -2951,6 +2955,10 @@ public class Quote extends Resource<Quote> {
             params.addOpt("subscription_items[end_date][" + index + "]", subscriptionItemEndDate);
             return this;
         }
+        public CreateSubItemsForCustomerQuoteRequest subscriptionItemDescription(int index, String subscriptionItemDescription) {
+            params.addOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
+            return this;
+        }
         public CreateSubItemsForCustomerQuoteRequest subscriptionItemRampTierId(int index, String subscriptionItemRampTierId) {
             params.addOpt("subscription_items[ramp_tier_id][" + index + "]", subscriptionItemRampTierId);
             return this;
@@ -2977,6 +2985,34 @@ public class Quote extends Resource<Quote> {
         }
         public CreateSubItemsForCustomerQuoteRequest couponEndDate(int index, Timestamp couponEndDate) {
             params.addOpt("coupons[end_date][" + index + "]", couponEndDate);
+            return this;
+        }
+        public CreateSubItemsForCustomerQuoteRequest entitlementOverrideFeatureId(int index, String entitlementOverrideFeatureId) {
+            params.addOpt("entitlement_overrides[feature_id][" + index + "]", entitlementOverrideFeatureId);
+            return this;
+        }
+        public CreateSubItemsForCustomerQuoteRequest entitlementOverrideEntityId(int index, String entitlementOverrideEntityId) {
+            params.addOpt("entitlement_overrides[entity_id][" + index + "]", entitlementOverrideEntityId);
+            return this;
+        }
+        public CreateSubItemsForCustomerQuoteRequest entitlementOverrideEntityType(int index, com.chargebee.models.enums.EntityType entitlementOverrideEntityType) {
+            params.addOpt("entitlement_overrides[entity_type][" + index + "]", entitlementOverrideEntityType);
+            return this;
+        }
+        public CreateSubItemsForCustomerQuoteRequest entitlementOverrideValue(int index, String entitlementOverrideValue) {
+            params.addOpt("entitlement_overrides[value][" + index + "]", entitlementOverrideValue);
+            return this;
+        }
+        public CreateSubItemsForCustomerQuoteRequest entitlementOverrideIsEnabled(int index, Boolean entitlementOverrideIsEnabled) {
+            params.addOpt("entitlement_overrides[is_enabled][" + index + "]", entitlementOverrideIsEnabled);
+            return this;
+        }
+        public CreateSubItemsForCustomerQuoteRequest entitlementOverrideStartDate(int index, Timestamp entitlementOverrideStartDate) {
+            params.addOpt("entitlement_overrides[start_date][" + index + "]", entitlementOverrideStartDate);
+            return this;
+        }
+        public CreateSubItemsForCustomerQuoteRequest entitlementOverrideEndDate(int index, Timestamp entitlementOverrideEndDate) {
+            params.addOpt("entitlement_overrides[end_date][" + index + "]", entitlementOverrideEndDate);
             return this;
         }
         @Override
@@ -3378,6 +3414,10 @@ public class Quote extends Resource<Quote> {
             params.addOpt("subscription_items[end_date][" + index + "]", subscriptionItemEndDate);
             return this;
         }
+        public EditCreateSubCustomerQuoteForItemsRequest subscriptionItemDescription(int index, String subscriptionItemDescription) {
+            params.addOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
+            return this;
+        }
         public EditCreateSubCustomerQuoteForItemsRequest subscriptionItemRampTierId(int index, String subscriptionItemRampTierId) {
             params.addOpt("subscription_items[ramp_tier_id][" + index + "]", subscriptionItemRampTierId);
             return this;
@@ -3404,6 +3444,34 @@ public class Quote extends Resource<Quote> {
         }
         public EditCreateSubCustomerQuoteForItemsRequest couponEndDate(int index, Timestamp couponEndDate) {
             params.addOpt("coupons[end_date][" + index + "]", couponEndDate);
+            return this;
+        }
+        public EditCreateSubCustomerQuoteForItemsRequest entitlementOverrideFeatureId(int index, String entitlementOverrideFeatureId) {
+            params.addOpt("entitlement_overrides[feature_id][" + index + "]", entitlementOverrideFeatureId);
+            return this;
+        }
+        public EditCreateSubCustomerQuoteForItemsRequest entitlementOverrideEntityId(int index, String entitlementOverrideEntityId) {
+            params.addOpt("entitlement_overrides[entity_id][" + index + "]", entitlementOverrideEntityId);
+            return this;
+        }
+        public EditCreateSubCustomerQuoteForItemsRequest entitlementOverrideEntityType(int index, com.chargebee.models.enums.EntityType entitlementOverrideEntityType) {
+            params.addOpt("entitlement_overrides[entity_type][" + index + "]", entitlementOverrideEntityType);
+            return this;
+        }
+        public EditCreateSubCustomerQuoteForItemsRequest entitlementOverrideValue(int index, String entitlementOverrideValue) {
+            params.addOpt("entitlement_overrides[value][" + index + "]", entitlementOverrideValue);
+            return this;
+        }
+        public EditCreateSubCustomerQuoteForItemsRequest entitlementOverrideIsEnabled(int index, Boolean entitlementOverrideIsEnabled) {
+            params.addOpt("entitlement_overrides[is_enabled][" + index + "]", entitlementOverrideIsEnabled);
+            return this;
+        }
+        public EditCreateSubCustomerQuoteForItemsRequest entitlementOverrideStartDate(int index, Timestamp entitlementOverrideStartDate) {
+            params.addOpt("entitlement_overrides[start_date][" + index + "]", entitlementOverrideStartDate);
+            return this;
+        }
+        public EditCreateSubCustomerQuoteForItemsRequest entitlementOverrideEndDate(int index, Timestamp entitlementOverrideEndDate) {
+            params.addOpt("entitlement_overrides[end_date][" + index + "]", entitlementOverrideEndDate);
             return this;
         }
         @Override
@@ -3866,6 +3934,10 @@ public class Quote extends Resource<Quote> {
             params.addOpt("subscription_items[end_date][" + index + "]", subscriptionItemEndDate);
             return this;
         }
+        public UpdateSubscriptionQuoteForItemsRequest subscriptionItemDescription(int index, String subscriptionItemDescription) {
+            params.addOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
+            return this;
+        }
         public UpdateSubscriptionQuoteForItemsRequest subscriptionItemRampTierId(int index, String subscriptionItemRampTierId) {
             params.addOpt("subscription_items[ramp_tier_id][" + index + "]", subscriptionItemRampTierId);
             return this;
@@ -3892,6 +3964,34 @@ public class Quote extends Resource<Quote> {
         }
         public UpdateSubscriptionQuoteForItemsRequest couponEndDate(int index, Timestamp couponEndDate) {
             params.addOpt("coupons[end_date][" + index + "]", couponEndDate);
+            return this;
+        }
+        public UpdateSubscriptionQuoteForItemsRequest entitlementOverrideFeatureId(int index, String entitlementOverrideFeatureId) {
+            params.addOpt("entitlement_overrides[feature_id][" + index + "]", entitlementOverrideFeatureId);
+            return this;
+        }
+        public UpdateSubscriptionQuoteForItemsRequest entitlementOverrideEntityId(int index, String entitlementOverrideEntityId) {
+            params.addOpt("entitlement_overrides[entity_id][" + index + "]", entitlementOverrideEntityId);
+            return this;
+        }
+        public UpdateSubscriptionQuoteForItemsRequest entitlementOverrideEntityType(int index, com.chargebee.models.enums.EntityType entitlementOverrideEntityType) {
+            params.addOpt("entitlement_overrides[entity_type][" + index + "]", entitlementOverrideEntityType);
+            return this;
+        }
+        public UpdateSubscriptionQuoteForItemsRequest entitlementOverrideValue(int index, String entitlementOverrideValue) {
+            params.addOpt("entitlement_overrides[value][" + index + "]", entitlementOverrideValue);
+            return this;
+        }
+        public UpdateSubscriptionQuoteForItemsRequest entitlementOverrideIsEnabled(int index, Boolean entitlementOverrideIsEnabled) {
+            params.addOpt("entitlement_overrides[is_enabled][" + index + "]", entitlementOverrideIsEnabled);
+            return this;
+        }
+        public UpdateSubscriptionQuoteForItemsRequest entitlementOverrideStartDate(int index, Timestamp entitlementOverrideStartDate) {
+            params.addOpt("entitlement_overrides[start_date][" + index + "]", entitlementOverrideStartDate);
+            return this;
+        }
+        public UpdateSubscriptionQuoteForItemsRequest entitlementOverrideEndDate(int index, Timestamp entitlementOverrideEndDate) {
+            params.addOpt("entitlement_overrides[end_date][" + index + "]", entitlementOverrideEndDate);
             return this;
         }
         @Override
@@ -4343,6 +4443,10 @@ public class Quote extends Resource<Quote> {
             params.addOpt("subscription_items[end_date][" + index + "]", subscriptionItemEndDate);
             return this;
         }
+        public EditUpdateSubscriptionQuoteForItemsRequest subscriptionItemDescription(int index, String subscriptionItemDescription) {
+            params.addOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
+            return this;
+        }
         public EditUpdateSubscriptionQuoteForItemsRequest subscriptionItemRampTierId(int index, String subscriptionItemRampTierId) {
             params.addOpt("subscription_items[ramp_tier_id][" + index + "]", subscriptionItemRampTierId);
             return this;
@@ -4369,6 +4473,34 @@ public class Quote extends Resource<Quote> {
         }
         public EditUpdateSubscriptionQuoteForItemsRequest couponEndDate(int index, Timestamp couponEndDate) {
             params.addOpt("coupons[end_date][" + index + "]", couponEndDate);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteForItemsRequest entitlementOverrideFeatureId(int index, String entitlementOverrideFeatureId) {
+            params.addOpt("entitlement_overrides[feature_id][" + index + "]", entitlementOverrideFeatureId);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteForItemsRequest entitlementOverrideEntityId(int index, String entitlementOverrideEntityId) {
+            params.addOpt("entitlement_overrides[entity_id][" + index + "]", entitlementOverrideEntityId);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteForItemsRequest entitlementOverrideEntityType(int index, com.chargebee.models.enums.EntityType entitlementOverrideEntityType) {
+            params.addOpt("entitlement_overrides[entity_type][" + index + "]", entitlementOverrideEntityType);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteForItemsRequest entitlementOverrideValue(int index, String entitlementOverrideValue) {
+            params.addOpt("entitlement_overrides[value][" + index + "]", entitlementOverrideValue);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteForItemsRequest entitlementOverrideIsEnabled(int index, Boolean entitlementOverrideIsEnabled) {
+            params.addOpt("entitlement_overrides[is_enabled][" + index + "]", entitlementOverrideIsEnabled);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteForItemsRequest entitlementOverrideStartDate(int index, Timestamp entitlementOverrideStartDate) {
+            params.addOpt("entitlement_overrides[start_date][" + index + "]", entitlementOverrideStartDate);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteForItemsRequest entitlementOverrideEndDate(int index, Timestamp entitlementOverrideEndDate) {
+            params.addOpt("entitlement_overrides[end_date][" + index + "]", entitlementOverrideEndDate);
             return this;
         }
         @Override

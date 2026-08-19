@@ -178,6 +178,11 @@ public class Export extends Resource<Export> {
         return new PriceVariantsRequest(Method.POST, uri);
     }
 
+    public static RampsRequest ramps() {
+        String uri = uri("exports", "ramps");
+        return new RampsRequest(Method.POST, uri);
+    }
+
 
 public Export waitForExportCompletion()
             throws Exception {
@@ -1942,6 +1947,44 @@ public Export waitForExportCompletion()
 
         public TimestampFilter<PriceVariantsRequest> priceVariantCreatedAt() {
             return new TimestampFilter<PriceVariantsRequest>("price_variant[created_at]",this);        
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RampsRequest extends Request<RampsRequest> {
+
+        private RampsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RampsRequest exportType(com.chargebee.models.enums.ExportType exportType) {
+            params.addOpt("export_type", exportType);
+            return this;
+        }
+
+
+        public EnumFilter<Ramp.Status, RampsRequest> rampStatus() {
+            return new EnumFilter<Ramp.Status, RampsRequest>("ramp[status]",this);        
+        }
+
+
+        public StringFilter<RampsRequest> rampSubscriptionId() {
+            return new StringFilter<RampsRequest>("ramp[subscription_id]",this).supportsMultiOperators(true);        
+        }
+
+
+        public TimestampFilter<RampsRequest> rampEffectiveFrom() {
+            return new TimestampFilter<RampsRequest>("ramp[effective_from]",this);        
+        }
+
+
+        public TimestampFilter<RampsRequest> rampUpdatedAt() {
+            return new TimestampFilter<RampsRequest>("ramp[updated_at]",this);        
         }
 
 

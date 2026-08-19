@@ -1009,6 +1009,11 @@ public class CreditNote extends Resource<CreditNote> {
         return new DeleteRequest(Method.POST, uri);
     }
 
+    public static UpdateRequest update(String id) {
+        String uri = uri("credit_notes", nullCheck(id), "update");
+        return new UpdateRequest(Method.POST, uri);
+    }
+
     public static RemoveTaxWithheldRefundRequest removeTaxWithheldRefund(String id) {
         String uri = uri("credit_notes", nullCheck(id), "remove_tax_withheld_refund");
         return new RemoveTaxWithheldRefundRequest(Method.POST, uri);
@@ -1426,6 +1431,24 @@ public class CreditNote extends Resource<CreditNote> {
         }
     
         public DeleteRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdateRequest extends Request<UpdateRequest> {
+
+        private UpdateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdateRequest comment(String comment) {
             params.addOpt("comment", comment);
             return this;
         }

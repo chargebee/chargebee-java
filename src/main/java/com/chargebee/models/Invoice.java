@@ -561,7 +561,7 @@ public class Invoice extends Resource<Invoice> {
         }
 
         public Long amountCapturable() {
-            return reqLong("amount_capturable");
+            return optLong("amount_capturable");
         }
 
         public Transaction.AuthorizationReason authorizationReason() {
@@ -1453,6 +1453,11 @@ public class Invoice extends Resource<Invoice> {
     public static WriteOffRequest writeOff(String id) {
         String uri = uri("invoices", nullCheck(id), "write_off");
         return new WriteOffRequest(Method.POST, uri);
+    }
+
+    public static VoidBeforeCaptureRequest voidBeforeCapture(String id) {
+        String uri = uri("invoices", nullCheck(id), "void_before_capture");
+        return new VoidBeforeCaptureRequest(Method.POST, uri);
     }
 
     public static DeleteRequest delete(String id) {
@@ -4588,6 +4593,36 @@ public class Invoice extends Resource<Invoice> {
     
         public WriteOffRequest comment(String comment) {
             params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class VoidBeforeCaptureRequest extends Request<VoidBeforeCaptureRequest> {
+
+        private VoidBeforeCaptureRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public VoidBeforeCaptureRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        public VoidBeforeCaptureRequest voidReasonCode(String voidReasonCode) {
+            params.addOpt("void_reason_code", voidReasonCode);
+            return this;
+        }
+
+
+        public VoidBeforeCaptureRequest invoiceAction(com.chargebee.models.enums.InvoiceAction invoiceAction) {
+            params.addOpt("invoice_action", invoiceAction);
             return this;
         }
 
