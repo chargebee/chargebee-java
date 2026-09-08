@@ -691,6 +691,18 @@ public class Sample {
  }
 ```
 
+### SDK telemetry
+
+By default, the library sends anonymous usage telemetry to Chargebee. This helps us improve the SDK and API.
+
+You can disable this behavior if you prefer:
+
+```java
+ChargebeeClient client = ChargebeeClient.builder(apiKey, site)
+    .sdkTelemetryEnabled(false)
+    .build();
+```
+
 ### Telemetry (OpenTelemetry)
 
 Optional. Pass a `telemetryAdapter` when you want Chargebee API calls traced in your observability stack (Datadog, Splunk, Honeycomb, Jaeger, etc.). OpenTelemetry is not bundled with `chargebee-java` — add and configure it in your app, implement `TelemetryAdapter`, and wire it on the client.

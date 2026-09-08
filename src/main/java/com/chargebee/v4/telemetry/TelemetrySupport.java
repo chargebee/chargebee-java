@@ -137,14 +137,17 @@ public final class TelemetrySupport {
     }
   }
 
+  /** Builds the span name {@code chargebee.{resource}.{operation}}. */
   public static String buildSpanName(String resource, String operation) {
     return TelemetryAttributeKeys.TELEMETRY_SPAN_NAME_PREFIX + "." + resource + "." + operation;
   }
 
+  /** Maps an API path prefix to {@code v1} or {@code v2}. */
   public static String resolveChargebeeApiVersion(String apiPath) {
     return "/api/v1".equals(apiPath) ? "v1" : "v2";
   }
 
+  /** Builds start-span attributes from the request context. */
   public static Map<String, String> buildRequestStartSpanAttributes(
       BuildRequestTelemetryContextInput input) {
     Map<String, String> attributes = new HashMap<>();
@@ -161,6 +164,9 @@ public final class TelemetrySupport {
     return attributes;
   }
 
+  /**
+   * Captures {@code chargebee-*} request headers as span attributes, excluding PII origin headers.
+   */
   public static Map<String, String> buildRequestHeaderSpanAttributes(
       Map<String, String> requestHeaders) {
     Map<String, String> attributes = new HashMap<>();
@@ -187,6 +193,7 @@ public final class TelemetrySupport {
     return attributes;
   }
 
+  /** Builds end-span attributes from the request result. */
   public static Map<String, Object> buildRequestEndSpanAttributes(
       RequestTelemetryResultInput result) {
     Map<String, Object> attributes = new HashMap<>();
@@ -212,6 +219,7 @@ public final class TelemetrySupport {
     return attributes;
   }
 
+  /** Builds the context passed to {@link TelemetryAdapter#onRequestStart}. */
   public static RequestTelemetryContext buildRequestTelemetryContext(
       BuildRequestTelemetryContextInput input) {
     return new RequestTelemetryContext(
@@ -228,6 +236,7 @@ public final class TelemetrySupport {
         buildRequestStartSpanAttributes(input));
   }
 
+  /** Builds the result passed to {@link TelemetryAdapter#onRequestEnd}. */
   public static RequestTelemetryResult buildRequestTelemetryResult(
       RequestTelemetryResultInput result) {
     return new RequestTelemetryResult(
@@ -237,6 +246,7 @@ public final class TelemetrySupport {
         buildRequestEndSpanAttributes(result));
   }
 
+  /** Extracts Chargebee error details from {@code err}, if present. */
   public static RequestTelemetryError extractRequestTelemetryError(Throwable err) {
     if (err == null) {
       return null;
@@ -256,6 +266,7 @@ public final class TelemetrySupport {
     return new RequestTelemetryError(message, null, null, null);
   }
 
+  /** Extracts the HTTP status code from an {@link HttpException}, if present. */
   public static Integer extractHttpStatusCode(Throwable err) {
     if (err instanceof HttpException) {
       return ((HttpException) err).getStatusCode();

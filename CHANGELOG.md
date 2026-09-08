@@ -1,3 +1,11 @@
+### v4.16.0 (2026-09-08)
+* * *
+
+### New Features
+* Added anonymous SDK telemetry via the `x-chargebee-sdk-telemetry` request header. On the first API call of a client instance, the SDK may report enabled feature codes (custom transport, retries, telemetry adapter). The header is omitted when none of those features are in use. Opt out with `ChargebeeClient.Builder#sdkTelemetryEnabled(false)`. This is independent of `telemetryAdapter`.
+
+
+
 ### v4.15.0 (2026-08-19)
 * * *
 ### New Resources:
