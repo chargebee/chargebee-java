@@ -20,8 +20,8 @@ import java.util.function.Function;
  *
  * <ul>
  *   <li>{@link SdkTelemetryEmitter} — the anonymous {@code x-chargebee-sdk-telemetry} request
- *       header Chargebee uses to track SDK adoption. Enabled by default, opt out with {@code
- *       ChargebeeClient.Builder#sdkTelemetryEnabled(boolean)}.
+ *       header Chargebee uses to track SDK adoption. Enabled by default, opt out with {@link
+ *       com.chargebee.v4.client.ChargebeeClient.Builder#sdkTelemetryEnabled(boolean)}.
  *   <li>{@link TelemetryAdapterExecutor} — the customer's own {@link TelemetryAdapter}, which turns
  *       calls into spans in their observability stack. Off unless an adapter is supplied.
  * </ul>

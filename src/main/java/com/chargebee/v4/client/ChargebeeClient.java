@@ -610,10 +610,12 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
         public Builder requestInterceptor(RequestInterceptor requestInterceptor) { this.requestInterceptor = requestInterceptor; return this; }
         public Builder telemetryAdapter(TelemetryAdapter telemetryAdapter) { this.telemetryAdapter = telemetryAdapter; return this; }
         /**
-         * Enables the anonymous SDK telemetry request header, on by default. It carries SDK name,
-         * version, runtime, and the resource/operation/latency/status of the previous call on this
-         * client. It never carries request or response payloads. Pass {@code false} to opt out;
-         * this is independent of {@link #telemetryAdapter(TelemetryAdapter)}.
+         * Enables the anonymous SDK telemetry request header, on by default. On the first API
+         * call of a client instance it may attach {@code x-chargebee-sdk-telemetry} with enabled
+         * feature codes (custom transport, retries, telemetry adapter). The header is omitted when
+         * none of those features are in use. SDK identity is correlated via {@code User-Agent}. It
+         * never carries request or response payloads. Pass {@code false} to opt out; this is
+         * independent of {@link #telemetryAdapter(TelemetryAdapter)}.
          */
         public Builder sdkTelemetryEnabled(boolean sdkTelemetryEnabled) { this.sdkTelemetryEnabled = sdkTelemetryEnabled; return this; }
 
