@@ -4,6 +4,8 @@ import com.chargebee.v4.services.GiftService;
 
 import com.chargebee.v4.services.CsvTaxRuleService;
 
+import com.chargebee.v4.services.QuoteEntitlementService;
+
 import com.chargebee.v4.services.UsageService;
 
 import com.chargebee.v4.services.TimeMachineService;
@@ -164,6 +166,8 @@ import com.chargebee.v4.services.SubscriptionEntitlementService;
 
 import com.chargebee.v4.services.ThirdPartyEntityMappingService;
 
+import com.chargebee.v4.services.VaultedPaymentMethodService;
+
 import com.chargebee.v4.services.UsageChargeService;
 
 import com.chargebee.v4.services.EntitlementOverrideService;
@@ -194,6 +198,8 @@ final class ServiceRegistry {
   private volatile GiftService giftService;
 
   private volatile CsvTaxRuleService csvTaxRuleService;
+
+  private volatile QuoteEntitlementService quoteEntitlementService;
 
   private volatile UsageService usageService;
 
@@ -355,6 +361,8 @@ final class ServiceRegistry {
 
   private volatile ThirdPartyEntityMappingService thirdPartyEntityMappingService;
 
+  private volatile VaultedPaymentMethodService vaultedPaymentMethodService;
+
   private volatile UsageChargeService usageChargeService;
 
   private volatile EntitlementOverrideService entitlementOverrideService;
@@ -407,6 +415,21 @@ final class ServiceRegistry {
       }
     }
     return csvTaxRuleService;
+  }
+
+  /**
+   * Get or create the QuoteEntitlementService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  QuoteEntitlementService quoteEntitlements() {
+    if (quoteEntitlementService == null) {
+      synchronized (this) {
+        if (quoteEntitlementService == null) {
+          quoteEntitlementService = new QuoteEntitlementService(client);
+        }
+      }
+    }
+    return quoteEntitlementService;
   }
 
   /**
@@ -1607,6 +1630,21 @@ final class ServiceRegistry {
       }
     }
     return thirdPartyEntityMappingService;
+  }
+
+  /**
+   * Get or create the VaultedPaymentMethodService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  VaultedPaymentMethodService vaultedPaymentMethods() {
+    if (vaultedPaymentMethodService == null) {
+      synchronized (this) {
+        if (vaultedPaymentMethodService == null) {
+          vaultedPaymentMethodService = new VaultedPaymentMethodService(client);
+        }
+      }
+    }
+    return vaultedPaymentMethodService;
   }
 
   /**

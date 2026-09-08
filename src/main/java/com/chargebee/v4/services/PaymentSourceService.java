@@ -17,6 +17,8 @@ import com.chargebee.v4.models.paymentSource.params.PaymentSourceCreateUsingPerm
 
 import com.chargebee.v4.models.paymentSource.params.PaymentSourceCreateCardParams;
 
+import com.chargebee.v4.models.paymentSource.params.ListGatewayTokensForPaymentSourceParams;
+
 import com.chargebee.v4.models.paymentSource.params.PaymentSourceVerifyBankAccountParams;
 
 import com.chargebee.v4.models.paymentSource.params.PaymentSourceListParams;
@@ -44,6 +46,8 @@ import com.chargebee.v4.models.paymentSource.responses.PaymentSourceCreateUsingP
 import com.chargebee.v4.models.paymentSource.responses.PaymentSourceDeleteResponse;
 
 import com.chargebee.v4.models.paymentSource.responses.PaymentSourceCreateCardResponse;
+
+import com.chargebee.v4.models.paymentSource.responses.ListGatewayTokensForPaymentSourceResponse;
 
 import com.chargebee.v4.models.paymentSource.responses.PaymentSourceVerifyBankAccountResponse;
 
@@ -228,6 +232,103 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
         .thenApply(
             response ->
                 PaymentSourceCreateCardResponse.fromJson(response.getBodyAsString(), response));
+  }
+
+  /**
+   * listGatewayTokensForPaymentSource a paymentSource using immutable params (executes immediately)
+   * - returns raw Response.
+   */
+  Response listGatewayTokensForPaymentSourceRaw(
+      String custPaymentSourceId, ListGatewayTokensForPaymentSourceParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/gateway_payment_method_tokens",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+    return get(
+        "paymentSource",
+        "listGatewayTokensForPaymentSource",
+        path,
+        params != null ? params.toQueryParams() : null);
+  }
+
+  /**
+   * listGatewayTokensForPaymentSource a paymentSource without params (executes immediately) -
+   * returns raw Response.
+   */
+  Response listGatewayTokensForPaymentSourceRaw(String custPaymentSourceId)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/gateway_payment_method_tokens",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+    return get("paymentSource", "listGatewayTokensForPaymentSource", path, null);
+  }
+
+  /**
+   * listGatewayTokensForPaymentSource a paymentSource using raw JSON payload (executes immediately)
+   * - returns raw Response.
+   */
+  Response listGatewayTokensForPaymentSourceRaw(String custPaymentSourceId, String jsonPayload)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/gateway_payment_method_tokens",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+    throw new UnsupportedOperationException("JSON payload not supported for GET operations");
+  }
+
+  public ListGatewayTokensForPaymentSourceResponse listGatewayTokensForPaymentSource(
+      String custPaymentSourceId, ListGatewayTokensForPaymentSourceParams params)
+      throws ChargebeeException {
+    Response response = listGatewayTokensForPaymentSourceRaw(custPaymentSourceId, params);
+    return ListGatewayTokensForPaymentSourceResponse.fromJson(
+        response.getBodyAsString(), this, params, custPaymentSourceId, response);
+  }
+
+  public ListGatewayTokensForPaymentSourceResponse listGatewayTokensForPaymentSource(
+      String custPaymentSourceId) throws ChargebeeException {
+    Response response = listGatewayTokensForPaymentSourceRaw(custPaymentSourceId);
+    return ListGatewayTokensForPaymentSourceResponse.fromJson(
+        response.getBodyAsString(), this, null, custPaymentSourceId, response);
+  }
+
+  /** Async variant of listGatewayTokensForPaymentSource for paymentSource with params. */
+  public CompletableFuture<ListGatewayTokensForPaymentSourceResponse>
+      listGatewayTokensForPaymentSourceAsync(
+          String custPaymentSourceId, ListGatewayTokensForPaymentSourceParams params) {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/gateway_payment_method_tokens",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+    return getAsync(
+            "paymentSource",
+            "listGatewayTokensForPaymentSource",
+            path,
+            params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ListGatewayTokensForPaymentSourceResponse.fromJson(
+                    response.getBodyAsString(), this, params, custPaymentSourceId, response));
+  }
+
+  /** Async variant of listGatewayTokensForPaymentSource for paymentSource without params. */
+  public CompletableFuture<ListGatewayTokensForPaymentSourceResponse>
+      listGatewayTokensForPaymentSourceAsync(String custPaymentSourceId) {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/gateway_payment_method_tokens",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+    return getAsync("paymentSource", "listGatewayTokensForPaymentSource", path, null)
+        .thenApply(
+            response ->
+                ListGatewayTokensForPaymentSourceResponse.fromJson(
+                    response.getBodyAsString(), this, null, custPaymentSourceId, response));
   }
 
   /** verifyBankAccount a paymentSource (executes immediately) - returns raw Response. */

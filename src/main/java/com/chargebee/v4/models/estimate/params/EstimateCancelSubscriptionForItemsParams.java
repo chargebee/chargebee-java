@@ -338,6 +338,8 @@ public final class EstimateCancelSubscriptionForItemsParams {
 
     FULL("full"),
 
+    CONSUMPTION_BASED("consumption_based"),
+
     /**
      * An enum member indicating that CreditOptionForCurrentTermCharges was instantiated with an
      * unknown value.
