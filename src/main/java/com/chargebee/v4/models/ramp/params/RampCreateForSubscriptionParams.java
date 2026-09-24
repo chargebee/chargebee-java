@@ -25,6 +25,8 @@ public final class RampCreateForSubscriptionParams {
 
   private final List<String> itemsToRemove;
 
+  private final BillingConfigurationParams billingConfiguration;
+
   private final ContractTermParams contractTerm;
 
   private final List<ItemsToAddParams> itemsToAdd;
@@ -48,6 +50,8 @@ public final class RampCreateForSubscriptionParams {
     this.discountsToRemove = builder.discountsToRemove;
 
     this.itemsToRemove = builder.itemsToRemove;
+
+    this.billingConfiguration = builder.billingConfiguration;
 
     this.contractTerm = builder.contractTerm;
 
@@ -80,6 +84,10 @@ public final class RampCreateForSubscriptionParams {
 
   public List<String> getItemsToRemove() {
     return itemsToRemove;
+  }
+
+  public BillingConfigurationParams getBillingConfiguration() {
+    return billingConfiguration;
   }
 
   public ContractTermParams getContractTerm() {
@@ -133,6 +141,16 @@ public final class RampCreateForSubscriptionParams {
     if (this.itemsToRemove != null) {
 
       formData.put("items_to_remove", this.itemsToRemove);
+    }
+
+    if (this.billingConfiguration != null) {
+
+      // Single object
+      Map<String, Object> nestedData = this.billingConfiguration.toFormData();
+      for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+        String nestedKey = "billing_configuration[" + entry.getKey() + "]";
+        formData.put(nestedKey, entry.getValue());
+      }
     }
 
     if (this.contractTerm != null) {
@@ -241,6 +259,8 @@ public final class RampCreateForSubscriptionParams {
 
     private List<String> itemsToRemove;
 
+    private BillingConfigurationParams billingConfiguration;
+
     private ContractTermParams contractTerm;
 
     private List<ItemsToAddParams> itemsToAdd;
@@ -280,6 +300,11 @@ public final class RampCreateForSubscriptionParams {
       return this;
     }
 
+    public RampCreateForSubscriptionBuilder billingConfiguration(BillingConfigurationParams value) {
+      this.billingConfiguration = value;
+      return this;
+    }
+
     public RampCreateForSubscriptionBuilder contractTerm(ContractTermParams value) {
       this.contractTerm = value;
       return this;
@@ -312,6 +337,54 @@ public final class RampCreateForSubscriptionParams {
 
     public RampCreateForSubscriptionParams build() {
       return new RampCreateForSubscriptionParams(this);
+    }
+  }
+
+  public static final class BillingConfigurationParams {
+
+    private final String poNumber;
+
+    private BillingConfigurationParams(BillingConfigurationBuilder builder) {
+
+      this.poNumber = builder.poNumber;
+    }
+
+    public String getPoNumber() {
+      return poNumber;
+    }
+
+    /** Get the form data for this request. */
+    public Map<String, Object> toFormData() {
+      Map<String, Object> formData = new LinkedHashMap<>();
+
+      if (this.poNumber != null) {
+
+        formData.put("po_number", this.poNumber);
+      }
+
+      return formData;
+    }
+
+    /** Create a new builder for BillingConfigurationParams. */
+    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
+    public static BillingConfigurationBuilder builder() {
+      return new BillingConfigurationBuilder();
+    }
+
+    public static final class BillingConfigurationBuilder {
+
+      private String poNumber;
+
+      private BillingConfigurationBuilder() {}
+
+      public BillingConfigurationBuilder poNumber(String value) {
+        this.poNumber = value;
+        return this;
+      }
+
+      public BillingConfigurationParams build() {
+        return new BillingConfigurationParams(this);
+      }
     }
   }
 

@@ -20,6 +20,8 @@ public final class HostedPageCheckoutNewForItemsParams {
 
   private final String businessEntityId;
 
+  private final String brandId;
+
   private final Integer billingCycles;
 
   private final List<String> mandatoryItemsToRemove;
@@ -63,6 +65,8 @@ public final class HostedPageCheckoutNewForItemsParams {
     this.layout = builder.layout;
 
     this.businessEntityId = builder.businessEntityId;
+
+    this.brandId = builder.brandId;
 
     this.billingCycles = builder.billingCycles;
 
@@ -109,6 +113,10 @@ public final class HostedPageCheckoutNewForItemsParams {
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public Integer getBillingCycles() {
@@ -199,6 +207,11 @@ public final class HostedPageCheckoutNewForItemsParams {
     if (this.businessEntityId != null) {
 
       formData.put("business_entity_id", this.businessEntityId);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.billingCycles != null) {
@@ -381,6 +394,8 @@ public final class HostedPageCheckoutNewForItemsParams {
 
     private String businessEntityId;
 
+    private String brandId;
+
     private Integer billingCycles;
 
     private List<String> mandatoryItemsToRemove;
@@ -428,6 +443,11 @@ public final class HostedPageCheckoutNewForItemsParams {
 
     public HostedPageCheckoutNewForItemsBuilder businessEntityId(String value) {
       this.businessEntityId = value;
+      return this;
+    }
+
+    public HostedPageCheckoutNewForItemsBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 
@@ -1315,6 +1335,8 @@ public final class HostedPageCheckoutNewForItemsParams {
 
       EXEMPT("exempt"),
 
+      ZERO_RATED("zero_rated"),
+
       /** An enum member indicating that Taxability was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -1555,6 +1577,8 @@ public final class HostedPageCheckoutNewForItemsParams {
       MOYASAR("moyasar"),
 
       PAYWAY("payway"),
+
+      PAYU("payu"),
 
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);

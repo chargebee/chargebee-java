@@ -175,6 +175,8 @@ public class GatewayPaymentMethodToken {
 
     PAYWAY("payway"),
 
+    PAYU("payu"),
+
     NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that GatewayName was instantiated with an unknown value. */

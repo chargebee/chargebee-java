@@ -29,6 +29,7 @@ public class PaymentSource {
   private java.util.Map<String, Object> vaultToken;
   private Boolean deleted;
   private String businessEntityId;
+  private String brandId;
   private Card card;
   private BankAccount bankAccount;
   private Boleto boleto;
@@ -39,6 +40,7 @@ public class PaymentSource {
   private Venmo venmo;
   private KlarnaPayNow klarnaPayNow;
   private List<Mandates> mandates;
+  private NetworkTransactionReference networkTransactionReference;
 
   public String getId() {
     return id;
@@ -100,6 +102,10 @@ public class PaymentSource {
     return businessEntityId;
   }
 
+  public String getBrandId() {
+    return brandId;
+  }
+
   public Card getCard() {
     return card;
   }
@@ -138,6 +144,10 @@ public class PaymentSource {
 
   public List<Mandates> getMandates() {
     return mandates;
+  }
+
+  public NetworkTransactionReference getNetworkTransactionReference() {
+    return networkTransactionReference;
   }
 
   public enum Type {
@@ -248,6 +258,32 @@ public class PaymentSource {
     TAMARA("tamara"),
 
     QPAY("qpay"),
+
+    OVO("ovo"),
+
+    MOMO("momo"),
+
+    MERCADO_PAGO("mercado_pago"),
+
+    NEQUI("nequi"),
+
+    NUPAY("nupay"),
+
+    PICPAY("picpay"),
+
+    THAI_QR("thai_qr"),
+
+    BLIK("blik"),
+
+    FPX("fpx"),
+
+    WERO("wero"),
+
+    P24("p24"),
+
+    AFFIRM_PAY("affirm_pay"),
+
+    RAKUTEN_PAY("rakuten_pay"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -427,6 +463,8 @@ public class PaymentSource {
 
     PAYWAY("payway"),
 
+    PAYU("payu"),
+
     NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that Gateway was instantiated with an unknown value. */
@@ -497,6 +535,8 @@ public class PaymentSource {
 
     obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
+    obj.brandId = JsonUtil.getString(jsonObj, "brand_id");
+
     JsonObject __cardObj = JsonUtil.getJsonObject(jsonObj, "card");
     if (__cardObj != null) {
       obj.card = Card.fromJson(__cardObj);
@@ -545,6 +585,13 @@ public class PaymentSource {
     obj.mandates =
         JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "mandates"), Mandates::fromJson);
 
+    JsonObject __networkTransactionReferenceObj =
+        JsonUtil.getJsonObject(jsonObj, "network_transaction_reference");
+    if (__networkTransactionReferenceObj != null) {
+      obj.networkTransactionReference =
+          NetworkTransactionReference.fromJson(__networkTransactionReferenceObj);
+    }
+
     return obj;
   }
 
@@ -581,6 +628,8 @@ public class PaymentSource {
         + deleted
         + ", businessEntityId="
         + businessEntityId
+        + ", brandId="
+        + brandId
         + ", card="
         + card
         + ", bankAccount="
@@ -601,6 +650,8 @@ public class PaymentSource {
         + klarnaPayNow
         + ", mandates="
         + mandates
+        + ", networkTransactionReference="
+        + networkTransactionReference
         + "}";
   }
 
@@ -625,6 +676,7 @@ public class PaymentSource {
         && java.util.Objects.equals(vaultToken, that.vaultToken)
         && java.util.Objects.equals(deleted, that.deleted)
         && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(brandId, that.brandId)
         && java.util.Objects.equals(card, that.card)
         && java.util.Objects.equals(bankAccount, that.bankAccount)
         && java.util.Objects.equals(boleto, that.boleto)
@@ -634,7 +686,8 @@ public class PaymentSource {
         && java.util.Objects.equals(paypal, that.paypal)
         && java.util.Objects.equals(venmo, that.venmo)
         && java.util.Objects.equals(klarnaPayNow, that.klarnaPayNow)
-        && java.util.Objects.equals(mandates, that.mandates);
+        && java.util.Objects.equals(mandates, that.mandates)
+        && java.util.Objects.equals(networkTransactionReference, that.networkTransactionReference);
   }
 
   @Override
@@ -656,6 +709,7 @@ public class PaymentSource {
         vaultToken,
         deleted,
         businessEntityId,
+        brandId,
         card,
         bankAccount,
         boleto,
@@ -665,7 +719,8 @@ public class PaymentSource {
         paypal,
         venmo,
         klarnaPayNow,
-        mandates);
+        mandates,
+        networkTransactionReference);
   }
 
   public static class Card {
@@ -1890,6 +1945,56 @@ public class PaymentSource {
     public int hashCode() {
 
       return java.util.Objects.hash(id, subscriptionId, createdAt);
+    }
+  }
+
+  public static class NetworkTransactionReference {
+
+    private String originalNetworkTransactionId;
+
+    public String getOriginalNetworkTransactionId() {
+      return originalNetworkTransactionId;
+    }
+
+    public static NetworkTransactionReference fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static NetworkTransactionReference fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
+    public static NetworkTransactionReference fromJson(JsonObject jsonObj) {
+      NetworkTransactionReference obj = new NetworkTransactionReference();
+
+      obj.originalNetworkTransactionId =
+          JsonUtil.getString(jsonObj, "original_network_transaction_id");
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "NetworkTransactionReference{"
+          + "originalNetworkTransactionId="
+          + originalNetworkTransactionId
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      NetworkTransactionReference that = (NetworkTransactionReference) o;
+      return java.util.Objects.equals(
+          originalNetworkTransactionId, that.originalNetworkTransactionId);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(originalNetworkTransactionId);
     }
   }
 }

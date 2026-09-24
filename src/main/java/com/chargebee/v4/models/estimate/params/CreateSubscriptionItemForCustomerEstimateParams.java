@@ -1429,6 +1429,8 @@ public final class CreateSubscriptionItemForCustomerEstimateParams {
 
     private final ItemType itemType;
 
+    private final String description;
+
     private final ChargeOnOption chargeOnOption;
 
     private SubscriptionItemsParams(SubscriptionItemsBuilder builder) {
@@ -1454,6 +1456,8 @@ public final class CreateSubscriptionItemForCustomerEstimateParams {
       this.chargeOnce = builder.chargeOnce;
 
       this.itemType = builder.itemType;
+
+      this.description = builder.description;
 
       this.chargeOnOption = builder.chargeOnOption;
     }
@@ -1500,6 +1504,10 @@ public final class CreateSubscriptionItemForCustomerEstimateParams {
 
     public ItemType getItemType() {
       return itemType;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     public ChargeOnOption getChargeOnOption() {
@@ -1565,6 +1573,11 @@ public final class CreateSubscriptionItemForCustomerEstimateParams {
         formData.put("item_type", this.itemType);
       }
 
+      if (this.description != null) {
+
+        formData.put("description", this.description);
+      }
+
       if (this.chargeOnOption != null) {
 
         formData.put("charge_on_option", this.chargeOnOption);
@@ -1602,6 +1615,8 @@ public final class CreateSubscriptionItemForCustomerEstimateParams {
       private Boolean chargeOnce;
 
       private ItemType itemType;
+
+      private String description;
 
       private ChargeOnOption chargeOnOption;
 
@@ -1659,6 +1674,11 @@ public final class CreateSubscriptionItemForCustomerEstimateParams {
 
       public SubscriptionItemsBuilder itemType(ItemType value) {
         this.itemType = value;
+        return this;
+      }
+
+      public SubscriptionItemsBuilder description(String value) {
+        this.description = value;
         return this;
       }
 

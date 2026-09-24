@@ -24,6 +24,8 @@ public final class PaymentSourceCreateUsingTempTokenParams {
 
   private final String issuingCountry;
 
+  private final String brandId;
+
   private final Boolean replacePrimaryPaymentSource;
 
   private final java.util.Map<String, Object> additionalInformation;
@@ -40,6 +42,8 @@ public final class PaymentSourceCreateUsingTempTokenParams {
     this.tmpToken = builder.tmpToken;
 
     this.issuingCountry = builder.issuingCountry;
+
+    this.brandId = builder.brandId;
 
     this.replacePrimaryPaymentSource = builder.replacePrimaryPaymentSource;
 
@@ -64,6 +68,10 @@ public final class PaymentSourceCreateUsingTempTokenParams {
 
   public String getIssuingCountry() {
     return issuingCountry;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public Boolean getReplacePrimaryPaymentSource() {
@@ -103,6 +111,11 @@ public final class PaymentSourceCreateUsingTempTokenParams {
       formData.put("issuing_country", this.issuingCountry);
     }
 
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
+    }
+
     if (this.replacePrimaryPaymentSource != null) {
 
       formData.put("replace_primary_payment_source", this.replacePrimaryPaymentSource);
@@ -134,6 +147,8 @@ public final class PaymentSourceCreateUsingTempTokenParams {
 
     private String issuingCountry;
 
+    private String brandId;
+
     private Boolean replacePrimaryPaymentSource;
 
     private java.util.Map<String, Object> additionalInformation;
@@ -162,6 +177,11 @@ public final class PaymentSourceCreateUsingTempTokenParams {
 
     public PaymentSourceCreateUsingTempTokenBuilder issuingCountry(String value) {
       this.issuingCountry = value;
+      return this;
+    }
+
+    public PaymentSourceCreateUsingTempTokenBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 
@@ -289,6 +309,32 @@ public final class PaymentSourceCreateUsingTempTokenParams {
     TAMARA("tamara"),
 
     QPAY("qpay"),
+
+    OVO("ovo"),
+
+    MOMO("momo"),
+
+    MERCADO_PAGO("mercado_pago"),
+
+    NEQUI("nequi"),
+
+    NUPAY("nupay"),
+
+    PICPAY("picpay"),
+
+    THAI_QR("thai_qr"),
+
+    BLIK("blik"),
+
+    FPX("fpx"),
+
+    WERO("wero"),
+
+    P24("p24"),
+
+    AFFIRM_PAY("affirm_pay"),
+
+    RAKUTEN_PAY("rakuten_pay"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);

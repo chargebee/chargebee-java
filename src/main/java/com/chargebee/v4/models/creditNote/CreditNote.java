@@ -51,6 +51,7 @@ public class CreditNote {
   private String createReasonCode;
   private String vatNumberPrefix;
   private String businessEntityId;
+  private String brandId;
   private List<LineItems> lineItems;
   private List<LineItemTiers> lineItemTiers;
   private List<LineItemDiscounts> lineItemDiscounts;
@@ -207,6 +208,10 @@ public class CreditNote {
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public List<LineItems> getLineItems() {
@@ -540,6 +545,8 @@ public class CreditNote {
 
     knownFields.add("business_entity_id");
 
+    knownFields.add("brand_id");
+
     knownFields.add("line_items");
 
     knownFields.add("line_item_tiers");
@@ -642,6 +649,8 @@ public class CreditNote {
     obj.vatNumberPrefix = JsonUtil.getString(jsonObj, "vat_number_prefix");
 
     obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
+
+    obj.brandId = JsonUtil.getString(jsonObj, "brand_id");
 
     obj.lineItems =
         JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "line_items"), LineItems::fromJson);
@@ -782,6 +791,8 @@ public class CreditNote {
         + vatNumberPrefix
         + ", businessEntityId="
         + businessEntityId
+        + ", brandId="
+        + brandId
         + ", lineItems="
         + lineItems
         + ", lineItemTiers="
@@ -858,6 +869,7 @@ public class CreditNote {
         && java.util.Objects.equals(createReasonCode, that.createReasonCode)
         && java.util.Objects.equals(vatNumberPrefix, that.vatNumberPrefix)
         && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(brandId, that.brandId)
         && java.util.Objects.equals(lineItems, that.lineItems)
         && java.util.Objects.equals(lineItemTiers, that.lineItemTiers)
         && java.util.Objects.equals(lineItemDiscounts, that.lineItemDiscounts)
@@ -915,6 +927,7 @@ public class CreditNote {
         createReasonCode,
         vatNumberPrefix,
         businessEntityId,
+        brandId,
         lineItems,
         lineItemTiers,
         lineItemDiscounts,

@@ -181,6 +181,8 @@ public class OmnichannelSubscriptionItem {
 
     OTHER("other"),
 
+    SUBSCRIPTION_NOT_FOUND_IN_SOURCE("subscription_not_found_in_source"),
+
     /** An enum member indicating that ExpirationReason was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;

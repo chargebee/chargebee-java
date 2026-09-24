@@ -20,6 +20,8 @@ public final class PaymentSourceUpdateCardParams {
 
   private final CardParams card;
 
+  private final NetworkTransactionReferenceParams networkTransactionReference;
+
   private PaymentSourceUpdateCardParams(PaymentSourceUpdateCardBuilder builder) {
 
     this.gatewayMetaData = builder.gatewayMetaData;
@@ -27,6 +29,8 @@ public final class PaymentSourceUpdateCardParams {
     this.referenceTransaction = builder.referenceTransaction;
 
     this.card = builder.card;
+
+    this.networkTransactionReference = builder.networkTransactionReference;
   }
 
   public java.util.Map<String, Object> getGatewayMetaData() {
@@ -39,6 +43,10 @@ public final class PaymentSourceUpdateCardParams {
 
   public CardParams getCard() {
     return card;
+  }
+
+  public NetworkTransactionReferenceParams getNetworkTransactionReference() {
+    return networkTransactionReference;
   }
 
   /** Get the form data for this request. */
@@ -65,6 +73,16 @@ public final class PaymentSourceUpdateCardParams {
       }
     }
 
+    if (this.networkTransactionReference != null) {
+
+      // Single object
+      Map<String, Object> nestedData = this.networkTransactionReference.toFormData();
+      for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+        String nestedKey = "network_transaction_reference[" + entry.getKey() + "]";
+        formData.put(nestedKey, entry.getValue());
+      }
+    }
+
     return formData;
   }
 
@@ -82,6 +100,8 @@ public final class PaymentSourceUpdateCardParams {
 
     private CardParams card;
 
+    private NetworkTransactionReferenceParams networkTransactionReference;
+
     private PaymentSourceUpdateCardBuilder() {}
 
     public PaymentSourceUpdateCardBuilder gatewayMetaData(java.util.Map<String, Object> value) {
@@ -96,6 +116,12 @@ public final class PaymentSourceUpdateCardParams {
 
     public PaymentSourceUpdateCardBuilder card(CardParams value) {
       this.card = value;
+      return this;
+    }
+
+    public PaymentSourceUpdateCardBuilder networkTransactionReference(
+        NetworkTransactionReferenceParams value) {
+      this.networkTransactionReference = value;
       return this;
     }
 
@@ -368,6 +394,54 @@ public final class PaymentSourceUpdateCardParams {
 
       public CardParams build() {
         return new CardParams(this);
+      }
+    }
+  }
+
+  public static final class NetworkTransactionReferenceParams {
+
+    private final String originalNetworkTransactionId;
+
+    private NetworkTransactionReferenceParams(NetworkTransactionReferenceBuilder builder) {
+
+      this.originalNetworkTransactionId = builder.originalNetworkTransactionId;
+    }
+
+    public String getOriginalNetworkTransactionId() {
+      return originalNetworkTransactionId;
+    }
+
+    /** Get the form data for this request. */
+    public Map<String, Object> toFormData() {
+      Map<String, Object> formData = new LinkedHashMap<>();
+
+      if (this.originalNetworkTransactionId != null) {
+
+        formData.put("original_network_transaction_id", this.originalNetworkTransactionId);
+      }
+
+      return formData;
+    }
+
+    /** Create a new builder for NetworkTransactionReferenceParams. */
+    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
+    public static NetworkTransactionReferenceBuilder builder() {
+      return new NetworkTransactionReferenceBuilder();
+    }
+
+    public static final class NetworkTransactionReferenceBuilder {
+
+      private String originalNetworkTransactionId;
+
+      private NetworkTransactionReferenceBuilder() {}
+
+      public NetworkTransactionReferenceBuilder originalNetworkTransactionId(String value) {
+        this.originalNetworkTransactionId = value;
+        return this;
+      }
+
+      public NetworkTransactionReferenceParams build() {
+        return new NetworkTransactionReferenceParams(this);
       }
     }
   }

@@ -606,6 +606,10 @@ public final class EventListParams {
 
     CREDIT_NOTE_DELETED("credit_note_deleted"),
 
+    EINVOICE_CREATED("einvoice_created"),
+
+    EINVOICE_UPDATED("einvoice_updated"),
+
     PAYMENT_SCHEDULES_CREATED("payment_schedules_created"),
 
     PAYMENT_SCHEDULES_UPDATED("payment_schedules_updated"),
@@ -954,11 +958,35 @@ public final class EventListParams {
 
     LEDGER_UPDATED("ledger_updated"),
 
+    BUSINESS_RULE_CREATED("business_rule_created"),
+
+    BUSINESS_RULE_UPDATED("business_rule_updated"),
+
+    BUSINESS_RULE_ACTIVATED("business_rule_activated"),
+
+    BUSINESS_RULE_DEACTIVATED("business_rule_deactivated"),
+
+    BUSINESS_RULE_DELETED("business_rule_deleted"),
+
+    BUSINESS_RULE_RELEASED("business_rule_released"),
+
     VAULT_TOKEN_CREATED("vault_token_created"),
 
     VAULT_TOKEN_UPDATED("vault_token_updated"),
 
     VAULT_TOKEN_DELETED("vault_token_deleted"),
+
+    BUSINESS_RULES_APPLIED("business_rules_applied"),
+
+    BUSINESS_RULESET_CREATED("business_ruleset_created"),
+
+    BUSINESS_RULESET_UPDATED("business_ruleset_updated"),
+
+    BUSINESS_RULESET_ACTIVATED("business_ruleset_activated"),
+
+    BUSINESS_RULESET_DEACTIVATED("business_ruleset_deactivated"),
+
+    BUSINESS_RULESET_DELETED("business_ruleset_deleted"),
 
     /** An enum member indicating that EventTypeIs was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1100,6 +1128,10 @@ public final class EventListParams {
 
     CREDIT_NOTE_DELETED("credit_note_deleted"),
 
+    EINVOICE_CREATED("einvoice_created"),
+
+    EINVOICE_UPDATED("einvoice_updated"),
+
     PAYMENT_SCHEDULES_CREATED("payment_schedules_created"),
 
     PAYMENT_SCHEDULES_UPDATED("payment_schedules_updated"),
@@ -1448,11 +1480,35 @@ public final class EventListParams {
 
     LEDGER_UPDATED("ledger_updated"),
 
+    BUSINESS_RULE_CREATED("business_rule_created"),
+
+    BUSINESS_RULE_UPDATED("business_rule_updated"),
+
+    BUSINESS_RULE_ACTIVATED("business_rule_activated"),
+
+    BUSINESS_RULE_DEACTIVATED("business_rule_deactivated"),
+
+    BUSINESS_RULE_DELETED("business_rule_deleted"),
+
+    BUSINESS_RULE_RELEASED("business_rule_released"),
+
     VAULT_TOKEN_CREATED("vault_token_created"),
 
     VAULT_TOKEN_UPDATED("vault_token_updated"),
 
     VAULT_TOKEN_DELETED("vault_token_deleted"),
+
+    BUSINESS_RULES_APPLIED("business_rules_applied"),
+
+    BUSINESS_RULESET_CREATED("business_ruleset_created"),
+
+    BUSINESS_RULESET_UPDATED("business_ruleset_updated"),
+
+    BUSINESS_RULESET_ACTIVATED("business_ruleset_activated"),
+
+    BUSINESS_RULESET_DEACTIVATED("business_ruleset_deactivated"),
+
+    BUSINESS_RULESET_DELETED("business_ruleset_deleted"),
 
     /** An enum member indicating that EventTypeIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1594,6 +1650,10 @@ public final class EventListParams {
 
     CREDIT_NOTE_DELETED("credit_note_deleted"),
 
+    EINVOICE_CREATED("einvoice_created"),
+
+    EINVOICE_UPDATED("einvoice_updated"),
+
     PAYMENT_SCHEDULES_CREATED("payment_schedules_created"),
 
     PAYMENT_SCHEDULES_UPDATED("payment_schedules_updated"),
@@ -1942,11 +2002,35 @@ public final class EventListParams {
 
     LEDGER_UPDATED("ledger_updated"),
 
+    BUSINESS_RULE_CREATED("business_rule_created"),
+
+    BUSINESS_RULE_UPDATED("business_rule_updated"),
+
+    BUSINESS_RULE_ACTIVATED("business_rule_activated"),
+
+    BUSINESS_RULE_DEACTIVATED("business_rule_deactivated"),
+
+    BUSINESS_RULE_DELETED("business_rule_deleted"),
+
+    BUSINESS_RULE_RELEASED("business_rule_released"),
+
     VAULT_TOKEN_CREATED("vault_token_created"),
 
     VAULT_TOKEN_UPDATED("vault_token_updated"),
 
     VAULT_TOKEN_DELETED("vault_token_deleted"),
+
+    BUSINESS_RULES_APPLIED("business_rules_applied"),
+
+    BUSINESS_RULESET_CREATED("business_ruleset_created"),
+
+    BUSINESS_RULESET_UPDATED("business_ruleset_updated"),
+
+    BUSINESS_RULESET_ACTIVATED("business_ruleset_activated"),
+
+    BUSINESS_RULESET_DEACTIVATED("business_ruleset_deactivated"),
+
+    BUSINESS_RULESET_DELETED("business_ruleset_deleted"),
 
     /** An enum member indicating that EventTypeIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -2088,6 +2172,10 @@ public final class EventListParams {
 
     CREDIT_NOTE_DELETED("credit_note_deleted"),
 
+    EINVOICE_CREATED("einvoice_created"),
+
+    EINVOICE_UPDATED("einvoice_updated"),
+
     PAYMENT_SCHEDULES_CREATED("payment_schedules_created"),
 
     PAYMENT_SCHEDULES_UPDATED("payment_schedules_updated"),
@@ -2436,11 +2524,35 @@ public final class EventListParams {
 
     LEDGER_UPDATED("ledger_updated"),
 
+    BUSINESS_RULE_CREATED("business_rule_created"),
+
+    BUSINESS_RULE_UPDATED("business_rule_updated"),
+
+    BUSINESS_RULE_ACTIVATED("business_rule_activated"),
+
+    BUSINESS_RULE_DEACTIVATED("business_rule_deactivated"),
+
+    BUSINESS_RULE_DELETED("business_rule_deleted"),
+
+    BUSINESS_RULE_RELEASED("business_rule_released"),
+
     VAULT_TOKEN_CREATED("vault_token_created"),
 
     VAULT_TOKEN_UPDATED("vault_token_updated"),
 
     VAULT_TOKEN_DELETED("vault_token_deleted"),
+
+    BUSINESS_RULES_APPLIED("business_rules_applied"),
+
+    BUSINESS_RULESET_CREATED("business_ruleset_created"),
+
+    BUSINESS_RULESET_UPDATED("business_ruleset_updated"),
+
+    BUSINESS_RULESET_ACTIVATED("business_ruleset_activated"),
+
+    BUSINESS_RULESET_DEACTIVATED("business_ruleset_deactivated"),
+
+    BUSINESS_RULESET_DELETED("business_ruleset_deleted"),
 
     /** An enum member indicating that EventTypeNotIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -2860,6 +2972,10 @@ public final class EventListParams {
 
     CREDIT_NOTE_DELETED("credit_note_deleted"),
 
+    EINVOICE_CREATED("einvoice_created"),
+
+    EINVOICE_UPDATED("einvoice_updated"),
+
     PAYMENT_SCHEDULES_CREATED("payment_schedules_created"),
 
     PAYMENT_SCHEDULES_UPDATED("payment_schedules_updated"),
@@ -3208,11 +3324,35 @@ public final class EventListParams {
 
     LEDGER_UPDATED("ledger_updated"),
 
+    BUSINESS_RULE_CREATED("business_rule_created"),
+
+    BUSINESS_RULE_UPDATED("business_rule_updated"),
+
+    BUSINESS_RULE_ACTIVATED("business_rule_activated"),
+
+    BUSINESS_RULE_DEACTIVATED("business_rule_deactivated"),
+
+    BUSINESS_RULE_DELETED("business_rule_deleted"),
+
+    BUSINESS_RULE_RELEASED("business_rule_released"),
+
     VAULT_TOKEN_CREATED("vault_token_created"),
 
     VAULT_TOKEN_UPDATED("vault_token_updated"),
 
     VAULT_TOKEN_DELETED("vault_token_deleted"),
+
+    BUSINESS_RULES_APPLIED("business_rules_applied"),
+
+    BUSINESS_RULESET_CREATED("business_ruleset_created"),
+
+    BUSINESS_RULESET_UPDATED("business_ruleset_updated"),
+
+    BUSINESS_RULESET_ACTIVATED("business_ruleset_activated"),
+
+    BUSINESS_RULESET_DEACTIVATED("business_ruleset_deactivated"),
+
+    BUSINESS_RULESET_DELETED("business_ruleset_deleted"),
 
     /** An enum member indicating that EventType was instantiated with an unknown value. */
     _UNKNOWN(null);

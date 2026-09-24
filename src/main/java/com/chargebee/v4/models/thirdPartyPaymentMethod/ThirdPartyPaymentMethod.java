@@ -16,6 +16,7 @@ public class ThirdPartyPaymentMethod {
   private Gateway gateway;
   private String gatewayAccountId;
   private String referenceId;
+  private java.util.Map<String, Object> networkTransactionReference;
 
   public Type getType() {
     return type;
@@ -31,6 +32,10 @@ public class ThirdPartyPaymentMethod {
 
   public String getReferenceId() {
     return referenceId;
+  }
+
+  public java.util.Map<String, Object> getNetworkTransactionReference() {
+    return networkTransactionReference;
   }
 
   public enum Type {
@@ -141,6 +146,32 @@ public class ThirdPartyPaymentMethod {
     TAMARA("tamara"),
 
     QPAY("qpay"),
+
+    OVO("ovo"),
+
+    MOMO("momo"),
+
+    MERCADO_PAGO("mercado_pago"),
+
+    NEQUI("nequi"),
+
+    NUPAY("nupay"),
+
+    PICPAY("picpay"),
+
+    THAI_QR("thai_qr"),
+
+    BLIK("blik"),
+
+    FPX("fpx"),
+
+    WERO("wero"),
+
+    P24("p24"),
+
+    AFFIRM_PAY("affirm_pay"),
+
+    RAKUTEN_PAY("rakuten_pay"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -286,6 +317,8 @@ public class ThirdPartyPaymentMethod {
 
     PAYWAY("payway"),
 
+    PAYU("payu"),
+
     NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that Gateway was instantiated with an unknown value. */
@@ -330,6 +363,13 @@ public class ThirdPartyPaymentMethod {
 
     obj.referenceId = JsonUtil.getString(jsonObj, "reference_id");
 
+    JsonObject __networkTransactionReferenceObj =
+        JsonUtil.getJsonObject(jsonObj, "network_transaction_reference");
+    obj.networkTransactionReference =
+        __networkTransactionReferenceObj != null
+            ? JsonUtil.parseJsonObjectToMap(__networkTransactionReferenceObj)
+            : new java.util.HashMap<>();
+
     return obj;
   }
 
@@ -344,6 +384,8 @@ public class ThirdPartyPaymentMethod {
         + gatewayAccountId
         + ", referenceId="
         + referenceId
+        + ", networkTransactionReference="
+        + networkTransactionReference
         + "}";
   }
 
@@ -356,12 +398,14 @@ public class ThirdPartyPaymentMethod {
     return java.util.Objects.equals(type, that.type)
         && java.util.Objects.equals(gateway, that.gateway)
         && java.util.Objects.equals(gatewayAccountId, that.gatewayAccountId)
-        && java.util.Objects.equals(referenceId, that.referenceId);
+        && java.util.Objects.equals(referenceId, that.referenceId)
+        && java.util.Objects.equals(networkTransactionReference, that.networkTransactionReference);
   }
 
   @Override
   public int hashCode() {
 
-    return java.util.Objects.hash(type, gateway, gatewayAccountId, referenceId);
+    return java.util.Objects.hash(
+        type, gateway, gatewayAccountId, referenceId, networkTransactionReference);
   }
 }

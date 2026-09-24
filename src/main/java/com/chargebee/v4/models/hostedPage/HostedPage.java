@@ -27,6 +27,7 @@ public class HostedPage {
   private Long resourceVersion;
   private java.util.Map<String, Object> checkoutInfo;
   private String businessEntityId;
+  private String brandId;
   private Boolean embed;
 
   public String getId() {
@@ -84,6 +85,10 @@ public class HostedPage {
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public Boolean getEmbed() {
@@ -279,6 +284,8 @@ public class HostedPage {
 
     obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
+    obj.brandId = JsonUtil.getString(jsonObj, "brand_id");
+
     obj.embed = JsonUtil.getBoolean(jsonObj, "embed");
 
     return obj;
@@ -315,6 +322,8 @@ public class HostedPage {
         + checkoutInfo
         + ", businessEntityId="
         + businessEntityId
+        + ", brandId="
+        + brandId
         + ", embed="
         + embed
         + "}";
@@ -340,6 +349,7 @@ public class HostedPage {
         && java.util.Objects.equals(resourceVersion, that.resourceVersion)
         && java.util.Objects.equals(checkoutInfo, that.checkoutInfo)
         && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(brandId, that.brandId)
         && java.util.Objects.equals(embed, that.embed);
   }
 
@@ -361,6 +371,7 @@ public class HostedPage {
         resourceVersion,
         checkoutInfo,
         businessEntityId,
+        brandId,
         embed);
   }
 }

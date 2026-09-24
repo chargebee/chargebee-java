@@ -764,6 +764,8 @@ public final class CustomerListParams {
 
     EXEMPT("exempt"),
 
+    ZERO_RATED("zero_rated"),
+
     /** An enum member indicating that TaxabilityIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -791,6 +793,8 @@ public final class CustomerListParams {
     TAXABLE("taxable"),
 
     EXEMPT("exempt"),
+
+    ZERO_RATED("zero_rated"),
 
     /** An enum member indicating that TaxabilityIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -820,6 +824,8 @@ public final class CustomerListParams {
 
     EXEMPT("exempt"),
 
+    ZERO_RATED("zero_rated"),
+
     /** An enum member indicating that TaxabilityIn was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -847,6 +853,8 @@ public final class CustomerListParams {
     TAXABLE("taxable"),
 
     EXEMPT("exempt"),
+
+    ZERO_RATED("zero_rated"),
 
     /** An enum member indicating that TaxabilityNotIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1319,6 +1327,8 @@ public final class CustomerListParams {
     TAXABLE("taxable"),
 
     EXEMPT("exempt"),
+
+    ZERO_RATED("zero_rated"),
 
     /** An enum member indicating that Taxability was instantiated with an unknown value. */
     _UNKNOWN(null);

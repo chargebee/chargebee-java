@@ -20,6 +20,8 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
 
   private final String businessEntityId;
 
+  private final String brandId;
+
   private final Boolean autoSelectLocalCurrency;
 
   private final java.util.Map<String, Object> custom;
@@ -44,6 +46,8 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
     this.redirectUrl = builder.redirectUrl;
 
     this.businessEntityId = builder.businessEntityId;
+
+    this.brandId = builder.brandId;
 
     this.autoSelectLocalCurrency = builder.autoSelectLocalCurrency;
 
@@ -70,6 +74,10 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public Boolean getAutoSelectLocalCurrency() {
@@ -120,6 +128,11 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
     if (this.businessEntityId != null) {
 
       formData.put("business_entity_id", this.businessEntityId);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.autoSelectLocalCurrency != null) {
@@ -222,6 +235,8 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
 
     private String businessEntityId;
 
+    private String brandId;
+
     private Boolean autoSelectLocalCurrency;
 
     private java.util.Map<String, Object> custom;
@@ -249,6 +264,11 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
 
     public PricingPageSessionCreateForNewSubscriptionBuilder businessEntityId(String value) {
       this.businessEntityId = value;
+      return this;
+    }
+
+    public PricingPageSessionCreateForNewSubscriptionBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 

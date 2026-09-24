@@ -13,9 +13,13 @@ import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 import java.util.concurrent.CompletableFuture;
 
+import com.chargebee.v4.models.paymentScheduleScheme.params.PaymentScheduleSchemeListParams;
+
 import com.chargebee.v4.models.paymentScheduleScheme.params.PaymentScheduleSchemeCreateParams;
 
 import com.chargebee.v4.models.paymentScheduleScheme.responses.PaymentScheduleSchemeRetrieveResponse;
+
+import com.chargebee.v4.models.paymentScheduleScheme.responses.PaymentScheduleSchemeListResponse;
 
 import com.chargebee.v4.models.paymentScheduleScheme.responses.PaymentScheduleSchemeCreateResponse;
 
@@ -87,6 +91,74 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
             response ->
                 PaymentScheduleSchemeRetrieveResponse.fromJson(
                     response.getBodyAsString(), response));
+  }
+
+  /**
+   * list a paymentScheduleScheme using immutable params (executes immediately) - returns raw
+   * Response.
+   */
+  Response listRaw(PaymentScheduleSchemeListParams params) throws ChargebeeException {
+
+    return get(
+        "paymentScheduleScheme",
+        "list",
+        "/payment_schedule_schemes",
+        params != null ? params.toQueryParams() : null);
+  }
+
+  /** list a paymentScheduleScheme without params (executes immediately) - returns raw Response. */
+  Response listRaw() throws ChargebeeException {
+
+    return get("paymentScheduleScheme", "list", "/payment_schedule_schemes", null);
+  }
+
+  /**
+   * list a paymentScheduleScheme using raw JSON payload (executes immediately) - returns raw
+   * Response.
+   */
+  Response listRaw(String jsonPayload) throws ChargebeeException {
+
+    throw new UnsupportedOperationException("JSON payload not supported for GET operations");
+  }
+
+  public PaymentScheduleSchemeListResponse list(PaymentScheduleSchemeListParams params)
+      throws ChargebeeException {
+    Response response = listRaw(params);
+
+    return PaymentScheduleSchemeListResponse.fromJson(
+        response.getBodyAsString(), this, params, response);
+  }
+
+  /** Async variant of list for paymentScheduleScheme with params. */
+  public CompletableFuture<PaymentScheduleSchemeListResponse> listAsync(
+      PaymentScheduleSchemeListParams params) {
+
+    return getAsync(
+            "paymentScheduleScheme",
+            "list",
+            "/payment_schedule_schemes",
+            params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                PaymentScheduleSchemeListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
+  public PaymentScheduleSchemeListResponse list() throws ChargebeeException {
+    Response response = listRaw();
+
+    return PaymentScheduleSchemeListResponse.fromJson(
+        response.getBodyAsString(), this, null, response);
+  }
+
+  /** Async variant of list for paymentScheduleScheme without params. */
+  public CompletableFuture<PaymentScheduleSchemeListResponse> listAsync() {
+
+    return getAsync("paymentScheduleScheme", "list", "/payment_schedule_schemes", null)
+        .thenApply(
+            response ->
+                PaymentScheduleSchemeListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 
   /**

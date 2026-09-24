@@ -9,9 +9,7 @@ package com.chargebee.v4.telemetry;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**
- * Per-client gate so the SDK telemetry header is considered at most once per client instance.
- */
+/** Per-client gate so the SDK telemetry header is considered at most once per client instance. */
 public final class SdkTelemetryState {
 
   private final AtomicBoolean emitted = new AtomicBoolean(false);

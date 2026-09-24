@@ -74,6 +74,7 @@ public class Subscription {
   private Boolean autoCloseInvoices;
   private String businessEntityId;
   private Boolean decommissioned;
+  private String brandId;
   private List<SubscriptionItems> subscriptionItems;
   private List<ItemTiers> itemTiers;
   private List<ChargedItems> chargedItems;
@@ -333,6 +334,10 @@ public class Subscription {
 
   public Boolean getDecommissioned() {
     return decommissioned;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public List<SubscriptionItems> getSubscriptionItems() {
@@ -848,6 +853,8 @@ public class Subscription {
 
     knownFields.add("decommissioned");
 
+    knownFields.add("brand_id");
+
     knownFields.add("subscription_items");
 
     knownFields.add("item_tiers");
@@ -1013,6 +1020,8 @@ public class Subscription {
     obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
     obj.decommissioned = JsonUtil.getBoolean(jsonObj, "decommissioned");
+
+    obj.brandId = JsonUtil.getString(jsonObj, "brand_id");
 
     obj.subscriptionItems =
         JsonUtil.mapArray(
@@ -1202,6 +1211,8 @@ public class Subscription {
         + businessEntityId
         + ", decommissioned="
         + decommissioned
+        + ", brandId="
+        + brandId
         + ", subscriptionItems="
         + subscriptionItems
         + ", itemTiers="
@@ -1313,6 +1324,7 @@ public class Subscription {
         && java.util.Objects.equals(autoCloseInvoices, that.autoCloseInvoices)
         && java.util.Objects.equals(businessEntityId, that.businessEntityId)
         && java.util.Objects.equals(decommissioned, that.decommissioned)
+        && java.util.Objects.equals(brandId, that.brandId)
         && java.util.Objects.equals(subscriptionItems, that.subscriptionItems)
         && java.util.Objects.equals(itemTiers, that.itemTiers)
         && java.util.Objects.equals(chargedItems, that.chargedItems)
@@ -1399,6 +1411,7 @@ public class Subscription {
         autoCloseInvoices,
         businessEntityId,
         decommissioned,
+        brandId,
         subscriptionItems,
         itemTiers,
         chargedItems,
@@ -1449,6 +1462,7 @@ public class Subscription {
     private ChargeOnOption chargeOnOption;
     private ProrationType prorationType;
     private UsageAccumulationResetFrequency usageAccumulationResetFrequency;
+    private String description;
 
     public String getItemPriceId() {
       return itemPriceId;
@@ -1550,6 +1564,10 @@ public class Subscription {
 
     public UsageAccumulationResetFrequency getUsageAccumulationResetFrequency() {
       return usageAccumulationResetFrequency;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     public enum ItemType {
@@ -1804,6 +1822,8 @@ public class Subscription {
           UsageAccumulationResetFrequency.fromString(
               JsonUtil.getString(jsonObj, "usage_accumulation_reset_frequency"));
 
+      obj.description = JsonUtil.getString(jsonObj, "description");
+
       return obj;
     }
 
@@ -1860,6 +1880,8 @@ public class Subscription {
           + prorationType
           + ", usageAccumulationResetFrequency="
           + usageAccumulationResetFrequency
+          + ", description="
+          + description
           + "}";
     }
 
@@ -1894,7 +1916,8 @@ public class Subscription {
           && java.util.Objects.equals(chargeOnOption, that.chargeOnOption)
           && java.util.Objects.equals(prorationType, that.prorationType)
           && java.util.Objects.equals(
-              usageAccumulationResetFrequency, that.usageAccumulationResetFrequency);
+              usageAccumulationResetFrequency, that.usageAccumulationResetFrequency)
+          && java.util.Objects.equals(description, that.description);
     }
 
     @Override
@@ -1925,7 +1948,8 @@ public class Subscription {
           chargeOnce,
           chargeOnOption,
           prorationType,
-          usageAccumulationResetFrequency);
+          usageAccumulationResetFrequency,
+          description);
     }
   }
 

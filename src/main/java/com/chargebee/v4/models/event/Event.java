@@ -21,6 +21,7 @@ public class Event {
   @Deprecated private WebhookStatus webhookStatus;
   @Deprecated private String webhookFailureReason;
   private EventType eventType;
+  private String siteId;
   private ApiVersion apiVersion;
   private java.util.Map<String, Object> content;
   private String originUser;
@@ -54,6 +55,10 @@ public class Event {
 
   public EventType getEventType() {
     return eventType;
+  }
+
+  public String getSiteId() {
+    return siteId;
   }
 
   public ApiVersion getApiVersion() {
@@ -276,6 +281,10 @@ public class Event {
     CREDIT_NOTE_UPDATED("credit_note_updated"),
 
     CREDIT_NOTE_DELETED("credit_note_deleted"),
+
+    EINVOICE_CREATED("einvoice_created"),
+
+    EINVOICE_UPDATED("einvoice_updated"),
 
     PAYMENT_SCHEDULES_CREATED("payment_schedules_created"),
 
@@ -625,11 +634,35 @@ public class Event {
 
     LEDGER_UPDATED("ledger_updated"),
 
+    BUSINESS_RULE_CREATED("business_rule_created"),
+
+    BUSINESS_RULE_UPDATED("business_rule_updated"),
+
+    BUSINESS_RULE_ACTIVATED("business_rule_activated"),
+
+    BUSINESS_RULE_DEACTIVATED("business_rule_deactivated"),
+
+    BUSINESS_RULE_DELETED("business_rule_deleted"),
+
+    BUSINESS_RULE_RELEASED("business_rule_released"),
+
     VAULT_TOKEN_CREATED("vault_token_created"),
 
     VAULT_TOKEN_UPDATED("vault_token_updated"),
 
     VAULT_TOKEN_DELETED("vault_token_deleted"),
+
+    BUSINESS_RULES_APPLIED("business_rules_applied"),
+
+    BUSINESS_RULESET_CREATED("business_ruleset_created"),
+
+    BUSINESS_RULESET_UPDATED("business_ruleset_updated"),
+
+    BUSINESS_RULESET_ACTIVATED("business_ruleset_activated"),
+
+    BUSINESS_RULESET_DEACTIVATED("business_ruleset_deactivated"),
+
+    BUSINESS_RULESET_DELETED("business_ruleset_deleted"),
 
     PLAN_CREATED("plan_created"),
 
@@ -719,6 +752,8 @@ public class Event {
 
     obj.eventType = EventType.fromString(JsonUtil.getString(jsonObj, "event_type"));
 
+    obj.siteId = JsonUtil.getString(jsonObj, "site_id");
+
     obj.apiVersion = ApiVersion.fromString(JsonUtil.getString(jsonObj, "api_version"));
 
     JsonObject __contentObj = JsonUtil.getJsonObject(jsonObj, "content");
@@ -752,6 +787,8 @@ public class Event {
         + webhookFailureReason
         + ", eventType="
         + eventType
+        + ", siteId="
+        + siteId
         + ", apiVersion="
         + apiVersion
         + ", content="
@@ -776,6 +813,7 @@ public class Event {
         && java.util.Objects.equals(webhookStatus, that.webhookStatus)
         && java.util.Objects.equals(webhookFailureReason, that.webhookFailureReason)
         && java.util.Objects.equals(eventType, that.eventType)
+        && java.util.Objects.equals(siteId, that.siteId)
         && java.util.Objects.equals(apiVersion, that.apiVersion)
         && java.util.Objects.equals(content, that.content)
         && java.util.Objects.equals(originUser, that.originUser)
@@ -793,6 +831,7 @@ public class Event {
         webhookStatus,
         webhookFailureReason,
         eventType,
+        siteId,
         apiVersion,
         content,
         originUser,

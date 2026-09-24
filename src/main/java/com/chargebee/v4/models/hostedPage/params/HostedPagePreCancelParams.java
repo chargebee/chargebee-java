@@ -13,6 +13,8 @@ import java.util.Map;
 
 public final class HostedPagePreCancelParams {
 
+  private final String brandId;
+
   private final String passThruContent;
 
   private final String cancelUrl;
@@ -25,6 +27,8 @@ public final class HostedPagePreCancelParams {
 
   private HostedPagePreCancelParams(HostedPagePreCancelBuilder builder) {
 
+    this.brandId = builder.brandId;
+
     this.passThruContent = builder.passThruContent;
 
     this.cancelUrl = builder.cancelUrl;
@@ -34,6 +38,10 @@ public final class HostedPagePreCancelParams {
     this.locale = builder.locale;
 
     this.subscription = builder.subscription;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public String getPassThruContent() {
@@ -59,6 +67,11 @@ public final class HostedPagePreCancelParams {
   /** Get the form data for this request. */
   public Map<String, Object> toFormData() {
     Map<String, Object> formData = new LinkedHashMap<>();
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
+    }
 
     if (this.passThruContent != null) {
 
@@ -101,6 +114,8 @@ public final class HostedPagePreCancelParams {
 
   public static final class HostedPagePreCancelBuilder {
 
+    private String brandId;
+
     private String passThruContent;
 
     private String cancelUrl;
@@ -112,6 +127,11 @@ public final class HostedPagePreCancelParams {
     private SubscriptionParams subscription;
 
     private HostedPagePreCancelBuilder() {}
+
+    public HostedPagePreCancelBuilder brandId(String value) {
+      this.brandId = value;
+      return this;
+    }
 
     public HostedPagePreCancelBuilder passThruContent(String value) {
       this.passThruContent = value;

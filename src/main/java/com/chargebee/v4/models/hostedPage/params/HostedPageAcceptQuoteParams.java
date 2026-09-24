@@ -13,6 +13,8 @@ import java.util.Map;
 
 public final class HostedPageAcceptQuoteParams {
 
+  private final String brandId;
+
   private final String redirectUrl;
 
   private final Layout layout;
@@ -21,11 +23,17 @@ public final class HostedPageAcceptQuoteParams {
 
   private HostedPageAcceptQuoteParams(HostedPageAcceptQuoteBuilder builder) {
 
+    this.brandId = builder.brandId;
+
     this.redirectUrl = builder.redirectUrl;
 
     this.layout = builder.layout;
 
     this.quote = builder.quote;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public String getRedirectUrl() {
@@ -43,6 +51,11 @@ public final class HostedPageAcceptQuoteParams {
   /** Get the form data for this request. */
   public Map<String, Object> toFormData() {
     Map<String, Object> formData = new LinkedHashMap<>();
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
+    }
 
     if (this.redirectUrl != null) {
 
@@ -75,6 +88,8 @@ public final class HostedPageAcceptQuoteParams {
 
   public static final class HostedPageAcceptQuoteBuilder {
 
+    private String brandId;
+
     private String redirectUrl;
 
     private Layout layout;
@@ -82,6 +97,11 @@ public final class HostedPageAcceptQuoteParams {
     private QuoteParams quote;
 
     private HostedPageAcceptQuoteBuilder() {}
+
+    public HostedPageAcceptQuoteBuilder brandId(String value) {
+      this.brandId = value;
+      return this;
+    }
 
     public HostedPageAcceptQuoteBuilder redirectUrl(String value) {
       this.redirectUrl = value;
