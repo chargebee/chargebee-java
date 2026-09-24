@@ -1085,6 +1085,7 @@ public class SalesOrder {
     private String itemPriceId;
     private Timestamp startDate;
     private Timestamp endDate;
+    private Timestamp applyTill;
 
     public String getId() {
       return id;
@@ -1136,6 +1137,10 @@ public class SalesOrder {
 
     public Timestamp getEndDate() {
       return endDate;
+    }
+
+    public Timestamp getApplyTill() {
+      return applyTill;
     }
 
     public enum Type {
@@ -1295,6 +1300,8 @@ public class SalesOrder {
 
       obj.endDate = JsonUtil.getTimestamp(jsonObj, "end_date");
 
+      obj.applyTill = JsonUtil.getTimestamp(jsonObj, "apply_till");
+
       return obj;
     }
 
@@ -1327,6 +1334,8 @@ public class SalesOrder {
           + startDate
           + ", endDate="
           + endDate
+          + ", applyTill="
+          + applyTill
           + "}";
     }
 
@@ -1348,7 +1357,8 @@ public class SalesOrder {
           && java.util.Objects.equals(periodUnit, that.periodUnit)
           && java.util.Objects.equals(itemPriceId, that.itemPriceId)
           && java.util.Objects.equals(startDate, that.startDate)
-          && java.util.Objects.equals(endDate, that.endDate);
+          && java.util.Objects.equals(endDate, that.endDate)
+          && java.util.Objects.equals(applyTill, that.applyTill);
     }
 
     @Override
@@ -1367,7 +1377,8 @@ public class SalesOrder {
           periodUnit,
           itemPriceId,
           startDate,
-          endDate);
+          endDate,
+          applyTill);
     }
   }
 

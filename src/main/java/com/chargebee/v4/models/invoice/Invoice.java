@@ -64,6 +64,7 @@ public class Invoice {
   private String vatNumberPrefix;
   private Channel channel;
   private String businessEntityId;
+  private String brandId;
   private List<ExchangeRates> exchangeRates;
   private List<LineItems> lineItems;
   private List<LineItemTiers> lineItemTiers;
@@ -280,6 +281,10 @@ public class Invoice {
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public List<ExchangeRates> getExchangeRates() {
@@ -629,6 +634,8 @@ public class Invoice {
 
     knownFields.add("business_entity_id");
 
+    knownFields.add("brand_id");
+
     knownFields.add("exchange_rates");
 
     knownFields.add("line_items");
@@ -770,6 +777,8 @@ public class Invoice {
     obj.channel = Channel.fromString(JsonUtil.getString(jsonObj, "channel"));
 
     obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
+
+    obj.brandId = JsonUtil.getString(jsonObj, "brand_id");
 
     obj.exchangeRates =
         JsonUtil.mapArray(
@@ -969,6 +978,8 @@ public class Invoice {
         + channel
         + ", businessEntityId="
         + businessEntityId
+        + ", brandId="
+        + brandId
         + ", exchangeRates="
         + exchangeRates
         + ", lineItems="
@@ -1074,6 +1085,7 @@ public class Invoice {
         && java.util.Objects.equals(vatNumberPrefix, that.vatNumberPrefix)
         && java.util.Objects.equals(channel, that.channel)
         && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(brandId, that.brandId)
         && java.util.Objects.equals(exchangeRates, that.exchangeRates)
         && java.util.Objects.equals(lineItems, that.lineItems)
         && java.util.Objects.equals(lineItemTiers, that.lineItemTiers)
@@ -1152,6 +1164,7 @@ public class Invoice {
         vatNumberPrefix,
         channel,
         businessEntityId,
+        brandId,
         exchangeRates,
         lineItems,
         lineItemTiers,

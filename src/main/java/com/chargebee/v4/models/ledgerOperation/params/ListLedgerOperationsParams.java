@@ -217,6 +217,8 @@ public final class ListLedgerOperationsParams {
 
     ADJUSTMENT("adjustment"),
 
+    OVERDRAFT_SETTLEMENT("overdraft_settlement"),
+
     /** An enum member indicating that TypeIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -258,6 +260,8 @@ public final class ListLedgerOperationsParams {
     ROLLOVER("rollover"),
 
     ADJUSTMENT("adjustment"),
+
+    OVERDRAFT_SETTLEMENT("overdraft_settlement"),
 
     /** An enum member indicating that TypeIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -352,6 +356,8 @@ public final class ListLedgerOperationsParams {
     ROLLOVER("rollover"),
 
     ADJUSTMENT("adjustment"),
+
+    OVERDRAFT_SETTLEMENT("overdraft_settlement"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);

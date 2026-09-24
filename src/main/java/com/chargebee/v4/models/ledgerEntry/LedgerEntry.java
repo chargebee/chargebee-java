@@ -15,9 +15,9 @@ public class LedgerEntry {
 
   private String id;
   private String subscriptionId;
-  private AccountType accountType;
   private String unitId;
   private UnitType unitType;
+  private AccountType accountType;
   private String amount;
   private String grantBlockStartBalance;
   private String grantBlockEndBalance;
@@ -37,16 +37,16 @@ public class LedgerEntry {
     return subscriptionId;
   }
 
-  public AccountType getAccountType() {
-    return accountType;
-  }
-
   public String getUnitId() {
     return unitId;
   }
 
   public UnitType getUnitType() {
     return unitType;
+  }
+
+  public AccountType getAccountType() {
+    return accountType;
   }
 
   public String getAmount() {
@@ -89,6 +89,32 @@ public class LedgerEntry {
     return modifiedAt;
   }
 
+  public enum UnitType {
+    CREDIT_UNIT("credit_unit"),
+
+    /** An enum member indicating that UnitType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    UnitType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static UnitType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (UnitType enumValue : UnitType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum AccountType {
     PROVISIONED("provisioned"),
 
@@ -109,32 +135,6 @@ public class LedgerEntry {
     public static AccountType fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (AccountType enumValue : AccountType.values()) {
-        if (enumValue.value != null && enumValue.value.equals(value)) {
-          return enumValue;
-        }
-      }
-      return _UNKNOWN;
-    }
-  }
-
-  public enum UnitType {
-    CREDIT_UNIT("credit_unit"),
-
-    /** An enum member indicating that UnitType was instantiated with an unknown value. */
-    _UNKNOWN(null);
-    private final String value;
-
-    UnitType(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    public static UnitType fromString(String value) {
-      if (value == null) return _UNKNOWN;
-      for (UnitType enumValue : UnitType.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
@@ -190,11 +190,11 @@ public class LedgerEntry {
 
     obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.accountType = AccountType.fromString(JsonUtil.getString(jsonObj, "account_type"));
-
     obj.unitId = JsonUtil.getString(jsonObj, "unit_id");
 
     obj.unitType = UnitType.fromString(JsonUtil.getString(jsonObj, "unit_type"));
+
+    obj.accountType = AccountType.fromString(JsonUtil.getString(jsonObj, "account_type"));
 
     obj.amount = JsonUtil.getString(jsonObj, "amount");
 
@@ -226,12 +226,12 @@ public class LedgerEntry {
         + id
         + ", subscriptionId="
         + subscriptionId
-        + ", accountType="
-        + accountType
         + ", unitId="
         + unitId
         + ", unitType="
         + unitType
+        + ", accountType="
+        + accountType
         + ", amount="
         + amount
         + ", grantBlockStartBalance="
@@ -263,9 +263,9 @@ public class LedgerEntry {
     LedgerEntry that = (LedgerEntry) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(subscriptionId, that.subscriptionId)
-        && java.util.Objects.equals(accountType, that.accountType)
         && java.util.Objects.equals(unitId, that.unitId)
         && java.util.Objects.equals(unitType, that.unitType)
+        && java.util.Objects.equals(accountType, that.accountType)
         && java.util.Objects.equals(amount, that.amount)
         && java.util.Objects.equals(grantBlockStartBalance, that.grantBlockStartBalance)
         && java.util.Objects.equals(grantBlockEndBalance, that.grantBlockEndBalance)
@@ -284,9 +284,9 @@ public class LedgerEntry {
     return java.util.Objects.hash(
         id,
         subscriptionId,
-        accountType,
         unitId,
         unitType,
+        accountType,
         amount,
         grantBlockStartBalance,
         grantBlockEndBalance,

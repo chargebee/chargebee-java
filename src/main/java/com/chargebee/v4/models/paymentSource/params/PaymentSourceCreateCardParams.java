@@ -16,6 +16,8 @@ public final class PaymentSourceCreateCardParams {
 
   private final String customerId;
 
+  private final String brandId;
+
   private final Boolean replacePrimaryPaymentSource;
 
   private final CardParams card;
@@ -24,6 +26,8 @@ public final class PaymentSourceCreateCardParams {
 
     this.customerId = builder.customerId;
 
+    this.brandId = builder.brandId;
+
     this.replacePrimaryPaymentSource = builder.replacePrimaryPaymentSource;
 
     this.card = builder.card;
@@ -31,6 +35,10 @@ public final class PaymentSourceCreateCardParams {
 
   public String getCustomerId() {
     return customerId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public Boolean getReplacePrimaryPaymentSource() {
@@ -48,6 +56,11 @@ public final class PaymentSourceCreateCardParams {
     if (this.customerId != null) {
 
       formData.put("customer_id", this.customerId);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.replacePrimaryPaymentSource != null) {
@@ -78,6 +91,8 @@ public final class PaymentSourceCreateCardParams {
 
     private String customerId;
 
+    private String brandId;
+
     private Boolean replacePrimaryPaymentSource;
 
     private CardParams card;
@@ -86,6 +101,11 @@ public final class PaymentSourceCreateCardParams {
 
     public PaymentSourceCreateCardBuilder customerId(String value) {
       this.customerId = value;
+      return this;
+    }
+
+    public PaymentSourceCreateCardBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 
@@ -457,6 +477,8 @@ public final class PaymentSourceCreateCardParams {
       MASTERCARD("mastercard"),
 
       VISA("visa"),
+
+      DANKORT("dankort"),
 
       /** An enum member indicating that PreferredScheme was instantiated with an unknown value. */
       _UNKNOWN(null);

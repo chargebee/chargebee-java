@@ -21,6 +21,8 @@ public final class SubscriptionCreateWithItemsParams {
 
   private final String businessEntityId;
 
+  private final String brandId;
+
   private final Timestamp trialEnd;
 
   private final Integer billingCycles;
@@ -102,6 +104,8 @@ public final class SubscriptionCreateWithItemsParams {
     this.id = builder.id;
 
     this.businessEntityId = builder.businessEntityId;
+
+    this.brandId = builder.brandId;
 
     this.trialEnd = builder.trialEnd;
 
@@ -189,6 +193,10 @@ public final class SubscriptionCreateWithItemsParams {
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public Timestamp getTrialEnd() {
@@ -355,6 +363,11 @@ public final class SubscriptionCreateWithItemsParams {
     if (this.businessEntityId != null) {
 
       formData.put("business_entity_id", this.businessEntityId);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.trialEnd != null) {
@@ -625,6 +638,8 @@ public final class SubscriptionCreateWithItemsParams {
 
     private String businessEntityId;
 
+    private String brandId;
+
     private Timestamp trialEnd;
 
     private Integer billingCycles;
@@ -710,6 +725,11 @@ public final class SubscriptionCreateWithItemsParams {
 
     public SubscriptionCreateWithItemsBuilder businessEntityId(String value) {
       this.businessEntityId = value;
+      return this;
+    }
+
+    public SubscriptionCreateWithItemsBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 
@@ -1806,6 +1826,32 @@ public final class SubscriptionCreateWithItemsParams {
 
       QPAY("qpay"),
 
+      OVO("ovo"),
+
+      MOMO("momo"),
+
+      MERCADO_PAGO("mercado_pago"),
+
+      NEQUI("nequi"),
+
+      NUPAY("nupay"),
+
+      PICPAY("picpay"),
+
+      THAI_QR("thai_qr"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
+
+      AFFIRM_PAY("affirm_pay"),
+
+      RAKUTEN_PAY("rakuten_pay"),
+
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
        */
@@ -2043,6 +2089,8 @@ public final class SubscriptionCreateWithItemsParams {
 
     private final ItemType itemType;
 
+    private final String description;
+
     private final ChargeOnOption chargeOnOption;
 
     private final UsageAccumulationResetFrequency usageAccumulationResetFrequency;
@@ -2070,6 +2118,8 @@ public final class SubscriptionCreateWithItemsParams {
       this.chargeOnce = builder.chargeOnce;
 
       this.itemType = builder.itemType;
+
+      this.description = builder.description;
 
       this.chargeOnOption = builder.chargeOnOption;
 
@@ -2118,6 +2168,10 @@ public final class SubscriptionCreateWithItemsParams {
 
     public ItemType getItemType() {
       return itemType;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     public ChargeOnOption getChargeOnOption() {
@@ -2187,6 +2241,11 @@ public final class SubscriptionCreateWithItemsParams {
         formData.put("item_type", this.itemType);
       }
 
+      if (this.description != null) {
+
+        formData.put("description", this.description);
+      }
+
       if (this.chargeOnOption != null) {
 
         formData.put("charge_on_option", this.chargeOnOption);
@@ -2229,6 +2288,8 @@ public final class SubscriptionCreateWithItemsParams {
       private Boolean chargeOnce;
 
       private ItemType itemType;
+
+      private String description;
 
       private ChargeOnOption chargeOnOption;
 
@@ -2288,6 +2349,11 @@ public final class SubscriptionCreateWithItemsParams {
 
       public SubscriptionItemsBuilder itemType(ItemType value) {
         this.itemType = value;
+        return this;
+      }
+
+      public SubscriptionItemsBuilder description(String value) {
+        this.description = value;
         return this;
       }
 

@@ -67,6 +67,8 @@ import com.chargebee.v4.models.creditNote.responses.CreditNoteRemoveTaxWithheldR
 
 import com.chargebee.v4.models.creditNote.responses.CreditNoteRetrieveResponse;
 
+import com.chargebee.v4.models.creditNote.responses.CreditNoteSendEmailResponse;
+
 public final class CreditNoteService extends BaseService<CreditNoteService> {
 
   private final ServiceConfig config;
@@ -866,5 +868,30 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return getAsync("creditNote", "retrieve", path, null)
         .thenApply(
             response -> CreditNoteRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
+  /** sendEmail a creditNote (executes immediately) - returns raw Response. */
+  Response sendEmailRaw(String creditNoteId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/send_email", "credit-note-id", creditNoteId);
+
+    return post("creditNote", "sendEmail", path, null);
+  }
+
+  public CreditNoteSendEmailResponse sendEmail(String creditNoteId) throws ChargebeeException {
+    Response response = sendEmailRaw(creditNoteId);
+    return CreditNoteSendEmailResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of sendEmail for creditNote without params. */
+  public CompletableFuture<CreditNoteSendEmailResponse> sendEmailAsync(String creditNoteId) {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/send_email", "credit-note-id", creditNoteId);
+
+    return postAsync("creditNote", "sendEmail", path, null)
+        .thenApply(
+            response -> CreditNoteSendEmailResponse.fromJson(response.getBodyAsString(), response));
   }
 }

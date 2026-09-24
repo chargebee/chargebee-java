@@ -32,6 +32,7 @@ public class PaymentIntent {
   private String customerId;
   private String gateway;
   private String businessEntityId;
+  private String brandId;
   private ActivePaymentAttempt activePaymentAttempt;
   private List<PaymentAttempts> paymentAttempts;
   private PaymentIntentMetadata paymentIntentMetadata;
@@ -106,6 +107,10 @@ public class PaymentIntent {
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public ActivePaymentAttempt getActivePaymentAttempt() {
@@ -259,6 +264,32 @@ public class PaymentIntent {
 
     QPAY("qpay"),
 
+    OVO("ovo"),
+
+    MOMO("momo"),
+
+    MERCADO_PAGO("mercado_pago"),
+
+    NEQUI("nequi"),
+
+    NUPAY("nupay"),
+
+    PICPAY("picpay"),
+
+    THAI_QR("thai_qr"),
+
+    BLIK("blik"),
+
+    FPX("fpx"),
+
+    WERO("wero"),
+
+    P24("p24"),
+
+    AFFIRM_PAY("affirm_pay"),
+
+    RAKUTEN_PAY("rakuten_pay"),
+
     /** An enum member indicating that PaymentMethodType was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -335,6 +366,8 @@ public class PaymentIntent {
 
     obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
+    obj.brandId = JsonUtil.getString(jsonObj, "brand_id");
+
     JsonObject __activePaymentAttemptObj =
         JsonUtil.getJsonObject(jsonObj, "active_payment_attempt");
     if (__activePaymentAttemptObj != null) {
@@ -393,6 +426,8 @@ public class PaymentIntent {
         + gateway
         + ", businessEntityId="
         + businessEntityId
+        + ", brandId="
+        + brandId
         + ", activePaymentAttempt="
         + activePaymentAttempt
         + ", paymentAttempts="
@@ -426,6 +461,7 @@ public class PaymentIntent {
         && java.util.Objects.equals(customerId, that.customerId)
         && java.util.Objects.equals(gateway, that.gateway)
         && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(brandId, that.brandId)
         && java.util.Objects.equals(activePaymentAttempt, that.activePaymentAttempt)
         && java.util.Objects.equals(paymentAttempts, that.paymentAttempts)
         && java.util.Objects.equals(paymentIntentMetadata, that.paymentIntentMetadata);
@@ -453,6 +489,7 @@ public class PaymentIntent {
         customerId,
         gateway,
         businessEntityId,
+        brandId,
         activePaymentAttempt,
         paymentAttempts,
         paymentIntentMetadata);
@@ -663,6 +700,32 @@ public class PaymentIntent {
       TAMARA("tamara"),
 
       QPAY("qpay"),
+
+      OVO("ovo"),
+
+      MOMO("momo"),
+
+      MERCADO_PAGO("mercado_pago"),
+
+      NEQUI("nequi"),
+
+      NUPAY("nupay"),
+
+      PICPAY("picpay"),
+
+      THAI_QR("thai_qr"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
+
+      AFFIRM_PAY("affirm_pay"),
+
+      RAKUTEN_PAY("rakuten_pay"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
@@ -1209,6 +1272,32 @@ public class PaymentIntent {
       TAMARA("tamara"),
 
       QPAY("qpay"),
+
+      OVO("ovo"),
+
+      MOMO("momo"),
+
+      MERCADO_PAGO("mercado_pago"),
+
+      NEQUI("nequi"),
+
+      NUPAY("nupay"),
+
+      PICPAY("picpay"),
+
+      THAI_QR("thai_qr"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
+
+      AFFIRM_PAY("affirm_pay"),
+
+      RAKUTEN_PAY("rakuten_pay"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.

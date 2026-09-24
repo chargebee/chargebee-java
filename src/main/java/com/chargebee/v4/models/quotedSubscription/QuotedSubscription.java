@@ -529,6 +529,7 @@ public class QuotedSubscription {
     private ChargeOnOption chargeOnOption;
     private ProrationType prorationType;
     private UsageAccumulationResetFrequency usageAccumulationResetFrequency;
+    private String description;
 
     public String getItemPriceId() {
       return itemPriceId;
@@ -630,6 +631,10 @@ public class QuotedSubscription {
 
     public UsageAccumulationResetFrequency getUsageAccumulationResetFrequency() {
       return usageAccumulationResetFrequency;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     public enum ItemType {
@@ -884,6 +889,8 @@ public class QuotedSubscription {
           UsageAccumulationResetFrequency.fromString(
               JsonUtil.getString(jsonObj, "usage_accumulation_reset_frequency"));
 
+      obj.description = JsonUtil.getString(jsonObj, "description");
+
       return obj;
     }
 
@@ -940,6 +947,8 @@ public class QuotedSubscription {
           + prorationType
           + ", usageAccumulationResetFrequency="
           + usageAccumulationResetFrequency
+          + ", description="
+          + description
           + "}";
     }
 
@@ -974,7 +983,8 @@ public class QuotedSubscription {
           && java.util.Objects.equals(chargeOnOption, that.chargeOnOption)
           && java.util.Objects.equals(prorationType, that.prorationType)
           && java.util.Objects.equals(
-              usageAccumulationResetFrequency, that.usageAccumulationResetFrequency);
+              usageAccumulationResetFrequency, that.usageAccumulationResetFrequency)
+          && java.util.Objects.equals(description, that.description);
     }
 
     @Override
@@ -1005,7 +1015,8 @@ public class QuotedSubscription {
           chargeOnce,
           chargeOnOption,
           prorationType,
-          usageAccumulationResetFrequency);
+          usageAccumulationResetFrequency,
+          description);
     }
   }
 

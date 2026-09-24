@@ -16,6 +16,8 @@ public final class PaymentIntentCreateParams {
 
   private final String businessEntityId;
 
+  private final String brandId;
+
   private final String customerId;
 
   private final Long amount;
@@ -40,6 +42,8 @@ public final class PaymentIntentCreateParams {
 
     this.businessEntityId = builder.businessEntityId;
 
+    this.brandId = builder.brandId;
+
     this.customerId = builder.customerId;
 
     this.amount = builder.amount;
@@ -63,6 +67,10 @@ public final class PaymentIntentCreateParams {
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public String getCustomerId() {
@@ -112,6 +120,11 @@ public final class PaymentIntentCreateParams {
     if (this.businessEntityId != null) {
 
       formData.put("business_entity_id", this.businessEntityId);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.customerId != null) {
@@ -177,6 +190,8 @@ public final class PaymentIntentCreateParams {
 
     private String businessEntityId;
 
+    private String brandId;
+
     private String customerId;
 
     private Long amount;
@@ -201,6 +216,11 @@ public final class PaymentIntentCreateParams {
 
     public PaymentIntentCreateBuilder businessEntityId(String value) {
       this.businessEntityId = value;
+      return this;
+    }
+
+    public PaymentIntentCreateBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 
@@ -363,6 +383,32 @@ public final class PaymentIntentCreateParams {
     TAMARA("tamara"),
 
     QPAY("qpay"),
+
+    OVO("ovo"),
+
+    MOMO("momo"),
+
+    MERCADO_PAGO("mercado_pago"),
+
+    NEQUI("nequi"),
+
+    NUPAY("nupay"),
+
+    PICPAY("picpay"),
+
+    THAI_QR("thai_qr"),
+
+    BLIK("blik"),
+
+    FPX("fpx"),
+
+    WERO("wero"),
+
+    P24("p24"),
+
+    AFFIRM_PAY("affirm_pay"),
+
+    RAKUTEN_PAY("rakuten_pay"),
 
     /** An enum member indicating that PaymentMethodType was instantiated with an unknown value. */
     _UNKNOWN(null);

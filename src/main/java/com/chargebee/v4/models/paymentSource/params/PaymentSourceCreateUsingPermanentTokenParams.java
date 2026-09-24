@@ -16,6 +16,8 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
 
   private final String customerId;
 
+  private final String brandId;
+
   private final Type type;
 
   private final String gatewayAccountId;
@@ -47,6 +49,8 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
 
     this.customerId = builder.customerId;
 
+    this.brandId = builder.brandId;
+
     this.type = builder.type;
 
     this.gatewayAccountId = builder.gatewayAccountId;
@@ -76,6 +80,10 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
 
   public String getCustomerId() {
     return customerId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public Type getType() {
@@ -137,6 +145,11 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
     if (this.customerId != null) {
 
       formData.put("customer_id", this.customerId);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.type != null) {
@@ -227,6 +240,8 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
 
     private String customerId;
 
+    private String brandId;
+
     private Type type;
 
     private String gatewayAccountId;
@@ -257,6 +272,11 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
 
     public PaymentSourceCreateUsingPermanentTokenBuilder customerId(String value) {
       this.customerId = value;
+      return this;
+    }
+
+    public PaymentSourceCreateUsingPermanentTokenBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 
@@ -441,6 +461,32 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
     TAMARA("tamara"),
 
     QPAY("qpay"),
+
+    OVO("ovo"),
+
+    MOMO("momo"),
+
+    MERCADO_PAGO("mercado_pago"),
+
+    NEQUI("nequi"),
+
+    NUPAY("nupay"),
+
+    PICPAY("picpay"),
+
+    THAI_QR("thai_qr"),
+
+    BLIK("blik"),
+
+    FPX("fpx"),
+
+    WERO("wero"),
+
+    P24("p24"),
+
+    AFFIRM_PAY("affirm_pay"),
+
+    RAKUTEN_PAY("rakuten_pay"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);

@@ -16,17 +16,25 @@ public final class CreateVoucherPaymentSourceParams {
 
   private final String customerId;
 
+  private final String brandId;
+
   private final VoucherPaymentSourceParams voucherPaymentSource;
 
   private CreateVoucherPaymentSourceParams(CreateVoucherPaymentSourceBuilder builder) {
 
     this.customerId = builder.customerId;
 
+    this.brandId = builder.brandId;
+
     this.voucherPaymentSource = builder.voucherPaymentSource;
   }
 
   public String getCustomerId() {
     return customerId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public VoucherPaymentSourceParams getVoucherPaymentSource() {
@@ -40,6 +48,11 @@ public final class CreateVoucherPaymentSourceParams {
     if (this.customerId != null) {
 
       formData.put("customer_id", this.customerId);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.voucherPaymentSource != null) {
@@ -65,12 +78,19 @@ public final class CreateVoucherPaymentSourceParams {
 
     private String customerId;
 
+    private String brandId;
+
     private VoucherPaymentSourceParams voucherPaymentSource;
 
     private CreateVoucherPaymentSourceBuilder() {}
 
     public CreateVoucherPaymentSourceBuilder customerId(String value) {
       this.customerId = value;
+      return this;
+    }
+
+    public CreateVoucherPaymentSourceBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 

@@ -61,6 +61,7 @@ public class Transaction {
   private List<LinkedRefunds> linkedRefunds;
   private List<LinkedPayments> linkedPayments;
   private ErrorDetail errorDetail;
+  private NetworkTransactionDetails networkTransactionDetails;
 
   public String getId() {
     return id;
@@ -246,6 +247,10 @@ public class Transaction {
     return errorDetail;
   }
 
+  public NetworkTransactionDetails getNetworkTransactionDetails() {
+    return networkTransactionDetails;
+  }
+
   public enum PaymentMethod {
     CARD("card"),
 
@@ -374,6 +379,32 @@ public class Transaction {
     TAMARA("tamara"),
 
     QPAY("qpay"),
+
+    OVO("ovo"),
+
+    MOMO("momo"),
+
+    MERCADO_PAGO("mercado_pago"),
+
+    NEQUI("nequi"),
+
+    NUPAY("nupay"),
+
+    PICPAY("picpay"),
+
+    THAI_QR("thai_qr"),
+
+    BLIK("blik"),
+
+    FPX("fpx"),
+
+    WERO("wero"),
+
+    P24("p24"),
+
+    AFFIRM_PAY("affirm_pay"),
+
+    RAKUTEN_PAY("rakuten_pay"),
 
     /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -518,6 +549,8 @@ public class Transaction {
     MOYASAR("moyasar"),
 
     PAYWAY("payway"),
+
+    PAYU("payu"),
 
     NOT_APPLICABLE("not_applicable"),
 
@@ -819,6 +852,13 @@ public class Transaction {
       obj.errorDetail = ErrorDetail.fromJson(__errorDetailObj);
     }
 
+    JsonObject __networkTransactionDetailsObj =
+        JsonUtil.getJsonObject(jsonObj, "network_transaction_details");
+    if (__networkTransactionDetailsObj != null) {
+      obj.networkTransactionDetails =
+          NetworkTransactionDetails.fromJson(__networkTransactionDetailsObj);
+    }
+
     return obj;
   }
 
@@ -917,6 +957,8 @@ public class Transaction {
         + linkedPayments
         + ", errorDetail="
         + errorDetail
+        + ", networkTransactionDetails="
+        + networkTransactionDetails
         + "}";
   }
 
@@ -971,7 +1013,8 @@ public class Transaction {
         && java.util.Objects.equals(linkedCreditNotes, that.linkedCreditNotes)
         && java.util.Objects.equals(linkedRefunds, that.linkedRefunds)
         && java.util.Objects.equals(linkedPayments, that.linkedPayments)
-        && java.util.Objects.equals(errorDetail, that.errorDetail);
+        && java.util.Objects.equals(errorDetail, that.errorDetail)
+        && java.util.Objects.equals(networkTransactionDetails, that.networkTransactionDetails);
   }
 
   @Override
@@ -1023,7 +1066,8 @@ public class Transaction {
         linkedCreditNotes,
         linkedRefunds,
         linkedPayments,
-        errorDetail);
+        errorDetail,
+        networkTransactionDetails);
   }
 
   public static class LinkedInvoices {
@@ -1810,6 +1854,66 @@ public class Transaction {
           processorErrorMessage,
           errorCauseId,
           processorAdviceCode);
+    }
+  }
+
+  public static class NetworkTransactionDetails {
+
+    private String networkTransactionId;
+    private String originalNetworkTransactionId;
+
+    public String getNetworkTransactionId() {
+      return networkTransactionId;
+    }
+
+    public String getOriginalNetworkTransactionId() {
+      return originalNetworkTransactionId;
+    }
+
+    public static NetworkTransactionDetails fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static NetworkTransactionDetails fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
+    public static NetworkTransactionDetails fromJson(JsonObject jsonObj) {
+      NetworkTransactionDetails obj = new NetworkTransactionDetails();
+
+      obj.networkTransactionId = JsonUtil.getString(jsonObj, "network_transaction_id");
+
+      obj.originalNetworkTransactionId =
+          JsonUtil.getString(jsonObj, "original_network_transaction_id");
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "NetworkTransactionDetails{"
+          + "networkTransactionId="
+          + networkTransactionId
+          + ", originalNetworkTransactionId="
+          + originalNetworkTransactionId
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      NetworkTransactionDetails that = (NetworkTransactionDetails) o;
+      return java.util.Objects.equals(networkTransactionId, that.networkTransactionId)
+          && java.util.Objects.equals(
+              originalNetworkTransactionId, that.originalNetworkTransactionId);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(networkTransactionId, originalNetworkTransactionId);
     }
   }
 }

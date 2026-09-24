@@ -1777,6 +1777,10 @@ public final class ImportInvoiceParams {
 
     private final Long tax10Amount;
 
+    private final Boolean isPartialTaxApplied;
+
+    private final Long taxableAmount;
+
     private final ProrationMode prorationMode;
 
     private final Timestamp createdAt;
@@ -1856,6 +1860,10 @@ public final class ImportInvoiceParams {
       this.tax10Name = builder.tax10Name;
 
       this.tax10Amount = builder.tax10Amount;
+
+      this.isPartialTaxApplied = builder.isPartialTaxApplied;
+
+      this.taxableAmount = builder.taxableAmount;
 
       this.prorationMode = builder.prorationMode;
 
@@ -2008,6 +2016,14 @@ public final class ImportInvoiceParams {
 
     public Long getTax10Amount() {
       return tax10Amount;
+    }
+
+    public Boolean getIsPartialTaxApplied() {
+      return isPartialTaxApplied;
+    }
+
+    public Long getTaxableAmount() {
+      return taxableAmount;
     }
 
     public ProrationMode getProrationMode() {
@@ -2207,6 +2223,16 @@ public final class ImportInvoiceParams {
         formData.put("tax10_amount", this.tax10Amount);
       }
 
+      if (this.isPartialTaxApplied != null) {
+
+        formData.put("is_partial_tax_applied", this.isPartialTaxApplied);
+      }
+
+      if (this.taxableAmount != null) {
+
+        formData.put("taxable_amount", this.taxableAmount);
+      }
+
       if (this.prorationMode != null) {
 
         formData.put("proration_mode", this.prorationMode);
@@ -2301,6 +2327,10 @@ public final class ImportInvoiceParams {
       private String tax10Name;
 
       private Long tax10Amount;
+
+      private Boolean isPartialTaxApplied;
+
+      private Long taxableAmount;
 
       private ProrationMode prorationMode;
 
@@ -2490,6 +2520,16 @@ public final class ImportInvoiceParams {
 
       public LineItemsBuilder tax10Amount(Long value) {
         this.tax10Amount = value;
+        return this;
+      }
+
+      public LineItemsBuilder isPartialTaxApplied(Boolean value) {
+        this.isPartialTaxApplied = value;
+        return this;
+      }
+
+      public LineItemsBuilder taxableAmount(Long value) {
+        this.taxableAmount = value;
         return this;
       }
 
@@ -3421,13 +3461,17 @@ public final class ImportInvoiceParams {
 
       CUSTOM("custom"),
 
-      DANA("dana"),
-
-      TOUCH_N_GO("touch_n_go"),
-
       TAMARA("tamara"),
 
       QPAY("qpay"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
 
       /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
       _UNKNOWN(null);

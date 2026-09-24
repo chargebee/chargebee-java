@@ -13,6 +13,8 @@ import java.util.Map;
 
 public final class HostedPageClaimGiftParams {
 
+  private final String brandId;
+
   private final String redirectUrl;
 
   private final GiftParams gift;
@@ -21,11 +23,17 @@ public final class HostedPageClaimGiftParams {
 
   private HostedPageClaimGiftParams(HostedPageClaimGiftBuilder builder) {
 
+    this.brandId = builder.brandId;
+
     this.redirectUrl = builder.redirectUrl;
 
     this.gift = builder.gift;
 
     this.customer = builder.customer;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public String getRedirectUrl() {
@@ -43,6 +51,11 @@ public final class HostedPageClaimGiftParams {
   /** Get the form data for this request. */
   public Map<String, Object> toFormData() {
     Map<String, Object> formData = new LinkedHashMap<>();
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
+    }
 
     if (this.redirectUrl != null) {
 
@@ -80,6 +93,8 @@ public final class HostedPageClaimGiftParams {
 
   public static final class HostedPageClaimGiftBuilder {
 
+    private String brandId;
+
     private String redirectUrl;
 
     private GiftParams gift;
@@ -87,6 +102,11 @@ public final class HostedPageClaimGiftParams {
     private CustomerParams customer;
 
     private HostedPageClaimGiftBuilder() {}
+
+    public HostedPageClaimGiftBuilder brandId(String value) {
+      this.brandId = value;
+      return this;
+    }
 
     public HostedPageClaimGiftBuilder redirectUrl(String value) {
       this.redirectUrl = value;

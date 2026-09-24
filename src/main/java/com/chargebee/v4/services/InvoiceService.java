@@ -123,6 +123,8 @@ import com.chargebee.v4.models.invoice.responses.InvoiceCloseResponse;
 
 import com.chargebee.v4.models.invoice.responses.InvoiceApplyCreditsResponse;
 
+import com.chargebee.v4.models.invoice.responses.InvoiceSendEmailResponse;
+
 import com.chargebee.v4.models.invoice.responses.InvoiceRetrieveResponse;
 
 import com.chargebee.v4.models.invoice.responses.InvoiceCreateForChargeItemResponse;
@@ -1076,6 +1078,27 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     return postAsync("invoice", "applyCredits", path, null)
         .thenApply(
             response -> InvoiceApplyCreditsResponse.fromJson(response.getBodyAsString(), response));
+  }
+
+  /** sendEmail a invoice (executes immediately) - returns raw Response. */
+  Response sendEmailRaw(String invoiceId) throws ChargebeeException {
+    String path = buildPathWithParams("/invoices/{invoice-id}/send_email", "invoice-id", invoiceId);
+
+    return post("invoice", "sendEmail", path, null);
+  }
+
+  public InvoiceSendEmailResponse sendEmail(String invoiceId) throws ChargebeeException {
+    Response response = sendEmailRaw(invoiceId);
+    return InvoiceSendEmailResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of sendEmail for invoice without params. */
+  public CompletableFuture<InvoiceSendEmailResponse> sendEmailAsync(String invoiceId) {
+    String path = buildPathWithParams("/invoices/{invoice-id}/send_email", "invoice-id", invoiceId);
+
+    return postAsync("invoice", "sendEmail", path, null)
+        .thenApply(
+            response -> InvoiceSendEmailResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** retrieve a invoice (executes immediately) - returns raw Response. */
