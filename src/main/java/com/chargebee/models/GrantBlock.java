@@ -13,15 +13,15 @@ import java.util.*;
 
 public class GrantBlock extends Resource<GrantBlock> {
 
-    public enum AccountType {
-        PROVISIONED,
-        OVERDRAFT,
+    public enum UnitType {
+        CREDIT_UNIT,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
-    public enum UnitType {
-        CREDIT_UNIT,
+    public enum AccountType {
+        PROVISIONED,
+        OVERDRAFT,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -36,6 +36,72 @@ public class GrantBlock extends Resource<GrantBlock> {
         SUBSCRIPTION_RENEWED,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
+    public static class ProvisionedBlockBalance extends Resource<ProvisionedBlockBalance> {
+        public ProvisionedBlockBalance(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String grantedAmount() {
+            return optString("granted_amount");
+        }
+
+        public String totalBalance() {
+            return optString("total_balance");
+        }
+
+        public String usableBalance() {
+            return optString("usable_balance");
+        }
+
+        public String holdAmount() {
+            return optString("hold_amount");
+        }
+
+        public String usedAmount() {
+            return optString("used_amount");
+        }
+
+        public String expiredAmount() {
+            return optString("expired_amount");
+        }
+
+        public String rolledOverAmount() {
+            return optString("rolled_over_amount");
+        }
+
+        public String voidedAmount() {
+            return optString("voided_amount");
+        }
+
+    }
+
+    public static class OverdraftBlockBalance extends Resource<OverdraftBlockBalance> {
+        public OverdraftBlockBalance(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Boolean isUnlimited() {
+            return reqBoolean("is_unlimited");
+        }
+
+        public String limit() {
+            return optString("limit");
+        }
+
+        public String totalBalance() {
+            return optString("total_balance");
+        }
+
+        public String usableBalance() {
+            return optString("usable_balance");
+        }
+
+        public String usedAmount() {
+            return optString("used_amount");
+        }
+
     }
 
     //Constructors
@@ -57,21 +123,22 @@ public class GrantBlock extends Resource<GrantBlock> {
     }
 
     public String subscriptionId() {
-        return optString("subscription_id");
-    }
-
-    public AccountType accountType() {
-        return optEnum("account_type", AccountType.class);
+        return reqString("subscription_id");
     }
 
     public String unitId() {
-        return optString("unit_id");
+        return reqString("unit_id");
     }
 
     public UnitType unitType() {
-        return optEnum("unit_type", UnitType.class);
+        return reqEnum("unit_type", UnitType.class);
     }
 
+    public AccountType accountType() {
+        return reqEnum("account_type", AccountType.class);
+    }
+
+    @Deprecated
     public String grantedAmount() {
         return reqString("granted_amount");
     }
@@ -84,28 +151,34 @@ public class GrantBlock extends Resource<GrantBlock> {
         return reqTimestamp("expires_at");
     }
 
+    @Deprecated
     public String balance() {
         return reqString("balance");
     }
 
+    @Deprecated
     public String holdAmount() {
         return reqString("hold_amount");
     }
 
+    @Deprecated
     public String usedAmount() {
         return reqString("used_amount");
     }
 
+    @Deprecated
     public String expiredAmount() {
-        return reqString("expired_amount");
+        return optString("expired_amount");
     }
 
+    @Deprecated
     public String rolledOverAmount() {
-        return reqString("rolled_over_amount");
+        return optString("rolled_over_amount");
     }
 
+    @Deprecated
     public String voidedAmount() {
-        return reqString("voided_amount");
+        return optString("voided_amount");
     }
 
     public String originGrantBlockId() {
@@ -130,6 +203,14 @@ public class GrantBlock extends Resource<GrantBlock> {
 
     public Long resourceVersion() {
         return optLong("resource_version");
+    }
+
+    public GrantBlock.ProvisionedBlockBalance provisionedBlockBalance() {
+        return optSubResource("provisioned_block_balance", GrantBlock.ProvisionedBlockBalance.class);
+    }
+
+    public GrantBlock.OverdraftBlockBalance overdraftBlockBalance() {
+        return optSubResource("overdraft_block_balance", GrantBlock.OverdraftBlockBalance.class);
     }
 
     public JSONObject metadata() {

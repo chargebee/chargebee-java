@@ -105,6 +105,11 @@ public class PaymentScheduleScheme extends Resource<PaymentScheduleScheme> {
         return new Request(Method.GET, uri);
     }
 
+    public static PaymentScheduleSchemeListRequest list() {
+        String uri = uri("payment_schedule_schemes");
+        return new PaymentScheduleSchemeListRequest(uri);
+    }
+
     public static Request delete(String id) {
         String uri = uri("payment_schedule_schemes", nullCheck(id), "delete");
         return new Request(Method.POST, uri);
@@ -152,6 +157,28 @@ public class PaymentScheduleScheme extends Resource<PaymentScheduleScheme> {
             params.addOpt("flexible_schedules[amount_percentage][" + index + "]", flexibleScheduleAmountPercentage);
             return this;
         }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class PaymentScheduleSchemeListRequest extends ListRequest<PaymentScheduleSchemeListRequest> {
+
+        private PaymentScheduleSchemeListRequest(String uri) {
+            super(uri);
+        }
+    
+        public StringFilter<PaymentScheduleSchemeListRequest> id() {
+            return new StringFilter<PaymentScheduleSchemeListRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public TimestampFilter<PaymentScheduleSchemeListRequest> updatedAt() {
+            return new TimestampFilter<PaymentScheduleSchemeListRequest>("updated_at",this);        
+        }
+
+
         @Override
         public Params params() {
             return params;

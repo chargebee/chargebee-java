@@ -78,6 +78,12 @@ public class PricingPageSession extends Resource<PricingPageSession> {
         }
 
 
+        public CreateForNewSubscriptionRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
+            return this;
+        }
+
+
         public CreateForNewSubscriptionRequest autoSelectLocalCurrency(Boolean autoSelectLocalCurrency) {
             params.addOpt("auto_select_local_currency", autoSelectLocalCurrency);
             return this;

@@ -124,6 +124,10 @@ public class HostedPage extends Resource<HostedPage> {
         return optString("business_entity_id");
     }
 
+    public String brandId() {
+        return optString("brand_id");
+    }
+
     // Operations
     //===========
 
@@ -1067,6 +1071,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutOneTimeForItemsRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
+            return this;
+        }
+
+
         public CheckoutOneTimeForItemsRequest layout(com.chargebee.models.enums.Layout layout) {
             params.addOpt("layout", layout);
             return this;
@@ -1527,6 +1537,12 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutNewForItemsRequest businessEntityId(String businessEntityId) {
             params.addOpt("business_entity_id", businessEntityId);
+            return this;
+        }
+
+
+        public CheckoutNewForItemsRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
             return this;
         }
 
@@ -2318,6 +2334,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutExistingForItemsRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
+            return this;
+        }
+
+
         public CheckoutExistingForItemsRequest mandatoryItemsToRemove(List<String> mandatoryItemsToRemove) {
             params.addOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
             return this;
@@ -2834,6 +2856,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public ManagePaymentSourcesRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
+            return this;
+        }
+
+
         public ManagePaymentSourcesRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
             return this;
@@ -2868,6 +2896,12 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public CollectNowRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
+            return this;
+        }
+
+
         public CollectNowRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
             return this;
@@ -2914,6 +2948,12 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public AcceptQuoteRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
+            return this;
+        }
+
+
         public AcceptQuoteRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
             return this;
@@ -2943,6 +2983,12 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public ExtendSubscriptionRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
+            return this;
+        }
+
+
         public ExtendSubscriptionRequest expiry(Integer expiry) {
             params.addOpt("expiry", expiry);
             return this;
@@ -3050,6 +3096,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutGiftForItemsRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
+            return this;
+        }
+
+
         public CheckoutGiftForItemsRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
             return this;
@@ -3131,6 +3183,12 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public ClaimGiftRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
+            return this;
+        }
+
+
         public ClaimGiftRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
             return this;
@@ -3209,6 +3267,12 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public PreCancelRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
+            return this;
+        }
+
+
         public PreCancelRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
             return this;

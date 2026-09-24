@@ -815,6 +815,10 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
             return this;
         }
+        public CreateSubItemEstimateRequest subscriptionItemDescription(int index, String subscriptionItemDescription) {
+            params.addOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
+            return this;
+        }
         public CreateSubItemEstimateRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
             params.addOpt("discounts[apply_on][" + index + "]", discountApplyOn);
             return this;
@@ -1418,6 +1422,10 @@ public class Estimate extends Resource<Estimate> {
         @Deprecated
         public CreateSubItemForCustomerEstimateRequest subscriptionItemItemType(int index, com.chargebee.models.enums.ItemType subscriptionItemItemType) {
             params.addOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest subscriptionItemDescription(int index, String subscriptionItemDescription) {
+            params.addOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
             return this;
         }
         public CreateSubItemForCustomerEstimateRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
@@ -2213,6 +2221,10 @@ public class Estimate extends Resource<Estimate> {
         @Deprecated
         public UpdateSubscriptionForItemsRequest subscriptionItemItemType(int index, com.chargebee.models.enums.ItemType subscriptionItemItemType) {
             params.addOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest subscriptionItemDescription(int index, String subscriptionItemDescription) {
+            params.addOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
             return this;
         }
         public UpdateSubscriptionForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {

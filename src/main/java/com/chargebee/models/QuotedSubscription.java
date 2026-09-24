@@ -253,6 +253,10 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
             return optEnum("usage_accumulation_reset_frequency", UsageAccumulationResetFrequency.class);
         }
 
+        public String description() {
+            return optString("description");
+        }
+
     }
 
     public static class ItemTier extends Resource<ItemTier> {

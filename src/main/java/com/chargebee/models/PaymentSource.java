@@ -37,7 +37,7 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
         public enum PreferredScheme {
-            CARTES_BANCAIRES,MASTERCARD,VISA,
+            CARTES_BANCAIRES,MASTERCARD,VISA,DANKORT,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -349,6 +349,17 @@ public class PaymentSource extends Resource<PaymentSource> {
 
     }
 
+    public static class NetworkTransactionReference extends Resource<NetworkTransactionReference> {
+        public NetworkTransactionReference(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String originalNetworkTransactionId() {
+            return optString("original_network_transaction_id");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -455,12 +466,20 @@ public class PaymentSource extends Resource<PaymentSource> {
         return optJSONObject("vault_token");
     }
 
+    public PaymentSource.NetworkTransactionReference networkTransactionReference() {
+        return optSubResource("network_transaction_reference", PaymentSource.NetworkTransactionReference.class);
+    }
+
     public Boolean deleted() {
         return reqBoolean("deleted");
     }
 
     public String businessEntityId() {
         return optString("business_entity_id");
+    }
+
+    public String brandId() {
+        return optString("brand_id");
     }
 
     // Operations
@@ -591,6 +610,12 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
 
+        public CreateUsingTempTokenRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
+            return this;
+        }
+
+
         public CreateUsingTempTokenRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
             params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
             return this;
@@ -617,6 +642,12 @@ public class PaymentSource extends Resource<PaymentSource> {
     
         public CreateUsingPermanentTokenRequest customerId(String customerId) {
             params.add("customer_id", customerId);
+            return this;
+        }
+
+
+        public CreateUsingPermanentTokenRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
             return this;
         }
 
@@ -790,6 +821,12 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
 
+        public CreateUsingTokenRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
+            return this;
+        }
+
+
         public CreateUsingTokenRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
             params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
             return this;
@@ -816,6 +853,12 @@ public class PaymentSource extends Resource<PaymentSource> {
     
         public CreateUsingPaymentIntentRequest customerId(String customerId) {
             params.add("customer_id", customerId);
+            return this;
+        }
+
+
+        public CreateUsingPaymentIntentRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
             return this;
         }
 
@@ -885,6 +928,12 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
 
+        public CreateVoucherPaymentSourceRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
+            return this;
+        }
+
+
         public CreateVoucherPaymentSourceRequest voucherPaymentSourceVoucherType(com.chargebee.models.enums.VoucherType voucherPaymentSourceVoucherType) {
             params.add("voucher_payment_source[voucher_type]", voucherPaymentSourceVoucherType);
             return this;
@@ -919,6 +968,12 @@ public class PaymentSource extends Resource<PaymentSource> {
     
         public CreateCardRequest customerId(String customerId) {
             params.add("customer_id", customerId);
+            return this;
+        }
+
+
+        public CreateCardRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
             return this;
         }
 
@@ -1023,6 +1078,12 @@ public class PaymentSource extends Resource<PaymentSource> {
     
         public CreateBankAccountRequest customerId(String customerId) {
             params.add("customer_id", customerId);
+            return this;
+        }
+
+
+        public CreateBankAccountRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
             return this;
         }
 
@@ -1200,6 +1261,11 @@ public class PaymentSource extends Resource<PaymentSource> {
         
         public UpdateCardRequest cardAdditionalInformation(JSONObject cardAdditionalInformation) {
             params.addOpt("card[additional_information]", cardAdditionalInformation);
+            return this;
+        }
+        
+        public UpdateCardRequest networkTransactionReferenceOriginalNetworkTransactionId(String networkTransactionReferenceOriginalNetworkTransactionId) {
+            params.addOpt("network_transaction_reference[original_network_transaction_id]", networkTransactionReferenceOriginalNetworkTransactionId);
             return this;
         }
         

@@ -13,15 +13,15 @@ import java.util.*;
 
 public class LedgerEntry extends Resource<LedgerEntry> {
 
-    public enum AccountType {
-        PROVISIONED,
-        OVERDRAFT,
+    public enum UnitType {
+        CREDIT_UNIT,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
-    public enum UnitType {
-        CREDIT_UNIT,
+    public enum AccountType {
+        PROVISIONED,
+        OVERDRAFT,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -45,19 +45,19 @@ public class LedgerEntry extends Resource<LedgerEntry> {
     }
 
     public String subscriptionId() {
-        return optString("subscription_id");
-    }
-
-    public AccountType accountType() {
-        return optEnum("account_type", AccountType.class);
+        return reqString("subscription_id");
     }
 
     public String unitId() {
-        return optString("unit_id");
+        return reqString("unit_id");
     }
 
     public UnitType unitType() {
-        return optEnum("unit_type", UnitType.class);
+        return reqEnum("unit_type", UnitType.class);
+    }
+
+    public AccountType accountType() {
+        return reqEnum("account_type", AccountType.class);
     }
 
     public String amount() {

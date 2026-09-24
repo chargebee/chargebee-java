@@ -42,8 +42,43 @@ public class PaymentSchedule extends Resource<PaymentSchedule> {
             return reqLong("amount");
         }
 
+        public Long scheduledAmount() {
+            return reqLong("scheduled_amount");
+        }
+
         public Status status() {
             return reqEnum("status", Status.class);
+        }
+
+    }
+
+    public static class ReferenceTransaction extends Resource<ReferenceTransaction> {
+        public ReferenceTransaction(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String scheduleEntryId() {
+            return reqString("schedule_entry_id");
+        }
+
+        public Long appliedAmount() {
+            return optLong("applied_amount");
+        }
+
+        public String txnId() {
+            return reqString("txn_id");
+        }
+
+        public Transaction.Status txnStatus() {
+            return optEnum("txn_status", Transaction.Status.class);
+        }
+
+        public Timestamp txnDate() {
+            return optTimestamp("txn_date");
+        }
+
+        public Long txnAmount() {
+            return optLong("txn_amount");
         }
 
     }
@@ -102,8 +137,47 @@ public class PaymentSchedule extends Resource<PaymentSchedule> {
         return optList("schedule_entries", PaymentSchedule.ScheduleEntry.class);
     }
 
+    public List<PaymentSchedule.ReferenceTransaction> referenceTransactions() {
+        return optList("reference_transactions", PaymentSchedule.ReferenceTransaction.class);
+    }
+
     // Operations
     //===========
 
+    public static PaymentScheduleListRequest list() {
+        String uri = uri("payment_schedules");
+        return new PaymentScheduleListRequest(uri);
+    }
+
+
+    // Operation Request Classes
+    //==========================
+
+    public static class PaymentScheduleListRequest extends ListRequest<PaymentScheduleListRequest> {
+
+        private PaymentScheduleListRequest(String uri) {
+            super(uri);
+        }
+    
+        public StringFilter<PaymentScheduleListRequest> invoiceId() {
+            return new StringFilter<PaymentScheduleListRequest>("invoice_id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<PaymentScheduleListRequest> id() {
+            return new StringFilter<PaymentScheduleListRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public TimestampFilter<PaymentScheduleListRequest> updatedAt() {
+            return new TimestampFilter<PaymentScheduleListRequest>("updated_at",this);        
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
 }

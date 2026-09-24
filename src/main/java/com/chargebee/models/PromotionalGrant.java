@@ -77,8 +77,20 @@ public class PromotionalGrant extends Resource<PromotionalGrant> {
         }
 
 
+        public PromotionalGrantsRequest id(String id) {
+            params.addOpt("id", id);
+            return this;
+        }
+
+
         public PromotionalGrantsRequest amount(String amount) {
             params.add("amount", amount);
+            return this;
+        }
+
+
+        public PromotionalGrantsRequest effectiveFrom(Timestamp effectiveFrom) {
+            params.addOpt("effective_from", effectiveFrom);
             return this;
         }
 

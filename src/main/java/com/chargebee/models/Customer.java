@@ -209,7 +209,7 @@ public class Customer extends Resource<Customer> {
 
     public static class PaymentMethod extends Resource<PaymentMethod> {
         public enum Type {
-             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,APPLE_PAY,WECHAT_PAY,IDEAL,GOOGLE_PAY,SOFORT,BANCONTACT,GIROPAY,DOTPAY,UPI,NETBANKING_EMANDATES,VENMO,PAY_TO,FASTER_PAYMENTS,SEPA_INSTANT_TRANSFER,AUTOMATED_BANK_TRANSFER,KLARNA_PAY_NOW,ONLINE_BANKING_POLAND,PAYCONIQ_BY_BANCONTACT,ELECTRONIC_PAYMENT_STANDARD,KBC_PAYMENT_BUTTON,PAY_BY_BANK,TRUSTLY,STABLECOIN,KAKAO_PAY,NAVER_PAY,REVOLUT_PAY,CASH_APP_PAY,TWINT,GO_PAY,GRAB_PAY,PAY_CO,AFTER_PAY,SWISH,PAYME,PIX,KLARNA,ALIPAY_HK,PAYPAY,GCASH,SOUTH_KOREAN_CARDS,PAYNOW,BIZUM,PROMPTPAY,DANA,TOUCH_N_GO,TAMARA,QPAY,
+             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,APPLE_PAY,WECHAT_PAY,IDEAL,GOOGLE_PAY,SOFORT,BANCONTACT,GIROPAY,DOTPAY,UPI,NETBANKING_EMANDATES,VENMO,PAY_TO,FASTER_PAYMENTS,SEPA_INSTANT_TRANSFER,AUTOMATED_BANK_TRANSFER,KLARNA_PAY_NOW,ONLINE_BANKING_POLAND,PAYCONIQ_BY_BANCONTACT,ELECTRONIC_PAYMENT_STANDARD,KBC_PAYMENT_BUTTON,PAY_BY_BANK,TRUSTLY,STABLECOIN,KAKAO_PAY,NAVER_PAY,REVOLUT_PAY,CASH_APP_PAY,TWINT,GO_PAY,GRAB_PAY,PAY_CO,AFTER_PAY,SWISH,PAYME,PIX,KLARNA,ALIPAY_HK,PAYPAY,GCASH,SOUTH_KOREAN_CARDS,PAYNOW,BIZUM,PROMPTPAY,DANA,TOUCH_N_GO,TAMARA,QPAY,OVO,MOMO,MERCADO_PAGO,NEQUI,NUPAY,PICPAY,THAI_QR,BLIK,FPX,WERO,P24,AFFIRM_PAY,RAKUTEN_PAY,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -700,6 +700,10 @@ public class Customer extends Resource<Customer> {
         return optString("entity_identifier_standard");
     }
 
+    public String brandId() {
+        return optString("brand_id");
+    }
+
     // Operations
     //===========
 
@@ -784,6 +788,11 @@ public class Customer extends Resource<Customer> {
     public static CollectPaymentRequest collectPayment(String id) {
         String uri = uri("customers", nullCheck(id), "collect_payment");
         return new CollectPaymentRequest(Method.POST, uri);
+    }
+
+    public static Request sendPaymentRequest(String id) {
+        String uri = uri("customers", nullCheck(id), "send_payment_request");
+        return new Request(Method.POST, uri);
     }
 
     public static DeleteRequest delete(String id) {
@@ -1034,6 +1043,12 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest businessEntityId(String businessEntityId) {
             params.addOpt("business_entity_id", businessEntityId);
+            return this;
+        }
+
+
+        public CreateRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
             return this;
         }
 

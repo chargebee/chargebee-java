@@ -43,6 +43,10 @@ public class ThirdPartyPaymentMethod extends Resource<ThirdPartyPaymentMethod> {
         return reqString("reference_id");
     }
 
+    public JSONObject networkTransactionReference() {
+        return optJSONObject("network_transaction_reference");
+    }
+
     // Operations
     //===========
 

@@ -55,6 +55,19 @@ public enum PaymentMethodType {
     TOUCH_N_GO,
     TAMARA,
     QPAY,
+    OVO,
+    MOMO,
+    MERCADO_PAGO,
+    NEQUI,
+    NUPAY,
+    PICPAY,
+    THAI_QR,
+    BLIK,
+    FPX,
+    WERO,
+    P24,
+    AFFIRM_PAY,
+    RAKUTEN_PAY,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

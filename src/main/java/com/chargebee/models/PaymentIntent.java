@@ -76,6 +76,19 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         TOUCH_N_GO,
         TAMARA,
         QPAY,
+        OVO,
+        MOMO,
+        MERCADO_PAGO,
+        NEQUI,
+        NUPAY,
+        PICPAY,
+        THAI_QR,
+        BLIK,
+        FPX,
+        WERO,
+        P24,
+        AFFIRM_PAY,
+        RAKUTEN_PAY,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -268,6 +281,10 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         return optString("business_entity_id");
     }
 
+    public String brandId() {
+        return optString("brand_id");
+    }
+
     // Operations
     //===========
 
@@ -298,6 +315,12 @@ public class PaymentIntent extends Resource<PaymentIntent> {
     
         public CreateRequest businessEntityId(String businessEntityId) {
             params.addOpt("business_entity_id", businessEntityId);
+            return this;
+        }
+
+
+        public CreateRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
             return this;
         }
 

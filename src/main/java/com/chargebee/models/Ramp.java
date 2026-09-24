@@ -358,6 +358,17 @@ public class Ramp extends Resource<Ramp> {
 
     }
 
+    public static class BillingConfiguration extends Resource<BillingConfiguration> {
+        public BillingConfiguration(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String poNumber() {
+            return optString("po_number");
+        }
+
+    }
+
     public static class StatusTransitionReason extends Resource<StatusTransitionReason> {
         public StatusTransitionReason(JSONObject jsonObj) {
             super(jsonObj);
@@ -453,6 +464,10 @@ public class Ramp extends Resource<Ramp> {
 
     public Ramp.ContractTerm contractTerm() {
         return optSubResource("contract_term", Ramp.ContractTerm.class);
+    }
+
+    public Ramp.BillingConfiguration billingConfiguration() {
+        return optSubResource("billing_configuration", Ramp.BillingConfiguration.class);
     }
 
     public Boolean deleted() {
@@ -554,6 +569,12 @@ public class Ramp extends Resource<Ramp> {
             return this;
         }
 
+        public CreateForSubscriptionRequest billingConfigurationPoNumber(String billingConfigurationPoNumber) {
+            params.addOpt("billing_configuration[po_number]", billingConfigurationPoNumber);
+            paramsV2.addOpt(new CompositeParameter("billing_configuration", "po_number"), billingConfigurationPoNumber);
+            return this;
+        }
+        
         public CreateForSubscriptionRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
             params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
             paramsV2.addOpt(new CompositeParameter("contract_term", "action_at_term_end"), contractTermActionAtTermEnd);
@@ -841,6 +862,12 @@ public class Ramp extends Resource<Ramp> {
             return this;
         }
 
+        public UpdateRequest billingConfigurationPoNumber(String billingConfigurationPoNumber) {
+            params.addOpt("billing_configuration[po_number]", billingConfigurationPoNumber);
+            paramsV2.addOpt(new CompositeParameter("billing_configuration", "po_number"), billingConfigurationPoNumber);
+            return this;
+        }
+        
         public UpdateRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
             params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
             paramsV2.addOpt(new CompositeParameter("contract_term", "action_at_term_end"), contractTermActionAtTermEnd);
