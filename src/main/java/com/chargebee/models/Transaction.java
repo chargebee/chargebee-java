@@ -251,6 +251,21 @@ public class Transaction extends Resource<Transaction> {
 
     }
 
+    public static class NetworkTransactionDetail extends Resource<NetworkTransactionDetail> {
+        public NetworkTransactionDetail(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String networkTransactionId() {
+            return optString("network_transaction_id");
+        }
+
+        public String originalNetworkTransactionId() {
+            return optString("original_network_transaction_id");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -447,6 +462,10 @@ public class Transaction extends Resource<Transaction> {
 
     public String customPaymentMethodName() {
         return optString("custom_payment_method_name");
+    }
+
+    public Transaction.NetworkTransactionDetail networkTransactionDetails() {
+        return optSubResource("network_transaction_details", Transaction.NetworkTransactionDetail.class);
     }
 
     // Operations

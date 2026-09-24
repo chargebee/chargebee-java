@@ -939,6 +939,10 @@ public class CreditNote extends Resource<CreditNote> {
         return optString("business_entity_id");
     }
 
+    public String brandId() {
+        return optString("brand_id");
+    }
+
     public CreditNote.ShippingAddress shippingAddress() {
         return optSubResource("shipping_address", CreditNote.ShippingAddress.class);
     }
@@ -991,6 +995,11 @@ public class CreditNote extends Resource<CreditNote> {
     public static VoidCreditNoteRequest voidCreditNote(String id) {
         String uri = uri("credit_notes", nullCheck(id), "void");
         return new VoidCreditNoteRequest(Method.POST, uri);
+    }
+
+    public static Request sendEmail(String id) {
+        String uri = uri("credit_notes", nullCheck(id), "send_email");
+        return new Request(Method.POST, uri);
     }
 
     public static CreditNoteListRequest list() {
@@ -1734,6 +1743,14 @@ public class CreditNote extends Resource<CreditNote> {
         }
         public ImportCreditNoteRequest lineItemTax10Amount(int index, Long lineItemTax10Amount) {
             params.addOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemIsPartialTaxApplied(int index, Boolean lineItemIsPartialTaxApplied) {
+            params.addOpt("line_items[is_partial_tax_applied][" + index + "]", lineItemIsPartialTaxApplied);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTaxableAmount(int index, Long lineItemTaxableAmount) {
+            params.addOpt("line_items[taxable_amount][" + index + "]", lineItemTaxableAmount);
             return this;
         }
         public ImportCreditNoteRequest lineItemProrationMode(int index, CreditNote.LineItem.ProrationMode lineItemProrationMode) {

@@ -35,6 +35,7 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
         BILLING_ERROR,
         PRODUCT_NOT_AVAILABLE,
         OTHER,
+        SUBSCRIPTION_NOT_FOUND_IN_SOURCE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }

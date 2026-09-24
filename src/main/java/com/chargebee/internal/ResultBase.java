@@ -88,6 +88,10 @@ public class ResultBase {
         return (PromotionalCredit)get("promotional_credit");
     }
 
+    public EmailLog emailLog() {
+        return (EmailLog)get("email_log");
+    }
+
     public Invoice invoice() {
         return (Invoice)get("invoice");
     }
@@ -98,10 +102,6 @@ public class ResultBase {
 
     public PaymentSchedule paymentSchedule() {
         return (PaymentSchedule)get("payment_schedule");
-    }
-
-    public Einvoice einvoice() {
-        return (Einvoice)get("einvoice");
     }
 
     public TaxWithheld taxWithheld() {
@@ -126,6 +126,10 @@ public class ResultBase {
 
     public Transaction transaction() {
         return (Transaction)get("transaction");
+    }
+
+    public Dispute dispute() {
+        return (Dispute)get("dispute");
     }
 
     public HostedPage hostedPage() {
@@ -396,8 +400,16 @@ public class ResultBase {
         return (MeteredFeature)get("metered_feature");
     }
 
+    public CustomDataSchema customDataSchema() {
+        return (CustomDataSchema)get("custom_data_schema");
+    }
+
     public UsageFile usageFile() {
         return (UsageFile)get("usage_file");
+    }
+
+    public Einvoice einvoice() {
+        return (Einvoice)get("einvoice");
     }
 
     public PersonalizedOffer personalizedOffer() {
@@ -418,6 +430,30 @@ public class ResultBase {
 
     public WebhookEndpoint webhookEndpoint() {
         return (WebhookEndpoint)get("webhook_endpoint");
+    }
+
+    public BusinessRule businessRule() {
+        return (BusinessRule)get("business_rule");
+    }
+
+    public ApplyRule applyRule() {
+        return (ApplyRule)get("apply_rule");
+    }
+
+    public AppliedRule appliedRule() {
+        return (AppliedRule)get("applied_rule");
+    }
+
+    public AppliedBusinessRule appliedBusinessRule() {
+        return (AppliedBusinessRule)get("applied_business_rule");
+    }
+
+    public BusinessRuleset businessRuleset() {
+        return (BusinessRuleset)get("business_ruleset");
+    }
+
+    public BusinessRulesetRule businessRulesetRule() {
+        return (BusinessRulesetRule)get("business_ruleset_rule");
     }
 
     public UsageSummary usageSummary() {
@@ -478,6 +514,10 @@ public class ResultBase {
 
     public List<Hierarchy> hierarchies() {
         return (List<Hierarchy>) getList("hierarchies", "hierarchy");
+    }
+
+    public List<EmailLog> emailLogs() {
+        return (List<EmailLog>) getList("email_logs", "email_log");
     }
 
     public List<Invoice> invoices() {

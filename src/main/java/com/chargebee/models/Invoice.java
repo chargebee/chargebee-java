@@ -1275,6 +1275,10 @@ public class Invoice extends Resource<Invoice> {
         return optString("business_entity_id");
     }
 
+    public String brandId() {
+        return optString("brand_id");
+    }
+
     public Invoice.SiteDetailsAtCreation siteDetailsAtCreation() {
         return optSubResource("site_details_at_creation", Invoice.SiteDetailsAtCreation.class);
     }
@@ -1458,6 +1462,11 @@ public class Invoice extends Resource<Invoice> {
     public static VoidBeforeCaptureRequest voidBeforeCapture(String id) {
         String uri = uri("invoices", nullCheck(id), "void_before_capture");
         return new VoidBeforeCaptureRequest(Method.POST, uri);
+    }
+
+    public static Request sendEmail(String id) {
+        String uri = uri("invoices", nullCheck(id), "send_email");
+        return new Request(Method.POST, uri);
     }
 
     public static DeleteRequest delete(String id) {
@@ -3514,6 +3523,14 @@ public class Invoice extends Resource<Invoice> {
         }
         public ImportInvoiceRequest lineItemTax10Amount(int index, Long lineItemTax10Amount) {
             params.addOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemIsPartialTaxApplied(int index, Boolean lineItemIsPartialTaxApplied) {
+            params.addOpt("line_items[is_partial_tax_applied][" + index + "]", lineItemIsPartialTaxApplied);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTaxableAmount(int index, Long lineItemTaxableAmount) {
+            params.addOpt("line_items[taxable_amount][" + index + "]", lineItemTaxableAmount);
             return this;
         }
         public ImportInvoiceRequest lineItemProrationMode(int index, Invoice.LineItem.ProrationMode lineItemProrationMode) {

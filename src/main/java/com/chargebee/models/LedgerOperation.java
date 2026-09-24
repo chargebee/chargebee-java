@@ -29,6 +29,7 @@ public class LedgerOperation extends Resource<LedgerOperation> {
         VOID,
         ROLLOVER,
         ADJUSTMENT,
+        OVERDRAFT_SETTLEMENT,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -52,15 +53,15 @@ public class LedgerOperation extends Resource<LedgerOperation> {
     }
 
     public String subscriptionId() {
-        return optString("subscription_id");
+        return reqString("subscription_id");
     }
 
     public String unitId() {
-        return optString("unit_id");
+        return reqString("unit_id");
     }
 
     public UnitType unitType() {
-        return optEnum("unit_type", UnitType.class);
+        return reqEnum("unit_type", UnitType.class);
     }
 
     public Type type() {
@@ -393,8 +394,20 @@ public class LedgerOperation extends Resource<LedgerOperation> {
         }
 
 
+        public AllocateRequest id(String id) {
+            params.addOpt("id", id);
+            return this;
+        }
+
+
         public AllocateRequest amount(String amount) {
             params.add("amount", amount);
+            return this;
+        }
+
+
+        public AllocateRequest effectiveFrom(Timestamp effectiveFrom) {
+            params.addOpt("effective_from", effectiveFrom);
             return this;
         }
 

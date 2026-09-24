@@ -42,6 +42,10 @@ public class PaymentScheduleEstimate extends Resource<PaymentScheduleEstimate> {
             return reqLong("amount");
         }
 
+        public Long scheduledAmount() {
+            return reqLong("scheduled_amount");
+        }
+
         public Status status() {
             return reqEnum("status", Status.class);
         }

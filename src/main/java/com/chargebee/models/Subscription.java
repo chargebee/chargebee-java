@@ -166,6 +166,10 @@ public class Subscription extends Resource<Subscription> {
             return optEnum("usage_accumulation_reset_frequency", UsageAccumulationResetFrequency.class);
         }
 
+        public String description() {
+            return optString("description");
+        }
+
     }
 
     public static class ItemTier extends Resource<ItemTier> {
@@ -1010,6 +1014,10 @@ public class Subscription extends Resource<Subscription> {
         return reqBoolean("decommissioned");
     }
 
+    public String brandId() {
+        return optString("brand_id");
+    }
+
     @Deprecated
     public JSONObject metadata(){
         return optJSONObject("metadata");
@@ -1215,6 +1223,12 @@ public class Subscription extends Resource<Subscription> {
     
         public CreateRequest id(String id) {
             params.addOpt("id", id);
+            return this;
+        }
+
+
+        public CreateRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
             return this;
         }
 
@@ -2069,6 +2083,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateForCustomerRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
+            return this;
+        }
+
+
         public CreateForCustomerRequest planId(String planId) {
             params.add("plan_id", planId);
             return this;
@@ -2471,6 +2491,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateWithItemsRequest brandId(String brandId) {
+            params.addOpt("brand_id", brandId);
+            return this;
+        }
+
+
         public CreateWithItemsRequest trialEnd(Timestamp trialEnd) {
             params.addOpt("trial_end", trialEnd);
             return this;
@@ -2829,6 +2855,10 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public CreateWithItemsRequest subscriptionItemItemType(int index, com.chargebee.models.enums.ItemType subscriptionItemItemType) {
             params.addOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
+            return this;
+        }
+        public CreateWithItemsRequest subscriptionItemDescription(int index, String subscriptionItemDescription) {
+            params.addOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
             return this;
         }
         public CreateWithItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
@@ -4474,6 +4504,10 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public UpdateForItemsRequest subscriptionItemItemType(int index, com.chargebee.models.enums.ItemType subscriptionItemItemType) {
             params.addOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
+            return this;
+        }
+        public UpdateForItemsRequest subscriptionItemDescription(int index, String subscriptionItemDescription) {
+            params.addOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
             return this;
         }
         public UpdateForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
@@ -6618,6 +6652,10 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public ImportForItemsRequest subscriptionItemItemType(int index, com.chargebee.models.enums.ItemType subscriptionItemItemType) {
             params.addOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
+            return this;
+        }
+        public ImportForItemsRequest subscriptionItemDescription(int index, String subscriptionItemDescription) {
+            params.addOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
             return this;
         }
         public ImportForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {

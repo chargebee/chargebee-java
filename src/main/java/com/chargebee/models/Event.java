@@ -109,6 +109,10 @@ public class Event extends Resource<Event> {
         return optEnum("event_type", EventType.class);
     }
 
+    public String siteId() {
+        return optString("site_id");
+    }
+
     public ApiVersion apiVersion() {
         return optEnum("api_version", ApiVersion.class);
     }
