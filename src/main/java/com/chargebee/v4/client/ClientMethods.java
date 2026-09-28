@@ -28,6 +28,8 @@ import com.chargebee.v4.services.OrderService;
 
 import com.chargebee.v4.services.ItemService;
 
+import com.chargebee.v4.services.PreferenceService;
+
 import com.chargebee.v4.services.RampService;
 
 import com.chargebee.v4.services.OmnichannelOneTimeOrderService;
@@ -73,6 +75,8 @@ import com.chargebee.v4.services.DisputeService;
 import com.chargebee.v4.services.ResourceMigrationService;
 
 import com.chargebee.v4.services.ProductService;
+
+import com.chargebee.v4.services.PreferenceDefinitionService;
 
 import com.chargebee.v4.services.CouponCodeService;
 
@@ -305,6 +309,13 @@ public interface ClientMethods {
   ItemService items();
 
   /**
+   * Access preference-related operations.
+   *
+   * @return PreferenceService instance for fluent API access
+   */
+  PreferenceService preferences();
+
+  /**
    * Access ramp-related operations.
    *
    * @return RampService instance for fluent API access
@@ -464,6 +475,13 @@ public interface ClientMethods {
    * @return ProductService instance for fluent API access
    */
   ProductService products();
+
+  /**
+   * Access preference_definition-related operations.
+   *
+   * @return PreferenceDefinitionService instance for fluent API access
+   */
+  PreferenceDefinitionService preferenceDefinitions();
 
   /**
    * Access coupon_code-related operations.

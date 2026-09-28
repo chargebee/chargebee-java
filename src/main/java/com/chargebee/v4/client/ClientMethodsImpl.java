@@ -28,6 +28,8 @@ import com.chargebee.v4.services.OrderService;
 
 import com.chargebee.v4.services.ItemService;
 
+import com.chargebee.v4.services.PreferenceService;
+
 import com.chargebee.v4.services.RampService;
 
 import com.chargebee.v4.services.OmnichannelOneTimeOrderService;
@@ -73,6 +75,8 @@ import com.chargebee.v4.services.DisputeService;
 import com.chargebee.v4.services.ResourceMigrationService;
 
 import com.chargebee.v4.services.ProductService;
+
+import com.chargebee.v4.services.PreferenceDefinitionService;
 
 import com.chargebee.v4.services.CouponCodeService;
 
@@ -279,6 +283,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   }
 
   @Override
+  public PreferenceService preferences() {
+    return getServiceRegistry().preferences();
+  }
+
+  @Override
   public RampService ramps() {
     return getServiceRegistry().ramps();
   }
@@ -391,6 +400,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public ProductService products() {
     return getServiceRegistry().products();
+  }
+
+  @Override
+  public PreferenceDefinitionService preferenceDefinitions() {
+    return getServiceRegistry().preferenceDefinitions();
   }
 
   @Override

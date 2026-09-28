@@ -28,6 +28,8 @@ import com.chargebee.v4.services.OrderService;
 
 import com.chargebee.v4.services.ItemService;
 
+import com.chargebee.v4.services.PreferenceService;
+
 import com.chargebee.v4.services.RampService;
 
 import com.chargebee.v4.services.OmnichannelOneTimeOrderService;
@@ -73,6 +75,8 @@ import com.chargebee.v4.services.DisputeService;
 import com.chargebee.v4.services.ResourceMigrationService;
 
 import com.chargebee.v4.services.ProductService;
+
+import com.chargebee.v4.services.PreferenceDefinitionService;
 
 import com.chargebee.v4.services.CouponCodeService;
 
@@ -235,6 +239,8 @@ final class ServiceRegistry {
 
   private volatile ItemService itemService;
 
+  private volatile PreferenceService preferenceService;
+
   private volatile RampService rampService;
 
   private volatile OmnichannelOneTimeOrderService omnichannelOneTimeOrderService;
@@ -280,6 +286,8 @@ final class ServiceRegistry {
   private volatile ResourceMigrationService resourceMigrationService;
 
   private volatile ProductService productService;
+
+  private volatile PreferenceDefinitionService preferenceDefinitionService;
 
   private volatile CouponCodeService couponCodeService;
 
@@ -619,6 +627,21 @@ final class ServiceRegistry {
       }
     }
     return itemService;
+  }
+
+  /**
+   * Get or create the PreferenceService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  PreferenceService preferences() {
+    if (preferenceService == null) {
+      synchronized (this) {
+        if (preferenceService == null) {
+          preferenceService = new PreferenceService(client);
+        }
+      }
+    }
+    return preferenceService;
   }
 
   /**
@@ -964,6 +987,21 @@ final class ServiceRegistry {
       }
     }
     return productService;
+  }
+
+  /**
+   * Get or create the PreferenceDefinitionService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  PreferenceDefinitionService preferenceDefinitions() {
+    if (preferenceDefinitionService == null) {
+      synchronized (this) {
+        if (preferenceDefinitionService == null) {
+          preferenceDefinitionService = new PreferenceDefinitionService(client);
+        }
+      }
+    }
+    return preferenceDefinitionService;
   }
 
   /**
