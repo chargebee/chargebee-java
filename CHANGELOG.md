@@ -1,3 +1,8 @@
+### v4.17.1 (2026-10-19)
+* * *
+### Bug Fixes:
+* Fix metadata parsing for JSON object strings so metadata is not replaced by an empty map.
+
 ### v4.17.0 (2026-09-24)
 * * *
 ### New Resources:
