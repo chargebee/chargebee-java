@@ -16,7 +16,10 @@ public final class Response {
     
     public Response(int statusCode, Map<String, List<String>> headers, byte[] body) {
         this.statusCode = statusCode;
-        this.headers = Collections.unmodifiableMap(new HashMap<>(headers));
+        Map<String, List<String>> copy = new HashMap<>(headers);
+        // HttpURLConnection reports the status line under a null key; it is not a header.
+        copy.remove(null);
+        this.headers = Collections.unmodifiableMap(copy);
         this.body = body != null ? body.clone() : new byte[0];
         this.contentType = parseContentType(headers);
         this.charset = parseCharset(headers);

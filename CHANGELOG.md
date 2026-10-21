@@ -1,3 +1,9 @@
+### v4.17.2 (2026-10-21)
+* * *
+### Bug Fixes:
+* Fix `NullPointerException` in `isIdempotencyReplayed()` and `header()` when response headers contain the HTTP status line under a `null` key (as returned by `HttpURLConnection`). The `null` key is no longer exposed via `headers()`.
+* Treat the `chargebee-idempotency-key` header case-insensitively in `RequestOptions`, so `getIdempotencyKey()` finds keys set with any casing and the header is not sent twice.
+
 ### v4.17.1 (2026-10-19)
 * * *
 ### Bug Fixes:
