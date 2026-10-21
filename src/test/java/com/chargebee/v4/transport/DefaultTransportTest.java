@@ -1246,6 +1246,53 @@ class DefaultTransportTest {
                 server.stop();
             }
         }
+
+        @Test
+        @DisplayName("should detect idempotency replay from a real HTTP response")
+        void shouldDetectIdempotencyReplayFromRealResponse() throws Exception {
+            TestHttpServer server = new TestHttpServer();
+            server.addResponseHeader("chargebee-idempotency-replayed", "true");
+            server.start();
+
+            try {
+                Request request = Request.builder()
+                    .method("GET")
+                    .url(server.getUrl())
+                    .build();
+
+                Response response = transport.send(request);
+                com.chargebee.v4.models.BaseResponse base =
+                    new com.chargebee.v4.models.BaseResponse(response) {};
+
+                assertFalse(response.getHeaders().containsKey(null));
+                assertTrue(base.isIdempotencyReplayed());
+                assertEquals("true", base.header("Chargebee-Idempotency-Replayed").get(0));
+            } finally {
+                server.stop();
+            }
+        }
+
+        @Test
+        @DisplayName("should report no idempotency replay when header is absent in a real HTTP response")
+        void shouldReportNoReplayWhenHeaderAbsent() throws Exception {
+            TestHttpServer server = new TestHttpServer();
+            server.start();
+
+            try {
+                Request request = Request.builder()
+                    .method("GET")
+                    .url(server.getUrl())
+                    .build();
+
+                Response response = transport.send(request);
+                com.chargebee.v4.models.BaseResponse base =
+                    new com.chargebee.v4.models.BaseResponse(response) {};
+
+                assertFalse(base.isIdempotencyReplayed());
+            } finally {
+                server.stop();
+            }
+        }
         
         @Test
         @DisplayName("should handle error stream for 4xx and 5xx")

@@ -74,6 +74,45 @@ public class RequestOptionsTest {
     }
 
     @Test
+    public void testIdempotencyKeySetViaMixedCaseHeader() {
+        RequestOptions options = RequestOptions.builder()
+                .header("Chargebee-Idempotency-Key", "mixed-case-key")
+                .build();
+
+        assertEquals("mixed-case-key", options.getIdempotencyKey());
+    }
+
+    @Test
+    public void testIdempotencyKeySetViaHeadersMapAndWithHeader() {
+        Map<String, String> headers = new java.util.HashMap<>();
+        headers.put("CHARGEBEE-IDEMPOTENCY-KEY", "from-map");
+
+        RequestOptions fromMap = RequestOptions.builder().headers(headers).build();
+        assertEquals("from-map", fromMap.getIdempotencyKey());
+
+        RequestOptions fromWith = RequestOptions.empty().withHeader("Chargebee-Idempotency-Key", "from-with");
+        assertEquals("from-with", fromWith.getIdempotencyKey());
+
+        RequestOptions fromWithMap = RequestOptions.empty().withHeaders(headers);
+        assertEquals("from-map", fromWithMap.getIdempotencyKey());
+    }
+
+    @Test
+    public void testIdempotencyKeyDifferentCasingsCollapseToSingleHeader() {
+        RequestOptions options = RequestOptions.builder()
+                .header("Chargebee-Idempotency-Key", "first")
+                .idempotencyKey("second")
+                .build();
+
+        Map<String, String> headers = options.getHeaders();
+        long idempotencyHeaders = headers.keySet().stream()
+                .filter(k -> k.equalsIgnoreCase("chargebee-idempotency-key"))
+                .count();
+        assertEquals(1, idempotencyHeaders);
+        assertEquals("second", options.getIdempotencyKey());
+    }
+
+    @Test
     public void testBuilderMethodChaining() {
         RequestOptions options = RequestOptions.builder()
                 .idempotencyKey("test-key")
