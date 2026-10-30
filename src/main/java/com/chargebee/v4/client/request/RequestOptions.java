@@ -12,6 +12,8 @@ import java.util.Set;
  * Supports headers and can be extended for timeouts, retries, API versions, etc.
  */
 public final class RequestOptions {
+    private static final String IDEMPOTENCY_KEY_HEADER = "chargebee-idempotency-key";
+
     private final Map<String, String> headers;
     private final Integer maxNetworkRetries;
     private final Boolean retryEnabled;
@@ -61,13 +63,13 @@ public final class RequestOptions {
 
     public RequestOptions withHeader(String key, String value) {
         Map<String, String> copy = new HashMap<>(headers);
-        copy.put(key, value);
+        putHeader(copy, key, value);
         return new RequestOptions(copy, maxNetworkRetries, retryEnabled, retryBaseDelayMs, retryOnStatus, connectTimeoutMs, readTimeoutMs, followRedirects, gzipCompression, requestLogger, telemetryAdapter);
     }
 
     public RequestOptions withHeaders(Map<String, String> newHeaders) {
         Map<String, String> copy = new HashMap<>(headers);
-        copy.putAll(newHeaders);
+        putHeaders(copy, newHeaders);
         return new RequestOptions(copy, maxNetworkRetries, retryEnabled, retryBaseDelayMs, retryOnStatus, connectTimeoutMs, readTimeoutMs, followRedirects, gzipCompression, requestLogger, telemetryAdapter);
     }
 
@@ -81,7 +83,17 @@ public final class RequestOptions {
      * @return the idempotency key, or null if not set
      */
     public String getIdempotencyKey() {
-        return headers.get("chargebee-idempotency-key");
+        return headers.get(IDEMPOTENCY_KEY_HEADER);
+    }
+
+    private static void putHeader(Map<String, String> target, String name, String value) {
+        target.put(IDEMPOTENCY_KEY_HEADER.equalsIgnoreCase(name) ? IDEMPOTENCY_KEY_HEADER : name, value);
+    }
+
+    private static void putHeaders(Map<String, String> target, Map<String, String> source) {
+        for (Map.Entry<String, String> entry : source.entrySet()) {
+            putHeader(target, entry.getKey(), entry.getValue());
+        }
     }
 
     public Integer getMaxNetworkRetries() {
@@ -139,14 +151,14 @@ public final class RequestOptions {
 
         public Builder header(String name, String value) {
             if (name != null && value != null) {
-                headers.put(name, value);
+                putHeader(headers, name, value);
             }
             return this;
         }
 
         public Builder headers(Map<String, String> headers) {
             if (headers != null) {
-                this.headers.putAll(headers);
+                putHeaders(this.headers, headers);
             }
             return this;
         }
@@ -160,7 +172,7 @@ public final class RequestOptions {
          */
         public Builder idempotencyKey(String idempotencyKey) {
             if (idempotencyKey != null && !idempotencyKey.isEmpty()) {
-                this.headers.put("chargebee-idempotency-key", idempotencyKey);
+                this.headers.put(IDEMPOTENCY_KEY_HEADER, idempotencyKey);
             }
             return this;
         }

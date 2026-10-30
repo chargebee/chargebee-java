@@ -13,6 +13,8 @@ import java.util.Map;
 
 public final class HostedPageCollectNowParams {
 
+  private final String brandId;
+
   private final String redirectUrl;
 
   private final String currencyCode;
@@ -25,6 +27,8 @@ public final class HostedPageCollectNowParams {
 
   private HostedPageCollectNowParams(HostedPageCollectNowBuilder builder) {
 
+    this.brandId = builder.brandId;
+
     this.redirectUrl = builder.redirectUrl;
 
     this.currencyCode = builder.currencyCode;
@@ -34,6 +38,10 @@ public final class HostedPageCollectNowParams {
     this.customer = builder.customer;
 
     this.card = builder.card;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public String getRedirectUrl() {
@@ -59,6 +67,11 @@ public final class HostedPageCollectNowParams {
   /** Get the form data for this request. */
   public Map<String, Object> toFormData() {
     Map<String, Object> formData = new LinkedHashMap<>();
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
+    }
 
     if (this.redirectUrl != null) {
 
@@ -106,6 +119,8 @@ public final class HostedPageCollectNowParams {
 
   public static final class HostedPageCollectNowBuilder {
 
+    private String brandId;
+
     private String redirectUrl;
 
     private String currencyCode;
@@ -117,6 +132,11 @@ public final class HostedPageCollectNowParams {
     private CardParams card;
 
     private HostedPageCollectNowBuilder() {}
+
+    public HostedPageCollectNowBuilder brandId(String value) {
+      this.brandId = value;
+      return this;
+    }
 
     public HostedPageCollectNowBuilder redirectUrl(String value) {
       this.redirectUrl = value;
@@ -415,6 +435,8 @@ public final class HostedPageCollectNowParams {
       MOYASAR("moyasar"),
 
       PAYWAY("payway"),
+
+      PAYU("payu"),
 
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);

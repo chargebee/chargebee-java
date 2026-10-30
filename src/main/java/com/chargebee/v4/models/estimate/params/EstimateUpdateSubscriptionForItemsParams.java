@@ -1625,6 +1625,8 @@ public final class EstimateUpdateSubscriptionForItemsParams {
 
       EXEMPT("exempt"),
 
+      ZERO_RATED("zero_rated"),
+
       /** An enum member indicating that Taxability was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -1743,6 +1745,8 @@ public final class EstimateUpdateSubscriptionForItemsParams {
 
     private final ItemType itemType;
 
+    private final String description;
+
     private final ProrationType prorationType;
 
     private SubscriptionItemsParams(SubscriptionItemsBuilder builder) {
@@ -1770,6 +1774,8 @@ public final class EstimateUpdateSubscriptionForItemsParams {
       this.chargeOnOption = builder.chargeOnOption;
 
       this.itemType = builder.itemType;
+
+      this.description = builder.description;
 
       this.prorationType = builder.prorationType;
     }
@@ -1820,6 +1826,10 @@ public final class EstimateUpdateSubscriptionForItemsParams {
 
     public ItemType getItemType() {
       return itemType;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     public ProrationType getProrationType() {
@@ -1890,6 +1900,11 @@ public final class EstimateUpdateSubscriptionForItemsParams {
         formData.put("item_type", this.itemType);
       }
 
+      if (this.description != null) {
+
+        formData.put("description", this.description);
+      }
+
       if (this.prorationType != null) {
 
         formData.put("proration_type", this.prorationType);
@@ -1929,6 +1944,8 @@ public final class EstimateUpdateSubscriptionForItemsParams {
       private ChargeOnOption chargeOnOption;
 
       private ItemType itemType;
+
+      private String description;
 
       private ProrationType prorationType;
 
@@ -1991,6 +2008,11 @@ public final class EstimateUpdateSubscriptionForItemsParams {
 
       public SubscriptionItemsBuilder itemType(ItemType value) {
         this.itemType = value;
+        return this;
+      }
+
+      public SubscriptionItemsBuilder description(String value) {
+        this.description = value;
         return this;
       }
 

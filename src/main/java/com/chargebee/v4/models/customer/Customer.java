@@ -71,6 +71,7 @@ public class Customer {
   private String vatNumberPrefix;
   private String entityIdentifierScheme;
   private String entityIdentifierStandard;
+  private String brandId;
   private BillingAddress billingAddress;
   private List<ReferralUrls> referralUrls;
   private List<Contacts> contacts;
@@ -311,6 +312,10 @@ public class Customer {
     return entityIdentifierStandard;
   }
 
+  public String getBrandId() {
+    return brandId;
+  }
+
   public BillingAddress getBillingAddress() {
     return billingAddress;
   }
@@ -521,6 +526,8 @@ public class Customer {
     TAXABLE("taxable"),
 
     EXEMPT("exempt"),
+
+    ZERO_RATED("zero_rated"),
 
     /** An enum member indicating that Taxability was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1016,6 +1023,8 @@ public class Customer {
 
     knownFields.add("entity_identifier_standard");
 
+    knownFields.add("brand_id");
+
     knownFields.add("billing_address");
 
     knownFields.add("referral_urls");
@@ -1162,6 +1171,8 @@ public class Customer {
     obj.entityIdentifierScheme = JsonUtil.getString(jsonObj, "entity_identifier_scheme");
 
     obj.entityIdentifierStandard = JsonUtil.getString(jsonObj, "entity_identifier_standard");
+
+    obj.brandId = JsonUtil.getString(jsonObj, "brand_id");
 
     JsonObject __billingAddressObj = JsonUtil.getJsonObject(jsonObj, "billing_address");
     if (__billingAddressObj != null) {
@@ -1327,6 +1338,8 @@ public class Customer {
         + entityIdentifierScheme
         + ", entityIdentifierStandard="
         + entityIdentifierStandard
+        + ", brandId="
+        + brandId
         + ", billingAddress="
         + billingAddress
         + ", referralUrls="
@@ -1417,6 +1430,7 @@ public class Customer {
         && java.util.Objects.equals(vatNumberPrefix, that.vatNumberPrefix)
         && java.util.Objects.equals(entityIdentifierScheme, that.entityIdentifierScheme)
         && java.util.Objects.equals(entityIdentifierStandard, that.entityIdentifierStandard)
+        && java.util.Objects.equals(brandId, that.brandId)
         && java.util.Objects.equals(billingAddress, that.billingAddress)
         && java.util.Objects.equals(referralUrls, that.referralUrls)
         && java.util.Objects.equals(contacts, that.contacts)
@@ -1491,6 +1505,7 @@ public class Customer {
         vatNumberPrefix,
         entityIdentifierScheme,
         entityIdentifierStandard,
+        brandId,
         billingAddress,
         referralUrls,
         contacts,
@@ -2161,6 +2176,32 @@ public class Customer {
 
       QPAY("qpay"),
 
+      OVO("ovo"),
+
+      MOMO("momo"),
+
+      MERCADO_PAGO("mercado_pago"),
+
+      NEQUI("nequi"),
+
+      NUPAY("nupay"),
+
+      PICPAY("picpay"),
+
+      THAI_QR("thai_qr"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
+
+      AFFIRM_PAY("affirm_pay"),
+
+      RAKUTEN_PAY("rakuten_pay"),
+
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -2304,6 +2345,8 @@ public class Customer {
       MOYASAR("moyasar"),
 
       PAYWAY("payway"),
+
+      PAYU("payu"),
 
       NOT_APPLICABLE("not_applicable"),
 

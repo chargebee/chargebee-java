@@ -18,6 +18,8 @@ public final class HostedPageCheckoutExistingForItemsParams {
 
   private final Layout layout;
 
+  private final String brandId;
+
   private final List<String> mandatoryItemsToRemove;
 
   private final Boolean replaceItemsList;
@@ -75,6 +77,8 @@ public final class HostedPageCheckoutExistingForItemsParams {
 
     this.layout = builder.layout;
 
+    this.brandId = builder.brandId;
+
     this.mandatoryItemsToRemove = builder.mandatoryItemsToRemove;
 
     this.replaceItemsList = builder.replaceItemsList;
@@ -130,6 +134,10 @@ public final class HostedPageCheckoutExistingForItemsParams {
 
   public Layout getLayout() {
     return layout;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public List<String> getMandatoryItemsToRemove() {
@@ -243,6 +251,11 @@ public final class HostedPageCheckoutExistingForItemsParams {
     if (this.layout != null) {
 
       formData.put("layout", this.layout);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.mandatoryItemsToRemove != null) {
@@ -448,6 +461,8 @@ public final class HostedPageCheckoutExistingForItemsParams {
 
     private Layout layout;
 
+    private String brandId;
+
     private List<String> mandatoryItemsToRemove;
 
     private Boolean replaceItemsList;
@@ -504,6 +519,11 @@ public final class HostedPageCheckoutExistingForItemsParams {
 
     public HostedPageCheckoutExistingForItemsBuilder layout(Layout value) {
       this.layout = value;
+      return this;
+    }
+
+    public HostedPageCheckoutExistingForItemsBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 
@@ -1440,6 +1460,8 @@ public final class HostedPageCheckoutExistingForItemsParams {
       MOYASAR("moyasar"),
 
       PAYWAY("payway"),
+
+      PAYU("payu"),
 
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);

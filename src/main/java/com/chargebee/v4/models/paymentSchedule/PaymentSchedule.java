@@ -24,6 +24,7 @@ public class PaymentSchedule {
   private Timestamp updatedAt;
   private String currencyCode;
   private List<ScheduleEntries> scheduleEntries;
+  private List<ReferenceTransactions> referenceTransactions;
 
   public String getId() {
     return id;
@@ -63,6 +64,10 @@ public class PaymentSchedule {
 
   public List<ScheduleEntries> getScheduleEntries() {
     return scheduleEntries;
+  }
+
+  public List<ReferenceTransactions> getReferenceTransactions() {
+    return referenceTransactions;
   }
 
   public enum EntityType {
@@ -124,6 +129,11 @@ public class PaymentSchedule {
         JsonUtil.mapArray(
             JsonUtil.getJsonArray(jsonObj, "schedule_entries"), ScheduleEntries::fromJson);
 
+    obj.referenceTransactions =
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "reference_transactions"),
+            ReferenceTransactions::fromJson);
+
     return obj;
   }
 
@@ -150,6 +160,8 @@ public class PaymentSchedule {
         + currencyCode
         + ", scheduleEntries="
         + scheduleEntries
+        + ", referenceTransactions="
+        + referenceTransactions
         + "}";
   }
 
@@ -168,7 +180,8 @@ public class PaymentSchedule {
         && java.util.Objects.equals(resourceVersion, that.resourceVersion)
         && java.util.Objects.equals(updatedAt, that.updatedAt)
         && java.util.Objects.equals(currencyCode, that.currencyCode)
-        && java.util.Objects.equals(scheduleEntries, that.scheduleEntries);
+        && java.util.Objects.equals(scheduleEntries, that.scheduleEntries)
+        && java.util.Objects.equals(referenceTransactions, that.referenceTransactions);
   }
 
   @Override
@@ -184,7 +197,8 @@ public class PaymentSchedule {
         resourceVersion,
         updatedAt,
         currencyCode,
-        scheduleEntries);
+        scheduleEntries,
+        referenceTransactions);
   }
 
   public static class ScheduleEntries {
@@ -192,6 +206,7 @@ public class PaymentSchedule {
     private String id;
     private Timestamp date;
     private Long amount;
+    private Long scheduledAmount;
     private Status status;
 
     public String getId() {
@@ -204,6 +219,10 @@ public class PaymentSchedule {
 
     public Long getAmount() {
       return amount;
+    }
+
+    public Long getScheduledAmount() {
+      return scheduledAmount;
     }
 
     public Status getStatus() {
@@ -257,6 +276,8 @@ public class PaymentSchedule {
 
       obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
+      obj.scheduledAmount = JsonUtil.getLong(jsonObj, "scheduled_amount");
+
       obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
       return obj;
@@ -271,6 +292,8 @@ public class PaymentSchedule {
           + date
           + ", amount="
           + amount
+          + ", scheduledAmount="
+          + scheduledAmount
           + ", status="
           + status
           + "}";
@@ -285,13 +308,151 @@ public class PaymentSchedule {
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(date, that.date)
           && java.util.Objects.equals(amount, that.amount)
+          && java.util.Objects.equals(scheduledAmount, that.scheduledAmount)
           && java.util.Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
 
-      return java.util.Objects.hash(id, date, amount, status);
+      return java.util.Objects.hash(id, date, amount, scheduledAmount, status);
+    }
+  }
+
+  public static class ReferenceTransactions {
+
+    private String scheduleEntryId;
+    private Long appliedAmount;
+    private String txnId;
+    private TxnStatus txnStatus;
+    private Timestamp txnDate;
+    private Long txnAmount;
+
+    public String getScheduleEntryId() {
+      return scheduleEntryId;
+    }
+
+    public Long getAppliedAmount() {
+      return appliedAmount;
+    }
+
+    public String getTxnId() {
+      return txnId;
+    }
+
+    public TxnStatus getTxnStatus() {
+      return txnStatus;
+    }
+
+    public Timestamp getTxnDate() {
+      return txnDate;
+    }
+
+    public Long getTxnAmount() {
+      return txnAmount;
+    }
+
+    public enum TxnStatus {
+      IN_PROGRESS("in_progress"),
+
+      SUCCESS("success"),
+
+      VOIDED("voided"),
+
+      FAILURE("failure"),
+
+      TIMEOUT("timeout"),
+
+      NEEDS_ATTENTION("needs_attention"),
+
+      LATE_FAILURE("late_failure"),
+
+      /** An enum member indicating that TxnStatus was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      TxnStatus(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static TxnStatus fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (TxnStatus enumValue : TxnStatus.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public static ReferenceTransactions fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ReferenceTransactions fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
+    public static ReferenceTransactions fromJson(JsonObject jsonObj) {
+      ReferenceTransactions obj = new ReferenceTransactions();
+
+      obj.scheduleEntryId = JsonUtil.getString(jsonObj, "schedule_entry_id");
+
+      obj.appliedAmount = JsonUtil.getLong(jsonObj, "applied_amount");
+
+      obj.txnId = JsonUtil.getString(jsonObj, "txn_id");
+
+      obj.txnStatus = TxnStatus.fromString(JsonUtil.getString(jsonObj, "txn_status"));
+
+      obj.txnDate = JsonUtil.getTimestamp(jsonObj, "txn_date");
+
+      obj.txnAmount = JsonUtil.getLong(jsonObj, "txn_amount");
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "ReferenceTransactions{"
+          + "scheduleEntryId="
+          + scheduleEntryId
+          + ", appliedAmount="
+          + appliedAmount
+          + ", txnId="
+          + txnId
+          + ", txnStatus="
+          + txnStatus
+          + ", txnDate="
+          + txnDate
+          + ", txnAmount="
+          + txnAmount
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      ReferenceTransactions that = (ReferenceTransactions) o;
+      return java.util.Objects.equals(scheduleEntryId, that.scheduleEntryId)
+          && java.util.Objects.equals(appliedAmount, that.appliedAmount)
+          && java.util.Objects.equals(txnId, that.txnId)
+          && java.util.Objects.equals(txnStatus, that.txnStatus)
+          && java.util.Objects.equals(txnDate, that.txnDate)
+          && java.util.Objects.equals(txnAmount, that.txnAmount);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(
+          scheduleEntryId, appliedAmount, txnId, txnStatus, txnDate, txnAmount);
     }
   }
 }

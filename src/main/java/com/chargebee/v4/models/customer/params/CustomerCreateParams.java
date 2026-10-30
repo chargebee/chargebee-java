@@ -80,6 +80,8 @@ public final class CustomerCreateParams {
 
   private final String businessEntityId;
 
+  private final String brandId;
+
   private final String createdFromIp;
 
   private final String invoiceNotes;
@@ -167,6 +169,8 @@ public final class CustomerCreateParams {
     this.tokenId = builder.tokenId;
 
     this.businessEntityId = builder.businessEntityId;
+
+    this.brandId = builder.brandId;
 
     this.createdFromIp = builder.createdFromIp;
 
@@ -323,6 +327,10 @@ public final class CustomerCreateParams {
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public String getCreatedFromIp() {
@@ -533,6 +541,11 @@ public final class CustomerCreateParams {
       formData.put("business_entity_id", this.businessEntityId);
     }
 
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
+    }
+
     if (this.createdFromIp != null) {
 
       formData.put("created_from_ip", this.createdFromIp);
@@ -701,6 +714,8 @@ public final class CustomerCreateParams {
     private String tokenId;
 
     private String businessEntityId;
+
+    private String brandId;
 
     private String createdFromIp;
 
@@ -883,6 +898,11 @@ public final class CustomerCreateParams {
 
     public CustomerCreateBuilder businessEntityId(String value) {
       this.businessEntityId = value;
+      return this;
+    }
+
+    public CustomerCreateBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 
@@ -1088,6 +1108,8 @@ public final class CustomerCreateParams {
     TAXABLE("taxable"),
 
     EXEMPT("exempt"),
+
+    ZERO_RATED("zero_rated"),
 
     /** An enum member indicating that Taxability was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1820,6 +1842,8 @@ public final class CustomerCreateParams {
 
       PAYWAY("payway"),
 
+      PAYU("payu"),
+
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -1849,6 +1873,8 @@ public final class CustomerCreateParams {
       MASTERCARD("mastercard"),
 
       VISA("visa"),
+
+      DANKORT("dankort"),
 
       /** An enum member indicating that PreferredScheme was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2611,6 +2637,32 @@ public final class CustomerCreateParams {
 
       QPAY("qpay"),
 
+      OVO("ovo"),
+
+      MOMO("momo"),
+
+      MERCADO_PAGO("mercado_pago"),
+
+      NEQUI("nequi"),
+
+      NUPAY("nupay"),
+
+      PICPAY("picpay"),
+
+      THAI_QR("thai_qr"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
+
+      AFFIRM_PAY("affirm_pay"),
+
+      RAKUTEN_PAY("rakuten_pay"),
+
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -2752,6 +2804,8 @@ public final class CustomerCreateParams {
       MOYASAR("moyasar"),
 
       PAYWAY("payway"),
+
+      PAYU("payu"),
 
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -3049,6 +3103,32 @@ public final class CustomerCreateParams {
       TAMARA("tamara"),
 
       QPAY("qpay"),
+
+      OVO("ovo"),
+
+      MOMO("momo"),
+
+      MERCADO_PAGO("mercado_pago"),
+
+      NEQUI("nequi"),
+
+      NUPAY("nupay"),
+
+      PICPAY("picpay"),
+
+      THAI_QR("thai_qr"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
+
+      AFFIRM_PAY("affirm_pay"),
+
+      RAKUTEN_PAY("rakuten_pay"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.

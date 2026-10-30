@@ -1764,6 +1764,8 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
       PAYWAY("payway"),
 
+      PAYU("payu"),
+
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -1793,6 +1795,8 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
       MASTERCARD("mastercard"),
 
       VISA("visa"),
+
+      DANKORT("dankort"),
 
       /** An enum member indicating that PreferredScheme was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2555,6 +2559,32 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
       QPAY("qpay"),
 
+      OVO("ovo"),
+
+      MOMO("momo"),
+
+      MERCADO_PAGO("mercado_pago"),
+
+      NEQUI("nequi"),
+
+      NUPAY("nupay"),
+
+      PICPAY("picpay"),
+
+      THAI_QR("thai_qr"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
+
+      AFFIRM_PAY("affirm_pay"),
+
+      RAKUTEN_PAY("rakuten_pay"),
+
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -2696,6 +2726,8 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
       MOYASAR("moyasar"),
 
       PAYWAY("payway"),
+
+      PAYU("payu"),
 
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2993,6 +3025,32 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
       TAMARA("tamara"),
 
       QPAY("qpay"),
+
+      OVO("ovo"),
+
+      MOMO("momo"),
+
+      MERCADO_PAGO("mercado_pago"),
+
+      NEQUI("nequi"),
+
+      NUPAY("nupay"),
+
+      PICPAY("picpay"),
+
+      THAI_QR("thai_qr"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
+
+      AFFIRM_PAY("affirm_pay"),
+
+      RAKUTEN_PAY("rakuten_pay"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.

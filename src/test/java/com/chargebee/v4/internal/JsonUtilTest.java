@@ -3,6 +3,8 @@ package com.chargebee.v4.internal;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -284,6 +286,28 @@ class JsonUtilTest {
         @Test void getJsonObjectNonObjectReturnsNull() {
             JsonObject obj = JsonUtil.parse("{\"name\": \"test\"}");
             assertNull(JsonUtil.getJsonObject(obj, "name"));
+        }
+
+        @Test void getJsonObjectDecodesString() {
+            JsonObject root = new JsonObject();
+            root.addProperty("metadata", "{\"reason\":\"test-promo-claim\"}");
+            JsonObject metadata = JsonUtil.getJsonObject(root, "metadata");
+            assertNotNull(metadata);
+            assertEquals("test-promo-claim", metadata.get("reason").getAsString());
+        }
+
+        @Test void getJsonObjectDecodesEmptyObjectString() {
+            JsonObject root = new JsonObject();
+            root.addProperty("metadata", "{}");
+            assertEquals(new JsonObject(), JsonUtil.getJsonObject(root, "metadata"));
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"", " ", "not json", "{", "{\"reason\":", "[]", "[{}]", "null", "true", "42", "\"text\""})
+        void getJsonObjectRejectsInvalidOrNonObjectStrings(String value) {
+            JsonObject root = new JsonObject();
+            root.addProperty("metadata", value);
+            assertNull(JsonUtil.getJsonObject(root, "metadata"));
         }
 
         @Test void getObjectReturnsJsonString() {

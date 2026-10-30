@@ -9,6 +9,7 @@ import com.chargebee.v4.exceptions.NetworkException;
 import com.chargebee.v4.exceptions.TimeoutException;
 import com.chargebee.v4.exceptions.TransportException;
 import com.chargebee.v4.internal.RetryConfig;
+import com.chargebee.v4.telemetry.SdkTelemetryState;
 import com.chargebee.v4.telemetry.TelemetryAdapter;
 import com.chargebee.v4.telemetry.TelemetryExecutor;
 import com.chargebee.v4.transport.*;
@@ -43,6 +44,8 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
     private final RequestInterceptor requestInterceptor;
     private final RequestContext clientHeaders;
     private final TelemetryAdapter telemetryAdapter;
+    private final boolean sdkTelemetryEnabled;
+    private final SdkTelemetryState sdkTelemetryState = new SdkTelemetryState();
     private final boolean preferChargebeeTelemetry;
     private final ScheduledExecutorService retryScheduler;
 
@@ -62,6 +65,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
         this.requestInterceptor = builder.requestInterceptor;
         this.clientHeaders = new RequestContext(builder.clientHeaders.getHeaders());
         this.telemetryAdapter = builder.telemetryAdapter;
+        this.sdkTelemetryEnabled = builder.sdkTelemetryEnabled;
         this.preferChargebeeTelemetry = builder.preferChargebeeTelemetry;
         this.retryScheduler = Executors.newSingleThreadScheduledExecutor(r -> {
             Thread t = new Thread(r, "chargebee-retry-scheduler");
@@ -99,6 +103,10 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
     public RequestInterceptor getRequestInterceptor() { return requestInterceptor; }
     public RequestContext getClientHeaders() { return clientHeaders; }
     public TelemetryAdapter getTelemetryAdapter() { return telemetryAdapter; }
+    public boolean isSdkTelemetryEnabled() { return sdkTelemetryEnabled; }
+
+    /** Internal SDK telemetry state; not part of the supported public API. */
+    public SdkTelemetryState getSdkTelemetryState() { return sdkTelemetryState; }
     public boolean isPreferChargebeeTelemetry() { return preferChargebeeTelemetry; }
 
     public String getSdkVersion() {
@@ -580,6 +588,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
         private String protocol = "https";
         private RequestInterceptor requestInterceptor;
         private TelemetryAdapter telemetryAdapter;
+        private boolean sdkTelemetryEnabled = true;
         private boolean preferChargebeeTelemetry = false;
         private final RequestContext clientHeaders = new RequestContext();
 
@@ -604,6 +613,15 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
         public Builder protocol(String protocol) { this.protocol = protocol; return this; }
         public Builder requestInterceptor(RequestInterceptor requestInterceptor) { this.requestInterceptor = requestInterceptor; return this; }
         public Builder telemetryAdapter(TelemetryAdapter telemetryAdapter) { this.telemetryAdapter = telemetryAdapter; return this; }
+        /**
+         * Enables the anonymous SDK telemetry request header, on by default. On the first API
+         * call of a client instance it may attach {@code x-chargebee-sdk-telemetry} with enabled
+         * feature codes (custom transport, retries, telemetry adapter). The header is omitted when
+         * none of those features are in use. SDK identity is correlated via {@code User-Agent}. It
+         * never carries request or response payloads. Pass {@code false} to opt out; this is
+         * independent of {@link #telemetryAdapter(TelemetryAdapter)}.
+         */
+        public Builder sdkTelemetryEnabled(boolean sdkTelemetryEnabled) { this.sdkTelemetryEnabled = sdkTelemetryEnabled; return this; }
         public Builder preferChargebeeTelemetry(boolean preferChargebeeTelemetry) { this.preferChargebeeTelemetry = preferChargebeeTelemetry; return this; }
 
         // Header helpers

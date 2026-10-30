@@ -7,6 +7,7 @@
 package com.chargebee.v4.models.paymentIntent.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -14,6 +15,8 @@ import java.util.Map;
 public final class PaymentIntentCreateParams {
 
   private final String businessEntityId;
+
+  private final String brandId;
 
   private final String customerId;
 
@@ -33,9 +36,13 @@ public final class PaymentIntentCreateParams {
 
   private final String failureUrl;
 
+  private final java.util.Map<String, Object> paymentMethodOptions;
+
   private PaymentIntentCreateParams(PaymentIntentCreateBuilder builder) {
 
     this.businessEntityId = builder.businessEntityId;
+
+    this.brandId = builder.brandId;
 
     this.customerId = builder.customerId;
 
@@ -54,10 +61,16 @@ public final class PaymentIntentCreateParams {
     this.successUrl = builder.successUrl;
 
     this.failureUrl = builder.failureUrl;
+
+    this.paymentMethodOptions = builder.paymentMethodOptions;
   }
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public String getCustomerId() {
@@ -96,6 +109,10 @@ public final class PaymentIntentCreateParams {
     return failureUrl;
   }
 
+  public java.util.Map<String, Object> getPaymentMethodOptions() {
+    return paymentMethodOptions;
+  }
+
   /** Get the form data for this request. */
   public Map<String, Object> toFormData() {
     Map<String, Object> formData = new LinkedHashMap<>();
@@ -103,6 +120,11 @@ public final class PaymentIntentCreateParams {
     if (this.businessEntityId != null) {
 
       formData.put("business_entity_id", this.businessEntityId);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.customerId != null) {
@@ -150,6 +172,11 @@ public final class PaymentIntentCreateParams {
       formData.put("failure_url", this.failureUrl);
     }
 
+    if (this.paymentMethodOptions != null) {
+
+      formData.put("payment_method_options", JsonUtil.toJson(this.paymentMethodOptions));
+    }
+
     return formData;
   }
 
@@ -162,6 +189,8 @@ public final class PaymentIntentCreateParams {
   public static final class PaymentIntentCreateBuilder {
 
     private String businessEntityId;
+
+    private String brandId;
 
     private String customerId;
 
@@ -181,10 +210,17 @@ public final class PaymentIntentCreateParams {
 
     private String failureUrl;
 
+    private java.util.Map<String, Object> paymentMethodOptions;
+
     private PaymentIntentCreateBuilder() {}
 
     public PaymentIntentCreateBuilder businessEntityId(String value) {
       this.businessEntityId = value;
+      return this;
+    }
+
+    public PaymentIntentCreateBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 
@@ -230,6 +266,11 @@ public final class PaymentIntentCreateParams {
 
     public PaymentIntentCreateBuilder failureUrl(String value) {
       this.failureUrl = value;
+      return this;
+    }
+
+    public PaymentIntentCreateBuilder paymentMethodOptions(java.util.Map<String, Object> value) {
+      this.paymentMethodOptions = value;
       return this;
     }
 
@@ -342,6 +383,32 @@ public final class PaymentIntentCreateParams {
     TAMARA("tamara"),
 
     QPAY("qpay"),
+
+    OVO("ovo"),
+
+    MOMO("momo"),
+
+    MERCADO_PAGO("mercado_pago"),
+
+    NEQUI("nequi"),
+
+    NUPAY("nupay"),
+
+    PICPAY("picpay"),
+
+    THAI_QR("thai_qr"),
+
+    BLIK("blik"),
+
+    FPX("fpx"),
+
+    WERO("wero"),
+
+    P24("p24"),
+
+    AFFIRM_PAY("affirm_pay"),
+
+    RAKUTEN_PAY("rakuten_pay"),
 
     /** An enum member indicating that PaymentMethodType was instantiated with an unknown value. */
     _UNKNOWN(null);

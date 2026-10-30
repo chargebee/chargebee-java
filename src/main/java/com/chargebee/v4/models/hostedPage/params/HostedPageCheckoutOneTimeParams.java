@@ -710,6 +710,8 @@ public final class HostedPageCheckoutOneTimeParams {
 
       EXEMPT("exempt"),
 
+      ZERO_RATED("zero_rated"),
+
       /** An enum member indicating that Taxability was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -968,6 +970,8 @@ public final class HostedPageCheckoutOneTimeParams {
       MOYASAR("moyasar"),
 
       PAYWAY("payway"),
+
+      PAYU("payu"),
 
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);

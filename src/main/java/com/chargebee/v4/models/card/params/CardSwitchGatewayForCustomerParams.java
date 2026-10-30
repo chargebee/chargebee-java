@@ -188,6 +188,8 @@ public final class CardSwitchGatewayForCustomerParams {
 
     PAYWAY("payway"),
 
+    PAYU("payu"),
+
     /** An enum member indicating that Gateway was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;

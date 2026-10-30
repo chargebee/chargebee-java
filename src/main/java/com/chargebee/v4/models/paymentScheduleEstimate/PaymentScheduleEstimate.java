@@ -153,6 +153,7 @@ public class PaymentScheduleEstimate {
     private String id;
     private Timestamp date;
     private Long amount;
+    private Long scheduledAmount;
     private Status status;
 
     public String getId() {
@@ -165,6 +166,10 @@ public class PaymentScheduleEstimate {
 
     public Long getAmount() {
       return amount;
+    }
+
+    public Long getScheduledAmount() {
+      return scheduledAmount;
     }
 
     public Status getStatus() {
@@ -218,6 +223,8 @@ public class PaymentScheduleEstimate {
 
       obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
+      obj.scheduledAmount = JsonUtil.getLong(jsonObj, "scheduled_amount");
+
       obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
       return obj;
@@ -232,6 +239,8 @@ public class PaymentScheduleEstimate {
           + date
           + ", amount="
           + amount
+          + ", scheduledAmount="
+          + scheduledAmount
           + ", status="
           + status
           + "}";
@@ -246,13 +255,14 @@ public class PaymentScheduleEstimate {
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(date, that.date)
           && java.util.Objects.equals(amount, that.amount)
+          && java.util.Objects.equals(scheduledAmount, that.scheduledAmount)
           && java.util.Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
 
-      return java.util.Objects.hash(id, date, amount, status);
+      return java.util.Objects.hash(id, date, amount, scheduledAmount, status);
     }
   }
 }

@@ -28,9 +28,11 @@ public class PaymentIntent {
   private Timestamp modifiedAt;
   private Long resourceVersion;
   private Timestamp updatedAt;
+  private java.util.Map<String, Object> paymentMethodOptions;
   private String customerId;
   private String gateway;
   private String businessEntityId;
+  private String brandId;
   private ActivePaymentAttempt activePaymentAttempt;
   private List<PaymentAttempts> paymentAttempts;
   private PaymentIntentMetadata paymentIntentMetadata;
@@ -91,6 +93,10 @@ public class PaymentIntent {
     return updatedAt;
   }
 
+  public java.util.Map<String, Object> getPaymentMethodOptions() {
+    return paymentMethodOptions;
+  }
+
   public String getCustomerId() {
     return customerId;
   }
@@ -101,6 +107,10 @@ public class PaymentIntent {
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public ActivePaymentAttempt getActivePaymentAttempt() {
@@ -254,6 +264,32 @@ public class PaymentIntent {
 
     QPAY("qpay"),
 
+    OVO("ovo"),
+
+    MOMO("momo"),
+
+    MERCADO_PAGO("mercado_pago"),
+
+    NEQUI("nequi"),
+
+    NUPAY("nupay"),
+
+    PICPAY("picpay"),
+
+    THAI_QR("thai_qr"),
+
+    BLIK("blik"),
+
+    FPX("fpx"),
+
+    WERO("wero"),
+
+    P24("p24"),
+
+    AFFIRM_PAY("affirm_pay"),
+
+    RAKUTEN_PAY("rakuten_pay"),
+
     /** An enum member indicating that PaymentMethodType was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -317,11 +353,20 @@ public class PaymentIntent {
 
     obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
+    JsonObject __paymentMethodOptionsObj =
+        JsonUtil.getJsonObject(jsonObj, "payment_method_options");
+    obj.paymentMethodOptions =
+        __paymentMethodOptionsObj != null
+            ? JsonUtil.parseJsonObjectToMap(__paymentMethodOptionsObj)
+            : new java.util.HashMap<>();
+
     obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
     obj.gateway = JsonUtil.getString(jsonObj, "gateway");
 
     obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
+
+    obj.brandId = JsonUtil.getString(jsonObj, "brand_id");
 
     JsonObject __activePaymentAttemptObj =
         JsonUtil.getJsonObject(jsonObj, "active_payment_attempt");
@@ -373,12 +418,16 @@ public class PaymentIntent {
         + resourceVersion
         + ", updatedAt="
         + updatedAt
+        + ", paymentMethodOptions="
+        + paymentMethodOptions
         + ", customerId="
         + customerId
         + ", gateway="
         + gateway
         + ", businessEntityId="
         + businessEntityId
+        + ", brandId="
+        + brandId
         + ", activePaymentAttempt="
         + activePaymentAttempt
         + ", paymentAttempts="
@@ -408,9 +457,11 @@ public class PaymentIntent {
         && java.util.Objects.equals(modifiedAt, that.modifiedAt)
         && java.util.Objects.equals(resourceVersion, that.resourceVersion)
         && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(paymentMethodOptions, that.paymentMethodOptions)
         && java.util.Objects.equals(customerId, that.customerId)
         && java.util.Objects.equals(gateway, that.gateway)
         && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(brandId, that.brandId)
         && java.util.Objects.equals(activePaymentAttempt, that.activePaymentAttempt)
         && java.util.Objects.equals(paymentAttempts, that.paymentAttempts)
         && java.util.Objects.equals(paymentIntentMetadata, that.paymentIntentMetadata);
@@ -434,9 +485,11 @@ public class PaymentIntent {
         modifiedAt,
         resourceVersion,
         updatedAt,
+        paymentMethodOptions,
         customerId,
         gateway,
         businessEntityId,
+        brandId,
         activePaymentAttempt,
         paymentAttempts,
         paymentIntentMetadata);
@@ -454,6 +507,8 @@ public class PaymentIntent {
     private Timestamp createdAt;
     private Timestamp modifiedAt;
     private ErrorDetail errorDetail;
+    private String routingRuleId;
+    private String paymentMethodDisplayRuleId;
 
     public String getId() {
       return id;
@@ -493,6 +548,14 @@ public class PaymentIntent {
 
     public ErrorDetail getErrorDetail() {
       return errorDetail;
+    }
+
+    public String getRoutingRuleId() {
+      return routingRuleId;
+    }
+
+    public String getPaymentMethodDisplayRuleId() {
+      return paymentMethodDisplayRuleId;
     }
 
     public enum Status {
@@ -638,6 +701,32 @@ public class PaymentIntent {
 
       QPAY("qpay"),
 
+      OVO("ovo"),
+
+      MOMO("momo"),
+
+      MERCADO_PAGO("mercado_pago"),
+
+      NEQUI("nequi"),
+
+      NUPAY("nupay"),
+
+      PICPAY("picpay"),
+
+      THAI_QR("thai_qr"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
+
+      AFFIRM_PAY("affirm_pay"),
+
+      RAKUTEN_PAY("rakuten_pay"),
+
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
        */
@@ -698,6 +787,11 @@ public class PaymentIntent {
         obj.errorDetail = ErrorDetail.fromJson(__errorDetailObj);
       }
 
+      obj.routingRuleId = JsonUtil.getString(jsonObj, "routing_rule_id");
+
+      obj.paymentMethodDisplayRuleId =
+          JsonUtil.getString(jsonObj, "payment_method_display_rule_id");
+
       return obj;
     }
 
@@ -724,6 +818,10 @@ public class PaymentIntent {
           + modifiedAt
           + ", errorDetail="
           + errorDetail
+          + ", routingRuleId="
+          + routingRuleId
+          + ", paymentMethodDisplayRuleId="
+          + paymentMethodDisplayRuleId
           + "}";
     }
 
@@ -742,7 +840,9 @@ public class PaymentIntent {
           && java.util.Objects.equals(checkoutDetails, that.checkoutDetails)
           && java.util.Objects.equals(createdAt, that.createdAt)
           && java.util.Objects.equals(modifiedAt, that.modifiedAt)
-          && java.util.Objects.equals(errorDetail, that.errorDetail);
+          && java.util.Objects.equals(errorDetail, that.errorDetail)
+          && java.util.Objects.equals(routingRuleId, that.routingRuleId)
+          && java.util.Objects.equals(paymentMethodDisplayRuleId, that.paymentMethodDisplayRuleId);
     }
 
     @Override
@@ -758,7 +858,9 @@ public class PaymentIntent {
           checkoutDetails,
           createdAt,
           modifiedAt,
-          errorDetail);
+          errorDetail,
+          routingRuleId,
+          paymentMethodDisplayRuleId);
     }
 
     public static class ErrorDetail {
@@ -977,6 +1079,8 @@ public class PaymentIntent {
     private Timestamp createdAt;
     private Timestamp modifiedAt;
     private ErrorDetail errorDetail;
+    private String routingRuleId;
+    private String paymentMethodDisplayRuleId;
 
     public String getId() {
       return id;
@@ -1016,6 +1120,14 @@ public class PaymentIntent {
 
     public ErrorDetail getErrorDetail() {
       return errorDetail;
+    }
+
+    public String getRoutingRuleId() {
+      return routingRuleId;
+    }
+
+    public String getPaymentMethodDisplayRuleId() {
+      return paymentMethodDisplayRuleId;
     }
 
     public enum Status {
@@ -1161,6 +1273,32 @@ public class PaymentIntent {
 
       QPAY("qpay"),
 
+      OVO("ovo"),
+
+      MOMO("momo"),
+
+      MERCADO_PAGO("mercado_pago"),
+
+      NEQUI("nequi"),
+
+      NUPAY("nupay"),
+
+      PICPAY("picpay"),
+
+      THAI_QR("thai_qr"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
+
+      AFFIRM_PAY("affirm_pay"),
+
+      RAKUTEN_PAY("rakuten_pay"),
+
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
        */
@@ -1221,6 +1359,11 @@ public class PaymentIntent {
         obj.errorDetail = ErrorDetail.fromJson(__errorDetailObj);
       }
 
+      obj.routingRuleId = JsonUtil.getString(jsonObj, "routing_rule_id");
+
+      obj.paymentMethodDisplayRuleId =
+          JsonUtil.getString(jsonObj, "payment_method_display_rule_id");
+
       return obj;
     }
 
@@ -1247,6 +1390,10 @@ public class PaymentIntent {
           + modifiedAt
           + ", errorDetail="
           + errorDetail
+          + ", routingRuleId="
+          + routingRuleId
+          + ", paymentMethodDisplayRuleId="
+          + paymentMethodDisplayRuleId
           + "}";
     }
 
@@ -1265,7 +1412,9 @@ public class PaymentIntent {
           && java.util.Objects.equals(checkoutDetails, that.checkoutDetails)
           && java.util.Objects.equals(createdAt, that.createdAt)
           && java.util.Objects.equals(modifiedAt, that.modifiedAt)
-          && java.util.Objects.equals(errorDetail, that.errorDetail);
+          && java.util.Objects.equals(errorDetail, that.errorDetail)
+          && java.util.Objects.equals(routingRuleId, that.routingRuleId)
+          && java.util.Objects.equals(paymentMethodDisplayRuleId, that.paymentMethodDisplayRuleId);
     }
 
     @Override
@@ -1281,7 +1430,9 @@ public class PaymentIntent {
           checkoutDetails,
           createdAt,
           modifiedAt,
-          errorDetail);
+          errorDetail,
+          routingRuleId,
+          paymentMethodDisplayRuleId);
     }
 
     public static class ErrorDetail {
@@ -1512,25 +1663,17 @@ public class PaymentIntent {
     }
 
     public enum Source {
-      CB_JS("cb_js"),
+      PAYMENT_METHOD_HELPER("payment_method_helper"),
 
-      COMPONENTS_FIELDS("components_fields"),
+      CARD_COMPONENTS("card_components"),
 
-      CHECKOUT_V_3("checkout_v3"),
+      CHECKOUT("checkout"),
 
-      PAYNOW_V_3("paynow_v3"),
+      COLLECT_NOW("collect_now"),
 
-      PORTAL_V_3("portal_v3"),
+      PORTAL("portal"),
 
-      GIFT_V_3("gift_v3"),
-
-      CHECKOUT_V_4("checkout_v4"),
-
-      PAYMENT_COMPONENT("payment_component"),
-
-      PC_INAPP_V_4("pc_inapp_v4"),
-
-      PC_FPC_V_4("pc_fpc_v4"),
+      PAYMENT_COMPONENTS("payment_components"),
 
       /** An enum member indicating that Source was instantiated with an unknown value. */
       _UNKNOWN(null);

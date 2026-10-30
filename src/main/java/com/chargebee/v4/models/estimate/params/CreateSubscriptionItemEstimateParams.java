@@ -1457,6 +1457,8 @@ public final class CreateSubscriptionItemEstimateParams {
 
       EXEMPT("exempt"),
 
+      ZERO_RATED("zero_rated"),
+
       /** An enum member indicating that Taxability was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -1718,6 +1720,8 @@ public final class CreateSubscriptionItemEstimateParams {
 
     private final ItemType itemType;
 
+    private final String description;
+
     private final ChargeOnOption chargeOnOption;
 
     private SubscriptionItemsParams(SubscriptionItemsBuilder builder) {
@@ -1743,6 +1747,8 @@ public final class CreateSubscriptionItemEstimateParams {
       this.chargeOnce = builder.chargeOnce;
 
       this.itemType = builder.itemType;
+
+      this.description = builder.description;
 
       this.chargeOnOption = builder.chargeOnOption;
     }
@@ -1789,6 +1795,10 @@ public final class CreateSubscriptionItemEstimateParams {
 
     public ItemType getItemType() {
       return itemType;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     public ChargeOnOption getChargeOnOption() {
@@ -1854,6 +1864,11 @@ public final class CreateSubscriptionItemEstimateParams {
         formData.put("item_type", this.itemType);
       }
 
+      if (this.description != null) {
+
+        formData.put("description", this.description);
+      }
+
       if (this.chargeOnOption != null) {
 
         formData.put("charge_on_option", this.chargeOnOption);
@@ -1891,6 +1906,8 @@ public final class CreateSubscriptionItemEstimateParams {
       private Boolean chargeOnce;
 
       private ItemType itemType;
+
+      private String description;
 
       private ChargeOnOption chargeOnOption;
 
@@ -1948,6 +1965,11 @@ public final class CreateSubscriptionItemEstimateParams {
 
       public SubscriptionItemsBuilder itemType(ItemType value) {
         this.itemType = value;
+        return this;
+      }
+
+      public SubscriptionItemsBuilder description(String value) {
+        this.description = value;
         return this;
       }
 

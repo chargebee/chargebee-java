@@ -15,6 +15,8 @@ public final class HostedPageManagePaymentSourcesParams {
 
   private final String businessEntityId;
 
+  private final String brandId;
+
   private final String redirectUrl;
 
   private final CustomerParams customer;
@@ -25,6 +27,8 @@ public final class HostedPageManagePaymentSourcesParams {
 
     this.businessEntityId = builder.businessEntityId;
 
+    this.brandId = builder.brandId;
+
     this.redirectUrl = builder.redirectUrl;
 
     this.customer = builder.customer;
@@ -34,6 +38,10 @@ public final class HostedPageManagePaymentSourcesParams {
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public String getRedirectUrl() {
@@ -55,6 +63,11 @@ public final class HostedPageManagePaymentSourcesParams {
     if (this.businessEntityId != null) {
 
       formData.put("business_entity_id", this.businessEntityId);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.redirectUrl != null) {
@@ -95,6 +108,8 @@ public final class HostedPageManagePaymentSourcesParams {
 
     private String businessEntityId;
 
+    private String brandId;
+
     private String redirectUrl;
 
     private CustomerParams customer;
@@ -105,6 +120,11 @@ public final class HostedPageManagePaymentSourcesParams {
 
     public HostedPageManagePaymentSourcesBuilder businessEntityId(String value) {
       this.businessEntityId = value;
+      return this;
+    }
+
+    public HostedPageManagePaymentSourcesBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 
@@ -362,6 +382,8 @@ public final class HostedPageManagePaymentSourcesParams {
       MOYASAR("moyasar"),
 
       PAYWAY("payway"),
+
+      PAYU("payu"),
 
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);

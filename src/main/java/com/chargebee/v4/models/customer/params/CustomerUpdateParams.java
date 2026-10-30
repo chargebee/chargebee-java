@@ -683,6 +683,8 @@ public final class CustomerUpdateParams {
 
     EXEMPT("exempt"),
 
+    ZERO_RATED("zero_rated"),
+
     /** An enum member indicating that Taxability was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;

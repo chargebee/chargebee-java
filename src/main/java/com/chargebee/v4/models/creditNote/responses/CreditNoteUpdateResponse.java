@@ -1,0 +1,99 @@
+package com.chargebee.v4.models.creditNote.responses;
+
+import com.chargebee.v4.models.creditNote.CreditNote;
+
+import com.chargebee.v4.models.BaseResponse;
+import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
+import com.chargebee.v4.transport.Response;
+
+/**
+ * Immutable response object for CreditNoteUpdate operation. Contains the response data from the
+ * API.
+ */
+public final class CreditNoteUpdateResponse extends BaseResponse {
+  private final CreditNote creditNote;
+
+  private CreditNoteUpdateResponse(Builder builder) {
+    super(builder.httpResponse);
+
+    this.creditNote = builder.creditNote;
+  }
+
+  /** Parse JSON response into CreditNoteUpdateResponse object. */
+  public static CreditNoteUpdateResponse fromJson(String json) {
+    return fromJson(json, null);
+  }
+
+  /** Parse JSON response into CreditNoteUpdateResponse object with HTTP response. */
+  public static CreditNoteUpdateResponse fromJson(String json, Response httpResponse) {
+    try {
+      JsonObject jsonObj = JsonUtil.parse(json);
+      Builder builder = builder();
+
+      JsonObject __creditNoteObj = JsonUtil.getJsonObject(jsonObj, "credit_note");
+      if (__creditNoteObj != null) {
+        builder.creditNote(CreditNote.fromJson(__creditNoteObj));
+      }
+
+      builder.httpResponse(httpResponse);
+      return builder.build();
+    } catch (Exception e) {
+      throw new RuntimeException("Failed to parse CreditNoteUpdateResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for CreditNoteUpdateResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for CreditNoteUpdateResponse. */
+  public static class Builder {
+
+    private CreditNote creditNote;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder creditNote(CreditNote creditNote) {
+      this.creditNote = creditNote;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public CreditNoteUpdateResponse build() {
+      return new CreditNoteUpdateResponse(this);
+    }
+  }
+
+  /** Get the creditNote from the response. */
+  public CreditNote getCreditNote() {
+    return creditNote;
+  }
+
+  @Override
+  public String toString() {
+    return "CreditNoteUpdateResponse{" + "creditNote=" + creditNote + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    CreditNoteUpdateResponse that = (CreditNoteUpdateResponse) o;
+    return java.util.Objects.equals(creditNote, that.creditNote);
+  }
+
+  @Override
+  public int hashCode() {
+
+    return java.util.Objects.hash(creditNote);
+  }
+}

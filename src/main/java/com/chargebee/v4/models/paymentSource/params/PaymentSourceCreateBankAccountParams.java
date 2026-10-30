@@ -16,6 +16,8 @@ public final class PaymentSourceCreateBankAccountParams {
 
   private final String customerId;
 
+  private final String brandId;
+
   private final String issuingCountry;
 
   private final Boolean replacePrimaryPaymentSource;
@@ -26,6 +28,8 @@ public final class PaymentSourceCreateBankAccountParams {
 
     this.customerId = builder.customerId;
 
+    this.brandId = builder.brandId;
+
     this.issuingCountry = builder.issuingCountry;
 
     this.replacePrimaryPaymentSource = builder.replacePrimaryPaymentSource;
@@ -35,6 +39,10 @@ public final class PaymentSourceCreateBankAccountParams {
 
   public String getCustomerId() {
     return customerId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public String getIssuingCountry() {
@@ -56,6 +64,11 @@ public final class PaymentSourceCreateBankAccountParams {
     if (this.customerId != null) {
 
       formData.put("customer_id", this.customerId);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.issuingCountry != null) {
@@ -91,6 +104,8 @@ public final class PaymentSourceCreateBankAccountParams {
 
     private String customerId;
 
+    private String brandId;
+
     private String issuingCountry;
 
     private Boolean replacePrimaryPaymentSource;
@@ -101,6 +116,11 @@ public final class PaymentSourceCreateBankAccountParams {
 
     public PaymentSourceCreateBankAccountBuilder customerId(String value) {
       this.customerId = value;
+      return this;
+    }
+
+    public PaymentSourceCreateBankAccountBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 

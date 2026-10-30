@@ -22,6 +22,8 @@ import com.chargebee.v4.transport.Response;
 public final class LedgerOperationCaptureAuthorizationResponse extends BaseResponse {
   private final LedgerOperation ledgerOperation;
 
+  private final List<LedgerOperation> ledgerOperations;
+
   private final LedgerAccountBalance ledgerAccountBalance;
 
   private final List<GrantBlock> grantBlocks;
@@ -32,6 +34,8 @@ public final class LedgerOperationCaptureAuthorizationResponse extends BaseRespo
     super(builder.httpResponse);
 
     this.ledgerOperation = builder.ledgerOperation;
+
+    this.ledgerOperations = builder.ledgerOperations;
 
     this.ledgerAccountBalance = builder.ledgerAccountBalance;
 
@@ -58,6 +62,10 @@ public final class LedgerOperationCaptureAuthorizationResponse extends BaseRespo
       if (__ledgerOperationObj != null) {
         builder.ledgerOperation(LedgerOperation.fromJson(__ledgerOperationObj));
       }
+
+      builder.ledgerOperations(
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "ledger_operations"), LedgerOperation::fromJson));
 
       JsonObject __ledgerAccountBalanceObj =
           JsonUtil.getJsonObject(jsonObj, "ledger_account_balance");
@@ -90,6 +98,8 @@ public final class LedgerOperationCaptureAuthorizationResponse extends BaseRespo
 
     private LedgerOperation ledgerOperation;
 
+    private List<LedgerOperation> ledgerOperations;
+
     private LedgerAccountBalance ledgerAccountBalance;
 
     private List<GrantBlock> grantBlocks;
@@ -102,6 +112,11 @@ public final class LedgerOperationCaptureAuthorizationResponse extends BaseRespo
 
     public Builder ledgerOperation(LedgerOperation ledgerOperation) {
       this.ledgerOperation = ledgerOperation;
+      return this;
+    }
+
+    public Builder ledgerOperations(List<LedgerOperation> ledgerOperations) {
+      this.ledgerOperations = ledgerOperations;
       return this;
     }
 
@@ -135,6 +150,11 @@ public final class LedgerOperationCaptureAuthorizationResponse extends BaseRespo
     return ledgerOperation;
   }
 
+  /** Get the ledgerOperations from the response. */
+  public List<LedgerOperation> getLedgerOperations() {
+    return ledgerOperations;
+  }
+
   /** Get the ledgerAccountBalance from the response. */
   public LedgerAccountBalance getLedgerAccountBalance() {
     return ledgerAccountBalance;
@@ -155,6 +175,8 @@ public final class LedgerOperationCaptureAuthorizationResponse extends BaseRespo
     return "LedgerOperationCaptureAuthorizationResponse{"
         + "ledgerOperation="
         + ledgerOperation
+        + ", ledgerOperations="
+        + ledgerOperations
         + ", ledgerAccountBalance="
         + ledgerAccountBalance
         + ", grantBlocks="
@@ -172,6 +194,7 @@ public final class LedgerOperationCaptureAuthorizationResponse extends BaseRespo
     LedgerOperationCaptureAuthorizationResponse that =
         (LedgerOperationCaptureAuthorizationResponse) o;
     return java.util.Objects.equals(ledgerOperation, that.ledgerOperation)
+        && java.util.Objects.equals(ledgerOperations, that.ledgerOperations)
         && java.util.Objects.equals(ledgerAccountBalance, that.ledgerAccountBalance)
         && java.util.Objects.equals(grantBlocks, that.grantBlocks)
         && java.util.Objects.equals(ledgerEntries, that.ledgerEntries);
@@ -181,6 +204,6 @@ public final class LedgerOperationCaptureAuthorizationResponse extends BaseRespo
   public int hashCode() {
 
     return java.util.Objects.hash(
-        ledgerOperation, ledgerAccountBalance, grantBlocks, ledgerEntries);
+        ledgerOperation, ledgerOperations, ledgerAccountBalance, grantBlocks, ledgerEntries);
   }
 }

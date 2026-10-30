@@ -1270,13 +1270,17 @@ public final class SubscriptionImportForItemsParams {
 
       CUSTOM("custom"),
 
-      DANA("dana"),
-
-      TOUCH_N_GO("touch_n_go"),
-
       TAMARA("tamara"),
 
       QPAY("qpay"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
 
       /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1666,6 +1670,8 @@ public final class SubscriptionImportForItemsParams {
 
     private final ItemType itemType;
 
+    private final String description;
+
     private SubscriptionItemsParams(SubscriptionItemsBuilder builder) {
 
       this.itemPriceId = builder.itemPriceId;
@@ -1689,6 +1695,8 @@ public final class SubscriptionImportForItemsParams {
       this.chargeOnce = builder.chargeOnce;
 
       this.itemType = builder.itemType;
+
+      this.description = builder.description;
     }
 
     public String getItemPriceId() {
@@ -1733,6 +1741,10 @@ public final class SubscriptionImportForItemsParams {
 
     public ItemType getItemType() {
       return itemType;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     /** Get the form data for this request. */
@@ -1794,6 +1806,11 @@ public final class SubscriptionImportForItemsParams {
         formData.put("item_type", this.itemType);
       }
 
+      if (this.description != null) {
+
+        formData.put("description", this.description);
+      }
+
       return formData;
     }
 
@@ -1826,6 +1843,8 @@ public final class SubscriptionImportForItemsParams {
       private Boolean chargeOnce;
 
       private ItemType itemType;
+
+      private String description;
 
       private SubscriptionItemsBuilder() {}
 
@@ -1881,6 +1900,11 @@ public final class SubscriptionImportForItemsParams {
 
       public SubscriptionItemsBuilder itemType(ItemType value) {
         this.itemType = value;
+        return this;
+      }
+
+      public SubscriptionItemsBuilder description(String value) {
+        this.description = value;
         return this;
       }
 

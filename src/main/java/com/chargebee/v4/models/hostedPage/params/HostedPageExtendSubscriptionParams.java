@@ -13,6 +13,8 @@ import java.util.Map;
 
 public final class HostedPageExtendSubscriptionParams {
 
+  private final String brandId;
+
   private final Integer expiry;
 
   private final Integer billingCycle;
@@ -21,11 +23,17 @@ public final class HostedPageExtendSubscriptionParams {
 
   private HostedPageExtendSubscriptionParams(HostedPageExtendSubscriptionBuilder builder) {
 
+    this.brandId = builder.brandId;
+
     this.expiry = builder.expiry;
 
     this.billingCycle = builder.billingCycle;
 
     this.subscription = builder.subscription;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public Integer getExpiry() {
@@ -43,6 +51,11 @@ public final class HostedPageExtendSubscriptionParams {
   /** Get the form data for this request. */
   public Map<String, Object> toFormData() {
     Map<String, Object> formData = new LinkedHashMap<>();
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
+    }
 
     if (this.expiry != null) {
 
@@ -75,6 +88,8 @@ public final class HostedPageExtendSubscriptionParams {
 
   public static final class HostedPageExtendSubscriptionBuilder {
 
+    private String brandId;
+
     private Integer expiry;
 
     private Integer billingCycle;
@@ -82,6 +97,11 @@ public final class HostedPageExtendSubscriptionParams {
     private SubscriptionParams subscription;
 
     private HostedPageExtendSubscriptionBuilder() {}
+
+    public HostedPageExtendSubscriptionBuilder brandId(String value) {
+      this.brandId = value;
+      return this;
+    }
 
     public HostedPageExtendSubscriptionBuilder expiry(Integer value) {
       this.expiry = value;

@@ -13,15 +13,21 @@ import java.util.Map;
 
 public final class HostedPagePreCancelParams {
 
+  private final String brandId;
+
   private final String passThruContent;
 
   private final String cancelUrl;
 
   private final String redirectUrl;
 
+  private final String locale;
+
   private final SubscriptionParams subscription;
 
   private HostedPagePreCancelParams(HostedPagePreCancelBuilder builder) {
+
+    this.brandId = builder.brandId;
 
     this.passThruContent = builder.passThruContent;
 
@@ -29,7 +35,13 @@ public final class HostedPagePreCancelParams {
 
     this.redirectUrl = builder.redirectUrl;
 
+    this.locale = builder.locale;
+
     this.subscription = builder.subscription;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public String getPassThruContent() {
@@ -44,6 +56,10 @@ public final class HostedPagePreCancelParams {
     return redirectUrl;
   }
 
+  public String getLocale() {
+    return locale;
+  }
+
   public SubscriptionParams getSubscription() {
     return subscription;
   }
@@ -51,6 +67,11 @@ public final class HostedPagePreCancelParams {
   /** Get the form data for this request. */
   public Map<String, Object> toFormData() {
     Map<String, Object> formData = new LinkedHashMap<>();
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
+    }
 
     if (this.passThruContent != null) {
 
@@ -65,6 +86,11 @@ public final class HostedPagePreCancelParams {
     if (this.redirectUrl != null) {
 
       formData.put("redirect_url", this.redirectUrl);
+    }
+
+    if (this.locale != null) {
+
+      formData.put("locale", this.locale);
     }
 
     if (this.subscription != null) {
@@ -88,15 +114,24 @@ public final class HostedPagePreCancelParams {
 
   public static final class HostedPagePreCancelBuilder {
 
+    private String brandId;
+
     private String passThruContent;
 
     private String cancelUrl;
 
     private String redirectUrl;
 
+    private String locale;
+
     private SubscriptionParams subscription;
 
     private HostedPagePreCancelBuilder() {}
+
+    public HostedPagePreCancelBuilder brandId(String value) {
+      this.brandId = value;
+      return this;
+    }
 
     public HostedPagePreCancelBuilder passThruContent(String value) {
       this.passThruContent = value;
@@ -110,6 +145,11 @@ public final class HostedPagePreCancelParams {
 
     public HostedPagePreCancelBuilder redirectUrl(String value) {
       this.redirectUrl = value;
+      return this;
+    }
+
+    public HostedPagePreCancelBuilder locale(String value) {
+      this.locale = value;
       return this;
     }
 

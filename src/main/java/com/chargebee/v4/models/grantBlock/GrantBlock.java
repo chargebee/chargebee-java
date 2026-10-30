@@ -15,18 +15,18 @@ public class GrantBlock {
 
   private String id;
   private String subscriptionId;
-  private AccountType accountType;
   private String unitId;
   private UnitType unitType;
-  private String grantedAmount;
+  private AccountType accountType;
+  @Deprecated private String grantedAmount;
   private Timestamp effectiveFrom;
   private Timestamp expiresAt;
-  private String balance;
-  private String holdAmount;
-  private String usedAmount;
-  private String expiredAmount;
-  private String rolledOverAmount;
-  private String voidedAmount;
+  @Deprecated private String balance;
+  @Deprecated private String holdAmount;
+  @Deprecated private String usedAmount;
+  @Deprecated private String expiredAmount;
+  @Deprecated private String rolledOverAmount;
+  @Deprecated private String voidedAmount;
   private String originGrantBlockId;
   private Status status;
   private GrantSource grantSource;
@@ -34,6 +34,8 @@ public class GrantBlock {
   private Timestamp modifiedAt;
   private Long resourceVersion;
   private java.util.Map<String, Object> metadata;
+  private ProvisionedBlockBalance provisionedBlockBalance;
+  private OverdraftBlockBalance overdraftBlockBalance;
 
   public String getId() {
     return id;
@@ -41,10 +43,6 @@ public class GrantBlock {
 
   public String getSubscriptionId() {
     return subscriptionId;
-  }
-
-  public AccountType getAccountType() {
-    return accountType;
   }
 
   public String getUnitId() {
@@ -55,6 +53,11 @@ public class GrantBlock {
     return unitType;
   }
 
+  public AccountType getAccountType() {
+    return accountType;
+  }
+
+  @Deprecated
   public String getGrantedAmount() {
     return grantedAmount;
   }
@@ -67,26 +70,32 @@ public class GrantBlock {
     return expiresAt;
   }
 
+  @Deprecated
   public String getBalance() {
     return balance;
   }
 
+  @Deprecated
   public String getHoldAmount() {
     return holdAmount;
   }
 
+  @Deprecated
   public String getUsedAmount() {
     return usedAmount;
   }
 
+  @Deprecated
   public String getExpiredAmount() {
     return expiredAmount;
   }
 
+  @Deprecated
   public String getRolledOverAmount() {
     return rolledOverAmount;
   }
 
+  @Deprecated
   public String getVoidedAmount() {
     return voidedAmount;
   }
@@ -119,32 +128,12 @@ public class GrantBlock {
     return metadata;
   }
 
-  public enum AccountType {
-    PROVISIONED("provisioned"),
+  public ProvisionedBlockBalance getProvisionedBlockBalance() {
+    return provisionedBlockBalance;
+  }
 
-    OVERDRAFT("overdraft"),
-
-    /** An enum member indicating that AccountType was instantiated with an unknown value. */
-    _UNKNOWN(null);
-    private final String value;
-
-    AccountType(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    public static AccountType fromString(String value) {
-      if (value == null) return _UNKNOWN;
-      for (AccountType enumValue : AccountType.values()) {
-        if (enumValue.value != null && enumValue.value.equals(value)) {
-          return enumValue;
-        }
-      }
-      return _UNKNOWN;
-    }
+  public OverdraftBlockBalance getOverdraftBlockBalance() {
+    return overdraftBlockBalance;
   }
 
   public enum UnitType {
@@ -165,6 +154,34 @@ public class GrantBlock {
     public static UnitType fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (UnitType enumValue : UnitType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum AccountType {
+    PROVISIONED("provisioned"),
+
+    OVERDRAFT("overdraft"),
+
+    /** An enum member indicating that AccountType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    AccountType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static AccountType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (AccountType enumValue : AccountType.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
@@ -258,11 +275,11 @@ public class GrantBlock {
 
     obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.accountType = AccountType.fromString(JsonUtil.getString(jsonObj, "account_type"));
-
     obj.unitId = JsonUtil.getString(jsonObj, "unit_id");
 
     obj.unitType = UnitType.fromString(JsonUtil.getString(jsonObj, "unit_type"));
+
+    obj.accountType = AccountType.fromString(JsonUtil.getString(jsonObj, "account_type"));
 
     obj.grantedAmount = JsonUtil.getString(jsonObj, "granted_amount");
 
@@ -300,6 +317,18 @@ public class GrantBlock {
             ? JsonUtil.parseJsonObjectToMap(__metadataObj)
             : new java.util.HashMap<>();
 
+    JsonObject __provisionedBlockBalanceObj =
+        JsonUtil.getJsonObject(jsonObj, "provisioned_block_balance");
+    if (__provisionedBlockBalanceObj != null) {
+      obj.provisionedBlockBalance = ProvisionedBlockBalance.fromJson(__provisionedBlockBalanceObj);
+    }
+
+    JsonObject __overdraftBlockBalanceObj =
+        JsonUtil.getJsonObject(jsonObj, "overdraft_block_balance");
+    if (__overdraftBlockBalanceObj != null) {
+      obj.overdraftBlockBalance = OverdraftBlockBalance.fromJson(__overdraftBlockBalanceObj);
+    }
+
     return obj;
   }
 
@@ -310,12 +339,12 @@ public class GrantBlock {
         + id
         + ", subscriptionId="
         + subscriptionId
-        + ", accountType="
-        + accountType
         + ", unitId="
         + unitId
         + ", unitType="
         + unitType
+        + ", accountType="
+        + accountType
         + ", grantedAmount="
         + grantedAmount
         + ", effectiveFrom="
@@ -348,6 +377,10 @@ public class GrantBlock {
         + resourceVersion
         + ", metadata="
         + metadata
+        + ", provisionedBlockBalance="
+        + provisionedBlockBalance
+        + ", overdraftBlockBalance="
+        + overdraftBlockBalance
         + "}";
   }
 
@@ -359,9 +392,9 @@ public class GrantBlock {
     GrantBlock that = (GrantBlock) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(subscriptionId, that.subscriptionId)
-        && java.util.Objects.equals(accountType, that.accountType)
         && java.util.Objects.equals(unitId, that.unitId)
         && java.util.Objects.equals(unitType, that.unitType)
+        && java.util.Objects.equals(accountType, that.accountType)
         && java.util.Objects.equals(grantedAmount, that.grantedAmount)
         && java.util.Objects.equals(effectiveFrom, that.effectiveFrom)
         && java.util.Objects.equals(expiresAt, that.expiresAt)
@@ -377,7 +410,9 @@ public class GrantBlock {
         && java.util.Objects.equals(createdAt, that.createdAt)
         && java.util.Objects.equals(modifiedAt, that.modifiedAt)
         && java.util.Objects.equals(resourceVersion, that.resourceVersion)
-        && java.util.Objects.equals(metadata, that.metadata);
+        && java.util.Objects.equals(metadata, that.metadata)
+        && java.util.Objects.equals(provisionedBlockBalance, that.provisionedBlockBalance)
+        && java.util.Objects.equals(overdraftBlockBalance, that.overdraftBlockBalance);
   }
 
   @Override
@@ -386,9 +421,9 @@ public class GrantBlock {
     return java.util.Objects.hash(
         id,
         subscriptionId,
-        accountType,
         unitId,
         unitType,
+        accountType,
         grantedAmount,
         effectiveFrom,
         expiresAt,
@@ -404,6 +439,222 @@ public class GrantBlock {
         createdAt,
         modifiedAt,
         resourceVersion,
-        metadata);
+        metadata,
+        provisionedBlockBalance,
+        overdraftBlockBalance);
+  }
+
+  public static class ProvisionedBlockBalance {
+
+    private String grantedAmount;
+    private String totalBalance;
+    private String usableBalance;
+    private String holdAmount;
+    private String usedAmount;
+    private String expiredAmount;
+    private String rolledOverAmount;
+    private String voidedAmount;
+
+    public String getGrantedAmount() {
+      return grantedAmount;
+    }
+
+    public String getTotalBalance() {
+      return totalBalance;
+    }
+
+    public String getUsableBalance() {
+      return usableBalance;
+    }
+
+    public String getHoldAmount() {
+      return holdAmount;
+    }
+
+    public String getUsedAmount() {
+      return usedAmount;
+    }
+
+    public String getExpiredAmount() {
+      return expiredAmount;
+    }
+
+    public String getRolledOverAmount() {
+      return rolledOverAmount;
+    }
+
+    public String getVoidedAmount() {
+      return voidedAmount;
+    }
+
+    public static ProvisionedBlockBalance fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ProvisionedBlockBalance fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
+    public static ProvisionedBlockBalance fromJson(JsonObject jsonObj) {
+      ProvisionedBlockBalance obj = new ProvisionedBlockBalance();
+
+      obj.grantedAmount = JsonUtil.getString(jsonObj, "granted_amount");
+
+      obj.totalBalance = JsonUtil.getString(jsonObj, "total_balance");
+
+      obj.usableBalance = JsonUtil.getString(jsonObj, "usable_balance");
+
+      obj.holdAmount = JsonUtil.getString(jsonObj, "hold_amount");
+
+      obj.usedAmount = JsonUtil.getString(jsonObj, "used_amount");
+
+      obj.expiredAmount = JsonUtil.getString(jsonObj, "expired_amount");
+
+      obj.rolledOverAmount = JsonUtil.getString(jsonObj, "rolled_over_amount");
+
+      obj.voidedAmount = JsonUtil.getString(jsonObj, "voided_amount");
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "ProvisionedBlockBalance{"
+          + "grantedAmount="
+          + grantedAmount
+          + ", totalBalance="
+          + totalBalance
+          + ", usableBalance="
+          + usableBalance
+          + ", holdAmount="
+          + holdAmount
+          + ", usedAmount="
+          + usedAmount
+          + ", expiredAmount="
+          + expiredAmount
+          + ", rolledOverAmount="
+          + rolledOverAmount
+          + ", voidedAmount="
+          + voidedAmount
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      ProvisionedBlockBalance that = (ProvisionedBlockBalance) o;
+      return java.util.Objects.equals(grantedAmount, that.grantedAmount)
+          && java.util.Objects.equals(totalBalance, that.totalBalance)
+          && java.util.Objects.equals(usableBalance, that.usableBalance)
+          && java.util.Objects.equals(holdAmount, that.holdAmount)
+          && java.util.Objects.equals(usedAmount, that.usedAmount)
+          && java.util.Objects.equals(expiredAmount, that.expiredAmount)
+          && java.util.Objects.equals(rolledOverAmount, that.rolledOverAmount)
+          && java.util.Objects.equals(voidedAmount, that.voidedAmount);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(
+          grantedAmount,
+          totalBalance,
+          usableBalance,
+          holdAmount,
+          usedAmount,
+          expiredAmount,
+          rolledOverAmount,
+          voidedAmount);
+    }
+  }
+
+  public static class OverdraftBlockBalance {
+
+    private Boolean isUnlimited;
+    private String limit;
+    private String totalBalance;
+    private String usableBalance;
+    private String usedAmount;
+
+    public Boolean getIsUnlimited() {
+      return isUnlimited;
+    }
+
+    public String getLimit() {
+      return limit;
+    }
+
+    public String getTotalBalance() {
+      return totalBalance;
+    }
+
+    public String getUsableBalance() {
+      return usableBalance;
+    }
+
+    public String getUsedAmount() {
+      return usedAmount;
+    }
+
+    public static OverdraftBlockBalance fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static OverdraftBlockBalance fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
+    public static OverdraftBlockBalance fromJson(JsonObject jsonObj) {
+      OverdraftBlockBalance obj = new OverdraftBlockBalance();
+
+      obj.isUnlimited = JsonUtil.getBoolean(jsonObj, "is_unlimited");
+
+      obj.limit = JsonUtil.getString(jsonObj, "limit");
+
+      obj.totalBalance = JsonUtil.getString(jsonObj, "total_balance");
+
+      obj.usableBalance = JsonUtil.getString(jsonObj, "usable_balance");
+
+      obj.usedAmount = JsonUtil.getString(jsonObj, "used_amount");
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "OverdraftBlockBalance{"
+          + "isUnlimited="
+          + isUnlimited
+          + ", limit="
+          + limit
+          + ", totalBalance="
+          + totalBalance
+          + ", usableBalance="
+          + usableBalance
+          + ", usedAmount="
+          + usedAmount
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      OverdraftBlockBalance that = (OverdraftBlockBalance) o;
+      return java.util.Objects.equals(isUnlimited, that.isUnlimited)
+          && java.util.Objects.equals(limit, that.limit)
+          && java.util.Objects.equals(totalBalance, that.totalBalance)
+          && java.util.Objects.equals(usableBalance, that.usableBalance)
+          && java.util.Objects.equals(usedAmount, that.usedAmount);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(isUnlimited, limit, totalBalance, usableBalance, usedAmount);
+    }
   }
 }

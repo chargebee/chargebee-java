@@ -19,7 +19,11 @@ public final class LedgerOperationAllocateParams {
 
   private final String unitId;
 
+  private final String id;
+
   private final String amount;
+
+  private final Timestamp effectiveFrom;
 
   private final Timestamp expiresAt;
 
@@ -31,7 +35,11 @@ public final class LedgerOperationAllocateParams {
 
     this.unitId = builder.unitId;
 
+    this.id = builder.id;
+
     this.amount = builder.amount;
+
+    this.effectiveFrom = builder.effectiveFrom;
 
     this.expiresAt = builder.expiresAt;
 
@@ -46,8 +54,16 @@ public final class LedgerOperationAllocateParams {
     return unitId;
   }
 
+  public String getId() {
+    return id;
+  }
+
   public String getAmount() {
     return amount;
+  }
+
+  public Timestamp getEffectiveFrom() {
+    return effectiveFrom;
   }
 
   public Timestamp getExpiresAt() {
@@ -72,9 +88,19 @@ public final class LedgerOperationAllocateParams {
       formData.put("unit_id", this.unitId);
     }
 
+    if (this.id != null) {
+
+      formData.put("id", this.id);
+    }
+
     if (this.amount != null) {
 
       formData.put("amount", this.amount);
+    }
+
+    if (this.effectiveFrom != null) {
+
+      formData.put("effective_from", this.effectiveFrom);
     }
 
     if (this.expiresAt != null) {
@@ -112,9 +138,19 @@ public final class LedgerOperationAllocateParams {
       jsonData.put("unit_id", this.unitId);
     }
 
+    if (this.id != null) {
+
+      jsonData.put("id", this.id);
+    }
+
     if (this.amount != null) {
 
       jsonData.put("amount", this.amount);
+    }
+
+    if (this.effectiveFrom != null) {
+
+      jsonData.put("effective_from", this.effectiveFrom);
     }
 
     if (this.expiresAt != null) {
@@ -147,7 +183,11 @@ public final class LedgerOperationAllocateParams {
 
     private String unitId;
 
+    private String id;
+
     private String amount;
+
+    private Timestamp effectiveFrom;
 
     private Timestamp expiresAt;
 
@@ -165,8 +205,18 @@ public final class LedgerOperationAllocateParams {
       return this;
     }
 
+    public LedgerOperationAllocateBuilder id(String value) {
+      this.id = value;
+      return this;
+    }
+
     public LedgerOperationAllocateBuilder amount(String value) {
       this.amount = value;
+      return this;
+    }
+
+    public LedgerOperationAllocateBuilder effectiveFrom(Timestamp value) {
+      this.effectiveFrom = value;
       return this;
     }
 

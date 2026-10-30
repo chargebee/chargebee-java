@@ -103,6 +103,8 @@ import com.chargebee.v4.models.customer.responses.CustomerCollectPaymentResponse
 
 import com.chargebee.v4.models.customer.responses.CustomerRecordExcessPaymentResponse;
 
+import com.chargebee.v4.models.customer.responses.CustomerSendPaymentRequestResponse;
+
 import com.chargebee.v4.models.customer.responses.CustomerSetPromotionalCreditsResponse;
 
 import com.chargebee.v4.models.customer.responses.CustomerUpdateContactResponse;
@@ -1229,6 +1231,34 @@ public final class CustomerService extends BaseService<CustomerService> {
         .thenApply(
             response ->
                 CustomerRecordExcessPaymentResponse.fromJson(response.getBodyAsString(), response));
+  }
+
+  /** sendPaymentRequest a customer (executes immediately) - returns raw Response. */
+  Response sendPaymentRequestRaw(String customerId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/send_payment_request", "customer-id", customerId);
+
+    return post("customer", "sendPaymentRequest", path, null);
+  }
+
+  public CustomerSendPaymentRequestResponse sendPaymentRequest(String customerId)
+      throws ChargebeeException {
+    Response response = sendPaymentRequestRaw(customerId);
+    return CustomerSendPaymentRequestResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of sendPaymentRequest for customer without params. */
+  public CompletableFuture<CustomerSendPaymentRequestResponse> sendPaymentRequestAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/send_payment_request", "customer-id", customerId);
+
+    return postAsync("customer", "sendPaymentRequest", path, null)
+        .thenApply(
+            response ->
+                CustomerSendPaymentRequestResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** setPromotionalCredits a customer (executes immediately) - returns raw Response. */

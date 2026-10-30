@@ -19,6 +19,8 @@ public final class SubscriptionCreateForCustomerParams {
 
   private final String id;
 
+  private final String brandId;
+
   private final String planId;
 
   private final Integer planQuantity;
@@ -96,6 +98,8 @@ public final class SubscriptionCreateForCustomerParams {
   private SubscriptionCreateForCustomerParams(SubscriptionCreateForCustomerBuilder builder) {
 
     this.id = builder.id;
+
+    this.brandId = builder.brandId;
 
     this.planId = builder.planId;
 
@@ -177,6 +181,10 @@ public final class SubscriptionCreateForCustomerParams {
 
   public String getId() {
     return id;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public String getPlanId() {
@@ -334,6 +342,11 @@ public final class SubscriptionCreateForCustomerParams {
     if (this.id != null) {
 
       formData.put("id", this.id);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.planId != null) {
@@ -582,6 +595,8 @@ public final class SubscriptionCreateForCustomerParams {
 
     private String id;
 
+    private String brandId;
+
     private String planId;
 
     private Integer planQuantity;
@@ -660,6 +675,11 @@ public final class SubscriptionCreateForCustomerParams {
 
     public SubscriptionCreateForCustomerBuilder id(String value) {
       this.id = value;
+      return this;
+    }
+
+    public SubscriptionCreateForCustomerBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 
@@ -1750,6 +1770,32 @@ public final class SubscriptionCreateForCustomerParams {
       TAMARA("tamara"),
 
       QPAY("qpay"),
+
+      OVO("ovo"),
+
+      MOMO("momo"),
+
+      MERCADO_PAGO("mercado_pago"),
+
+      NEQUI("nequi"),
+
+      NUPAY("nupay"),
+
+      PICPAY("picpay"),
+
+      THAI_QR("thai_qr"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
+
+      AFFIRM_PAY("affirm_pay"),
+
+      RAKUTEN_PAY("rakuten_pay"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.

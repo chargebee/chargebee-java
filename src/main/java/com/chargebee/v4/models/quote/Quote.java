@@ -49,6 +49,7 @@ public class Quote {
   private Boolean deleted;
   private Long totalContractValue;
   private Long totalDiscount;
+  private Boolean hasEntitlements;
   private List<LineItems> lineItems;
   private List<LineItemTiers> lineItemTiers;
   private List<LineItemDiscounts> lineItemDiscounts;
@@ -190,6 +191,10 @@ public class Quote {
 
   public Long getTotalDiscount() {
     return totalDiscount;
+  }
+
+  public Boolean getHasEntitlements() {
+    return hasEntitlements;
   }
 
   public List<LineItems> getLineItems() {
@@ -427,6 +432,8 @@ public class Quote {
 
     knownFields.add("total_discount");
 
+    knownFields.add("has_entitlements");
+
     knownFields.add("line_items");
 
     knownFields.add("line_item_tiers");
@@ -511,6 +518,8 @@ public class Quote {
     obj.totalContractValue = JsonUtil.getLong(jsonObj, "total_contract_value");
 
     obj.totalDiscount = JsonUtil.getLong(jsonObj, "total_discount");
+
+    obj.hasEntitlements = JsonUtil.getBoolean(jsonObj, "has_entitlements");
 
     obj.lineItems =
         JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "line_items"), LineItems::fromJson);
@@ -616,6 +625,8 @@ public class Quote {
         + totalContractValue
         + ", totalDiscount="
         + totalDiscount
+        + ", hasEntitlements="
+        + hasEntitlements
         + ", lineItems="
         + lineItems
         + ", lineItemTiers="
@@ -676,6 +687,7 @@ public class Quote {
         && java.util.Objects.equals(deleted, that.deleted)
         && java.util.Objects.equals(totalContractValue, that.totalContractValue)
         && java.util.Objects.equals(totalDiscount, that.totalDiscount)
+        && java.util.Objects.equals(hasEntitlements, that.hasEntitlements)
         && java.util.Objects.equals(lineItems, that.lineItems)
         && java.util.Objects.equals(lineItemTiers, that.lineItemTiers)
         && java.util.Objects.equals(lineItemDiscounts, that.lineItemDiscounts)
@@ -724,6 +736,7 @@ public class Quote {
         deleted,
         totalContractValue,
         totalDiscount,
+        hasEntitlements,
         lineItems,
         lineItemTiers,
         lineItemDiscounts,

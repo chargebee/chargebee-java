@@ -18,6 +18,8 @@ public final class HostedPageCheckoutGiftForItemsParams {
 
   private final String businessEntityId;
 
+  private final String brandId;
+
   private final String redirectUrl;
 
   private final List<String> couponIds;
@@ -33,6 +35,8 @@ public final class HostedPageCheckoutGiftForItemsParams {
     this.layout = builder.layout;
 
     this.businessEntityId = builder.businessEntityId;
+
+    this.brandId = builder.brandId;
 
     this.redirectUrl = builder.redirectUrl;
 
@@ -51,6 +55,10 @@ public final class HostedPageCheckoutGiftForItemsParams {
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public String getRedirectUrl() {
@@ -85,6 +93,11 @@ public final class HostedPageCheckoutGiftForItemsParams {
     if (this.businessEntityId != null) {
 
       formData.put("business_entity_id", this.businessEntityId);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.redirectUrl != null) {
@@ -152,6 +165,8 @@ public final class HostedPageCheckoutGiftForItemsParams {
 
     private String businessEntityId;
 
+    private String brandId;
+
     private String redirectUrl;
 
     private List<String> couponIds;
@@ -171,6 +186,11 @@ public final class HostedPageCheckoutGiftForItemsParams {
 
     public HostedPageCheckoutGiftForItemsBuilder businessEntityId(String value) {
       this.businessEntityId = value;
+      return this;
+    }
+
+    public HostedPageCheckoutGiftForItemsBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 

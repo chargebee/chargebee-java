@@ -33,6 +33,7 @@ public class Ramp {
   private List<DiscountsToAdd> discountsToAdd;
   private List<ItemTiers> itemTiers;
   private ContractTerm contractTerm;
+  private BillingConfiguration billingConfiguration;
   private StatusTransitionReason statusTransitionReason;
 
   public String getId() {
@@ -105,6 +106,10 @@ public class Ramp {
 
   public ContractTerm getContractTerm() {
     return contractTerm;
+  }
+
+  public BillingConfiguration getBillingConfiguration() {
+    return billingConfiguration;
   }
 
   public StatusTransitionReason getStatusTransitionReason() {
@@ -209,6 +214,11 @@ public class Ramp {
       obj.contractTerm = ContractTerm.fromJson(__contractTermObj);
     }
 
+    JsonObject __billingConfigurationObj = JsonUtil.getJsonObject(jsonObj, "billing_configuration");
+    if (__billingConfigurationObj != null) {
+      obj.billingConfiguration = BillingConfiguration.fromJson(__billingConfigurationObj);
+    }
+
     JsonObject __statusTransitionReasonObj =
         JsonUtil.getJsonObject(jsonObj, "status_transition_reason");
     if (__statusTransitionReasonObj != null) {
@@ -257,6 +267,8 @@ public class Ramp {
         + itemTiers
         + ", contractTerm="
         + contractTerm
+        + ", billingConfiguration="
+        + billingConfiguration
         + ", statusTransitionReason="
         + statusTransitionReason
         + "}";
@@ -286,6 +298,7 @@ public class Ramp {
         && java.util.Objects.equals(discountsToAdd, that.discountsToAdd)
         && java.util.Objects.equals(itemTiers, that.itemTiers)
         && java.util.Objects.equals(contractTerm, that.contractTerm)
+        && java.util.Objects.equals(billingConfiguration, that.billingConfiguration)
         && java.util.Objects.equals(statusTransitionReason, that.statusTransitionReason);
   }
 
@@ -311,6 +324,7 @@ public class Ramp {
         discountsToAdd,
         itemTiers,
         contractTerm,
+        billingConfiguration,
         statusTransitionReason);
   }
 
@@ -1555,6 +1569,51 @@ public class Ramp {
 
       return java.util.Objects.hash(
           cancellationCutoffPeriod, renewalBillingCycles, actionAtTermEnd);
+    }
+  }
+
+  public static class BillingConfiguration {
+
+    private String poNumber;
+
+    public String getPoNumber() {
+      return poNumber;
+    }
+
+    public static BillingConfiguration fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static BillingConfiguration fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
+    public static BillingConfiguration fromJson(JsonObject jsonObj) {
+      BillingConfiguration obj = new BillingConfiguration();
+
+      obj.poNumber = JsonUtil.getString(jsonObj, "po_number");
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "BillingConfiguration{" + "poNumber=" + poNumber + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      BillingConfiguration that = (BillingConfiguration) o;
+      return java.util.Objects.equals(poNumber, that.poNumber);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(poNumber);
     }
   }
 

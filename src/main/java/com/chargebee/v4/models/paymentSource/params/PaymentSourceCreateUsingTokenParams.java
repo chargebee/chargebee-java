@@ -15,6 +15,8 @@ public final class PaymentSourceCreateUsingTokenParams {
 
   private final String customerId;
 
+  private final String brandId;
+
   private final Boolean replacePrimaryPaymentSource;
 
   private final String tokenId;
@@ -23,6 +25,8 @@ public final class PaymentSourceCreateUsingTokenParams {
 
     this.customerId = builder.customerId;
 
+    this.brandId = builder.brandId;
+
     this.replacePrimaryPaymentSource = builder.replacePrimaryPaymentSource;
 
     this.tokenId = builder.tokenId;
@@ -30,6 +34,10 @@ public final class PaymentSourceCreateUsingTokenParams {
 
   public String getCustomerId() {
     return customerId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public Boolean getReplacePrimaryPaymentSource() {
@@ -47,6 +55,11 @@ public final class PaymentSourceCreateUsingTokenParams {
     if (this.customerId != null) {
 
       formData.put("customer_id", this.customerId);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.replacePrimaryPaymentSource != null) {
@@ -72,6 +85,8 @@ public final class PaymentSourceCreateUsingTokenParams {
 
     private String customerId;
 
+    private String brandId;
+
     private Boolean replacePrimaryPaymentSource;
 
     private String tokenId;
@@ -80,6 +95,11 @@ public final class PaymentSourceCreateUsingTokenParams {
 
     public PaymentSourceCreateUsingTokenBuilder customerId(String value) {
       this.customerId = value;
+      return this;
+    }
+
+    public PaymentSourceCreateUsingTokenBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 

@@ -19,6 +19,8 @@ import com.chargebee.v4.models.export.params.ExportAttachedItemsParams;
 
 import com.chargebee.v4.models.export.params.ExportTransactionsParams;
 
+import com.chargebee.v4.models.export.params.ExportRampsParams;
+
 import com.chargebee.v4.models.export.params.ExportDifferentialPricesParams;
 
 import com.chargebee.v4.models.export.params.ExportItemFamiliesParams;
@@ -52,6 +54,8 @@ import com.chargebee.v4.models.export.responses.ExportCustomersResponse;
 import com.chargebee.v4.models.export.responses.ExportAttachedItemsResponse;
 
 import com.chargebee.v4.models.export.responses.ExportTransactionsResponse;
+
+import com.chargebee.v4.models.export.responses.ExportRampsResponse;
 
 import com.chargebee.v4.models.export.responses.ExportDifferentialPricesResponse;
 
@@ -222,6 +226,32 @@ public final class ExportService extends BaseService<ExportService> {
             params != null ? params.toFormData() : null)
         .thenApply(
             response -> ExportTransactionsResponse.fromJson(response.getBodyAsString(), response));
+  }
+
+  /** ramps a export using immutable params (executes immediately) - returns raw Response. */
+  Response rampsRaw(ExportRampsParams params) throws ChargebeeException {
+
+    return post("export", "ramps", "/exports/ramps", params != null ? params.toFormData() : null);
+  }
+
+  /** ramps a export using raw JSON payload (executes immediately) - returns raw Response. */
+  Response rampsRaw(String jsonPayload) throws ChargebeeException {
+
+    return postJson("export", "ramps", "/exports/ramps", jsonPayload);
+  }
+
+  public ExportRampsResponse ramps(ExportRampsParams params) throws ChargebeeException {
+    Response response = rampsRaw(params);
+
+    return ExportRampsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of ramps for export with params. */
+  public CompletableFuture<ExportRampsResponse> rampsAsync(ExportRampsParams params) {
+
+    return postAsync(
+            "export", "ramps", "/exports/ramps", params != null ? params.toFormData() : null)
+        .thenApply(response -> ExportRampsResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**

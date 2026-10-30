@@ -18,6 +18,8 @@ public final class HostedPageCheckoutOneTimeForItemsParams {
 
   private final String businessEntityId;
 
+  private final String brandId;
+
   private final Layout layout;
 
   private final String invoiceNote;
@@ -59,6 +61,8 @@ public final class HostedPageCheckoutOneTimeForItemsParams {
 
     this.businessEntityId = builder.businessEntityId;
 
+    this.brandId = builder.brandId;
+
     this.layout = builder.layout;
 
     this.invoiceNote = builder.invoiceNote;
@@ -98,6 +102,10 @@ public final class HostedPageCheckoutOneTimeForItemsParams {
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public Layout getLayout() {
@@ -179,6 +187,11 @@ public final class HostedPageCheckoutOneTimeForItemsParams {
     if (this.businessEntityId != null) {
 
       formData.put("business_entity_id", this.businessEntityId);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.layout != null) {
@@ -359,6 +372,8 @@ public final class HostedPageCheckoutOneTimeForItemsParams {
 
     private String businessEntityId;
 
+    private String brandId;
+
     private Layout layout;
 
     private String invoiceNote;
@@ -399,6 +414,11 @@ public final class HostedPageCheckoutOneTimeForItemsParams {
 
     public HostedPageCheckoutOneTimeForItemsBuilder businessEntityId(String value) {
       this.businessEntityId = value;
+      return this;
+    }
+
+    public HostedPageCheckoutOneTimeForItemsBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 
@@ -910,6 +930,8 @@ public final class HostedPageCheckoutOneTimeForItemsParams {
 
       EXEMPT("exempt"),
 
+      ZERO_RATED("zero_rated"),
+
       /** An enum member indicating that Taxability was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -1198,6 +1220,8 @@ public final class HostedPageCheckoutOneTimeForItemsParams {
       MOYASAR("moyasar"),
 
       PAYWAY("payway"),
+
+      PAYU("payu"),
 
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);

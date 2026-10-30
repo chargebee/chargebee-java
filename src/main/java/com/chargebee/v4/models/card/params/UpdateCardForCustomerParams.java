@@ -545,6 +545,8 @@ public final class UpdateCardForCustomerParams {
 
     PAYWAY("payway"),
 
+    PAYU("payu"),
+
     /** An enum member indicating that Gateway was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -574,6 +576,8 @@ public final class UpdateCardForCustomerParams {
     MASTERCARD("mastercard"),
 
     VISA("visa"),
+
+    DANKORT("dankort"),
 
     /** An enum member indicating that PreferredScheme was instantiated with an unknown value. */
     _UNKNOWN(null);

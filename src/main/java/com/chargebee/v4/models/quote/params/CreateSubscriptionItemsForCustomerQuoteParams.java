@@ -52,6 +52,8 @@ public final class CreateSubscriptionItemsForCustomerQuoteParams {
 
   private final List<CouponsParams> coupons;
 
+  private final List<EntitlementOverridesParams> entitlementOverrides;
+
   private final Map<String, String> customFields;
 
   private CreateSubscriptionItemsForCustomerQuoteParams(
@@ -92,6 +94,8 @@ public final class CreateSubscriptionItemsForCustomerQuoteParams {
     this.itemTiers = builder.itemTiers;
 
     this.coupons = builder.coupons;
+
+    this.entitlementOverrides = builder.entitlementOverrides;
 
     this.customFields =
         builder.customFields.isEmpty()
@@ -169,6 +173,10 @@ public final class CreateSubscriptionItemsForCustomerQuoteParams {
 
   public List<CouponsParams> getCoupons() {
     return coupons;
+  }
+
+  public List<EntitlementOverridesParams> getEntitlementOverrides() {
+    return entitlementOverrides;
   }
 
   public Map<String, String> customFields() {
@@ -329,6 +337,21 @@ public final class CreateSubscriptionItemsForCustomerQuoteParams {
       }
     }
 
+    if (this.entitlementOverrides != null) {
+
+      // List of objects
+      for (int i = 0; i < this.entitlementOverrides.size(); i++) {
+        EntitlementOverridesParams item = this.entitlementOverrides.get(i);
+        if (item != null) {
+          Map<String, Object> itemData = item.toFormData();
+          for (Map.Entry<String, Object> entry : itemData.entrySet()) {
+            String indexedKey = "entitlement_overrides[" + entry.getKey() + "][" + i + "]";
+            formData.put(indexedKey, entry.getValue());
+          }
+        }
+      }
+    }
+
     formData.putAll(customFields);
 
     return formData;
@@ -377,6 +400,8 @@ public final class CreateSubscriptionItemsForCustomerQuoteParams {
     private List<ItemTiersParams> itemTiers;
 
     private List<CouponsParams> coupons;
+
+    private List<EntitlementOverridesParams> entitlementOverrides;
 
     private Map<String, String> customFields = new LinkedHashMap<>();
 
@@ -475,6 +500,12 @@ public final class CreateSubscriptionItemsForCustomerQuoteParams {
 
     public CreateSubscriptionItemsForCustomerQuoteBuilder coupons(List<CouponsParams> value) {
       this.coupons = value;
+      return this;
+    }
+
+    public CreateSubscriptionItemsForCustomerQuoteBuilder entitlementOverrides(
+        List<EntitlementOverridesParams> value) {
+      this.entitlementOverrides = value;
       return this;
     }
 
@@ -1732,6 +1763,8 @@ public final class CreateSubscriptionItemsForCustomerQuoteParams {
 
     private final Timestamp endDate;
 
+    private final String description;
+
     private final String rampTierId;
 
     private SubscriptionItemsParams(SubscriptionItemsBuilder builder) {
@@ -1763,6 +1796,8 @@ public final class CreateSubscriptionItemsForCustomerQuoteParams {
       this.startDate = builder.startDate;
 
       this.endDate = builder.endDate;
+
+      this.description = builder.description;
 
       this.rampTierId = builder.rampTierId;
     }
@@ -1821,6 +1856,10 @@ public final class CreateSubscriptionItemsForCustomerQuoteParams {
 
     public Timestamp getEndDate() {
       return endDate;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     public String getRampTierId() {
@@ -1901,6 +1940,11 @@ public final class CreateSubscriptionItemsForCustomerQuoteParams {
         formData.put("end_date", this.endDate);
       }
 
+      if (this.description != null) {
+
+        formData.put("description", this.description);
+      }
+
       if (this.rampTierId != null) {
 
         formData.put("ramp_tier_id", this.rampTierId);
@@ -1944,6 +1988,8 @@ public final class CreateSubscriptionItemsForCustomerQuoteParams {
       private Timestamp startDate;
 
       private Timestamp endDate;
+
+      private String description;
 
       private String rampTierId;
 
@@ -2016,6 +2062,11 @@ public final class CreateSubscriptionItemsForCustomerQuoteParams {
 
       public SubscriptionItemsBuilder endDate(Timestamp value) {
         this.endDate = value;
+        return this;
+      }
+
+      public SubscriptionItemsBuilder description(String value) {
+        this.description = value;
         return this;
       }
 
@@ -2802,6 +2853,206 @@ public final class CreateSubscriptionItemsForCustomerQuoteParams {
 
       public CouponsParams build() {
         return new CouponsParams(this);
+      }
+    }
+  }
+
+  public static final class EntitlementOverridesParams {
+
+    private final String featureId;
+
+    private final String entityId;
+
+    private final EntityType entityType;
+
+    private final String value;
+
+    private final Boolean isEnabled;
+
+    private final Timestamp startDate;
+
+    private final Timestamp endDate;
+
+    private EntitlementOverridesParams(EntitlementOverridesBuilder builder) {
+
+      this.featureId = builder.featureId;
+
+      this.entityId = builder.entityId;
+
+      this.entityType = builder.entityType;
+
+      this.value = builder.value;
+
+      this.isEnabled = builder.isEnabled;
+
+      this.startDate = builder.startDate;
+
+      this.endDate = builder.endDate;
+    }
+
+    public String getFeatureId() {
+      return featureId;
+    }
+
+    public String getEntityId() {
+      return entityId;
+    }
+
+    public EntityType getEntityType() {
+      return entityType;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public Boolean getIsEnabled() {
+      return isEnabled;
+    }
+
+    public Timestamp getStartDate() {
+      return startDate;
+    }
+
+    public Timestamp getEndDate() {
+      return endDate;
+    }
+
+    /** Get the form data for this request. */
+    public Map<String, Object> toFormData() {
+      Map<String, Object> formData = new LinkedHashMap<>();
+
+      if (this.featureId != null) {
+
+        formData.put("feature_id", this.featureId);
+      }
+
+      if (this.entityId != null) {
+
+        formData.put("entity_id", this.entityId);
+      }
+
+      if (this.entityType != null) {
+
+        formData.put("entity_type", this.entityType);
+      }
+
+      if (this.value != null) {
+
+        formData.put("value", this.value);
+      }
+
+      if (this.isEnabled != null) {
+
+        formData.put("is_enabled", this.isEnabled);
+      }
+
+      if (this.startDate != null) {
+
+        formData.put("start_date", this.startDate);
+      }
+
+      if (this.endDate != null) {
+
+        formData.put("end_date", this.endDate);
+      }
+
+      return formData;
+    }
+
+    /** Create a new builder for EntitlementOverridesParams. */
+    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
+    public static EntitlementOverridesBuilder builder() {
+      return new EntitlementOverridesBuilder();
+    }
+
+    public static final class EntitlementOverridesBuilder {
+
+      private String featureId;
+
+      private String entityId;
+
+      private EntityType entityType;
+
+      private String value;
+
+      private Boolean isEnabled;
+
+      private Timestamp startDate;
+
+      private Timestamp endDate;
+
+      private EntitlementOverridesBuilder() {}
+
+      public EntitlementOverridesBuilder featureId(String value) {
+        this.featureId = value;
+        return this;
+      }
+
+      public EntitlementOverridesBuilder entityId(String value) {
+        this.entityId = value;
+        return this;
+      }
+
+      public EntitlementOverridesBuilder entityType(EntityType value) {
+        this.entityType = value;
+        return this;
+      }
+
+      public EntitlementOverridesBuilder value(String value) {
+        this.value = value;
+        return this;
+      }
+
+      public EntitlementOverridesBuilder isEnabled(Boolean value) {
+        this.isEnabled = value;
+        return this;
+      }
+
+      public EntitlementOverridesBuilder startDate(Timestamp value) {
+        this.startDate = value;
+        return this;
+      }
+
+      public EntitlementOverridesBuilder endDate(Timestamp value) {
+        this.endDate = value;
+        return this;
+      }
+
+      public EntitlementOverridesParams build() {
+        return new EntitlementOverridesParams(this);
+      }
+    }
+
+    public enum EntityType {
+      PLAN_PRICE("plan_price"),
+
+      ADDON_PRICE("addon_price"),
+
+      CHARGE_PRICE("charge_price"),
+
+      CHARGE("charge"),
+
+      /** An enum member indicating that EntityType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      EntityType(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static EntityType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }

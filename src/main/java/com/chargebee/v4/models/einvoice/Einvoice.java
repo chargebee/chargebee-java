@@ -10,19 +10,36 @@ package com.chargebee.v4.models.einvoice;
 import com.chargebee.v4.internal.JsonUtil;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import java.sql.Timestamp;
 import java.util.List;
 
 public class Einvoice {
 
   private String id;
+  private EntityType entityType;
+  private String entityId;
   private String referenceId;
   private String referenceNumber;
   private Status status;
   private String message;
+  private Timestamp createdAt;
+  private Long resourceVersion;
+  private Timestamp updatedAt;
+  private Boolean deleted;
   private List<Object> providerReferences;
+  private String businessEntityId;
+  private List<Artifacts> artifacts;
 
   public String getId() {
     return id;
+  }
+
+  public EntityType getEntityType() {
+    return entityType;
+  }
+
+  public String getEntityId() {
+    return entityId;
   }
 
   public String getReferenceId() {
@@ -41,8 +58,60 @@ public class Einvoice {
     return message;
   }
 
+  public Timestamp getCreatedAt() {
+    return createdAt;
+  }
+
+  public Long getResourceVersion() {
+    return resourceVersion;
+  }
+
+  public Timestamp getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public Boolean getDeleted() {
+    return deleted;
+  }
+
   public List<Object> getProviderReferences() {
     return providerReferences;
+  }
+
+  public String getBusinessEntityId() {
+    return businessEntityId;
+  }
+
+  public List<Artifacts> getArtifacts() {
+    return artifacts;
+  }
+
+  public enum EntityType {
+    INVOICE("invoice"),
+
+    CREDIT_NOTE("credit_note"),
+
+    /** An enum member indicating that EntityType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    EntityType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static EntityType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityType enumValue : EntityType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
   }
 
   public enum Status {
@@ -108,6 +177,10 @@ public class Einvoice {
 
     obj.id = JsonUtil.getString(jsonObj, "id");
 
+    obj.entityType = EntityType.fromString(JsonUtil.getString(jsonObj, "entity_type"));
+
+    obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
+
     obj.referenceId = JsonUtil.getString(jsonObj, "reference_id");
 
     obj.referenceNumber = JsonUtil.getString(jsonObj, "reference_number");
@@ -116,10 +189,23 @@ public class Einvoice {
 
     obj.message = JsonUtil.getString(jsonObj, "message");
 
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
+
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
+
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
+
+    obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
+
     JsonArray __providerReferencesArr = JsonUtil.getJsonArray(jsonObj, "provider_references");
     if (__providerReferencesArr != null) {
       obj.providerReferences = JsonUtil.mapArrayToObjects(__providerReferencesArr);
     }
+
+    obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
+
+    obj.artifacts =
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "artifacts"), Artifacts::fromJson);
 
     return obj;
   }
@@ -129,6 +215,10 @@ public class Einvoice {
     return "Einvoice{"
         + "id="
         + id
+        + ", entityType="
+        + entityType
+        + ", entityId="
+        + entityId
         + ", referenceId="
         + referenceId
         + ", referenceNumber="
@@ -137,8 +227,20 @@ public class Einvoice {
         + status
         + ", message="
         + message
+        + ", createdAt="
+        + createdAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", deleted="
+        + deleted
         + ", providerReferences="
         + providerReferences
+        + ", businessEntityId="
+        + businessEntityId
+        + ", artifacts="
+        + artifacts
         + "}";
   }
 
@@ -149,17 +251,239 @@ public class Einvoice {
 
     Einvoice that = (Einvoice) o;
     return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(entityType, that.entityType)
+        && java.util.Objects.equals(entityId, that.entityId)
         && java.util.Objects.equals(referenceId, that.referenceId)
         && java.util.Objects.equals(referenceNumber, that.referenceNumber)
         && java.util.Objects.equals(status, that.status)
         && java.util.Objects.equals(message, that.message)
-        && java.util.Objects.equals(providerReferences, that.providerReferences);
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(deleted, that.deleted)
+        && java.util.Objects.equals(providerReferences, that.providerReferences)
+        && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(artifacts, that.artifacts);
   }
 
   @Override
   public int hashCode() {
 
     return java.util.Objects.hash(
-        id, referenceId, referenceNumber, status, message, providerReferences);
+        id,
+        entityType,
+        entityId,
+        referenceId,
+        referenceNumber,
+        status,
+        message,
+        createdAt,
+        resourceVersion,
+        updatedAt,
+        deleted,
+        providerReferences,
+        businessEntityId,
+        artifacts);
+  }
+
+  public static class Artifacts {
+
+    private String artifactType;
+    private Direction direction;
+    private Status status;
+    private String code;
+    private String externalArtifactId;
+    private Timestamp createdAt;
+    private Long resourceVersion;
+    private Timestamp updatedAt;
+    private Boolean deleted;
+
+    public String getArtifactType() {
+      return artifactType;
+    }
+
+    public Direction getDirection() {
+      return direction;
+    }
+
+    public Status getStatus() {
+      return status;
+    }
+
+    public String getCode() {
+      return code;
+    }
+
+    public String getExternalArtifactId() {
+      return externalArtifactId;
+    }
+
+    public Timestamp getCreatedAt() {
+      return createdAt;
+    }
+
+    public Long getResourceVersion() {
+      return resourceVersion;
+    }
+
+    public Timestamp getUpdatedAt() {
+      return updatedAt;
+    }
+
+    public Boolean getDeleted() {
+      return deleted;
+    }
+
+    public enum Direction {
+      OUTBOUND("outbound"),
+
+      INBOUND("inbound"),
+
+      /** An enum member indicating that Direction was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      Direction(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static Direction fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Direction enumValue : Direction.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum Status {
+      SCHEDULED("scheduled"),
+
+      SKIPPED("skipped"),
+
+      IN_PROGRESS("in_progress"),
+
+      SUCCESS("success"),
+
+      FAILED("failed"),
+
+      REGISTERED("registered"),
+
+      /** An enum member indicating that Status was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      Status(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static Status fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Status enumValue : Status.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public static Artifacts fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Artifacts fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
+    public static Artifacts fromJson(JsonObject jsonObj) {
+      Artifacts obj = new Artifacts();
+
+      obj.artifactType = JsonUtil.getString(jsonObj, "artifact_type");
+
+      obj.direction = Direction.fromString(JsonUtil.getString(jsonObj, "direction"));
+
+      obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
+
+      obj.code = JsonUtil.getString(jsonObj, "code");
+
+      obj.externalArtifactId = JsonUtil.getString(jsonObj, "external_artifact_id");
+
+      obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
+
+      obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
+
+      obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
+
+      obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Artifacts{"
+          + "artifactType="
+          + artifactType
+          + ", direction="
+          + direction
+          + ", status="
+          + status
+          + ", code="
+          + code
+          + ", externalArtifactId="
+          + externalArtifactId
+          + ", createdAt="
+          + createdAt
+          + ", resourceVersion="
+          + resourceVersion
+          + ", updatedAt="
+          + updatedAt
+          + ", deleted="
+          + deleted
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      Artifacts that = (Artifacts) o;
+      return java.util.Objects.equals(artifactType, that.artifactType)
+          && java.util.Objects.equals(direction, that.direction)
+          && java.util.Objects.equals(status, that.status)
+          && java.util.Objects.equals(code, that.code)
+          && java.util.Objects.equals(externalArtifactId, that.externalArtifactId)
+          && java.util.Objects.equals(createdAt, that.createdAt)
+          && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+          && java.util.Objects.equals(updatedAt, that.updatedAt)
+          && java.util.Objects.equals(deleted, that.deleted);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(
+          artifactType,
+          direction,
+          status,
+          code,
+          externalArtifactId,
+          createdAt,
+          resourceVersion,
+          updatedAt,
+          deleted);
+    }
   }
 }

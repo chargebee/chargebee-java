@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializer;
@@ -135,12 +136,19 @@ public class JsonUtil {
         return epochSeconds != null ? new Timestamp(epochSeconds * 1000) : null;
     }
 
-    /** Returns a nested JsonObject for the given key, or null. */
+    /** Returns a nested or string-encoded JsonObject for the given key, or null. */
     public static JsonObject getJsonObject(JsonObject obj, String key) {
         if (obj == null || key == null) return null;
         JsonElement elem = obj.get(key);
-        if (elem == null || elem.isJsonNull() || !elem.isJsonObject()) return null;
-        return elem.getAsJsonObject();
+        if (elem == null || elem.isJsonNull()) return null;
+        if (elem.isJsonPrimitive() && elem.getAsJsonPrimitive().isString()) {
+            try {
+                elem = JsonParser.parseString(elem.getAsString());
+            } catch (JsonParseException e) {
+                return null;
+            }
+        }
+        return elem.isJsonObject() ? elem.getAsJsonObject() : null;
     }
 
     /** Returns a nested JsonArray for the given key, or null. */

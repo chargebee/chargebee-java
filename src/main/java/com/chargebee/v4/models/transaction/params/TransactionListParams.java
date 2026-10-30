@@ -700,6 +700,32 @@ public final class TransactionListParams {
 
     QPAY("qpay"),
 
+    OVO("ovo"),
+
+    MOMO("momo"),
+
+    MERCADO_PAGO("mercado_pago"),
+
+    NEQUI("nequi"),
+
+    NUPAY("nupay"),
+
+    PICPAY("picpay"),
+
+    THAI_QR("thai_qr"),
+
+    BLIK("blik"),
+
+    FPX("fpx"),
+
+    WERO("wero"),
+
+    P24("p24"),
+
+    AFFIRM_PAY("affirm_pay"),
+
+    RAKUTEN_PAY("rakuten_pay"),
+
     /** An enum member indicating that PaymentMethodIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -851,6 +877,32 @@ public final class TransactionListParams {
     TAMARA("tamara"),
 
     QPAY("qpay"),
+
+    OVO("ovo"),
+
+    MOMO("momo"),
+
+    MERCADO_PAGO("mercado_pago"),
+
+    NEQUI("nequi"),
+
+    NUPAY("nupay"),
+
+    PICPAY("picpay"),
+
+    THAI_QR("thai_qr"),
+
+    BLIK("blik"),
+
+    FPX("fpx"),
+
+    WERO("wero"),
+
+    P24("p24"),
+
+    AFFIRM_PAY("affirm_pay"),
+
+    RAKUTEN_PAY("rakuten_pay"),
 
     /** An enum member indicating that PaymentMethodIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1004,6 +1056,32 @@ public final class TransactionListParams {
 
     QPAY("qpay"),
 
+    OVO("ovo"),
+
+    MOMO("momo"),
+
+    MERCADO_PAGO("mercado_pago"),
+
+    NEQUI("nequi"),
+
+    NUPAY("nupay"),
+
+    PICPAY("picpay"),
+
+    THAI_QR("thai_qr"),
+
+    BLIK("blik"),
+
+    FPX("fpx"),
+
+    WERO("wero"),
+
+    P24("p24"),
+
+    AFFIRM_PAY("affirm_pay"),
+
+    RAKUTEN_PAY("rakuten_pay"),
+
     /** An enum member indicating that PaymentMethodIn was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -1156,6 +1234,32 @@ public final class TransactionListParams {
 
     QPAY("qpay"),
 
+    OVO("ovo"),
+
+    MOMO("momo"),
+
+    MERCADO_PAGO("mercado_pago"),
+
+    NEQUI("nequi"),
+
+    NUPAY("nupay"),
+
+    PICPAY("picpay"),
+
+    THAI_QR("thai_qr"),
+
+    BLIK("blik"),
+
+    FPX("fpx"),
+
+    WERO("wero"),
+
+    P24("p24"),
+
+    AFFIRM_PAY("affirm_pay"),
+
+    RAKUTEN_PAY("rakuten_pay"),
+
     /** An enum member indicating that PaymentMethodNotIn was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -1299,6 +1403,8 @@ public final class TransactionListParams {
     MOYASAR("moyasar"),
 
     PAYWAY("payway"),
+
+    PAYU("payu"),
 
     NOT_APPLICABLE("not_applicable"),
 
@@ -1446,6 +1552,8 @@ public final class TransactionListParams {
 
     PAYWAY("payway"),
 
+    PAYU("payu"),
+
     NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that GatewayIsNot was instantiated with an unknown value. */
@@ -1592,6 +1700,8 @@ public final class TransactionListParams {
 
     PAYWAY("payway"),
 
+    PAYU("payu"),
+
     NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that GatewayIn was instantiated with an unknown value. */
@@ -1737,6 +1847,8 @@ public final class TransactionListParams {
     MOYASAR("moyasar"),
 
     PAYWAY("payway"),
+
+    PAYU("payu"),
 
     NOT_APPLICABLE("not_applicable"),
 
@@ -2259,6 +2371,32 @@ public final class TransactionListParams {
 
     QPAY("qpay"),
 
+    OVO("ovo"),
+
+    MOMO("momo"),
+
+    MERCADO_PAGO("mercado_pago"),
+
+    NEQUI("nequi"),
+
+    NUPAY("nupay"),
+
+    PICPAY("picpay"),
+
+    THAI_QR("thai_qr"),
+
+    BLIK("blik"),
+
+    FPX("fpx"),
+
+    WERO("wero"),
+
+    P24("p24"),
+
+    AFFIRM_PAY("affirm_pay"),
+
+    RAKUTEN_PAY("rakuten_pay"),
+
     /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -2402,6 +2540,8 @@ public final class TransactionListParams {
     MOYASAR("moyasar"),
 
     PAYWAY("payway"),
+
+    PAYU("payu"),
 
     NOT_APPLICABLE("not_applicable"),
 

@@ -16,6 +16,8 @@ public final class PaymentSourceCreateUsingPaymentIntentParams {
 
   private final String customerId;
 
+  private final String brandId;
+
   private final Boolean replacePrimaryPaymentSource;
 
   private final PaymentIntentParams paymentIntent;
@@ -25,6 +27,8 @@ public final class PaymentSourceCreateUsingPaymentIntentParams {
 
     this.customerId = builder.customerId;
 
+    this.brandId = builder.brandId;
+
     this.replacePrimaryPaymentSource = builder.replacePrimaryPaymentSource;
 
     this.paymentIntent = builder.paymentIntent;
@@ -32,6 +36,10 @@ public final class PaymentSourceCreateUsingPaymentIntentParams {
 
   public String getCustomerId() {
     return customerId;
+  }
+
+  public String getBrandId() {
+    return brandId;
   }
 
   public Boolean getReplacePrimaryPaymentSource() {
@@ -49,6 +57,11 @@ public final class PaymentSourceCreateUsingPaymentIntentParams {
     if (this.customerId != null) {
 
       formData.put("customer_id", this.customerId);
+    }
+
+    if (this.brandId != null) {
+
+      formData.put("brand_id", this.brandId);
     }
 
     if (this.replacePrimaryPaymentSource != null) {
@@ -79,6 +92,8 @@ public final class PaymentSourceCreateUsingPaymentIntentParams {
 
     private String customerId;
 
+    private String brandId;
+
     private Boolean replacePrimaryPaymentSource;
 
     private PaymentIntentParams paymentIntent;
@@ -87,6 +102,11 @@ public final class PaymentSourceCreateUsingPaymentIntentParams {
 
     public PaymentSourceCreateUsingPaymentIntentBuilder customerId(String value) {
       this.customerId = value;
+      return this;
+    }
+
+    public PaymentSourceCreateUsingPaymentIntentBuilder brandId(String value) {
+      this.brandId = value;
       return this;
     }
 
@@ -397,6 +417,32 @@ public final class PaymentSourceCreateUsingPaymentIntentParams {
       TAMARA("tamara"),
 
       QPAY("qpay"),
+
+      OVO("ovo"),
+
+      MOMO("momo"),
+
+      MERCADO_PAGO("mercado_pago"),
+
+      NEQUI("nequi"),
+
+      NUPAY("nupay"),
+
+      PICPAY("picpay"),
+
+      THAI_QR("thai_qr"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
+
+      AFFIRM_PAY("affirm_pay"),
+
+      RAKUTEN_PAY("rakuten_pay"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.

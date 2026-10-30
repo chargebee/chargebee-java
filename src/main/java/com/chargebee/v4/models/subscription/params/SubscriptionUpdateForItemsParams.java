@@ -1924,6 +1924,8 @@ public final class SubscriptionUpdateForItemsParams {
 
       PAYWAY("payway"),
 
+      PAYU("payu"),
+
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -1953,6 +1955,8 @@ public final class SubscriptionUpdateForItemsParams {
       MASTERCARD("mastercard"),
 
       VISA("visa"),
+
+      DANKORT("dankort"),
 
       /** An enum member indicating that PreferredScheme was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2255,6 +2259,32 @@ public final class SubscriptionUpdateForItemsParams {
 
       QPAY("qpay"),
 
+      OVO("ovo"),
+
+      MOMO("momo"),
+
+      MERCADO_PAGO("mercado_pago"),
+
+      NEQUI("nequi"),
+
+      NUPAY("nupay"),
+
+      PICPAY("picpay"),
+
+      THAI_QR("thai_qr"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
+
+      AFFIRM_PAY("affirm_pay"),
+
+      RAKUTEN_PAY("rakuten_pay"),
+
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -2396,6 +2426,8 @@ public final class SubscriptionUpdateForItemsParams {
       MOYASAR("moyasar"),
 
       PAYWAY("payway"),
+
+      PAYU("payu"),
 
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2693,6 +2725,32 @@ public final class SubscriptionUpdateForItemsParams {
       TAMARA("tamara"),
 
       QPAY("qpay"),
+
+      OVO("ovo"),
+
+      MOMO("momo"),
+
+      MERCADO_PAGO("mercado_pago"),
+
+      NEQUI("nequi"),
+
+      NUPAY("nupay"),
+
+      PICPAY("picpay"),
+
+      THAI_QR("thai_qr"),
+
+      BLIK("blik"),
+
+      FPX("fpx"),
+
+      WERO("wero"),
+
+      P24("p24"),
+
+      AFFIRM_PAY("affirm_pay"),
+
+      RAKUTEN_PAY("rakuten_pay"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
@@ -3881,6 +3939,8 @@ public final class SubscriptionUpdateForItemsParams {
 
     private final ItemType itemType;
 
+    private final String description;
+
     private final ProrationType prorationType;
 
     private final UsageAccumulationResetFrequency usageAccumulationResetFrequency;
@@ -3910,6 +3970,8 @@ public final class SubscriptionUpdateForItemsParams {
       this.chargeOnOption = builder.chargeOnOption;
 
       this.itemType = builder.itemType;
+
+      this.description = builder.description;
 
       this.prorationType = builder.prorationType;
 
@@ -3962,6 +4024,10 @@ public final class SubscriptionUpdateForItemsParams {
 
     public ItemType getItemType() {
       return itemType;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     public ProrationType getProrationType() {
@@ -4036,6 +4102,11 @@ public final class SubscriptionUpdateForItemsParams {
         formData.put("item_type", this.itemType);
       }
 
+      if (this.description != null) {
+
+        formData.put("description", this.description);
+      }
+
       if (this.prorationType != null) {
 
         formData.put("proration_type", this.prorationType);
@@ -4080,6 +4151,8 @@ public final class SubscriptionUpdateForItemsParams {
       private ChargeOnOption chargeOnOption;
 
       private ItemType itemType;
+
+      private String description;
 
       private ProrationType prorationType;
 
@@ -4144,6 +4217,11 @@ public final class SubscriptionUpdateForItemsParams {
 
       public SubscriptionItemsBuilder itemType(ItemType value) {
         this.itemType = value;
+        return this;
+      }
+
+      public SubscriptionItemsBuilder description(String value) {
+        this.description = value;
         return this;
       }
 

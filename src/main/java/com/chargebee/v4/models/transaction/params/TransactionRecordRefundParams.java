@@ -176,13 +176,17 @@ public final class TransactionRecordRefundParams {
 
     CUSTOM("custom"),
 
-    DANA("dana"),
-
-    TOUCH_N_GO("touch_n_go"),
-
     TAMARA("tamara"),
 
     QPAY("qpay"),
+
+    BLIK("blik"),
+
+    FPX("fpx"),
+
+    WERO("wero"),
+
+    P24("p24"),
 
     /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
     _UNKNOWN(null);
