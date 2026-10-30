@@ -7,12 +7,57 @@ import com.chargebee.v4.exceptions.codes.NotFoundApiErrorCode;
 import com.chargebee.v4.transport.Request;
 import com.chargebee.v4.transport.Response;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("TelemetrySupport")
 class TelemetrySupportTest {
+
+  @Test
+  @DisplayName("Should promote X-Chargebee-Telemetry response header to end span attributes")
+  void shouldBuildResponseHeaderSpanAttributes() {
+    Map<String, List<String>> headers = new HashMap<>();
+    headers.put(
+        "X-Chargebee-Telemetry",
+        List.of(
+            "cb;start_time=@1781280400;time_ms=3800, tp-stripe;pm=card;time_ms=620, ft-account_hierarchy"));
+
+    Map<String, Object> attributes = TelemetrySupport.buildResponseHeaderSpanAttributes(headers);
+
+    assertEquals(
+        "cb;start_time=@1781280400;time_ms=3800, tp-stripe;pm=card;time_ms=620, ft-account_hierarchy",
+        attributes.get("http.response.header.x-chargebee-telemetry"));
+    assertEquals(1781280400L, attributes.get("chargebee.telemetry.cb.start_time"));
+    assertEquals(3800L, attributes.get("chargebee.telemetry.cb.time_ms"));
+    assertEquals(620L, attributes.get("chargebee.telemetry.tp.stripe.time_ms"));
+    assertEquals("card", attributes.get("chargebee.telemetry.tp.stripe.pm"));
+    assertEquals(List.of("account_hierarchy"), attributes.get("chargebee.telemetry.features"));
+    assertFalse(attributes.containsKey("http.response.header.content-type"));
+  }
+
+  @Test
+  @DisplayName("Should omit telemetry attributes when response header is absent")
+  void shouldOmitTelemetryAttributesWhenHeaderAbsent() {
+    Map<String, Object> attributes =
+        TelemetrySupport.buildResponseHeaderSpanAttributes(new HashMap<>());
+
+    assertFalse(attributes.containsKey("http.response.header.x-chargebee-telemetry"));
+    assertFalse(attributes.containsKey("chargebee.telemetry.cb.time_ms"));
+  }
+
+  @Test
+  @DisplayName("Should emit raw header only when parsing fails")
+  void shouldEmitRawOnlyWhenParsingFails() {
+    Map<String, List<String>> headers = new HashMap<>();
+    headers.put("X-Chargebee-Telemetry", List.of("cb;=missing_key"));
+
+    Map<String, Object> attributes = TelemetrySupport.buildResponseHeaderSpanAttributes(headers);
+
+    assertEquals("cb;=missing_key", attributes.get("http.response.header.x-chargebee-telemetry"));
+    assertFalse(attributes.containsKey("chargebee.telemetry.cb.time_ms"));
+  }
 
   @Test
   @DisplayName("Should promote chargebee-* headers and exclude the PII origin family")
@@ -60,5 +105,45 @@ class TelemetrySupportTest {
     assertEquals("invalid_request", attributes.get(TelemetryAttributeKeys.CHARGEBEE_ERROR_TYPE));
     assertEquals("resource_not_found", attributes.get(TelemetryAttributeKeys.CHARGEBEE_ERROR_CODE));
     assertFalse(attributes.containsValue("404"));
+  }
+
+  @Test
+  @DisplayName("Should add Prefer chargebee-telemetry=include when not already set")
+  void shouldApplyResponseTelemetryPreferHeader() {
+    Map<String, String> headers = new HashMap<>();
+    TelemetrySupport.applyResponseTelemetryPreferHeader(headers);
+
+    assertEquals(
+        TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_VALUE,
+        headers.get(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER));
+  }
+
+  @Test
+  @DisplayName("Should not override an existing Prefer request header")
+  void shouldNotOverrideExistingPreferHeader() {
+    Map<String, String> headers = new HashMap<>();
+    headers.put("prefer", "respond-async");
+
+    TelemetrySupport.applyResponseTelemetryPreferHeader(headers);
+
+    assertEquals("respond-async", headers.get("prefer"));
+    assertFalse(headers.containsKey(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER));
+  }
+
+  @Test
+  @DisplayName("Should add Prefer to immutable request copies")
+  void shouldApplyResponseTelemetryPreferHeaderToRequest() {
+    Request request =
+        Request.builder()
+            .method("GET")
+            .url("https://acme.chargebee.com/api/v2/customers")
+            .build();
+
+    Request updated = TelemetrySupport.applyResponseTelemetryPreferHeader(request);
+
+    assertEquals(
+        TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_VALUE,
+        updated.getHeaders().get(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER));
+    assertFalse(request.getHeaders().containsKey(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_PREFER_HEADER));
   }
 }

@@ -92,4 +92,13 @@ class BaseResponseTest {
         assertEquals(Collections.singletonList("req_123"), list.header("x-request-id"));
         assertNull(list.header("missing"));
     }
+
+    @Test
+    @DisplayName("should look up the telemetry response header case-insensitively")
+    void shouldLookUpTelemetryHeaderCaseInsensitively() {
+        Response response = new Response(200,
+            httpUrlConnectionHeaders("X-Chargebee-Telemetry", "cb;time_ms=1"), "{}".getBytes());
+
+        assertEquals(Collections.singletonList("cb;time_ms=1"), wrap(response).header("x-chargebee-telemetry"));
+    }
 }

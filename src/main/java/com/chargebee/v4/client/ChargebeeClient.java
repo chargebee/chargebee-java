@@ -46,6 +46,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
     private final TelemetryAdapter telemetryAdapter;
     private final boolean sdkTelemetryEnabled;
     private final SdkTelemetryState sdkTelemetryState = new SdkTelemetryState();
+    private final boolean preferChargebeeTelemetry;
     private final ScheduledExecutorService retryScheduler;
 
     // Auto-generated service registry for lazy loading
@@ -65,6 +66,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
         this.clientHeaders = new RequestContext(builder.clientHeaders.getHeaders());
         this.telemetryAdapter = builder.telemetryAdapter;
         this.sdkTelemetryEnabled = builder.sdkTelemetryEnabled;
+        this.preferChargebeeTelemetry = builder.preferChargebeeTelemetry;
         this.retryScheduler = Executors.newSingleThreadScheduledExecutor(r -> {
             Thread t = new Thread(r, "chargebee-retry-scheduler");
             t.setDaemon(true);
@@ -105,6 +107,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
 
     /** Internal SDK telemetry state; not part of the supported public API. */
     public SdkTelemetryState getSdkTelemetryState() { return sdkTelemetryState; }
+    public boolean isPreferChargebeeTelemetry() { return preferChargebeeTelemetry; }
 
     public String getSdkVersion() {
         return getVersion();
@@ -586,6 +589,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
         private RequestInterceptor requestInterceptor;
         private TelemetryAdapter telemetryAdapter;
         private boolean sdkTelemetryEnabled = true;
+        private boolean preferChargebeeTelemetry = false;
         private final RequestContext clientHeaders = new RequestContext();
 
         private Builder() {}
@@ -618,6 +622,7 @@ public final class ChargebeeClient extends ClientMethodsImpl implements AutoClos
          * independent of {@link #telemetryAdapter(TelemetryAdapter)}.
          */
         public Builder sdkTelemetryEnabled(boolean sdkTelemetryEnabled) { this.sdkTelemetryEnabled = sdkTelemetryEnabled; return this; }
+        public Builder preferChargebeeTelemetry(boolean preferChargebeeTelemetry) { this.preferChargebeeTelemetry = preferChargebeeTelemetry; return this; }
 
         // Header helpers
         public Builder header(String name, String value) {
