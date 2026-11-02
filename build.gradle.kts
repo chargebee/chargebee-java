@@ -2,7 +2,7 @@ plugins {
     `java-library`
     `maven-publish`
     signing
-    id("org.owasp.dependencycheck") version "9.2.0"
+    id("org.owasp.dependencycheck") version "12.2.0"
     id("org.jreleaser") version "1.13.1"
 }
 
