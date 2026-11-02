@@ -60,6 +60,7 @@ public class Transaction {
   private List<LinkedCreditNotes> linkedCreditNotes;
   private List<LinkedRefunds> linkedRefunds;
   private List<LinkedPayments> linkedPayments;
+  private GatewayMetadata gatewayMetadata;
   private ErrorDetail errorDetail;
   private NetworkTransactionDetails networkTransactionDetails;
 
@@ -241,6 +242,10 @@ public class Transaction {
 
   public List<LinkedPayments> getLinkedPayments() {
     return linkedPayments;
+  }
+
+  public GatewayMetadata getGatewayMetadata() {
+    return gatewayMetadata;
   }
 
   public ErrorDetail getErrorDetail() {
@@ -847,6 +852,11 @@ public class Transaction {
         JsonUtil.mapArray(
             JsonUtil.getJsonArray(jsonObj, "linked_payments"), LinkedPayments::fromJson);
 
+    JsonObject __gatewayMetadataObj = JsonUtil.getJsonObject(jsonObj, "gateway_metadata");
+    if (__gatewayMetadataObj != null) {
+      obj.gatewayMetadata = GatewayMetadata.fromJson(__gatewayMetadataObj);
+    }
+
     JsonObject __errorDetailObj = JsonUtil.getJsonObject(jsonObj, "error_detail");
     if (__errorDetailObj != null) {
       obj.errorDetail = ErrorDetail.fromJson(__errorDetailObj);
@@ -955,6 +965,8 @@ public class Transaction {
         + linkedRefunds
         + ", linkedPayments="
         + linkedPayments
+        + ", gatewayMetadata="
+        + gatewayMetadata
         + ", errorDetail="
         + errorDetail
         + ", networkTransactionDetails="
@@ -1013,6 +1025,7 @@ public class Transaction {
         && java.util.Objects.equals(linkedCreditNotes, that.linkedCreditNotes)
         && java.util.Objects.equals(linkedRefunds, that.linkedRefunds)
         && java.util.Objects.equals(linkedPayments, that.linkedPayments)
+        && java.util.Objects.equals(gatewayMetadata, that.gatewayMetadata)
         && java.util.Objects.equals(errorDetail, that.errorDetail)
         && java.util.Objects.equals(networkTransactionDetails, that.networkTransactionDetails);
   }
@@ -1066,6 +1079,7 @@ public class Transaction {
         linkedCreditNotes,
         linkedRefunds,
         linkedPayments,
+        gatewayMetadata,
         errorDetail,
         networkTransactionDetails);
   }
@@ -1651,6 +1665,51 @@ public class Transaction {
     public int hashCode() {
 
       return java.util.Objects.hash(id, status, amount, date);
+    }
+  }
+
+  public static class GatewayMetadata {
+
+    private String acquirerReferenceId;
+
+    public String getAcquirerReferenceId() {
+      return acquirerReferenceId;
+    }
+
+    public static GatewayMetadata fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static GatewayMetadata fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
+    public static GatewayMetadata fromJson(JsonObject jsonObj) {
+      GatewayMetadata obj = new GatewayMetadata();
+
+      obj.acquirerReferenceId = JsonUtil.getString(jsonObj, "acquirer_reference_id");
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "GatewayMetadata{" + "acquirerReferenceId=" + acquirerReferenceId + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      GatewayMetadata that = (GatewayMetadata) o;
+      return java.util.Objects.equals(acquirerReferenceId, that.acquirerReferenceId);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(acquirerReferenceId);
     }
   }
 

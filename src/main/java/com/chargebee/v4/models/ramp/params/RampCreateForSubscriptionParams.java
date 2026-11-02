@@ -530,6 +530,8 @@ public final class RampCreateForSubscriptionParams {
 
     private final ChargeOnOption chargeOnOption;
 
+    private final String description;
+
     private ItemsToAddParams(ItemsToAddBuilder builder) {
 
       this.itemPriceId = builder.itemPriceId;
@@ -551,6 +553,8 @@ public final class RampCreateForSubscriptionParams {
       this.chargeOnce = builder.chargeOnce;
 
       this.chargeOnOption = builder.chargeOnOption;
+
+      this.description = builder.description;
     }
 
     public String getItemPriceId() {
@@ -591,6 +595,10 @@ public final class RampCreateForSubscriptionParams {
 
     public ChargeOnOption getChargeOnOption() {
       return chargeOnOption;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     /** Get the form data for this request. */
@@ -647,6 +655,11 @@ public final class RampCreateForSubscriptionParams {
         formData.put("charge_on_option", this.chargeOnOption);
       }
 
+      if (this.description != null) {
+
+        formData.put("description", this.description);
+      }
+
       return formData;
     }
 
@@ -677,6 +690,8 @@ public final class RampCreateForSubscriptionParams {
       private Boolean chargeOnce;
 
       private ChargeOnOption chargeOnOption;
+
+      private String description;
 
       private ItemsToAddBuilder() {}
 
@@ -727,6 +742,11 @@ public final class RampCreateForSubscriptionParams {
 
       public ItemsToAddBuilder chargeOnOption(ChargeOnOption value) {
         this.chargeOnOption = value;
+        return this;
+      }
+
+      public ItemsToAddBuilder description(String value) {
+        this.description = value;
         return this;
       }
 
@@ -818,6 +838,8 @@ public final class RampCreateForSubscriptionParams {
 
     private final ChargeOnOption chargeOnOption;
 
+    private final String description;
+
     private ItemsToUpdateParams(ItemsToUpdateBuilder builder) {
 
       this.itemPriceId = builder.itemPriceId;
@@ -839,6 +861,8 @@ public final class RampCreateForSubscriptionParams {
       this.chargeOnce = builder.chargeOnce;
 
       this.chargeOnOption = builder.chargeOnOption;
+
+      this.description = builder.description;
     }
 
     public String getItemPriceId() {
@@ -879,6 +903,10 @@ public final class RampCreateForSubscriptionParams {
 
     public ChargeOnOption getChargeOnOption() {
       return chargeOnOption;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     /** Get the form data for this request. */
@@ -935,6 +963,11 @@ public final class RampCreateForSubscriptionParams {
         formData.put("charge_on_option", this.chargeOnOption);
       }
 
+      if (this.description != null) {
+
+        formData.put("description", this.description);
+      }
+
       return formData;
     }
 
@@ -965,6 +998,8 @@ public final class RampCreateForSubscriptionParams {
       private Boolean chargeOnce;
 
       private ChargeOnOption chargeOnOption;
+
+      private String description;
 
       private ItemsToUpdateBuilder() {}
 
@@ -1015,6 +1050,11 @@ public final class RampCreateForSubscriptionParams {
 
       public ItemsToUpdateBuilder chargeOnOption(ChargeOnOption value) {
         this.chargeOnOption = value;
+        return this;
+      }
+
+      public ItemsToUpdateBuilder description(String value) {
+        this.description = value;
         return this;
       }
 

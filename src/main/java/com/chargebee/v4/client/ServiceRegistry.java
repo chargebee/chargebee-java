@@ -28,6 +28,8 @@ import com.chargebee.v4.services.OrderService;
 
 import com.chargebee.v4.services.ItemService;
 
+import com.chargebee.v4.services.CollectionsPaymentPromiseService;
+
 import com.chargebee.v4.services.RampService;
 
 import com.chargebee.v4.services.OmnichannelOneTimeOrderService;
@@ -99,6 +101,8 @@ import com.chargebee.v4.services.UnbilledChargeService;
 import com.chargebee.v4.services.TransactionService;
 
 import com.chargebee.v4.services.ThirdPartySyncDetailService;
+
+import com.chargebee.v4.services.PriceRampService;
 
 import com.chargebee.v4.services.EinvoiceService;
 
@@ -174,11 +178,15 @@ import com.chargebee.v4.services.MediaService;
 
 import com.chargebee.v4.services.BusinessProfileService;
 
+import com.chargebee.v4.services.RetrySegmentService;
+
 import com.chargebee.v4.services.WebhookEndpointService;
 
 import com.chargebee.v4.services.AlertService;
 
 import com.chargebee.v4.services.PortalSessionService;
+
+import com.chargebee.v4.services.DraftRequestService;
 
 import com.chargebee.v4.services.CreditUnitService;
 
@@ -234,6 +242,8 @@ final class ServiceRegistry {
   private volatile OrderService orderService;
 
   private volatile ItemService itemService;
+
+  private volatile CollectionsPaymentPromiseService collectionsPaymentPromiseService;
 
   private volatile RampService rampService;
 
@@ -306,6 +316,8 @@ final class ServiceRegistry {
   private volatile TransactionService transactionService;
 
   private volatile ThirdPartySyncDetailService thirdPartySyncDetailService;
+
+  private volatile PriceRampService priceRampService;
 
   private volatile EinvoiceService einvoiceService;
 
@@ -381,11 +393,15 @@ final class ServiceRegistry {
 
   private volatile BusinessProfileService businessProfileService;
 
+  private volatile RetrySegmentService retrySegmentService;
+
   private volatile WebhookEndpointService webhookEndpointService;
 
   private volatile AlertService alertService;
 
   private volatile PortalSessionService portalSessionService;
+
+  private volatile DraftRequestService draftRequestService;
 
   private volatile CreditUnitService creditUnitService;
 
@@ -619,6 +635,21 @@ final class ServiceRegistry {
       }
     }
     return itemService;
+  }
+
+  /**
+   * Get or create the CollectionsPaymentPromiseService instance. Thread-safe lazy initialization
+   * using double-checked locking.
+   */
+  CollectionsPaymentPromiseService collectionsPaymentPromises() {
+    if (collectionsPaymentPromiseService == null) {
+      synchronized (this) {
+        if (collectionsPaymentPromiseService == null) {
+          collectionsPaymentPromiseService = new CollectionsPaymentPromiseService(client);
+        }
+      }
+    }
+    return collectionsPaymentPromiseService;
   }
 
   /**
@@ -1159,6 +1190,21 @@ final class ServiceRegistry {
       }
     }
     return thirdPartySyncDetailService;
+  }
+
+  /**
+   * Get or create the PriceRampService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  PriceRampService priceRamps() {
+    if (priceRampService == null) {
+      synchronized (this) {
+        if (priceRampService == null) {
+          priceRampService = new PriceRampService(client);
+        }
+      }
+    }
+    return priceRampService;
   }
 
   /**
@@ -1717,6 +1763,21 @@ final class ServiceRegistry {
   }
 
   /**
+   * Get or create the RetrySegmentService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  RetrySegmentService retrySegments() {
+    if (retrySegmentService == null) {
+      synchronized (this) {
+        if (retrySegmentService == null) {
+          retrySegmentService = new RetrySegmentService(client);
+        }
+      }
+    }
+    return retrySegmentService;
+  }
+
+  /**
    * Get or create the WebhookEndpointService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
@@ -1759,6 +1820,21 @@ final class ServiceRegistry {
       }
     }
     return portalSessionService;
+  }
+
+  /**
+   * Get or create the DraftRequestService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  DraftRequestService draftRequests() {
+    if (draftRequestService == null) {
+      synchronized (this) {
+        if (draftRequestService == null) {
+          draftRequestService = new DraftRequestService(client);
+        }
+      }
+    }
+    return draftRequestService;
   }
 
   /**

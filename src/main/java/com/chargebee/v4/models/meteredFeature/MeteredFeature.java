@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.meteredFeature;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
@@ -20,6 +21,7 @@ public class MeteredFeature {
   private Type type;
   private Status status;
   private String query;
+  private List<String> groupBy;
   private List<ColumnDefinitions> columnDefinitions;
   private List<Features> features;
 
@@ -45,6 +47,10 @@ public class MeteredFeature {
 
   public String getQuery() {
     return query;
+  }
+
+  public List<String> getGroupBy() {
+    return groupBy;
   }
 
   public List<ColumnDefinitions> getColumnDefinitions() {
@@ -136,6 +142,11 @@ public class MeteredFeature {
 
     obj.query = JsonUtil.getString(jsonObj, "query");
 
+    JsonArray __groupByArr = JsonUtil.getJsonArray(jsonObj, "group_by");
+    if (__groupByArr != null) {
+      obj.groupBy = JsonUtil.parseArrayOfString(__groupByArr);
+    }
+
     obj.columnDefinitions =
         JsonUtil.mapArray(
             JsonUtil.getJsonArray(jsonObj, "column_definitions"), ColumnDefinitions::fromJson);
@@ -161,6 +172,8 @@ public class MeteredFeature {
         + status
         + ", query="
         + query
+        + ", groupBy="
+        + groupBy
         + ", columnDefinitions="
         + columnDefinitions
         + ", features="
@@ -180,6 +193,7 @@ public class MeteredFeature {
         && java.util.Objects.equals(type, that.type)
         && java.util.Objects.equals(status, that.status)
         && java.util.Objects.equals(query, that.query)
+        && java.util.Objects.equals(groupBy, that.groupBy)
         && java.util.Objects.equals(columnDefinitions, that.columnDefinitions)
         && java.util.Objects.equals(features, that.features);
   }
@@ -188,7 +202,7 @@ public class MeteredFeature {
   public int hashCode() {
 
     return java.util.Objects.hash(
-        id, name, description, type, status, query, columnDefinitions, features);
+        id, name, description, type, status, query, groupBy, columnDefinitions, features);
   }
 
   public static class ColumnDefinitions {

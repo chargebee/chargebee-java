@@ -28,6 +28,8 @@ import com.chargebee.v4.services.OrderService;
 
 import com.chargebee.v4.services.ItemService;
 
+import com.chargebee.v4.services.CollectionsPaymentPromiseService;
+
 import com.chargebee.v4.services.RampService;
 
 import com.chargebee.v4.services.OmnichannelOneTimeOrderService;
@@ -99,6 +101,8 @@ import com.chargebee.v4.services.UnbilledChargeService;
 import com.chargebee.v4.services.TransactionService;
 
 import com.chargebee.v4.services.ThirdPartySyncDetailService;
+
+import com.chargebee.v4.services.PriceRampService;
 
 import com.chargebee.v4.services.EinvoiceService;
 
@@ -174,11 +178,15 @@ import com.chargebee.v4.services.MediaService;
 
 import com.chargebee.v4.services.BusinessProfileService;
 
+import com.chargebee.v4.services.RetrySegmentService;
+
 import com.chargebee.v4.services.WebhookEndpointService;
 
 import com.chargebee.v4.services.AlertService;
 
 import com.chargebee.v4.services.PortalSessionService;
+
+import com.chargebee.v4.services.DraftRequestService;
 
 import com.chargebee.v4.services.CreditUnitService;
 
@@ -303,6 +311,13 @@ public interface ClientMethods {
    * @return ItemService instance for fluent API access
    */
   ItemService items();
+
+  /**
+   * Access collections_payment_promise-related operations.
+   *
+   * @return CollectionsPaymentPromiseService instance for fluent API access
+   */
+  CollectionsPaymentPromiseService collectionsPaymentPromises();
 
   /**
    * Access ramp-related operations.
@@ -555,6 +570,13 @@ public interface ClientMethods {
    * @return ThirdPartySyncDetailService instance for fluent API access
    */
   ThirdPartySyncDetailService thirdPartySyncDetails();
+
+  /**
+   * Access price_ramp-related operations.
+   *
+   * @return PriceRampService instance for fluent API access
+   */
+  PriceRampService priceRamps();
 
   /**
    * Access einvoice-related operations.
@@ -816,6 +838,13 @@ public interface ClientMethods {
   BusinessProfileService businessProfiles();
 
   /**
+   * Access retry_segment-related operations.
+   *
+   * @return RetrySegmentService instance for fluent API access
+   */
+  RetrySegmentService retrySegments();
+
+  /**
    * Access webhook_endpoint-related operations.
    *
    * @return WebhookEndpointService instance for fluent API access
@@ -835,6 +864,13 @@ public interface ClientMethods {
    * @return PortalSessionService instance for fluent API access
    */
   PortalSessionService portalSessions();
+
+  /**
+   * Access draft_request-related operations.
+   *
+   * @return DraftRequestService instance for fluent API access
+   */
+  DraftRequestService draftRequests();
 
   /**
    * Access credit_unit-related operations.

@@ -7,9 +7,11 @@
 package com.chargebee.v4.models.usage.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.List;
 
 public final class UsagePdfParams {
 
@@ -17,11 +19,15 @@ public final class UsagePdfParams {
 
   private final InvoiceParams invoice;
 
+  private final List<GroupByParams> groupBy;
+
   private UsagePdfParams(UsagePdfBuilder builder) {
 
     this.dispositionType = builder.dispositionType;
 
     this.invoice = builder.invoice;
+
+    this.groupBy = builder.groupBy;
   }
 
   public DispositionType getDispositionType() {
@@ -30,6 +36,10 @@ public final class UsagePdfParams {
 
   public InvoiceParams getInvoice() {
     return invoice;
+  }
+
+  public List<GroupByParams> getGroupBy() {
+    return groupBy;
   }
 
   /** Get the form data for this request. */
@@ -51,6 +61,21 @@ public final class UsagePdfParams {
       }
     }
 
+    if (this.groupBy != null) {
+
+      // List of objects
+      for (int i = 0; i < this.groupBy.size(); i++) {
+        GroupByParams item = this.groupBy.get(i);
+        if (item != null) {
+          Map<String, Object> itemData = item.toFormData();
+          for (Map.Entry<String, Object> entry : itemData.entrySet()) {
+            String indexedKey = "group_by[" + entry.getKey() + "][" + i + "]";
+            formData.put(indexedKey, entry.getValue());
+          }
+        }
+      }
+    }
+
     return formData;
   }
 
@@ -66,6 +91,8 @@ public final class UsagePdfParams {
 
     private InvoiceParams invoice;
 
+    private List<GroupByParams> groupBy;
+
     private UsagePdfBuilder() {}
 
     public UsagePdfBuilder dispositionType(DispositionType value) {
@@ -75,6 +102,11 @@ public final class UsagePdfParams {
 
     public UsagePdfBuilder invoice(InvoiceParams value) {
       this.invoice = value;
+      return this;
+    }
+
+    public UsagePdfBuilder groupBy(List<GroupByParams> value) {
+      this.groupBy = value;
       return this;
     }
 
@@ -155,6 +187,74 @@ public final class UsagePdfParams {
 
       public InvoiceParams build() {
         return new InvoiceParams(this);
+      }
+    }
+  }
+
+  public static final class GroupByParams {
+
+    private final String featureId;
+
+    private final List<Object> attributes;
+
+    private GroupByParams(GroupByBuilder builder) {
+
+      this.featureId = builder.featureId;
+
+      this.attributes = builder.attributes;
+    }
+
+    public String getFeatureId() {
+      return featureId;
+    }
+
+    public List<Object> getAttributes() {
+      return attributes;
+    }
+
+    /** Get the form data for this request. */
+    public Map<String, Object> toFormData() {
+      Map<String, Object> formData = new LinkedHashMap<>();
+
+      if (this.featureId != null) {
+
+        formData.put("feature_id", this.featureId);
+      }
+
+      if (this.attributes != null) {
+
+        formData.put("attributes", JsonUtil.toJson(this.attributes));
+      }
+
+      return formData;
+    }
+
+    /** Create a new builder for GroupByParams. */
+    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
+    public static GroupByBuilder builder() {
+      return new GroupByBuilder();
+    }
+
+    public static final class GroupByBuilder {
+
+      private String featureId;
+
+      private List<Object> attributes;
+
+      private GroupByBuilder() {}
+
+      public GroupByBuilder featureId(String value) {
+        this.featureId = value;
+        return this;
+      }
+
+      public GroupByBuilder attributes(List<Object> value) {
+        this.attributes = value;
+        return this;
+      }
+
+      public GroupByParams build() {
+        return new GroupByParams(this);
       }
     }
   }

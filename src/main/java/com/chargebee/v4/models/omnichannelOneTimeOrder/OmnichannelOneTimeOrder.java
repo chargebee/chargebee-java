@@ -70,6 +70,10 @@ public class OmnichannelOneTimeOrder {
 
     GOOGLE_PLAY_STORE("google_play_store"),
 
+    ROKU("roku"),
+
+    AMAZON_APP_STORE("amazon_app_store"),
+
     /** An enum member indicating that Source was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;

@@ -12,6 +12,7 @@ import com.chargebee.v4.internal.JsonUtil;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.List;
+import java.sql.Timestamp;
 
 public final class PurchaseCreateParams {
 
@@ -903,6 +904,8 @@ public final class PurchaseCreateParams {
 
     private final String quantityInDecimal;
 
+    private final Timestamp trialEnd;
+
     private PurchaseItemsParams(PurchaseItemsBuilder builder) {
 
       this.index = builder.index;
@@ -916,6 +919,8 @@ public final class PurchaseCreateParams {
       this.unitAmountInDecimal = builder.unitAmountInDecimal;
 
       this.quantityInDecimal = builder.quantityInDecimal;
+
+      this.trialEnd = builder.trialEnd;
     }
 
     public Integer getIndex() {
@@ -940,6 +945,10 @@ public final class PurchaseCreateParams {
 
     public String getQuantityInDecimal() {
       return quantityInDecimal;
+    }
+
+    public Timestamp getTrialEnd() {
+      return trialEnd;
     }
 
     /** Get the form data for this request. */
@@ -976,6 +985,11 @@ public final class PurchaseCreateParams {
         formData.put("quantity_in_decimal", this.quantityInDecimal);
       }
 
+      if (this.trialEnd != null) {
+
+        formData.put("trial_end", this.trialEnd);
+      }
+
       return formData;
     }
 
@@ -998,6 +1012,8 @@ public final class PurchaseCreateParams {
       private String unitAmountInDecimal;
 
       private String quantityInDecimal;
+
+      private Timestamp trialEnd;
 
       private PurchaseItemsBuilder() {}
 
@@ -1028,6 +1044,11 @@ public final class PurchaseCreateParams {
 
       public PurchaseItemsBuilder quantityInDecimal(String value) {
         this.quantityInDecimal = value;
+        return this;
+      }
+
+      public PurchaseItemsBuilder trialEnd(Timestamp value) {
+        this.trialEnd = value;
         return this;
       }
 
@@ -1723,6 +1744,10 @@ public final class PurchaseCreateParams {
 
     private final Integer contractTermBillingCycleOnRenewal;
 
+    private final Timestamp trialEnd;
+
+    private final Timestamp startDate;
+
     private final java.util.Map<String, Object> metaData;
 
     private SubscriptionInfoParams(SubscriptionInfoBuilder builder) {
@@ -1734,6 +1759,10 @@ public final class PurchaseCreateParams {
       this.billingCycles = builder.billingCycles;
 
       this.contractTermBillingCycleOnRenewal = builder.contractTermBillingCycleOnRenewal;
+
+      this.trialEnd = builder.trialEnd;
+
+      this.startDate = builder.startDate;
 
       this.metaData = builder.metaData;
     }
@@ -1752,6 +1781,14 @@ public final class PurchaseCreateParams {
 
     public Integer getContractTermBillingCycleOnRenewal() {
       return contractTermBillingCycleOnRenewal;
+    }
+
+    public Timestamp getTrialEnd() {
+      return trialEnd;
+    }
+
+    public Timestamp getStartDate() {
+      return startDate;
     }
 
     public java.util.Map<String, Object> getMetaData() {
@@ -1783,6 +1820,16 @@ public final class PurchaseCreateParams {
             "contract_term_billing_cycle_on_renewal", this.contractTermBillingCycleOnRenewal);
       }
 
+      if (this.trialEnd != null) {
+
+        formData.put("trial_end", this.trialEnd);
+      }
+
+      if (this.startDate != null) {
+
+        formData.put("start_date", this.startDate);
+      }
+
       if (this.metaData != null) {
 
         formData.put("meta_data", JsonUtil.toJson(this.metaData));
@@ -1807,6 +1854,10 @@ public final class PurchaseCreateParams {
 
       private Integer contractTermBillingCycleOnRenewal;
 
+      private Timestamp trialEnd;
+
+      private Timestamp startDate;
+
       private java.util.Map<String, Object> metaData;
 
       private SubscriptionInfoBuilder() {}
@@ -1828,6 +1879,16 @@ public final class PurchaseCreateParams {
 
       public SubscriptionInfoBuilder contractTermBillingCycleOnRenewal(Integer value) {
         this.contractTermBillingCycleOnRenewal = value;
+        return this;
+      }
+
+      public SubscriptionInfoBuilder trialEnd(Timestamp value) {
+        this.trialEnd = value;
+        return this;
+      }
+
+      public SubscriptionInfoBuilder startDate(Timestamp value) {
+        this.startDate = value;
         return this;
       }
 

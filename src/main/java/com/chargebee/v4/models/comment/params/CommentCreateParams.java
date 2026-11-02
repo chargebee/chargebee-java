@@ -149,6 +149,8 @@ public final class CommentCreateParams {
 
     PRICE_VARIANT("price_variant"),
 
+    TASK("task"),
+
     /** An enum member indicating that EntityType was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
