@@ -184,6 +184,17 @@ public class Transaction extends Resource<Transaction> {
 
     }
 
+    public static class GatewayMetadata extends Resource<GatewayMetadata> {
+        public GatewayMetadata(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String acquirerReferenceId() {
+            return optString("acquirer_reference_id");
+        }
+
+    }
+
     public static class GatewayErrorDetail extends Resource<GatewayErrorDetail> {
         public GatewayErrorDetail(JSONObject jsonObj) {
             super(jsonObj);
@@ -454,6 +465,10 @@ public class Transaction extends Resource<Transaction> {
 
     public String paymentMethodDetails() {
         return optString("payment_method_details");
+    }
+
+    public Transaction.GatewayMetadata gatewayMetadata() {
+        return optSubResource("gateway_metadata", Transaction.GatewayMetadata.class);
     }
 
     public Transaction.GatewayErrorDetail errorDetail() {

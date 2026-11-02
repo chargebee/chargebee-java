@@ -238,6 +238,10 @@ public class ItemPrice extends Resource<ItemPrice> {
         return optString("price_variant_id");
     }
 
+    public String priceRampId() {
+        return optString("price_ramp_id");
+    }
+
     public ProrationType prorationType() {
         return optEnum("proration_type", ProrationType.class);
     }

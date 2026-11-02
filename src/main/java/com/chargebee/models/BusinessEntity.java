@@ -65,6 +65,26 @@ public class BusinessEntity extends Resource<BusinessEntity> {
     // Operations
     //===========
 
+    public static CreateRequest create() {
+        String uri = uri("business_entities");
+        return new CreateRequest(Method.POST, uri);
+    }
+
+    public static BusinessEntityListRequest list() {
+        String uri = uri("business_entities");
+        return new BusinessEntityListRequest(uri);
+    }
+
+    public static Request retrieve(String id) {
+        String uri = uri("business_entities", nullCheck(id));
+        return new Request(Method.GET, uri);
+    }
+
+    public static UpdateRequest update(String id) {
+        String uri = uri("business_entities", nullCheck(id));
+        return new UpdateRequest(Method.POST, uri);
+    }
+
     public static CreateTransfersRequest createTransfers() {
         String uri = uri("business_entities", "transfers");
         return new CreateTransfersRequest(Method.POST, uri);
@@ -78,6 +98,77 @@ public class BusinessEntity extends Resource<BusinessEntity> {
 
     // Operation Request Classes
     //==========================
+
+    public static class CreateRequest extends Request<CreateRequest> {
+
+        private CreateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateRequest name(String name) {
+            params.add("name", name);
+            return this;
+        }
+
+
+        public CreateRequest status(BusinessEntity.Status status) {
+            params.add("status", status);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class BusinessEntityListRequest extends ListRequest<BusinessEntityListRequest> {
+
+        private BusinessEntityListRequest(String uri) {
+            super(uri);
+        }
+    
+        public BusinessEntityListRequest includeDeleted(Boolean includeDeleted) {
+            params.addOpt("include_deleted", includeDeleted);
+            return this;
+        }
+
+
+        public StringFilter<BusinessEntityListRequest> name() {
+            return new StringFilter<BusinessEntityListRequest>("name",this).supportsPresenceOperator(true);        
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdateRequest extends Request<UpdateRequest> {
+
+        private UpdateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdateRequest name(String name) {
+            params.addOpt("name", name);
+            return this;
+        }
+
+
+        public UpdateRequest status(BusinessEntity.Status status) {
+            params.addOpt("status", status);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
     public static class CreateTransfersRequest extends Request<CreateTransfersRequest> {
 

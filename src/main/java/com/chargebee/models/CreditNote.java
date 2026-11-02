@@ -1540,6 +1540,12 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
+        public ImportCreditNoteRequest customerNotes(String customerNotes) {
+            params.addOpt("customer_notes", customerNotes);
+            return this;
+        }
+
+
         public ImportCreditNoteRequest status(CreditNote.Status status) {
             params.addOpt("status", status);
             return this;

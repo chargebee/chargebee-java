@@ -55,6 +55,10 @@ public class MeteredFeature extends Resource<MeteredFeature> {
         return optList("column_definitions", ColumnDefinition.class);
     }
 
+    public List<String> groupBy() {
+        return optList("group_by", String.class);
+    }
+
     public List<Feature> features() {
         return optList("features", Feature.class);
     }

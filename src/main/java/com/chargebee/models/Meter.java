@@ -82,6 +82,10 @@ public class Meter extends Resource<Meter> {
         return optList("features", Feature.class);
     }
 
+    public List<String> groupBy() {
+        return optList("group_by", String.class);
+    }
+
     // Operations
     //===========
 

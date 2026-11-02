@@ -131,6 +131,12 @@ public class PaymentSource extends Resource<PaymentSource> {
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
+        public enum Scheme {
+            ACH,BACS,SEPA_CORE,AUTOGIRO,BECS,BECS_NZ,PAD,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public BankAccount(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -356,6 +362,10 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public String originalNetworkTransactionId() {
             return optString("original_network_transaction_id");
+        }
+
+        public String transactionLinkId() {
+            return optString("transaction_link_id");
         }
 
     }
@@ -745,6 +755,46 @@ public class PaymentSource extends Resource<PaymentSource> {
         
         public CreateUsingPermanentTokenRequest cardFundingType(Card.FundingType cardFundingType) {
             params.addOpt("card[funding_type]", cardFundingType);
+            return this;
+        }
+        
+        public CreateUsingPermanentTokenRequest bankAccountAccountType(com.chargebee.models.enums.AccountType bankAccountAccountType) {
+            params.addOpt("bank_account[account_type]", bankAccountAccountType);
+            return this;
+        }
+        
+        public CreateUsingPermanentTokenRequest bankAccountAccountHolderType(com.chargebee.models.enums.AccountHolderType bankAccountAccountHolderType) {
+            params.addOpt("bank_account[account_holder_type]", bankAccountAccountHolderType);
+            return this;
+        }
+        
+        public CreateUsingPermanentTokenRequest bankAccountFirstName(String bankAccountFirstName) {
+            params.addOpt("bank_account[first_name]", bankAccountFirstName);
+            return this;
+        }
+        
+        public CreateUsingPermanentTokenRequest bankAccountLastName(String bankAccountLastName) {
+            params.addOpt("bank_account[last_name]", bankAccountLastName);
+            return this;
+        }
+        
+        public CreateUsingPermanentTokenRequest bankAccountCompany(String bankAccountCompany) {
+            params.addOpt("bank_account[company]", bankAccountCompany);
+            return this;
+        }
+        
+        public CreateUsingPermanentTokenRequest bankAccountScheme(BankAccount.Scheme bankAccountScheme) {
+            params.addOpt("bank_account[scheme]", bankAccountScheme);
+            return this;
+        }
+        
+        public CreateUsingPermanentTokenRequest bankAccountLast4(String bankAccountLast4) {
+            params.addOpt("bank_account[last4]", bankAccountLast4);
+            return this;
+        }
+        
+        public CreateUsingPermanentTokenRequest bankAccountEcheckType(com.chargebee.models.enums.EcheckType bankAccountEcheckType) {
+            params.addOpt("bank_account[echeck_type]", bankAccountEcheckType);
             return this;
         }
         

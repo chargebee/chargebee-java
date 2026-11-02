@@ -16,6 +16,8 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
     public enum Source {
         APPLE_APP_STORE,
         GOOGLE_PLAY_STORE,
+        ROKU,
+        AMAZON_APP_STORE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -52,6 +54,10 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
 
     public String customerId() {
         return optString("customer_id");
+    }
+
+    public String origin() {
+        return optString("origin");
     }
 
     public Timestamp createdAt() {

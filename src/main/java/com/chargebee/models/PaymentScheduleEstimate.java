@@ -21,7 +21,7 @@ public class PaymentScheduleEstimate extends Resource<PaymentScheduleEstimate> {
 
     public static class ScheduleEntry extends Resource<ScheduleEntry> {
         public enum Status {
-             POSTED,PAYMENT_DUE,PAID,
+             POSTED,PAYMENT_DUE,PAID,VOIDED,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }

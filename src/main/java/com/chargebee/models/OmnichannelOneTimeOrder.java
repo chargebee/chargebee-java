@@ -16,6 +16,8 @@ public class OmnichannelOneTimeOrder extends Resource<OmnichannelOneTimeOrder> {
     public enum Source {
         APPLE_APP_STORE,
         GOOGLE_PLAY_STORE,
+        ROKU,
+        AMAZON_APP_STORE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }

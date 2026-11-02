@@ -272,6 +272,14 @@ public class ResultBase {
         return (DifferentialPrice)get("differential_price");
     }
 
+    public PriceRamp priceRamp() {
+        return (PriceRamp)get("price_ramp");
+    }
+
+    public RampInterval rampInterval() {
+        return (RampInterval)get("ramp_interval");
+    }
+
     public Configuration configuration() {
         return (Configuration)get("configuration");
     }
@@ -388,8 +396,20 @@ public class ResultBase {
         return (Rule)get("rule");
     }
 
+    public RetrySegment retrySegment() {
+        return (RetrySegment)get("retry_segment");
+    }
+
     public Meter meter() {
         return (Meter)get("meter");
+    }
+
+    public GroupByAttribute groupByAttribute() {
+        return (GroupByAttribute)get("group_by_attribute");
+    }
+
+    public GroupByRecommendation groupByRecommendation() {
+        return (GroupByRecommendation)get("group_by_recommendation");
     }
 
     public UsageEvent usageEvent() {
@@ -402,6 +422,10 @@ public class ResultBase {
 
     public CustomDataSchema customDataSchema() {
         return (CustomDataSchema)get("custom_data_schema");
+    }
+
+    public CustomData customData() {
+        return (CustomData)get("custom_data");
     }
 
     public UsageFile usageFile() {
@@ -444,16 +468,28 @@ public class ResultBase {
         return (AppliedRule)get("applied_rule");
     }
 
-    public AppliedBusinessRule appliedBusinessRule() {
-        return (AppliedBusinessRule)get("applied_business_rule");
-    }
-
     public BusinessRuleset businessRuleset() {
         return (BusinessRuleset)get("business_ruleset");
     }
 
     public BusinessRulesetRule businessRulesetRule() {
         return (BusinessRulesetRule)get("business_ruleset_rule");
+    }
+
+    public DraftRequest draftRequest() {
+        return (DraftRequest)get("draft_request");
+    }
+
+    public Citation citation() {
+        return (Citation)get("citation");
+    }
+
+    public Execution execution() {
+        return (Execution)get("execution");
+    }
+
+    public DraftEstimate draftEstimate() {
+        return (DraftEstimate)get("draft_estimate");
     }
 
     public UsageSummary usageSummary() {
@@ -474,6 +510,34 @@ public class ResultBase {
 
     public AlertStatus alertStatus() {
         return (AlertStatus)get("alert_status");
+    }
+
+    public CollectionsPaymentPromise collectionsPaymentPromise() {
+        return (CollectionsPaymentPromise)get("collections_payment_promise");
+    }
+
+    public CollectionsDispute collectionsDispute() {
+        return (CollectionsDispute)get("collections_dispute");
+    }
+
+    public CollectionsReminderSequence collectionsReminderSequence() {
+        return (CollectionsReminderSequence)get("collections_reminder_sequence");
+    }
+
+    public EmailConversation emailConversation() {
+        return (EmailConversation)get("email_conversation");
+    }
+
+    public EmailMessage emailMessage() {
+        return (EmailMessage)get("email_message");
+    }
+
+    public PrivateNote privateNote() {
+        return (PrivateNote)get("private_note");
+    }
+
+    public EmailAttachment emailAttachment() {
+        return (EmailAttachment)get("email_attachment");
     }
 
     public LedgerAccountBalance ledgerAccountBalance() {
@@ -550,6 +614,10 @@ public class ResultBase {
 
     public List<PersonalizedOffer> personalizedOffers() {
         return (List<PersonalizedOffer>) getList("personalized_offers", "personalized_offer");
+    }
+
+    public List<CollectionsPaymentPromise> collectionsPaymentPromises() {
+        return (List<CollectionsPaymentPromise>) getList("collections_payment_promises", "collections_payment_promise");
     }
 
     public List<LedgerOperation> ledgerOperations() {
