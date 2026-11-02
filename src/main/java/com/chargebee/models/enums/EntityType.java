@@ -12,12 +12,12 @@ public enum EntityType {
     PLAN_PRICE,
     ADDON_PRICE,
     CHARGE_PRICE,
+    ADDON,
     INVOICE,
     QUOTE,
     CREDIT_NOTE,
     TRANSACTION,
     PLAN,
-    ADDON,
     ORDER,
     ITEM_FAMILY,
     ITEM,
@@ -46,6 +46,7 @@ public enum EntityType {
     ALERT_STATUS,
     OMNICHANNEL_SUBSCRIPTION_ITEM_METRIC,
     PRICE_RAMP,
+    TASK,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

@@ -99,6 +99,10 @@ public class Ramp extends Resource<Ramp> {
             return optEnum("charge_on_option", ChargeOnOption.class);
         }
 
+        public String description() {
+            return optString("description");
+        }
+
         public ChargeOnEvent chargeOnEvent() {
             return optEnum("charge_on_event", ChargeOnEvent.class);
         }
@@ -180,6 +184,10 @@ public class Ramp extends Resource<Ramp> {
 
         public ChargeOnOption chargeOnOption() {
             return optEnum("charge_on_option", ChargeOnOption.class);
+        }
+
+        public String description() {
+            return optString("description");
         }
 
         public ChargeOnEvent chargeOnEvent() {
@@ -643,6 +651,11 @@ public class Ramp extends Resource<Ramp> {
             paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "charge_on_option", index), itemsToAddChargeOnOption);
             return this;
         }
+        public CreateForSubscriptionRequest itemsToAddDescription(int index, String itemsToAddDescription) {
+            params.addOpt("items_to_add[description][" + index + "]", itemsToAddDescription);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "description", index), itemsToAddDescription);
+            return this;
+        }
         public CreateForSubscriptionRequest itemsToUpdateItemPriceId(int index, String itemsToUpdateItemPriceId) {
             params.add("items_to_update[item_price_id][" + index + "]", itemsToUpdateItemPriceId);
             paramsV2.add(new CompositeArrayParameter("items_to_update", "item_price_id", index), itemsToUpdateItemPriceId);
@@ -691,6 +704,11 @@ public class Ramp extends Resource<Ramp> {
         public CreateForSubscriptionRequest itemsToUpdateChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption itemsToUpdateChargeOnOption) {
             params.addOpt("items_to_update[charge_on_option][" + index + "]", itemsToUpdateChargeOnOption);
             paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "charge_on_option", index), itemsToUpdateChargeOnOption);
+            return this;
+        }
+        public CreateForSubscriptionRequest itemsToUpdateDescription(int index, String itemsToUpdateDescription) {
+            params.addOpt("items_to_update[description][" + index + "]", itemsToUpdateDescription);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "description", index), itemsToUpdateDescription);
             return this;
         }
         public CreateForSubscriptionRequest itemTierItemPriceId(int index, String itemTierItemPriceId) {
@@ -936,6 +954,11 @@ public class Ramp extends Resource<Ramp> {
             paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "charge_on_option", index), itemsToAddChargeOnOption);
             return this;
         }
+        public UpdateRequest itemsToAddDescription(int index, String itemsToAddDescription) {
+            params.addOpt("items_to_add[description][" + index + "]", itemsToAddDescription);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "description", index), itemsToAddDescription);
+            return this;
+        }
         public UpdateRequest itemsToUpdateItemPriceId(int index, String itemsToUpdateItemPriceId) {
             params.add("items_to_update[item_price_id][" + index + "]", itemsToUpdateItemPriceId);
             paramsV2.add(new CompositeArrayParameter("items_to_update", "item_price_id", index), itemsToUpdateItemPriceId);
@@ -984,6 +1007,11 @@ public class Ramp extends Resource<Ramp> {
         public UpdateRequest itemsToUpdateChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption itemsToUpdateChargeOnOption) {
             params.addOpt("items_to_update[charge_on_option][" + index + "]", itemsToUpdateChargeOnOption);
             paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "charge_on_option", index), itemsToUpdateChargeOnOption);
+            return this;
+        }
+        public UpdateRequest itemsToUpdateDescription(int index, String itemsToUpdateDescription) {
+            params.addOpt("items_to_update[description][" + index + "]", itemsToUpdateDescription);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "description", index), itemsToUpdateDescription);
             return this;
         }
         public UpdateRequest itemTierItemPriceId(int index, String itemTierItemPriceId) {

@@ -1211,6 +1211,10 @@ public class Invoice extends Resource<Invoice> {
         return optList("reference_transactions", Invoice.ReferenceTransaction.class);
     }
 
+    public String retrySegmentId() {
+        return optString("retry_segment_id");
+    }
+
     public List<Invoice.DunningAttempt> dunningAttempts() {
         return optList("dunning_attempts", Invoice.DunningAttempt.class);
     }
@@ -1482,6 +1486,11 @@ public class Invoice extends Resource<Invoice> {
     public static ApplyPaymentScheduleSchemeRequest applyPaymentScheduleScheme(String id) {
         String uri = uri("invoices", nullCheck(id), "apply_payment_schedule_scheme");
         return new ApplyPaymentScheduleSchemeRequest(Method.POST, uri);
+    }
+
+    public static RemovePaymentScheduleSchemeRequest removePaymentScheduleScheme(String id) {
+        String uri = uri("invoices", nullCheck(id), "remove_payment_schedule_scheme");
+        return new RemovePaymentScheduleSchemeRequest(Method.POST, uri);
     }
 
     public static Request paymentSchedules(String id) {
@@ -3533,6 +3542,10 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[taxable_amount][" + index + "]", lineItemTaxableAmount);
             return this;
         }
+        public ImportInvoiceRequest lineItemTaxExemptReason(int index, com.chargebee.models.enums.TaxExemptReason lineItemTaxExemptReason) {
+            params.addOpt("line_items[tax_exempt_reason][" + index + "]", lineItemTaxExemptReason);
+            return this;
+        }
         public ImportInvoiceRequest lineItemProrationMode(int index, Invoice.LineItem.ProrationMode lineItemProrationMode) {
             params.addOpt("line_items[proration_mode][" + index + "]", lineItemProrationMode);
             return this;
@@ -4863,6 +4876,24 @@ public class Invoice extends Resource<Invoice> {
 
         public ApplyPaymentScheduleSchemeRequest amount(Long amount) {
             params.addOpt("amount", amount);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RemovePaymentScheduleSchemeRequest extends Request<RemovePaymentScheduleSchemeRequest> {
+
+        private RemovePaymentScheduleSchemeRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RemovePaymentScheduleSchemeRequest comment(String comment) {
+            params.addOpt("comment", comment);
             return this;
         }
 

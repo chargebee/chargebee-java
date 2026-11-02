@@ -47,6 +47,10 @@ public class UsageSummary extends Resource<UsageSummary> {
         return reqTimestamp("aggregated_to");
     }
 
+    public JSONArray attributes() {
+        return optJSONArray("attributes");
+    }
+
     // Operations
     //===========
 
@@ -88,6 +92,16 @@ public class UsageSummary extends Resource<UsageSummary> {
             return this;
         }
 
+
+        public UsageSummaryRetrieveUsageSummaryForSubscriptionRequest groupBy(List<String> groupBy) {
+            params.addOpt("group_by", groupBy);
+            return this;
+        }
+
+        public UsageSummaryRetrieveUsageSummaryForSubscriptionRequest groupBy(String... groupBy) {
+            params.addOpt("group_by", groupBy);
+            return this;
+        }
 
         @Override
         public Params params() {

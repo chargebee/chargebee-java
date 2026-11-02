@@ -93,7 +93,7 @@ public class HostedPage extends Resource<HostedPage> {
     }
 
     public Boolean embed() {
-        return reqBoolean("embed");
+        return optBoolean("embed");
     }
 
     public Timestamp createdAt() {

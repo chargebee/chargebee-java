@@ -123,6 +123,11 @@ public class LedgerAccountBalance extends Resource<LedgerAccountBalance> {
         return new LedgerAccountBalanceListLedgerAccountBalancesRequest(uri);
     }
 
+    public static UpdateOverdraftLimitRequest updateOverdraftLimit() {
+        String uri = uri("ledger_account_balances", "update_overdraft_limit");
+        return new UpdateOverdraftLimitRequest(Method.POST, uri).setIdempotency(false);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -140,6 +145,42 @@ public class LedgerAccountBalance extends Resource<LedgerAccountBalance> {
 
         public StringFilter<LedgerAccountBalanceListLedgerAccountBalancesRequest> unitId() {
             return new StringFilter<LedgerAccountBalanceListLedgerAccountBalancesRequest>("unit_id",this);        
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdateOverdraftLimitRequest extends Request<UpdateOverdraftLimitRequest> {
+
+        private UpdateOverdraftLimitRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdateOverdraftLimitRequest subscriptionId(String subscriptionId) {
+            params.add("subscription_id", subscriptionId);
+            return this;
+        }
+
+
+        public UpdateOverdraftLimitRequest unitId(String unitId) {
+            params.add("unit_id", unitId);
+            return this;
+        }
+
+
+        public UpdateOverdraftLimitRequest isUnlimited(Boolean isUnlimited) {
+            params.add("is_unlimited", isUnlimited);
+            return this;
+        }
+
+
+        public UpdateOverdraftLimitRequest changeReason(String changeReason) {
+            params.addOpt("change_reason", changeReason);
+            return this;
         }
 
 

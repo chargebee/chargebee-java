@@ -266,6 +266,14 @@ public class Usage extends Resource<Usage> {
             return this;
         }
         
+        public PdfRequest groupByFeatureId(int index, String groupByFeatureId) {
+            params.addOpt("group_by[feature_id][" + index + "]", groupByFeatureId);
+            return this;
+        }
+        public PdfRequest groupByAttributes(int index, JSONArray groupByAttributes) {
+            params.addOpt("group_by[attributes][" + index + "]", groupByAttributes);
+            return this;
+        }
         @Override
         public Params params() {
             return params;

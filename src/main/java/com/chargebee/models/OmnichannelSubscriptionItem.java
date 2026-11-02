@@ -46,6 +46,7 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
         REFUNDED_DUE_TO_APP_ISSUE,
         REFUNDED_FOR_OTHER_REASON,
         MERCHANT_REVOKED,
+        OTHER,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -134,12 +135,20 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
         return optEnum("expiration_reason", ExpirationReason.class);
     }
 
+    public String expirationReasonAtSource() {
+        return optString("expiration_reason_at_source");
+    }
+
     public Timestamp cancelledAt() {
         return optTimestamp("cancelled_at");
     }
 
     public CancellationReason cancellationReason() {
         return optEnum("cancellation_reason", CancellationReason.class);
+    }
+
+    public String cancellationReasonAtSource() {
+        return optString("cancellation_reason_at_source");
     }
 
     public Timestamp gracePeriodExpiresAt() {

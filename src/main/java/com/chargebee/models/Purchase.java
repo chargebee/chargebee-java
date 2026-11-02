@@ -177,6 +177,10 @@ public class Purchase extends Resource<Purchase> {
             params.addOpt("purchase_items[quantity_in_decimal][" + index + "]", purchaseItemQuantityInDecimal);
             return this;
         }
+        public CreateRequest purchaseItemTrialEnd(int index, Timestamp purchaseItemTrialEnd) {
+            params.addOpt("purchase_items[trial_end][" + index + "]", purchaseItemTrialEnd);
+            return this;
+        }
         public CreateRequest itemTierIndex(int index, Integer itemTierIndex) {
             params.add("item_tiers[index][" + index + "]", itemTierIndex);
             return this;
@@ -303,6 +307,14 @@ public class Purchase extends Resource<Purchase> {
         }
         public CreateRequest subscriptionInfoContractTermBillingCycleOnRenewal(int index, Integer subscriptionInfoContractTermBillingCycleOnRenewal) {
             params.addOpt("subscription_info[contract_term_billing_cycle_on_renewal][" + index + "]", subscriptionInfoContractTermBillingCycleOnRenewal);
+            return this;
+        }
+        public CreateRequest subscriptionInfoTrialEnd(int index, Timestamp subscriptionInfoTrialEnd) {
+            params.addOpt("subscription_info[trial_end][" + index + "]", subscriptionInfoTrialEnd);
+            return this;
+        }
+        public CreateRequest subscriptionInfoStartDate(int index, Timestamp subscriptionInfoStartDate) {
+            params.addOpt("subscription_info[start_date][" + index + "]", subscriptionInfoStartDate);
             return this;
         }
         public CreateRequest contractTermIndex(int index, Integer contractTermIndex) {
@@ -449,6 +461,10 @@ public class Purchase extends Resource<Purchase> {
             params.addOpt("purchase_items[quantity_in_decimal][" + index + "]", purchaseItemQuantityInDecimal);
             return this;
         }
+        public EstimateRequest purchaseItemTrialEnd(int index, Timestamp purchaseItemTrialEnd) {
+            params.addOpt("purchase_items[trial_end][" + index + "]", purchaseItemTrialEnd);
+            return this;
+        }
         public EstimateRequest itemTierIndex(int index, Integer itemTierIndex) {
             params.add("item_tiers[index][" + index + "]", itemTierIndex);
             return this;
@@ -575,6 +591,14 @@ public class Purchase extends Resource<Purchase> {
         }
         public EstimateRequest subscriptionInfoContractTermBillingCycleOnRenewal(int index, Integer subscriptionInfoContractTermBillingCycleOnRenewal) {
             params.addOpt("subscription_info[contract_term_billing_cycle_on_renewal][" + index + "]", subscriptionInfoContractTermBillingCycleOnRenewal);
+            return this;
+        }
+        public EstimateRequest subscriptionInfoTrialEnd(int index, Timestamp subscriptionInfoTrialEnd) {
+            params.addOpt("subscription_info[trial_end][" + index + "]", subscriptionInfoTrialEnd);
+            return this;
+        }
+        public EstimateRequest subscriptionInfoStartDate(int index, Timestamp subscriptionInfoStartDate) {
+            params.addOpt("subscription_info[start_date][" + index + "]", subscriptionInfoStartDate);
             return this;
         }
         public EstimateRequest contractTermIndex(int index, Integer contractTermIndex) {

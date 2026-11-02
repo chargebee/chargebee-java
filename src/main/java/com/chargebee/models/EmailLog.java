@@ -59,6 +59,10 @@ public class EmailLog extends Resource<EmailLog> {
         return optString("customer_id");
     }
 
+    public String emailConversationId() {
+        return optString("email_conversation_id");
+    }
+
     public String siteId() {
         return optString("site_id");
     }
