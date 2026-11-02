@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.meter;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
@@ -22,6 +23,7 @@ public class Meter {
   private String query;
   private Timestamp createdAt;
   private Timestamp updatedAt;
+  private List<String> groupBy;
   private List<ColumnDefinitions> columnDefinitions;
   private List<Features> features;
 
@@ -55,6 +57,10 @@ public class Meter {
 
   public Timestamp getUpdatedAt() {
     return updatedAt;
+  }
+
+  public List<String> getGroupBy() {
+    return groupBy;
   }
 
   public List<ColumnDefinitions> getColumnDefinitions() {
@@ -150,6 +156,11 @@ public class Meter {
 
     obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
+    JsonArray __groupByArr = JsonUtil.getJsonArray(jsonObj, "group_by");
+    if (__groupByArr != null) {
+      obj.groupBy = JsonUtil.parseArrayOfString(__groupByArr);
+    }
+
     obj.columnDefinitions =
         JsonUtil.mapArray(
             JsonUtil.getJsonArray(jsonObj, "column_definitions"), ColumnDefinitions::fromJson);
@@ -179,6 +190,8 @@ public class Meter {
         + createdAt
         + ", updatedAt="
         + updatedAt
+        + ", groupBy="
+        + groupBy
         + ", columnDefinitions="
         + columnDefinitions
         + ", features="
@@ -200,6 +213,7 @@ public class Meter {
         && java.util.Objects.equals(query, that.query)
         && java.util.Objects.equals(createdAt, that.createdAt)
         && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(groupBy, that.groupBy)
         && java.util.Objects.equals(columnDefinitions, that.columnDefinitions)
         && java.util.Objects.equals(features, that.features);
   }
@@ -216,6 +230,7 @@ public class Meter {
         query,
         createdAt,
         updatedAt,
+        groupBy,
         columnDefinitions,
         features);
   }

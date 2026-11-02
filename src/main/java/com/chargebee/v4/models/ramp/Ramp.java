@@ -345,6 +345,7 @@ public class Ramp {
     private String meteredQuantity;
     private Boolean chargeOnce;
     private ChargeOnOption chargeOnOption;
+    private String description;
     private ChargeOnEvent chargeOnEvent;
 
     public String getItemPriceId() {
@@ -405,6 +406,10 @@ public class Ramp {
 
     public ChargeOnOption getChargeOnOption() {
       return chargeOnOption;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     public ChargeOnEvent getChargeOnEvent() {
@@ -543,6 +548,8 @@ public class Ramp {
       obj.chargeOnOption =
           ChargeOnOption.fromString(JsonUtil.getString(jsonObj, "charge_on_option"));
 
+      obj.description = JsonUtil.getString(jsonObj, "description");
+
       obj.chargeOnEvent = ChargeOnEvent.fromString(JsonUtil.getString(jsonObj, "charge_on_event"));
 
       return obj;
@@ -581,6 +588,8 @@ public class Ramp {
           + chargeOnce
           + ", chargeOnOption="
           + chargeOnOption
+          + ", description="
+          + description
           + ", chargeOnEvent="
           + chargeOnEvent
           + "}";
@@ -607,6 +616,7 @@ public class Ramp {
           && java.util.Objects.equals(meteredQuantity, that.meteredQuantity)
           && java.util.Objects.equals(chargeOnce, that.chargeOnce)
           && java.util.Objects.equals(chargeOnOption, that.chargeOnOption)
+          && java.util.Objects.equals(description, that.description)
           && java.util.Objects.equals(chargeOnEvent, that.chargeOnEvent);
     }
 
@@ -629,6 +639,7 @@ public class Ramp {
           meteredQuantity,
           chargeOnce,
           chargeOnOption,
+          description,
           chargeOnEvent);
     }
   }
@@ -650,6 +661,7 @@ public class Ramp {
     private String meteredQuantity;
     private Boolean chargeOnce;
     private ChargeOnOption chargeOnOption;
+    private String description;
     private ChargeOnEvent chargeOnEvent;
 
     public String getItemPriceId() {
@@ -710,6 +722,10 @@ public class Ramp {
 
     public ChargeOnOption getChargeOnOption() {
       return chargeOnOption;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     public ChargeOnEvent getChargeOnEvent() {
@@ -848,6 +864,8 @@ public class Ramp {
       obj.chargeOnOption =
           ChargeOnOption.fromString(JsonUtil.getString(jsonObj, "charge_on_option"));
 
+      obj.description = JsonUtil.getString(jsonObj, "description");
+
       obj.chargeOnEvent = ChargeOnEvent.fromString(JsonUtil.getString(jsonObj, "charge_on_event"));
 
       return obj;
@@ -886,6 +904,8 @@ public class Ramp {
           + chargeOnce
           + ", chargeOnOption="
           + chargeOnOption
+          + ", description="
+          + description
           + ", chargeOnEvent="
           + chargeOnEvent
           + "}";
@@ -912,6 +932,7 @@ public class Ramp {
           && java.util.Objects.equals(meteredQuantity, that.meteredQuantity)
           && java.util.Objects.equals(chargeOnce, that.chargeOnce)
           && java.util.Objects.equals(chargeOnOption, that.chargeOnOption)
+          && java.util.Objects.equals(description, that.description)
           && java.util.Objects.equals(chargeOnEvent, that.chargeOnEvent);
     }
 
@@ -934,6 +955,7 @@ public class Ramp {
           meteredQuantity,
           chargeOnce,
           chargeOnOption,
+          description,
           chargeOnEvent);
     }
   }

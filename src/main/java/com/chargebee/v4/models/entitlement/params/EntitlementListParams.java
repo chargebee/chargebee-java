@@ -157,40 +157,6 @@ public final class EntitlementListParams {
     }
   }
 
-  public enum EntityTypeIs {
-    PLAN("plan"),
-
-    ADDON("addon"),
-
-    CHARGE("charge"),
-
-    PLAN_PRICE("plan_price"),
-
-    ADDON_PRICE("addon_price"),
-
-    /** An enum member indicating that EntityTypeIs was instantiated with an unknown value. */
-    _UNKNOWN(null);
-    private final String value;
-
-    EntityTypeIs(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    public static EntityTypeIs fromString(String value) {
-      if (value == null) return _UNKNOWN;
-      for (EntityTypeIs enumValue : EntityTypeIs.values()) {
-        if (enumValue.value != null && enumValue.value.equals(value)) {
-          return enumValue;
-        }
-      }
-      return _UNKNOWN;
-    }
-  }
-
   public enum EntityTypeIn {
     PLAN("plan"),
 
@@ -217,6 +183,40 @@ public final class EntitlementListParams {
     public static EntityTypeIn fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (EntityTypeIn enumValue : EntityTypeIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum EntityTypeIs {
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    CHARGE("charge"),
+
+    PLAN_PRICE("plan_price"),
+
+    ADDON_PRICE("addon_price"),
+
+    /** An enum member indicating that EntityTypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    EntityTypeIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static EntityTypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityTypeIs enumValue : EntityTypeIs.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

@@ -12,6 +12,7 @@ import com.chargebee.v4.internal.JsonUtil;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.List;
+import java.sql.Timestamp;
 
 public final class PurchaseEstimateParams {
 
@@ -856,6 +857,8 @@ public final class PurchaseEstimateParams {
 
     private final String quantityInDecimal;
 
+    private final Timestamp trialEnd;
+
     private PurchaseItemsParams(PurchaseItemsBuilder builder) {
 
       this.index = builder.index;
@@ -869,6 +872,8 @@ public final class PurchaseEstimateParams {
       this.unitAmountInDecimal = builder.unitAmountInDecimal;
 
       this.quantityInDecimal = builder.quantityInDecimal;
+
+      this.trialEnd = builder.trialEnd;
     }
 
     public Integer getIndex() {
@@ -893,6 +898,10 @@ public final class PurchaseEstimateParams {
 
     public String getQuantityInDecimal() {
       return quantityInDecimal;
+    }
+
+    public Timestamp getTrialEnd() {
+      return trialEnd;
     }
 
     /** Get the form data for this request. */
@@ -929,6 +938,11 @@ public final class PurchaseEstimateParams {
         formData.put("quantity_in_decimal", this.quantityInDecimal);
       }
 
+      if (this.trialEnd != null) {
+
+        formData.put("trial_end", this.trialEnd);
+      }
+
       return formData;
     }
 
@@ -951,6 +965,8 @@ public final class PurchaseEstimateParams {
       private String unitAmountInDecimal;
 
       private String quantityInDecimal;
+
+      private Timestamp trialEnd;
 
       private PurchaseItemsBuilder() {}
 
@@ -981,6 +997,11 @@ public final class PurchaseEstimateParams {
 
       public PurchaseItemsBuilder quantityInDecimal(String value) {
         this.quantityInDecimal = value;
+        return this;
+      }
+
+      public PurchaseItemsBuilder trialEnd(Timestamp value) {
+        this.trialEnd = value;
         return this;
       }
 
@@ -1676,6 +1697,10 @@ public final class PurchaseEstimateParams {
 
     private final Integer contractTermBillingCycleOnRenewal;
 
+    private final Timestamp trialEnd;
+
+    private final Timestamp startDate;
+
     private SubscriptionInfoParams(SubscriptionInfoBuilder builder) {
 
       this.index = builder.index;
@@ -1685,6 +1710,10 @@ public final class PurchaseEstimateParams {
       this.billingCycles = builder.billingCycles;
 
       this.contractTermBillingCycleOnRenewal = builder.contractTermBillingCycleOnRenewal;
+
+      this.trialEnd = builder.trialEnd;
+
+      this.startDate = builder.startDate;
     }
 
     public Integer getIndex() {
@@ -1701,6 +1730,14 @@ public final class PurchaseEstimateParams {
 
     public Integer getContractTermBillingCycleOnRenewal() {
       return contractTermBillingCycleOnRenewal;
+    }
+
+    public Timestamp getTrialEnd() {
+      return trialEnd;
+    }
+
+    public Timestamp getStartDate() {
+      return startDate;
     }
 
     /** Get the form data for this request. */
@@ -1728,6 +1765,16 @@ public final class PurchaseEstimateParams {
             "contract_term_billing_cycle_on_renewal", this.contractTermBillingCycleOnRenewal);
       }
 
+      if (this.trialEnd != null) {
+
+        formData.put("trial_end", this.trialEnd);
+      }
+
+      if (this.startDate != null) {
+
+        formData.put("start_date", this.startDate);
+      }
+
       return formData;
     }
 
@@ -1746,6 +1793,10 @@ public final class PurchaseEstimateParams {
       private Integer billingCycles;
 
       private Integer contractTermBillingCycleOnRenewal;
+
+      private Timestamp trialEnd;
+
+      private Timestamp startDate;
 
       private SubscriptionInfoBuilder() {}
 
@@ -1766,6 +1817,16 @@ public final class PurchaseEstimateParams {
 
       public SubscriptionInfoBuilder contractTermBillingCycleOnRenewal(Integer value) {
         this.contractTermBillingCycleOnRenewal = value;
+        return this;
+      }
+
+      public SubscriptionInfoBuilder trialEnd(Timestamp value) {
+        this.trialEnd = value;
+        return this;
+      }
+
+      public SubscriptionInfoBuilder startDate(Timestamp value) {
+        this.startDate = value;
         return this;
       }
 

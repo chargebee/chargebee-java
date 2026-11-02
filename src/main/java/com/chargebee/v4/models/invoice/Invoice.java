@@ -58,6 +58,7 @@ public class Invoice {
   private Timestamp expectedPaymentDate;
   private Long amountToCollect;
   private Long roundOffAmount;
+  private String retrySegmentId;
   private String voidReasonCode;
   private Boolean deleted;
   private String taxCategory;
@@ -257,6 +258,10 @@ public class Invoice {
 
   public Long getRoundOffAmount() {
     return roundOffAmount;
+  }
+
+  public String getRetrySegmentId() {
+    return retrySegmentId;
   }
 
   public String getVoidReasonCode() {
@@ -622,6 +627,8 @@ public class Invoice {
 
     knownFields.add("round_off_amount");
 
+    knownFields.add("retry_segment_id");
+
     knownFields.add("void_reason_code");
 
     knownFields.add("deleted");
@@ -765,6 +772,8 @@ public class Invoice {
     obj.amountToCollect = JsonUtil.getLong(jsonObj, "amount_to_collect");
 
     obj.roundOffAmount = JsonUtil.getLong(jsonObj, "round_off_amount");
+
+    obj.retrySegmentId = JsonUtil.getString(jsonObj, "retry_segment_id");
 
     obj.voidReasonCode = JsonUtil.getString(jsonObj, "void_reason_code");
 
@@ -966,6 +975,8 @@ public class Invoice {
         + amountToCollect
         + ", roundOffAmount="
         + roundOffAmount
+        + ", retrySegmentId="
+        + retrySegmentId
         + ", voidReasonCode="
         + voidReasonCode
         + ", deleted="
@@ -1079,6 +1090,7 @@ public class Invoice {
         && java.util.Objects.equals(expectedPaymentDate, that.expectedPaymentDate)
         && java.util.Objects.equals(amountToCollect, that.amountToCollect)
         && java.util.Objects.equals(roundOffAmount, that.roundOffAmount)
+        && java.util.Objects.equals(retrySegmentId, that.retrySegmentId)
         && java.util.Objects.equals(voidReasonCode, that.voidReasonCode)
         && java.util.Objects.equals(deleted, that.deleted)
         && java.util.Objects.equals(taxCategory, that.taxCategory)
@@ -1158,6 +1170,7 @@ public class Invoice {
         expectedPaymentDate,
         amountToCollect,
         roundOffAmount,
+        retrySegmentId,
         voidReasonCode,
         deleted,
         taxCategory,

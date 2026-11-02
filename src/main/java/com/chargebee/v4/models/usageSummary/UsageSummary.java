@@ -8,8 +8,10 @@
 package com.chargebee.v4.models.usageSummary;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.sql.Timestamp;
+import java.util.List;
 
 public class UsageSummary {
 
@@ -18,6 +20,7 @@ public class UsageSummary {
   private String aggregatedValue;
   private Timestamp aggregatedFrom;
   private Timestamp aggregatedTo;
+  private List<Object> attributes;
 
   public String getSubscriptionId() {
     return subscriptionId;
@@ -37,6 +40,10 @@ public class UsageSummary {
 
   public Timestamp getAggregatedTo() {
     return aggregatedTo;
+  }
+
+  public List<Object> getAttributes() {
+    return attributes;
   }
 
   public static UsageSummary fromJson(String json) {
@@ -60,6 +67,11 @@ public class UsageSummary {
 
     obj.aggregatedTo = JsonUtil.getTimestamp(jsonObj, "aggregated_to");
 
+    JsonArray __attributesArr = JsonUtil.getJsonArray(jsonObj, "attributes");
+    if (__attributesArr != null) {
+      obj.attributes = JsonUtil.mapArrayToObjects(__attributesArr);
+    }
+
     return obj;
   }
 
@@ -76,6 +88,8 @@ public class UsageSummary {
         + aggregatedFrom
         + ", aggregatedTo="
         + aggregatedTo
+        + ", attributes="
+        + attributes
         + "}";
   }
 
@@ -89,13 +103,14 @@ public class UsageSummary {
         && java.util.Objects.equals(featureId, that.featureId)
         && java.util.Objects.equals(aggregatedValue, that.aggregatedValue)
         && java.util.Objects.equals(aggregatedFrom, that.aggregatedFrom)
-        && java.util.Objects.equals(aggregatedTo, that.aggregatedTo);
+        && java.util.Objects.equals(aggregatedTo, that.aggregatedTo)
+        && java.util.Objects.equals(attributes, that.attributes);
   }
 
   @Override
   public int hashCode() {
 
     return java.util.Objects.hash(
-        subscriptionId, featureId, aggregatedValue, aggregatedFrom, aggregatedTo);
+        subscriptionId, featureId, aggregatedValue, aggregatedFrom, aggregatedTo, attributes);
   }
 }

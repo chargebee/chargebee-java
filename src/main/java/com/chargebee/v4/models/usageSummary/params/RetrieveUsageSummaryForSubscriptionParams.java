@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.List;
 
 public final class RetrieveUsageSummaryForSubscriptionParams {
 
@@ -73,6 +74,11 @@ public final class RetrieveUsageSummaryForSubscriptionParams {
 
     public RetrieveUsageSummaryForSubscriptionBuilder timeframeEnd(Timestamp value) {
       queryParams.put("timeframe_end", value);
+      return this;
+    }
+
+    public RetrieveUsageSummaryForSubscriptionBuilder groupBy(List<String> value) {
+      queryParams.put("group_by", value);
       return this;
     }
 

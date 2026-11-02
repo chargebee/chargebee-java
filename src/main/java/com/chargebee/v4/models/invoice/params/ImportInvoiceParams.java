@@ -1781,6 +1781,8 @@ public final class ImportInvoiceParams {
 
     private final Long taxableAmount;
 
+    private final TaxExemptReason taxExemptReason;
+
     private final ProrationMode prorationMode;
 
     private final Timestamp createdAt;
@@ -1864,6 +1866,8 @@ public final class ImportInvoiceParams {
       this.isPartialTaxApplied = builder.isPartialTaxApplied;
 
       this.taxableAmount = builder.taxableAmount;
+
+      this.taxExemptReason = builder.taxExemptReason;
 
       this.prorationMode = builder.prorationMode;
 
@@ -2024,6 +2028,10 @@ public final class ImportInvoiceParams {
 
     public Long getTaxableAmount() {
       return taxableAmount;
+    }
+
+    public TaxExemptReason getTaxExemptReason() {
+      return taxExemptReason;
     }
 
     public ProrationMode getProrationMode() {
@@ -2233,6 +2241,11 @@ public final class ImportInvoiceParams {
         formData.put("taxable_amount", this.taxableAmount);
       }
 
+      if (this.taxExemptReason != null) {
+
+        formData.put("tax_exempt_reason", this.taxExemptReason);
+      }
+
       if (this.prorationMode != null) {
 
         formData.put("proration_mode", this.prorationMode);
@@ -2331,6 +2344,8 @@ public final class ImportInvoiceParams {
       private Boolean isPartialTaxApplied;
 
       private Long taxableAmount;
+
+      private TaxExemptReason taxExemptReason;
 
       private ProrationMode prorationMode;
 
@@ -2533,6 +2548,11 @@ public final class ImportInvoiceParams {
         return this;
       }
 
+      public LineItemsBuilder taxExemptReason(TaxExemptReason value) {
+        this.taxExemptReason = value;
+        return this;
+      }
+
       public LineItemsBuilder prorationMode(ProrationMode value) {
         this.prorationMode = value;
         return this;
@@ -2578,6 +2598,48 @@ public final class ImportInvoiceParams {
       public static EntityType fromString(String value) {
         if (value == null) return _UNKNOWN;
         for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum TaxExemptReason {
+      REGION_NON_TAXABLE("region_non_taxable"),
+
+      EXPORT("export"),
+
+      CUSTOMER_EXEMPT("customer_exempt"),
+
+      PRODUCT_EXEMPT("product_exempt"),
+
+      ZERO_RATED("zero_rated"),
+
+      REVERSE_CHARGE("reverse_charge"),
+
+      HIGH_VALUE_PHYSICAL_GOODS("high_value_physical_goods"),
+
+      ZERO_VALUE_ITEM("zero_value_item"),
+
+      TAX_NOT_CONFIGURED_EXTERNAL_PROVIDER("tax_not_configured_external_provider"),
+
+      /** An enum member indicating that TaxExemptReason was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      TaxExemptReason(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static TaxExemptReason fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (TaxExemptReason enumValue : TaxExemptReason.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }

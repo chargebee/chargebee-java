@@ -618,6 +618,8 @@ public final class EventListParams {
 
     PAYMENT_SCHEDULE_SCHEME_DELETED("payment_schedule_scheme_deleted"),
 
+    PAYMENT_SCHEDULES_CANCELLED("payment_schedules_cancelled"),
+
     SUBSCRIPTION_RENEWAL_REMINDER("subscription_renewal_reminder"),
 
     ADD_USAGES_REMINDER("add_usages_reminder"),
@@ -637,6 +639,8 @@ public final class EventListParams {
     DUNNING_UPDATED("dunning_updated"),
 
     PAYMENT_REFUNDED("payment_refunded"),
+
+    REFUND_FAILED("refund_failed"),
 
     PAYMENT_INITIATED("payment_initiated"),
 
@@ -948,6 +952,12 @@ public final class EventListParams {
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
+    PRICE_RAMP_CREATED("price_ramp_created"),
+
+    PRICE_RAMP_UPDATED("price_ramp_updated"),
+
+    PRICE_RAMP_DELETED("price_ramp_deleted"),
+
     OMNICHANNEL_SUBSCRIPTION_ITEM_MRR_UPDATED("omnichannel_subscription_item_mrr_updated"),
 
     LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
@@ -976,7 +986,11 @@ public final class EventListParams {
 
     VAULT_TOKEN_DELETED("vault_token_deleted"),
 
-    BUSINESS_RULES_APPLIED("business_rules_applied"),
+    CHARGEBACK_INITIATED("chargeback_initiated"),
+
+    CHARGEBACK_WON("chargeback_won"),
+
+    CHARGEBACK_LOST("chargeback_lost"),
 
     BUSINESS_RULESET_CREATED("business_ruleset_created"),
 
@@ -987,6 +1001,36 @@ public final class EventListParams {
     BUSINESS_RULESET_DEACTIVATED("business_ruleset_deactivated"),
 
     BUSINESS_RULESET_DELETED("business_ruleset_deleted"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_CREATED("collections_reminder_sequence_created"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_PAUSED("collections_reminder_sequence_paused"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_RESUMED("collections_reminder_sequence_resumed"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_COMPLETED("collections_reminder_sequence_completed"),
+
+    COLLECTIONS_PAYMENT_PROMISE_CREATED("collections_payment_promise_created"),
+
+    COLLECTIONS_PAYMENT_PROMISE_UPDATED("collections_payment_promise_updated"),
+
+    COLLECTIONS_PAYMENT_PROMISE_FULFILLED("collections_payment_promise_fulfilled"),
+
+    COLLECTIONS_PAYMENT_PROMISE_CANCELLED("collections_payment_promise_cancelled"),
+
+    COLLECTIONS_PAYMENT_PROMISE_BROKEN("collections_payment_promise_broken"),
+
+    COLLECTIONS_DISPUTE_CREATED("collections_dispute_created"),
+
+    COLLECTIONS_DISPUTE_UPDATED("collections_dispute_updated"),
+
+    COLLECTIONS_DISPUTE_RESOLVED("collections_dispute_resolved"),
+
+    COLLECTIONS_DISPUTE_WITHDRAWN("collections_dispute_withdrawn"),
+
+    EMAIL_MESSAGE_RECEIVED("email_message_received"),
+
+    PRIVATE_NOTE_ADDED("private_note_added"),
 
     /** An enum member indicating that EventTypeIs was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1140,6 +1184,8 @@ public final class EventListParams {
 
     PAYMENT_SCHEDULE_SCHEME_DELETED("payment_schedule_scheme_deleted"),
 
+    PAYMENT_SCHEDULES_CANCELLED("payment_schedules_cancelled"),
+
     SUBSCRIPTION_RENEWAL_REMINDER("subscription_renewal_reminder"),
 
     ADD_USAGES_REMINDER("add_usages_reminder"),
@@ -1159,6 +1205,8 @@ public final class EventListParams {
     DUNNING_UPDATED("dunning_updated"),
 
     PAYMENT_REFUNDED("payment_refunded"),
+
+    REFUND_FAILED("refund_failed"),
 
     PAYMENT_INITIATED("payment_initiated"),
 
@@ -1470,6 +1518,12 @@ public final class EventListParams {
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
+    PRICE_RAMP_CREATED("price_ramp_created"),
+
+    PRICE_RAMP_UPDATED("price_ramp_updated"),
+
+    PRICE_RAMP_DELETED("price_ramp_deleted"),
+
     OMNICHANNEL_SUBSCRIPTION_ITEM_MRR_UPDATED("omnichannel_subscription_item_mrr_updated"),
 
     LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
@@ -1498,7 +1552,11 @@ public final class EventListParams {
 
     VAULT_TOKEN_DELETED("vault_token_deleted"),
 
-    BUSINESS_RULES_APPLIED("business_rules_applied"),
+    CHARGEBACK_INITIATED("chargeback_initiated"),
+
+    CHARGEBACK_WON("chargeback_won"),
+
+    CHARGEBACK_LOST("chargeback_lost"),
 
     BUSINESS_RULESET_CREATED("business_ruleset_created"),
 
@@ -1509,6 +1567,36 @@ public final class EventListParams {
     BUSINESS_RULESET_DEACTIVATED("business_ruleset_deactivated"),
 
     BUSINESS_RULESET_DELETED("business_ruleset_deleted"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_CREATED("collections_reminder_sequence_created"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_PAUSED("collections_reminder_sequence_paused"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_RESUMED("collections_reminder_sequence_resumed"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_COMPLETED("collections_reminder_sequence_completed"),
+
+    COLLECTIONS_PAYMENT_PROMISE_CREATED("collections_payment_promise_created"),
+
+    COLLECTIONS_PAYMENT_PROMISE_UPDATED("collections_payment_promise_updated"),
+
+    COLLECTIONS_PAYMENT_PROMISE_FULFILLED("collections_payment_promise_fulfilled"),
+
+    COLLECTIONS_PAYMENT_PROMISE_CANCELLED("collections_payment_promise_cancelled"),
+
+    COLLECTIONS_PAYMENT_PROMISE_BROKEN("collections_payment_promise_broken"),
+
+    COLLECTIONS_DISPUTE_CREATED("collections_dispute_created"),
+
+    COLLECTIONS_DISPUTE_UPDATED("collections_dispute_updated"),
+
+    COLLECTIONS_DISPUTE_RESOLVED("collections_dispute_resolved"),
+
+    COLLECTIONS_DISPUTE_WITHDRAWN("collections_dispute_withdrawn"),
+
+    EMAIL_MESSAGE_RECEIVED("email_message_received"),
+
+    PRIVATE_NOTE_ADDED("private_note_added"),
 
     /** An enum member indicating that EventTypeIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1662,6 +1750,8 @@ public final class EventListParams {
 
     PAYMENT_SCHEDULE_SCHEME_DELETED("payment_schedule_scheme_deleted"),
 
+    PAYMENT_SCHEDULES_CANCELLED("payment_schedules_cancelled"),
+
     SUBSCRIPTION_RENEWAL_REMINDER("subscription_renewal_reminder"),
 
     ADD_USAGES_REMINDER("add_usages_reminder"),
@@ -1681,6 +1771,8 @@ public final class EventListParams {
     DUNNING_UPDATED("dunning_updated"),
 
     PAYMENT_REFUNDED("payment_refunded"),
+
+    REFUND_FAILED("refund_failed"),
 
     PAYMENT_INITIATED("payment_initiated"),
 
@@ -1992,6 +2084,12 @@ public final class EventListParams {
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
+    PRICE_RAMP_CREATED("price_ramp_created"),
+
+    PRICE_RAMP_UPDATED("price_ramp_updated"),
+
+    PRICE_RAMP_DELETED("price_ramp_deleted"),
+
     OMNICHANNEL_SUBSCRIPTION_ITEM_MRR_UPDATED("omnichannel_subscription_item_mrr_updated"),
 
     LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
@@ -2020,7 +2118,11 @@ public final class EventListParams {
 
     VAULT_TOKEN_DELETED("vault_token_deleted"),
 
-    BUSINESS_RULES_APPLIED("business_rules_applied"),
+    CHARGEBACK_INITIATED("chargeback_initiated"),
+
+    CHARGEBACK_WON("chargeback_won"),
+
+    CHARGEBACK_LOST("chargeback_lost"),
 
     BUSINESS_RULESET_CREATED("business_ruleset_created"),
 
@@ -2031,6 +2133,36 @@ public final class EventListParams {
     BUSINESS_RULESET_DEACTIVATED("business_ruleset_deactivated"),
 
     BUSINESS_RULESET_DELETED("business_ruleset_deleted"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_CREATED("collections_reminder_sequence_created"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_PAUSED("collections_reminder_sequence_paused"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_RESUMED("collections_reminder_sequence_resumed"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_COMPLETED("collections_reminder_sequence_completed"),
+
+    COLLECTIONS_PAYMENT_PROMISE_CREATED("collections_payment_promise_created"),
+
+    COLLECTIONS_PAYMENT_PROMISE_UPDATED("collections_payment_promise_updated"),
+
+    COLLECTIONS_PAYMENT_PROMISE_FULFILLED("collections_payment_promise_fulfilled"),
+
+    COLLECTIONS_PAYMENT_PROMISE_CANCELLED("collections_payment_promise_cancelled"),
+
+    COLLECTIONS_PAYMENT_PROMISE_BROKEN("collections_payment_promise_broken"),
+
+    COLLECTIONS_DISPUTE_CREATED("collections_dispute_created"),
+
+    COLLECTIONS_DISPUTE_UPDATED("collections_dispute_updated"),
+
+    COLLECTIONS_DISPUTE_RESOLVED("collections_dispute_resolved"),
+
+    COLLECTIONS_DISPUTE_WITHDRAWN("collections_dispute_withdrawn"),
+
+    EMAIL_MESSAGE_RECEIVED("email_message_received"),
+
+    PRIVATE_NOTE_ADDED("private_note_added"),
 
     /** An enum member indicating that EventTypeIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -2184,6 +2316,8 @@ public final class EventListParams {
 
     PAYMENT_SCHEDULE_SCHEME_DELETED("payment_schedule_scheme_deleted"),
 
+    PAYMENT_SCHEDULES_CANCELLED("payment_schedules_cancelled"),
+
     SUBSCRIPTION_RENEWAL_REMINDER("subscription_renewal_reminder"),
 
     ADD_USAGES_REMINDER("add_usages_reminder"),
@@ -2203,6 +2337,8 @@ public final class EventListParams {
     DUNNING_UPDATED("dunning_updated"),
 
     PAYMENT_REFUNDED("payment_refunded"),
+
+    REFUND_FAILED("refund_failed"),
 
     PAYMENT_INITIATED("payment_initiated"),
 
@@ -2514,6 +2650,12 @@ public final class EventListParams {
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
+    PRICE_RAMP_CREATED("price_ramp_created"),
+
+    PRICE_RAMP_UPDATED("price_ramp_updated"),
+
+    PRICE_RAMP_DELETED("price_ramp_deleted"),
+
     OMNICHANNEL_SUBSCRIPTION_ITEM_MRR_UPDATED("omnichannel_subscription_item_mrr_updated"),
 
     LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
@@ -2542,7 +2684,11 @@ public final class EventListParams {
 
     VAULT_TOKEN_DELETED("vault_token_deleted"),
 
-    BUSINESS_RULES_APPLIED("business_rules_applied"),
+    CHARGEBACK_INITIATED("chargeback_initiated"),
+
+    CHARGEBACK_WON("chargeback_won"),
+
+    CHARGEBACK_LOST("chargeback_lost"),
 
     BUSINESS_RULESET_CREATED("business_ruleset_created"),
 
@@ -2553,6 +2699,36 @@ public final class EventListParams {
     BUSINESS_RULESET_DEACTIVATED("business_ruleset_deactivated"),
 
     BUSINESS_RULESET_DELETED("business_ruleset_deleted"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_CREATED("collections_reminder_sequence_created"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_PAUSED("collections_reminder_sequence_paused"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_RESUMED("collections_reminder_sequence_resumed"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_COMPLETED("collections_reminder_sequence_completed"),
+
+    COLLECTIONS_PAYMENT_PROMISE_CREATED("collections_payment_promise_created"),
+
+    COLLECTIONS_PAYMENT_PROMISE_UPDATED("collections_payment_promise_updated"),
+
+    COLLECTIONS_PAYMENT_PROMISE_FULFILLED("collections_payment_promise_fulfilled"),
+
+    COLLECTIONS_PAYMENT_PROMISE_CANCELLED("collections_payment_promise_cancelled"),
+
+    COLLECTIONS_PAYMENT_PROMISE_BROKEN("collections_payment_promise_broken"),
+
+    COLLECTIONS_DISPUTE_CREATED("collections_dispute_created"),
+
+    COLLECTIONS_DISPUTE_UPDATED("collections_dispute_updated"),
+
+    COLLECTIONS_DISPUTE_RESOLVED("collections_dispute_resolved"),
+
+    COLLECTIONS_DISPUTE_WITHDRAWN("collections_dispute_withdrawn"),
+
+    EMAIL_MESSAGE_RECEIVED("email_message_received"),
+
+    PRIVATE_NOTE_ADDED("private_note_added"),
 
     /** An enum member indicating that EventTypeNotIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -2600,6 +2776,12 @@ public final class EventListParams {
 
     EXTERNAL_SERVICE("external_service"),
 
+    MCP("mcp"),
+
+    COPILOT("copilot"),
+
+    AGENT("agent"),
+
     /** An enum member indicating that SourceIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -2645,6 +2827,12 @@ public final class EventListParams {
     BULK_OPERATION("bulk_operation"),
 
     EXTERNAL_SERVICE("external_service"),
+
+    MCP("mcp"),
+
+    COPILOT("copilot"),
+
+    AGENT("agent"),
 
     /** An enum member indicating that SourceIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -2692,6 +2880,12 @@ public final class EventListParams {
 
     EXTERNAL_SERVICE("external_service"),
 
+    MCP("mcp"),
+
+    COPILOT("copilot"),
+
+    AGENT("agent"),
+
     /** An enum member indicating that SourceIn was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -2737,6 +2931,12 @@ public final class EventListParams {
     BULK_OPERATION("bulk_operation"),
 
     EXTERNAL_SERVICE("external_service"),
+
+    MCP("mcp"),
+
+    COPILOT("copilot"),
+
+    AGENT("agent"),
 
     /** An enum member indicating that SourceNotIn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -2984,6 +3184,8 @@ public final class EventListParams {
 
     PAYMENT_SCHEDULE_SCHEME_DELETED("payment_schedule_scheme_deleted"),
 
+    PAYMENT_SCHEDULES_CANCELLED("payment_schedules_cancelled"),
+
     SUBSCRIPTION_RENEWAL_REMINDER("subscription_renewal_reminder"),
 
     ADD_USAGES_REMINDER("add_usages_reminder"),
@@ -3003,6 +3205,8 @@ public final class EventListParams {
     DUNNING_UPDATED("dunning_updated"),
 
     PAYMENT_REFUNDED("payment_refunded"),
+
+    REFUND_FAILED("refund_failed"),
 
     PAYMENT_INITIATED("payment_initiated"),
 
@@ -3314,6 +3518,12 @@ public final class EventListParams {
 
     OMNICHANNEL_SUBSCRIPTION_ITEM_RECOVERED("omnichannel_subscription_item_recovered"),
 
+    PRICE_RAMP_CREATED("price_ramp_created"),
+
+    PRICE_RAMP_UPDATED("price_ramp_updated"),
+
+    PRICE_RAMP_DELETED("price_ramp_deleted"),
+
     OMNICHANNEL_SUBSCRIPTION_ITEM_MRR_UPDATED("omnichannel_subscription_item_mrr_updated"),
 
     LEDGER_ACCOUNT_BALANCE_UPDATED("ledger_account_balance_updated"),
@@ -3342,7 +3552,11 @@ public final class EventListParams {
 
     VAULT_TOKEN_DELETED("vault_token_deleted"),
 
-    BUSINESS_RULES_APPLIED("business_rules_applied"),
+    CHARGEBACK_INITIATED("chargeback_initiated"),
+
+    CHARGEBACK_WON("chargeback_won"),
+
+    CHARGEBACK_LOST("chargeback_lost"),
 
     BUSINESS_RULESET_CREATED("business_ruleset_created"),
 
@@ -3353,6 +3567,36 @@ public final class EventListParams {
     BUSINESS_RULESET_DEACTIVATED("business_ruleset_deactivated"),
 
     BUSINESS_RULESET_DELETED("business_ruleset_deleted"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_CREATED("collections_reminder_sequence_created"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_PAUSED("collections_reminder_sequence_paused"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_RESUMED("collections_reminder_sequence_resumed"),
+
+    COLLECTIONS_REMINDER_SEQUENCE_COMPLETED("collections_reminder_sequence_completed"),
+
+    COLLECTIONS_PAYMENT_PROMISE_CREATED("collections_payment_promise_created"),
+
+    COLLECTIONS_PAYMENT_PROMISE_UPDATED("collections_payment_promise_updated"),
+
+    COLLECTIONS_PAYMENT_PROMISE_FULFILLED("collections_payment_promise_fulfilled"),
+
+    COLLECTIONS_PAYMENT_PROMISE_CANCELLED("collections_payment_promise_cancelled"),
+
+    COLLECTIONS_PAYMENT_PROMISE_BROKEN("collections_payment_promise_broken"),
+
+    COLLECTIONS_DISPUTE_CREATED("collections_dispute_created"),
+
+    COLLECTIONS_DISPUTE_UPDATED("collections_dispute_updated"),
+
+    COLLECTIONS_DISPUTE_RESOLVED("collections_dispute_resolved"),
+
+    COLLECTIONS_DISPUTE_WITHDRAWN("collections_dispute_withdrawn"),
+
+    EMAIL_MESSAGE_RECEIVED("email_message_received"),
+
+    PRIVATE_NOTE_ADDED("private_note_added"),
 
     /** An enum member indicating that EventType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -3399,6 +3643,12 @@ public final class EventListParams {
     BULK_OPERATION("bulk_operation"),
 
     EXTERNAL_SERVICE("external_service"),
+
+    MCP("mcp"),
+
+    COPILOT("copilot"),
+
+    AGENT("agent"),
 
     /** An enum member indicating that Source was instantiated with an unknown value. */
     _UNKNOWN(null);

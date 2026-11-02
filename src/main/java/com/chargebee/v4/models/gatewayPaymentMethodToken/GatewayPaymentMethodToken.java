@@ -15,7 +15,7 @@ public class GatewayPaymentMethodToken {
 
   private String id;
   private String gatewayAccountId;
-  private GatewayName gatewayName;
+  private Gateway gateway;
   private String gatewayCustomerId;
   private String gatewayToken;
   private Status status;
@@ -30,8 +30,8 @@ public class GatewayPaymentMethodToken {
     return gatewayAccountId;
   }
 
-  public GatewayName getGatewayName() {
-    return gatewayName;
+  public Gateway getGateway() {
+    return gateway;
   }
 
   public String getGatewayCustomerId() {
@@ -54,7 +54,7 @@ public class GatewayPaymentMethodToken {
     return updatedAt;
   }
 
-  public enum GatewayName {
+  public enum Gateway {
     CHARGEBEE("chargebee"),
 
     CHARGEBEE_PAYMENTS("chargebee_payments"),
@@ -179,11 +179,11 @@ public class GatewayPaymentMethodToken {
 
     NOT_APPLICABLE("not_applicable"),
 
-    /** An enum member indicating that GatewayName was instantiated with an unknown value. */
+    /** An enum member indicating that Gateway was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
 
-    GatewayName(String value) {
+    Gateway(String value) {
       this.value = value;
     }
 
@@ -191,9 +191,9 @@ public class GatewayPaymentMethodToken {
       return value;
     }
 
-    public static GatewayName fromString(String value) {
+    public static Gateway fromString(String value) {
       if (value == null) return _UNKNOWN;
-      for (GatewayName enumValue : GatewayName.values()) {
+      for (Gateway enumValue : Gateway.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
@@ -203,9 +203,9 @@ public class GatewayPaymentMethodToken {
   }
 
   public enum Status {
-    ACTIVE("active"),
+    VALID("valid"),
 
-    INACTIVE("inactive"),
+    INVALID("invalid"),
 
     PENDING_VERIFICATION("pending_verification"),
 
@@ -247,7 +247,7 @@ public class GatewayPaymentMethodToken {
 
     obj.gatewayAccountId = JsonUtil.getString(jsonObj, "gateway_account_id");
 
-    obj.gatewayName = GatewayName.fromString(JsonUtil.getString(jsonObj, "gateway_name"));
+    obj.gateway = Gateway.fromString(JsonUtil.getString(jsonObj, "gateway"));
 
     obj.gatewayCustomerId = JsonUtil.getString(jsonObj, "gateway_customer_id");
 
@@ -269,8 +269,8 @@ public class GatewayPaymentMethodToken {
         + id
         + ", gatewayAccountId="
         + gatewayAccountId
-        + ", gatewayName="
-        + gatewayName
+        + ", gateway="
+        + gateway
         + ", gatewayCustomerId="
         + gatewayCustomerId
         + ", gatewayToken="
@@ -292,7 +292,7 @@ public class GatewayPaymentMethodToken {
     GatewayPaymentMethodToken that = (GatewayPaymentMethodToken) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(gatewayAccountId, that.gatewayAccountId)
-        && java.util.Objects.equals(gatewayName, that.gatewayName)
+        && java.util.Objects.equals(gateway, that.gateway)
         && java.util.Objects.equals(gatewayCustomerId, that.gatewayCustomerId)
         && java.util.Objects.equals(gatewayToken, that.gatewayToken)
         && java.util.Objects.equals(status, that.status)
@@ -306,7 +306,7 @@ public class GatewayPaymentMethodToken {
     return java.util.Objects.hash(
         id,
         gatewayAccountId,
-        gatewayName,
+        gateway,
         gatewayCustomerId,
         gatewayToken,
         status,

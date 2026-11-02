@@ -28,6 +28,8 @@ import com.chargebee.v4.services.OrderService;
 
 import com.chargebee.v4.services.ItemService;
 
+import com.chargebee.v4.services.CollectionsPaymentPromiseService;
+
 import com.chargebee.v4.services.RampService;
 
 import com.chargebee.v4.services.OmnichannelOneTimeOrderService;
@@ -99,6 +101,8 @@ import com.chargebee.v4.services.UnbilledChargeService;
 import com.chargebee.v4.services.TransactionService;
 
 import com.chargebee.v4.services.ThirdPartySyncDetailService;
+
+import com.chargebee.v4.services.PriceRampService;
 
 import com.chargebee.v4.services.EinvoiceService;
 
@@ -174,11 +178,15 @@ import com.chargebee.v4.services.MediaService;
 
 import com.chargebee.v4.services.BusinessProfileService;
 
+import com.chargebee.v4.services.RetrySegmentService;
+
 import com.chargebee.v4.services.WebhookEndpointService;
 
 import com.chargebee.v4.services.AlertService;
 
 import com.chargebee.v4.services.PortalSessionService;
+
+import com.chargebee.v4.services.DraftRequestService;
 
 import com.chargebee.v4.services.CreditUnitService;
 
@@ -276,6 +284,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public ItemService items() {
     return getServiceRegistry().items();
+  }
+
+  @Override
+  public CollectionsPaymentPromiseService collectionsPaymentPromises() {
+    return getServiceRegistry().collectionsPaymentPromises();
   }
 
   @Override
@@ -456,6 +469,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public ThirdPartySyncDetailService thirdPartySyncDetails() {
     return getServiceRegistry().thirdPartySyncDetails();
+  }
+
+  @Override
+  public PriceRampService priceRamps() {
+    return getServiceRegistry().priceRamps();
   }
 
   @Override
@@ -644,6 +662,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   }
 
   @Override
+  public RetrySegmentService retrySegments() {
+    return getServiceRegistry().retrySegments();
+  }
+
+  @Override
   public WebhookEndpointService webhookEndpoints() {
     return getServiceRegistry().webhookEndpoints();
   }
@@ -656,6 +679,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public PortalSessionService portalSessions() {
     return getServiceRegistry().portalSessions();
+  }
+
+  @Override
+  public DraftRequestService draftRequests() {
+    return getServiceRegistry().draftRequests();
   }
 
   @Override

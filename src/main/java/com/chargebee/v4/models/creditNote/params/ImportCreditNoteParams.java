@@ -32,6 +32,8 @@ public final class ImportCreditNoteParams {
 
   private final Timestamp date;
 
+  private final String customerNotes;
+
   private final Status status;
 
   private final Long total;
@@ -79,6 +81,8 @@ public final class ImportCreditNoteParams {
     this.createReasonCode = builder.createReasonCode;
 
     this.date = builder.date;
+
+    this.customerNotes = builder.customerNotes;
 
     this.status = builder.status;
 
@@ -144,6 +148,10 @@ public final class ImportCreditNoteParams {
 
   public Timestamp getDate() {
     return date;
+  }
+
+  public String getCustomerNotes() {
+    return customerNotes;
   }
 
   public Status getStatus() {
@@ -248,6 +256,11 @@ public final class ImportCreditNoteParams {
     if (this.date != null) {
 
       formData.put("date", this.date);
+    }
+
+    if (this.customerNotes != null) {
+
+      formData.put("customer_notes", this.customerNotes);
     }
 
     if (this.status != null) {
@@ -409,6 +422,8 @@ public final class ImportCreditNoteParams {
 
     private Timestamp date;
 
+    private String customerNotes;
+
     private Status status;
 
     private Long total;
@@ -478,6 +493,11 @@ public final class ImportCreditNoteParams {
 
     public ImportCreditNoteBuilder date(Timestamp value) {
       this.date = value;
+      return this;
+    }
+
+    public ImportCreditNoteBuilder customerNotes(String value) {
+      this.customerNotes = value;
       return this;
     }
 
