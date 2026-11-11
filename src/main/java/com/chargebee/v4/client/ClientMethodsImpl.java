@@ -98,6 +98,8 @@ import com.chargebee.v4.services.ThirdPartyConfigurationService;
 
 import com.chargebee.v4.services.UnbilledChargeService;
 
+import com.chargebee.v4.services.GatewayWebhookLogService;
+
 import com.chargebee.v4.services.TransactionService;
 
 import com.chargebee.v4.services.ThirdPartySyncDetailService;
@@ -182,11 +184,11 @@ import com.chargebee.v4.services.RetrySegmentService;
 
 import com.chargebee.v4.services.WebhookEndpointService;
 
+import com.chargebee.v4.services.GatewayRequestLogService;
+
 import com.chargebee.v4.services.AlertService;
 
 import com.chargebee.v4.services.PortalSessionService;
-
-import com.chargebee.v4.services.DraftRequestService;
 
 import com.chargebee.v4.services.CreditUnitService;
 
@@ -462,6 +464,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   }
 
   @Override
+  public GatewayWebhookLogService gatewayWebhookLogs() {
+    return getServiceRegistry().gatewayWebhookLogs();
+  }
+
+  @Override
   public TransactionService transactions() {
     return getServiceRegistry().transactions();
   }
@@ -672,6 +679,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   }
 
   @Override
+  public GatewayRequestLogService gatewayRequestLogs() {
+    return getServiceRegistry().gatewayRequestLogs();
+  }
+
+  @Override
   public AlertService alerts() {
     return getServiceRegistry().alerts();
   }
@@ -679,11 +691,6 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public PortalSessionService portalSessions() {
     return getServiceRegistry().portalSessions();
-  }
-
-  @Override
-  public DraftRequestService draftRequests() {
-    return getServiceRegistry().draftRequests();
   }
 
   @Override

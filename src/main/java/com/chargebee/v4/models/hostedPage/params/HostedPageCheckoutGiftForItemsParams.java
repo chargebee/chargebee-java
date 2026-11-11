@@ -24,11 +24,15 @@ public final class HostedPageCheckoutGiftForItemsParams {
 
   private final List<String> couponIds;
 
+  private final Boolean showBillingFrequencySelector;
+
   private final GifterParams gifter;
 
   private final List<SubscriptionItemsParams> subscriptionItems;
 
   private final List<ItemTiersParams> itemTiers;
+
+  private final List<AllowedBillingFrequenciesParams> allowedBillingFrequencies;
 
   private HostedPageCheckoutGiftForItemsParams(HostedPageCheckoutGiftForItemsBuilder builder) {
 
@@ -42,11 +46,15 @@ public final class HostedPageCheckoutGiftForItemsParams {
 
     this.couponIds = builder.couponIds;
 
+    this.showBillingFrequencySelector = builder.showBillingFrequencySelector;
+
     this.gifter = builder.gifter;
 
     this.subscriptionItems = builder.subscriptionItems;
 
     this.itemTiers = builder.itemTiers;
+
+    this.allowedBillingFrequencies = builder.allowedBillingFrequencies;
   }
 
   public Layout getLayout() {
@@ -69,6 +77,10 @@ public final class HostedPageCheckoutGiftForItemsParams {
     return couponIds;
   }
 
+  public Boolean getShowBillingFrequencySelector() {
+    return showBillingFrequencySelector;
+  }
+
   public GifterParams getGifter() {
     return gifter;
   }
@@ -79,6 +91,10 @@ public final class HostedPageCheckoutGiftForItemsParams {
 
   public List<ItemTiersParams> getItemTiers() {
     return itemTiers;
+  }
+
+  public List<AllowedBillingFrequenciesParams> getAllowedBillingFrequencies() {
+    return allowedBillingFrequencies;
   }
 
   /** Get the form data for this request. */
@@ -108,6 +124,11 @@ public final class HostedPageCheckoutGiftForItemsParams {
     if (this.couponIds != null) {
 
       formData.put("coupon_ids", this.couponIds);
+    }
+
+    if (this.showBillingFrequencySelector != null) {
+
+      formData.put("show_billing_frequency_selector", this.showBillingFrequencySelector);
     }
 
     if (this.gifter != null) {
@@ -150,6 +171,21 @@ public final class HostedPageCheckoutGiftForItemsParams {
       }
     }
 
+    if (this.allowedBillingFrequencies != null) {
+
+      // List of objects
+      for (int i = 0; i < this.allowedBillingFrequencies.size(); i++) {
+        AllowedBillingFrequenciesParams item = this.allowedBillingFrequencies.get(i);
+        if (item != null) {
+          Map<String, Object> itemData = item.toFormData();
+          for (Map.Entry<String, Object> entry : itemData.entrySet()) {
+            String indexedKey = "allowed_billing_frequencies[" + entry.getKey() + "][" + i + "]";
+            formData.put(indexedKey, entry.getValue());
+          }
+        }
+      }
+    }
+
     return formData;
   }
 
@@ -171,11 +207,15 @@ public final class HostedPageCheckoutGiftForItemsParams {
 
     private List<String> couponIds;
 
+    private Boolean showBillingFrequencySelector;
+
     private GifterParams gifter;
 
     private List<SubscriptionItemsParams> subscriptionItems;
 
     private List<ItemTiersParams> itemTiers;
+
+    private List<AllowedBillingFrequenciesParams> allowedBillingFrequencies;
 
     private HostedPageCheckoutGiftForItemsBuilder() {}
 
@@ -204,6 +244,11 @@ public final class HostedPageCheckoutGiftForItemsParams {
       return this;
     }
 
+    public HostedPageCheckoutGiftForItemsBuilder showBillingFrequencySelector(Boolean value) {
+      this.showBillingFrequencySelector = value;
+      return this;
+    }
+
     public HostedPageCheckoutGiftForItemsBuilder gifter(GifterParams value) {
       this.gifter = value;
       return this;
@@ -217,6 +262,12 @@ public final class HostedPageCheckoutGiftForItemsParams {
 
     public HostedPageCheckoutGiftForItemsBuilder itemTiers(List<ItemTiersParams> value) {
       this.itemTiers = value;
+      return this;
+    }
+
+    public HostedPageCheckoutGiftForItemsBuilder allowedBillingFrequencies(
+        List<AllowedBillingFrequenciesParams> value) {
+      this.allowedBillingFrequencies = value;
       return this;
     }
 
@@ -593,6 +644,106 @@ public final class HostedPageCheckoutGiftForItemsParams {
 
       public ItemTiersParams build() {
         return new ItemTiersParams(this);
+      }
+    }
+  }
+
+  public static final class AllowedBillingFrequenciesParams {
+
+    private final Integer period;
+
+    private final PeriodUnit periodUnit;
+
+    private AllowedBillingFrequenciesParams(AllowedBillingFrequenciesBuilder builder) {
+
+      this.period = builder.period;
+
+      this.periodUnit = builder.periodUnit;
+    }
+
+    public Integer getPeriod() {
+      return period;
+    }
+
+    public PeriodUnit getPeriodUnit() {
+      return periodUnit;
+    }
+
+    /** Get the form data for this request. */
+    public Map<String, Object> toFormData() {
+      Map<String, Object> formData = new LinkedHashMap<>();
+
+      if (this.period != null) {
+
+        formData.put("period", this.period);
+      }
+
+      if (this.periodUnit != null) {
+
+        formData.put("period_unit", this.periodUnit);
+      }
+
+      return formData;
+    }
+
+    /** Create a new builder for AllowedBillingFrequenciesParams. */
+    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
+    public static AllowedBillingFrequenciesBuilder builder() {
+      return new AllowedBillingFrequenciesBuilder();
+    }
+
+    public static final class AllowedBillingFrequenciesBuilder {
+
+      private Integer period;
+
+      private PeriodUnit periodUnit;
+
+      private AllowedBillingFrequenciesBuilder() {}
+
+      public AllowedBillingFrequenciesBuilder period(Integer value) {
+        this.period = value;
+        return this;
+      }
+
+      public AllowedBillingFrequenciesBuilder periodUnit(PeriodUnit value) {
+        this.periodUnit = value;
+        return this;
+      }
+
+      public AllowedBillingFrequenciesParams build() {
+        return new AllowedBillingFrequenciesParams(this);
+      }
+    }
+
+    public enum PeriodUnit {
+      DAY("day"),
+
+      WEEK("week"),
+
+      MONTH("month"),
+
+      YEAR("year"),
+
+      /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      PeriodUnit(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static PeriodUnit fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PeriodUnit enumValue : PeriodUnit.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }

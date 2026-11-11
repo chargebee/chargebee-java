@@ -9,7 +9,9 @@ package com.chargebee.v4.models.grantBlock;
 
 import com.chargebee.v4.internal.JsonUtil;
 import com.google.gson.JsonObject;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
 
 public class GrantBlock {
 
@@ -36,6 +38,7 @@ public class GrantBlock {
   private java.util.Map<String, Object> metadata;
   private ProvisionedBlockBalance provisionedBlockBalance;
   private OverdraftBlockBalance overdraftBlockBalance;
+  private BillingMetadata billingMetadata;
 
   public String getId() {
     return id;
@@ -134,6 +137,10 @@ public class GrantBlock {
 
   public OverdraftBlockBalance getOverdraftBlockBalance() {
     return overdraftBlockBalance;
+  }
+
+  public BillingMetadata getBillingMetadata() {
+    return billingMetadata;
   }
 
   public enum UnitType {
@@ -329,6 +336,11 @@ public class GrantBlock {
       obj.overdraftBlockBalance = OverdraftBlockBalance.fromJson(__overdraftBlockBalanceObj);
     }
 
+    JsonObject __billingMetadataObj = JsonUtil.getJsonObject(jsonObj, "billing_metadata");
+    if (__billingMetadataObj != null) {
+      obj.billingMetadata = BillingMetadata.fromJson(__billingMetadataObj);
+    }
+
     return obj;
   }
 
@@ -381,6 +393,8 @@ public class GrantBlock {
         + provisionedBlockBalance
         + ", overdraftBlockBalance="
         + overdraftBlockBalance
+        + ", billingMetadata="
+        + billingMetadata
         + "}";
   }
 
@@ -412,7 +426,8 @@ public class GrantBlock {
         && java.util.Objects.equals(resourceVersion, that.resourceVersion)
         && java.util.Objects.equals(metadata, that.metadata)
         && java.util.Objects.equals(provisionedBlockBalance, that.provisionedBlockBalance)
-        && java.util.Objects.equals(overdraftBlockBalance, that.overdraftBlockBalance);
+        && java.util.Objects.equals(overdraftBlockBalance, that.overdraftBlockBalance)
+        && java.util.Objects.equals(billingMetadata, that.billingMetadata);
   }
 
   @Override
@@ -441,7 +456,8 @@ public class GrantBlock {
         resourceVersion,
         metadata,
         provisionedBlockBalance,
-        overdraftBlockBalance);
+        overdraftBlockBalance,
+        billingMetadata);
   }
 
   public static class ProvisionedBlockBalance {
@@ -655,6 +671,128 @@ public class GrantBlock {
     public int hashCode() {
 
       return java.util.Objects.hash(isUnlimited, limit, totalBalance, usableBalance, usedAmount);
+    }
+  }
+
+  public static class BillingMetadata {
+
+    private String itemPriceId;
+    private List<LineItems> lineItems;
+
+    public String getItemPriceId() {
+      return itemPriceId;
+    }
+
+    public List<LineItems> getLineItems() {
+      return lineItems;
+    }
+
+    public static BillingMetadata fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static BillingMetadata fromJson(java.util.Map<String, Object> map) {
+      return fromJson(JsonUtil.toJson(map));
+    }
+
+    public static BillingMetadata fromJson(JsonObject jsonObj) {
+      BillingMetadata obj = new BillingMetadata();
+
+      obj.itemPriceId = JsonUtil.getString(jsonObj, "item_price_id");
+
+      obj.lineItems =
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "line_items"), LineItems::fromJson);
+
+      return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "BillingMetadata{" + "itemPriceId=" + itemPriceId + ", lineItems=" + lineItems + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      BillingMetadata that = (BillingMetadata) o;
+      return java.util.Objects.equals(itemPriceId, that.itemPriceId)
+          && java.util.Objects.equals(lineItems, that.lineItems);
+    }
+
+    @Override
+    public int hashCode() {
+
+      return java.util.Objects.hash(itemPriceId, lineItems);
+    }
+
+    public static class LineItems {
+
+      private String id;
+      private String invoiceNumber;
+      private BigDecimal quantity;
+
+      public String getId() {
+        return id;
+      }
+
+      public String getInvoiceNumber() {
+        return invoiceNumber;
+      }
+
+      public BigDecimal getQuantity() {
+        return quantity;
+      }
+
+      public static LineItems fromJson(String json) {
+        return fromJson(JsonUtil.parse(json));
+      }
+
+      public static LineItems fromJson(java.util.Map<String, Object> map) {
+        return fromJson(JsonUtil.toJson(map));
+      }
+
+      public static LineItems fromJson(JsonObject jsonObj) {
+        LineItems obj = new LineItems();
+
+        obj.id = JsonUtil.getString(jsonObj, "id");
+
+        obj.invoiceNumber = JsonUtil.getString(jsonObj, "invoice_number");
+
+        obj.quantity = JsonUtil.getBigDecimal(jsonObj, "quantity");
+
+        return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "LineItems{"
+            + "id="
+            + id
+            + ", invoiceNumber="
+            + invoiceNumber
+            + ", quantity="
+            + quantity
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        LineItems that = (LineItems) o;
+        return java.util.Objects.equals(id, that.id)
+            && java.util.Objects.equals(invoiceNumber, that.invoiceNumber)
+            && java.util.Objects.equals(quantity, that.quantity);
+      }
+
+      @Override
+      public int hashCode() {
+
+        return java.util.Objects.hash(id, invoiceNumber, quantity);
+      }
     }
   }
 }
