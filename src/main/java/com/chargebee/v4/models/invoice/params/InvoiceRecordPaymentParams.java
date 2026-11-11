@@ -306,18 +306,6 @@ public final class InvoiceRecordPaymentParams {
 
       CUSTOM("custom"),
 
-      TAMARA("tamara"),
-
-      QPAY("qpay"),
-
-      BLIK("blik"),
-
-      FPX("fpx"),
-
-      WERO("wero"),
-
-      P24("p24"),
-
       /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;

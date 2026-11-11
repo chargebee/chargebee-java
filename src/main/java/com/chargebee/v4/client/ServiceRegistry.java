@@ -98,6 +98,8 @@ import com.chargebee.v4.services.ThirdPartyConfigurationService;
 
 import com.chargebee.v4.services.UnbilledChargeService;
 
+import com.chargebee.v4.services.GatewayWebhookLogService;
+
 import com.chargebee.v4.services.TransactionService;
 
 import com.chargebee.v4.services.ThirdPartySyncDetailService;
@@ -182,11 +184,11 @@ import com.chargebee.v4.services.RetrySegmentService;
 
 import com.chargebee.v4.services.WebhookEndpointService;
 
+import com.chargebee.v4.services.GatewayRequestLogService;
+
 import com.chargebee.v4.services.AlertService;
 
 import com.chargebee.v4.services.PortalSessionService;
-
-import com.chargebee.v4.services.DraftRequestService;
 
 import com.chargebee.v4.services.CreditUnitService;
 
@@ -313,6 +315,8 @@ final class ServiceRegistry {
 
   private volatile UnbilledChargeService unbilledChargeService;
 
+  private volatile GatewayWebhookLogService gatewayWebhookLogService;
+
   private volatile TransactionService transactionService;
 
   private volatile ThirdPartySyncDetailService thirdPartySyncDetailService;
@@ -397,11 +401,11 @@ final class ServiceRegistry {
 
   private volatile WebhookEndpointService webhookEndpointService;
 
+  private volatile GatewayRequestLogService gatewayRequestLogService;
+
   private volatile AlertService alertService;
 
   private volatile PortalSessionService portalSessionService;
-
-  private volatile DraftRequestService draftRequestService;
 
   private volatile CreditUnitService creditUnitService;
 
@@ -1163,6 +1167,21 @@ final class ServiceRegistry {
   }
 
   /**
+   * Get or create the GatewayWebhookLogService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  GatewayWebhookLogService gatewayWebhookLogs() {
+    if (gatewayWebhookLogService == null) {
+      synchronized (this) {
+        if (gatewayWebhookLogService == null) {
+          gatewayWebhookLogService = new GatewayWebhookLogService(client);
+        }
+      }
+    }
+    return gatewayWebhookLogService;
+  }
+
+  /**
    * Get or create the TransactionService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
@@ -1793,6 +1812,21 @@ final class ServiceRegistry {
   }
 
   /**
+   * Get or create the GatewayRequestLogService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  GatewayRequestLogService gatewayRequestLogs() {
+    if (gatewayRequestLogService == null) {
+      synchronized (this) {
+        if (gatewayRequestLogService == null) {
+          gatewayRequestLogService = new GatewayRequestLogService(client);
+        }
+      }
+    }
+    return gatewayRequestLogService;
+  }
+
+  /**
    * Get or create the AlertService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
@@ -1820,21 +1854,6 @@ final class ServiceRegistry {
       }
     }
     return portalSessionService;
-  }
-
-  /**
-   * Get or create the DraftRequestService instance. Thread-safe lazy initialization using
-   * double-checked locking.
-   */
-  DraftRequestService draftRequests() {
-    if (draftRequestService == null) {
-      synchronized (this) {
-        if (draftRequestService == null) {
-          draftRequestService = new DraftRequestService(client);
-        }
-      }
-    }
-    return draftRequestService;
   }
 
   /**

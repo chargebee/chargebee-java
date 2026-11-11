@@ -11,6 +11,7 @@ import com.chargebee.v4.internal.Recommended;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.List;
+import java.sql.Timestamp;
 
 public final class InvoiceApplyCreditsParams {
 
@@ -93,13 +94,29 @@ public final class InvoiceApplyCreditsParams {
 
     private final String id;
 
+    private final Long amount;
+
+    private final Timestamp appliedAt;
+
     private CreditNotesParams(CreditNotesBuilder builder) {
 
       this.id = builder.id;
+
+      this.amount = builder.amount;
+
+      this.appliedAt = builder.appliedAt;
     }
 
     public String getId() {
       return id;
+    }
+
+    public Long getAmount() {
+      return amount;
+    }
+
+    public Timestamp getAppliedAt() {
+      return appliedAt;
     }
 
     /** Get the form data for this request. */
@@ -109,6 +126,16 @@ public final class InvoiceApplyCreditsParams {
       if (this.id != null) {
 
         formData.put("id", this.id);
+      }
+
+      if (this.amount != null) {
+
+        formData.put("amount", this.amount);
+      }
+
+      if (this.appliedAt != null) {
+
+        formData.put("applied_at", this.appliedAt);
       }
 
       return formData;
@@ -124,10 +151,24 @@ public final class InvoiceApplyCreditsParams {
 
       private String id;
 
+      private Long amount;
+
+      private Timestamp appliedAt;
+
       private CreditNotesBuilder() {}
 
       public CreditNotesBuilder id(String value) {
         this.id = value;
+        return this;
+      }
+
+      public CreditNotesBuilder amount(Long value) {
+        this.amount = value;
+        return this;
+      }
+
+      public CreditNotesBuilder appliedAt(Timestamp value) {
+        this.appliedAt = value;
         return this;
       }
 

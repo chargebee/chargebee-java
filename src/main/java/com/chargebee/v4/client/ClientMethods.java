@@ -98,6 +98,8 @@ import com.chargebee.v4.services.ThirdPartyConfigurationService;
 
 import com.chargebee.v4.services.UnbilledChargeService;
 
+import com.chargebee.v4.services.GatewayWebhookLogService;
+
 import com.chargebee.v4.services.TransactionService;
 
 import com.chargebee.v4.services.ThirdPartySyncDetailService;
@@ -182,11 +184,11 @@ import com.chargebee.v4.services.RetrySegmentService;
 
 import com.chargebee.v4.services.WebhookEndpointService;
 
+import com.chargebee.v4.services.GatewayRequestLogService;
+
 import com.chargebee.v4.services.AlertService;
 
 import com.chargebee.v4.services.PortalSessionService;
-
-import com.chargebee.v4.services.DraftRequestService;
 
 import com.chargebee.v4.services.CreditUnitService;
 
@@ -558,6 +560,13 @@ public interface ClientMethods {
   UnbilledChargeService unbilledCharges();
 
   /**
+   * Access gateway_webhook_log-related operations.
+   *
+   * @return GatewayWebhookLogService instance for fluent API access
+   */
+  GatewayWebhookLogService gatewayWebhookLogs();
+
+  /**
    * Access transaction-related operations.
    *
    * @return TransactionService instance for fluent API access
@@ -852,6 +861,13 @@ public interface ClientMethods {
   WebhookEndpointService webhookEndpoints();
 
   /**
+   * Access gateway_request_log-related operations.
+   *
+   * @return GatewayRequestLogService instance for fluent API access
+   */
+  GatewayRequestLogService gatewayRequestLogs();
+
+  /**
    * Access alert-related operations.
    *
    * @return AlertService instance for fluent API access
@@ -864,13 +880,6 @@ public interface ClientMethods {
    * @return PortalSessionService instance for fluent API access
    */
   PortalSessionService portalSessions();
-
-  /**
-   * Access draft_request-related operations.
-   *
-   * @return DraftRequestService instance for fluent API access
-   */
-  DraftRequestService draftRequests();
 
   /**
    * Access credit_unit-related operations.

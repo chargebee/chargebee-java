@@ -197,11 +197,15 @@ public final class UsagePdfParams {
 
     private final List<Object> attributes;
 
+    private final WindowSize windowSize;
+
     private GroupByParams(GroupByBuilder builder) {
 
       this.featureId = builder.featureId;
 
       this.attributes = builder.attributes;
+
+      this.windowSize = builder.windowSize;
     }
 
     public String getFeatureId() {
@@ -210,6 +214,10 @@ public final class UsagePdfParams {
 
     public List<Object> getAttributes() {
       return attributes;
+    }
+
+    public WindowSize getWindowSize() {
+      return windowSize;
     }
 
     /** Get the form data for this request. */
@@ -224,6 +232,11 @@ public final class UsagePdfParams {
       if (this.attributes != null) {
 
         formData.put("attributes", JsonUtil.toJson(this.attributes));
+      }
+
+      if (this.windowSize != null) {
+
+        formData.put("window_size", this.windowSize);
       }
 
       return formData;
@@ -241,6 +254,8 @@ public final class UsagePdfParams {
 
       private List<Object> attributes;
 
+      private WindowSize windowSize;
+
       private GroupByBuilder() {}
 
       public GroupByBuilder featureId(String value) {
@@ -253,8 +268,41 @@ public final class UsagePdfParams {
         return this;
       }
 
+      public GroupByBuilder windowSize(WindowSize value) {
+        this.windowSize = value;
+        return this;
+      }
+
       public GroupByParams build() {
         return new GroupByParams(this);
+      }
+    }
+
+    public enum WindowSize {
+      DAY("day"),
+
+      NONE("none"),
+
+      /** An enum member indicating that WindowSize was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      WindowSize(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static WindowSize fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (WindowSize enumValue : WindowSize.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }

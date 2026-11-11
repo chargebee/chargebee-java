@@ -52,6 +52,7 @@ public class Invoice {
   private Boolean firstInvoice;
   private Long newSalesAmount;
   private Boolean hasAdvanceCharges;
+  private OfflinePaymentMethod offlinePaymentMethod;
   private Boolean termFinalized;
   private Boolean isGifted;
   private Timestamp generatedAt;
@@ -234,6 +235,10 @@ public class Invoice {
 
   public Boolean getHasAdvanceCharges() {
     return hasAdvanceCharges;
+  }
+
+  public OfflinePaymentMethod getOfflinePaymentMethod() {
+    return offlinePaymentMethod;
   }
 
   public Boolean getTermFinalized() {
@@ -500,6 +505,58 @@ public class Invoice {
     }
   }
 
+  public enum OfflinePaymentMethod {
+    NO_PREFERENCE("no_preference"),
+
+    CASH("cash"),
+
+    CHECK("check"),
+
+    BANK_TRANSFER("bank_transfer"),
+
+    ACH_CREDIT("ach_credit"),
+
+    SEPA_CREDIT("sepa_credit"),
+
+    BOLETO("boleto"),
+
+    US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
+
+    EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
+
+    UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
+
+    JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
+
+    MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
+
+    CUSTOM("custom"),
+
+    /**
+     * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    OfflinePaymentMethod(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static OfflinePaymentMethod fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (OfflinePaymentMethod enumValue : OfflinePaymentMethod.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum Channel {
     WEB("web"),
 
@@ -614,6 +671,8 @@ public class Invoice {
     knownFields.add("new_sales_amount");
 
     knownFields.add("has_advance_charges");
+
+    knownFields.add("offline_payment_method");
 
     knownFields.add("term_finalized");
 
@@ -760,6 +819,9 @@ public class Invoice {
     obj.newSalesAmount = JsonUtil.getLong(jsonObj, "new_sales_amount");
 
     obj.hasAdvanceCharges = JsonUtil.getBoolean(jsonObj, "has_advance_charges");
+
+    obj.offlinePaymentMethod =
+        OfflinePaymentMethod.fromString(JsonUtil.getString(jsonObj, "offline_payment_method"));
 
     obj.termFinalized = JsonUtil.getBoolean(jsonObj, "term_finalized");
 
@@ -963,6 +1025,8 @@ public class Invoice {
         + newSalesAmount
         + ", hasAdvanceCharges="
         + hasAdvanceCharges
+        + ", offlinePaymentMethod="
+        + offlinePaymentMethod
         + ", termFinalized="
         + termFinalized
         + ", isGifted="
@@ -1084,6 +1148,7 @@ public class Invoice {
         && java.util.Objects.equals(firstInvoice, that.firstInvoice)
         && java.util.Objects.equals(newSalesAmount, that.newSalesAmount)
         && java.util.Objects.equals(hasAdvanceCharges, that.hasAdvanceCharges)
+        && java.util.Objects.equals(offlinePaymentMethod, that.offlinePaymentMethod)
         && java.util.Objects.equals(termFinalized, that.termFinalized)
         && java.util.Objects.equals(isGifted, that.isGifted)
         && java.util.Objects.equals(generatedAt, that.generatedAt)
@@ -1164,6 +1229,7 @@ public class Invoice {
         firstInvoice,
         newSalesAmount,
         hasAdvanceCharges,
+        offlinePaymentMethod,
         termFinalized,
         isGifted,
         generatedAt,
