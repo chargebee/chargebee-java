@@ -1603,6 +1603,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutNewForItemsRequest showBillingFrequencySelector(Boolean showBillingFrequencySelector) {
+            params.addOpt("show_billing_frequency_selector", showBillingFrequencySelector);
+            return this;
+        }
+
+
         public CheckoutNewForItemsRequest allowOfflinePaymentMethods(Boolean allowOfflinePaymentMethods) {
             params.addOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
             return this;
@@ -2032,6 +2038,14 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
             return this;
         }
+        public CheckoutNewForItemsRequest allowedBillingFrequencyPeriod(int index, Integer allowedBillingFrequencyPeriod) {
+            params.addOpt("allowed_billing_frequencies[period][" + index + "]", allowedBillingFrequencyPeriod);
+            return this;
+        }
+        public CheckoutNewForItemsRequest allowedBillingFrequencyPeriodUnit(int index, com.chargebee.models.enums.PeriodUnit allowedBillingFrequencyPeriodUnit) {
+            params.addOpt("allowed_billing_frequencies[period_unit][" + index + "]", allowedBillingFrequencyPeriodUnit);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -2450,6 +2464,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutExistingForItemsRequest showBillingFrequencySelector(Boolean showBillingFrequencySelector) {
+            params.addOpt("show_billing_frequency_selector", showBillingFrequencySelector);
+            return this;
+        }
+
+
         public CheckoutExistingForItemsRequest allowOfflinePaymentMethods(Boolean allowOfflinePaymentMethods) {
             params.addOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
             return this;
@@ -2696,6 +2716,14 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutExistingForItemsRequest entityIdentifierStandard(int index, String entityIdentifierStandard) {
             params.addOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest allowedBillingFrequencyPeriod(int index, Integer allowedBillingFrequencyPeriod) {
+            params.addOpt("allowed_billing_frequencies[period][" + index + "]", allowedBillingFrequencyPeriod);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest allowedBillingFrequencyPeriodUnit(int index, com.chargebee.models.enums.PeriodUnit allowedBillingFrequencyPeriodUnit) {
+            params.addOpt("allowed_billing_frequencies[period_unit][" + index + "]", allowedBillingFrequencyPeriodUnit);
             return this;
         }
         @Override
@@ -3118,6 +3146,12 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutGiftForItemsRequest showBillingFrequencySelector(Boolean showBillingFrequencySelector) {
+            params.addOpt("show_billing_frequency_selector", showBillingFrequencySelector);
+            return this;
+        }
+
+
         public CheckoutGiftForItemsRequest gifterCustomerId(String gifterCustomerId) {
             params.addOpt("gifter[customer_id]", gifterCustomerId);
             return this;
@@ -3169,6 +3203,14 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutGiftForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public CheckoutGiftForItemsRequest allowedBillingFrequencyPeriod(int index, Integer allowedBillingFrequencyPeriod) {
+            params.addOpt("allowed_billing_frequencies[period][" + index + "]", allowedBillingFrequencyPeriod);
+            return this;
+        }
+        public CheckoutGiftForItemsRequest allowedBillingFrequencyPeriodUnit(int index, com.chargebee.models.enums.PeriodUnit allowedBillingFrequencyPeriodUnit) {
+            params.addOpt("allowed_billing_frequencies[period_unit][" + index + "]", allowedBillingFrequencyPeriodUnit);
             return this;
         }
         @Override

@@ -92,6 +92,14 @@ public class ResultBase {
         return (EmailLog)get("email_log");
     }
 
+    public GatewayRequestLog gatewayRequestLog() {
+        return (GatewayRequestLog)get("gateway_request_log");
+    }
+
+    public GatewayWebhookLog gatewayWebhookLog() {
+        return (GatewayWebhookLog)get("gateway_webhook_log");
+    }
+
     public Invoice invoice() {
         return (Invoice)get("invoice");
     }
@@ -344,6 +352,10 @@ public class ResultBase {
         return (PaymentVoucher)get("payment_voucher");
     }
 
+    public OrganizationDetail organizationDetail() {
+        return (OrganizationDetail)get("organization_detail");
+    }
+
     public Currency currency() {
         return (Currency)get("currency");
     }
@@ -546,6 +558,10 @@ public class ResultBase {
 
     public LedgerOperation ledgerOperation() {
         return (LedgerOperation)get("ledger_operation");
+    }
+
+    public BillingMetadata billingMetadata() {
+        return (BillingMetadata)get("billing_metadata");
     }
 
     public GrantBlock grantBlock() {

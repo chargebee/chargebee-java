@@ -1143,6 +1143,10 @@ public class Invoice extends Resource<Invoice> {
         return optBoolean("has_advance_charges");
     }
 
+    public OfflinePaymentMethod offlinePaymentMethod() {
+        return optEnum("offline_payment_method", OfflinePaymentMethod.class);
+    }
+
     public Boolean termFinalized() {
         return reqBoolean("term_finalized");
     }
@@ -2134,6 +2138,12 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateForChargeItemsAndChargesRequest netTermDays(Integer netTermDays) {
             params.addOpt("net_term_days", netTermDays);
+            return this;
+        }
+
+
+        public CreateForChargeItemsAndChargesRequest offlinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod offlinePaymentMethod) {
+            params.addOpt("offline_payment_method", offlinePaymentMethod);
             return this;
         }
 
@@ -3804,6 +3814,14 @@ public class Invoice extends Resource<Invoice> {
 
         public ApplyCreditsRequest creditNoteId(int index, String creditNoteId) {
             params.addOpt("credit_notes[id][" + index + "]", creditNoteId);
+            return this;
+        }
+        public ApplyCreditsRequest creditNoteAmount(int index, Long creditNoteAmount) {
+            params.addOpt("credit_notes[amount][" + index + "]", creditNoteAmount);
+            return this;
+        }
+        public ApplyCreditsRequest creditNoteAppliedAt(int index, Timestamp creditNoteAppliedAt) {
+            params.addOpt("credit_notes[applied_at][" + index + "]", creditNoteAppliedAt);
             return this;
         }
         @Override

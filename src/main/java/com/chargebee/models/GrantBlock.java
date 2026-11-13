@@ -104,6 +104,21 @@ public class GrantBlock extends Resource<GrantBlock> {
 
     }
 
+    public static class BillingMetadata extends Resource<BillingMetadata> {
+        public BillingMetadata(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String itemPriceId() {
+            return optString("item_price_id");
+        }
+
+        public List<BillingLineItem> lineItems() {
+            return optList("line_items", BillingLineItem.class);
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -211,6 +226,10 @@ public class GrantBlock extends Resource<GrantBlock> {
 
     public GrantBlock.OverdraftBlockBalance overdraftBlockBalance() {
         return optSubResource("overdraft_block_balance", GrantBlock.OverdraftBlockBalance.class);
+    }
+
+    public GrantBlock.BillingMetadata billingMetadata() {
+        return optSubResource("billing_metadata", GrantBlock.BillingMetadata.class);
     }
 
     public JSONObject metadata() {
