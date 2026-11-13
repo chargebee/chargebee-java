@@ -1,3 +1,10 @@
+### v4.21.0 (2026-11-13)
+* * *
+### New Features
+* Added [response telemetry](https://apidocs.chargebee.com/docs/api/response-telemetry) support (Beta). Call `ChargebeeClient.Builder#preferChargebeeTelemetry(true)` alongside a `telemetryAdapter` to have the SDK send `Prefer: chargebee-telemetry=include` on each request. The SDK parses the `X-Chargebee-Telemetry` response header on both successful and failed responses and passes it to your adapter in the new `RequestTelemetryResult#getResponseTelemetryAttributes()`: the raw value under `http.response.header.x-chargebee-telemetry` and typed parsed values under `chargebee.telemetry.*`. A malformed header never fails the API call. Setting `preferChargebeeTelemetry` without a `telemetryAdapter` has no effect, and a `Prefer` header you set on the request yourself is left unchanged.
+* No change for existing integrations: `getEndAttributes()` returns the same keys and value types as before, and existing `RequestTelemetryResult` constructors are kept. Response telemetry values (`String`, `Long`, `Double`, `Boolean`, `List<String>`) appear only in `getResponseTelemetryAttributes()`; see the updated `OtelTelemetryAdapter` example in the README to forward them.
+
+
 ### v4.20.0 (2026-11-13)
 
 ### New Resources:
