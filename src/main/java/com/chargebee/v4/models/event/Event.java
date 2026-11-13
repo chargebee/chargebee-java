@@ -504,6 +504,10 @@ public class Event {
 
     PAYMENT_SOURCE_BUSINESS_ENTITY_CHANGED("payment_source_business_entity_changed"),
 
+    ORGANIZATION_DETAILS_CREATED("organization_details_created"),
+
+    ORGANIZATION_DETAILS_UPDATED("organization_details_updated"),
+
     PURCHASE_CREATED("purchase_created"),
 
     VOUCHER_CREATED("voucher_created"),

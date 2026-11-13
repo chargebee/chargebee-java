@@ -132,34 +132,6 @@ public final class CreditUnitListParams {
     }
   }
 
-  public enum StatusIs {
-    ACTIVE("active"),
-
-    ARCHIVED("archived"),
-
-    /** An enum member indicating that StatusIs was instantiated with an unknown value. */
-    _UNKNOWN(null);
-    private final String value;
-
-    StatusIs(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    public static StatusIs fromString(String value) {
-      if (value == null) return _UNKNOWN;
-      for (StatusIs enumValue : StatusIs.values()) {
-        if (enumValue.value != null && enumValue.value.equals(value)) {
-          return enumValue;
-        }
-      }
-      return _UNKNOWN;
-    }
-  }
-
   public enum StatusIn {
     ACTIVE("active"),
 
@@ -180,6 +152,34 @@ public final class CreditUnitListParams {
     public static StatusIn fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (StatusIn enumValue : StatusIn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusIs {
+    ACTIVE("active"),
+
+    ARCHIVED("archived"),
+
+    /** An enum member indicating that StatusIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIs enumValue : StatusIs.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

@@ -130,6 +130,8 @@ import com.chargebee.v4.services.RecordedPurchaseService;
 
 import com.chargebee.v4.services.ExportService;
 
+import com.chargebee.v4.services.OrganizationDetailService;
+
 import com.chargebee.v4.services.CustomerEntitlementService;
 
 import com.chargebee.v4.services.PersonalizedOfferService;
@@ -541,6 +543,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public ExportService exports() {
     return getServiceRegistry().exports();
+  }
+
+  @Override
+  public OrganizationDetailService organizationDetails() {
+    return getServiceRegistry().organizationDetails();
   }
 
   @Override

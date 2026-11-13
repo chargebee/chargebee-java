@@ -1,3 +1,12 @@
+### v4.20.0 (2026-11-13)
+
+### New Resources:
+- `OrganizationDetail` has been added.
+
+### New Events:
+- `organization_details_updated` has been added.
+- `organization_details_created` has been added.
+
 ### v4.19.0 (2026-11-11)
 * * *
 ### New Resources:
