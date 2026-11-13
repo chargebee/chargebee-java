@@ -116,4 +116,20 @@ class ChargebeeTelemetryHeaderParserTest {
     assertEquals(1781280400L, ChargebeeTelemetryHeaderParser.parseScalarValue("@1781280400"));
     assertNull(ChargebeeTelemetryHeaderParser.parseScalarValue("@"));
   }
+
+  @Test
+  @DisplayName("Should treat bare parameters as true and skip only malformed parameters or members")
+  void shouldTreatBareParamsAsTrueAndSkipMalformedParts() {
+    String header = "cb;time_ms=12;cached;=5;empty=, ;orphan=1, tp-stripe;pm=card;time_ms=620";
+
+    Map<String, Object> attributes = ChargebeeTelemetryHeaderParser.parseToSpanAttributes(header);
+
+    assertEquals(Boolean.TRUE, attributes.get("chargebee.telemetry.cb.cached"));
+    assertEquals(12L, attributes.get("chargebee.telemetry.cb.time_ms"));
+    assertFalse(attributes.containsKey("chargebee.telemetry.cb.empty"));
+    assertFalse(attributes.containsKey("chargebee.telemetry.cb."));
+    assertEquals("card", attributes.get("chargebee.telemetry.tp.stripe.pm"));
+    assertEquals(620L, attributes.get("chargebee.telemetry.tp.stripe.time_ms"));
+    assertEquals(4, attributes.size());
+  }
 }

@@ -66,7 +66,7 @@ public final class ChargebeeTelemetryHeaderParser {
     int separator = indexOfParameterSeparator(trimmed);
     String token = separator < 0 ? trimmed : trimmed.substring(0, separator).trim();
     if (token.isEmpty()) {
-      throw new IllegalArgumentException("missing sf-item token");
+      return; // skip only this member
     }
 
     if (token.startsWith(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_FT_PREFIX)) {
@@ -106,18 +106,26 @@ public final class ChargebeeTelemetryHeaderParser {
       return;
     }
 
+    // Malformed parameters are skipped individually so the rest of the header is kept.
     int equalsIndex = indexOfEquals(trimmed);
-    if (equalsIndex <= 0) {
-      throw new IllegalArgumentException("invalid parameter: " + trimmed);
+    if (equalsIndex < 0) {
+      // RFC 9651: a parameter without a value is boolean true (e.g. "cb;cached").
+      attributes.put(attributePrefix + trimmed, Boolean.TRUE);
+      return;
     }
 
     String key = trimmed.substring(0, equalsIndex).trim();
     String rawValue = trimmed.substring(equalsIndex + 1).trim();
     if (key.isEmpty()) {
-      throw new IllegalArgumentException("missing parameter key");
+      return;
     }
 
-    Object value = parseScalarValue(rawValue);
+    Object value;
+    try {
+      value = parseScalarValue(rawValue);
+    } catch (IllegalArgumentException ex) {
+      return;
+    }
     if (value != null) {
       attributes.put(attributePrefix + key, value);
     }

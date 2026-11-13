@@ -764,6 +764,7 @@ chargebee.telemetry.features                →  ["account_hierarchy"]
 **Behavior:**
 
 - Header **absent** → no telemetry header attributes are added; the span is unaffected.
+- Header **partly malformed** → malformed parameters or members are skipped and the rest are still parsed. A parameter without a value (e.g. `cb;cached`) is parsed as `true`, per RFC 9651.
 - Header **present but unparseable** → only the raw `http.response.header.x-chargebee-telemetry` attribute is emitted; the API call is never failed or delayed by parsing.
 - Parsed timing fields such as `chargebee.telemetry.cb.time_ms` are numeric (`long`) so backends like Datadog, New Relic, and Honeycomb can filter, average, and chart percentiles out of the box.
 
