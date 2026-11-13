@@ -130,6 +130,8 @@ import com.chargebee.v4.services.RecordedPurchaseService;
 
 import com.chargebee.v4.services.ExportService;
 
+import com.chargebee.v4.services.OrganizationDetailService;
+
 import com.chargebee.v4.services.CustomerEntitlementService;
 
 import com.chargebee.v4.services.PersonalizedOfferService;
@@ -346,6 +348,8 @@ final class ServiceRegistry {
   private volatile RecordedPurchaseService recordedPurchaseService;
 
   private volatile ExportService exportService;
+
+  private volatile OrganizationDetailService organizationDetailService;
 
   private volatile CustomerEntitlementService customerEntitlementService;
 
@@ -1404,6 +1408,21 @@ final class ServiceRegistry {
       }
     }
     return exportService;
+  }
+
+  /**
+   * Get or create the OrganizationDetailService instance. Thread-safe lazy initialization using
+   * double-checked locking.
+   */
+  OrganizationDetailService organizationDetails() {
+    if (organizationDetailService == null) {
+      synchronized (this) {
+        if (organizationDetailService == null) {
+          organizationDetailService = new OrganizationDetailService(client);
+        }
+      }
+    }
+    return organizationDetailService;
   }
 
   /**

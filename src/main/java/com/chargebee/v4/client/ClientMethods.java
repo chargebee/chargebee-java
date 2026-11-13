@@ -130,6 +130,8 @@ import com.chargebee.v4.services.RecordedPurchaseService;
 
 import com.chargebee.v4.services.ExportService;
 
+import com.chargebee.v4.services.OrganizationDetailService;
+
 import com.chargebee.v4.services.CustomerEntitlementService;
 
 import com.chargebee.v4.services.PersonalizedOfferService;
@@ -670,6 +672,13 @@ public interface ClientMethods {
    * @return ExportService instance for fluent API access
    */
   ExportService exports();
+
+  /**
+   * Access organization_detail-related operations.
+   *
+   * @return OrganizationDetailService instance for fluent API access
+   */
+  OrganizationDetailService organizationDetails();
 
   /**
    * Access customer_entitlement-related operations.
