@@ -28,6 +28,8 @@ import com.chargebee.v4.services.OrderService;
 
 import com.chargebee.v4.services.ItemService;
 
+import com.chargebee.v4.services.CollectionsPaymentPromiseService;
+
 import com.chargebee.v4.services.RampService;
 
 import com.chargebee.v4.services.OmnichannelOneTimeOrderService;
@@ -96,9 +98,13 @@ import com.chargebee.v4.services.ThirdPartyConfigurationService;
 
 import com.chargebee.v4.services.UnbilledChargeService;
 
+import com.chargebee.v4.services.GatewayWebhookLogService;
+
 import com.chargebee.v4.services.TransactionService;
 
 import com.chargebee.v4.services.ThirdPartySyncDetailService;
+
+import com.chargebee.v4.services.PriceRampService;
 
 import com.chargebee.v4.services.EinvoiceService;
 
@@ -123,6 +129,8 @@ import com.chargebee.v4.services.Pc2MigrationItemFamilyService;
 import com.chargebee.v4.services.RecordedPurchaseService;
 
 import com.chargebee.v4.services.ExportService;
+
+import com.chargebee.v4.services.OrganizationDetailService;
 
 import com.chargebee.v4.services.CustomerEntitlementService;
 
@@ -174,7 +182,11 @@ import com.chargebee.v4.services.MediaService;
 
 import com.chargebee.v4.services.BusinessProfileService;
 
+import com.chargebee.v4.services.RetrySegmentService;
+
 import com.chargebee.v4.services.WebhookEndpointService;
+
+import com.chargebee.v4.services.GatewayRequestLogService;
 
 import com.chargebee.v4.services.AlertService;
 
@@ -276,6 +288,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public ItemService items() {
     return getServiceRegistry().items();
+  }
+
+  @Override
+  public CollectionsPaymentPromiseService collectionsPaymentPromises() {
+    return getServiceRegistry().collectionsPaymentPromises();
   }
 
   @Override
@@ -449,6 +466,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   }
 
   @Override
+  public GatewayWebhookLogService gatewayWebhookLogs() {
+    return getServiceRegistry().gatewayWebhookLogs();
+  }
+
+  @Override
   public TransactionService transactions() {
     return getServiceRegistry().transactions();
   }
@@ -456,6 +478,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public ThirdPartySyncDetailService thirdPartySyncDetails() {
     return getServiceRegistry().thirdPartySyncDetails();
+  }
+
+  @Override
+  public PriceRampService priceRamps() {
+    return getServiceRegistry().priceRamps();
   }
 
   @Override
@@ -516,6 +543,11 @@ abstract class ClientMethodsImpl implements ClientMethods {
   @Override
   public ExportService exports() {
     return getServiceRegistry().exports();
+  }
+
+  @Override
+  public OrganizationDetailService organizationDetails() {
+    return getServiceRegistry().organizationDetails();
   }
 
   @Override
@@ -644,8 +676,18 @@ abstract class ClientMethodsImpl implements ClientMethods {
   }
 
   @Override
+  public RetrySegmentService retrySegments() {
+    return getServiceRegistry().retrySegments();
+  }
+
+  @Override
   public WebhookEndpointService webhookEndpoints() {
     return getServiceRegistry().webhookEndpoints();
+  }
+
+  @Override
+  public GatewayRequestLogService gatewayRequestLogs() {
+    return getServiceRegistry().gatewayRequestLogs();
   }
 
   @Override

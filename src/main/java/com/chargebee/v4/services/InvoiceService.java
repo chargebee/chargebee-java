@@ -71,6 +71,8 @@ import com.chargebee.v4.models.invoice.params.InvoiceRemoveTaxWithheldParams;
 
 import com.chargebee.v4.models.invoice.params.InvoiceListPaymentReferenceNumbersParams;
 
+import com.chargebee.v4.models.invoice.params.InvoiceRemovePaymentScheduleSchemeParams;
+
 import com.chargebee.v4.models.invoice.params.InvoiceCollectPaymentParams;
 
 import com.chargebee.v4.models.invoice.params.InvoiceRefundParams;
@@ -152,6 +154,8 @@ import com.chargebee.v4.models.invoice.responses.ResendEinvoiceResponse;
 import com.chargebee.v4.models.invoice.responses.InvoiceRemoveTaxWithheldResponse;
 
 import com.chargebee.v4.models.invoice.responses.InvoiceListPaymentReferenceNumbersResponse;
+
+import com.chargebee.v4.models.invoice.responses.InvoiceRemovePaymentScheduleSchemeResponse;
 
 import com.chargebee.v4.models.invoice.responses.InvoiceCollectPaymentResponse;
 
@@ -1857,6 +1861,81 @@ public final class InvoiceService extends BaseService<InvoiceService> {
             response ->
                 InvoiceListPaymentReferenceNumbersResponse.fromJson(
                     response.getBodyAsString(), this, null, response));
+  }
+
+  /** removePaymentScheduleScheme a invoice (executes immediately) - returns raw Response. */
+  Response removePaymentScheduleSchemeRaw(String invoiceId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/invoices/{invoice-id}/remove_payment_schedule_scheme", "invoice-id", invoiceId);
+
+    return post("invoice", "removePaymentScheduleScheme", path, null);
+  }
+
+  /**
+   * removePaymentScheduleScheme a invoice using immutable params (executes immediately) - returns
+   * raw Response.
+   */
+  Response removePaymentScheduleSchemeRaw(
+      String invoiceId, InvoiceRemovePaymentScheduleSchemeParams params) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/invoices/{invoice-id}/remove_payment_schedule_scheme", "invoice-id", invoiceId);
+    return post("invoice", "removePaymentScheduleScheme", path, params.toFormData());
+  }
+
+  /**
+   * removePaymentScheduleScheme a invoice using raw JSON payload (executes immediately) - returns
+   * raw Response.
+   */
+  Response removePaymentScheduleSchemeRaw(String invoiceId, String jsonPayload)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/invoices/{invoice-id}/remove_payment_schedule_scheme", "invoice-id", invoiceId);
+    return postJson("invoice", "removePaymentScheduleScheme", path, jsonPayload);
+  }
+
+  public InvoiceRemovePaymentScheduleSchemeResponse removePaymentScheduleScheme(
+      String invoiceId, InvoiceRemovePaymentScheduleSchemeParams params) throws ChargebeeException {
+    Response response = removePaymentScheduleSchemeRaw(invoiceId, params);
+    return InvoiceRemovePaymentScheduleSchemeResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
+  /** Async variant of removePaymentScheduleScheme for invoice with params. */
+  public CompletableFuture<InvoiceRemovePaymentScheduleSchemeResponse>
+      removePaymentScheduleSchemeAsync(
+          String invoiceId, InvoiceRemovePaymentScheduleSchemeParams params) {
+    String path =
+        buildPathWithParams(
+            "/invoices/{invoice-id}/remove_payment_schedule_scheme", "invoice-id", invoiceId);
+    return postAsync("invoice", "removePaymentScheduleScheme", path, params.toFormData())
+        .thenApply(
+            response ->
+                InvoiceRemovePaymentScheduleSchemeResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
+  public InvoiceRemovePaymentScheduleSchemeResponse removePaymentScheduleScheme(String invoiceId)
+      throws ChargebeeException {
+    Response response = removePaymentScheduleSchemeRaw(invoiceId);
+    return InvoiceRemovePaymentScheduleSchemeResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
+  /** Async variant of removePaymentScheduleScheme for invoice without params. */
+  public CompletableFuture<InvoiceRemovePaymentScheduleSchemeResponse>
+      removePaymentScheduleSchemeAsync(String invoiceId) {
+    String path =
+        buildPathWithParams(
+            "/invoices/{invoice-id}/remove_payment_schedule_scheme", "invoice-id", invoiceId);
+
+    return postAsync("invoice", "removePaymentScheduleScheme", path, null)
+        .thenApply(
+            response ->
+                InvoiceRemovePaymentScheduleSchemeResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** collectPayment a invoice (executes immediately) - returns raw Response. */

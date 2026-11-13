@@ -236,6 +236,8 @@ public class PaymentSchedule {
 
       PAID("paid"),
 
+      VOIDED("voided"),
+
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;

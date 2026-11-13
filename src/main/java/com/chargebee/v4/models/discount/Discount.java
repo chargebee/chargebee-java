@@ -15,6 +15,7 @@ public class Discount {
 
   private String id;
   private String invoiceName;
+  private String description;
   private Type type;
   private Double percentage;
   private Long amount;
@@ -38,6 +39,10 @@ public class Discount {
 
   public String getInvoiceName() {
     return invoiceName;
+  }
+
+  public String getDescription() {
+    return description;
   }
 
   public Type getType() {
@@ -239,6 +244,8 @@ public class Discount {
 
     obj.invoiceName = JsonUtil.getString(jsonObj, "invoice_name");
 
+    obj.description = JsonUtil.getString(jsonObj, "description");
+
     obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
     obj.percentage = JsonUtil.getDouble(jsonObj, "percentage");
@@ -281,6 +288,8 @@ public class Discount {
         + id
         + ", invoiceName="
         + invoiceName
+        + ", description="
+        + description
         + ", type="
         + type
         + ", percentage="
@@ -324,6 +333,7 @@ public class Discount {
     Discount that = (Discount) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(invoiceName, that.invoiceName)
+        && java.util.Objects.equals(description, that.description)
         && java.util.Objects.equals(type, that.type)
         && java.util.Objects.equals(percentage, that.percentage)
         && java.util.Objects.equals(amount, that.amount)
@@ -348,6 +358,7 @@ public class Discount {
     return java.util.Objects.hash(
         id,
         invoiceName,
+        description,
         type,
         percentage,
         amount,

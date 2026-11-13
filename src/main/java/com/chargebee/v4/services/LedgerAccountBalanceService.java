@@ -13,7 +13,11 @@ import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 import java.util.concurrent.CompletableFuture;
 
+import com.chargebee.v4.models.ledgerAccountBalance.params.LedgerAccountBalanceUpdateOverdraftLimitParams;
+
 import com.chargebee.v4.models.ledgerAccountBalance.params.ListLedgerAccountBalancesParams;
+
+import com.chargebee.v4.models.ledgerAccountBalance.responses.LedgerAccountBalanceUpdateOverdraftLimitResponse;
 
 import com.chargebee.v4.models.ledgerAccountBalance.responses.ListLedgerAccountBalancesResponse;
 
@@ -51,6 +55,56 @@ public final class LedgerAccountBalanceService extends BaseService<LedgerAccount
   }
 
   // === Operations ===
+
+  /**
+   * updateOverdraftLimit a ledgerAccountBalance using immutable params (executes immediately) -
+   * returns raw Response.
+   */
+  Response updateOverdraftLimitRaw(LedgerAccountBalanceUpdateOverdraftLimitParams params)
+      throws ChargebeeException {
+
+    return post(
+        "ledgerAccountBalance",
+        "updateOverdraftLimit",
+        "/ledger_account_balances/update_overdraft_limit",
+        params != null ? params.toFormData() : null);
+  }
+
+  /**
+   * updateOverdraftLimit a ledgerAccountBalance using raw JSON payload (executes immediately) -
+   * returns raw Response.
+   */
+  Response updateOverdraftLimitRaw(String jsonPayload) throws ChargebeeException {
+
+    return postJson(
+        "ledgerAccountBalance",
+        "updateOverdraftLimit",
+        "/ledger_account_balances/update_overdraft_limit",
+        jsonPayload);
+  }
+
+  public LedgerAccountBalanceUpdateOverdraftLimitResponse updateOverdraftLimit(
+      LedgerAccountBalanceUpdateOverdraftLimitParams params) throws ChargebeeException {
+    Response response = updateOverdraftLimitRaw(params);
+
+    return LedgerAccountBalanceUpdateOverdraftLimitResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
+  /** Async variant of updateOverdraftLimit for ledgerAccountBalance with params. */
+  public CompletableFuture<LedgerAccountBalanceUpdateOverdraftLimitResponse>
+      updateOverdraftLimitAsync(LedgerAccountBalanceUpdateOverdraftLimitParams params) {
+
+    return postAsync(
+            "ledgerAccountBalance",
+            "updateOverdraftLimit",
+            "/ledger_account_balances/update_overdraft_limit",
+            params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                LedgerAccountBalanceUpdateOverdraftLimitResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
 
   /**
    * listLedgerAccountBalances a ledgerAccountBalance using immutable params (executes immediately)

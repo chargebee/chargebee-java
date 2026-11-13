@@ -41,6 +41,8 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
   private final Integer netTermDays;
 
+  private final OfflinePaymentMethod offlinePaymentMethod;
+
   private final Timestamp invoiceDate;
 
   private final Boolean createPendingInvoice;
@@ -105,6 +107,8 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
     this.autoCollection = builder.autoCollection;
 
     this.netTermDays = builder.netTermDays;
+
+    this.offlinePaymentMethod = builder.offlinePaymentMethod;
 
     this.invoiceDate = builder.invoiceDate;
 
@@ -194,6 +198,10 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
   public Integer getNetTermDays() {
     return netTermDays;
+  }
+
+  public OfflinePaymentMethod getOfflinePaymentMethod() {
+    return offlinePaymentMethod;
   }
 
   public Timestamp getInvoiceDate() {
@@ -334,6 +342,11 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
     if (this.netTermDays != null) {
 
       formData.put("net_term_days", this.netTermDays);
+    }
+
+    if (this.offlinePaymentMethod != null) {
+
+      formData.put("offline_payment_method", this.offlinePaymentMethod);
     }
 
     if (this.invoiceDate != null) {
@@ -553,6 +566,8 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
     private Integer netTermDays;
 
+    private OfflinePaymentMethod offlinePaymentMethod;
+
     private Timestamp invoiceDate;
 
     private Boolean createPendingInvoice;
@@ -651,6 +666,12 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
 
     public InvoiceCreateForChargeItemsAndChargesBuilder netTermDays(Integer value) {
       this.netTermDays = value;
+      return this;
+    }
+
+    public InvoiceCreateForChargeItemsAndChargesBuilder offlinePaymentMethod(
+        OfflinePaymentMethod value) {
+      this.offlinePaymentMethod = value;
       return this;
     }
 
@@ -811,6 +832,58 @@ public final class InvoiceCreateForChargeItemsAndChargesParams {
     public static AutoCollection fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (AutoCollection enumValue : AutoCollection.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum OfflinePaymentMethod {
+    NO_PREFERENCE("no_preference"),
+
+    CASH("cash"),
+
+    CHECK("check"),
+
+    BANK_TRANSFER("bank_transfer"),
+
+    ACH_CREDIT("ach_credit"),
+
+    SEPA_CREDIT("sepa_credit"),
+
+    BOLETO("boleto"),
+
+    US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
+
+    EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
+
+    UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
+
+    JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
+
+    MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
+
+    CUSTOM("custom"),
+
+    /**
+     * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    OfflinePaymentMethod(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static OfflinePaymentMethod fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (OfflinePaymentMethod enumValue : OfflinePaymentMethod.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

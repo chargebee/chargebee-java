@@ -1906,6 +1906,7 @@ public class SalesOrder {
     private Integer netTermDays;
     private Timestamp invoiceDate;
     private Timestamp nextRenewalDate;
+    private Timestamp trialEnd;
     private Integer billingCyclesToInvoice;
     private BillingAlignmentMode billingAlignmentMode;
 
@@ -1935,6 +1936,10 @@ public class SalesOrder {
 
     public Timestamp getNextRenewalDate() {
       return nextRenewalDate;
+    }
+
+    public Timestamp getTrialEnd() {
+      return trialEnd;
     }
 
     public Integer getBillingCyclesToInvoice() {
@@ -2000,6 +2005,8 @@ public class SalesOrder {
 
       obj.nextRenewalDate = JsonUtil.getTimestamp(jsonObj, "next_renewal_date");
 
+      obj.trialEnd = JsonUtil.getTimestamp(jsonObj, "trial_end");
+
       obj.billingCyclesToInvoice = JsonUtil.getInteger(jsonObj, "billing_cycles_to_invoice");
 
       obj.billingAlignmentMode =
@@ -2025,6 +2032,8 @@ public class SalesOrder {
           + invoiceDate
           + ", nextRenewalDate="
           + nextRenewalDate
+          + ", trialEnd="
+          + trialEnd
           + ", billingCyclesToInvoice="
           + billingCyclesToInvoice
           + ", billingAlignmentMode="
@@ -2045,6 +2054,7 @@ public class SalesOrder {
           && java.util.Objects.equals(netTermDays, that.netTermDays)
           && java.util.Objects.equals(invoiceDate, that.invoiceDate)
           && java.util.Objects.equals(nextRenewalDate, that.nextRenewalDate)
+          && java.util.Objects.equals(trialEnd, that.trialEnd)
           && java.util.Objects.equals(billingCyclesToInvoice, that.billingCyclesToInvoice)
           && java.util.Objects.equals(billingAlignmentMode, that.billingAlignmentMode);
     }
@@ -2060,6 +2070,7 @@ public class SalesOrder {
           netTermDays,
           invoiceDate,
           nextRenewalDate,
+          trialEnd,
           billingCyclesToInvoice,
           billingAlignmentMode);
     }

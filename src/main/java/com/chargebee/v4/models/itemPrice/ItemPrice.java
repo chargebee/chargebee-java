@@ -22,6 +22,7 @@ public class ItemPrice {
   private Status status;
   private String externalName;
   private String priceVariantId;
+  private String priceRampId;
   private ProrationType prorationType;
   private PricingModel pricingModel;
   private Long price;
@@ -90,6 +91,10 @@ public class ItemPrice {
 
   public String getPriceVariantId() {
     return priceVariantId;
+  }
+
+  public String getPriceRampId() {
+    return priceRampId;
   }
 
   public ProrationType getProrationType() {
@@ -590,6 +595,8 @@ public class ItemPrice {
 
     knownFields.add("price_variant_id");
 
+    knownFields.add("price_ramp_id");
+
     knownFields.add("proration_type");
 
     knownFields.add("pricing_model");
@@ -675,6 +682,8 @@ public class ItemPrice {
     obj.externalName = JsonUtil.getString(jsonObj, "external_name");
 
     obj.priceVariantId = JsonUtil.getString(jsonObj, "price_variant_id");
+
+    obj.priceRampId = JsonUtil.getString(jsonObj, "price_ramp_id");
 
     obj.prorationType = ProrationType.fromString(JsonUtil.getString(jsonObj, "proration_type"));
 
@@ -786,6 +795,8 @@ public class ItemPrice {
         + externalName
         + ", priceVariantId="
         + priceVariantId
+        + ", priceRampId="
+        + priceRampId
         + ", prorationType="
         + prorationType
         + ", pricingModel="
@@ -875,6 +886,7 @@ public class ItemPrice {
         && java.util.Objects.equals(status, that.status)
         && java.util.Objects.equals(externalName, that.externalName)
         && java.util.Objects.equals(priceVariantId, that.priceVariantId)
+        && java.util.Objects.equals(priceRampId, that.priceRampId)
         && java.util.Objects.equals(prorationType, that.prorationType)
         && java.util.Objects.equals(pricingModel, that.pricingModel)
         && java.util.Objects.equals(price, that.price)
@@ -926,6 +938,7 @@ public class ItemPrice {
         status,
         externalName,
         priceVariantId,
+        priceRampId,
         prorationType,
         pricingModel,
         price,

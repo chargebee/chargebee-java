@@ -42,6 +42,8 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
 
   private final CardParams card;
 
+  private final BankAccountParams bankAccount;
+
   private final BillingAddressParams billingAddress;
 
   private PaymentSourceCreateUsingPermanentTokenParams(
@@ -74,6 +76,8 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
     this.additionalInformation = builder.additionalInformation;
 
     this.card = builder.card;
+
+    this.bankAccount = builder.bankAccount;
 
     this.billingAddress = builder.billingAddress;
   }
@@ -132,6 +136,10 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
 
   public CardParams getCard() {
     return card;
+  }
+
+  public BankAccountParams getBankAccount() {
+    return bankAccount;
   }
 
   public BillingAddressParams getBillingAddress() {
@@ -217,6 +225,16 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
       }
     }
 
+    if (this.bankAccount != null) {
+
+      // Single object
+      Map<String, Object> nestedData = this.bankAccount.toFormData();
+      for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+        String nestedKey = "bank_account[" + entry.getKey() + "]";
+        formData.put(nestedKey, entry.getValue());
+      }
+    }
+
     if (this.billingAddress != null) {
 
       // Single object
@@ -265,6 +283,8 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
     private java.util.Map<String, Object> additionalInformation;
 
     private CardParams card;
+
+    private BankAccountParams bankAccount;
 
     private BillingAddressParams billingAddress;
 
@@ -339,6 +359,11 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
 
     public PaymentSourceCreateUsingPermanentTokenBuilder card(CardParams value) {
       this.card = value;
+      return this;
+    }
+
+    public PaymentSourceCreateUsingPermanentTokenBuilder bankAccount(BankAccountParams value) {
+      this.bankAccount = value;
       return this;
     }
 
@@ -750,6 +775,324 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
       public static FundingType fromString(String value) {
         if (value == null) return _UNKNOWN;
         for (FundingType enumValue : FundingType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+  }
+
+  public static final class BankAccountParams {
+
+    private final AccountType accountType;
+
+    private final AccountHolderType accountHolderType;
+
+    private final String firstName;
+
+    private final String lastName;
+
+    private final String company;
+
+    private final Scheme scheme;
+
+    private final String last4;
+
+    private final EcheckType echeckType;
+
+    private BankAccountParams(BankAccountBuilder builder) {
+
+      this.accountType = builder.accountType;
+
+      this.accountHolderType = builder.accountHolderType;
+
+      this.firstName = builder.firstName;
+
+      this.lastName = builder.lastName;
+
+      this.company = builder.company;
+
+      this.scheme = builder.scheme;
+
+      this.last4 = builder.last4;
+
+      this.echeckType = builder.echeckType;
+    }
+
+    public AccountType getAccountType() {
+      return accountType;
+    }
+
+    public AccountHolderType getAccountHolderType() {
+      return accountHolderType;
+    }
+
+    public String getFirstName() {
+      return firstName;
+    }
+
+    public String getLastName() {
+      return lastName;
+    }
+
+    public String getCompany() {
+      return company;
+    }
+
+    public Scheme getScheme() {
+      return scheme;
+    }
+
+    public String getLast4() {
+      return last4;
+    }
+
+    public EcheckType getEcheckType() {
+      return echeckType;
+    }
+
+    /** Get the form data for this request. */
+    public Map<String, Object> toFormData() {
+      Map<String, Object> formData = new LinkedHashMap<>();
+
+      if (this.accountType != null) {
+
+        formData.put("account_type", this.accountType);
+      }
+
+      if (this.accountHolderType != null) {
+
+        formData.put("account_holder_type", this.accountHolderType);
+      }
+
+      if (this.firstName != null) {
+
+        formData.put("first_name", this.firstName);
+      }
+
+      if (this.lastName != null) {
+
+        formData.put("last_name", this.lastName);
+      }
+
+      if (this.company != null) {
+
+        formData.put("company", this.company);
+      }
+
+      if (this.scheme != null) {
+
+        formData.put("scheme", this.scheme);
+      }
+
+      if (this.last4 != null) {
+
+        formData.put("last4", this.last4);
+      }
+
+      if (this.echeckType != null) {
+
+        formData.put("echeck_type", this.echeckType);
+      }
+
+      return formData;
+    }
+
+    /** Create a new builder for BankAccountParams. */
+    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
+    public static BankAccountBuilder builder() {
+      return new BankAccountBuilder();
+    }
+
+    public static final class BankAccountBuilder {
+
+      private AccountType accountType;
+
+      private AccountHolderType accountHolderType;
+
+      private String firstName;
+
+      private String lastName;
+
+      private String company;
+
+      private Scheme scheme;
+
+      private String last4;
+
+      private EcheckType echeckType;
+
+      private BankAccountBuilder() {}
+
+      public BankAccountBuilder accountType(AccountType value) {
+        this.accountType = value;
+        return this;
+      }
+
+      public BankAccountBuilder accountHolderType(AccountHolderType value) {
+        this.accountHolderType = value;
+        return this;
+      }
+
+      public BankAccountBuilder firstName(String value) {
+        this.firstName = value;
+        return this;
+      }
+
+      public BankAccountBuilder lastName(String value) {
+        this.lastName = value;
+        return this;
+      }
+
+      public BankAccountBuilder company(String value) {
+        this.company = value;
+        return this;
+      }
+
+      public BankAccountBuilder scheme(Scheme value) {
+        this.scheme = value;
+        return this;
+      }
+
+      public BankAccountBuilder last4(String value) {
+        this.last4 = value;
+        return this;
+      }
+
+      public BankAccountBuilder echeckType(EcheckType value) {
+        this.echeckType = value;
+        return this;
+      }
+
+      public BankAccountParams build() {
+        return new BankAccountParams(this);
+      }
+    }
+
+    public enum AccountType {
+      CHECKING("checking"),
+
+      SAVINGS("savings"),
+
+      BUSINESS_CHECKING("business_checking"),
+
+      CURRENT("current"),
+
+      /** An enum member indicating that AccountType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      AccountType(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static AccountType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (AccountType enumValue : AccountType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum AccountHolderType {
+      INDIVIDUAL("individual"),
+
+      COMPANY("company"),
+
+      /**
+       * An enum member indicating that AccountHolderType was instantiated with an unknown value.
+       */
+      _UNKNOWN(null);
+      private final String value;
+
+      AccountHolderType(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static AccountHolderType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (AccountHolderType enumValue : AccountHolderType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum Scheme {
+      ACH("ach"),
+
+      BACS("bacs"),
+
+      SEPA_CORE("sepa_core"),
+
+      AUTOGIRO("autogiro"),
+
+      BECS("becs"),
+
+      BECS_NZ("becs_nz"),
+
+      PAD("pad"),
+
+      /** An enum member indicating that Scheme was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      Scheme(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static Scheme fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Scheme enumValue : Scheme.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum EcheckType {
+      WEB("web"),
+
+      PPD("ppd"),
+
+      CCD("ccd"),
+
+      /** An enum member indicating that EcheckType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      EcheckType(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static EcheckType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EcheckType enumValue : EcheckType.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }

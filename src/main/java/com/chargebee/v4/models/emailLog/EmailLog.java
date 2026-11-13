@@ -21,6 +21,7 @@ public class EmailLog {
   private Status status;
   private Timestamp sentOn;
   private String customerId;
+  private String emailConversationId;
   private String siteId;
   private String businessEntityId;
   private String brandId;
@@ -56,6 +57,10 @@ public class EmailLog {
 
   public String getCustomerId() {
     return customerId;
+  }
+
+  public String getEmailConversationId() {
+    return emailConversationId;
   }
 
   public String getSiteId() {
@@ -143,6 +148,8 @@ public class EmailLog {
 
     obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
+    obj.emailConversationId = JsonUtil.getString(jsonObj, "email_conversation_id");
+
     obj.siteId = JsonUtil.getString(jsonObj, "site_id");
 
     obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
@@ -173,6 +180,8 @@ public class EmailLog {
         + sentOn
         + ", customerId="
         + customerId
+        + ", emailConversationId="
+        + emailConversationId
         + ", siteId="
         + siteId
         + ", businessEntityId="
@@ -198,6 +207,7 @@ public class EmailLog {
         && java.util.Objects.equals(status, that.status)
         && java.util.Objects.equals(sentOn, that.sentOn)
         && java.util.Objects.equals(customerId, that.customerId)
+        && java.util.Objects.equals(emailConversationId, that.emailConversationId)
         && java.util.Objects.equals(siteId, that.siteId)
         && java.util.Objects.equals(businessEntityId, that.businessEntityId)
         && java.util.Objects.equals(brandId, that.brandId)
@@ -216,6 +226,7 @@ public class EmailLog {
         status,
         sentOn,
         customerId,
+        emailConversationId,
         siteId,
         businessEntityId,
         brandId,

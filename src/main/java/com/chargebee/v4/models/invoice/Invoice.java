@@ -52,12 +52,14 @@ public class Invoice {
   private Boolean firstInvoice;
   private Long newSalesAmount;
   private Boolean hasAdvanceCharges;
+  private OfflinePaymentMethod offlinePaymentMethod;
   private Boolean termFinalized;
   private Boolean isGifted;
   private Timestamp generatedAt;
   private Timestamp expectedPaymentDate;
   private Long amountToCollect;
   private Long roundOffAmount;
+  private String retrySegmentId;
   private String voidReasonCode;
   private Boolean deleted;
   private String taxCategory;
@@ -235,6 +237,10 @@ public class Invoice {
     return hasAdvanceCharges;
   }
 
+  public OfflinePaymentMethod getOfflinePaymentMethod() {
+    return offlinePaymentMethod;
+  }
+
   public Boolean getTermFinalized() {
     return termFinalized;
   }
@@ -257,6 +263,10 @@ public class Invoice {
 
   public Long getRoundOffAmount() {
     return roundOffAmount;
+  }
+
+  public String getRetrySegmentId() {
+    return retrySegmentId;
   }
 
   public String getVoidReasonCode() {
@@ -495,6 +505,58 @@ public class Invoice {
     }
   }
 
+  public enum OfflinePaymentMethod {
+    NO_PREFERENCE("no_preference"),
+
+    CASH("cash"),
+
+    CHECK("check"),
+
+    BANK_TRANSFER("bank_transfer"),
+
+    ACH_CREDIT("ach_credit"),
+
+    SEPA_CREDIT("sepa_credit"),
+
+    BOLETO("boleto"),
+
+    US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
+
+    EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
+
+    UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
+
+    JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
+
+    MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
+
+    CUSTOM("custom"),
+
+    /**
+     * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    OfflinePaymentMethod(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static OfflinePaymentMethod fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (OfflinePaymentMethod enumValue : OfflinePaymentMethod.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public enum Channel {
     WEB("web"),
 
@@ -610,6 +672,8 @@ public class Invoice {
 
     knownFields.add("has_advance_charges");
 
+    knownFields.add("offline_payment_method");
+
     knownFields.add("term_finalized");
 
     knownFields.add("is_gifted");
@@ -621,6 +685,8 @@ public class Invoice {
     knownFields.add("amount_to_collect");
 
     knownFields.add("round_off_amount");
+
+    knownFields.add("retry_segment_id");
 
     knownFields.add("void_reason_code");
 
@@ -754,6 +820,9 @@ public class Invoice {
 
     obj.hasAdvanceCharges = JsonUtil.getBoolean(jsonObj, "has_advance_charges");
 
+    obj.offlinePaymentMethod =
+        OfflinePaymentMethod.fromString(JsonUtil.getString(jsonObj, "offline_payment_method"));
+
     obj.termFinalized = JsonUtil.getBoolean(jsonObj, "term_finalized");
 
     obj.isGifted = JsonUtil.getBoolean(jsonObj, "is_gifted");
@@ -765,6 +834,8 @@ public class Invoice {
     obj.amountToCollect = JsonUtil.getLong(jsonObj, "amount_to_collect");
 
     obj.roundOffAmount = JsonUtil.getLong(jsonObj, "round_off_amount");
+
+    obj.retrySegmentId = JsonUtil.getString(jsonObj, "retry_segment_id");
 
     obj.voidReasonCode = JsonUtil.getString(jsonObj, "void_reason_code");
 
@@ -954,6 +1025,8 @@ public class Invoice {
         + newSalesAmount
         + ", hasAdvanceCharges="
         + hasAdvanceCharges
+        + ", offlinePaymentMethod="
+        + offlinePaymentMethod
         + ", termFinalized="
         + termFinalized
         + ", isGifted="
@@ -966,6 +1039,8 @@ public class Invoice {
         + amountToCollect
         + ", roundOffAmount="
         + roundOffAmount
+        + ", retrySegmentId="
+        + retrySegmentId
         + ", voidReasonCode="
         + voidReasonCode
         + ", deleted="
@@ -1073,12 +1148,14 @@ public class Invoice {
         && java.util.Objects.equals(firstInvoice, that.firstInvoice)
         && java.util.Objects.equals(newSalesAmount, that.newSalesAmount)
         && java.util.Objects.equals(hasAdvanceCharges, that.hasAdvanceCharges)
+        && java.util.Objects.equals(offlinePaymentMethod, that.offlinePaymentMethod)
         && java.util.Objects.equals(termFinalized, that.termFinalized)
         && java.util.Objects.equals(isGifted, that.isGifted)
         && java.util.Objects.equals(generatedAt, that.generatedAt)
         && java.util.Objects.equals(expectedPaymentDate, that.expectedPaymentDate)
         && java.util.Objects.equals(amountToCollect, that.amountToCollect)
         && java.util.Objects.equals(roundOffAmount, that.roundOffAmount)
+        && java.util.Objects.equals(retrySegmentId, that.retrySegmentId)
         && java.util.Objects.equals(voidReasonCode, that.voidReasonCode)
         && java.util.Objects.equals(deleted, that.deleted)
         && java.util.Objects.equals(taxCategory, that.taxCategory)
@@ -1152,12 +1229,14 @@ public class Invoice {
         firstInvoice,
         newSalesAmount,
         hasAdvanceCharges,
+        offlinePaymentMethod,
         termFinalized,
         isGifted,
         generatedAt,
         expectedPaymentDate,
         amountToCollect,
         roundOffAmount,
+        retrySegmentId,
         voidReasonCode,
         deleted,
         taxCategory,

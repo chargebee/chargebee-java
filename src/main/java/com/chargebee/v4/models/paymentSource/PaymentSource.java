@@ -1951,9 +1951,14 @@ public class PaymentSource {
   public static class NetworkTransactionReference {
 
     private String originalNetworkTransactionId;
+    private String transactionLinkId;
 
     public String getOriginalNetworkTransactionId() {
       return originalNetworkTransactionId;
+    }
+
+    public String getTransactionLinkId() {
+      return transactionLinkId;
     }
 
     public static NetworkTransactionReference fromJson(String json) {
@@ -1970,6 +1975,8 @@ public class PaymentSource {
       obj.originalNetworkTransactionId =
           JsonUtil.getString(jsonObj, "original_network_transaction_id");
 
+      obj.transactionLinkId = JsonUtil.getString(jsonObj, "transaction_link_id");
+
       return obj;
     }
 
@@ -1978,6 +1985,8 @@ public class PaymentSource {
       return "NetworkTransactionReference{"
           + "originalNetworkTransactionId="
           + originalNetworkTransactionId
+          + ", transactionLinkId="
+          + transactionLinkId
           + "}";
     }
 
@@ -1988,13 +1997,14 @@ public class PaymentSource {
 
       NetworkTransactionReference that = (NetworkTransactionReference) o;
       return java.util.Objects.equals(
-          originalNetworkTransactionId, that.originalNetworkTransactionId);
+              originalNetworkTransactionId, that.originalNetworkTransactionId)
+          && java.util.Objects.equals(transactionLinkId, that.transactionLinkId);
     }
 
     @Override
     public int hashCode() {
 
-      return java.util.Objects.hash(originalNetworkTransactionId);
+      return java.util.Objects.hash(originalNetworkTransactionId, transactionLinkId);
     }
   }
 }

@@ -38,6 +38,8 @@ public final class HostedPageCheckoutNewForItemsParams {
 
   private final String passThruContent;
 
+  private final Boolean showBillingFrequencySelector;
+
   private final Boolean allowOfflinePaymentMethods;
 
   private final SubscriptionParams subscription;
@@ -59,6 +61,8 @@ public final class HostedPageCheckoutNewForItemsParams {
   private final List<ItemTiersParams> itemTiers;
 
   private final List<EntityIdentifiersParams> entityIdentifiers;
+
+  private final List<AllowedBillingFrequenciesParams> allowedBillingFrequencies;
 
   private HostedPageCheckoutNewForItemsParams(HostedPageCheckoutNewForItemsBuilder builder) {
 
@@ -84,6 +88,8 @@ public final class HostedPageCheckoutNewForItemsParams {
 
     this.passThruContent = builder.passThruContent;
 
+    this.showBillingFrequencySelector = builder.showBillingFrequencySelector;
+
     this.allowOfflinePaymentMethods = builder.allowOfflinePaymentMethods;
 
     this.subscription = builder.subscription;
@@ -105,6 +111,8 @@ public final class HostedPageCheckoutNewForItemsParams {
     this.itemTiers = builder.itemTiers;
 
     this.entityIdentifiers = builder.entityIdentifiers;
+
+    this.allowedBillingFrequencies = builder.allowedBillingFrequencies;
   }
 
   public Layout getLayout() {
@@ -151,6 +159,10 @@ public final class HostedPageCheckoutNewForItemsParams {
     return passThruContent;
   }
 
+  public Boolean getShowBillingFrequencySelector() {
+    return showBillingFrequencySelector;
+  }
+
   public Boolean getAllowOfflinePaymentMethods() {
     return allowOfflinePaymentMethods;
   }
@@ -193,6 +205,10 @@ public final class HostedPageCheckoutNewForItemsParams {
 
   public List<EntityIdentifiersParams> getEntityIdentifiers() {
     return entityIdentifiers;
+  }
+
+  public List<AllowedBillingFrequenciesParams> getAllowedBillingFrequencies() {
+    return allowedBillingFrequencies;
   }
 
   /** Get the form data for this request. */
@@ -252,6 +268,11 @@ public final class HostedPageCheckoutNewForItemsParams {
     if (this.passThruContent != null) {
 
       formData.put("pass_thru_content", this.passThruContent);
+    }
+
+    if (this.showBillingFrequencySelector != null) {
+
+      formData.put("show_billing_frequency_selector", this.showBillingFrequencySelector);
     }
 
     if (this.allowOfflinePaymentMethods != null) {
@@ -379,6 +400,21 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
     }
 
+    if (this.allowedBillingFrequencies != null) {
+
+      // List of objects
+      for (int i = 0; i < this.allowedBillingFrequencies.size(); i++) {
+        AllowedBillingFrequenciesParams item = this.allowedBillingFrequencies.get(i);
+        if (item != null) {
+          Map<String, Object> itemData = item.toFormData();
+          for (Map.Entry<String, Object> entry : itemData.entrySet()) {
+            String indexedKey = "allowed_billing_frequencies[" + entry.getKey() + "][" + i + "]";
+            formData.put(indexedKey, entry.getValue());
+          }
+        }
+      }
+    }
+
     return formData;
   }
 
@@ -412,6 +448,8 @@ public final class HostedPageCheckoutNewForItemsParams {
 
     private String passThruContent;
 
+    private Boolean showBillingFrequencySelector;
+
     private Boolean allowOfflinePaymentMethods;
 
     private SubscriptionParams subscription;
@@ -433,6 +471,8 @@ public final class HostedPageCheckoutNewForItemsParams {
     private List<ItemTiersParams> itemTiers;
 
     private List<EntityIdentifiersParams> entityIdentifiers;
+
+    private List<AllowedBillingFrequenciesParams> allowedBillingFrequencies;
 
     private HostedPageCheckoutNewForItemsBuilder() {}
 
@@ -491,6 +531,11 @@ public final class HostedPageCheckoutNewForItemsParams {
       return this;
     }
 
+    public HostedPageCheckoutNewForItemsBuilder showBillingFrequencySelector(Boolean value) {
+      this.showBillingFrequencySelector = value;
+      return this;
+    }
+
     public HostedPageCheckoutNewForItemsBuilder allowOfflinePaymentMethods(Boolean value) {
       this.allowOfflinePaymentMethods = value;
       return this;
@@ -545,6 +590,12 @@ public final class HostedPageCheckoutNewForItemsParams {
     public HostedPageCheckoutNewForItemsBuilder entityIdentifiers(
         List<EntityIdentifiersParams> value) {
       this.entityIdentifiers = value;
+      return this;
+    }
+
+    public HostedPageCheckoutNewForItemsBuilder allowedBillingFrequencies(
+        List<AllowedBillingFrequenciesParams> value) {
+      this.allowedBillingFrequencies = value;
       return this;
     }
 
@@ -3427,6 +3478,106 @@ public final class HostedPageCheckoutNewForItemsParams {
       public static Operation fromString(String value) {
         if (value == null) return _UNKNOWN;
         for (Operation enumValue : Operation.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+  }
+
+  public static final class AllowedBillingFrequenciesParams {
+
+    private final Integer period;
+
+    private final PeriodUnit periodUnit;
+
+    private AllowedBillingFrequenciesParams(AllowedBillingFrequenciesBuilder builder) {
+
+      this.period = builder.period;
+
+      this.periodUnit = builder.periodUnit;
+    }
+
+    public Integer getPeriod() {
+      return period;
+    }
+
+    public PeriodUnit getPeriodUnit() {
+      return periodUnit;
+    }
+
+    /** Get the form data for this request. */
+    public Map<String, Object> toFormData() {
+      Map<String, Object> formData = new LinkedHashMap<>();
+
+      if (this.period != null) {
+
+        formData.put("period", this.period);
+      }
+
+      if (this.periodUnit != null) {
+
+        formData.put("period_unit", this.periodUnit);
+      }
+
+      return formData;
+    }
+
+    /** Create a new builder for AllowedBillingFrequenciesParams. */
+    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
+    public static AllowedBillingFrequenciesBuilder builder() {
+      return new AllowedBillingFrequenciesBuilder();
+    }
+
+    public static final class AllowedBillingFrequenciesBuilder {
+
+      private Integer period;
+
+      private PeriodUnit periodUnit;
+
+      private AllowedBillingFrequenciesBuilder() {}
+
+      public AllowedBillingFrequenciesBuilder period(Integer value) {
+        this.period = value;
+        return this;
+      }
+
+      public AllowedBillingFrequenciesBuilder periodUnit(PeriodUnit value) {
+        this.periodUnit = value;
+        return this;
+      }
+
+      public AllowedBillingFrequenciesParams build() {
+        return new AllowedBillingFrequenciesParams(this);
+      }
+    }
+
+    public enum PeriodUnit {
+      DAY("day"),
+
+      WEEK("week"),
+
+      MONTH("month"),
+
+      YEAR("year"),
+
+      /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      PeriodUnit(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static PeriodUnit fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PeriodUnit enumValue : PeriodUnit.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }

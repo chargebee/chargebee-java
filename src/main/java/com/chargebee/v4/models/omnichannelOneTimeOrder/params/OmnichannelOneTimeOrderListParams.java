@@ -145,6 +145,10 @@ public final class OmnichannelOneTimeOrderListParams {
 
     GOOGLE_PLAY_STORE("google_play_store"),
 
+    ROKU("roku"),
+
+    AMAZON_APP_STORE("amazon_app_store"),
+
     /** An enum member indicating that SourceIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -172,6 +176,10 @@ public final class OmnichannelOneTimeOrderListParams {
     APPLE_APP_STORE("apple_app_store"),
 
     GOOGLE_PLAY_STORE("google_play_store"),
+
+    ROKU("roku"),
+
+    AMAZON_APP_STORE("amazon_app_store"),
 
     /** An enum member indicating that SourceIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -201,6 +209,10 @@ public final class OmnichannelOneTimeOrderListParams {
 
     GOOGLE_PLAY_STORE("google_play_store"),
 
+    ROKU("roku"),
+
+    AMAZON_APP_STORE("amazon_app_store"),
+
     /** An enum member indicating that SourceIn was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -229,6 +241,10 @@ public final class OmnichannelOneTimeOrderListParams {
 
     GOOGLE_PLAY_STORE("google_play_store"),
 
+    ROKU("roku"),
+
+    AMAZON_APP_STORE("amazon_app_store"),
+
     /** An enum member indicating that SourceNotIn was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -256,6 +272,10 @@ public final class OmnichannelOneTimeOrderListParams {
     APPLE_APP_STORE("apple_app_store"),
 
     GOOGLE_PLAY_STORE("google_play_store"),
+
+    ROKU("roku"),
+
+    AMAZON_APP_STORE("amazon_app_store"),
 
     /** An enum member indicating that Source was instantiated with an unknown value. */
     _UNKNOWN(null);

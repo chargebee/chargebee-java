@@ -4419,6 +4419,8 @@ public final class SubscriptionUpdateForItemsParams {
 
     private final String id;
 
+    private final String description;
+
     private DiscountsParams(DiscountsBuilder builder) {
 
       this.applyOn = builder.applyOn;
@@ -4442,6 +4444,8 @@ public final class SubscriptionUpdateForItemsParams {
       this.operationType = builder.operationType;
 
       this.id = builder.id;
+
+      this.description = builder.description;
     }
 
     public ApplyOn getApplyOn() {
@@ -4486,6 +4490,10 @@ public final class SubscriptionUpdateForItemsParams {
 
     public String getId() {
       return id;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     /** Get the form data for this request. */
@@ -4547,6 +4555,11 @@ public final class SubscriptionUpdateForItemsParams {
         formData.put("id", this.id);
       }
 
+      if (this.description != null) {
+
+        formData.put("description", this.description);
+      }
+
       return formData;
     }
 
@@ -4579,6 +4592,8 @@ public final class SubscriptionUpdateForItemsParams {
       private OperationType operationType;
 
       private String id;
+
+      private String description;
 
       private DiscountsBuilder() {}
 
@@ -4634,6 +4649,11 @@ public final class SubscriptionUpdateForItemsParams {
 
       public DiscountsBuilder id(String value) {
         this.id = value;
+        return this;
+      }
+
+      public DiscountsBuilder description(String value) {
+        this.description = value;
         return this;
       }
 

@@ -19,6 +19,7 @@ public class OmnichannelSubscription {
   private String appId;
   private Source source;
   private String customerId;
+  private String origin;
   private Timestamp createdAt;
   private Timestamp purchasedAt;
   private Timestamp updatedAt;
@@ -44,6 +45,10 @@ public class OmnichannelSubscription {
 
   public String getCustomerId() {
     return customerId;
+  }
+
+  public String getOrigin() {
+    return origin;
   }
 
   public Timestamp getCreatedAt() {
@@ -74,6 +79,10 @@ public class OmnichannelSubscription {
     APPLE_APP_STORE("apple_app_store"),
 
     GOOGLE_PLAY_STORE("google_play_store"),
+
+    ROKU("roku"),
+
+    AMAZON_APP_STORE("amazon_app_store"),
 
     /** An enum member indicating that Source was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -119,6 +128,8 @@ public class OmnichannelSubscription {
 
     obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
+    obj.origin = JsonUtil.getString(jsonObj, "origin");
+
     obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
     obj.purchasedAt = JsonUtil.getTimestamp(jsonObj, "purchased_at");
@@ -155,6 +166,8 @@ public class OmnichannelSubscription {
         + source
         + ", customerId="
         + customerId
+        + ", origin="
+        + origin
         + ", createdAt="
         + createdAt
         + ", purchasedAt="
@@ -181,6 +194,7 @@ public class OmnichannelSubscription {
         && java.util.Objects.equals(appId, that.appId)
         && java.util.Objects.equals(source, that.source)
         && java.util.Objects.equals(customerId, that.customerId)
+        && java.util.Objects.equals(origin, that.origin)
         && java.util.Objects.equals(createdAt, that.createdAt)
         && java.util.Objects.equals(purchasedAt, that.purchasedAt)
         && java.util.Objects.equals(updatedAt, that.updatedAt)
@@ -198,6 +212,7 @@ public class OmnichannelSubscription {
         appId,
         source,
         customerId,
+        origin,
         createdAt,
         purchasedAt,
         updatedAt,
@@ -217,8 +232,10 @@ public class OmnichannelSubscription {
     private Timestamp currentTermEnd;
     private Timestamp expiredAt;
     private ExpirationReason expirationReason;
+    private String expirationReasonAtSource;
     private Timestamp cancelledAt;
     private CancellationReason cancellationReason;
+    private String cancellationReasonAtSource;
     private Timestamp gracePeriodExpiresAt;
     private Timestamp resumesAt;
     private Boolean hasScheduledChanges;
@@ -264,12 +281,20 @@ public class OmnichannelSubscription {
       return expirationReason;
     }
 
+    public String getExpirationReasonAtSource() {
+      return expirationReasonAtSource;
+    }
+
     public Timestamp getCancelledAt() {
       return cancelledAt;
     }
 
     public CancellationReason getCancellationReason() {
       return cancellationReason;
+    }
+
+    public String getCancellationReasonAtSource() {
+      return cancellationReasonAtSource;
     }
 
     public Timestamp getGracePeriodExpiresAt() {
@@ -411,6 +436,8 @@ public class OmnichannelSubscription {
 
       MERCHANT_REVOKED("merchant_revoked"),
 
+      OTHER("other"),
+
       /**
        * An enum member indicating that CancellationReason was instantiated with an unknown value.
        */
@@ -467,10 +494,14 @@ public class OmnichannelSubscription {
       obj.expirationReason =
           ExpirationReason.fromString(JsonUtil.getString(jsonObj, "expiration_reason"));
 
+      obj.expirationReasonAtSource = JsonUtil.getString(jsonObj, "expiration_reason_at_source");
+
       obj.cancelledAt = JsonUtil.getTimestamp(jsonObj, "cancelled_at");
 
       obj.cancellationReason =
           CancellationReason.fromString(JsonUtil.getString(jsonObj, "cancellation_reason"));
+
+      obj.cancellationReasonAtSource = JsonUtil.getString(jsonObj, "cancellation_reason_at_source");
 
       obj.gracePeriodExpiresAt = JsonUtil.getTimestamp(jsonObj, "grace_period_expires_at");
 
@@ -521,10 +552,14 @@ public class OmnichannelSubscription {
           + expiredAt
           + ", expirationReason="
           + expirationReason
+          + ", expirationReasonAtSource="
+          + expirationReasonAtSource
           + ", cancelledAt="
           + cancelledAt
           + ", cancellationReason="
           + cancellationReason
+          + ", cancellationReasonAtSource="
+          + cancellationReasonAtSource
           + ", gracePeriodExpiresAt="
           + gracePeriodExpiresAt
           + ", resumesAt="
@@ -559,8 +594,10 @@ public class OmnichannelSubscription {
           && java.util.Objects.equals(currentTermEnd, that.currentTermEnd)
           && java.util.Objects.equals(expiredAt, that.expiredAt)
           && java.util.Objects.equals(expirationReason, that.expirationReason)
+          && java.util.Objects.equals(expirationReasonAtSource, that.expirationReasonAtSource)
           && java.util.Objects.equals(cancelledAt, that.cancelledAt)
           && java.util.Objects.equals(cancellationReason, that.cancellationReason)
+          && java.util.Objects.equals(cancellationReasonAtSource, that.cancellationReasonAtSource)
           && java.util.Objects.equals(gracePeriodExpiresAt, that.gracePeriodExpiresAt)
           && java.util.Objects.equals(resumesAt, that.resumesAt)
           && java.util.Objects.equals(hasScheduledChanges, that.hasScheduledChanges)
@@ -585,8 +622,10 @@ public class OmnichannelSubscription {
           currentTermEnd,
           expiredAt,
           expirationReason,
+          expirationReasonAtSource,
           cancelledAt,
           cancellationReason,
+          cancellationReasonAtSource,
           gracePeriodExpiresAt,
           resumesAt,
           hasScheduledChanges,

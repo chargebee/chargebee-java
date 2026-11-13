@@ -13,9 +13,23 @@ import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 import java.util.concurrent.CompletableFuture;
 
+import com.chargebee.v4.models.businessEntity.params.BusinessEntityUpdateParams;
+
+import com.chargebee.v4.models.businessEntity.params.BusinessEntityListParams;
+
+import com.chargebee.v4.models.businessEntity.params.BusinessEntityCreateParams;
+
 import com.chargebee.v4.models.businessEntity.params.BusinessEntityGetTransfersParams;
 
 import com.chargebee.v4.models.businessEntity.params.BusinessEntityCreateTransfersParams;
+
+import com.chargebee.v4.models.businessEntity.responses.BusinessEntityRetrieveResponse;
+
+import com.chargebee.v4.models.businessEntity.responses.BusinessEntityUpdateResponse;
+
+import com.chargebee.v4.models.businessEntity.responses.BusinessEntityListResponse;
+
+import com.chargebee.v4.models.businessEntity.responses.BusinessEntityCreateResponse;
 
 import com.chargebee.v4.models.businessEntity.responses.BusinessEntityGetTransfersResponse;
 
@@ -55,6 +69,198 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
   }
 
   // === Operations ===
+
+  /** retrieve a businessEntity (executes immediately) - returns raw Response. */
+  Response retrieveRaw(String businessEntityId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/business_entities/{business-entity-id}", "business-entity-id", businessEntityId);
+
+    return get("businessEntity", "retrieve", path, null);
+  }
+
+  public BusinessEntityRetrieveResponse retrieve(String businessEntityId)
+      throws ChargebeeException {
+    Response response = retrieveRaw(businessEntityId);
+    return BusinessEntityRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for businessEntity without params. */
+  public CompletableFuture<BusinessEntityRetrieveResponse> retrieveAsync(String businessEntityId) {
+    String path =
+        buildPathWithParams(
+            "/business_entities/{business-entity-id}", "business-entity-id", businessEntityId);
+
+    return getAsync("businessEntity", "retrieve", path, null)
+        .thenApply(
+            response ->
+                BusinessEntityRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
+  /** update a businessEntity (executes immediately) - returns raw Response. */
+  Response updateRaw(String businessEntityId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/business_entities/{business-entity-id}", "business-entity-id", businessEntityId);
+
+    return post("businessEntity", "update", path, null);
+  }
+
+  /**
+   * update a businessEntity using immutable params (executes immediately) - returns raw Response.
+   */
+  Response updateRaw(String businessEntityId, BusinessEntityUpdateParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/business_entities/{business-entity-id}", "business-entity-id", businessEntityId);
+    return post("businessEntity", "update", path, params.toFormData());
+  }
+
+  /**
+   * update a businessEntity using raw JSON payload (executes immediately) - returns raw Response.
+   */
+  Response updateRaw(String businessEntityId, String jsonPayload) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/business_entities/{business-entity-id}", "business-entity-id", businessEntityId);
+    return postJson("businessEntity", "update", path, jsonPayload);
+  }
+
+  public BusinessEntityUpdateResponse update(
+      String businessEntityId, BusinessEntityUpdateParams params) throws ChargebeeException {
+    Response response = updateRaw(businessEntityId, params);
+    return BusinessEntityUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of update for businessEntity with params. */
+  public CompletableFuture<BusinessEntityUpdateResponse> updateAsync(
+      String businessEntityId, BusinessEntityUpdateParams params) {
+    String path =
+        buildPathWithParams(
+            "/business_entities/{business-entity-id}", "business-entity-id", businessEntityId);
+    return postAsync("businessEntity", "update", path, params.toFormData())
+        .thenApply(
+            response ->
+                BusinessEntityUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
+  public BusinessEntityUpdateResponse update(String businessEntityId) throws ChargebeeException {
+    Response response = updateRaw(businessEntityId);
+    return BusinessEntityUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of update for businessEntity without params. */
+  public CompletableFuture<BusinessEntityUpdateResponse> updateAsync(String businessEntityId) {
+    String path =
+        buildPathWithParams(
+            "/business_entities/{business-entity-id}", "business-entity-id", businessEntityId);
+
+    return postAsync("businessEntity", "update", path, null)
+        .thenApply(
+            response ->
+                BusinessEntityUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
+  /** list a businessEntity using immutable params (executes immediately) - returns raw Response. */
+  Response listRaw(BusinessEntityListParams params) throws ChargebeeException {
+
+    return get(
+        "businessEntity",
+        "list",
+        "/business_entities",
+        params != null ? params.toQueryParams() : null);
+  }
+
+  /** list a businessEntity without params (executes immediately) - returns raw Response. */
+  Response listRaw() throws ChargebeeException {
+
+    return get("businessEntity", "list", "/business_entities", null);
+  }
+
+  /** list a businessEntity using raw JSON payload (executes immediately) - returns raw Response. */
+  Response listRaw(String jsonPayload) throws ChargebeeException {
+
+    throw new UnsupportedOperationException("JSON payload not supported for GET operations");
+  }
+
+  public BusinessEntityListResponse list(BusinessEntityListParams params)
+      throws ChargebeeException {
+    Response response = listRaw(params);
+
+    return BusinessEntityListResponse.fromJson(response.getBodyAsString(), this, params, response);
+  }
+
+  /** Async variant of list for businessEntity with params. */
+  public CompletableFuture<BusinessEntityListResponse> listAsync(BusinessEntityListParams params) {
+
+    return getAsync(
+            "businessEntity",
+            "list",
+            "/business_entities",
+            params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                BusinessEntityListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
+  public BusinessEntityListResponse list() throws ChargebeeException {
+    Response response = listRaw();
+
+    return BusinessEntityListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  /** Async variant of list for businessEntity without params. */
+  public CompletableFuture<BusinessEntityListResponse> listAsync() {
+
+    return getAsync("businessEntity", "list", "/business_entities", null)
+        .thenApply(
+            response ->
+                BusinessEntityListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
+  }
+
+  /**
+   * create a businessEntity using immutable params (executes immediately) - returns raw Response.
+   */
+  Response createRaw(BusinessEntityCreateParams params) throws ChargebeeException {
+
+    return post(
+        "businessEntity",
+        "create",
+        "/business_entities",
+        params != null ? params.toFormData() : null);
+  }
+
+  /**
+   * create a businessEntity using raw JSON payload (executes immediately) - returns raw Response.
+   */
+  Response createRaw(String jsonPayload) throws ChargebeeException {
+
+    return postJson("businessEntity", "create", "/business_entities", jsonPayload);
+  }
+
+  public BusinessEntityCreateResponse create(BusinessEntityCreateParams params)
+      throws ChargebeeException {
+    Response response = createRaw(params);
+
+    return BusinessEntityCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of create for businessEntity with params. */
+  public CompletableFuture<BusinessEntityCreateResponse> createAsync(
+      BusinessEntityCreateParams params) {
+
+    return postAsync(
+            "businessEntity",
+            "create",
+            "/business_entities",
+            params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                BusinessEntityCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
 
   /**
    * getTransfers a businessEntity using immutable params (executes immediately) - returns raw

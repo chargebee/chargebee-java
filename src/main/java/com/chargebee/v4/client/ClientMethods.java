@@ -28,6 +28,8 @@ import com.chargebee.v4.services.OrderService;
 
 import com.chargebee.v4.services.ItemService;
 
+import com.chargebee.v4.services.CollectionsPaymentPromiseService;
+
 import com.chargebee.v4.services.RampService;
 
 import com.chargebee.v4.services.OmnichannelOneTimeOrderService;
@@ -96,9 +98,13 @@ import com.chargebee.v4.services.ThirdPartyConfigurationService;
 
 import com.chargebee.v4.services.UnbilledChargeService;
 
+import com.chargebee.v4.services.GatewayWebhookLogService;
+
 import com.chargebee.v4.services.TransactionService;
 
 import com.chargebee.v4.services.ThirdPartySyncDetailService;
+
+import com.chargebee.v4.services.PriceRampService;
 
 import com.chargebee.v4.services.EinvoiceService;
 
@@ -123,6 +129,8 @@ import com.chargebee.v4.services.Pc2MigrationItemFamilyService;
 import com.chargebee.v4.services.RecordedPurchaseService;
 
 import com.chargebee.v4.services.ExportService;
+
+import com.chargebee.v4.services.OrganizationDetailService;
 
 import com.chargebee.v4.services.CustomerEntitlementService;
 
@@ -174,7 +182,11 @@ import com.chargebee.v4.services.MediaService;
 
 import com.chargebee.v4.services.BusinessProfileService;
 
+import com.chargebee.v4.services.RetrySegmentService;
+
 import com.chargebee.v4.services.WebhookEndpointService;
+
+import com.chargebee.v4.services.GatewayRequestLogService;
 
 import com.chargebee.v4.services.AlertService;
 
@@ -303,6 +315,13 @@ public interface ClientMethods {
    * @return ItemService instance for fluent API access
    */
   ItemService items();
+
+  /**
+   * Access collections_payment_promise-related operations.
+   *
+   * @return CollectionsPaymentPromiseService instance for fluent API access
+   */
+  CollectionsPaymentPromiseService collectionsPaymentPromises();
 
   /**
    * Access ramp-related operations.
@@ -543,6 +562,13 @@ public interface ClientMethods {
   UnbilledChargeService unbilledCharges();
 
   /**
+   * Access gateway_webhook_log-related operations.
+   *
+   * @return GatewayWebhookLogService instance for fluent API access
+   */
+  GatewayWebhookLogService gatewayWebhookLogs();
+
+  /**
    * Access transaction-related operations.
    *
    * @return TransactionService instance for fluent API access
@@ -555,6 +581,13 @@ public interface ClientMethods {
    * @return ThirdPartySyncDetailService instance for fluent API access
    */
   ThirdPartySyncDetailService thirdPartySyncDetails();
+
+  /**
+   * Access price_ramp-related operations.
+   *
+   * @return PriceRampService instance for fluent API access
+   */
+  PriceRampService priceRamps();
 
   /**
    * Access einvoice-related operations.
@@ -639,6 +672,13 @@ public interface ClientMethods {
    * @return ExportService instance for fluent API access
    */
   ExportService exports();
+
+  /**
+   * Access organization_detail-related operations.
+   *
+   * @return OrganizationDetailService instance for fluent API access
+   */
+  OrganizationDetailService organizationDetails();
 
   /**
    * Access customer_entitlement-related operations.
@@ -816,11 +856,25 @@ public interface ClientMethods {
   BusinessProfileService businessProfiles();
 
   /**
+   * Access retry_segment-related operations.
+   *
+   * @return RetrySegmentService instance for fluent API access
+   */
+  RetrySegmentService retrySegments();
+
+  /**
    * Access webhook_endpoint-related operations.
    *
    * @return WebhookEndpointService instance for fluent API access
    */
   WebhookEndpointService webhookEndpoints();
+
+  /**
+   * Access gateway_request_log-related operations.
+   *
+   * @return GatewayRequestLogService instance for fluent API access
+   */
+  GatewayRequestLogService gatewayRequestLogs();
 
   /**
    * Access alert-related operations.

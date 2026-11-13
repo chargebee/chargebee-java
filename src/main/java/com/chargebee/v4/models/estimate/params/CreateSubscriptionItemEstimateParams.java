@@ -2096,6 +2096,8 @@ public final class CreateSubscriptionItemEstimateParams {
 
     private final Integer quantity;
 
+    private final String description;
+
     private DiscountsParams(DiscountsBuilder builder) {
 
       this.applyOn = builder.applyOn;
@@ -2115,6 +2117,8 @@ public final class CreateSubscriptionItemEstimateParams {
       this.itemPriceId = builder.itemPriceId;
 
       this.quantity = builder.quantity;
+
+      this.description = builder.description;
     }
 
     public ApplyOn getApplyOn() {
@@ -2151,6 +2155,10 @@ public final class CreateSubscriptionItemEstimateParams {
 
     public Integer getQuantity() {
       return quantity;
+    }
+
+    public String getDescription() {
+      return description;
     }
 
     /** Get the form data for this request. */
@@ -2202,6 +2210,11 @@ public final class CreateSubscriptionItemEstimateParams {
         formData.put("quantity", this.quantity);
       }
 
+      if (this.description != null) {
+
+        formData.put("description", this.description);
+      }
+
       return formData;
     }
 
@@ -2230,6 +2243,8 @@ public final class CreateSubscriptionItemEstimateParams {
       private String itemPriceId;
 
       private Integer quantity;
+
+      private String description;
 
       private DiscountsBuilder() {}
 
@@ -2275,6 +2290,11 @@ public final class CreateSubscriptionItemEstimateParams {
 
       public DiscountsBuilder quantity(Integer value) {
         this.quantity = value;
+        return this;
+      }
+
+      public DiscountsBuilder description(String value) {
+        this.description = value;
         return this;
       }
 

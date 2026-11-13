@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.chargebee"
-version = "4.17.2"
+version = "4.20.0"
 description = "Java client library for ChargeBee"
 
 // Project metadata

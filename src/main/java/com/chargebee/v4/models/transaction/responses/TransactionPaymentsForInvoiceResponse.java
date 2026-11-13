@@ -152,7 +152,7 @@ public final class TransactionPaymentsForInvoiceResponse {
   public java.util.List<String> header(String name) {
     if (httpResponse == null) return null;
     return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> name.equalsIgnoreCase(e.getKey()))
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
         .map(java.util.Map.Entry::getValue)
         .findFirst()
         .orElse(null);
