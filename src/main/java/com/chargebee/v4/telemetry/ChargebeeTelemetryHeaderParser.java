@@ -18,7 +18,9 @@ public final class ChargebeeTelemetryHeaderParser {
   static final String SF_BOOLEAN_TRUE = "?1";
   static final String SF_BOOLEAN_FALSE = "?0";
 
+  // RFC 9651 sf-integer: at most 15 digits, so values always fit a long (and a JS number).
   private static final Pattern INTEGER_PATTERN = Pattern.compile("-?\\d+");
+  private static final Pattern SF_INTEGER_PATTERN = Pattern.compile("-?\\d{1,15}");
   private static final Pattern DECIMAL_PATTERN = Pattern.compile("-?\\d+\\.\\d+");
 
   private ChargebeeTelemetryHeaderParser() {
@@ -115,16 +117,25 @@ public final class ChargebeeTelemetryHeaderParser {
       throw new IllegalArgumentException("missing parameter key");
     }
 
-    attributes.put(attributePrefix + key, parseScalarValue(rawValue));
+    Object value = parseScalarValue(rawValue);
+    if (value != null) {
+      attributes.put(attributePrefix + key, value);
+    }
   }
 
+  /**
+   * Parses one RFC 9651 bare item.
+   *
+   * @return the typed value, or {@code null} when the value is a malformed sf-integer or sf-date
+   *     (the caller skips only that parameter and keeps the rest of the header)
+   */
   static Object parseScalarValue(String rawValue) {
     if (rawValue == null || rawValue.isEmpty()) {
       throw new IllegalArgumentException("missing scalar value");
     }
 
     if (rawValue.startsWith(SF_DATE_PREFIX)) {
-      return Long.parseLong(rawValue.substring(SF_DATE_PREFIX.length()));
+      return parseSfInteger(rawValue.substring(SF_DATE_PREFIX.length()));
     }
     if (SF_BOOLEAN_TRUE.equals(rawValue)) {
       return Boolean.TRUE;
@@ -139,12 +150,16 @@ public final class ChargebeeTelemetryHeaderParser {
       return parseStringValue(rawValue);
     }
     if (INTEGER_PATTERN.matcher(rawValue).matches()) {
-      return Long.parseLong(rawValue);
+      return parseSfInteger(rawValue);
     }
     if (DECIMAL_PATTERN.matcher(rawValue).matches()) {
       return Double.parseDouble(rawValue);
     }
     return rawValue;
+  }
+
+  private static Long parseSfInteger(String value) {
+    return SF_INTEGER_PATTERN.matcher(value).matches() ? Long.valueOf(value) : null;
   }
 
   private static String parseStringValue(String rawValue) {

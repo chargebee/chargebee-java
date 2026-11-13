@@ -91,4 +91,29 @@ class ChargebeeTelemetryHeaderParserTest {
     assertTrue(ChargebeeTelemetryHeaderParser.parseToSpanAttributes("").isEmpty());
     assertTrue(ChargebeeTelemetryHeaderParser.parseToSpanAttributes(";;;").isEmpty());
   }
+
+  @Test
+  @DisplayName("Should skip only malformed sf-integer and sf-date parameters")
+  void shouldSkipOnlyMalformedNumericParameters() {
+    String header =
+        "cb;start_time=@abc;frac=@1.5;big=12345678901234567890;time_ms=3800, tp-stripe;time_ms=620";
+
+    Map<String, Object> attributes = ChargebeeTelemetryHeaderParser.parseToSpanAttributes(header);
+
+    assertFalse(attributes.containsKey("chargebee.telemetry.cb.start_time"));
+    assertFalse(attributes.containsKey("chargebee.telemetry.cb.frac"));
+    assertFalse(attributes.containsKey("chargebee.telemetry.cb.big"));
+    assertEquals(3800L, attributes.get("chargebee.telemetry.cb.time_ms"));
+    assertEquals(620L, attributes.get("chargebee.telemetry.tp.stripe.time_ms"));
+  }
+
+  @Test
+  @DisplayName("Should accept sf-integer values up to 15 digits")
+  void shouldAcceptFifteenDigitIntegers() {
+    assertEquals(999999999999999L, ChargebeeTelemetryHeaderParser.parseScalarValue("999999999999999"));
+    assertEquals(-999999999999999L, ChargebeeTelemetryHeaderParser.parseScalarValue("-999999999999999"));
+    assertNull(ChargebeeTelemetryHeaderParser.parseScalarValue("1000000000000000"));
+    assertEquals(1781280400L, ChargebeeTelemetryHeaderParser.parseScalarValue("@1781280400"));
+    assertNull(ChargebeeTelemetryHeaderParser.parseScalarValue("@"));
+  }
 }
