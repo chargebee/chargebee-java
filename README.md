@@ -717,22 +717,24 @@ Spans are named `chargebee.{resource}.{operation}` (e.g. `chargebee.subscription
 
 Chargebee returns `X-Chargebee-Telemetry` only when the client opts in with `Prefer: chargebee-telemetry=include`. Call `.preferChargebeeTelemetry(true)` on the client builder to have the SDK add that header on each request when a `telemetryAdapter` is configured (parsed into `chargebee.telemetry.*` span attributes). You can also set the `Prefer` header yourself on individual requests.
 
+For the header format and the meaning of each field, see [Response telemetry](https://apidocs.chargebee.com/docs/api/response-telemetry) in the API docs.
+
 On select APIs, Chargebee may include an `X-Chargebee-Telemetry` response header with a server-side timing breakdown — treat it as optional enrichment, not a required contract.
 
 When the header is present and a `telemetryAdapter` is configured, the SDK adds span attributes at request end in two layers:
 
 1. **Raw** — the full header string under `http.response.header.x-chargebee-telemetry` (audit, debug, or custom parsing)
-2. **Parsed** — typed flat attributes under `chargebee.telemetry.*` (ready for APM dashboards without writing an parser)
+2. **Parsed** — typed flat attributes under `chargebee.telemetry.*` (ready for APM dashboards without writing a parser)
 
 The header value is an [RFC 9651](https://www.rfc-editor.org/rfc/rfc9651) `sf-list`: comma-separated segments, each optionally followed by semicolon-separated `key=value` parameters.
 
 ```
-X-Chargebee-Telemetry: cb;start_time=@1781280400;time_ms=3800, tp-stripe;pm=card;time_ms=620, ft-account_hierarchy
+X-Chargebee-Telemetry: cb;start_time_epoch=1781280400;time_ms=3800, tp-stripe;pm=card;time_ms=620, ft-account_hierarchy
 ```
 
 | Segment | Meaning | Parsed span attributes |
 |---|---|---|
-| `cb;…` | Chargebee processing time | `chargebee.telemetry.cb.{param}` — e.g. `time_ms`, `start_time`, `res_wait_time_ms`, `tp_time_ms` |
+| `cb;…` | Chargebee processing time | `chargebee.telemetry.cb.{param}` — e.g. `time_ms`, `start_time_epoch`, `res_wait_time_ms`, `tp_time_ms` |
 | `tp-{provider};…` | Third-party call time (Stripe, Avalara, …) | `chargebee.telemetry.tp.{provider}.{param}` — e.g. `chargebee.telemetry.tp.stripe.time_ms` |
 | `ft-{feature}` | Feature flag active on this request (bare token, no params) | Collected into `chargebee.telemetry.features` (`string[]`) |
 
@@ -751,8 +753,8 @@ Parameter values are typed by RFC 9651 wire format and mapped to OTel-friendly t
 For the example header above, `result.getEndAttributes()` at span end includes:
 
 ```
-http.response.header.x-chargebee-telemetry  →  "cb;start_time=@1781280400;time_ms=3800, tp-stripe;pm=card;time_ms=620, ft-account_hierarchy"
-chargebee.telemetry.cb.start_time           →  1781280400
+http.response.header.x-chargebee-telemetry  →  "cb;start_time_epoch=1781280400;time_ms=3800, tp-stripe;pm=card;time_ms=620, ft-account_hierarchy"
+chargebee.telemetry.cb.start_time_epoch     →  1781280400
 chargebee.telemetry.cb.time_ms              →  3800
 chargebee.telemetry.tp.stripe.time_ms       →  620
 chargebee.telemetry.tp.stripe.pm            →  "card"
