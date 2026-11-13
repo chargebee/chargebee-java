@@ -721,7 +721,7 @@ For the header format and the meaning of each field, see [Response telemetry](ht
 
 On select APIs, Chargebee may include an `X-Chargebee-Telemetry` response header with a server-side timing breakdown — treat it as optional enrichment, not a required contract.
 
-When the header is present and a `telemetryAdapter` is configured, the SDK adds span attributes at request end in two layers:
+When the header is present and a `telemetryAdapter` is configured, the SDK passes these attributes to your adapter in `result.getResponseTelemetryAttributes()`, in two layers. They're kept separate from `result.getEndAttributes()`, so existing adapters see no change; forward both maps to your span to record them.
 
 1. **Raw** — the full header string under `http.response.header.x-chargebee-telemetry` (audit, debug, or custom parsing)
 2. **Parsed** — typed flat attributes under `chargebee.telemetry.*` (ready for APM dashboards without writing a parser)
@@ -750,7 +750,7 @@ Parameter values are typed by RFC 9651 wire format and mapped to OTel-friendly t
 | sf-boolean | `enabled=?1` / `?0` | `boolean` |
 | sf-binary | `payload=:aGVsbG8=:` | `string` (base64 payload) |
 
-For the example header above, `result.getEndAttributes()` at span end includes:
+For the example header above, `result.getResponseTelemetryAttributes()` at span end contains:
 
 ```
 http.response.header.x-chargebee-telemetry  →  "cb;start_time_epoch=1781280400;time_ms=3800, tp-stripe;pm=card;time_ms=620, ft-account_hierarchy"
@@ -865,32 +865,35 @@ class OtelTelemetryAdapter implements TelemetryAdapter {
       return;
     }
     Span span = (Span) handle;
-    result
-        .getEndAttributes()
-        .forEach(
-            (k, v) -> {
-              if (v instanceof String) {
-                span.setAttribute(k, (String) v);
-              } else if (v instanceof Long) {
-                span.setAttribute(k, (Long) v);
-              } else if (v instanceof Integer) {
-                span.setAttribute(k, ((Integer) v).longValue());
-              } else if (v instanceof Double) {
-                span.setAttribute(k, (Double) v);
-              } else if (v instanceof Boolean) {
-                span.setAttribute(k, (Boolean) v);
-              } else if (v instanceof List) {
-                @SuppressWarnings("unchecked")
-                List<String> values = (List<String>) v;
-                span.setAttribute(AttributeKey.stringArrayKey(k), values);
-              }
-            });
+    setAttributes(span, result.getEndAttributes());
+    setAttributes(span, result.getResponseTelemetryAttributes()); // X-Chargebee-Telemetry (Beta)
     if (result.getError() != null) {
       span.setStatus(StatusCode.ERROR, result.getError().getMessage());
     } else {
       span.setStatus(StatusCode.OK);
     }
     span.end();
+  }
+
+  private static void setAttributes(Span span, Map<String, Object> attributes) {
+    attributes.forEach(
+        (k, v) -> {
+          if (v instanceof String) {
+            span.setAttribute(k, (String) v);
+          } else if (v instanceof Long) {
+            span.setAttribute(k, (Long) v);
+          } else if (v instanceof Integer) {
+            span.setAttribute(k, ((Integer) v).longValue());
+          } else if (v instanceof Double) {
+            span.setAttribute(k, (Double) v);
+          } else if (v instanceof Boolean) {
+            span.setAttribute(k, (Boolean) v);
+          } else if (v instanceof List) {
+            @SuppressWarnings("unchecked")
+            List<String> values = (List<String>) v;
+            span.setAttribute(AttributeKey.stringArrayKey(k), values);
+          }
+        });
   }
 }
 

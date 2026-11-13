@@ -190,13 +190,18 @@ class TelemetryExecutorTest {
 
     client.sendWithRetry(request);
 
-    Map<String, Object> endAttributes = capturedResult[0].getEndAttributes();
+    Map<String, Object> telemetry = capturedResult[0].getResponseTelemetryAttributes();
     assertEquals(
         "cb;start_time=@1781280400;time_ms=3800, tp-stripe;pm=card;time_ms=620",
-        endAttributes.get("http.response.header.x-chargebee-telemetry"));
-    assertEquals(3800L, endAttributes.get("chargebee.telemetry.cb.time_ms"));
-    assertEquals(620L, endAttributes.get("chargebee.telemetry.tp.stripe.time_ms"));
-    assertEquals("card", endAttributes.get("chargebee.telemetry.tp.stripe.pm"));
+        telemetry.get("http.response.header.x-chargebee-telemetry"));
+    assertEquals(3800L, telemetry.get("chargebee.telemetry.cb.time_ms"));
+    assertEquals(620L, telemetry.get("chargebee.telemetry.tp.stripe.time_ms"));
+    assertEquals("card", telemetry.get("chargebee.telemetry.tp.stripe.pm"));
+
+    // Existing adapters see the same end attributes as before this feature.
+    assertEquals(
+        java.util.Collections.singletonMap(TelemetryAttributeKeys.HTTP_RESPONSE_STATUS_CODE, 200),
+        capturedResult[0].getEndAttributes());
   }
 
   @Test

@@ -239,7 +239,6 @@ public final class TelemetrySupport {
       RequestTelemetryResultInput result) {
     Map<String, Object> attributes = new HashMap<>();
     attributes.put(TelemetryAttributeKeys.HTTP_RESPONSE_STATUS_CODE, result.getHttpStatusCode());
-    attributes.putAll(buildResponseHeaderSpanAttributes(result.getResponseHeaders()));
 
     RequestTelemetryError error = result.getError();
     if (error != null) {
@@ -285,7 +284,8 @@ public final class TelemetrySupport {
         result.getHttpStatusCode(),
         result.getDurationMs(),
         result.getError(),
-        buildRequestEndSpanAttributes(result));
+        buildRequestEndSpanAttributes(result),
+        buildResponseHeaderSpanAttributes(result.getResponseHeaders()));
   }
 
   /** Extracts Chargebee error details from {@code err}, if present. */

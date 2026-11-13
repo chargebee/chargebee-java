@@ -17,17 +17,31 @@ public final class RequestTelemetryResult {
   private final long durationMs;
   private final RequestTelemetryError error;
   private final Map<String, Object> endAttributes;
+  private final Map<String, Object> responseTelemetryAttributes;
 
   public RequestTelemetryResult(
       int httpStatusCode,
       long durationMs,
       RequestTelemetryError error,
       Map<String, Object> endAttributes) {
+    this(httpStatusCode, durationMs, error, endAttributes, null);
+  }
+
+  public RequestTelemetryResult(
+      int httpStatusCode,
+      long durationMs,
+      RequestTelemetryError error,
+      Map<String, Object> endAttributes,
+      Map<String, Object> responseTelemetryAttributes) {
     this.httpStatusCode = httpStatusCode;
     this.durationMs = durationMs;
     this.error = error;
     this.endAttributes =
         endAttributes == null ? Collections.emptyMap() : Collections.unmodifiableMap(endAttributes);
+    this.responseTelemetryAttributes =
+        responseTelemetryAttributes == null
+            ? Collections.emptyMap()
+            : Collections.unmodifiableMap(responseTelemetryAttributes);
   }
 
   public int getHttpStatusCode() {
@@ -45,5 +59,16 @@ public final class RequestTelemetryResult {
   /** Prebuilt span attributes — pass these to your tracer. */
   public Map<String, Object> getEndAttributes() {
     return endAttributes;
+  }
+
+  /**
+   * Span attributes from the {@code X-Chargebee-Telemetry} response header (Beta): the raw value
+   * under {@code http.response.header.x-chargebee-telemetry} and parsed values under {@code
+   * chargebee.telemetry.*}. Values may be {@code String}, {@code Long}, {@code Double}, {@code
+   * Boolean} or {@code List<String>}. Empty when the header is absent. Kept separate from {@link
+   * #getEndAttributes()} so existing adapters are unaffected.
+   */
+  public Map<String, Object> getResponseTelemetryAttributes() {
+    return responseTelemetryAttributes;
   }
 }
