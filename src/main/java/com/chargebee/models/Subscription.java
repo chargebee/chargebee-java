@@ -47,6 +47,18 @@ public class Subscription extends Resource<Subscription> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum EntityType {
+        ADHOC,
+        PLAN_ITEM_PRICE,
+        ADDON_ITEM_PRICE,
+        CHARGE_ITEM_PRICE,
+        PLAN_SETUP,
+        PLAN,
+        ADDON,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public static class SubscriptionItem extends Resource<SubscriptionItem> {
         public enum ItemType {
              PLAN,ADDON,CHARGE,
@@ -614,6 +626,10 @@ public class Subscription extends Resource<Subscription> {
 
         public String invoiceName() {
             return optString("invoice_name");
+        }
+
+        public String description() {
+            return optString("description");
         }
 
         public Type type() {
@@ -2947,6 +2963,10 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("coupons[apply_till][" + index + "]", couponApplyTill);
             return this;
         }
+        public CreateWithItemsRequest discountDescription(int index, String discountDescription) {
+            params.addOpt("discounts[description][" + index + "]", discountDescription);
+            return this;
+        }
         public CreateWithItemsRequest subscriptionItemUsageAccumulationResetFrequency(int index, com.chargebee.models.enums.UsageAccumulationResetFrequency subscriptionItemUsageAccumulationResetFrequency) {
             params.addOpt("subscription_items[usage_accumulation_reset_frequency][" + index + "]", subscriptionItemUsageAccumulationResetFrequency);
             return this;
@@ -4602,6 +4622,10 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public UpdateForItemsRequest couponApplyTill(int index, Timestamp couponApplyTill) {
             params.addOpt("coupons[apply_till][" + index + "]", couponApplyTill);
+            return this;
+        }
+        public UpdateForItemsRequest discountDescription(int index, String discountDescription) {
+            params.addOpt("discounts[description][" + index + "]", discountDescription);
             return this;
         }
         public UpdateForItemsRequest subscriptionItemUsageAccumulationResetFrequency(int index, com.chargebee.models.enums.UsageAccumulationResetFrequency subscriptionItemUsageAccumulationResetFrequency) {

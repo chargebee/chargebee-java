@@ -43,6 +43,10 @@ public class Discount extends Resource<Discount> {
         return optString("invoice_name");
     }
 
+    public String description() {
+        return optString("description");
+    }
+
     public Type type() {
         return reqEnum("type", Type.class);
     }

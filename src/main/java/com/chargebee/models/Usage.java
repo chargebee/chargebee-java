@@ -13,6 +13,13 @@ import java.util.*;
 
 public class Usage extends Resource<Usage> {
 
+    public enum WindowSize {
+        DAY,
+        NONE,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     //Constructors
     //============
 
@@ -272,6 +279,10 @@ public class Usage extends Resource<Usage> {
         }
         public PdfRequest groupByAttributes(int index, JSONArray groupByAttributes) {
             params.addOpt("group_by[attributes][" + index + "]", groupByAttributes);
+            return this;
+        }
+        public PdfRequest groupByWindowSize(int index, Usage.WindowSize groupByWindowSize) {
+            params.addOpt("group_by[window_size][" + index + "]", groupByWindowSize);
             return this;
         }
         @Override

@@ -895,6 +895,10 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
             return this;
         }
+        public CreateSubItemEstimateRequest discountDescription(int index, String discountDescription) {
+            params.addOpt("discounts[description][" + index + "]", discountDescription);
+            return this;
+        }
         public CreateSubItemEstimateRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
             params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
             return this;
@@ -1502,6 +1506,10 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateSubItemForCustomerEstimateRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
             params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest discountDescription(int index, String discountDescription) {
+            params.addOpt("discounts[description][" + index + "]", discountDescription);
             return this;
         }
         @Override
@@ -2305,6 +2313,10 @@ public class Estimate extends Resource<Estimate> {
         }
         public UpdateSubscriptionForItemsRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
             params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest discountDescription(int index, String discountDescription) {
+            params.addOpt("discounts[description][" + index + "]", discountDescription);
             return this;
         }
         public UpdateSubscriptionForItemsRequest subscriptionItemProrationType(int index, com.chargebee.models.enums.ProrationType subscriptionItemProrationType) {
