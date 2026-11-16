@@ -39,13 +39,14 @@ final class TelemetryAdapterExecutor {
       return next.apply(request);
     }
 
+    Request telemetryRequest = maybeApplyResponseTelemetryPreferHeader(client, request);
     Map<String, String> adapterHeaders = new HashMap<>();
-    Object handle = startTelemetry(client, adapter, request, adapterHeaders);
+    Object handle = startTelemetry(client, adapter, telemetryRequest, adapterHeaders);
     long startTime = System.currentTimeMillis();
 
     try {
-      Response response = next.apply(withHeaders(request, adapterHeaders));
-      endTelemetrySuccess(adapter, handle, startTime, response.getStatusCode());
+      Response response = next.apply(withHeaders(telemetryRequest, adapterHeaders));
+      endTelemetrySuccess(adapter, handle, startTime, response);
       return response;
     } catch (RuntimeException err) {
       endTelemetryFailure(adapter, handle, startTime, err);
@@ -63,18 +64,19 @@ final class TelemetryAdapterExecutor {
       return next.apply(request);
     }
 
+    Request telemetryRequest = maybeApplyResponseTelemetryPreferHeader(client, request);
     Map<String, String> adapterHeaders = new HashMap<>();
-    Object handle = startTelemetry(client, adapter, request, adapterHeaders);
+    Object handle = startTelemetry(client, adapter, telemetryRequest, adapterHeaders);
     long startTime = System.currentTimeMillis();
 
-    return next.apply(withHeaders(request, adapterHeaders))
+    return next.apply(withHeaders(telemetryRequest, adapterHeaders))
         .whenComplete(
             (response, throwable) -> {
               if (throwable != null) {
                 Throwable cause = throwable.getCause() != null ? throwable.getCause() : throwable;
                 endTelemetryFailure(adapter, handle, startTime, cause);
               } else {
-                endTelemetrySuccess(adapter, handle, startTime, response.getStatusCode());
+                endTelemetrySuccess(adapter, handle, startTime, response);
               }
             });
   }
@@ -114,13 +116,16 @@ final class TelemetryAdapterExecutor {
 
   /** Invokes {@link TelemetryAdapter#onRequestEnd} for a successful response. */
   private static void endTelemetrySuccess(
-      TelemetryAdapter adapter, Object handle, long startTime, int httpStatusCode) {
+      TelemetryAdapter adapter, Object handle, long startTime, Response response) {
     try {
       adapter.onRequestEnd(
           handle,
           TelemetrySupport.buildRequestTelemetryResult(
               new TelemetrySupport.RequestTelemetryResultInput(
-                  httpStatusCode, System.currentTimeMillis() - startTime, null)));
+                  response.getStatusCode(),
+                  System.currentTimeMillis() - startTime,
+                  null,
+                  response.getHeaders())));
     } catch (Exception err) {
       LOGGER.log(Level.WARNING, "Telemetry adapter onRequestEnd failed: " + err.getMessage(), err);
     }
@@ -138,7 +143,8 @@ final class TelemetryAdapterExecutor {
               new TelemetrySupport.RequestTelemetryResultInput(
                   httpStatusCode,
                   System.currentTimeMillis() - startTime,
-                  TelemetrySupport.extractRequestTelemetryError(err))));
+                  TelemetrySupport.extractRequestTelemetryError(err),
+                  TelemetrySupport.extractResponseHeaders(err))));
     } catch (Exception telemetryErr) {
       LOGGER.log(
           Level.WARNING,
@@ -170,6 +176,18 @@ final class TelemetryAdapterExecutor {
     URI uri = URI.create(baseUrl);
     String path = uri.getPath();
     return path != null && !path.isEmpty() ? path : "/api/v2";
+  }
+
+  /**
+   * Adds {@code Prefer: chargebee-telemetry=include} when the client opted in via {@code
+   * ChargebeeClient.Builder#preferChargebeeTelemetry(boolean)}.
+   */
+  private static Request maybeApplyResponseTelemetryPreferHeader(
+      ChargebeeClient client, Request request) {
+    if (!client.isPreferChargebeeTelemetry()) {
+      return request;
+    }
+    return TelemetrySupport.applyResponseTelemetryPreferHeader(request);
   }
 
   /** Returns a copy of {@code request} with {@code headers} applied. */

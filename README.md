@@ -711,6 +711,65 @@ The SDK builds standardized span attributes (`ctx.getStartAttributes()`, `result
 
 Spans are named `chargebee.{resource}.{operation}` (e.g. `chargebee.subscription.create`).
 
+#### Server-side timing telemetry (Beta)
+
+> **Beta.** `X-Chargebee-Telemetry` response parsing and `preferChargebeeTelemetry` are in beta. Header availability, wire format, and SDK behavior may change.
+
+Chargebee returns `X-Chargebee-Telemetry` only when the client opts in with `Prefer: chargebee-telemetry=include`. Call `.preferChargebeeTelemetry(true)` on the client builder to have the SDK add that header on each request when a `telemetryAdapter` is configured (parsed into `chargebee.telemetry.*` span attributes). You can also set the `Prefer` header yourself on individual requests.
+
+For the header format and the meaning of each field, see [Response telemetry](https://apidocs.chargebee.com/docs/api/response-telemetry) in the API docs.
+
+On select APIs, Chargebee may include an `X-Chargebee-Telemetry` response header with a server-side timing breakdown — treat it as optional enrichment, not a required contract.
+
+When the header is present and a `telemetryAdapter` is configured, the SDK passes these attributes to your adapter in `result.getResponseTelemetryAttributes()`, in two layers. They're kept separate from `result.getEndAttributes()`, so existing adapters see no change; forward both maps to your span to record them.
+
+1. **Raw** — the full header string under `http.response.header.x-chargebee-telemetry` (audit, debug, or custom parsing)
+2. **Parsed** — typed flat attributes under `chargebee.telemetry.*` (ready for APM dashboards without writing a parser)
+
+The header value is an [RFC 9651](https://www.rfc-editor.org/rfc/rfc9651) `sf-list`: comma-separated segments, each optionally followed by semicolon-separated `key=value` parameters.
+
+```
+X-Chargebee-Telemetry: cb;start_time_epoch=1781280400;time_ms=3800, tp-stripe;pm=card;time_ms=620, ft-account_hierarchy
+```
+
+| Segment | Meaning | Parsed span attributes |
+|---|---|---|
+| `cb;…` | Chargebee processing time | `chargebee.telemetry.cb.{param}` — e.g. `time_ms`, `start_time_epoch`, `res_wait_time_ms`, `tp_time_ms` |
+| `tp-{provider};…` | Third-party call time (Stripe, Avalara, …) | `chargebee.telemetry.tp.{provider}.{param}` — e.g. `chargebee.telemetry.tp.stripe.time_ms` |
+| `ft-{feature}` | Feature flag active on this request (bare token, no params) | Collected into `chargebee.telemetry.features` (`string[]`) |
+
+Parameter values are typed by RFC 9651 wire format and mapped to OTel-friendly types:
+
+| Wire format | Example | OTel type |
+|---|---|---|
+| sf-date (`@epoch`) | `start_time=@1781280400` | `long` (Unix seconds) |
+| sf-integer | `time_ms=3800` | `long` |
+| sf-decimal | `ratio=99.9` | `double` |
+| sf-token (bare word) | `pm=card` | `string` |
+| sf-string (quoted) | `desc="hello world"` | `string` |
+| sf-boolean | `enabled=?1` / `?0` | `boolean` |
+| sf-binary | `payload=:aGVsbG8=:` | `string` (base64 payload) |
+
+For the example header above, `result.getResponseTelemetryAttributes()` at span end contains:
+
+```
+http.response.header.x-chargebee-telemetry  →  "cb;start_time_epoch=1781280400;time_ms=3800, tp-stripe;pm=card;time_ms=620, ft-account_hierarchy"
+chargebee.telemetry.cb.start_time_epoch     →  1781280400
+chargebee.telemetry.cb.time_ms              →  3800
+chargebee.telemetry.tp.stripe.time_ms       →  620
+chargebee.telemetry.tp.stripe.pm            →  "card"
+chargebee.telemetry.features                →  ["account_hierarchy"]
+```
+
+**Behavior:**
+
+- Header **absent** → no telemetry header attributes are added; the span is unaffected.
+- Header **partly malformed** → malformed parameters or members are skipped and the rest are still parsed. A parameter without a value (e.g. `cb;cached`) is parsed as `true`, per RFC 9651.
+- Header **present but unparseable** → only the raw `http.response.header.x-chargebee-telemetry` attribute is emitted; the API call is never failed or delayed by parsing.
+- Parsed timing fields such as `chargebee.telemetry.cb.time_ms` are numeric (`long`) so backends like Datadog, New Relic, and Honeycomb can filter, average, and chart percentiles out of the box.
+
+Use the included `OtelTelemetryAdapter` example below as-is to forward both raw and parsed attributes to your exporter.
+
 #### OpenTelemetry example
 
 ```kotlin
@@ -767,6 +826,7 @@ import io.opentelemetry.api.trace.SpanKind;
 import io.opentelemetry.api.trace.StatusCode;
 import io.opentelemetry.api.trace.Tracer;
 import io.opentelemetry.context.Context;
+import java.util.List;
 import java.util.Map;
 
 class OtelTelemetryAdapter implements TelemetryAdapter {
@@ -805,24 +865,35 @@ class OtelTelemetryAdapter implements TelemetryAdapter {
       return;
     }
     Span span = (Span) handle;
-    result
-        .getEndAttributes()
-        .forEach(
-            (k, v) -> {
-              if (v instanceof String) {
-                span.setAttribute(k, (String) v);
-              } else if (v instanceof Long) {
-                span.setAttribute(k, (Long) v);
-              } else if (v instanceof Integer) {
-                span.setAttribute(k, ((Integer) v).longValue());
-              }
-            });
+    setAttributes(span, result.getEndAttributes());
+    setAttributes(span, result.getResponseTelemetryAttributes()); // X-Chargebee-Telemetry (Beta)
     if (result.getError() != null) {
       span.setStatus(StatusCode.ERROR, result.getError().getMessage());
     } else {
       span.setStatus(StatusCode.OK);
     }
     span.end();
+  }
+
+  private static void setAttributes(Span span, Map<String, Object> attributes) {
+    attributes.forEach(
+        (k, v) -> {
+          if (v instanceof String) {
+            span.setAttribute(k, (String) v);
+          } else if (v instanceof Long) {
+            span.setAttribute(k, (Long) v);
+          } else if (v instanceof Integer) {
+            span.setAttribute(k, ((Integer) v).longValue());
+          } else if (v instanceof Double) {
+            span.setAttribute(k, (Double) v);
+          } else if (v instanceof Boolean) {
+            span.setAttribute(k, (Boolean) v);
+          } else if (v instanceof List) {
+            @SuppressWarnings("unchecked")
+            List<String> values = (List<String>) v;
+            span.setAttribute(AttributeKey.stringArrayKey(k), values);
+          }
+        });
   }
 }
 
